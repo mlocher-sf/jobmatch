@@ -1,6 +1,6 @@
 #!/usr/local/bin/tcsh
 
-# $Id: quarterJobs,v 1.7 2000/04/13 07:28:12 locher Exp $
+# $Id: quarterJobs,v 1.8 2000/04/27 07:27:08 locher Exp $
 # these commands are run every 15 minutes with the following crontab entry on giger.unibe.ch
 # 0,15,30,45 * * * * csh -c "/home/pse4/quarterJobs >& /home/pse4/jobs/quarterLog.txt"
 
@@ -14,4 +14,5 @@ echo
 cd /home/pse4/jobs
 ../updateHP
 ./genCL
+./toolCheckout
 

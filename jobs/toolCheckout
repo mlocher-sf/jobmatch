@@ -1,0 +1,6 @@
+#!/usr/local/bin/tcsh
+
+# $Id: toolCheckout,v 1.1 2000/04/27 07:27:08 locher Exp $
+
+cd /home/pse4/scr
+/usr/local/bin/cvs -d /home/pse4/cvsroot co pse/tool
