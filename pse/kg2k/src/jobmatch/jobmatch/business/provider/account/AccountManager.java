@@ -1,4 +1,4 @@
-// $Id: AccountManager.java,v 1.10 2000/05/31 12:15:55 studer Exp $
+// $Id: AccountManager.java,v 1.11 2000/06/02 14:56:14 locher Exp $
 
 package jobmatch.business.provider.account;
 
@@ -9,8 +9,8 @@ import com.lutris.dods.builder.generator.query.*;
  *  Controls access to accounts
  *
  *  @since May 8 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.10 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.11 $
  **/
 final public class AccountManager {
 
@@ -62,7 +62,7 @@ final public class AccountManager {
     }
 
     /**
-     * Creates a new Candidateaccount
+     * Creates a new Candidate account
      **/
     public void createCandidateAccount(String username, String passphrase, String eMail) {
 	if (!candidateUsernameExists(username)) {
@@ -133,7 +133,7 @@ final public class AccountManager {
     }
 
     /**
-     * Creates a new Companyeaccount
+     * Creates a new Company account
      **/
     public void createCompanyAccount(String username, String passphrase, String eMail) {
 	if (!companyUsernameExists(username)) {
@@ -170,10 +170,81 @@ final public class AccountManager {
 	return false;
     }
 
+    //Provider------------------------------------------------------------
+    
+    /**
+     * Checks if the specified Login is valid
+     **/
+    public boolean isValidProviderLogin(String username, String passphrase) {
+	try {
+	    ProviderAccountQuery query = new ProviderAccountQuery();
+	    query.setQueryUsername(username);
+	    final ProviderAccountBDO provider = query.getNextBDO();
+	    if (provider != null && 
+		provider.getPassphrase().equals(passphrase)) {	return true; }
+	} catch (Exception qe) {
+	    System.err.println(qe);
+	}
+	return false;
+    }
+
+    /**
+     * Returns the account of the provider with the specified username
+     **/
+    public ProviderAccount getProviderAccount(String username) {
+	ProviderAccount result = null;
+	try {
+	    ProviderAccountQuery query = new ProviderAccountQuery();
+	    query.setQueryUsername(username);
+	    result = new ProviderAccount(query.getNextDO());
+	} catch (Exception qe) {
+	    System.err.println(qe);
+	}
+	return result;	
+    }
+
+    /**
+     * Creates a new Provider account
+     **/
+    public void createProviderAccount(String username, String passphrase, String eMail) {
+	if (!providerUsernameExists(username)) {
+	    try {
+		ProviderAccountBDO account = ProviderAccountBDO.createVirgin(); 
+		account.setUsername(username);
+		account.setPassphrase(passphrase);
+		account.setEmail(eMail);
+		account.commit();
+	    } catch (Exception e) {
+		System.err.println(e);
+		throw new RuntimeException("db error");
+	    }
+	} else {
+	    throw new RuntimeException("username exists");
+	}
+    }
+
+    /**
+     * Checks if the specified username exists in the DB
+     **/
+    public boolean providerUsernameExists(String username) {
+	try {
+	    ProviderAccountQuery query = new ProviderAccountQuery();
+	    query.setQueryUsername(username);
+	    final ProviderAccountBDO provider = query.getNextBDO();
+	    if (provider != null) { return true; }
+	} catch (Exception qe) {
+	    System.err.println(qe);
+	}
+	return false;
+    }
+
 } //class
 
 /*
  * $Log: AccountManager.java,v $
+ * Revision 1.11  2000/06/02 14:56:14  locher
+ * extended login behaviour
+ *
  * Revision 1.10  2000/05/31 12:15:55  studer
  * Javadoc added
  *

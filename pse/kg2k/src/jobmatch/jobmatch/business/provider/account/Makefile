@@ -18,6 +18,7 @@ CLASSES = \
 	Account \
 	CandidateAccount \
 	CompanyAccount \
+	ProviderAccount \
 	AccountManager
 
 

@@ -12,41 +12,82 @@ import com.lutris.appserver.server.httpPresentation.*;
  **/
 public class CheckLogin implements HttpPresentation {
 
-    public static String getLoginURL(String username, String passphrase,
-					String grantURL, String denyURL) {
-	return  "./CheckLogin.po?username=" + username + "&passphrase=" +
+    public final String DEFAULT_GRANT_CANDIDATE = "./CandidateHome.po";
+    public final String DEFAULT_GRANT_COMPANY = "./CompanyHome.po";
+    public final String DEFAULT_GRANT_PROVIDER = "./admin/ControlCenter.po";
+    public final String DEFAULT_DENY = "./Welcome.po";
+
+    public static String getLoginURL(int type, String username, String passphrase,
+				     String grantURL, String denyURL) {
+	String url = "./CheckLogin.po?username=" + username + "&passphrase=" +
 	    passphrase + "&grantURL=" + grantURL + "&denyURL=" + denyURL;
+	if (type == Account.TYPE_CANDIDATE) {
+	    url = url + "&type=candidate";
+	}
+	if (type == Account.TYPE_COMPANY) {
+	    url = url + "&type=company";
+	}
+	if (type == Account.TYPE_PROVIDER) {
+	    url = url + "&type=provider";
+	}
+	return url;
     }
 
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
 
+	final String accType = comms.request.getParameter("type");
 	final String username = comms.request.getParameter("username");
 	final String passphrase = comms.request.getParameter("passphrase");
-	final String grantURL = comms.request.getParameter("grantURL");
-	final String denyURL = comms.request.getParameter("denyURL");
+	String grantURL = comms.request.getParameter("grantURL");
+	String denyURL = comms.request.getParameter("denyURL");
 
 	final AccountManager manager = AccountManager.getUniqueInstance();
+	Account account = null;
 
-	if (manager.isValidCandidateLogin(username, passphrase)) {
-	    final CandidateAccount account = manager.getCandidateAccount(username);
-	    try {
-		account.setLoginReminder(0);
-		account.setLastLogin(TimeUtil.getTimeNow());
-		account.commit();
-	    }  catch (Exception e) {
-		throw new RuntimeException(e.toString());
+	if (denyURL == null) {
+	    denyURL = DEFAULT_DENY;
+	}
+
+	if (accType == null || accType.equals("candidate")) {
+	    if (manager.isValidCandidateLogin(username, passphrase)) {
+		account = manager.getCandidateAccount(username);
+		if (grantURL == null) {
+		    grantURL = DEFAULT_GRANT_CANDIDATE;
+		}
 	    }
-	    this.setAccount(comms.sessionData, account);
+	} else {
+	    if (accType.equals("company")) {
+		if (manager.isValidCandidateLogin(username, passphrase)) {
+		    account = manager.getCompanyAccount(username);
+		    if (grantURL == null) {
+			grantURL = DEFAULT_GRANT_COMPANY;
+		    }
+		}
+	    } else {
+		if (accType.equals("provider")) {
+		    if (manager.isValidProviderLogin(username, passphrase)) {
+			account = manager.getProviderAccount(username);
+			if (grantURL == null) {
+			    grantURL = DEFAULT_GRANT_PROVIDER;
+			}
+		    }
+		}
+	    }
+	}
+	this.setAccount(comms.sessionData, account);       
+	if (account != null) {
+	    account.updateLoginData(TimeUtil.getTimeNow(),
+				    comms.request.getRemoteHost(),
+				    comms.request.getRemoteAddr());
 	    throw new ClientPageRedirectException(
 			  comms.request.getAppFileURIPath(grantURL));
 	} else {
 	    throw new ClientPageRedirectException(
 			  comms.request.getAppFileURIPath(denyURL));
 	}
-
     }
-
+    
     /**
      * Stores the account in the session data
      **/

@@ -1,18 +1,23 @@
-// $Id: CompanyHome.java,v 1.1 2000/05/16 09:29:48 locher Exp $
+// $Id: CompanyHome.java,v 1.2 2000/06/02 14:55:06 locher Exp $
 package jobmatch.presentation;
 
 import com.lutris.xml.xmlc.*;
+import jobmatch.business.company.*;
+import jobmatch.business.provider.account.*;
 import com.lutris.appserver.server.httpPresentation.*;
 
 /**
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
-public class CompanyHome implements HttpPresentation {
+public class CompanyHome extends AuthentificationPage implements HttpPresentation {
 
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
+
+	this.assertLegitimation(comms, Account.TYPE_COMPANY, "Welcome.po");
+	CompanyAccount account = this.getCompanyAccount(comms);	
 
         CompanyHomeHTML page = (CompanyHomeHTML)comms.xmlcFactory.create(CompanyHomeHTML.class);
         comms.response.writeHTML(page);
@@ -23,6 +28,9 @@ public class CompanyHome implements HttpPresentation {
 // Document history
 /**
  * $Log: CompanyHome.java,v $
+ * Revision 1.2  2000/06/02 14:55:06  locher
+ * extended login behaviour
+ *
  * Revision 1.1  2000/05/16 09:29:48  locher
  * *** empty log message ***
  *

@@ -47,10 +47,24 @@ public abstract class AuthentificationPage implements HttpPresentation {
     }
 
     /**
-     * Return the current candidateaccount
+     * Return the current candidate account
      **/
     protected CandidateAccount getCandidateAccount(HttpPresentationComms comms) {
 	return (CandidateAccount) this.getAccount(comms);
+    }
+
+    /**
+     * Return the current company account
+     **/
+    protected CompanyAccount getCompanyAccount(HttpPresentationComms comms) {
+	return (CompanyAccount) this.getAccount(comms);
+    }
+
+    /**
+     * Return the current provider account
+     **/
+    protected ProviderAccount getProviderAccount(HttpPresentationComms comms) {
+	return (ProviderAccount) this.getAccount(comms);
     }
 
 } //class

@@ -22,7 +22,8 @@ PACKAGEDIR = jobmatch/presentation
 #
 SUBDIRS = \
 	media \
-	script
+	script \
+	admin
 
 POST_SUBDIRS = \
 	test
@@ -62,7 +63,10 @@ CLASSES = \
 	Password \
 	CVSection \
 	CVMultiSection \
-	CVSectionFormatter
+	CVSectionFormatter \
+	Logout \
+	DocumentPresentation \
+	PDFPresentation
 
 XMLC_HTML_OPTS_FILE = options.xmlc
 

@@ -6,14 +6,35 @@
  
   <body>
   <hr>
-  <h1>Login fuer Firmen</h1>
-  <form action="./CompanyHome.html" method=get> 
-  <table border=1> <tr><td>
-  Login: </td></tr><tr><td>
-  Username: </td><td> <input type="text" size=10 maxlength=20> </td></tr><tr><td>
-  Passwort: </td><td> <input type="password" size=10 maxlength=20> </td><td>
-  <input type="submit" name="submit" value="Submit"> </td></tr>
-  </table>
+  <h1>Login fuer Firmen und Administratoren</h1>
+  <form action="./HELPLoginCompanies.html" method=get> 
+
+  <table border=1>
+	<tr>
+	  <th colspan="2">
+	    Login
+	  </th>
+	</tr>
+	<tr>
+	  <td>Username</td>
+	  <td><input type="text" name="username" size="10" maxlength="20"></td>
+	</tr>
+	<tr>
+	  <td> Passwort </td>
+	  <td> <input type="password" name="passphrase" size="10" maxlength="20"></td>
+	</tr>
+	<tr>
+	  <td> Typ </td>
+	  <td> 
+	    <select name="type">
+	      <option selected="selected" value="company">Firma</option>
+	      <option value="provider">Administrator</option>
+	    </select>
+	  </td>
+	</tr>
+      </table>
+
+      <input type="submit" name="submit" value="Anmelden">
   </form>
 
   <p>

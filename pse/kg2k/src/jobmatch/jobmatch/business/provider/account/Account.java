@@ -1,16 +1,17 @@
-// $Id: Account.java,v 1.5 2000/05/31 12:15:54 studer Exp $
+// $Id: Account.java,v 1.6 2000/06/02 14:56:13 locher Exp $
 
 
 package jobmatch.business.provider.account;
 
 import com.lutris.dods.builder.generator.query.DataObjectException;
+import java.sql.Timestamp;
 
 /**
  *  Account Interface
  *
  *  @since May 4 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.5 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.6 $
  **/
 public interface Account {
     
@@ -23,12 +24,15 @@ public interface Account {
 
     public String getUsername() throws DataObjectException;
     public String getPassphrase() throws DataObjectException;
-    //public String getEMail() throws DataObjectException;
-
+    public String getEmail() throws DataObjectException;
+    public void updateLoginData(Timestamp time, String host, String ip);
 }
 
 /*
  * $Log: Account.java,v $
+ * Revision 1.6  2000/06/02 14:56:13  locher
+ * extended login behaviour
+ *
  * Revision 1.5  2000/05/31 12:15:54  studer
  * Javadoc added
  *

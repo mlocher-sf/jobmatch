@@ -1,30 +1,29 @@
-// $Id: CompanyAccount.java,v 1.3 2000/06/02 14:56:14 locher Exp $
+// $Id: ProviderAccount.java,v 1.1 2000/06/02 14:56:15 locher Exp $
 
 package jobmatch.business.provider.account;
 
 import jobmatch.data.*;
 import java.sql.Timestamp;
-import jobmatch.business.company.Company;
 
 /**
- *  An Account for Companies
+ *  An Account for Administrators
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.1 $
  **/
-public class CompanyAccount extends CompanyAccountBDO implements Account {
+public class ProviderAccount extends ProviderAccountBDO implements Account {
         
-    CompanyAccount() throws Exception {
+    ProviderAccount() throws Exception {
 	super();
     }
 
-    CompanyAccount(CompanyAccountDO dataObject) throws Exception {
+    ProviderAccount(ProviderAccountDO dataObject) throws Exception {
 	super(dataObject);
     }
 
     public int getType() {
-	return TYPE_COMPANY;
+	return TYPE_PROVIDER;
     }
 
    /**
@@ -41,17 +40,6 @@ public class CompanyAccount extends CompanyAccountBDO implements Account {
 	    throw new RuntimeException(e.toString());
 	}
     }
-
-    /**
-     * Returns the candidate business object for this account
-     **/
-    public Company getCompanyBO() {
-	try {
-	    return new Company(this.getCompany());
-	} catch (Exception e) {
-	    throw new RuntimeException(e.toString());
-	}
-    }
     
     /** @see Object.equals **/
     public boolean equals(Object other) {
@@ -60,7 +48,7 @@ public class CompanyAccount extends CompanyAccountBDO implements Account {
 	}
 	
 	try {
-	    return semanticEquality(this, (CompanyAccount) other);
+	    return semanticEquality(this, (ProviderAccount) other);
 	}
 	catch (ClassCastException e) {
 	    return false;
@@ -68,7 +56,7 @@ public class CompanyAccount extends CompanyAccountBDO implements Account {
     }
 
     /** @return true if a is considered the same as b **/
-    private boolean semanticEquality(CompanyAccount a, CompanyAccount b) {
+    private boolean semanticEquality(ProviderAccount a, ProviderAccount b) {
 	//XXX define the equality and remove the exception !!!
 	throw new RuntimeException("semanticEqualitiy not defined");
 	//return (a == b);
@@ -82,14 +70,8 @@ public class CompanyAccount extends CompanyAccountBDO implements Account {
 } //class
 
 /*
- * $Log: CompanyAccount.java,v $
- * Revision 1.3  2000/06/02 14:56:14  locher
+ * $Log: ProviderAccount.java,v $
+ * Revision 1.1  2000/06/02 14:56:15  locher
  * extended login behaviour
- *
- * Revision 1.2  2000/05/31 12:15:57  studer
- * Javadoc added
- *
- * Revision 1.1  2000/05/30 15:52:24  locher
- * added Company and Profile BOs
  *
  */

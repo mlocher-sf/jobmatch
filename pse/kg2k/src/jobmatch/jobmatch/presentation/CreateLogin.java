@@ -1,4 +1,4 @@
-// $Id: CreateLogin.java,v 1.4 2000/05/31 11:36:16 studer Exp $
+// $Id: CreateLogin.java,v 1.5 2000/06/02 14:55:07 locher Exp $
 package jobmatch.presentation;
 
 import com.lutris.xml.xmlc.*;
@@ -9,8 +9,8 @@ import jobmatch.business.provider.account.*;
 /**
  * Creates a new Candidateaccount
  *  @since May 16 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.4 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.5 $
  **/
 public class CreateLogin implements HttpPresentation {
 
@@ -28,7 +28,8 @@ public class CreateLogin implements HttpPresentation {
 	    if (passphrase != null && passphrase.equals(confirm)) {
 		try {
 		    this.createAccount(username, passphrase, email);
-		    final String loginURL = CheckLogin.getLoginURL(username, passphrase, 
+		    final String loginURL = CheckLogin.getLoginURL(Account.TYPE_CANDIDATE, 
+								   username, passphrase, 
 								   "CandidateHome.po", "Welcome.po");
 		    throw new ClientPageRedirectException(
 					   comms.request.getAppFileURIPath(loginURL));
@@ -72,6 +73,9 @@ public class CreateLogin implements HttpPresentation {
 // Document history
 /**
  * $Log: CreateLogin.java,v $
+ * Revision 1.5  2000/06/02 14:55:07  locher
+ * extended login behaviour
+ *
  * Revision 1.4  2000/05/31 11:36:16  studer
  * javadoc added
  *

@@ -1,16 +1,17 @@
-// $Id: CandidateAccount.java,v 1.7 2000/05/31 12:15:56 studer Exp $
+// $Id: CandidateAccount.java,v 1.8 2000/06/02 14:56:14 locher Exp $
 
 package jobmatch.business.provider.account;
 
 import jobmatch.data.*;
+import java.sql.Timestamp;
 import jobmatch.business.candidate.Candidate;
 
 /**
  *  An Account for Candidates
  *
  *  @since May 4 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.7 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.8 $
  **/
 public class CandidateAccount extends CandidateAccountBDO implements Account {
         
@@ -24,6 +25,21 @@ public class CandidateAccount extends CandidateAccountBDO implements Account {
 
     public int getType() {
 	return TYPE_CANDIDATE;
+    }
+
+   /**
+    * Updates the login tracking fields of the account
+    **/
+    public void updateLoginData(Timestamp time, String host, String ip) {
+	try {
+	    this.setLoginReminder(0);
+	    this.setLastLogin(time);
+// 	    this.setLastIP(ip);
+// 	    this.setLastHost(host);
+	    this.commit();
+	}  catch (Exception e) {
+	    throw new RuntimeException(e.toString());
+	}
     }
 
     /**
@@ -67,6 +83,9 @@ public class CandidateAccount extends CandidateAccountBDO implements Account {
 
 /*
  * $Log: CandidateAccount.java,v $
+ * Revision 1.8  2000/06/02 14:56:14  locher
+ * extended login behaviour
+ *
  * Revision 1.7  2000/05/31 12:15:56  studer
  * Javadoc added
  *

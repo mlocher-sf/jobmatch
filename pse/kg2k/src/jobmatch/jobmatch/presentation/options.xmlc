@@ -26,6 +26,7 @@
 -urlmapping './Profile.html' './Profile.po'
 -urlmapping './ProfileResults.html' './ProfileResults.po'
 -urlmapping './LoginCompanies.html' './LoginCompanies.po'
+-urlmapping './HELPLoginCompanies.html' './CompanyHome.po'
 -urlmapping './ChangePassphrase.html' './ChangePassephrase.po'
 -urlmapping './Password.html' './Password.po'
 -urlmapping './ProfileLanguageDetailExperience.html' './ProfileLanguageDetailExperience.po'
@@ -35,4 +36,5 @@
 -urlmapping './ProfilePersonalDetail.html' './ProfilePersonalDetail.po'
 -urlmapping './ProfileProgrammingExperience.html' './ProfileProgrammingExperience.po'
 -urlmapping './ProfileSoftwareExperience.html' './ProfileSoftwareExperience.po'
+-urlmapping './Logout.html' './Logout.po'
 -delete-class trash
