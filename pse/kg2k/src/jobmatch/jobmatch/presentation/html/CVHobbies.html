@@ -3,25 +3,37 @@
     <title> Freizeit </title>
     <link rel=stylesheet type="text/css" href="style.css">
   </head>
-
+  
   <body> 
-  <hr>
-  <h1> Hobby </h1>
-  <form>
-  <table border=1><tr><td>
-  Titel: </td><td> <input type="text" size=20 maxlength=30> </td></tr><tr><td>
-  Beschreibung: </td><td> <textarea name="description" rows=4 cols=30></textarea> </td></tr><tr><td>
-  Prioritaet: </td><td> <input type="text" size=1 maxlength=1>(0-9) </td></tr><tr><td>
-  <input type="submit" name="submit" value="Weitere Hobbies">
-  </td></tr>
-  </table>
-  </form>
-  
-  <p>
-  <a href="./CVJobWishes.html"> Weiter </a> <p>
-  <a href="./CVMembership.html"> Zurueck </a> <p>
-  <a href="./CandidateHome.html"> Zurueck zur Uebersicht </a> <p>
-  
- <hr>
+    <hr>
+    <h1> Hobby </h1>
+    
+    <table width="100%" border="1"><tr>
+	<th>Titel </th><th> Beschreibung </th><th>Prioritaet</th></tr>
+    <form action="./CVHobbiesDetail.html" method="get">
+      <tr class = "trash">
+	<td>Musik machen</td><td> Klavierspielen </td><td>1</td>
+	<td><a href="./CV.html"> Loeschen </a></td>
+	<td><a href="./CV.html"> Bearbeiten </a></td </tr>
+      <tr class = "trash">
+	<td>Musik hoeren</td><td>Schlager, Techno </td><td>2</td>
+	<td><a href="./CV.html"> Loeschen </a></td>
+	<td><a href="./CV.html"> Bearbeiten </a></td> </tr>
+      <tr class = "trash">
+	<td>Sport</td><td> Golf, Segeln</td><td>3</td>
+	<td><a href="./CV.html"> Loeschen </a></td>
+	<td><a href="./CV.html"> Bearbeiten </a></td </tr>
+      <tr><td>
+	  <input type="submit" name="submit" value="Weitere Hobbies">
+	</td></tr>
+    </table>
+    </form>
+    
+    <p>
+      <a href="./CVJobWishes.html"> Weiter </a> <p>
+      <a href="./CVMembership.html"> Zurueck </a> <p>
+      <a href="./CandidateHome.html"> Zurueck zur Uebersicht </a> <p>
+      
+    <hr>
   </body>
 </html>
