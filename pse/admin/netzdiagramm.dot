@@ -1,0 +1,917 @@
+digraph "G" {
+	graph [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		bb = "0,0,796,1548"
+		lp = "398,0"
+		color = "black"
+		size = "7,9"
+		center = 1
+		margin = 1
+		ratio = fill
+	]
+	node [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		shape = "ellipse"
+		color = "black"
+	]
+	edge [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		color = "black"
+	]
+	label = "\n\nPSE 2000 / Group 4\n$Id: netzdiagramm.dot,v 1.1 2000/04/12 11:54:47 locher Exp $"
+	
+	"start" [
+		label = "\N"
+		color = "black"
+		width = "0.860000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "222,1530"
+		height = "0.500000"
+		shape = "diamond"
+		style = "bold"
+	]
+	"Studi hinzufuegen" [
+		label = "\N"
+		color = "black"
+		width = "1.690000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "80,1458"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Release 1" [
+		label = "\N"
+		color = "black"
+		width = "0.940000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "222,1386"
+		height = "0.500000"
+		shape = "box"
+		color = yellow
+		style="filled"
+	]
+	"Firma hinzufuegen" [
+		label = "\N"
+		color = "black"
+		width = "1.750000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "222,1458"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Firmen anzeigen" [
+		label = "\N"
+		color = "black"
+		width = "1.580000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "360,1458"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"CV bearbeiten" [
+		label = "\N"
+		color = "black"
+		width = "1.420000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "68,1242"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Release 2" [
+		label = "\N"
+		color = "black"
+		width = "0.940000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "271,1170"
+		height = "0.500000"
+		shape = "box"
+		color = yellow
+		style="filled"
+	]
+	"Firma loeschen" [
+		label = "\N"
+		color = "black"
+		width = "1.470000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "190,1242"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Firma editieren" [
+		label = "\N"
+		color = "black"
+		width = "1.470000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "222,1314"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Suchprofil hinzufuegen" [
+		label = "\N"
+		color = "black"
+		width = "2.110000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "369,1314"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Suchprofil bearbeiten" [
+		label = "\N"
+		color = "black"
+		width = "1.940000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "369,1242"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"CV aktiv/inaktiv setzen" [
+		label = "\N"
+		color = "black"
+		width = "2.110000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "539,1314"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Suchprofil ausfueren" [
+		label = "\N"
+		color = "black"
+		width = "1.890000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "138,1026"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Release 3" [
+		label = "\N"
+		color = "black"
+		width = "0.940000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "312,954"
+		height = "0.500000"
+		shape = "box"
+		color = "238,99,99"
+		style = "filled"
+	]
+	"Suchresultate ansehen" [
+		label = "\N"
+		color = "black"
+		width = "2"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "221,1098"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Suchresultate bearbeiten" [
+		label = "\N"
+		color = "black"
+		width = "2.190000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "312,1026"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Suchresultate zuruecksetzen" [
+		label = "\N"
+		color = "black"
+		width = "2.470000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "438,1098"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"eMail versenden" [
+		label = "\N"
+		color = "black"
+		width = "1.560000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "188,882"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Release 4" [
+		label = "\N"
+		color = "black"
+		width = "0.940000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "334,738"
+		height = "0.500000"
+		shape = "box"
+		color = yellow
+		style="filled"
+	]
+	"Vergessenes Passwort mailen" [
+		label = "\N"
+		color = "black"
+		width = "2.580000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "149,810"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Periodisches Matching" [
+		label = "\N"
+		color = "black"
+		width = "2.060000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "334,810"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Konfigurationsmoeglichkeiten" [
+		label = "\N"
+		color = "black"
+		width = "2.670000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "436,882"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Alte CV mahnen" [
+		label = "\N"
+		color = "black"
+		width = "1.580000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "292,666"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Release 5" [
+		label = "\N"
+		color = "black"
+		width = "0.940000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "351,522"
+		height = "0.500000"
+		shape = "box"
+		color = yellow
+		style="filled"
+	]
+	"Alte CV letzte Warnung" [
+		label = "\N"
+		color = "black"
+		width = "2.170000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "275,594"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Alte CV loschen" [
+		label = "\N"
+		color = "black"
+		width = "1.580000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "428,594"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Match Statistik" [
+		label = "\N"
+		color = "black"
+		width = "1.470000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "136,450"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Release 6" [
+		label = "\N"
+		color = "black"
+		width = "0.940000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "351,378"
+		height = "0.500000"
+		shape = "box"
+		color = yellow
+		style="filled"
+	]
+	"DB Query fuer studi" [
+		label = "\N"
+		color = "black"
+		width = "1.860000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "274,450"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"DB Query fuer Firma" [
+		label = "\N"
+		color = "black"
+		width = "1.940000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "429,450"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"DB Query fuer Provider" [
+		label = "\N"
+		color = "black"
+		width = "2.170000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "595,450"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Download Suchresultate" [
+		label = "\N"
+		color = "black"
+		width = "2.190000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "79,306"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Release 7" [
+		label = "\N"
+		color = "black"
+		width = "0.940000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "351,234"
+		height = "0.500000"
+		shape = "box"
+		color = yellow
+		style="filled"
+	]
+	"Photo CV" [
+		label = "\N"
+		color = "black"
+		width = "1.060000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "214,306"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Auswahllisten bearbeiten" [
+		label = "\N"
+		color = "black"
+		width = "2.250000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "351,306"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Studi kann CV zustellen" [
+		label = "\N"
+		color = "black"
+		width = "2.170000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "528,306"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Infos zum Projekt abfragen" [
+		label = "\N"
+		color = "black"
+		width = "2.390000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "710,306"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"DB Abkoppeln manuell" [
+		label = "\N"
+		color = "black"
+		width = "2.140000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "299,162"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Final release" [
+		label = "\N"
+		color = "black"
+		width = "1.170000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "368,18"
+		height = "0.500000"
+		shape = "box"
+		color = "238,99,99"
+		style = filled
+	]
+	"DB Abkoppeln automatisch" [
+		label = "\N"
+		color = "black"
+		width = "2.360000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "283,90"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"HTTPS Verbindung" [
+		label = "\N"
+		color = "black"
+		width = "1.860000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "453,90"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"Studi hinzufuegen" -> "Release 1" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,188,1403  111,1442 131,1432 158,1419 180,1407"
+		color = "black"
+	]
+	"start" -> "Studi hinzufuegen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,111,1474  205,1522 184,1511 146,1492 117,1477"
+		color = "black"
+	]
+	"Firma hinzufuegen" -> "Release 1" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,222,1404  222,1440 222,1432 222,1423 222,1414"
+		color = "black"
+	]
+	"start" -> "Firma hinzufuegen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,222,1476  222,1512 222,1504 222,1495 222,1486"
+		color = "black"
+	]
+	"Firmen anzeigen" -> "Release 1" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,256,1404  330,1443 312,1432 286,1420 265,1408"
+		color = "black"
+	]
+	"start" -> "Firmen anzeigen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,330,1473  238,1521 259,1510 294,1492 321,1478"
+		color = "black"
+	]
+	"CV bearbeiten" -> "Release 2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,237,1182  104,1229 139,1217 192,1198 229,1185"
+		color = "black"
+	]
+	"Release 1" -> "CV bearbeiten" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,82,1259  196,1368 174,1352 146,1332 146,1332 129,1315 105,1287 88,1266"
+		color = "black"
+	]
+	"Firma loeschen" -> "Release 2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,251,1188  209,1225 220,1216 232,1204 244,1194"
+		color = "black"
+	]
+	"Release 1" -> "Firma loeschen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,177,1260  197,1368 182,1357 166,1343 157,1332 146,1317 160,1289 172,1268"
+		color = "black"
+	]
+	"Firma editieren" -> "Release 2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,269,1188  234,1296 242,1285 251,1270 255,1260 260,1244 265,1217 268,1197"
+		color = "black"
+	]
+	"Release 1" -> "Firma editieren" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,222,1332  222,1368 222,1360 222,1351 222,1342"
+		color = "black"
+	]
+	"Release 1" -> "Suchprofil hinzufuegen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,336,1330  256,1369 277,1358 305,1345 328,1334"
+		color = "black"
+	]
+	"Suchprofil bearbeiten" -> "Release 2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,296,1188  346,1225 333,1216 317,1204 304,1194"
+		color = "black"
+	]
+	"CV aktiv/inaktiv setzen" -> "Release 2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,305,1177  525,1296 507,1274 475,1237 451,1224 416,1205 355,1189 314,1179"
+		color = "black"
+	]
+	"Release 1" -> "CV aktiv/inaktiv setzen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,484,1327  256,1378 309,1367 410,1343 475,1329"
+		color = "black"
+	]
+	"Suchprofil ausfueren" -> "Release 3" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,278,968  175,1011 203,999 242,983 272,971"
+		color = "black"
+	]
+	"Release 2" -> "Suchprofil ausfueren" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,133,1044  237,1159 206,1148 161,1132 137,1116 123,1105 126,1076 131,1053"
+		color = "black"
+	]
+	"Release 2" -> "Suchresultate ansehen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,234,1116  258,1152 253,1144 245,1133 239,1124"
+		color = "black"
+	]
+	"Suchresultate bearbeiten" -> "Release 3" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,312,972  312,1008 312,1000 312,991 312,982"
+		color = "black"
+	]
+	"Release 2" -> "Suchresultate bearbeiten" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,312,1044  285,1152 293,1141 302,1126 305,1116 309,1100 311,1074 312,1053"
+		color = "black"
+	]
+	"Suchresultate zuruecksetzen" -> "Release 3" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,346,970  434,1080 428,1058 417,1024 403,1008 393,996 373,984 355,975"
+		color = "black"
+	]
+	"Release 2" -> "Suchresultate zuruecksetzen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,400,1114  305,1155 330,1144 364,1130 391,1118"
+		color = "black"
+	]
+	"Release 3" -> "eMail versenden" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,215,898  281,936 264,926 241,913 223,903"
+		color = "black"
+	]
+	"Vergessenes Passwort mailen" -> "Release 4" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,300,751  191,794 222,782 263,766 294,754"
+		color = "black"
+	]
+	"Periodisches Matching" -> "Release 4" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,334,756  334,792 334,784 334,775 334,766"
+		color = "black"
+	]
+	"Release 3" -> "Periodisches Matching" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,331,828  315,936 319,911 325,866 330,837"
+		color = "black"
+	]
+	"Konfigurationsmoeglichkeiten" -> "Release 4" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,368,754  436,864 435,842 431,808 420,792 412,780 394,768 377,759"
+		color = "black"
+	]
+	"Release 3" -> "Konfigurationsmoeglichkeiten" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,406,899  343,936 361,926 383,914 401,902"
+		color = "black"
+	]
+	"Release 4" -> "Alte CV mahnen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,302,684  323,720 318,712 313,702 307,692"
+		color = "black"
+	]
+	"Alte CV letzte Warnung" -> "Release 5" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,332,540  294,576 303,567 314,556 325,547"
+		color = "black"
+	]
+	"Alte CV loschen" -> "Release 5" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,370,540  410,577 400,568 388,556 377,546"
+		color = "black"
+	]
+	"Release 4" -> "Alte CV loschen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,416,612  346,720 362,695 391,649 410,621"
+		color = "black"
+	]
+	"Match Statistik" -> "Release 6" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,317,390  174,437 212,425 270,406 309,393"
+		color = "black"
+	]
+	"Release 5" -> "Match Statistik" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,174,463  317,511 281,499 222,479 182,466"
+		color = "black"
+	]
+	"DB Query fuer studi" -> "Release 6" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,331,396  293,433 302,424 313,413 324,403"
+		color = "black"
+	]
+	"Release 5" -> "DB Query fuer studi" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,292,467  332,504 322,495 310,484 299,474"
+		color = "black"
+	]
+	"DB Query fuer Firma" -> "Release 6" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,371,396  410,433 400,424 388,412 378,403"
+		color = "black"
+	]
+	"Release 5" -> "DB Query fuer Firma" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,411,467  371,504 381,495 393,484 404,474"
+		color = "black"
+	]
+	"DB Query fuer Provider" -> "Release 6" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,385,388  547,436 502,423 436,404 394,391"
+		color = "black"
+	]
+	"Release 5" -> "DB Query fuer Provider" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,547,464  385,512 425,500 493,480 540,466"
+		color = "black"
+	]
+	"Download Suchresultate" -> "Release 7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,317,243  131,292 184,278 263,257 311,245"
+		color = "black"
+	]
+	"Release 6" -> "Download Suchresultate" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,131,320  317,369 272,358 192,336 138,322"
+		color = "black"
+	]
+	"Photo CV" -> "Release 7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,317,252  239,293 259,282 286,269 309,257"
+		color = "black"
+	]
+	"Release 6" -> "Photo CV" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,240,320  317,360 296,349 268,335 248,324"
+		color = "black"
+	]
+	"Auswahllisten bearbeiten" -> "Release 7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,351,252  351,288 351,280 351,271 351,262"
+		color = "black"
+	]
+	"Release 6" -> "Auswahllisten bearbeiten" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,351,324  351,360 351,352 351,343 351,334"
+		color = "black"
+	]
+	"Studi kann CV zustellen" -> "Release 7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,385,248  489,290 461,278 423,263 394,252"
+		color = "black"
+	]
+	"Release 6" -> "Studi kann CV zustellen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,489,322  385,364 413,353 452,336 483,324"
+		color = "black"
+	]
+	"Infos zum Projekt abfragen" -> "Release 7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,385,241  648,294 575,279 457,255 394,243"
+		color = "black"
+	]
+	"Release 6" -> "Infos zum Projekt abfragen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,648,318  385,371 443,359 564,335 641,319"
+		color = "black"
+	]
+	"Release 7" -> "DB Abkoppeln manuell" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,312,180  338,216 332,207 324,197 318,188"
+		color = "black"
+	]
+	"DB Abkoppeln automatisch" -> "Final release" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,347,36  304,72 315,63 328,52 340,42"
+		color = "black"
+	]
+	"HTTPS Verbindung" -> "Final release" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,389,36  432,73 421,64 408,52 396,42"
+		color = "black"
+	]
+	"Release 7" -> "HTTPS Verbindung" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,440,108  364,216 382,190 415,143 436,114"
+		color = "black"
+	]
+	"eMail versenden" -> "Vergessenes Passwort mailen" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,159,828  178,864 173,856 168,846 164,837"
+		color = "black"
+	]
+	"Suchresultate ansehen" -> "Suchresultate bearbeiten" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,290,1043  243,1081 255,1071 270,1060 283,1049"
+		color = "black"
+	]
+	"DB Abkoppeln manuell" -> "DB Abkoppeln automatisch" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,287,108  295,144 293,136 291,126 289,117"
+		color = "black"
+	]
+	"Suchprofil hinzufuegen" -> "Suchprofil bearbeiten" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,369,1260  369,1296 369,1288 369,1279 369,1270"
+		color = "black"
+	]
+	"Alte CV mahnen" -> "Alte CV letzte Warnung" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "e,279,612  288,648 286,640 284,630 281,621"
+		color = "black"
+	]
+}

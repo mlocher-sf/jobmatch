@@ -1,0 +1,130 @@
+graph ER {
+	fontname= "Helvetica"
+	nodesep=1
+	size="7,10"
+	center=1
+	margin=1
+	ratio=fill
+
+
+	// Entities
+	node [shape=box, fontsize=14]; 
+	Firma;
+	Suchprofil;
+	Bewerber;
+
+	Lebensabschnitt;
+	Schulbesuch;
+	Arbeitserfahrung;
+	
+	Kenntniss;
+	"Sprache\nKenntniss";
+	"Software\nKenntniss";
+	"Programmier\nKenntniss";
+	"Betriebssystem\nKenntniss";
+
+	JobWunsch;
+	"Charakter\nEigenschaften";
+	Hobby;
+	Mitgliedschaft;
+	"Persoenliche\nDaten";
+
+	// Relations
+	node [shape=diamond,style=filled,color=lightgrey, fontsize=10];
+
+	edge [len=1.8];
+		
+	Firma -- Profile [label=1]
+	Profile -- Suchprofil [label=n];
+
+	Suchprofil -- Suchresultate [label=1];
+	Suchresultate -- Bewerber [label=n];
+
+	Bewerber -- "Sprachen" [label=1]
+	"Sprachen" -- "Sprache\nKenntniss" [label=n];
+
+	Bewerber -- "Ausbildung" [label=1];
+	"Ausbildung" -- Schulbesuch [label=n];
+
+	Bewerber -- "Arbeitserfahrungen" [label=1];
+	"Arbeitserfahrungen" -- Arbeitserfahrung [label=n];
+
+	Bewerber -- "SoftwareKenntnisse" 
+	"SoftwareKenntnisse" -- "Software\nKenntniss";
+	Bewerber -- "ProgrammierKenntnisse" [label=1]
+	"ProgrammierKenntnisse" -- "Programmier\nKenntniss" [label=n];
+
+	Bewerber -- "BetriebssystemKenntnisse" [label=1]
+	"BetriebssystemKenntnisse" -- "Betriebssystem\nKenntniss" [label=n];
+
+	Bewerber -- "Charakter" [label=1]
+	"Charakter" -- "Charakter\nEigenschaften" [label=n];
+
+	Bewerber -- "Daten" [label=1]
+	"Daten" -- "Persoenliche\nDaten" [label=n];
+
+	Bewerber -- "Hobbies" [label=1];
+	"Hobbies" -- "Hobby" [label=n];
+
+	Bewerber -- "Mitgliedschaften" [label=1];
+	"Mitgliedschaften" -- "Mitgliedschaft" [label=n];
+
+	Bewerber -- "Wuensche" [label=1];
+	"Wuensche" -- "JobWunsch" [label=1];
+
+	
+	Suchprofil -- "Sprachen\nAnforderung" [label=n];
+	"Sprachen\nAnforderung" -- "Sprache\nKenntniss" [label=1];
+
+	Suchprofil -- "Ausbildungs\nAnforderung" [label=n];
+	"Ausbildungs\nAnforderung" -- Schulbesuch [label=1];
+
+	Suchprofil -- "Arbeitserfahrung\nAnforderung" [label=n];
+	"Arbeitserfahrung\nAnforderung" -- Arbeitserfahrung [label=1];
+
+	Suchprofil -- "SoftwareKenntniss\nAnforderung" [label=n];
+	"SoftwareKenntniss\nAnforderung" -- "Software\nKenntnis" [label=1];
+
+	Suchprofil -- "ProgrammierKenntniss\nAnforderung" [label=n];
+	"ProgrammierKenntniss\nAnforderung" -- "Programmier\nKenntniss" [label=1];
+
+	Suchprofil -- "BetriebssystemKenntniss\nAnforderung" [label=n];
+	"BetriebssystemKenntniss\nAnforderung" -- "Betriebssystem\nKenntniss" [label=1];
+
+	Suchprofil -- "Charakter\nAnforderung" [label=n];
+	"Charakter\nAnforderung" -- "Charakter\nEigenschaften" [label=1];
+
+	Suchprofil -- "PersoenlicheDaten\nAnforderung" [label=n];
+	"PersoenlicheDaten\nAnforderung" -- "Persoenliche\nDaten" [label=1];
+
+	//Attribute
+	
+	node [ shape=ellipse,style=solid,color=black, fontsize=10];
+	edge [len=1]
+	AccData -- Bewerber;
+	Suchresultate -- TimeStamp
+	
+	Suchprofil -- "MatchTree";
+	"Ausbildungs\nAnforderung" -- MatchParameter;
+	"Ausbildungs\nAnforderung" -- "Leaf#";
+
+
+
+	//Generalisierungen
+	
+	edge [label=Generalisierung, dir=back, len=2]
+	
+	"Sprache\nKenntniss" -- Kenntniss;
+	"Software\nKenntniss" -- Kenntniss;
+	"Programmier\nKenntniss" -- Kenntniss;
+	"Betriebssystem\nKenntniss" -- Kenntniss;
+
+	Schulbesuch -- Lebensabschnitt;
+	Arbeitserfahrung -- Lebensabschnitt;
+
+
+	label = "\n\nER Diagramm [TOTAL]\n Group 4 / $Id: er.dot,v 1.1 2000/04/12 11:54:51 locher Exp $"
+
+}
+	
+	

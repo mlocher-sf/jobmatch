@@ -1,0 +1,63 @@
+graph ER {
+	fontname= "Helvetica"
+	nodesep=1
+	size="7,10"
+	center=1
+	margin=1
+	ratio=fill
+
+
+	// Entities
+	node [shape=box, fontsize=14]; 
+	Firma;
+
+	node [style=bold];
+	Suchprofil;
+	Bewerber;
+
+	Kenntniss;
+	"Sprache\nKenntniss";
+
+	// Relations
+	node [shape=diamond,style=filled,color=lightgrey, fontsize=10];
+
+	edge [len=1.8];
+		
+	Firma -- Profile [label=1]
+	Profile -- Suchprofil [label=n];
+
+	Suchprofil -- Suchresultate [label=1];
+	Suchresultate -- Bewerber [label=n];
+
+	Bewerber -- "Sprachen" [label=1]
+	"Sprachen" -- "Sprache\nKenntniss" [label=n];
+
+	Suchprofil -- "Sprachen\nAnforderung" [label=n];
+	"Sprachen\nAnforderung" -- "Sprache\nKenntniss" [label=1];
+
+
+	//Attribute
+	
+	node [ shape=ellipse,style=solid,color=black, fontsize=10];
+	edge [len=1]
+	AccData -- Bewerber;
+	Suchresultate -- TimeStamp
+	
+	Suchprofil -- "MatchTree";
+	"Sprachen\nAnforderung" -- MatchParameter;
+	"Sprachen\nAnforderung" -- "Leaf#";
+	Qualitaet -- Kenntniss;
+
+	//Generalisierungen
+	
+	edge [label=Generalisierung, dir=back, len=2]
+	
+	"Sprache\nKenntniss" -- Kenntniss;
+
+
+	label = "\n\nER Diagramm [DETAIL]\n Group 4 / $Id: erDetail.dot,v 1.1 2000/04/12 11:54:51 locher Exp $"
+	
+
+}
+	
+	
