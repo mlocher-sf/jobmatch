@@ -1,10 +1,13 @@
 #!/usr/local/bin/tcsh
 
-# $Id: launchPrototype,v 1.4 2000/04/13 13:08:35 locher Exp $
+# $Id: launchPrototype,v 1.5 2000/04/13 13:59:51 locher Exp $
 # make sure the prototype is running on vasarely.unibe.ch:9500
 # with the following crontab entry on vasarely.unibe.ch
 # 22,52 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
 
+if ( $CVSROOT ) then
+    echo variables set
+endif
 source ~/.login 
 
 echo Running protolaunch on
@@ -12,26 +15,16 @@ echo Running protolaunch on
 /usr/bin/date
 echo " "
 
+# Rebuild it
 cd /home/pse4/scr
 cvs co playground
 cd playground
 make
-cd output
 
-if (-s /home/pse4/jobs/protoPID) then
-    set OP=`awk '{print $1}' /home/pse4/jobs/protoPID`
-    ls -1 /proc | grep "^$OP" > /tmp/protoALIVE
-endif
+# Run it
+cd /home/pse4/jobs
+./runProto
 
-if (-s /tmp/protoALIVE) then
-    kill -KILL $OP
-    echo Killing old process $OP ...
-    sleep 1
-endif
-
-nohup start &
-sleep 15
-ps | grep java  > /home/pse4/jobs/protoPID
 
 
 

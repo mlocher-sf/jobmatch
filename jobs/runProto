@@ -1,0 +1,27 @@
+#!/usr/local/bin/tcsh
+
+# $Id: runProto,v 1.1 2000/04/13 13:59:52 locher Exp $
+# make sure the prototype is running on vasarely.unibe.ch:9500
+# with the following crontab entry on vasarely.unibe.ch
+# 22,52 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
+
+cd /home/pse4/scr/playground/output
+
+if (-e /tmp/protoALIVE) then 
+    rm /tmp/protoALIVE 
+endif
+
+if (-s /home/pse4/jobs/protoPID) then
+    set OP=`cat /home/pse4/jobs/protoPID`
+    ls -1 /proc | grep "^$OP" > /tmp/protoALIVE
+endif
+
+if (-s /tmp/protoALIVE) then
+    kill -KILL $OP
+    echo Killing old process $OP ...
+    sleep 5
+endif
+
+nohup start &
+jobs -l > /tmp/myjobs
+grep start /tmp/myjobs | awk '{print $3}' > /home/pse4/jobs/protoPID
