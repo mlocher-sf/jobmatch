@@ -34,6 +34,10 @@ CLASSES = \
 	Welcome \
 	Login \
 	CheckLogin \
+	CompanyHome \
+	CreateLogin \
+	LoginCompanies \
+	Profile
 
 
 XMLC_HTML_OPTS_FILE = options.xmlc
@@ -43,7 +47,14 @@ HTML_CLASSES = \
 	CandidateHomeHTML \
 	CVPersonalHTML \
 	WelcomeHTML \
-	LoginHTML
+	LoginHTML \
+	CreateLoginHTML \
+	CompanyHomeHTML \
+	LoginCompaniesHTML \
+	ProfileHTML \
+	ProfileResultsHTML \
+	SectionHTML
+
 
 JAR_INSTALL = \
 	./html/style.css

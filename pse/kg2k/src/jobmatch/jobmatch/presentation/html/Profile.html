@@ -3,28 +3,36 @@
     <title> Suchprofil </title>
     <link rel=stylesheet type="text/css" href="style.css">
   </head>
-
+  
   <body>
-  <hr>
-  <h1> Neues Profil  </h1>
-  <form action="./Section.html" method=get>
-  <table width="75%" border="1">
-<tr><td>Profilname</td> <td> <input type='text'></td></tr>
-<tr><td>Zustaendige Person</td> <td> <input type='text'></td></tr>
-<tr><td>E-Mail</td> <td> <input type='text'></td></tr><tr><td>
-<tr><td>Profilstatus</td> <td>  <input type="radio" name="status" value="active">  aktiv
-	<input type="radio" name="status" value="inactive">  inaktiv </td></tr>
-<tr><td>Benachrichtigung per E-Mail</td> <td>  <input type="radio"  value="weekly">  jede Woche
-	<input type="radio" name="status" value="everyday">  jeden Tag </td></tr>
-<tr><td>
-  <a href ="./Section.html"> Anforderungen eingeben </a>
-  </td></tr>
-  </table>
-  </form>
+    <hr>
+    <h1>Profil bearbeiten</h1>
+    <form action="./CompanyHome.html" method=get>
+  
+      <table width="75%" border="1">
+	<tr><td>Profilname</td> <td> <input type='text'></td></tr>
+	<tr><td>Zustaendige Person</td> <td> <input type='text'></td></tr>
+	<tr><td>E-Mail</td> <td> <input type='text'></td></tr><tr><td>
+	<tr><td>Profilstatus</td> <td>  <input type="radio" name="status" value="active">  aktiv
+	    <input type="radio" name="status" value="inactive">  inaktiv</input> </td></tr>
+	<tr>
+	  <td>Benachrichtigung per E-Mail</td> 
+	  <td> 
+	    <input type="radio" name="notification" value="weekly"> jede Woche
+	    <input type="radio" name="notification" value="everyday"> jeden Tag
+	    <input type="radio" name="notification" value="never"> nie
+	  </td
+	</tr>
+	<tr>
+	  <td colspan="2">
+	    <div id="tree">Anforderungsbaum</div>
+	    <a href ="./Section.html">Anforderungsteil bearbeiten</a>
+	  </td>
+	</tr>
+      </table>
+      <input type="submit" value="Speichern & Beenden">
+    </form>
 
-  <p>
-  <a href ="./CompanyHome.html"> Zurueck </a> <p>
-  <a href ="./Welcome.html"> Zurueck zur Einstiegsseite </a> <p>
-  <hr>
+    <hr>
   </body>
 </html>

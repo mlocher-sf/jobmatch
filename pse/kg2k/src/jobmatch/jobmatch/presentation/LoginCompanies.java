@@ -1,4 +1,4 @@
-// $Id: CandidateHome.java,v 1.2 2000/05/16 09:29:47 locher Exp $
+// $Id: LoginCompanies.java,v 1.1 2000/05/16 09:29:49 locher Exp $
 package jobmatch.presentation;
 
 import com.lutris.xml.xmlc.*;
@@ -7,14 +7,14 @@ import com.lutris.appserver.server.httpPresentation.*;
 /**
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.1 $
  **/
-public class CandidateHome implements HttpPresentation {
+public class LoginCompanies implements HttpPresentation {
 
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
 
-        CandidateHomeHTML page = (CandidateHomeHTML)comms.xmlcFactory.create(CandidateHomeHTML.class);
+        LoginCompaniesHTML page = (LoginCompaniesHTML)comms.xmlcFactory.create(LoginCompaniesHTML.class);
         comms.response.writeHTML(page);
     }
 
@@ -22,8 +22,8 @@ public class CandidateHome implements HttpPresentation {
 
 // Document history
 /**
- * $Log: CandidateHome.java,v $
- * Revision 1.2  2000/05/16 09:29:47  locher
+ * $Log: LoginCompanies.java,v $
+ * Revision 1.1  2000/05/16 09:29:49  locher
  * *** empty log message ***
  *
  **/
