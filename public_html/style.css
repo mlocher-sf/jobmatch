@@ -10,7 +10,7 @@ body, td, p, tt, code { font-size: 11pt }
 body { background-color: moccasin; }
 
 th { background-color: skyblue }
-td { background-color: powderblue }
+td { background-color: powderblue ; vertical-align:top; }
 td.super { background-color: moccasin; vertical-align:top; padding: 6pt; }
 hr { color: teal; size: 5pt;}
 
