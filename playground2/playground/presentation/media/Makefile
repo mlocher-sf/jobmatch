@@ -14,7 +14,17 @@ ROOT =	../../..
 #
 PACKAGEDIR = playground/presentation/media
 
-JAR_INSTALL = Enhydra.gif
+JAR_INSTALL = \
+	and.gif	\
+	andACTIVE.gif \
+	andPRESS.gif \
+	not.gif \
+	notACTIVE.gif \
+	notPRESS.gif \
+	or.gif \
+	orACTIVE.gif \
+	orPRESS.gif \
+	logo.gif
 
 include $(ROOT)/config.mk
 

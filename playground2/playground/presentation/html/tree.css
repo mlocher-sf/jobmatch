@@ -1,0 +1,36 @@
+h1 { font-size: 22pt}
+h2 { font-size: 16pt}
+h3, tr { font-size: 14pt}
+body, td, p, tt, code { font-size: 11pt }
+
+hr { color: teal; size: 5pt;}
+
+h2, h3, h4 { 
+	border-stlye: ridge; 
+	border-width: 1pt;
+	padding: 1pt;
+	text-shadow: silver;
+	}
+
+body { font-family: AvantGarde,Helvetica,Arial }
+body { background-color: lightblue; }
+
+table.treenode { boder-width: 1cm; background-color: steelblue }
+
+tr.treenode { background-color: green; vertical-align:top; }
+td.treenode_operations { background-color: steelblue; text-align: center; vertical-align:middle; }
+td.treenode_description { background-color: lightsteelblue; text-align: center; vertical-align:middle; }
+
+a { 
+	text-decoration: none; 
+	color: steelblue; 
+	font-weight: bold;
+	}
+
+a:hover {
+	text-decoration: underline;
+	}
+
+
+
+

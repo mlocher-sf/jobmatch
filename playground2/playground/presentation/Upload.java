@@ -3,7 +3,8 @@ package playground.presentation;
 import playground.business.*;
 
 import java.io.*;
-import gnu.regexp.*;
+import java.util.*;
+import com.oreilly.servlet.*;
 import org.w3c.dom.html.*;
 import com.lutris.mime.*;
 import com.lutris.xml.xmlc.*;
@@ -17,34 +18,51 @@ public class Upload implements HttpPresentation {
 	PictureHTML page = (PictureHTML)comms.xmlcFactory.create(PictureHTML.class);
 
  	String event = comms.request.getParameter("event");
- 	System.out.println(comms.request.getHttpServletRequest().getMethod().toUpperCase());
+// 	System.out.println(comms.request.getHttpServletRequest().getMethod().toUpperCase());
 
 	if (comms.request.getHttpServletRequest().getMethod().toUpperCase().equals("POST")) {
 	    HttpPresentationInputStream in = comms.request.getInputStream();
-	    this.save(in);
+	    this.save(comms);
 	}
     	
         comms.response.writeHTML(page.toDocument());
     }
 
-    private void save(HttpPresentationInputStream in) {
+    private void save(HttpPresentationComms comms) {
 	try {
-	    String RE = "(?:Content-Disposition: form-data; name=\"image\"; filename=\")";
 
-	    System.out.println(RE);
-	    System.out.println(new RE(RE));
+	    final int MAX_SIZE = 256 * 1024;
+	    MultipartRequest multi = new MultipartRequest(comms.request.getHttpServletRequest(), "/tmp", MAX_SIZE); 
 
-
-	    OutputStream out = new FileOutputStream("output.txt");
-	    
-	    byte[] buffer = new byte[512];
-	    int offset = 0;
-	    while( 0 != in.available()) {
-		int numRead = in.readLine(buffer, 0, 512);
-		System.out.print(new String(buffer, 0, numRead));
-		out.write(buffer, 0, numRead);
+/*	    System.out.println("Params:"); 
+	    Enumeration params = multi.getParameterNames(); 
+	    while (params.hasMoreElements()) { 
+		String name = (String)params.nextElement(); 
+		String value = multi.getParameter(name);
+		System.out.println(name + " = " + value);
 	    }
-	    out.flush();
-	} catch (Exception e) {}
+	    System.out.println();
+	    System.out.println("Files:");*/
+
+	    Enumeration files = multi.getFileNames();
+	    while (files.hasMoreElements()) {
+		String name = (String)files.nextElement();
+//		String filename = multi.getFilesystemName(name);
+//		String type = multi.getContentType(name);
+		File f = multi.getFile(name);
+
+/*		System.out.println("name: " + name);
+		System.out.println("filename: " + filename);
+		System.out.println("type: " + type);
+		
+		if (f != null) {
+		    System.out.println("f.toString(): " + f.toString());
+		    System.out.println("f.getName(): " + f.getName());
+		    System.out.println("f.exists(): " + f.exists());
+		    System.out.println("f.length(): " + f.length());
+		    System.out.println(); 
+		} */
+	    }
+	} catch (Exception e) {System.err.println(e);}
     }
-}
+} // class

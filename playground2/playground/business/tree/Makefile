@@ -7,21 +7,23 @@
 #
 #  Where is the root of the source tree?
 #
-ROOT =	../..
+ROOT =	../../..
 
 #
 #  What package does this directory represent? (use / instead of .)
 #
-PACKAGEDIR = playground/business
-
-SUBDIRS = \
-	tree
+PACKAGEDIR = playground/business/tree
 
 CLASSES =  \
-	Mailer \
-	StudentBO \
-	Clipboard \
-	InsertData
+	Tree \
+	TreeNode \
+	AbstractNode \
+	ElementaryNode \
+	BooleanNode \
+	OperationNode \
+	NOTNode \
+	ANDNode \
+	ORNode
 
 include $(ROOT)/config.mk
 

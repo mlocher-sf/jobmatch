@@ -33,18 +33,22 @@ CLASSES = \
 	Student \
 	Picture \
 	Upload \
-	Sendmail
+	Sendmail \
+	ShowTree
 
-HTML_DIR = .
+HTML_DIR = ./html
 HTML_CLASSES = WelcomeHTML \
 	StudentHTML \
-	PictureHTML
+	PictureHTML \
+	ShowTreeHTML \
+	TreeNodeHTML
 
 JAR_INSTALL = \
-	Mail.html\
-	MailSent.html \
-	Static.html \
-	style.css
+	./html/Mail.html\
+	./html/MailSent.html \
+	./html/Static.html \
+	./html/style.css \
+	./html/tree.css
 
 include $(ROOT)/config.mk
 
