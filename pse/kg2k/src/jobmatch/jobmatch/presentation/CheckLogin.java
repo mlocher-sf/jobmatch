@@ -93,7 +93,11 @@ public class CheckLogin implements HttpPresentation {
      **/
     private void setAccount(SessionData sessionData, Account account) {
 	try {
-	    sessionData.set("account", account);
+	    if (account == null) {
+		sessionData.remove("account");
+	    } else {
+		sessionData.set("account", account);
+	    }
 	} catch (Exception e) {
 	    throw new RuntimeException(e.toString());
 	}
