@@ -9,12 +9,19 @@ public class CheckLogin implements HttpPresentation {
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
 
-	String grantURL = comms.request.getParameter("grantURL");
+	final String username = comms.request.getParameter("username");
+	final String passphrase = comms.request.getParameter("passphrase");
+	final String grantURL = comms.request.getParameter("grantURL");
+	final String denyURL = comms.request.getParameter("denyURL");
 
-	System.out.println(grantURL);
-	
-	throw new ClientPageRedirectException(
+	if (AccountManager.getUniqueInstance().isValidLogin(username, passphrase)) {
+	    throw new ClientPageRedirectException(
 			  comms.request.getAppFileURIPath(grantURL));
+	} else {
+	    throw new ClientPageRedirectException(
+			  comms.request.getAppFileURIPath(denyURL));
+	}
+
     }
 
 } //class

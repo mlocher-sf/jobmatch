@@ -17,7 +17,8 @@ PACKAGEDIR = jobmatch/business/provider/account
 CLASSES = \
 	Account \
 	AbstractAccount \
-	CandidateAccount
+	CandidateAccount \
+	AccountManager
 
 include $(ROOT)/config.mk
 
