@@ -22,7 +22,7 @@
             <type dbType="VARCHAR" javaType="String" size="30"/>
           </column>
           <column id="Competence">
-            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+            <type canBeNull="true" dbType="TEXT" javaType="String"/>
           </column>
           <column id="Fax" usedForQuery="true">
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
@@ -49,7 +49,7 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
           </column>
           <column id="Picture" usedForQuery="true">
-            <type canBeNull="true" dbType="VARBINARY" javaType="byte[]"/>
+            <type canBeNull="true" dbType="MEDIUMBLOB" javaType="byte[]"/>
           </column>
           <column id="Residence" usedForQuery="true">
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="50"/>
@@ -61,7 +61,7 @@
             <type dbType="VARCHAR" javaType="String" size="50"/>
           </column>
           <column id="Sex" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String"/>
+            <type dbType="ENUM('w','m')" javaType="String"/>
           </column>
           <column id="Birthdate" usedForQuery="true">
             <type dbType="DATE" javaType="java.sql.Date"/>
@@ -87,7 +87,7 @@
             <type canBeNull="true" dbType="INTEGER" javaType="int"/>
           </column>
           <column id="ShortDescription">
-            <type canBeNull="true" dbType="LONGVARCHAR" javaType="String"/>
+            <type canBeNull="true" dbType="TEXT" javaType="String"/>
           </column>
           <column id="Contact">
             <referenceObject reference="jobmatch.data.Contactperson"/>
@@ -185,7 +185,7 @@
             <type dbType="DATE" javaType="java.sql.Date"/>
           </column>
           <column id="Remarks">
-            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+            <type canBeNull="true" dbType="TEXT" javaType="String"/>
           </column>
           <column id="Reference" usedForQuery="true">
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="30"/>
@@ -194,7 +194,7 @@
             <type dbType="VARCHAR" javaType="String" size="20"/>
           </column>
           <column id="Pensum" usedForQuery="true">
-            <type dbType="INTEGER" javaType="int"/>
+            <type dbType="TINYINT UNSIGNED" javaType="int"/>
           </column>
         </table>
         <table id="jobmatch.data.School">
@@ -238,7 +238,7 @@
             <initialValue>0</initialValue>
           </column>
           <column id="MatchTree" usedForQuery="true">
-            <type dbType="BINARY" javaType="byte[]"/>
+            <type dbType="MEDIUMBLOB" javaType="byte[]"/>
           </column>
           <column id="LastNotification" usedForQuery="true">
             <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
@@ -287,10 +287,10 @@
             <type dbType="VARCHAR" javaType="String" size="20"/>
           </column>
           <column id="Description">
-            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+            <type canBeNull="true" dbType="TEXT" javaType="String"/>
           </column>
           <column id="Priority" usedForQuery="true">
-            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
+            <type canBeNull="true" dbType="TINYINT UNSIGNED" javaType="int"/>
             <initialValue>0</initialValue>
           </column>
         </table>
@@ -314,7 +314,7 @@
             <type canBeNull="true" dbType="none" javaType="jobmatch.data.GraduationDO"/>
           </column>
           <column id="Remarks" usedForQuery="true">
-            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+            <type canBeNull="true" dbType="TEXT" javaType="String"/>
           </column>
         </table>
         <table id="jobmatch.data.ConstantTable" dbTableName="NewDBTable" isAbstract="true">
@@ -359,7 +359,7 @@
         </table>
         <table id="jobmatch.data.MailQueue">
           <column id="Mail" usedForQuery="true">
-            <type dbType="BINARY" javaType="byte[]"/>
+            <type dbType="MEDIUMBLOB" javaType="byte[]"/>
           </column>
           <column id="Priority" usedForQuery="true">
             <type dbType="INTEGER" javaType="int"/>
