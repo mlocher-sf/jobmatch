@@ -6,12 +6,18 @@
 
   <body>
   <hr>
-  <h1> Profile </h1>
+  <h1> Neues Profil  </h1>
   <form action="./Section.html" method=get>
-  <table border=1><tr><td>
-  Bereits erstellt: <textarea name="profiles" rows=3 cols=40></textarea>
-  </td></tr><tr><td>
-  <input type="submit" name="submit" value="Neues Profil">
+  <table width="75%" border="1">
+<tr><td>Profilname</td> <td> <input type='text'></td></tr>
+<tr><td>Zustaendige Person</td> <td> <input type='text'></td></tr>
+<tr><td>E-Mail</td> <td> <input type='text'></td></tr><tr><td>
+<tr><td>Profilstatus</td> <td>  <input type="radio" name="status" value="active">  aktiv
+	<input type="radio" name="status" value="inactive">  inaktiv </td></tr>
+<tr><td>Benachrichtigung per E-Mail</td> <td>  <input type="radio"  value="weekly">  jede Woche
+	<input type="radio" name="status" value="everyday">  jeden Tag </td></tr>
+<tr><td>
+  <a href ="./Section.html"> Anforderungen eingeben </a>
   </td></tr>
   </table>
   </form>
