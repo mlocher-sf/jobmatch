@@ -8,7 +8,36 @@
     <a href="index.html">Top</a>
     <hr>
     <h1>Configuration Guide</h1>
-    
+    <b>Die zentrale Konfigurationsdatei ist die Datei jobmatch.conf im Verzeichnis jobmatch/jobmatch. Nachfolgend sind die wichtigsten Konfiguartionsmoeglichkeiten erklaert.</b> 
+        <h2>Datenbankkonfiguration</h2><br>
+    <b>1. Tabellen erstellen</b>
+      <p>Die Tabellen der Datenbank koennen mit der Datei create_tables.sql im Verzeichnis /doc generiert werden.
+      Dazu muss man eine neue Datenbank erstellen und beim einloggen create_tables.sql als Parameter mitgeben. <br>
+     <br>
+      Mit einer Mysql-Datenbank wuerde dieser Aufruf folgendermassen aussehen: <br><br>
+      mysql -h "Datenbank-Server" -u "Kontoname" -pMyPassword "Datenbankname" < create_tables.sql
+      <br><br>
+      <b>2. Datenbank ans System anbinden</b><br>
+     <p> Nun muss in der Datei jobmatch.conf im Abschnitt "Database Manager Configuration" folgende Aenderungen gemacht werden:<br>
+      Kontonamen und Passwort angeben: <br>
+      DatabaseManager.DB.Kontaktboerse4.Connection.User              = "Kontoname" <br>
+      DatabaseManager.DB.Kontaktboerse4.Connection.Password          = "Passwort" <br><br>
+      Datenbanktreiber und URL des Datenbankservers angeben. Dies sieht mit einer Mysql-Datenbank unter der Adresse leeta.unibe.ch:3306 folgendermassen aus: <br>
+      DatabaseManager.DB.Kontaktboerse4.JdbcDriver         = org.gjt.mm.mysql.Driver <br>
+      DatabaseManager.DB.Kontaktboerse4.Connection.Url     = jdbc:mysql://leeta.unibe.ch:3306/Kontaktboerse4 <br>
+
+      <h2>Weitere Konfigurationsmoeglichkeiten</h2>
+    <b>Im Abschnitt "Jobmatch  Settings" koennen folgende Werte gesetzt werden: </b><br>
+      <br>
+     <p> <li>Jobmatch.RootPassphrase = "Passwort"    <br>
+	setzt das Passwort fuer den Administrator <br><br>
+	<li>Jobmatch.Mailer.SMTPServer = "localhost"<br>
+	  setzt den SMTPServer fuer das Mailing <br><br>
+	  <li>	Jobmatch.JobScript.Directory = "../Skriptverzeichnis" <br> 
+	    setzt das Script-Verzeichnis <br><br>
+
+      
+      
 
     <hr>
     <address><a href="index.html">Jobmatch Dokumentation</a></address>
