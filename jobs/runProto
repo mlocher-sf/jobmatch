@@ -1,6 +1,6 @@
 #!/usr/local/bin/tcsh
 
-# $Id: runProto,v 1.1 2000/04/13 13:59:52 locher Exp $
+# $Id: runProto,v 1.2 2000/04/13 14:38:12 locher Exp $
 # make sure the prototype is running on vasarely.unibe.ch:9500
 # with the following crontab entry on vasarely.unibe.ch
 # 22,52 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
@@ -11,8 +11,12 @@ if (-e /tmp/protoALIVE) then
     rm /tmp/protoALIVE 
 endif
 
-if (-s /home/pse4/jobs/protoPID) then
-    set OP=`cat /home/pse4/jobs/protoPID`
+set PIDFILE=/home/pse4/jobs/`uname -n`PROTO.pid
+echo $PIDFILE
+
+if (-s $PIDFILE) then
+    set OP=`cat $PIDFILE`
+    echo $OP
     ls -1 /proc | grep "^$OP" > /tmp/protoALIVE
 endif
 
@@ -23,5 +27,3 @@ if (-s /tmp/protoALIVE) then
 endif
 
 nohup start &
-jobs -l > /tmp/myjobs
-grep start /tmp/myjobs | awk '{print $3}' > /home/pse4/jobs/protoPID

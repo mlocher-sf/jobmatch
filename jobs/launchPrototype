@@ -1,15 +1,14 @@
 #!/usr/local/bin/tcsh
 
-# $Id: launchPrototype,v 1.5 2000/04/13 13:59:51 locher Exp $
+# $Id: launchPrototype,v 1.6 2000/04/13 14:38:12 locher Exp $
 # make sure the prototype is running on vasarely.unibe.ch:9500
 # with the following crontab entry on vasarely.unibe.ch
 # 22,52 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
 
-if ( $CVSROOT ) then
-    echo variables set
+if ( $CVSROOT == "" ) then
+    source ~/.login
 endif
-source ~/.login 
-
+ 
 echo Running protolaunch on
 /usr/bin/uname -a
 /usr/bin/date
