@@ -1,0 +1,7 @@
+#!/usr/local/bin/tcsh
+
+cd /tmp
+cvs co pse
+/tmp/pse/tool/cvs2cl.pl -P pse
+rm -rf /tmp/pse
+mv /tmp/ChangeLog /home/pse4/public_html
