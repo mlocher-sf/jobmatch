@@ -36,4 +36,5 @@ drop table Programming;
 drop table Country;
 drop table SchoolProfile;
 drop table EmployerCandidate;
+drop table PersonalProfile;
 drop table objectid;
