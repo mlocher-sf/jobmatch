@@ -1,6 +1,112 @@
-Review der Site humamnline.ch
-__________________________________________________
-$Id: humanline.txt,v 1.1 2000/04/03 11:01:08 locher Exp $
+Review der Site http://www.humanline.ch
+_______________________________________________________________
+$Id: humanline.txt,v 1.2 2000/04/03 11:23:47 locher Exp $
 
+Login mit Account ID , Passwort
+sendet vergessenes Passwort an EMail
+
+
+Navigation mit Menubar links.
+
+Funktionalitaet:
+
+Jobs suchen
+JobMail funktion (Sendet Angebote an Interessenten)
+Stellenangebote
+Hochschulabgaenger (HSA) Datenbank -> Kooperation mit diplom.ch
+
+Suche ergiebt:
+
+======================================================================
+Persönliche Daten
+  Suchstatus
+                              Aktiv 
+  Geschlecht
+                              männlich 
+  Alter
+                              23
+  Nationalität
+                              Schweiz 
+  Hobbys
+                              Fliegen, Snowboard, Brass Band 
+  Werdegang
+  Ausbildung
+                              Berufslehre als Elektroniker
+  Weiterbildung
+                               in Richtung
+                                                  Abschluss/Diplom
+                                                               Zusatz
+                               Technik/Ingenieure/Architekten
+                                                  HTL/FH, Fachrichtung
+                                                               Automation/Informatik
+
+  Sprachkenntnisse
+                               Sprache
+                                          mündlich
+                                                        schriftlich
+                                                                      Diplom
+                               Französisch
+                                          Grundkenntnisse
+                                                        Nach Diktat
+                                                                       
+                               Deutsch
+                                          Muttersprache
+                                                        Stilsicher
+                                                                       
+                               Englisch
+                                          Gute Kenntnisse
+                                                        Nach Stichworten
+                                                                       
+
+  Zielsetzung
+  Tätigkeit/Funktion
+                              Informatiker in der Telekommunikationsbranche
+                              Hardwarenahe Softwareentwicklung
+  Berufsbereich
+                               Funktionsstufe
+                                               Berufsgruppe
+                                                           Berufsuntergruppe
+                               Hochschulabsolvent
+                                               Informatik
+                                                           Software Engineering
+                               Hochschulabsolvent
+                                               Informatik
+                                                           Netzwerk Engineering
+                               Hochschulabsolvent
+                                               Informatik
+                                                           Projekt Manager
+
+  Branche
+                              Industrie allg., Informatik, Elektrotechnik/Elektronik, Telekommunikation
+  Land
+                              Schweiz
+  Kanton/Stadt/Region
+                              BE
+  Arbeitspensum
+                              Vollzeit
+  Stellenantritt
+                              nach Vereinbarung
+  Salärvorstellungen
+                              70'000 - 89'999
+  Stark ausgeprägte Kompetenzen (Selbsteinschätzung)
+   
+                              Vernetztes Denken
+   
+                              Verhandlungsfähigkeit
+   
+                              Coachingfähigkeit
+   
+                              Kunden- u. Serviceorientierung
+   
+                              Flexibilität
+======================================================================
+
+Kontaktaufnahme nur fuer abonierte Firmen moeglich.
+
+Firmen koennen Mitarbeiter anbieten. (Outplacement)
+
+Online Anmeldung fuer Arbeitnehmer und Firmen/Personalberater
+
+SMS Notification fuer Studis
 
 
