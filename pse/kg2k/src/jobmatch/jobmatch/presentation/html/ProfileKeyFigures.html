@@ -7,24 +7,29 @@
     <hr>
     <h1>Kenndaten</h1>
     <hr>
+<form action="./CompanyHome.html" method=get>
+ <input type="hidden" name="action" value="write">
     <table width="50%" border="1">
-    <form action="./CompanyHome.html" method=get>
-      <tr><td> Name </td><td> <input type="text"> </td></tr>
-      <tr><td> Sitz </td><td> <input type="text"> </td></tr>
-      <tr><td>Verbreitung </td><td> <input type="text"> </td></tr>
-      <tr><td> Branche </td><td>  <input type="text"></td></tr>
-      <tr><td>Anzahl Mitarbeiter </td><td> <input type="text"> </td></tr>
-      <tr><td>Umsatz </td><td> <input type="text"> </td></tr>
-      <tr><td>Wieviele Akademiker werden pro Jahr gesucht </td><td> <input type="text"></td></tr>
-      <tr><td> Homepage </td><td> <input type="text"> </td></tr>
+  
+      <tr><td> Name </td><td> <input type="text" id="name" name="name"> </td></tr>
+      <tr><td> Strasse</td><td> <input type="text" id="street" name="street"> </td></tr>
+ <tr><td> PLZ </td><td> <input type="text" id="zip" name="zip"> </td></tr>
+ <tr><td> Ort </td><td> <input type="text" id="city" name="city"> </td></tr>
+ <tr><td> Land </td><td> <input type="text" id="country" name="country"> </td></tr>
+      <tr><td>Verbreitung </td><td> <input type="text" id="presence" name="presence"> </td></tr>
+      <tr><td> Branche </td><td>  <input type="text"id="industry" name="industry"></td></tr>
+      <tr><td>Anzahl Mitarbeiter </td><td> <input type="text"id="numberEmployee" name="numberEmployee"> </td></tr>
+      <tr><td>Umsatz </td><td> <input type="text"id="earnings" name="earnings"> </td></tr>
+      <tr><td>Wieviele Akademiker werden pro Jahr gesucht </td><td> <input type="text"id="graduatesPerYear" name="graduatesPerYear"></td></tr>
+      <tr><td> Homepage </td><td> <input type="text" id="homepage" name="homepage"> </td></tr>
       <tr><td>Kontaktperson: </td><td>  </td></tr>
       <tr><td>Name </td><td> <input type="text"> </td></tr>
       <tr><td> Email </td><td> <input type="text"> </td></tr>
       <tr><td> Fax </td><td>  <input type="text"> </td></tr>
       <tr><td> <input type="submit" name="submit" value="Kenndaten abspeichern"></td></tr> 
-    </form>
+  
   </table> 
-    
+ </form>
     <p>
       <a href="./CompanyHome.html">Zurueck zur Uebersicht</a> <br>
     <p>
