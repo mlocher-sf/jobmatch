@@ -1,6 +1,6 @@
 #!/usr/local/bin/tcsh
 
-# $Id: launchPrototype,v 1.1 2000/04/13 11:22:38 locher Exp $
+# $Id: launchPrototype,v 1.2 2000/04/13 12:33:48 locher Exp $
 # make sure the prototype is running on vasarely.unibe.ch:9500
 # with the following crontab entry on vasarely.unibe.ch
 # 22,52 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
@@ -17,7 +17,22 @@ cvs co playground
 cd playground
 make
 cd output
+
+if (-s /home/pse4/jobs/protoPID) then
+    set OP=`awk '{print $1}' /home/pse4/jobs/protoPID`
+    ps | grep $OP > /tmp/protoALIVE
+endif
+
+if (-s /tmp/protoALIVE) then
+    echo Killing old process $OP ...
+    kill -KILL $OP
+endif
+
 nohup start &
+sleep 15
+ps | grep java  > /home/pse4/jobs/protoPID
+
+
 
 
 
