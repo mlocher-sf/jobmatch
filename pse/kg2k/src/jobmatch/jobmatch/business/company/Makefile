@@ -19,7 +19,8 @@ ROOT =	../../..
 #
 PACKAGEDIR = jobmatch/business/company
 
-CLASSES =
+CLASSES = \
+	Company
 
 USEICONTRACT=1
 

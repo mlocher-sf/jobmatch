@@ -1,4 +1,4 @@
-// $Id: CandidateAccount.java,v 1.5 2000/05/23 14:10:55 locher Exp $
+// $Id: CandidateAccount.java,v 1.6 2000/05/30 15:52:24 locher Exp $
 
 package jobmatch.business.provider.account;
 
@@ -10,15 +10,15 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.5 $
+ *  @version $Revision: 1.6 $
  **/
 public class CandidateAccount extends CandidateAccountBDO implements Account {
         
-    public CandidateAccount() throws Exception {
+    CandidateAccount() throws Exception {
 	super();
     }
 
-    public CandidateAccount(CandidateAccountDO dataObject) throws Exception {
+    CandidateAccount(CandidateAccountDO dataObject) throws Exception {
 	super(dataObject);
     }
 
@@ -64,6 +64,9 @@ public class CandidateAccount extends CandidateAccountBDO implements Account {
 
 /*
  * $Log: CandidateAccount.java,v $
+ * Revision 1.6  2000/05/30 15:52:24  locher
+ * added Company and Profile BOs
+ *
  * Revision 1.5  2000/05/23 14:10:55  locher
  * authentification mechanisms
  *

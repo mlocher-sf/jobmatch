@@ -4,6 +4,8 @@ jobmatch.presentation.script
 jobmatch.business.provider.account
 jobmatch.business.candidate
 jobmatch.business.candidate.cv
+jobmatch.business.company
+jobmatch.business.company.profile
 jobmatch.business.company.profile.tree
 jobmatch.business.company.profile.tree.test
 jobmatch.business.service

@@ -19,7 +19,9 @@ ROOT =	../../../..
 #
 PACKAGEDIR = jobmatch/business/company/profile
 
-CLASSES =
+CLASSES = \
+	Profile \
+	CVRequest
 
 USEICONTRACT=1
 

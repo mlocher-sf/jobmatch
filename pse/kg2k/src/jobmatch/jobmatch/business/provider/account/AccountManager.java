@@ -1,4 +1,4 @@
-// $Id: AccountManager.java,v 1.8 2000/05/23 14:10:55 locher Exp $
+// $Id: AccountManager.java,v 1.9 2000/05/30 15:52:23 locher Exp $
 
 package jobmatch.business.provider.account;
 
@@ -10,7 +10,7 @@ import com.lutris.dods.builder.generator.query.*;
  *
  *  @since May 8 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.8 $
+ *  @version $Revision: 1.9 $
  **/
 final public class AccountManager {
 
@@ -28,6 +28,8 @@ final public class AccountManager {
 	return uniqueInstance;
     }
 
+    //Candidate------------------------------------------------------------
+    
     /**
      * Checks if the specified Login is valid
      **/
@@ -87,11 +89,76 @@ final public class AccountManager {
 	}
 	return false;
     }
+
+    //Company------------------------------------------------------------
     
+    /**
+     * Checks if the specified Login is valid
+     **/
+    public boolean isValidCompanyLogin(String username, String passphrase) {
+	try {
+	    CompanyAccountQuery query = new CompanyAccountQuery();
+	    query.setQueryUsername(username);
+	    final CompanyAccountBDO company = query.getNextBDO();
+	    if (company != null && 
+		company.getPassphrase().equals(passphrase)) {	return true; }
+	} catch (Exception qe) {
+	    System.err.println(qe);
+	}
+	return false;
+    }
+
+    public CompanyAccount getCompanyAccount(String username) {
+	CompanyAccount result = null;
+	try {
+	    CompanyAccountQuery query = new CompanyAccountQuery();
+	    query.setQueryUsername(username);
+	    result = new CompanyAccount(query.getNextDO());
+	} catch (Exception qe) {
+	    System.err.println(qe);
+	}
+	return result;	
+    }
+
+    public void createCompanyAccount(String username, String passphrase, String eMail) {
+	if (!companyUsernameExists(username)) {
+	    try {
+		CompanyBDO company = CompanyBDO.createVirgin();
+		company.commit();
+		CompanyAccountBDO account = CompanyAccountBDO.createVirgin(); 
+		account.setUsername(username);
+		account.setPassphrase(passphrase);
+		account.setEmail(eMail);
+		account.setCompany(company);
+		account.commit();
+	    } catch (Exception e) {
+		System.err.println(e);
+		throw new RuntimeException("db error");
+	    }
+	} else {
+	    throw new RuntimeException("username exists");
+	}
+    }
+
+    public boolean companyUsernameExists(String username) {
+	try {
+	    CompanyAccountQuery query = new CompanyAccountQuery();
+	    query.setQueryUsername(username);
+	    final CompanyAccountBDO company = query.getNextBDO();
+	    if (company != null) { return true; }
+	} catch (Exception qe) {
+	    System.err.println(qe);
+	}
+	return false;
+    }
+
 } //class
 
 /*
  * $Log: AccountManager.java,v $
+ * Revision 1.9  2000/05/30 15:52:23  locher
+ * added Company and Profile BOs
+ *
  * Revision 1.8  2000/05/23 14:10:55  locher
  * authentification mechanisms
  *
