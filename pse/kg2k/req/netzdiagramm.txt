@@ -1,0 +1,34 @@
+1:  digraph G {
+2:      start -> Studi hinzufuegen -> Release 1;
+3:      start -> Firma hinzufuegen -> Release 1;
+4:	start -> Firmen anzeigen -> Release 1;
+5:	Release 1 -> CV bearbeiten -> Release 2;
+6:	Release 1 -> Firma loeschen -> Release 2;
+7:	Release 1 -> Firma editieren -> Release 2;
+8:	Release 1 -> Suchprofil hinzufuegen -> Release 2;
+9:	Release 1 -> Suchprofil bearbeiten -> Release 2;	
+10:	Release 1 -> CV aktiv/inaktiv setzen -> Release 2;
+11:	Release 2 -> Suchprofil ausfueren -> Release 3;
+12:	Release 2 -> Suchresultate ansehen -> Release 3;
+13:	Release 2 -> Suchresultate bearbeiten -> Release 3;
+14:	Release 2 -> Suchresultate zuruecksetzen -> Release 3;
+15:	Release 3 -> E-mail versenden -> Release 4;
+16:	Release 3 -> Vergessenes Passwort mailen -> Release 4;
+17:	Release 3 -> Periodisches Matching -> Release 4;
+18:	Release 3 -> Konfigurationsmoeglichkeiten -> Release 4;
+19:	Release 4 -> Alte CV mahnen -> Release 5;
+20:	Release 4 -> Alte CV, letzte Warnung -> Release 5;
+21:	Release 4 -> Alte CV loschen -> Release 5;
+22:	Release 5 -> Match Statistik -> Release 6;
+23:	Release 5 -> DB Query fuer studi -> Release 6;
+24:	Release 5 -> DB Query fuer Firma -> Release 6;
+25:	Release 5 -> DB Query fuer Provider -> Release 6;
+26:	Release 6 -> Download Suchresultate -> Release 7;
+27:	Release 6 -> Photo CV -> Release 7;
+28:	Release 6 -> Auswahllisten bearbeiten -> Release 7;
+29:	Release 6 -> Studi kann CV zustellen -> Release 7;
+30:	Release 6 -> Infos zum Projekt abfragen -> Release 7;
+31:	Release 7 -> DB Abkoppeln manuell -> Last;
+32:	Release 7 -> DB Abkoppel automatisch -> Last;
+33:	Release 7 -> HTTPS Verbindung -> Last;
+34: }
