@@ -139,14 +139,6 @@
           <column id="Name" usedForQuery="true">
             <type dbType="VARCHAR" javaType="String" size="40"/>
           </column>
-          <column id="MinSchoolType" usedForQuery="true">
-            <referenceObject reference="jobmatch.data.Schooltype"/>
-            <type dbType="none" javaType="jobmatch.data.SchooltypeDO"/>
-          </column>
-          <column id="MaxSchoolType" usedForQuery="true">
-            <referenceObject reference="jobmatch.data.Schooltype"/>
-            <type dbType="none" javaType="jobmatch.data.SchooltypeDO"/>
-          </column>
           <column id="Company" usedForQuery="true">
             <referenceObject constraint="true" reference="jobmatch.data.Company"/>
             <type dbType="none" javaType="jobmatch.data.CompanyDO"/>
@@ -424,6 +416,16 @@
           </column>
           <column id="Remarks" usedForQuery="true">
             <type canBeNull="true" dbType="TEXT" javaType="String"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.SchoolProfile" extensionOf="jobmatch.data.TreeLeaf">
+          <column id="MinSchoolType">
+            <referenceObject constraint="true" reference="jobmatch.data.Schooltype"/>
+            <type dbType="none" javaType="jobmatch.data.SchooltypeDO"/>
+          </column>
+          <column id="MaxSchoolType">
+            <referenceObject constraint="true" reference="jobmatch.data.Schooltype"/>
+            <type dbType="none" javaType="jobmatch.data.SchooltypeDO"/>
           </column>
         </table>
       </package>
