@@ -1,8 +1,8 @@
-#This file was created by <locher> Tue Apr 25 10:20:08 2000
+#This file was created by <locher> Wed Apr 26 13:46:04 2000
 #LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
-\language default
+\language german
 \inputencoding default
 \fontscheme default
 \graphics default
@@ -21,7 +21,7 @@
 \quotes_times 2
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle fancy
 
 \layout Title
 
@@ -70,6 +70,9 @@ Erfuellt die Anforderungen an ein Pflichtenheft nicht.
 \layout Section
 
 Liste der Befunde
+\layout Standard
+
+Gewichtung: 1-fataler Fehler; 2 - normaler Fehler; 3 - kosmetischer Fehler
 \layout Subsection
 
 Makroskopische Merkmale
@@ -100,7 +103,7 @@ multicol5
 1 1 0 0
 8 1 0 "" ""
 8 1 0 "" ""
-8 1 0 "" ""
+2 1 0 "8cm" ""
 8 1 1 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
@@ -108,11 +111,11 @@ multicol5
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
@@ -201,7 +204,7 @@ Gewicht
 \newline 
 Erscheint nicht als Einheitliches Dokument.
 \newline 
-
+3
 \newline 
 2
 \newline 
@@ -209,7 +212,7 @@ Erscheint nicht als Einheitliches Dokument.
 \newline 
 HTML als Medium nicht angemessen.
 \newline 
-
+3
 \newline 
 3
 \newline 
@@ -217,7 +220,7 @@ HTML als Medium nicht angemessen.
 \newline 
 Keine Gliederung.
 \newline 
-
+2
 \newline 
 4
 \newline 
@@ -225,7 +228,7 @@ Keine Gliederung.
 \newline 
 Kein Kommentar.
 \newline 
-
+1
 \newline 
 5
 \newline 
@@ -233,7 +236,7 @@ Kein Kommentar.
 \newline 
 Begriffe werden nicht definiert.
 \newline 
-
+2
 \newline 
 6
 \newline 
@@ -241,7 +244,7 @@ Begriffe werden nicht definiert.
 \newline 
 Diagramme sind nicht UML konform.
 \newline 
-
+3
 \newline 
 7
 \newline 
@@ -250,7 +253,7 @@ Diagramme sind nicht UML konform.
 Use Cases ohne textuelle Erlaeuterungen sind nicht verstaendlich oder nicht
  eindeutig.
 \newline 
-
+1
 \newline 
 
 \newline 
@@ -266,7 +269,7 @@ Eine Ueberpruefung der Anforderungen ist nicht moeglich.
 \newline 
 Use Cases fehlen: zB Passwort vergessen
 \newline 
-
+2
 \newline 
 9
 \newline 
@@ -274,7 +277,7 @@ Use Cases fehlen: zB Passwort vergessen
 \newline 
 Anforderungen sind nicht nummeriert (nicht referezierbar).
 \newline 
-
+3
 \newline 
 10
 \newline 
@@ -282,7 +285,7 @@ Anforderungen sind nicht nummeriert (nicht referezierbar).
 \newline 
 Keine Versionsangaben, Datum, Autor.
 \newline 
-
+3
 \newline 
 11
 \newline 
@@ -290,7 +293,7 @@ Keine Versionsangaben, Datum, Autor.
 \newline 
 Nur Diagramme, kein Text.
 \newline 
-
+2
 \newline 
 12
 \newline 
@@ -298,7 +301,7 @@ Nur Diagramme, kein Text.
 \newline 
 Keine Einfuehrung, Zusammenfassung.
 \newline 
-
+3
 \newline 
 13
 \newline 
@@ -384,7 +387,7 @@ multicol5
 1 1 0 0
 8 1 0 "" ""
 8 1 0 "" ""
-8 1 0 "" ""
+2 1 0 "8cm" ""
 8 1 1 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
@@ -392,7 +395,7 @@ multicol5
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
@@ -475,7 +478,23 @@ Beschreibung
 \newline 
 Gewicht
 \newline 
-
+1
+\newline 
+1,2
+\newline 
+Name des Kunden erscheint in 3 verschiedenen Schreibweisen.
+\newline 
+1
+\newline 
+2
+\newline 
+1
+\newline 
+Floskeln und unpraezise Ausdrucksformen
+\newline 
+2
+\newline 
+3
 \newline 
 
 \newline 
@@ -483,7 +502,7 @@ Gewicht
 \newline 
 
 \newline 
-
+4
 \newline 
 
 \newline 
@@ -491,7 +510,7 @@ Gewicht
 \newline 
 
 \newline 
-
+5
 \newline 
 
 \newline 
@@ -499,7 +518,7 @@ Gewicht
 \newline 
 
 \newline 
-
+6
 \newline 
 
 \newline 
@@ -507,7 +526,7 @@ Gewicht
 \newline 
 
 \newline 
-
+7
 \newline 
 
 \newline 
@@ -515,7 +534,7 @@ Gewicht
 \newline 
 
 \newline 
-
+8
 \newline 
 
 \newline 
@@ -523,7 +542,7 @@ Gewicht
 \newline 
 
 \newline 
-
+9
 \newline 
 
 \newline 
@@ -531,7 +550,7 @@ Gewicht
 \newline 
 
 \newline 
-
+10
 \newline 
 
 \newline 
@@ -539,7 +558,7 @@ Gewicht
 \newline 
 
 \newline 
-
+11
 \newline 
 
 \newline 
@@ -547,7 +566,7 @@ Gewicht
 \newline 
 
 \newline 
-
+12
 \newline 
 
 \newline 
@@ -555,7 +574,7 @@ Gewicht
 \newline 
 
 \newline 
-
+13
 \newline 
 
 \newline 
@@ -563,23 +582,7 @@ Gewicht
 \newline 
 
 \newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
+14
 \newline 
 
 \newline 
