@@ -34,7 +34,7 @@
 #    http://www.lyra.org/greg/python/viewcvs/
 #
 # For tracking purposes, this software is identified by:
-#   $Id: viewcvs.cgi,v 1.4 2000/04/04 14:54:34 locher Exp $
+#   $Id: viewcvs.cgi,v 1.5 2000/04/04 15:02:22 locher Exp $
 #
 # -----------------------------------------------------------------------
 #
@@ -183,13 +183,7 @@ cfg.options.diff_font_face = 'Helvetica,Arial'
 cfg.options.diff_font_size = -1
 cfg.options.input_text_size = 12
 
-cfg.text.long_intro = """\
-<p>
-    This is our repositry. Back <a href="http://www.iamexwi.unibe.ch/studenten/pse4/">home</a>
-
-</p>
-"""
-# ' stupid emacs...
+cfg.text.long_intro = ""
 
 cfg.text.doc_info = """
 <h4>CVS Documentation</h4>
@@ -423,15 +417,16 @@ def html_header(title):
 </head>
 <link rel=stylesheet type="text/css" href="http://www.iamexwi.unibe.ch/studenten/pse4/style.css">
 <body text="%s" bgcolor="%s">
-<table width="100&#37;" border=0 cellspacing=0 cellpadding=0>
-  <tr><td><h1>%s</h1></td><td align=right>%s</td></tr></table>
+<a href="http://www.iamexwi.unibe.ch/studenten/pse4/">Homepage</a>
+<hr>
+<h1>%s</h1>
 ''' % (header_comment, title, cfg.colors.text, cfg.colors.background,
-       title, logo)
+       title)
 
 def html_footer():
   print '<hr noshade><table width="100&#37;" border=0 cellpadding=0 cellspacing=0><tr>'
-  print '<td align=left><address>%s</address></td>' % cfg.general.address
-  print '<td align=right><a href="http://www.lyra.org/greg/python/viewcvs/">ViewCVS %s</a><br>' % __version__
+  print '<td class="super" align=left><address>%s</address></td>' % cfg.general.address
+  print '<td class="super" align=right><a href="http://www.lyra.org/greg/python/viewcvs/">ViewCVS %s</a><br>' % __version__
   print 'by <a href="mailto:gstein@lyra.org">Greg Stein</a>'
   print '</td></tr></table>'
   print '</body></html>'
