@@ -5,8 +5,7 @@
 #
 
 
-
-SUBDIRS =\
+POST_SUBDIRS =\
 	test
 
 #

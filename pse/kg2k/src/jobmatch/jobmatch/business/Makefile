@@ -9,6 +9,7 @@ SUBDIRS = \
 	candidate \
 	company \
 	service
+
 #
 #  Where is the root of the source tree?
 #
