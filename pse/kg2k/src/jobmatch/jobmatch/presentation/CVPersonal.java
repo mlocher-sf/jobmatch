@@ -3,6 +3,7 @@ package jobmatch.presentation;
 import jobmatch.business.candidate.*;
 import jobmatch.business.provider.account.*;
 import org.w3c.dom.html.*;
+import java.sql.Date;
 import java.util.List;
 import jobmatch.business.entity.*;
 import com.lutris.xml.xmlc.*;
@@ -17,27 +18,19 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	Candidate candidate = account.getCandidateBO();
         CVPersonalHTML page = (CVPersonalHTML)comms.xmlcFactory.create(CVPersonalHTML.class);
 	fillNationality(page, candidate);
-<<<<<<< CVPersonal.java
 	final String action = comms.request.getParameter("action");
-	System.out.println("Die Action lautet: " + action);
+	//System.out.println("Die Action lautet: " + action);
 	writeTextFields(page, candidate, comms);
 	if (action != null && action.equals("write")){ 
 	    readTextFields(page, candidate, comms);
 	}
 	comms.response.writeHTML(page);
-=======
-	final String action = comms.request.getParameter("action");
-	if (action != null && action.equals("write")){ 
-	    fillTextFields(page, candidate, comms);
-	}
-	comms.response.writeHTML(page);
->>>>>>> 1.5
     }
 
     /**
      * Fills the text fields with CV-data 
      **/
-<<<<<<< CVPersonal.java
+
     private void readTextFields(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms){
 	try{
 	    candidate.setLname(comms.request.getParameter("lName"));
@@ -63,26 +56,26 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	catch(Exception e){
 	    System.out.println(e.toString());
 	    throw new RuntimeException();}
-=======
-    private void fillTextFields(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms){
-	try{
-	    candidate.setLname(comms.request.getParameter("lastName"));
-	    candidate.setNatel( comms.request.getParameter("mobile"));
-	    candidate.commit();
-	}
-	catch(Exception e){
-	    System.out.println(e.toString());
-	    throw new RuntimeException();}
->>>>>>> 1.5
     }
-
+    
     private void writeTextFields(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms){
 	try{
 
 	    page.getElementLName().setValue(candidate.getLname());
 	    page.getElementFName().setValue(candidate.getFname());
-	  //  page.getElementSex().setValue(candidate.getSex());
-	  //  page.getElementYear().setValue(candidate.getBirthdate());
+	    
+	    /*if (candidate.getSex().equals("w")){
+		page.getElementWsex().setSelected(true);
+		page.getElementMsex().setSelected(false);
+	    }
+	    else{
+		page.getElementMsex().setSelected(true);
+		page.getElementWsex().setSelected(false);
+	    }*/
+		
+	   // page.getElementYear().setValue(splitDate(candidate.getBirthdate(),3));
+	    //page.getElementMonth().setValue(splitDate(candidate.getBirthdate(),2));
+	    //page.getElementDay().setValue(splitDate(candidate.getBirthdate(),1));
 	    page.getElementResidence().setValue(candidate.getResidence());
 	    page.getElementStreet().setValue(candidate.getStreet());
 	    page.getElementHousenumber().setValue(candidate.getHouseNumber());
@@ -98,9 +91,19 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	    System.out.println(e.toString());
 	    throw new RuntimeException();}
 	    
-	}
+    }
 	
-    
+
+    private String splitDate(Date d, int selector){
+	String result = " ";
+	if (selector == 3)
+	    result = String.valueOf(TimeUtil.getYear(d));
+	if (selector == 2)
+	    result = String.valueOf(TimeUtil.getMonth(d));
+	if (selector == 1)
+	    result = String.valueOf(TimeUtil.getDay(d));
+	return result;
+    }
 
     /**
      * fills the nationality-list with CV-data
