@@ -1,6 +1,6 @@
 #!/usr/local/bin/tcsh
 
-# $Id: launchPrototype,v 1.3 2000/04/13 12:36:02 locher Exp $
+# $Id: launchPrototype,v 1.4 2000/04/13 13:08:35 locher Exp $
 # make sure the prototype is running on vasarely.unibe.ch:9500
 # with the following crontab entry on vasarely.unibe.ch
 # 22,52 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
@@ -20,7 +20,7 @@ cd output
 
 if (-s /home/pse4/jobs/protoPID) then
     set OP=`awk '{print $1}' /home/pse4/jobs/protoPID`
-    ps | grep $OP > /tmp/protoALIVE
+    ls -1 /proc | grep "^$OP" > /tmp/protoALIVE
 endif
 
 if (-s /tmp/protoALIVE) then
