@@ -1,0 +1,66 @@
+
+
+Installation Instructions for ``JOBMATCH''
+
+
+1 Setting up the environment
+
+1.1 Required Modules
+
+The following modules have to be loaded for proper compilation and
+use of Jobmatch:
+
+* java2
+
+* enhydra3.0    www.enhydra.org
+
+* iText         www.lowagie.com
+
+* junit
+
+* jpython
+
+* icontract
+
+* javamail
+
+
+
+We suggest that you load these modules in your .login file. The specific
+part in a typical .login file may look like this:
+
+module unload java1
+
+module load java2
+
+module load junit jpython icontract javamail enhydra iText
+
+1.2 Unpacking and Compilation
+
+* Unpack the files in a directory.
+
+* After that, run the make-script in this directory.
+
+The application will then be compiled. As a final result, an Enhydra
+  Multiserver config file will be created in the output directory,
+  along with a start script.
+
+2 Running the Application
+
+2.1 Starting the Application
+
+* Type ``cd output''
+
+* Type ``./start''
+
+2.2 Using the Application
+
+In order to see the application running, start your webbrowser and
+access jobmatch at:
+
+http://localhost:9004
+
+3 General Considerations
+
+Watch out when compiling the application: On a SUN ULTRA1, equipped
+with 64 MB of ram, this procedure may take over one hour to complete !
