@@ -36,7 +36,8 @@ public abstract class AuthentificationPage implements HttpPresentation {
 
     protected String getURL(HttpPresentationComms comms) throws Exception {
 	final String params = comms.request.getQueryString();
-	String url = comms.request.getPresentationObjectRelativePath();
+	//XXX fix this url
+	String url = comms.request.getPresentationObjectPath().substring(1);
 	if (params != null) {
 	    url = url + "?" + params;
 	}
