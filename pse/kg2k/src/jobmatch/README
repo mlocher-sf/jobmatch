@@ -1,0 +1,19 @@
+
+ To build and run jobmatch:
+
+1) Type "make" in this directory.
+
+2) The application will be compiled, with the resulting class files put in
+   the classes directory. Then a jar file will be created in output/lib.
+   the application's config file will be placed in the directory
+   output. An Enhydra Multiserver config file will also be placed
+   in the output directory, along with a start script.
+3) Type "cd output".
+4) Type "./start".
+5) Use your web browser to access jobmatch at:  http://localhost:9000
+
+
+NOTES:
+ localhost can also be your host name or 127.0.0.1 (best for Win95).
+
+
