@@ -1,4 +1,4 @@
-// $Id: CandidateHome.java,v 1.4 2000/06/06 16:10:14 locher Exp $
+// $Id: CandidateHome.java,v 1.5 2000/06/13 14:34:54 locher Exp $
 package jobmatch.presentation;
 
 import jobmatch.business.candidate.*;
@@ -9,7 +9,7 @@ import com.lutris.appserver.server.httpPresentation.*;
 /**
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.4 $
+ *  @version $Revision: 1.5 $
  **/
 public class CandidateHome extends AuthentificationPage implements HttpPresentation {
 
@@ -18,6 +18,20 @@ public class CandidateHome extends AuthentificationPage implements HttpPresentat
 
 	this.assertLegitimation(comms, Account.TYPE_CANDIDATE);
 	CandidateAccount account = this.getCandidateAccount(comms);	
+	final String action = comms.request.getParameter("action");
+	
+	if (action != null && action.equals("logout")) {
+	    try {
+		Candidate candidate = account.getCandidateBO();
+		final String status = comms.request.getParameter("status");
+		candidate.setStatus("active".equals(status));
+		candidate.commit();
+		throw new ClientPageRedirectException(
+			   comms.request.getAppFileURIPath("Logout.po"));
+	    } catch (Exception e) {
+		throw new RuntimeException(e.toString());
+	    }
+	}
 
         CandidateHomeHTML page = (CandidateHomeHTML)comms.xmlcFactory.create(CandidateHomeHTML.class);
 
@@ -42,6 +56,9 @@ public class CandidateHome extends AuthentificationPage implements HttpPresentat
 // Document history
 /**
  * $Log: CandidateHome.java,v $
+ * Revision 1.5  2000/06/13 14:34:54  locher
+ * safe state of active flag
+ *
  * Revision 1.4  2000/06/06 16:10:14  locher
  * enhanced login
  *
