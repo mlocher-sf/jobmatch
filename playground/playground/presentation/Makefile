@@ -44,7 +44,7 @@ HTML_CLASSES = \
 JAR_INSTALL = \
 	Mail.html\
 	MailSent.html \
-	Static.html\
+	Static.html \
 	style.css
 
 include $(ROOT)/config.mk
