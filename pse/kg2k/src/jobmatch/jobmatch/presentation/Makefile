@@ -20,6 +20,9 @@ PACKAGEDIR = jobmatch/presentation
 # "../" to the ROOT variable, and add the directory name to the end of.
 # the PACKAGEDIR variable.
 #
+SUBDIRS = \
+	media
+
 POST_SUBDIRS = \
 	test
 
