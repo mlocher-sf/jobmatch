@@ -4,23 +4,17 @@
 #
 #
 
-
-
-SUBDIRS = \
-	provider \
-	candidate \
-	company
 #
 #  Where is the root of the source tree?
 #
-ROOT =	../..
+ROOT =	../../../..
 
 #
 #  What package does this directory represent? (use / instead of .)
 #
-PACKAGEDIR = jobmatch/business
+PACKAGEDIR = jobmatch/business/candidate/cv
 
-CLASSES =
+CLASSES = 
 
 include $(ROOT)/config.mk
 
