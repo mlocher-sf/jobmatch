@@ -9,6 +9,7 @@ import jobmatch.business.entity.*;
 import com.lutris.xml.xmlc.*;
 import com.lutris.appserver.server.httpPresentation.*;
 import jobmatch.business.util.TimeUtil;
+import com.lutris.dods.builder.generator.query.DataObjectException;
 
 public class CVPersonal extends CVSection implements HttpPresentation {
 
@@ -84,38 +85,40 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	    
 	    page.getElementResidence().setValue(candidate.getResidence());
 	    Address addr = candidate.getAddressBO();
+	    
 	    if (addr != null){
-	    page.getElementStreet().setValue(addr.getStreet());
-	    page.getElementHousenumber().setValue(addr.getHouseNumber());
-	    page.getElementZip().setValue(String.valueOf(addr.getZIP()));
-	    page.getElementCity().setValue(addr.getCity());
+		page.getElementStreet().setValue(addr.getStreet());
+		page.getElementHousenumber().setValue(addr.getHouseNumber());
+		page.getElementZip().setValue(addr.getZIP());
+		page.getElementCity().setValue(addr.getCity());
 	    }
 	    page.getElementPhonenumber().setValue(candidate.getPhone());
 	    page.getElementFaxnumber().setValue(candidate.getFax());
 	    page.getElementNatel().setValue(candidate.getNatel());
-	    comms.response.writeHTML(page);
+	    
     
 	}
-	catch(Exception e) {
-	    System.out.println(e.toString());
-	    throw new RuntimeException();
+	catch(DataObjectException e) {
+	    throw new RuntimeException(e.toString());
 	}
     }
 
     private String splitDate(Date d, int selector){
-	String result;
-	switch (selector) {
-	case 3:
-	    result = String.valueOf(TimeUtil.getYear(d));
-	    break;
-	case 2:
-	    result = String.valueOf(TimeUtil.getMonth(d));
-	    break;
-	case 1:
-	    result = String.valueOf(TimeUtil.getDay(d));
-	    break;
-	default:
-	    result = d.toString();
+	String result="";
+	if (d != null){
+	    switch (selector) {
+	    case 3:
+		result = String.valueOf(TimeUtil.getYear(d));
+		break;
+	    case 2:
+		result = String.valueOf(TimeUtil.getMonth(d));
+		break;
+	    case 1:
+		result = String.valueOf(TimeUtil.getDay(d));
+		break;
+	    default:
+		result = d.toString();
+	    }
 	}
 	return result;
     }
@@ -147,6 +150,9 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 // Document history
 /*
  * $Log: CVPersonal.java,v $
+ * Revision 1.15  2000/06/13 15:21:27  studer
+ * *** empty log message ***
+ *
  * Revision 1.14  2000/06/13 14:12:29  studer
  * Ueberpruefung ob Adresse null ist
  *
