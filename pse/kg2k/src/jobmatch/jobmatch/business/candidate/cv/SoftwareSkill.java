@@ -10,7 +10,7 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: dniederm $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 
 public class SoftwareSkill extends SoftwareCandidateBDO implements CVSection {
@@ -61,7 +61,7 @@ public class SoftwareSkill extends SoftwareCandidateBDO implements CVSection {
 	try {
 	    return new Software(this.getSoftware());
 	} catch (Exception e) {
-	    throws new RuntimeException(e.toString());
+	    throw new RuntimeException(e.toString());
 	}
     }
 
@@ -92,3 +92,10 @@ public class SoftwareSkill extends SoftwareCandidateBDO implements CVSection {
     }
        
 } //class
+
+/*
+ * $Log: SoftwareSkill.java,v $
+ * Revision 1.2  2000/06/10 11:02:44  dniederm
+ * *** empty log message ***
+ *
+ */

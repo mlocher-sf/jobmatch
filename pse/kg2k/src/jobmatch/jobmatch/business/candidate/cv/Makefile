@@ -16,7 +16,12 @@ PACKAGEDIR = jobmatch/business/candidate/cv
 
 CLASSES = \
 	Formation \
-	CVSection
+	CVSection \
+	ProgrammingSkill \
+	SoftwareSkill \
+	OperatingSystemSkill \
+	WorkingSkill \
+	LanguageSkill
 
 USEICONTRACT=1
 

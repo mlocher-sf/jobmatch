@@ -6,33 +6,33 @@ import jobmatch.data.*;
 import java.util.*;
 
 /**
- *  ProgrammingSkill Business Object
+ *  LanguageSkill Business Object
  *
  *  @since May 26 2000
  *  @author $Author: dniederm $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.1 $
  **/
 
-public class ProgrammingSkill extends ProgrammingCandidateBDO implements CVSection {
+public class LanguageSkill extends LanguageCandidateBDO implements CVSection {
     
-    public ProgrammingSkill() throws Exception {
+    public LanguageSkill() throws Exception {
 	super();
     }
 
-    public ProgrammingSkill(ProgrammingCandidateDO dataObject) {
+    public LanguageSkill(LanguageCandidateDO dataObject) {
 	super(dataObject);
     }
     /**
-     * Returns a list of programming skills for the specified candidate
+     * Returns a list of language skills for the specified candidate
      **/
-    public static List getAllProgrammingSkillsFor(Candidate candidate) {
+    public static List getAllLanguageSkillsFor(Candidate candidate) {
 	List result = new ArrayList();
 	try{
-	    ProgrammingCandidateQuery query = new ProgrammingCandidateQuery();
+	    LanguageCandidateQuery query = new LanguageCandidateQuery();
 	    query.setQueryCandidate(candidate.getDO());
-	    ProgrammingCandidateDO element  = query.getNextDO();
+	    LanguageCandidateDO element  = query.getNextDO();
 	     while ( element != null) {
-		result.add(new ProgrammingSkill(element));
+		result.add(new LanguageSkill(element));
 		element = query.getNextDO();
 	    }
 	} catch (Exception qe) {
@@ -54,12 +54,12 @@ public class ProgrammingSkill extends ProgrammingCandidateBDO implements CVSecti
     }
 
     /**
-     * Return the Programming business object
+     * Return the language business object
      **/
 
-    public Programming getProgrammingBO() {
+    public Language getLanguageBO() {
 	try {
-	    return new Programming(this.getLanguage());
+	    return new Language(this.getLanguage());
 	} catch (Exception e) {
 	    throw new RuntimeException(e.toString());
 	}
@@ -72,7 +72,7 @@ public class ProgrammingSkill extends ProgrammingCandidateBDO implements CVSecti
 	}
 	
 	try {
-	    return semanticEquality(this, (ProgrammingSkill) other);
+	    return semanticEquality(this, (LanguageSkill) other);
 	}
 	catch (ClassCastException e) {
 	    return false;
@@ -80,7 +80,7 @@ public class ProgrammingSkill extends ProgrammingCandidateBDO implements CVSecti
     }
 
   /** @return true if a is considered the same as b **/
-    private static boolean semanticEquality(ProgrammingSkill a, ProgrammingSkill b) {
+    private static boolean semanticEquality(LanguageSkill a, LanguageSkill b) {
 	//XXX define the equality and remove the exception !!!
 	throw new RuntimeException("semanticEqualitiy not defined");
 	//return (a == b);
@@ -93,10 +93,9 @@ public class ProgrammingSkill extends ProgrammingCandidateBDO implements CVSecti
        
 } //class
 
-/* 
- *$Log: ProgrammingSkill.java,v $
- *Revision 1.2  2000/06/10 11:02:43  dniederm
- **** empty log message ***
- *
+/*
+ * $Log: LanguageSkill.java,v $
+ * Revision 1.1  2000/06/10 11:02:42  dniederm
+ * *** empty log message ***
  *
  */

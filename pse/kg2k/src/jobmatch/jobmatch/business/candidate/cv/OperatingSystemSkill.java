@@ -10,7 +10,7 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: dniederm $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 
 public class OperatingSystemSkill extends OperatingsystemCandidateBDO implements CVSection {
@@ -19,7 +19,7 @@ public class OperatingSystemSkill extends OperatingsystemCandidateBDO implements
 	super();
     }
 
-    public OperatingSystemSkill (OperatingSystemCandidateDO dataObject) {
+    public OperatingSystemSkill (OperatingsystemCandidateDO dataObject) {
 	super(dataObject);
     }
     /**
@@ -28,9 +28,9 @@ public class OperatingSystemSkill extends OperatingsystemCandidateBDO implements
     public static List getAllOperatingSystemSkillsFor(Candidate candidate) {
 	List result = new ArrayList();
 	try{
-	    OperatingSystemCandidateQuery query = new OperatingSystemCandidateQuery();
+	    OperatingsystemCandidateQuery query = new OperatingsystemCandidateQuery();
 	    query.setQueryCandidate(candidate.getDO());
-	    OperatingSystemCandidateDO element  = query.getNextDO();
+	    OperatingsystemCandidateDO element  = query.getNextDO();
 	     while ( element != null) {
 		result.add(new OperatingSystemSkill(element));
 		element = query.getNextDO();
@@ -57,11 +57,11 @@ public class OperatingSystemSkill extends OperatingsystemCandidateBDO implements
      * Return the OperatingSystem business object
      **/
 
-    public Software getOperatingSystemBO() {
+    public OperatingSystem  getOperatingSystemBO() {
 	try {
-	    return new OperatingSystem(this.getOperatingSystem());
+	    return new OperatingSystem(this.getOperatingsystem());
 	} catch (Exception e) {
-	    throws new RuntimeException(e.toString());
+	    throw new RuntimeException(e.toString());
 	}
     }
 
@@ -92,3 +92,10 @@ public class OperatingSystemSkill extends OperatingsystemCandidateBDO implements
     }
        
 } //class
+
+/*
+ * $Log: OperatingSystemSkill.java,v $
+ * Revision 1.2  2000/06/10 11:02:43  dniederm
+ * *** empty log message ***
+ *
+ */
