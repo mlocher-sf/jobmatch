@@ -11,14 +11,16 @@ public class Sendmail implements HttpPresentation {
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
 
-//  	String event = comms.request.getParameter("event");
-//  	System.out.println(comms.request.getHttpServletRequest().getMethod().toUpperCase());
+  	String from = comms.request.getParameter("From");
+  	String to = comms.request.getParameter("To");
+  	String subject = comms.request.getParameter("Subject");
+  	String msg = comms.request.getParameter("Message");
 
-// 	if (comms.request.getHttpServletRequest().getMethod().toUpperCase().equals("POST")) {
-// 	    HttpPresentationInputStream in = comms.request.getInputStream();
-// 	    this.save(in);
-// 	}
-
+	String host = "mail.unibe.ch";
+	
+	try {
+	    Mailer.sendMail(host, from, to, subject, msg);
+	} catch (Exception e) {}
 
 	// redirect to static page
 	throw new ClientPageRedirectException(
@@ -26,24 +28,4 @@ public class Sendmail implements HttpPresentation {
 
     }
 
-    private void save(HttpPresentationInputStream in) {
-	try {
-	    String RE = "(?:Content-Disposition: form-data; name=\"image\"; filename=\")";
-
-	    System.out.println(RE);
-	    System.out.println(new RE(RE));
-
-
-	    OutputStream out = new FileOutputStream("output.txt");
-	    
-	    byte[] buffer = new byte[512];
-	    int offset = 0;
-	    while( 0 != in.available()) {
-		int numRead = in.readLine(buffer, 0, 512);
-		System.out.print(new String(buffer, 0, numRead));
-		out.write(buffer, 0, numRead);
-	    }
-	    out.flush();
-	} catch (Exception e) {}
-    }
 }

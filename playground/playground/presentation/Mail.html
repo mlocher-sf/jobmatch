@@ -9,8 +9,16 @@
     <h1>Mail Sender</h1>
 
     <form action="./Sendmail.po">
-      <input type="hidden" name="event" value="saveForm" >
-      <b>Name: </b><input type="text" name="Name" size=40 maxlength=40 id="Name">
+      <b>From: </b><br>
+      <input type="text" name="Name" size="40" ><br>
+      <b>To: </b><br>
+      <input type="text" name="To" size="40"><br>
+      <b>Subject: </b><br>
+      <input type="text" name="Subject" size="40" ><br>
+      <b>Message: </b><br>
+      <TEXTAREA NAME="Message", ROWS="10", COLS="60"> </TEXTAREA>
+      <br>
+      <input type="submit" value="Send now !">
     </form>
 
     <hr>

@@ -43,6 +43,7 @@ HTML_CLASSES = \
 
 JAR_INSTALL = \
 	Mail.html\
+	MailSent.html \
 	Static.html\
 	style.css
 
