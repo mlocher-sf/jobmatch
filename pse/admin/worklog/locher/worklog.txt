@@ -12,7 +12,9 @@ ______________________________________________________________________________
 
 030400        180		Working on the homepage
 				Review www.humanline.ch
-		
 
+040400        270		Teach CVS, Emacs, Lyx to the team
+				Rework the homepage
+		
 ==============================================================================
-$Id: worklog.txt,v 1.2 2000/04/03 13:50:33 locher Exp $
+$Id: worklog.txt,v 1.3 2000/04/04 15:25:20 locher Exp $
