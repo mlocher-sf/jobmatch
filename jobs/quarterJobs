@@ -1,0 +1,4 @@
+#!/usr/local/bin/tcsh
+
+cd /home/pse4/jobs
+../updateHP
