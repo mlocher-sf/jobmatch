@@ -1,0 +1,29 @@
+Sitzungsprotokoll PSE 2000, Gruppe 4
+==============================================================================
+Datum:	  19. April 2000
+Zeit:	  15.15 - 16.00 Uhr
+Ort:	  Exwi 3. Stock
+anwesend: alle + Assi
+-------------------------------------------------------------------------------
+Standortbestimmung:
+
+Die Verantwortlichkeiten wurden in der Gruppe bisher schlecht bis gar nicht verteilt.
+
+Beschluesse:
+
+Denise ist verantwortlich fuer die Wochenplaene. 
+Mario + Marco kuemmern sich ums DODS, "Testdaten"
+Michael arbeitet am Matching
+Michel + Denise machen die Storyboards
+Michael praesentiert das Review des Pflichtenhefts
+Reviewmeeting am Dienstag, 08.00 Uhr, A98 (Michael, Michel, Denise)
+
+Assi fragt wegen dem Testen des Frontend, DB
+Assi organisiert Schluessel
+
+
+ 
+
+
+==============================================================================
+$Id: Protokoll20000419.txt,v 1.1 2000/04/20 08:59:53 dniederm Exp $
