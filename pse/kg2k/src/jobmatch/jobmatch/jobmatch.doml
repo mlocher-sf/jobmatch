@@ -33,10 +33,6 @@
           <column id="HouseNumber">
             <type dbType="VARCHAR" javaType="String" size="5"/>
           </column>
-          <column id="Jobwish" usedForQuery="true">
-            <referenceObject reference="jobmatch.data.Jobwish"/>
-            <type canBeNull="true" dbType="none" javaType="jobmatch.data.JobwishDO"/>
-          </column>
           <column id="Lname" usedForQuery="true">
             <type dbType="VARCHAR" javaType="String" size="25"/>
           </column>
@@ -182,10 +178,10 @@
             <referenceObject constraint="true" reference="jobmatch.data.Employer"/>
             <type dbType="none" javaType="jobmatch.data.EmployerDO"/>
           </column>
-          <column id="From">
+          <column id="Begin">
             <type dbType="DATE" javaType="java.sql.Date"/>
           </column>
-          <column id="To">
+          <column id="End">
             <type dbType="DATE" javaType="java.sql.Date"/>
           </column>
           <column id="Remarks">
@@ -237,7 +233,7 @@
             <type dbType="BIT" javaType="boolean"/>
             <initialValue>true</initialValue>
           </column>
-          <column id="Interval" usedForQuery="true">
+          <column id="Period" usedForQuery="true">
             <type dbType="INTEGER" javaType="int"/>
             <initialValue>0</initialValue>
           </column>
@@ -348,10 +344,10 @@
             <referenceObject constraint="true" reference="jobmatch.data.Candidate"/>
             <type dbType="none" javaType="jobmatch.data.CandidateDO"/>
           </column>
-          <column id="From" usedForQuery="true">
+          <column id="Begin" usedForQuery="true">
             <type dbType="DATE" javaType="java.sql.Date"/>
           </column>
-          <column id="To" usedForQuery="true">
+          <column id="End" usedForQuery="true">
             <type dbType="DATE" javaType="java.sql.Date"/>
           </column>
           <column id="Diploma" usedForQuery="true">
@@ -370,7 +366,7 @@
         <table id="jobmatch.data.Schooltype" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Software" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Programming" extensionOf="jobmatch.data.ConstantTable"/>
-        <table id="jobmatch.data.Operationgsystem" dbTableName="Operatingsystem" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Operatingsystem" dbTableName="Operatingsystem" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Language" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Industry" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Graduation" extensionOf="jobmatch.data.ConstantTable"/>
@@ -394,10 +390,10 @@
             <type dbType="none" javaType="jobmatch.data.CompcapabilityDO"/>
           </column>
         </table>
-        <table id="jobmatch.data.OperationgsystemProfile" extensionOf="jobmatch.data.ComputerRequest">
+        <table id="jobmatch.data.OperatingsystemProfile" extensionOf="jobmatch.data.ComputerRequest">
           <column id="System" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Operationgsystem"/>
-            <type dbType="none" javaType="jobmatch.data.OperationgsystemDO"/>
+            <referenceObject constraint="true" reference="jobmatch.data.Operatingsystem"/>
+            <type dbType="none" javaType="jobmatch.data.OperatingsystemDO"/>
           </column>
         </table>
         <table id="jobmatch.data.ProgrammingProfile" extensionOf="jobmatch.data.ComputerRequest">
