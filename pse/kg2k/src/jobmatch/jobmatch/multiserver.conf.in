@@ -30,16 +30,16 @@ Application.jobmatch.Running = yes
 #
 # Open up a port.
 #
-Connection.p9000.Type = http
-Connection.p9000.Port = 9000
+Connection.p9004.Type = http
+Connection.p9004.Port = 9004
 
 
 #
 # Connect the port to the application.
 #
-Channel.p9000.aChan.Servlet = jobmatch
-Channel.p9000.aChan.Url = /
-Channel.p9000.aChan.Enabled = yes
+Channel.p9004.aChan.Servlet = jobmatch
+Channel.p9004.aChan.Url = /
+Channel.p9004.aChan.Enabled = yes
 
 
 
