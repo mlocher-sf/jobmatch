@@ -19,11 +19,6 @@
               <type dbType="VARCHAR" javaType="String" size="32"/>
             </column>
           </table>
-          <table id="JobMatch.data.constant.Country">
-            <column id="Name">
-              <type dbType="VARCHAR" javaType="String" size="32"/>
-            </column>
-          </table>
           <table id="JobMatch.data.constant.Graduation">
             <column id="Type">
               <type dbType="VARCHAR" javaType="String" size="32"/>
@@ -81,6 +76,9 @@
           <column id="Jobwish">
             <referenceObject constraint="true" reference="JobMatch.data.Jobwish"/>
             <type canBeNull="true" dbType="none" javaType="JobMatch.data.JobwishDO"/>
+          </column>
+          <column id="Picture">
+            <type canBeNull="true" dbType="VARBINARY" javaType="byte[]"/>
           </column>
         </table>
         <table id="JobMatch.data.Company">
