@@ -1,0 +1,17 @@
+#!/usr/local/bin/tcsh
+
+# $Id: genJavadoc,v 1.1 2000/05/08 14:35:21 locher Exp $
+
+set SOURCE = pse/kg2k/src/jobmatch/
+set INDIR = /tmp/$SOURCE
+set OUTDIR = /home/pse4/public_html/javadoc
+set CONTENTFILE = $INDIR/javadocFiles
+
+set PARAMS = "-protected"
+set HEADER = "<b>PSE 2000 Group 4</b>"
+
+cd /tmp
+cvs co $SOURCE
+mkdir -p $OUTDIR
+cd $INDIR
+javadoc $PARAMS -header "$HEADER" -sourcepath $INDIR -d $OUTDIR @$CONTENTFILE
