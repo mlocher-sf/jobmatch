@@ -6,8 +6,9 @@
 
   <body>
   <hr>
-  <h1>Lebenslauf </h1>
-  <h3> Uebersicht:</h3>
+  <h1>Kandidaten Homepage</h1>
+    <a href="./ChangePassphrase.html"> Passwort &auml;ndern </a> <br>
+  <h3>Lebenslauf</h3>
   
   <a href="./CVPersonal.html"> Persoenliche Daten </a> <br>
   <a href="./CVEducation.html"> Ausbildung </a> <br>
@@ -17,23 +18,22 @@
   <a href="./CVMembership.html"> Mitgliedschaften </a> <br>
   <a href="./CVHobbies.html"> Freizeitaktivitaeten </a> <br>
   <a href="./CVJobWishes.html"> Jobwuensche </a> <br>
-    <form>
-      <p> Status des CV: <input type="radio" name="status" value="active">  aktiv
-	<input type="radio" name="status" value="inactive">  inaktiv
-      <p>Diesen Firmen moechte ich meinen Lebenslauf nicht zukommen lassen:
-      <table border =1>
-	
-	<tr><th> Sperrliste: </th> </tr>
-	<tr><td> 
-	    <input type="checkbox" name="Firma 1" value="Firma 1">  Firma 1
-	    <input type="checkbox" name="Firma 2" value="Firma 2">  Firma 2 
-	    <input type="checkbox" name="Firma 1" value="Firma 3">  Firma 3
-	    <input type="checkbox" name="Firma 2" value="Firma 4">  Firma 4
-	  </td></tr>
-      <br></table>
+
+    <form action="Welcome.html">
+      Status des Lebenslaufs: <input type="radio" name="status" value="active"> aktiv
+      <input type="radio" name="status" value="inactive"> inaktiv
+      
+      <h3>Sperrliste</h3>
+      <p>Diesen Firmen moechte ich meinen Lebenslauf nicht zukommen lassen.</p>
+      <table width="50%" border="1">
+	<tr><th>Firma</th></tr>
+	<tr><td>UBS</td></tr>
+	<tr class="trash"><td>SBB</td></tr>
+      </table>
+      <a href="./CreateThisPage.html">Sperrliste bearbeiten</a>
+      
+      <p><input type="submit" value="Werte akzeptieren & Logout"></p>
     </form>
-    
-    <a href="./Welcome.html"> Zurueck zur Einstiegsseite </a> <br>
     <hr>
   </body>
 </html>
