@@ -1,20 +1,30 @@
-<HTML>
-<HEAD>
-<TITLE>Welcome to jobmatch!</TITLE>
-</HEAD>
-<BODY BGCOLOR="#FFFFFF">>
+<html>
+  <head>
+    <title> Einstiegs Seite </title>
+    <link rel=stylesheet type="text/css" href="style.css">
+  </head>
 
-<CENTER><TABLE SUMMARY="Welcome.html"><TR>
-<TD><A HREF=http://www.enhydra.org/><IMG SRC=media/Enhydra.gif WIDTH=200 BORDER=0 ALT="Enhydra.gif"></A></TD>
-<TD><H1>Welcome to jobmatch!</H1>
-<BR><H3>A Simple Enhydra Application</H3></TD></TR>
+  <body>
+    <hr>
+    <h1> Einstiegsseite</h1>
+    <form action="CandidateHome.po" method="get">
+    <table border=1> <tr><td>
+    Login: </td></tr><tr><td>
+    Username: </td><td> <input type="text" name="username" size="10" maxlength="20"> </td></tr><tr><td>
+    Passwort: </td><td> <input type="password" name="passphrase" size="10" maxlength="20"> </td><td>
+    <input type="submit" name="submit" value="Anmelden"> </td></tr>
+    </table>
+    </form>
 
-<TR><TD COLSPAN=2><CENTER>The current time is <span id="Time">1/1/00 00:00:00 Oh no!</span>.</CENTER></TD></TR>
-<TR><TD COLSPAN=2><CENTER><A HREF=Redirect.po>Sample redirect back to here</A></CENTER>.</TD></TR>
-</TABLE>
-
-</CENTER>
-
-</BODY>
-</HTML>
-
+    <p>
+    <a href="Login.html"> Neu anmelden </a> <br>
+    <a href="password.html"> Passwort vergessen </a> <br>
+    <a href="loginCompanies.html"> Einloggen fuer Firmen </a> <br>
+    <a href="infoCompanies.html"> Informationen fuer Firmen </a> <br>
+    <a href="infoCandidates.html"> Informationen fuer Kandidaten </a> <br>
+    <a href="infoAiesec.html"> Informationen zu AIESEC </a> <br>
+    <a href="logout.html"> Logout </a>
+    <hr>
+    <a href="http://www.iamexwi.unibe.ch/studenten/pse4/">PSE 4</a>
+  </body>
+</html>

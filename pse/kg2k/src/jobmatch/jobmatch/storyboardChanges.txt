@@ -1,0 +1,24 @@
+Changed Filenames:
+
+old				new
+----------------------------------------------------------------------
+CVOverview.html			CandidateHome.html
+login.html			Login.html
+index.html			Welcome.html
+
+
+
+Added stuff:
+file				what
+----------------------------------------------------------------------
+Login.html			added eMail Field
+
+
+
+
+
+Changed links:
+old link					new link
+----------------------------------------------------------------------
+CVPersonal.html					CVPersonal.po
+CandidateHome.html (former CVOverview.html)	CandidateHome.po

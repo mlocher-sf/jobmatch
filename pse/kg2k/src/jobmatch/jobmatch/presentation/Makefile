@@ -29,10 +29,19 @@ SUBDIRS = \
 #
 CLASSES = \
 	Redirect \
-	Welcome
+	CandidateHome \
+	CVPersonal
 
 HTML_DIR = ./html
-HTML_CLASSES = WelcomeHTML
+HTML_CLASSES = \
+	CandidateHomeHTML \
+	CVPersonalHTML
+
+
+JAR_INSTALL = \
+	./html/Welcome.html \
+	./html/Login.html \
+	./html/style.css
 
 include $(ROOT)/config.mk
 
