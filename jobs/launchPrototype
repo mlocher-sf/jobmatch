@@ -1,6 +1,6 @@
 #!/usr/local/bin/tcsh
 
-# $Id: launchPrototype,v 1.10 2000/05/10 17:51:23 locher Exp $
+# $Id: launchPrototype,v 1.11 2000/05/12 16:49:33 locher Exp $
 # make sure the prototype is running on miro.unibe.ch:9500
 # with the following crontab entry on miro.unibe.ch
 # 0,15,30,45 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
@@ -14,7 +14,7 @@ echo " "
 
 # Rebuild it
 cd /home/pse4/scr
-cvs co pse/kg2k/src/jobmatch
+cvs co pse/kg2k/src
 cd pse/kg2k/src/jobmatch
 make
 
