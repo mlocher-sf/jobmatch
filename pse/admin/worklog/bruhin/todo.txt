@@ -1,13 +1,13 @@
 PSE Gruppe 4, Michel Bruhin
 ==============================================================================
 
-			       WORKLOG
+				 TODO
 
-Date          Duration	        Description
+Deadline   Description
 ______________________________________________________________________________
-300300        60                Initial meeting
+04/04/00   JUnit repetieren, Risiken 
 
-	
+		
 
 ==============================================================================
-$Id: worklog.txt,v 1.2 2000/04/04 07:26:48 bruhin Exp $
+$Id: todo.txt,v 1.1 2000/04/04 07:26:48 bruhin Exp $
