@@ -34,6 +34,6 @@ drop table ProgrammingCandidate;
 drop table MailQueue;
 drop table Programming;
 drop table Country;
-drop table SchooProfile;
+drop table SchoolProfile;
 drop table EmployerCandidate;
 drop table objectid;
