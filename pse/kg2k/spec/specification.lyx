@@ -1,0 +1,243 @@
+#This file was created by <studer> Tue May  2 17:37:43 2000
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Actions and their Conditions
+\layout Section*
+
+
+\size normal 
+Action match(MatchTree, Candidate, Profile)
+\layout Verse
+
+
+\bar under 
+post:
+\bar default 
+ 
+\layout Verse
+
+Wenn der Kandidat das Profil erfuellt, ist er im Resultat des Profils enthalten.
+\layout Verse
+
+Wenn er nicht matcht, ist er nicht im Resultat
+\layout Section*
+
+
+\size normal 
+Action completeMatch(Profile)
+\layout Verse
+
+
+\bar under 
+post:
+\bar default 
+ 
+\layout Verse
+
+Alle Kandidaten, die das Profil erfuellen, sind im Resultat des Profils
+ enthalten
+\layout Verse
+
+Sonst sind keine Kandidaten im Resultat
+\layout Section*
+
+
+\size normal 
+Action initialLogin(Username, Password)
+\layout Verse
+
+
+\bar under 
+pre:
+\bar default 
+ 
+\layout Verse
+
+Username ist noch nicht in der Datenbank vorhanden
+\layout Verse
+
+
+\bar under 
+post:
+\bar default 
+ 
+\layout Verse
+
+Neuer Account ist erstellt
+\layout Verse
+
+Neuer Kandidat mit Lebenslauf ist erstellt
+\layout Verse
+
+Das Mail mit Passwort und Username ist versandt
+\layout Verse
+
+Der Kandidat ist nicht aktiv
+\layout Section*
+
+
+\size normal 
+Action createCompany(Username, Password, Email)
+\layout Verse
+
+
+\bar under 
+pre:
+\bar default 
+ 
+\layout Verse
+
+Email-Adresse ist gueltig
+\layout Verse
+
+
+\bar under 
+post:
+\bar default 
+ 
+\layout Verse
+
+Neuer Account ist erstellt
+\layout Verse
+
+Neues Company-Objekt ist erstellt
+\layout Section*
+
+
+\size normal 
+Action updateCV(Candidate, CV)
+\layout Verse
+
+
+\bar under 
+pre:
+\bar default 
+ 
+\layout Verse
+
+CV enthaelt gueltige Werte
+\layout Verse
+
+
+\bar under 
+post:
+\bar default 
+ 
+\layout Verse
+
+CV-Daten sind in der DB gespeichert
+\layout Verse
+
+Kandidat ist vorgemerkt fuers Matching
+\layout Section*
+
+
+\size normal 
+Action createProfile(Company, Owner)
+\layout Verse
+
+
+\bar under 
+pre:
+\bar default 
+ 
+\layout Verse
+
+Owner gehoert zur Company
+\layout Verse
+
+
+\bar under 
+post:
+\bar default 
+ 
+\layout Verse
+
+Leeres Profile-Objekt ist erstellt
+\layout Verse
+
+Owner des Profils stimmt mit dem Owner ueberein
+\layout Section*
+
+
+\size normal 
+Action updateCVRequest(Profile, CVRequest)
+\layout Verse
+
+
+\bar under 
+pre:
+\bar default 
+ 
+\layout Verse
+
+CVRequest enthaelt gueltige Werte
+\layout Verse
+
+
+\bar under 
+post:
+\bar default 
+ 
+\layout Verse
+
+CVRequest ist in der Datenbank gespeichert
+\layout Section*
+
+
+\size normal 
+Action beginEditProfileTree(Profile)
+\layout Verse
+
+
+\bar under 
+post:
+\bar default 
+ 
+\layout Verse
+
+Profil wird beim Matching nicht beruecksichtigt bis Bearbeitung beendet
+ ist
+\layout Section*
+
+
+\size normal 
+Action finishEditProfileTree(Profile)
+\layout Verse
+
+
+\bar under 
+post:
+\bar default 
+ 
+\layout Verse
+
+Status des Profils ist auf dem vorgaengigen Wert
+\layout Verse
+
+Alte Resultate des Profils sind geloescht
+\the_end
