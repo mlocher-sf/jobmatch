@@ -6,9 +6,12 @@ PSE Gruppe 4, <Mario Loeffel>
 Deadline	 Description
 ______________________________________________________________________________
 
+100400	   Features sammeln und in Liste eintragen
+100400	   ENHYDRA presentation layer ausprobieren mit Niedermann, Bruhin
 110400     Informieren ueber JDBC und der Gruppe vorstellen
-											
-		
-
+110400	   Informationen sammeln ueber DODS und Nutzen pruefen
+110400	   Zeitplan erstellen
+140400	   Storyboard entwerfen, Einfuerung in Javascript durcharbeiten
+			
 ==============================================================================
-$Id: todo.txt,v 1.2 2000/04/04 09:22:07 loeffel Exp $
+$Id: todo.txt,v 1.3 2000/04/07 15:06:53 loeffel Exp $
