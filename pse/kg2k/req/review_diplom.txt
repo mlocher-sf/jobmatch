@@ -1,0 +1,30 @@
+$Id: review_diplom.txt,v 1.1 2000/04/03 11:40:15 studer Exp $
+Review von http://www.diplom.ch
+Anmeldung mit login und Passwort.
+
+Absolventen
+Dateneingabe im Studentenformular
+Im ersten Formular koennen Name, Adresse und Geb.datum des Studenten eingegeben
+werden. Die Adressaufnahme ist unterteilt in Heim- und Studienadresse. 
+Das zweite Formular stellt Eingabefelder fuer folgende Themen bereit:
+Studienrichtung (Hauptfach, Nebenfaecher, Diplomarbeit, Abschlussnote)
+Bildung 
+Sprache (5 Stufen: Muttersprache, sehr gut, ...)
+Kenntnis (Computerkenntnisse in 4 Stufen unterteilt)
+Erfahrung 
+Zukunft (Fruehester Arbeitsbeginn, Enddatum)
+Bereich
+Branche
+Region
+abschliessende Informationen (Ziele, Hobbies, Besonder Faehigkeiten,
+Bemerkungen)
+
+Datenaenderung fuer Studenten
+Die Studenten koenen ihre Daten aendern und loeschen. Sie koennen auch ein
+Bild von sich hochladen.
+
+Firma
+Die Firma kann sich nicht online registrieren.
+Die Firma kann ihre Ausschreibungen online bearbeiten und neue Erfassen.
+
+
