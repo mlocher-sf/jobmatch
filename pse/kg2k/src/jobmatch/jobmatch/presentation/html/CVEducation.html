@@ -16,8 +16,12 @@
 	<td><span id="end">01.04.1994</span></td>
 	<td><span id="graduation"> Matur</span></td>
 	<td><span id="remarks">Typus D</span></td> 
-	<td><a href="./CV.html"> Loeschen </a></td>
-	<td><a href="./CV.html"> Bearbeiten </a></td> </tr></tr> 
+	<td><form action="./CVEducation.html" method="get">
+            <input type="hidden" name="delete" value="delete" id="deleteRow">
+            <input type="submit" name="submit" value="Loeschen"></form></td>
+	<td><form action="./CVEducationDetail.html" method="get">
+            <input type="hidden" name="edit" value="edit" id="editRow">
+            <input type="submit" name="submit" value="Bearbeiten"></form></td> </tr></tr> 
       <tr class ="trash"> 
 	<td> Fachhochschule</td>
 	<td> École supérieure d'arts appliqués des Montagnes neuchâteloises, La Chaux-de-Fonds  </td>
