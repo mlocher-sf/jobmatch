@@ -1,21 +1,5 @@
-// $Id: Account.java,v 1.4 2000/05/23 14:10:55 locher Exp $
+// $Id: Account.java,v 1.5 2000/05/31 12:15:54 studer Exp $
 
-/*
- * $Log: Account.java,v $
- * Revision 1.4  2000/05/23 14:10:55  locher
- * authentification mechanisms
- *
- * Revision 1.3  2000/05/10 17:50:22  locher
- * login procedure
- *
- * Revision 1.2  2000/05/04 14:50:29  locher
- * created little hierarchy
- *
- * Revision 1.1  2000/05/04 14:21:27  locher
- * makefiles
- *
- *
- */
 
 package jobmatch.business.provider.account;
 
@@ -25,8 +9,8 @@ import com.lutris.dods.builder.generator.query.DataObjectException;
  *  Account Interface
  *
  *  @since May 4 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.4 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.5 $
  **/
 public interface Account {
     
@@ -42,3 +26,23 @@ public interface Account {
     //public String getEMail() throws DataObjectException;
 
 }
+
+/*
+ * $Log: Account.java,v $
+ * Revision 1.5  2000/05/31 12:15:54  studer
+ * Javadoc added
+ *
+ * Revision 1.4  2000/05/23 14:10:55  locher
+ * authentification mechanisms
+ *
+ * Revision 1.3  2000/05/10 17:50:22  locher
+ * login procedure
+ *
+ * Revision 1.2  2000/05/04 14:50:29  locher
+ * created little hierarchy
+ *
+ * Revision 1.1  2000/05/04 14:21:27  locher
+ * makefiles
+ *
+ *
+ */

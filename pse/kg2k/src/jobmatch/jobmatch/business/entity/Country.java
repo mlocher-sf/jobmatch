@@ -1,4 +1,4 @@
-// $Id: Country.java,v 1.5 2000/05/30 14:24:28 locher Exp $
+// $Id: Country.java,v 1.6 2000/05/31 12:15:50 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -10,8 +10,8 @@ import java.util.*;
  *  Country Business Object
  *
  *  @since May 26 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.5 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.6 $
  **/
 public class Country extends CountryBDO implements Description {
     
@@ -24,7 +24,10 @@ public class Country extends CountryBDO implements Description {
     public Country(CountryDO dataObject) {
 	super(dataObject);
     }
-
+    
+    /**
+     * Returns the specified country from the DB
+     **/
     public static Country getCountry(String country) {
 	try {
 	    CountryQuery query = new CountryQuery();
@@ -38,6 +41,9 @@ public class Country extends CountryBDO implements Description {
 	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
     }
 
+    /**
+     * Return a list of all countries in the DB
+     **/
     public static List getAllCountries() {
 	List result = new ArrayList();
 	try {
@@ -92,6 +98,9 @@ public class Country extends CountryBDO implements Description {
 
 /*
  * $Log: Country.java,v $
+ * Revision 1.6  2000/05/31 12:15:50  studer
+ * Javadoc added
+ *
  * Revision 1.5  2000/05/30 14:24:28  locher
  * toString defined
  *

@@ -1,4 +1,4 @@
-// $Id: CompanyAccount.java,v 1.1 2000/05/30 15:52:24 locher Exp $
+// $Id: CompanyAccount.java,v 1.2 2000/05/31 12:15:57 studer Exp $
 
 package jobmatch.business.provider.account;
 
@@ -9,8 +9,8 @@ import jobmatch.business.company.Company;
  *  An Account for Companies
  *
  *  @since May 4 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.2 $
  **/
 public class CompanyAccount extends CompanyAccountBDO implements Account {
         
@@ -26,6 +26,9 @@ public class CompanyAccount extends CompanyAccountBDO implements Account {
 	return TYPE_COMPANY;
     }
 
+    /**
+     * Returns the candidate business object for this account
+     **/
     public Company getCompanyBO() {
 	try {
 	    return new Company(this.getCompany());
@@ -64,6 +67,9 @@ public class CompanyAccount extends CompanyAccountBDO implements Account {
 
 /*
  * $Log: CompanyAccount.java,v $
+ * Revision 1.2  2000/05/31 12:15:57  studer
+ * Javadoc added
+ *
  * Revision 1.1  2000/05/30 15:52:24  locher
  * added Company and Profile BOs
  *

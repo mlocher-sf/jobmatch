@@ -1,4 +1,4 @@
-// $Id: CandidateAccount.java,v 1.6 2000/05/30 15:52:24 locher Exp $
+// $Id: CandidateAccount.java,v 1.7 2000/05/31 12:15:56 studer Exp $
 
 package jobmatch.business.provider.account;
 
@@ -9,8 +9,8 @@ import jobmatch.business.candidate.Candidate;
  *  An Account for Candidates
  *
  *  @since May 4 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.6 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.7 $
  **/
 public class CandidateAccount extends CandidateAccountBDO implements Account {
         
@@ -26,6 +26,9 @@ public class CandidateAccount extends CandidateAccountBDO implements Account {
 	return TYPE_CANDIDATE;
     }
 
+    /**
+     * Returns the candidate business object for this account
+     **/
     public Candidate getCandidateBO() {
 	try {
 	    return new Candidate(this.getCandidate());
@@ -64,6 +67,9 @@ public class CandidateAccount extends CandidateAccountBDO implements Account {
 
 /*
  * $Log: CandidateAccount.java,v $
+ * Revision 1.7  2000/05/31 12:15:56  studer
+ * Javadoc added
+ *
  * Revision 1.6  2000/05/30 15:52:24  locher
  * added Company and Profile BOs
  *

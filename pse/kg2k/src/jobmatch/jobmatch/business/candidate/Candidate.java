@@ -1,4 +1,4 @@
-// $Id: Candidate.java,v 1.5 2000/05/30 12:47:52 studer Exp $
+// $Id: Candidate.java,v 1.6 2000/05/31 12:15:44 studer Exp $
 
 package jobmatch.business.candidate;
 
@@ -9,10 +9,12 @@ import java.util.*;
 
 /**
  *  Candidate Business Object
+ *  Inherites the methods from CandidateBDO, who priveds
+ *  access to the database
  *
  *  @since May 4 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.5 $
+ *  @version $Revision: 1.6 $
  **/
 public class Candidate extends CandidateBDO {
     
@@ -28,6 +30,9 @@ public class Candidate extends CandidateBDO {
 	return Formation.getAllFormationsFor(this);
     }
 
+    /**
+     * Returns the candidates nationality
+     **/
     public Country getNationalityBO(){
 	try{
 	    return new Country(this.getNationality());
@@ -69,6 +74,9 @@ public class Candidate extends CandidateBDO {
 
 /*
  * $Log: Candidate.java,v $
+ * Revision 1.6  2000/05/31 12:15:44  studer
+ * Javadoc added
+ *
  * Revision 1.5  2000/05/30 12:47:52  studer
  * DropDown wird jetzt via DB abefuellt
  *

@@ -1,4 +1,4 @@
-// $Id: Formation.java,v 1.3 2000/05/31 06:09:25 studer Exp $
+// $Id: Formation.java,v 1.4 2000/05/31 12:15:47 studer Exp $
 
 package jobmatch.business.candidate.cv;
 
@@ -12,7 +12,7 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public class Formation extends SchoolCandidateBDO implements CVSection {
     
@@ -24,6 +24,9 @@ public class Formation extends SchoolCandidateBDO implements CVSection {
 	super(dataObject);
     }
 
+    /**
+     * Returns a list of formations for the specified candidate
+     **/
     public static List getAllFormationsFor(Candidate candidate) {
 	List result = new ArrayList();
 	try{
@@ -40,6 +43,9 @@ public class Formation extends SchoolCandidateBDO implements CVSection {
 	return result;
     }
 
+    /**
+     * Returns the Candidate business object
+     **/
     public Candidate getCandidateBO(){
 	try {
 	    return new Candidate(this.getCandidate());
@@ -49,6 +55,9 @@ public class Formation extends SchoolCandidateBDO implements CVSection {
 	}
     }
 
+    /**
+     * Return the School business object
+     **/
     public School getSchoolBO() {
 	try {
 	    return new School(this.getSchool());
@@ -57,7 +66,9 @@ public class Formation extends SchoolCandidateBDO implements CVSection {
 	}
     }
     
-
+    /**
+     * Returns the Graduation business object
+     **/
     public Graduation getGraduationBO() {
 	try {
 	    return new Graduation(this.getDiploma());
@@ -98,6 +109,9 @@ public class Formation extends SchoolCandidateBDO implements CVSection {
 
 /*
  * $Log: Formation.java,v $
+ * Revision 1.4  2000/05/31 12:15:47  studer
+ * Javadoc added
+ *
  * Revision 1.3  2000/05/31 06:09:25  studer
  * Funktionalitaet zum dynamischen Fuellen einer Tabelle
  *

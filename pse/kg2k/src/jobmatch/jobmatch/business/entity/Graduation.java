@@ -1,4 +1,4 @@
-// $Id: Graduation.java,v 1.5 2000/05/30 14:24:29 locher Exp $
+// $Id: Graduation.java,v 1.6 2000/05/31 12:15:51 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -9,11 +9,14 @@ import java.util.*;
  *  Graduation Business Object
  *
  *  @since May 26 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.5 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.6 $
  **/
 public class Graduation extends GraduationBDO implements Description {
     
+    /**
+     * Private Constructor
+     **/
     private Graduation(String description) throws Exception {
 	super();
 	this.setDescription(description);
@@ -24,6 +27,9 @@ public class Graduation extends GraduationBDO implements Description {
 	super(dataObject);
     }
 
+    /**
+     * Gets the specified graduation from the DB
+     **/
     public static Graduation getGraduation(String graduation) {
 	try {
 	    GraduationQuery query = new GraduationQuery();
@@ -37,6 +43,8 @@ public class Graduation extends GraduationBDO implements Description {
 	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
     }
 
+    /**
+     * Return a list with all graduationdata from the DB
     public static List getAllGraduations() {
 	List result = new ArrayList();
 	try {
@@ -86,6 +94,9 @@ public class Graduation extends GraduationBDO implements Description {
 
 /*
  * $Log: Graduation.java,v $
+ * Revision 1.6  2000/05/31 12:15:51  studer
+ * Javadoc added
+ *
  * Revision 1.5  2000/05/30 14:24:29  locher
  * toString defined
  *

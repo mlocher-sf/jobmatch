@@ -1,4 +1,4 @@
-// $Id: School.java,v 1.5 2000/05/30 14:24:29 locher Exp $
+// $Id: School.java,v 1.6 2000/05/31 12:15:51 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -9,8 +9,8 @@ import java.util.*;
  *  School Business Object
  *
  *  @since May 26 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.5 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.6 $
  **/
 public class School extends SchoolBDO implements Description {
     
@@ -24,6 +24,9 @@ public class School extends SchoolBDO implements Description {
 	super(dataObject);
     }
 
+    /**
+     * Return the specified school from the DB
+     **/
    public static School getSchool(String school) {
 	try {
 	    SchoolQuery query = new SchoolQuery();
@@ -36,7 +39,10 @@ public class School extends SchoolBDO implements Description {
 	    }
 	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
     }
-
+    
+    /**
+     * Return a list of all schools in the DB
+     **/
     public static List getAllSchools() {
 	List result = new ArrayList();
 	try {
@@ -86,6 +92,9 @@ public class School extends SchoolBDO implements Description {
 
 /*
  * $Log: School.java,v $
+ * Revision 1.6  2000/05/31 12:15:51  studer
+ * Javadoc added
+ *
  * Revision 1.5  2000/05/30 14:24:29  locher
  * toString defined
  *

@@ -1,4 +1,4 @@
-// $Id: AccountManager.java,v 1.9 2000/05/30 15:52:23 locher Exp $
+// $Id: AccountManager.java,v 1.10 2000/05/31 12:15:55 studer Exp $
 
 package jobmatch.business.provider.account;
 
@@ -9,8 +9,8 @@ import com.lutris.dods.builder.generator.query.*;
  *  Controls access to accounts
  *
  *  @since May 8 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.9 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.10 $
  **/
 final public class AccountManager {
 
@@ -46,6 +46,9 @@ final public class AccountManager {
 	return false;
     }
 
+    /**
+     * Returns the account of the candidate with the specified username
+     **/
     public CandidateAccount getCandidateAccount(String username) {
 	CandidateAccount result = null;
 	try {
@@ -58,6 +61,9 @@ final public class AccountManager {
 	return result;	
     }
 
+    /**
+     * Creates a new Candidateaccount
+     **/
     public void createCandidateAccount(String username, String passphrase, String eMail) {
 	if (!candidateUsernameExists(username)) {
 	    try {
@@ -78,6 +84,9 @@ final public class AccountManager {
 	}
     }
 
+    /**
+     * Checks if the specified username exists in the DB
+     **/
     public boolean candidateUsernameExists(String username) {
 	try {
 	    CandidateAccountQuery query = new CandidateAccountQuery();
@@ -108,6 +117,9 @@ final public class AccountManager {
 	return false;
     }
 
+    /**
+     * Returns the account of the company with the specified username
+     **/
     public CompanyAccount getCompanyAccount(String username) {
 	CompanyAccount result = null;
 	try {
@@ -120,6 +132,9 @@ final public class AccountManager {
 	return result;	
     }
 
+    /**
+     * Creates a new Companyeaccount
+     **/
     public void createCompanyAccount(String username, String passphrase, String eMail) {
 	if (!companyUsernameExists(username)) {
 	    try {
@@ -140,6 +155,9 @@ final public class AccountManager {
 	}
     }
 
+    /**
+     * Checks if the specified username exists in the DB
+     **/
     public boolean companyUsernameExists(String username) {
 	try {
 	    CompanyAccountQuery query = new CompanyAccountQuery();
@@ -156,6 +174,9 @@ final public class AccountManager {
 
 /*
  * $Log: AccountManager.java,v $
+ * Revision 1.10  2000/05/31 12:15:55  studer
+ * Javadoc added
+ *
  * Revision 1.9  2000/05/30 15:52:23  locher
  * added Company and Profile BOs
  *
