@@ -6,26 +6,18 @@
  
   <body>
     <hr>
-    <h1>Ausbildung</h1>
-    <form>
-    <table border=1> <tr><td>
-    Schultyp: </td><td> <select name =" Schultypen"> 
-%                        <option value = "Primarschule"> Primarschule
-                        <option value = "Sekundarschule"> Sekundarschule
-                        </select> </td></tr><tr><td>
-    Name der Schule: </td><td> <input type = "text"> </td></tr><tr><td>
-    Beginn: </td><td> Tag   <input type = "text", size = 2, maxlength=2>
-                      Monat <input type = "text", size = 2, maxlength=2>
-                      Jahr  <input type = "text", size = 4, maxlength=4> </td></tr><tr><td>
-    Ende: </td><td> Tag   <input type = "text", size = 2, maxlength=2>
-                    Monat <input type = "text", size = 2, maxlength=2>
-                    Jahr  <input type = "text", size = 4, maxlength=4> </td></tr><tr><td>
-    Abschluss: </td><td> <select name ="Abschluss"> 
-                         <option value = "Matur">Matur
-                         <option value = "Diplom">Diplom
-                         </select> </td></tr><tr><td>
-    Bemerkungen: </td><td> <textarea name= "remarks", rows="3", Cols= "30"></textarea> </td></tr><tr><td>
-    <input type="submit" name="submit" value="Weitere Schulen">
+    <h1>Ausbildung</h1>    
+    <table border=1> <tr>
+	<th>Schultyp </th><th>Name der Schule </th><th>Beginn </th><th>Ende </th><th>Abschluss </th><th>Bemerkungen</th></tr>
+      <tr>  <form action="./CVEducationDetail.html" method="get">
+<td> <input type = "text"> </td>
+<td> <input type = "text"> </td>
+<td><input type = "text"></td>
+ <td><input type = "text"size=10 maxlength=10></td>
+<td><input type = "text"size=10 maxlength=10></td>
+<td><input type = "text"></td> </tr>
+    <tr><td>
+    <input type="submit" name="submit" value="Schule eingeben">
     </td></tr>
     </table>
     </form>
