@@ -17,7 +17,16 @@ ROOT =	../../../../..
 #
 PACKAGEDIR = jobmatch/business/company/profile/tree
 
-CLASSES = MatchTree TreeNode
+CLASSES = \
+	MatchTree \
+	TreeNode \
+	AbstractNode \
+	ElementaryNode \
+	OperationNode \
+	ORNode \
+	ANDNode \
+	NOTNode \
+	BooleanNode
 
 USEICONTRACT=1
 

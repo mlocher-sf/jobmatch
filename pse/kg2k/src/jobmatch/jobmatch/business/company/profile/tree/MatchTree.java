@@ -1,15 +1,16 @@
-// $Id: MatchTree.java,v 1.1 2000/05/14 17:09:24 locher Exp $
+// $Id: MatchTree.java,v 1.2 2000/05/16 07:21:29 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
 import java.io.Serializable;
+import jobmatch.business.candidate.Candidate;
 
 /**
  *  Match Tree
  *
  *  @since May 14 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class MatchTree implements Cloneable, Serializable {
 
@@ -21,6 +22,24 @@ public class MatchTree implements Cloneable, Serializable {
 	this.versionId = 0;
     }
     
+    public boolean match(Candidate candidate) {
+	return this.root.match(candidate);
+    }
+
+    public TreeNode getRoot() {
+	return this.root;
+    }
+
+    public void setRoot(TreeNode root) {
+	this.root = root;
+    }
+
+    /** @pre node.getTree() == this **/
+    public int getLeafNo(TreeNode node) {
+	//	return 23;
+	return (int) (500*Math.random());
+    }
+
     /** @see Object.equals **/
     public boolean equals(Object other) {
 	if (other == null) {
@@ -74,6 +93,9 @@ public class MatchTree implements Cloneable, Serializable {
 // Document history
 /*
  * $Log: MatchTree.java,v $
+ * Revision 1.2  2000/05/16 07:21:29  locher
+ * match tree
+ *
  * Revision 1.1  2000/05/14 17:09:24  locher
  * begin matchtree
  *

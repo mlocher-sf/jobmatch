@@ -1,4 +1,4 @@
-// $Id: TreeNode.java,v 1.1 2000/05/14 17:09:24 locher Exp $
+// $Id: TreeNode.java,v 1.2 2000/05/16 07:21:31 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -6,11 +6,11 @@ import java.io.Serializable;
 import jobmatch.business.candidate.Candidate;
 
 /**
- *  Interface for tree noddes
+ *  Interface for tree nodes
  *
  *  @since May 14 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public interface TreeNode extends Serializable {
     
@@ -24,6 +24,9 @@ public interface TreeNode extends Serializable {
 // Document history
 /*
  * $Log: TreeNode.java,v $
+ * Revision 1.2  2000/05/16 07:21:31  locher
+ * match tree
+ *
  * Revision 1.1  2000/05/14 17:09:24  locher
  * begin matchtree
  *

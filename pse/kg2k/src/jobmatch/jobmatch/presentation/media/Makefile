@@ -14,7 +14,16 @@ ROOT =	../../..
 #
 PACKAGEDIR = jobmatch/presentation/media
 
-#JAR_INSTALL = Enhydra.gif
+JAR_INSTALL = \
+	and.gif	\
+	andACTIVE.gif \
+	andPRESS.gif \
+	not.gif \
+	notACTIVE.gif \
+	notPRESS.gif \
+	or.gif \
+	orACTIVE.gif \
+	orPRESS.gif
 
 include $(ROOT)/config.mk
 
