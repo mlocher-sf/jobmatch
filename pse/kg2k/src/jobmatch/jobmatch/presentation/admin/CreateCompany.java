@@ -1,4 +1,4 @@
-// $Id: CreateCompany.java,v 1.1 2000/06/13 16:00:07 locher Exp $
+// $Id: CreateCompany.java,v 1.2 2000/06/13 16:32:47 locher Exp $
 package jobmatch.presentation.admin;
 
 import com.lutris.xml.xmlc.*;
@@ -11,7 +11,7 @@ import jobmatch.business.provider.account.*;
  * Creates a new Company Account
  * @since June 13 2000
  * @author $Author: locher $
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  **/
 public class CreateCompany extends AuthentificationPage implements HttpPresentation {
 
@@ -29,7 +29,7 @@ public class CreateCompany extends AuthentificationPage implements HttpPresentat
 	  
 	    if (passphrase != null && passphrase.equals(confirm)) {
 		this.createAccount(username, passphrase, email);
-		final String loginURL = "./ControlCenter.po";
+		final String loginURL = "./admin/ControlCenter.po";
 		throw new ClientPageRedirectException(
 						      comms.request.getAppFileURIPath(loginURL));
 	    }
@@ -69,6 +69,9 @@ public class CreateCompany extends AuthentificationPage implements HttpPresentat
 // Document history
 /**
  * $Log: CreateCompany.java,v $
+ * Revision 1.2  2000/06/13 16:32:47  locher
+ * url fix
+ *
  * Revision 1.1  2000/06/13 16:00:07  locher
  * moved CreateCompany to the right place
  *
