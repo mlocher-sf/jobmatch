@@ -1,13 +1,14 @@
-PSE Gruppe 4, <NAME>
+PSE Gruppe 4, <Mario Loeffel>
 ==============================================================================
 
 				 TODO
 
-Deadline   Description
+Deadline	 Description
 ______________________________________________________________________________
 
-
+110400     Informieren ueber JDBC und der Gruppe vorstellen
+											
 		
 
 ==============================================================================
-$Id: todo.txt,v 1.1 2000/04/03 10:01:34 loeffel Exp $
+$Id: todo.txt,v 1.2 2000/04/04 09:22:07 loeffel Exp $
