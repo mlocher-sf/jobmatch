@@ -35,6 +35,7 @@ POST_SUBDIRS = \
 CLASSES = \
 	Redirect \
 	AuthentificationPage \
+	ControlCenter \
 	CandidateHome \
 	CVPersonal \
 	Welcome \
@@ -98,7 +99,8 @@ HTML_CLASSES = \
 	CVSoftwareExperienceHTML \
 	CVWorkingDetailExperienceHTML \
 	CVWorkingExperienceHTML \
-	PasswordHTML
+	PasswordHTML \
+	ControlCenterHTML
 
 JAR_INSTALL = \
 	./html/style.css
