@@ -1,4 +1,4 @@
-// $Id: ORNode.java,v 1.1 2000/05/16 07:21:30 locher Exp $
+// $Id: ORNode.java,v 1.2 2000/06/02 15:18:52 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -11,12 +11,12 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class ORNode extends OperationNode {
 
-    public ORNode(MatchTree tree, TreeNode a, TreeNode b) {
-	super(tree);
+    public ORNode(MatchTree tree, TreeNode parent, TreeNode a, TreeNode b) {
+	super(tree, parent);
 	this.addNode(a);
 	this.addNode(b);
     }
@@ -81,6 +81,9 @@ public class ORNode extends OperationNode {
 
 /*
  * $Log: ORNode.java,v $
+ * Revision 1.2  2000/06/02 15:18:52  locher
+ * *** empty log message ***
+ *
  * Revision 1.1  2000/05/16 07:21:30  locher
  * match tree
  *

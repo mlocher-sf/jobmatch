@@ -1,4 +1,4 @@
-// $Id: NOTNode.java,v 1.1 2000/05/16 07:21:29 locher Exp $
+// $Id: NOTNode.java,v 1.2 2000/06/02 15:18:52 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -10,15 +10,16 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since 30.4.2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class NOTNode extends OperationNode {
 
     private TreeNode child;
 
-    public NOTNode(MatchTree tree, TreeNode child) {
-	super(tree);
+    public NOTNode(MatchTree tree, TreeNode parent, TreeNode child) {
+	super(tree, parent);
 	this.child = child;
+	child.setParent(this);
     }
     
     public String getDescription() {
@@ -72,6 +73,9 @@ public class NOTNode extends OperationNode {
 
 /*
  * $Log: NOTNode.java,v $
+ * Revision 1.2  2000/06/02 15:18:52  locher
+ * *** empty log message ***
+ *
  * Revision 1.1  2000/05/16 07:21:29  locher
  * match tree
  *

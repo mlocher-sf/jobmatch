@@ -1,4 +1,4 @@
-// $Id: BooleanNode.java,v 1.1 2000/05/30 14:23:21 locher Exp $
+// $Id: BooleanNode.java,v 1.2 2000/06/02 15:18:55 locher Exp $
 
 package jobmatch.business.company.profile.tree.test;
 
@@ -10,14 +10,14 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class BooleanNode extends MemoryNode {
 
     private boolean value;
     
-    public BooleanNode(MatchTree tree, boolean value) {
-	super(tree);
+    public BooleanNode(MatchTree tree, TreeNode parent, boolean value) {
+	super(tree, parent);
 	this.value = value;
     }
 
@@ -76,6 +76,9 @@ public class BooleanNode extends MemoryNode {
 
 /*
  * $Log: BooleanNode.java,v $
+ * Revision 1.2  2000/06/02 15:18:55  locher
+ * *** empty log message ***
+ *
  * Revision 1.1  2000/05/30 14:23:21  locher
  * tree redesign
  *

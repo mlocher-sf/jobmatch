@@ -22,6 +22,7 @@ CLASSES = \
 	TreeNode \
 	AbstractNode \
 	MemoryNode \
+	RootNode \
 	LeafSupport \
 	OperationNode \
 	ORNode \

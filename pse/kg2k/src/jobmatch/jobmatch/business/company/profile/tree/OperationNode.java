@@ -1,4 +1,4 @@
-// $Id: OperationNode.java,v 1.2 2000/05/30 14:23:20 locher Exp $
+// $Id: OperationNode.java,v 1.3 2000/06/02 15:18:52 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -10,14 +10,14 @@ import java.util.*;
  *
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 abstract class OperationNode extends MemoryNode {
 
     protected List children;
 
-    protected OperationNode(MatchTree tree) {
-	super(tree);
+    protected OperationNode(MatchTree tree, TreeNode parent) {
+	super(tree, parent);
 	this.children = new ArrayList();
     }
     
@@ -40,6 +40,7 @@ abstract class OperationNode extends MemoryNode {
     /** @pre node != null **/
     public void addNode(TreeNode node) {
 	this.children.add(node);
+	node.setParent(this);
     }
 
     public int numChildren() {
@@ -100,6 +101,9 @@ abstract class OperationNode extends MemoryNode {
 
 /*
  * $Log: OperationNode.java,v $
+ * Revision 1.3  2000/06/02 15:18:52  locher
+ * *** empty log message ***
+ *
  * Revision 1.2  2000/05/30 14:23:20  locher
  * tree redesign
  *

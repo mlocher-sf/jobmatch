@@ -1,4 +1,4 @@
-// $Id: TestTree.java,v 1.5 2000/05/30 14:23:22 locher Exp $
+// $Id: TestTree.java,v 1.6 2000/06/02 15:18:55 locher Exp $
 
 package jobmatch.business.company.profile.tree.test;
 
@@ -10,7 +10,7 @@ import jobmatch.business.company.profile.tree.*;
  *
  *  @since May 14 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.5 $
+ *  @version $Revision: 1.6 $
  **/
 public class TestTree extends TestCase {
 
@@ -24,8 +24,8 @@ public class TestTree extends TestCase {
     
     protected void setUp() {
 	this.tree = new MatchTree();
-	this.TRUE = new BooleanNode(tree, true);
-	this.FALSE = new BooleanNode(tree, false);
+	this.TRUE = new BooleanNode(tree, null, true);
+	this.FALSE = new BooleanNode(tree, null, false);
     }
 
     public void testBooleanNode() {
@@ -39,10 +39,10 @@ public class TestTree extends TestCase {
     }
 
     public void testANDNode() {
-	TreeNode and11 = new ANDNode(tree, this.TRUE, this.TRUE);
-	TreeNode and01 = new ANDNode(tree, this.FALSE, this.TRUE);
-	TreeNode and10 = new ANDNode(tree, this.TRUE, this.FALSE);
-	TreeNode and00 = new ANDNode(tree, this.FALSE, this.FALSE);
+	TreeNode and11 = new ANDNode(tree, null, this.TRUE, this.TRUE);
+	TreeNode and01 = new ANDNode(tree, null, this.FALSE, this.TRUE);
+	TreeNode and10 = new ANDNode(tree, null, this.TRUE, this.FALSE);
+	TreeNode and00 = new ANDNode(tree, null, this.FALSE, this.FALSE);
 	assert(and11.match(null));
 	assert(!and01.match(null));
 	assert(!and10.match(null));
@@ -50,10 +50,10 @@ public class TestTree extends TestCase {
     }
 
     public void testORNode() {
-	TreeNode or11 = new ORNode(tree, this.TRUE, this.TRUE);
-	TreeNode or01 = new ORNode(tree, this.FALSE, this.TRUE);
-	TreeNode or10 = new ORNode(tree, this.TRUE, this.FALSE);
-	TreeNode or00 = new ORNode(tree, this.FALSE, this.FALSE);
+	TreeNode or11 = new ORNode(tree, null, this.TRUE, this.TRUE);
+	TreeNode or01 = new ORNode(tree, null, this.FALSE, this.TRUE);
+	TreeNode or10 = new ORNode(tree, null, this.TRUE, this.FALSE);
+	TreeNode or00 = new ORNode(tree, null, this.FALSE, this.FALSE);
 	assert(or11.match(null));
 	assert(or01.match(null));
 	assert(or10.match(null));
@@ -61,8 +61,8 @@ public class TestTree extends TestCase {
     }
 
     public void testNOTNode() {
-	TreeNode not1 = new NOTNode(tree, this.TRUE);
-	TreeNode not0 = new NOTNode(tree, this.FALSE);
+	TreeNode not1 = new NOTNode(tree, null, this.TRUE);
+	TreeNode not0 = new NOTNode(tree, null, this.FALSE);
 	assert(!not1.match(null));
 	assert(not0.match(null));
     }
@@ -77,6 +77,9 @@ public class TestTree extends TestCase {
 // Document history
 /*
  * $Log: TestTree.java,v $
+ * Revision 1.6  2000/06/02 15:18:55  locher
+ * *** empty log message ***
+ *
  * Revision 1.5  2000/05/30 14:23:22  locher
  * tree redesign
  *

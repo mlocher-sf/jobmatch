@@ -1,4 +1,4 @@
-// $Id: MatchTree.java,v 1.3 2000/05/30 14:23:19 locher Exp $
+// $Id: MatchTree.java,v 1.4 2000/06/02 15:18:51 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -10,7 +10,7 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since May 14 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public class MatchTree implements Cloneable, Serializable {
 
@@ -20,6 +20,7 @@ public class MatchTree implements Cloneable, Serializable {
     
     public MatchTree() {
 	super();
+	this.setRoot(new RootNode(this));
 	this.versionId = 0;
 	this.nextLeafNumber = 0;
     }
@@ -100,6 +101,9 @@ public class MatchTree implements Cloneable, Serializable {
 // Document history
 /*
  * $Log: MatchTree.java,v $
+ * Revision 1.4  2000/06/02 15:18:51  locher
+ * *** empty log message ***
+ *
  * Revision 1.3  2000/05/30 14:23:19  locher
  * tree redesign
  *

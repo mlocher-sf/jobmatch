@@ -1,4 +1,4 @@
-// $Id: AbstractNode.java,v 1.2 2000/05/30 14:23:17 locher Exp $
+// $Id: AbstractNode.java,v 1.3 2000/06/02 15:18:50 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -9,15 +9,16 @@ import java.io.Serializable;
  *
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 abstract class AbstractNode implements TreeNode, Cloneable, Serializable {
 
     private MatchTree tree;
     private TreeNode parent;
 
-    protected AbstractNode(MatchTree tree) {
+    protected AbstractNode(MatchTree tree, TreeNode parent) {
 	tree.registerNode(this);
+	this.setParent(parent);
     }
     
     public String getDescription() {
@@ -41,6 +42,15 @@ abstract class AbstractNode implements TreeNode, Cloneable, Serializable {
     }
 
     public void and(TreeNode other) {
+	TreeNode parent = this.getParent();
+	if (parent instanceof ANDNode) {
+	    parent.and(other);
+	} else {
+	    ANDNode node = new ANDNode(this.getTree(), 
+				       this.getParent(), 
+				       this, other);
+//	    parent.replace(this, node);
+	}
     }
 
     public void or(TreeNode other) {
@@ -99,6 +109,9 @@ abstract class AbstractNode implements TreeNode, Cloneable, Serializable {
 
 /*
  * $Log: AbstractNode.java,v $
+ * Revision 1.3  2000/06/02 15:18:50  locher
+ * *** empty log message ***
+ *
  * Revision 1.2  2000/05/30 14:23:17  locher
  * tree redesign
  *
