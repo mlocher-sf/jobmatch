@@ -1,4 +1,4 @@
-// $Id: AbstractNode.java,v 1.1 2000/05/16 07:21:27 locher Exp $
+// $Id: AbstractNode.java,v 1.2 2000/05/30 14:23:17 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -9,26 +9,44 @@ import java.io.Serializable;
  *
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 abstract class AbstractNode implements TreeNode, Cloneable, Serializable {
 
     private MatchTree tree;
+    private TreeNode parent;
 
     protected AbstractNode(MatchTree tree) {
-	this.tree = tree;
+	tree.registerNode(this);
     }
     
     public String getDescription() {
-	return "Elementary Node";
+	return "Abstract Node";
    }
        
     public MatchTree getTree() {
 	return this.tree;
     }
 
-    public int getLeafNo() {
-	return this.getTree().getLeafNo(this);
+    public void setTree(MatchTree tree) {
+	this.tree = tree;
+    }
+
+    public TreeNode getParent() {
+	return this.parent;
+    }
+
+    public void setParent(TreeNode parent) {
+	this.parent = parent;
+    }
+
+    public void and(TreeNode other) {
+    }
+
+    public void or(TreeNode other) {
+    }
+
+    public void not() {
     }
 
     /** @see Object.equals **/
@@ -81,6 +99,9 @@ abstract class AbstractNode implements TreeNode, Cloneable, Serializable {
 
 /*
  * $Log: AbstractNode.java,v $
+ * Revision 1.2  2000/05/30 14:23:17  locher
+ * tree redesign
+ *
  * Revision 1.1  2000/05/16 07:21:27  locher
  * match tree
  *

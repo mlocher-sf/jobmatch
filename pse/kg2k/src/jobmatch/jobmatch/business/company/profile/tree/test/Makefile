@@ -14,7 +14,9 @@ ROOT =	../../../../../..
 #
 PACKAGEDIR = jobmatch/business/company/profile/tree/test
 
-CLASSES = TestTree
+CLASSES = \
+	BooleanNode \
+	TestTree
 
 include $(ROOT)/config.mk
 

@@ -1,4 +1,4 @@
-// $Id: MatchTree.java,v 1.2 2000/05/16 07:21:29 locher Exp $
+// $Id: MatchTree.java,v 1.3 2000/05/30 14:23:19 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -10,16 +10,23 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since May 14 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class MatchTree implements Cloneable, Serializable {
 
     private int versionId;
     private TreeNode root;
+    private int nextLeafNumber;
     
     public MatchTree() {
 	super();
 	this.versionId = 0;
+	this.nextLeafNumber = 0;
+    }
+
+    public void registerNode(TreeNode node) {
+	node.setTree(this);
+	node.setLeafNo(nextLeafNumber++);
     }
     
     public boolean match(Candidate candidate) {
@@ -93,6 +100,9 @@ public class MatchTree implements Cloneable, Serializable {
 // Document history
 /*
  * $Log: MatchTree.java,v $
+ * Revision 1.3  2000/05/30 14:23:19  locher
+ * tree redesign
+ *
  * Revision 1.2  2000/05/16 07:21:29  locher
  * match tree
  *

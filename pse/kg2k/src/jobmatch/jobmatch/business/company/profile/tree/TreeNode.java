@@ -1,4 +1,4 @@
-// $Id: TreeNode.java,v 1.2 2000/05/16 07:21:31 locher Exp $
+// $Id: TreeNode.java,v 1.3 2000/05/30 14:23:20 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -10,20 +10,33 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since May 14 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public interface TreeNode extends Serializable {
-    
-    public boolean match(Candidate candidate);
-    public String getDescription();
-    public MatchTree getTree();
-    public int getLeafNo();
     public int numChildren();
+    public String getDescription();
+    public TreeNode getParent();
+    public void setParent(TreeNode parent);
+
+    // tree register related
+    public MatchTree getTree();
+    public void setTree(MatchTree tree);
+    public int getLeafNo();    
+    public void setLeafNo(int number);
+
+    // operation related
+    public void and(TreeNode other);
+    public void or(TreeNode other);
+    public void not();
+    public boolean match(Candidate candidate);
 }
 
 // Document history
 /*
  * $Log: TreeNode.java,v $
+ * Revision 1.3  2000/05/30 14:23:20  locher
+ * tree redesign
+ *
  * Revision 1.2  2000/05/16 07:21:31  locher
  * match tree
  *

@@ -21,12 +21,12 @@ CLASSES = \
 	MatchTree \
 	TreeNode \
 	AbstractNode \
-	ElementaryNode \
+	MemoryNode \
+	LeafSupport \
 	OperationNode \
 	ORNode \
 	ANDNode \
-	NOTNode \
-	BooleanNode
+	NOTNode
 
 USEICONTRACT=1
 

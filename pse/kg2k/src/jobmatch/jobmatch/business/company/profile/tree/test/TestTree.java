@@ -1,6 +1,6 @@
-// $Id: TestTree.java,v 1.4 2000/05/16 07:39:51 locher Exp $
+// $Id: TestTree.java,v 1.5 2000/05/30 14:23:22 locher Exp $
 
-package jobmatch.business.company.tree.test;
+package jobmatch.business.company.profile.tree.test;
 
 import junit.framework.*;
 import jobmatch.business.company.profile.tree.*;
@@ -10,7 +10,7 @@ import jobmatch.business.company.profile.tree.*;
  *
  *  @since May 14 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.4 $
+ *  @version $Revision: 1.5 $
  **/
 public class TestTree extends TestCase {
 
@@ -77,6 +77,9 @@ public class TestTree extends TestCase {
 // Document history
 /*
  * $Log: TestTree.java,v $
+ * Revision 1.5  2000/05/30 14:23:22  locher
+ * tree redesign
+ *
  * Revision 1.4  2000/05/16 07:39:51  locher
  * test operation nodes
  *

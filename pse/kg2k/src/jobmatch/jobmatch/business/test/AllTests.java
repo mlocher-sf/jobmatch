@@ -1,4 +1,4 @@
-// $Id: AllTests.java,v 1.3 2000/05/21 20:02:02 locher Exp $
+// $Id: AllTests.java,v 1.4 2000/05/30 14:23:23 locher Exp $
 
 package jobmatch.business.test;
 
@@ -9,14 +9,14 @@ import junit.framework.*;
  *
  *  @since May 19 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public class AllTests extends TestSuite {
 
     public AllTests() {
 	super("All business layer tests");
 	this.addTest(jobmatch.business.service.test.AllTests.suite());
-	this.addTest(jobmatch.business.company.tree.test.TestTree.suite());
+	this.addTest(jobmatch.business.company.profile.tree.test.TestTree.suite());
     }
 
     public static Test suite() { 
@@ -28,6 +28,9 @@ public class AllTests extends TestSuite {
 // Document history
 /*
  * $Log: AllTests.java,v $
+ * Revision 1.4  2000/05/30 14:23:23  locher
+ * tree redesign
+ *
  * Revision 1.3  2000/05/21 20:02:02  locher
  * working constructors for test suites
  *

@@ -1,4 +1,4 @@
-// $Id: OperationNode.java,v 1.1 2000/05/16 07:21:30 locher Exp $
+// $Id: OperationNode.java,v 1.2 2000/05/30 14:23:20 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -10,9 +10,9 @@ import java.util.*;
  *
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
-abstract class OperationNode extends AbstractNode {
+abstract class OperationNode extends MemoryNode {
 
     protected List children;
 
@@ -100,6 +100,9 @@ abstract class OperationNode extends AbstractNode {
 
 /*
  * $Log: OperationNode.java,v $
+ * Revision 1.2  2000/05/30 14:23:20  locher
+ * tree redesign
+ *
  * Revision 1.1  2000/05/16 07:21:30  locher
  * match tree
  *
