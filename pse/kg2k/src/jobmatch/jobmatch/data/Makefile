@@ -1,5 +1,5 @@
 
-ROOT =		/scratch/studer_repositry/dataTest
+ROOT =		../..
 
 PACKAGEDIR = 	/jobmatch/data
 
