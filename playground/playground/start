@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "***"
+echo "***  Connect to http://`hostname`:9000/"
+echo "***"
+
+/home/scg/Software/enhydra/enhydra2.3/bin/multiserver ./multiserver.conf
