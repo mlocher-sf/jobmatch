@@ -1,4 +1,4 @@
-// $Id: Formation.java,v 1.5 2000/06/10 11:06:18 studer Exp $
+// $Id: Formation.java,v 1.6 2000/06/13 08:03:47 dniederm Exp $
 
 package jobmatch.business.candidate.cv;
 
@@ -11,8 +11,8 @@ import java.util.*;
  *  Formation Business Object
  *
  *  @since May 26 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.5 $
+ *  @author $Author: dniederm $
+ *  @version $Revision: 1.6 $
  **/
 public class Formation extends SchoolCandidateBDO implements CVSection {
     
@@ -41,6 +41,14 @@ public class Formation extends SchoolCandidateBDO implements CVSection {
 	    System.err.println(qe);
 	}
 	return result;
+    }
+
+    /**
+     * Returns the Formations business Object specified by the string
+     * representation of a data object
+     */
+    public static Formation getFromHandle(String handle) {
+	return new Formation(SchoolCandidateDO.createExisting(handle));
     }
 
     /**
@@ -109,6 +117,9 @@ public class Formation extends SchoolCandidateBDO implements CVSection {
 
 /*
  * $Log: Formation.java,v $
+ * Revision 1.6  2000/06/13 08:03:47  dniederm
+ * Methode getFromHandle hinzugefuegt
+ *
  * Revision 1.5  2000/06/10 11:06:18  studer
  * business object for cvsections
  *
