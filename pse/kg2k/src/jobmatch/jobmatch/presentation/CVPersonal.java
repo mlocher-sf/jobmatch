@@ -83,13 +83,13 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	    page.getElementDay().setValue(splitDate(candidate.getBirthdate(), 1));
 	    
 	    page.getElementResidence().setValue(candidate.getResidence());
-
 	    Address addr = candidate.getAddressBO();
+	    if (addr != null){
 	    page.getElementStreet().setValue(addr.getStreet());
 	    page.getElementHousenumber().setValue(addr.getHouseNumber());
 	    page.getElementZip().setValue(String.valueOf(addr.getZIP()));
 	    page.getElementCity().setValue(addr.getCity());
-
+	    }
 	    page.getElementPhonenumber().setValue(candidate.getPhone());
 	    page.getElementFaxnumber().setValue(candidate.getFax());
 	    page.getElementNatel().setValue(candidate.getNatel());
@@ -147,6 +147,9 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 // Document history
 /*
  * $Log: CVPersonal.java,v $
+ * Revision 1.14  2000/06/13 14:12:29  studer
+ * Ueberpruefung ob Adresse null ist
+ *
  * Revision 1.13  2000/06/06 16:10:13  locher
  * enhanced login
  *
