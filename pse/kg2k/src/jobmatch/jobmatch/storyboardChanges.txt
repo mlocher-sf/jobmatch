@@ -5,7 +5,15 @@ old				new
 CVOverview.html			CandidateHome.html
 login.html			Login.html
 index.html			Welcome.html
-
+infoCandidates.html		InfoCandidates.html
+loginCompanies.html		LoginCompanies.html
+infoCompanies.html		InfoCompanies.html
+password.html			Password.html
+profile.html			Profile.html
+profileEducation.html		ProfileEducation.html
+profileComputerExperience.html	ProfileComputerExperience.html
+section.html			Section.html
+CompanyOverview.html		CompanyHome.html
 
 
 Added stuff:
@@ -22,3 +30,9 @@ old link					new link
 ----------------------------------------------------------------------
 CVPersonal.html					CVPersonal.po
 CandidateHome.html (former CVOverview.html)	CandidateHome.po
+
+
+Rechanged links:
+----------------------------------------------------------------------
+CVPersonal.po					CVPersonal.html
+CandidateHome.po 				CandidateHome.html

@@ -1,0 +1,217 @@
+Einstiegsseite
+
+ Login: (Textfeld)
+ Username: (Textfeld)
+ Passwort: (Textfeld)
+ Submit --> "Uebersicht Lebenslauf" 
+
+ Neu anmelden (L zu "erstes Login")
+ Passwort vergessen (L)
+ Einloggen fuer Firmen (L)
+ Informationen fuer Firmen (L)
+ Informationen fuer Kandidaten (L)
+-------------------------------
+"Erstes Login"
+
+ Username: (Textfeld) 
+ Passwort: (Textfeld)
+ Passwort bestaetigen: (Textfeld)
+ Submit --> "Uebersicht Lebenslauf" 
+ 
+ Zurueck zur Einstiegsseite(L)
+-------------------------------------
+vergessenes Passwort
+
+ E-Mailadressee:  (Textfeld)
+
+ Einstiegsseite(L)
+--------------------------------------
+
+Login fuer Firmen
+
+ Username: (Textfeld)
+ Passwort:  (Textfeld)
+ Submit --> Firmen Uebersicht 
+
+ Einstiegsseite (L)
+-----------------------------------------
+
+Informationen fuer Firmen
+
+ Einstiegsseite(L)
+------------------------------------------------
+
+Informationen zu AIESEC
+
+ Einstiegsseite(L)
+------------------------------------------------
+
+Informationen fuer Kandiaten
+
+ Einstiegsseite(L)
+---------------------------------------------
+
+Uebersicht Lebenslauf 
+
+ Persoenliche Daten (L)
+ Ausbildung (L)
+ Arbeitserfahrung (L)
+ Sprachkenntnisse (L)
+ Computer-Kenntnisse (L)
+ Mitgliedschaften (L)
+ Freizeitaktivitaeten (L)
+ Jobwuensche (L)
+
+ Status des CV:  aktiv  inaktiv (Radiobutton)
+
+ zurueck zur Einstiegsseite(L)
+-----------------
+Persoenliche Daten
+
+ Persoenliche Daten: (Textfeld)
+ Name:(Textfeld)
+ Vorname:(Textfeld)
+ eMail:(Textfeld)
+ Geschlecht:m w (Radiobutton)
+ Geburtsdatum: Tag Monat Jahr(Textfeld)
+ Heimatort:(Textfeld)
+ Nationalitaet:(Dropdown)
+ Strasse: (Textfeld)
+ Hausnummer:(Textfeld)
+ PLZ:(Textfeld)
+ Ort:(Textfeld)
+ Land:(Dropdown)
+ Telefon:(Textfeld)
+ Fax:(Textfeld)
+ Mobilnummer:(Textfeld)
+ Upload Foto:(Browse)      
+ Weiter (Link zu "Ausbildung")
+ Zurueck zur Uebersicht (L)
+
+----------------------------
+
+Ausbildung
+
+ Schultyp(Dropdown)
+ Name der Schule(Textfeld)
+ Beginn(Textfeld)
+ Ende(Textfeld)
+ Abschluss(Dropdown)
+ Bemerkungen(Textfeld)
+                               
+ weiter (Link zu "Arbeitserfahrung")
+ zurueck (Link zu "persoenliche Daten")
+
+------------------------------
+Arbeitserfahrung
+
+ Arbeitgeber: (Textfeld)
+ Arbeitsort:(Textfeld)
+ Land: (Dropdown)
+ Branche: (Dropdown)
+ Funktion: (Textfeld)
+ Intensitaet: (Textfeld) Stunden pro Woche
+ Referenz: (Textfeld)
+ Bemerkungen: (Textfeld)
+ Weitere Arbeitserfahrungen: (button) 
+                                                   
+ weiter (Link zu "Sprachkenntnisse")
+ zurueck (Link zu "Ausbildung")
+ zurueck zur Uebersicht (L)
+------------------------
+Sprachkenntnisse
+
+ Sprache:(Textfeld)
+ Sprache:(Dropdown)
+ schriftliche Kenntnis:(Dropdown)
+ muendliche Kenntnis:(Dropdown)
+ Diplome:(Textfeld)
+ weitere Sprachen (Button)
+
+Weiter (Link zu "Computerkenntnisse")
+Zurueck (Link zu "Arbeitserfahrungen")
+Zurueck zur Uebersicht (L)
+
+------------------------
+Computerkenntnisse
+
+ Softwarepaket:(Textfeld)
+ Kenntnis:(Dropdown)
+ Programmiersprache:(Textfeld)
+ Kenntnis:(Dropdown)
+ Betriebssystem:(Textfeld)
+ Kenntnis:(Dropdown)
+
+
+ Weiter (Link zu "Mitgliedschaft")
+ Zurueck (Link zu "Sprachkenntnisse")
+ Zurueck zur Uebersicht (L)
+ 
+--------------------
+Mitgliedschaft
+ 
+ Name des Vereins(Textfeld)
+ Ort(Textfeld)
+ Von(Textfeld)
+ Bis(Textfeld)
+ Funktion (Dropdown)     
+ Bemerkungen(Textfeld)
+ weitere Mitgliedschaften(Button)  
+                        
+ weiter (Link zu "Computerkenntnisse")
+ zurueck (Link zu Hobby")
+ zurueck zur Uebersicht (L)
+
+-----------------
+Hobby
+
+ Kompetenzen:(Textfeld)
+ Hobbies:(Textfeld)
+ Titel:(Textfeld)
+ Beschreibung:(Textfeld)
+ Prioritaet:(Textfeld)
+ Mitgliedschaft:(Textfeld)
+ Vereinsname:(Textfeld)
+ Funktion:  (Textfeld)
+ weitere Hobbies(Button) 
+
+ Weiter (Link zu Jobwuensche)
+ Zurueck (Link zu Mitgliedschaft)
+ Zurueck zur Uebersicht(L)
+
+------------------------
+Job-Wuensche
+
+ Branche:(Dropdown) 
+ Region:(Dropdown) 
+ Funktion:(Textfeld)
+ Arbeitspensum(Textfeld):%
+ Erwartungen/Bemerkungen:(Textfeld) 
+
+ Sperrliste:(Liste) 
+ Diesen Firmen moechte ich meinen Lebenslauf zukommen lassen:(Liste)
+
+ Submit --> Bestaetigung  
+
+ zurueck (Link zu Hobby)
+ zurueck zur Uebersicht (L)
+ -------------------------
+Bestaetigung
+ 
+
+zurueck zur Einstiegsseite (L)
+--------------------
+Firmen Uebersicht
+
+ Profil erstellen (L)
+ Matchingliste(L)
+ Kennzahlen editieren(L)
+ Zurueck zur Einstiegseite(L)
+
+-----------------
+Profil erstellen
+
+Ausbildung(L)
+Computerkenntnisse(L)
+Sprachkenntnisse(L)
+persoenliche Daten(L)
