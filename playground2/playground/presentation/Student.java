@@ -7,6 +7,7 @@ import java.util.Iterator;
 import org.w3c.dom.html.*;
 import com.lutris.xml.xmlc.*;
 import com.lutris.appserver.server.httpPresentation.*;
+import com.lutris.dods.builder.generator.query.DataObjectException;
 
 public class Student implements HttpPresentation {
 
@@ -25,7 +26,10 @@ public class Student implements HttpPresentation {
 
     private void insertData(){
 	InsertData data = new InsertData();
+	try{
 	data.insert();
+	}
+	catch (DataObjectException e){e.printStackTrace();}
     }
 /*
     private void showData(StudentHTML page){
