@@ -14,7 +14,6 @@ import jobmatch.business.entity.*;
 
 public class CVEducationDetail extends CVSection implements HttpPresentation {
 
-
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
 	this.assertLegitimation(comms, Account.TYPE_CANDIDATE);
@@ -26,45 +25,69 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 	CVEducationDetailHTML page = (CVEducationDetailHTML)comms.xmlcFactory.create(CVEducationDetailHTML.class);
 	this.fillSchooltype(page, null);
 	this.fillGraduation(page, null);
-	String handle = comms.request.getParameter("edit");
-	final boolean isEditing = (handle != null && handle.equals("new"));
-	if(isEditing){
-	    Formation formation = Formation.getFromHandle(handle);
-	    page.getElementEdit().setValue(handle);
-	    this.fillPage(page,formation);
+	
+	if (this.isEditing(comms)) {
+	    try {
+		Formation formation = this.getFormation(comms, candidate);
+		this.preparePageForNextCall(page, comms);
+		this.fillPage(page, formation);
+	    } catch (Exception e) {
+		throw new RuntimeException(e.toString());
+	    }
 	}
 	comms.response.writeHTML(page);
+    }
+
+    private String getHandle(HttpPresentationComms comms) {
+	try {
+	    return comms.request.getParameter("edit");	    
+	} catch (Exception e) {
+	    throw new RuntimeException(e.toString());
+	}
+    }
+
+    private void preparePageForNextCall(CVEducationDetailHTML page, HttpPresentationComms comms) {
+	page.getElementEdit().setValue(this.getHandle(comms));
+    }
+
+    private boolean isEditing(HttpPresentationComms comms) {
+	final String handle = this.getHandle(comms);
+	return (handle != null && !handle.equals("new"));
+    }
+
+    private Formation getFormation(HttpPresentationComms comms,
+				   Candidate candidate)  throws Exception {
+	Formation formation;
+	final String handle = this.getHandle(comms);
+	if (handle == null || handle.equals("new")){
+	    formation = new Formation();
+	    formation.setCandidate(candidate);
+	    formation.commit();
+	} else {
+	    formation = Formation.getFromHandle(handle);
+	}
+	return formation;
     }
 
     private void fillGraduation(CVEducationDetailHTML page, Formation formation){
 	final EntityManager man = EntityManager.getUniqueInstance();
 	Collection data =  man.getGraduations();
-	// Graduation selection = formation.getGraduationBO();
+	Graduation selection = formation.getGraduationBO();
 	HTMLOptionElement template = page.getElementTemplateGraduation();
-	this.fillListBox(template, data, null);
+	this.fillListBox(template, data, selection);
     }
 
     private void fillSchooltype(CVEducationDetailHTML page, Formation formation){
 	final EntityManager man = EntityManager.getUniqueInstance();
 	Collection data =  man.getSchooltypes();
-        //Schooltype selection = formation.getSchoolBO().getSchoolTypeBO();
+        Schooltype selection = formation.getSchoolBO().getSchoolTypeBO();
 	HTMLOptionElement template = page.getElementTemplateSchooltype();
-	this.fillListBox(template, data, null);
+	this.fillListBox(template, data, selection);
     }
 
     private void processData(Candidate candidate, HttpPresentationComms comms) {
 	try{
-	    Formation formation;
-	    String handle = comms.request.getParameter("edit");
-	    if (handle == null || handle.equals("new")){
-		formation = new Formation();
-		System.out.println(formation);
-	    }
-	    else{
-		formation = Formation.getFromHandle(handle);
-	    }
-
-	    formation.setCandidate(candidate);
+	    Formation formation = this.getFormation(comms, candidate);
 	    School school = School.getSchool(comms.request.getParameter("Description"));
 	    school.setType(Schooltype.getSchooltype(comms.request.getParameter("Schooltype")));
             formation.setDiploma(Graduation.getGraduation(comms.request.getParameter("Graduation")));
@@ -87,7 +110,9 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 
     private void fillPage(CVEducationDetailHTML page, Formation formation) {
 	try {
-	    page.getElementDescription().setValue(formation.getSchoolBDO().getDescription());
+	    if (formation.getSchoolBO() != null) {
+		page.getElementDescription().setValue(formation.getSchoolBO().getDescription());
+	    }
 	  
 	    page.getElementBeginYear().setValue(splitDate(formation.getBeginDate(), 3));
             page.getElementBeginMonth().setValue(splitDate(formation.getBeginDate(), 2));
@@ -102,26 +127,28 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 	}
 	catch(Exception e) {
 	    System.out.println(e.toString());
-	    throw new RuntimeException();
+	    throw new RuntimeException(e.toString());
 	} 
     }
     
     private String splitDate(Date d, int selector){
-	String result;
-	switch (selector) {
-	case 3:
-	    result = String.valueOf(TimeUtil.getYear(d));
-	    break;
-	case 2:
-	    result = String.valueOf(TimeUtil.getMonth(d));
-	    break;
-	case 1:
- 	    result = String.valueOf(TimeUtil.getDay(d));
-	    break;
-	default:
-	    result = d.toString();
+	String result = "";
+	if (d != null) {
+	    switch (selector) {
+	    case 3:
+		result = String.valueOf(TimeUtil.getYear(d));
+		break;
+	    case 2:
+		result = String.valueOf(TimeUtil.getMonth(d));
+		break;
+	    case 1:
+		result = String.valueOf(TimeUtil.getDay(d));
+		break;
+	    default:
+		result = d.toString();
+	    }
 	}
 	return result;
     }
 
-}
+} //class
