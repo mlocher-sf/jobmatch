@@ -1,0 +1,18 @@
+Sitzungsprotokoll PSE 2000, Gruppe 4
+==============================================================================
+Datum:  3. Mai 2000
+Zeit: 15.50 - 16.00
+Ort: Exwi B-Geschoss Studentenarbeitsplatz
+anwesend: alle
+-------------------------------------------------------------------------------
+
+Beschluesse:
+
+Michael, Denise, Marco, Feindesign
+Feindesignmeeting am Dienstag, 2. Mai 2000, 8.00 Uhr
+Mario, Michel machen Review des Grobdesigns
+Marco, Michael erstellen das 1. Release (Termin Donnerstagnachmittag 4.5.00)
+
+
+==============================================================================
+$Id: Protokoll20000503.txt,v 1.1 2000/05/04 12:25:46 studer Exp $
