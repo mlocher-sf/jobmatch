@@ -17,11 +17,11 @@ public class Student implements HttpPresentation {
 	StudentHTML page = new StudentHTML();
 	
 	page.getElementName().setValue(now);
-	showData(page);
+//	showData(page);
 //	foo(page);
         comms.response.writeHTML(page.toDocument());
     }
-
+/*
     private void showData(StudentHTML page){
 	try{
 	StudentsDO[] student;
@@ -41,7 +41,7 @@ public class Student implements HttpPresentation {
 	    page.getElementStudis().appendChild(createStudiParagraph(s));
 	}
     }*/
-/**
+/*
 	private HTMLParagraphElement createStudiParagraph(StudentBO studi) {
 	    final boolean DEEPCLONE = false;
 	    HTMLParagraphElement temp = (HTMLParagraphElement) new StudentHTML().getElementStudiTemplate().cloneNode(DEEPCLONE);
