@@ -1,0 +1,20 @@
+Sitzungsprotokoll PSE 2000, Gruppe 4
+==============================================================================
+Datum:  17. Mai 2000
+Zeit: 15.30 - 16.00
+Ort: Exwi B-Geschoss Studentenarbeitsplatz
+anwesend: alle + Assi
+-------------------------------------------------------------------------------
+
+Beschluesse:
+
+Final Product = Release 4
+Michael, Marco arbeiten am Matchtree
+Mario, Michel, Denise machen Release 1 bis am 24. Mai
+Marco, Denise machen das review der Gruppe 1
+Reviewmeeting am Freitagmittag
+
+
+
+==============================================================================
+$Id: Protokoll20000517.txt,v 1.1 2000/05/17 15:00:37 dniederm Exp $
