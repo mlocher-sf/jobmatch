@@ -9,10 +9,14 @@ ______________________________________________________________________________
 0404	Protokoll der Sitzung vom 31.03.2000
 0404	Protokoll der Sitzung vom 04.04. 2000
 0411	Junit repetieren
-0411	Makefile
+04??	Makefile
+0410	"Getting started with Enhydra" lesen
+0414	Storyboards
+0410	Features zur Liste hinzufuegen
+0411	Arbeitsplan
 		
 
 		
 
 ==============================================================================
-$Id: todo.txt,v 1.1 2000/04/04 16:30:28 dniederm Exp $
+$Id: todo.txt,v 1.2 2000/04/10 14:49:54 dniederm Exp $

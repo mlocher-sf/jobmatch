@@ -34,9 +34,10 @@ Konfigurationsmoeglichkeiten
 Auswahllisten bearbeiten
 Studi kann CV zustellen         Firma wird benachrichtigt
 Suchresultate zuruecksetzen
+CV aktiv/inaktiv setzen
 
 
 
 
 ==============================================================================
-$Id: features.txt,v 1.1 2000/04/10 06:27:43 locher Exp $
+$Id: features.txt,v 1.2 2000/04/10 14:50:06 dniederm Exp $
