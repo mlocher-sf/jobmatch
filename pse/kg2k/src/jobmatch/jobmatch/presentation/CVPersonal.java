@@ -30,7 +30,6 @@ public class CVPersonal extends CVSection implements HttpPresentation {
     /**
      * Fills the text fields with CV-data 
      **/
-
     private void readTextFields(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms){
 	try{
 	    candidate.setLname(comms.request.getParameter("lName"));
@@ -41,16 +40,18 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 						    Integer.parseInt(comms.request.getParameter("day"))));
 	    candidate.setResidence(comms.request.getParameter("residence"));
 	    //candidate.setNationality(comms.request.getParameter("nationality"));
-	    candidate.setStreet(comms.request.getParameter("street"));
-	    candidate.setHouseNumber(comms.request.getParameter("housenumber"));
-	    candidate.setPLZ(Integer.parseInt(comms.request.getParameter("zip")));
-	    candidate.setCity(comms.request.getParameter("city"));
-	    //candidate.setCountry(comms.request.getParameter("country"));
+
+	    Address addr = candidate.getAddressBO();
+	    addr.setStreet(comms.request.getParameter("street"));
+	    addr.setHouseNumber(comms.request.getParameter("housenumber"));
+	    addr.setZIP(comms.request.getParameter("zip"));
+	    addr.setCity(comms.request.getParameter("city"));
+	    addr.commit();
+	    //addr.setCountry(comms.request.getParameter("country"));
 	    candidate.setPhone(comms.request.getParameter("phonenumber"));
 	    candidate.setFax(comms.request.getParameter("faxnumber"));
 	    candidate.setNatel(comms.request.getParameter("natel"));
 	    //candidate.setPicture(comms.request.getParameter("picture")); 
-
 	    candidate.commit();
 	}
 	catch(Exception e){
@@ -77,10 +78,14 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	    //page.getElementMonth().setValue(splitDate(candidate.getBirthdate(),2));
 	    //page.getElementDay().setValue(splitDate(candidate.getBirthdate(),1));
 	    page.getElementResidence().setValue(candidate.getResidence());
-	    page.getElementStreet().setValue(candidate.getStreet());
-	    page.getElementHousenumber().setValue(candidate.getHouseNumber());
-	    page.getElementZip().setValue(String.valueOf(candidate.getPLZ()));
-	    page.getElementCity().setValue(candidate.getCity());
+
+
+	    Address addr = candidate.getAddressBO();
+	    page.getElementStreet().setValue(addr.getStreet());
+	    page.getElementHousenumber().setValue(addr.getHouseNumber());
+	    page.getElementZip().setValue(String.valueOf(addr.getZIP()));
+	    page.getElementCity().setValue(addr.getCity());
+
 	    page.getElementPhonenumber().setValue(candidate.getPhone());
 	    page.getElementFaxnumber().setValue(candidate.getFax());
 	    page.getElementNatel().setValue(candidate.getNatel());

@@ -1,4 +1,4 @@
-// $Id: Candidate.java,v 1.6 2000/05/31 12:15:44 studer Exp $
+// $Id: Candidate.java,v 1.7 2000/06/02 16:02:29 locher Exp $
 
 package jobmatch.business.candidate;
 
@@ -9,12 +9,12 @@ import java.util.*;
 
 /**
  *  Candidate Business Object
- *  Inherites the methods from CandidateBDO, who priveds
+ *  Inherites the methods from CandidateBDO, who provides
  *  access to the database
  *
  *  @since May 4 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.6 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.7 $
  **/
 public class Candidate extends CandidateBDO {
     
@@ -40,6 +40,22 @@ public class Candidate extends CandidateBDO {
 	    throw new RuntimeException(err.toString());
 	}
     }
+
+    /**
+     * Returns the candidates address
+     **/
+    public Address getAddressBO(){
+	try {
+	    AdressDO data = this.getAdress();
+	    if (data == null) {
+		data = AdressDO.createVirgin();
+		data.commit();
+	    }
+	    return new Address(data);
+	} catch (Exception err){
+	    throw new RuntimeException(err.toString());
+	}
+    }  
 	    
 	    
     
@@ -74,6 +90,9 @@ public class Candidate extends CandidateBDO {
 
 /*
  * $Log: Candidate.java,v $
+ * Revision 1.7  2000/06/02 16:02:29  locher
+ * introduced address entities
+ *
  * Revision 1.6  2000/05/31 12:15:44  studer
  * Javadoc added
  *
