@@ -1,7 +1,10 @@
-// $Id: CandidateAccount.java,v 1.2 2000/05/10 17:50:23 locher Exp $
+// $Id: CandidateAccount.java,v 1.3 2000/05/17 09:59:48 locher Exp $
 
 /*
  * $Log: CandidateAccount.java,v $
+ * Revision 1.3  2000/05/17 09:59:48  locher
+ * changed password to passphrase
+ *
  * Revision 1.2  2000/05/10 17:50:23  locher
  * login procedure
  *
@@ -24,7 +27,7 @@ import com.lutris.dods.builder.generator.query.DataObjectException;
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class CandidateAccount extends CandidateAccountBDO implements Account {
         
@@ -35,11 +38,6 @@ public class CandidateAccount extends CandidateAccountBDO implements Account {
 
     public int getType() {
 	return TYPE_CANDIDATE;
-    }
-
-    // RENAME the DB Field Password to Passphrase and kill this method !!
-    public String getPassphrase() throws DataObjectException {
-	return this.getPassword();
     }
     
     /** @see Object.equals **/

@@ -1,7 +1,10 @@
-// $Id: AccountManager.java,v 1.4 2000/05/10 17:50:23 locher Exp $
+// $Id: AccountManager.java,v 1.5 2000/05/17 09:59:48 locher Exp $
 
 /*
  * $Log: AccountManager.java,v $
+ * Revision 1.5  2000/05/17 09:59:48  locher
+ * changed password to passphrase
+ *
  * Revision 1.4  2000/05/10 17:50:23  locher
  * login procedure
  *
@@ -25,7 +28,7 @@ import com.lutris.dods.builder.generator.query.*;
  *
  *  @since May 8 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.4 $
+ *  @version $Revision: 1.5 $
  **/
 final public class AccountManager {
 
@@ -52,7 +55,7 @@ final public class AccountManager {
 	    query.setQueryUsername(username);
 	    CandidateAccountBDO candidate;
 	    while ((candidate = query.getNextBDO()) != null){
-		if (candidate.getPassword() == passphrase) return true;
+		if (candidate.getPassphrase() == passphrase) return true;
 	    }
 	   // CandidateAccountBDO[] results = query.getBDOArray();
 	   // System.out.println("result length: " + 
@@ -71,8 +74,8 @@ final public class AccountManager {
 		account = (CandidateAccount) CandidateAccount.createVirgin(); 
 		//verify that cast ! (is it legal??)
 		account.setUsername(username);
-		account.setPassword(passphrase);
-		//account.setEMail(eMail);
+		account.setPassphrase(passphrase);
+		account.setEmail(eMail);
 		account.commit();
 	    } catch (Exception e) {
 		System.err.println(e);
