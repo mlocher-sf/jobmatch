@@ -29,46 +29,25 @@
           <column id="Name">
             <type dbType="VARCHAR" javaType="String" size="40"/>
           </column>
-          <column id="Email">
-            <type dbType="VARCHAR" javaType="String" size="40"/>
-          </column>
           <column id="Fax">
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="20"/>
+          </column>
+          <column id="Email">
+            <type dbType="VARCHAR" javaType="String" size="50"/>
           </column>
         </table>
         <table id="jobmatch.data.Candidate">
           <column id="AIESECMember" usedForQuery="true">
             <type dbType="BIT" javaType="boolean"/>
           </column>
-          <column id="Lname" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="35"/>
-          </column>
           <column id="Nationality" usedForQuery="true">
             <type dbType="VARCHAR" javaType="String" size="25"/>
           </column>
           <column id="Sex" usedForQuery="true">
-            <type dbType="BIT" javaType="boolean"/>
+            <type dbType="ENUM('w','m')" javaType="boolean"/>
           </column>
           <column id="Status" usedForQuery="true">
             <type dbType="BIT" javaType="boolean"/>
-          </column>
-          <column id="LastLogin" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="10"/>
-          </column>
-          <column id="Fname" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="35"/>
-          </column>
-          <column id="Email" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="40"/>
-          </column>
-          <column id="Address" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="40"/>
-          </column>
-          <column id="Birthdate" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="10"/>
-          </column>
-          <column id="Residence">
-            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="40"/>
           </column>
           <column id="Competence">
             <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
@@ -79,6 +58,49 @@
           </column>
           <column id="Picture">
             <type canBeNull="true" dbType="VARBINARY" javaType="byte[]"/>
+          </column>
+          <column id="Lname" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="25"/>
+          </column>
+          <column id="Fname" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="20"/>
+          </column>
+          <column id="Email" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="50"/>
+          </column>
+          <column id="Birthdate" usedForQuery="true">
+            <type dbType="DATE" javaType="java.sql.Date" size="10"/>
+          </column>
+          <column id="Residence">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="50"/>
+          </column>
+          <column id="Street" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="50"/>
+          </column>
+          <column id="HouseNumber">
+            <type dbType="VARCHAR" javaType="String" size="5"/>
+          </column>
+          <column id="PLZ" usedForQuery="true">
+            <type dbType="MEDIUMINT UNSIGNED" javaType="int"/>
+          </column>
+          <column id="City" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="30"/>
+          </column>
+          <column id="Phone">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
+          </column>
+          <column id="Natel">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
+          </column>
+          <column id="Fax">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
+          </column>
+          <column id="LastLogin" usedForQuery="true">
+            <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+          </column>
+          <column id="Account" usedForQuery="true">
+            <referenceObject reference="jobmatch.data.CandidateAccount"/>
+            <type dbType="none" javaType="jobmatch.data.CandidateAccountDO"/>
           </column>
         </table>
         <table id="jobmatch.data.Company">
@@ -100,14 +122,8 @@
           <column id="NumberEmployees">
             <type canBeNull="true" dbType="INTEGER" javaType="int"/>
           </column>
-          <column id="Presence" usedForQuery="true">
-            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
-          </column>
           <column id="ShortDescription">
             <type canBeNull="true" dbType="LONGVARCHAR" javaType="String"/>
-          </column>
-          <column id="URL">
-            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
           </column>
           <column id="Contact">
             <referenceObject constraint="true" reference="jobmatch.data.Contactperson"/>
@@ -117,16 +133,23 @@
             <referenceObject constraint="true" reference="jobmatch.data.constant.Industry"/>
             <type canBeNull="true" dbType="none" javaType="jobmatch.data.constant.IndustryDO"/>
           </column>
-        </table>
-        <table id="jobmatch.data.Jobwish">
-          <column id="Function">
+          <column id="Account" usedForQuery="true">
+            <referenceObject reference="jobmatch.data.CompanyAccount"/>
+            <type dbType="none" javaType="jobmatch.data.CompanyAccountDO"/>
+          </column>
+          <column id="Presence" usedForQuery="true">
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="40"/>
           </column>
+          <column id="URL">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="50"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.Jobwish">
           <column id="Pensum">
-            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
+            <type canBeNull="true" dbType="TINYINT UNSIGNED" javaType="int"/>
           </column>
           <column id="Remarks">
-            <type canBeNull="true" dbType="LONGVARCHAR" javaType="String"/>
+            <type canBeNull="true" dbType="TEXT" javaType="String" size="70"/>
           </column>
           <column id="Industry">
             <referenceObject constraint="true" reference="jobmatch.data.constant.Industry"/>
@@ -136,10 +159,16 @@
             <referenceObject constraint="true" reference="jobmatch.data.constant.Area"/>
             <type dbType="none" javaType="jobmatch.data.constant.AreaDO"/>
           </column>
+          <column id="Function">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="50"/>
+          </column>
         </table>
         <table id="jobmatch.data.Account" isAbstract="true">
           <column id="Username" isIndex="true" usedForQuery="true">
             <type dbType="VARCHAR" javaType="String" size="40"/>
+          </column>
+          <column id="Password">
+            <type dbType="VARCHAR" javaType="String" size="20"/>
           </column>
         </table>
         <table id="jobmatch.data.CandidateAccount" extensionOf="jobmatch.data.Account"/>
