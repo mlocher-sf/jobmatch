@@ -1,4 +1,4 @@
-// $Id: NOTNode.java,v 1.2 2000/06/02 15:18:52 locher Exp $
+// $Id: NOTNode.java,v 1.3 2000/06/13 11:04:47 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -10,7 +10,7 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since 30.4.2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class NOTNode extends OperationNode {
 
@@ -26,8 +26,8 @@ public class NOTNode extends OperationNode {
 	return "{NOT: " + this.child.getDescription() + " }";
     }
 
-    public boolean match(Candidate candidate) {
-	return ! this.child.match(candidate);
+    public MatchResult match(Candidate candidate) {
+	return this.child.match(candidate); // XXX fix
     }
     
     /** @see Object.equals **/
@@ -73,6 +73,9 @@ public class NOTNode extends OperationNode {
 
 /*
  * $Log: NOTNode.java,v $
+ * Revision 1.3  2000/06/13 11:04:47  locher
+ * new match interface
+ *
  * Revision 1.2  2000/06/02 15:18:52  locher
  * *** empty log message ***
  *

@@ -1,4 +1,4 @@
-// $Id: TestTree.java,v 1.6 2000/06/02 15:18:55 locher Exp $
+// $Id: TestTree.java,v 1.7 2000/06/13 11:04:51 locher Exp $
 
 package jobmatch.business.company.profile.tree.test;
 
@@ -10,7 +10,7 @@ import jobmatch.business.company.profile.tree.*;
  *
  *  @since May 14 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.6 $
+ *  @version $Revision: 1.7 $
  **/
 public class TestTree extends TestCase {
 
@@ -28,7 +28,7 @@ public class TestTree extends TestCase {
 	this.FALSE = new BooleanNode(tree, null, false);
     }
 
-    public void testBooleanNode() {
+/*    public void testBooleanNode() {
 	assert(this.TRUE.match(null));
 	assert(!this.FALSE.match(null));
 	assert(this.TRUE.getTree() == tree);
@@ -66,7 +66,7 @@ public class TestTree extends TestCase {
 	assert(!not1.match(null));
 	assert(not0.match(null));
     }
-
+*/
     public static Test suite() { 
 	TestSuite suite= new TestSuite(TestTree.class);
 	return suite;
@@ -77,6 +77,9 @@ public class TestTree extends TestCase {
 // Document history
 /*
  * $Log: TestTree.java,v $
+ * Revision 1.7  2000/06/13 11:04:51  locher
+ * new match interface
+ *
  * Revision 1.6  2000/06/02 15:18:55  locher
  * *** empty log message ***
  *

@@ -18,6 +18,7 @@ ROOT =	../../../../..
 PACKAGEDIR = jobmatch/business/company/profile/tree
 
 CLASSES = \
+	MatchResult \
 	MatchTree \
 	TreeNode \
 	AbstractNode \
@@ -28,6 +29,7 @@ CLASSES = \
 	ORNode \
 	ANDNode \
 	NOTNode
+
 
 USEICONTRACT=1
 

@@ -1,4 +1,4 @@
-// $Id: RootNode.java,v 1.1 2000/06/02 15:18:53 locher Exp $
+// $Id: RootNode.java,v 1.2 2000/06/13 11:04:48 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -9,7 +9,7 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since May 31 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 class RootNode extends MemoryNode {
 
@@ -25,7 +25,7 @@ class RootNode extends MemoryNode {
 	return 0;
     }
     
-    public boolean match(Candidate candidate) {
+    public MatchResult match(Candidate candidate) {
 	throw new RuntimeException("can not match root node");
     }
     
@@ -70,6 +70,9 @@ class RootNode extends MemoryNode {
 
 /*
  * $Log: RootNode.java,v $
+ * Revision 1.2  2000/06/13 11:04:48  locher
+ * new match interface
+ *
  * Revision 1.1  2000/06/02 15:18:53  locher
  * *** empty log message ***
  *

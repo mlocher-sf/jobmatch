@@ -1,4 +1,4 @@
-// $Id: BooleanNode.java,v 1.2 2000/06/02 15:18:55 locher Exp $
+// $Id: BooleanNode.java,v 1.3 2000/06/13 11:04:50 locher Exp $
 
 package jobmatch.business.company.profile.tree.test;
 
@@ -10,7 +10,7 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class BooleanNode extends MemoryNode {
 
@@ -68,14 +68,17 @@ public class BooleanNode extends MemoryNode {
 	return "BooleanNode: " + (this.value?"true":"false");
     }
 
-    public boolean match(Candidate candidate) {
-	return this.value;
+    public MatchResult match(Candidate candidate) {
+	return null;
     }
 
 } //class
 
 /*
  * $Log: BooleanNode.java,v $
+ * Revision 1.3  2000/06/13 11:04:50  locher
+ * new match interface
+ *
  * Revision 1.2  2000/06/02 15:18:55  locher
  * *** empty log message ***
  *

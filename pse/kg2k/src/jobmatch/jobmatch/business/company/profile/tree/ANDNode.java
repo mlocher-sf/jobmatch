@@ -1,4 +1,4 @@
-// $Id: ANDNode.java,v 1.2 2000/06/02 15:18:50 locher Exp $
+// $Id: ANDNode.java,v 1.3 2000/06/13 11:04:45 locher Exp $
 
 package jobmatch.business.company.profile.tree;
 
@@ -11,7 +11,7 @@ import jobmatch.business.candidate.Candidate;
  *
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class ANDNode extends OperationNode {
 
@@ -30,14 +30,14 @@ public class ANDNode extends OperationNode {
     }
 
 
-    public boolean match(Candidate candidate) {
+    public MatchResult match(Candidate candidate) {
 	Iterator it = this.children.iterator();
-	while (it.hasNext()) {
+/*	while (it.hasNext()) {
 	    if (! ((TreeNode) it.next()).match(candidate)) {
-		return false;
+		return null;
 	    }
-	}
-	return true;
+	}*/
+	return null;
     }
     
     /** @see Object.equals **/
@@ -81,6 +81,9 @@ public class ANDNode extends OperationNode {
 
 /*
  * $Log: ANDNode.java,v $
+ * Revision 1.3  2000/06/13 11:04:45  locher
+ * new match interface
+ *
  * Revision 1.2  2000/06/02 15:18:50  locher
  * *** empty log message ***
  *
