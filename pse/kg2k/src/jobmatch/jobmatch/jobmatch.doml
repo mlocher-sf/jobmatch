@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <doml>
   <database database="Standard">
-    <package id="JobMatch">
-      <package id="JobMatch.data">
-        <package id="JobMatch.data.constant">
-          <table id="JobMatch.data.constant.Area">
+    <package id="jobmatch">
+      <package id="jobmatch.data">
+        <package id="jobmatch.data.constant">
+          <table id="jobmatch.data.constant.Area">
             <column id="Name" usedForQuery="true">
               <type dbType="VARCHAR" javaType="String" size="30"/>
             </column>
           </table>
-          <table id="JobMatch.data.constant.Industry">
+          <table id="jobmatch.data.constant.Industry">
             <column id="Type" usedForQuery="true">
               <type dbType="VARCHAR" javaType="String" size="30"/>
             </column>
           </table>
-          <table id="JobMatch.data.constant.Country">
+          <table id="jobmatch.data.constant.Country">
             <column id="Name">
               <type dbType="VARCHAR" javaType="String" size="32"/>
             </column>
           </table>
-          <table id="JobMatch.data.constant.Graduation">
+          <table id="jobmatch.data.constant.Graduation">
             <column id="Type">
               <type dbType="VARCHAR" javaType="String" size="32"/>
             </column>
           </table>
         </package>
-        <table id="JobMatch.data.Contactperson">
+        <table id="jobmatch.data.Contactperson">
           <column id="Name">
             <type dbType="VARCHAR" javaType="String" size="40"/>
           </column>
@@ -36,7 +36,7 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="20"/>
           </column>
         </table>
-        <table id="JobMatch.data.Candidate">
+        <table id="jobmatch.data.Candidate">
           <column id="AIESECMember" usedForQuery="true">
             <type dbType="BIT" javaType="boolean"/>
           </column>
@@ -74,14 +74,14 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
           </column>
           <column id="Jobwish">
-            <referenceObject constraint="true" reference="JobMatch.data.Jobwish"/>
-            <type canBeNull="true" dbType="none" javaType="JobMatch.data.JobwishDO"/>
+            <referenceObject constraint="true" reference="jobmatch.data.Jobwish"/>
+            <type canBeNull="true" dbType="none" javaType="jobmatch.data.JobwishDO"/>
           </column>
           <column id="Picture">
             <type canBeNull="true" dbType="VARBINARY" javaType="byte[]"/>
           </column>
         </table>
-        <table id="JobMatch.data.Company">
+        <table id="jobmatch.data.Company">
           <column id="Active">
             <type dbType="BIT" javaType="boolean"/>
           </column>
@@ -110,15 +110,15 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
           </column>
           <column id="Contact">
-            <referenceObject constraint="true" reference="JobMatch.data.Contactperson"/>
-            <type dbType="none" javaType="JobMatch.data.ContactpersonDO"/>
+            <referenceObject constraint="true" reference="jobmatch.data.Contactperson"/>
+            <type dbType="none" javaType="jobmatch.data.ContactpersonDO"/>
           </column>
           <column id="Industry" usedForQuery="true">
-            <referenceObject constraint="true" reference="JobMatch.data.constant.Industry"/>
-            <type canBeNull="true" dbType="none" javaType="JobMatch.data.constant.IndustryDO"/>
+            <referenceObject constraint="true" reference="jobmatch.data.constant.Industry"/>
+            <type canBeNull="true" dbType="none" javaType="jobmatch.data.constant.IndustryDO"/>
           </column>
         </table>
-        <table id="JobMatch.data.Jobwish">
+        <table id="jobmatch.data.Jobwish">
           <column id="Function">
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="40"/>
           </column>
@@ -129,14 +129,21 @@
             <type canBeNull="true" dbType="LONGVARCHAR" javaType="String"/>
           </column>
           <column id="Industry">
-            <referenceObject constraint="true" reference="JobMatch.data.constant.Industry"/>
-            <type dbType="none" javaType="JobMatch.data.constant.IndustryDO"/>
+            <referenceObject constraint="true" reference="jobmatch.data.constant.Industry"/>
+            <type dbType="none" javaType="jobmatch.data.constant.IndustryDO"/>
           </column>
           <column id="Area">
-            <referenceObject constraint="true" reference="JobMatch.data.constant.Area"/>
-            <type dbType="none" javaType="JobMatch.data.constant.AreaDO"/>
+            <referenceObject constraint="true" reference="jobmatch.data.constant.Area"/>
+            <type dbType="none" javaType="jobmatch.data.constant.AreaDO"/>
           </column>
         </table>
+        <table id="jobmatch.data.Account" isAbstract="true">
+          <column id="Username" isIndex="true" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="40"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.CandidateAccount" extensionOf="jobmatch.data.Account"/>
+        <table id="jobmatch.data.CompanyAccount" extensionOf="jobmatch.data.Account"/>
       </package>
     </package>
   </database>
