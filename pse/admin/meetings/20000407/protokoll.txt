@@ -1,0 +1,27 @@
+Sitzungsprotokoll PSE 2000, Gruppe 4
+==============================================================================
+Datum: 7. April 2000
+Zeit: 1600 - 1700
+Ort: Pool, A94
+anwesend: alle + Assi
+-------------------------------------------------------------------------------
+
+Beschluesse:
+
+Bis Dienstag sind alle mit Enhydra (grob) vertraut:
+2 Teams (Marco, Michael), (Denise, Michel, Mario)
+
+Plan fuer Dienstag:
+(Denise, Mario) -> Arbeitsplan
+(rest) -> ER Diagramm, Anfang Modellbildung/Spezifiktion
+
+
+Verantwortlichkeit fuer StoryBoard -> (Denise,Mario)
+
+bis Montag Features ueberlegen -> in File unter kg2k/req/features.txt abspeichern
+
+Weiteres:
+Software Tools fuer Projektmangement suchen (Locher)
+
+==============================================================================
+$Id: protokoll.txt,v 1.1 2000/04/07 14:51:40 locher Exp $
