@@ -1,4 +1,4 @@
-// $Id: EntityTest.java,v 1.1 2000/06/05 12:14:41 studer Exp $
+// $Id: EntityTest.java,v 1.2 2000/06/05 14:05:54 studer Exp $
 
 package jobmatch.business.entity.test;
 
@@ -10,7 +10,7 @@ import jobmatch.business.entity.*;
  *
  *  @since June 5 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class EntityTest extends TestCase {
 
@@ -26,9 +26,13 @@ public class EntityTest extends TestCase {
     
 
     public void testCountryEquals(){
-	Country country = Country.getCountry("Schweiz");
-	Country nation = Country.getCountry("Schweiz");
-	assert(country.equals(nation));
+	Country suisse = Country.getCountry("Schweiz");
+	Country ch = Country.getCountry("Schweiz");
+	Country de = Country.getCountry("Deutschland");
+	assert(ch.equals(suisse));
+	assert(!ch.equals(null));
+	assert(!ch.equals(de));
+	
     }
 
     public static Test suite() { 
