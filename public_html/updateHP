@@ -1,8 +1,10 @@
 #!/usr/local/bin/tcsh
-# $Id: updateHP,v 1.1 2000/04/04 15:23:14 locher Exp $
+# $Id: updateHP,v 1.2 2000/04/05 09:09:49 locher Exp $
 
 echo Update PSE Homepage...
 cd /home/pse4/public_html
 cvs update
 chmod -R 775 *
+
+
 
