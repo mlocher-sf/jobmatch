@@ -1,9 +1,9 @@
 #!/usr/local/bin/tcsh
 
-# $Id: genCL,v 1.2 2000/04/12 20:39:16 locher Exp $
+# $Id: genCL,v 1.3 2000/04/12 21:01:36 locher Exp $
 
 cd /tmp
-cvs co pse
+/usr/local/bin/cvs -d /home/pse4/cvsroot co pse
 cd pse
 ./tool/cvs2cl.pl 
 mv ChangeLog /home/pse4/public_html
