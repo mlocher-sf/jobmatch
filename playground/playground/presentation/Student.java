@@ -33,7 +33,7 @@ public class Student implements HttpPresentation {
 	private HTMLParagraphElement createStudiParagraph(StudentBO studi) {
 	    final boolean DEEPCLONE = false;
 	    HTMLParagraphElement temp = (HTMLParagraphElement) new StudentHTML().getElementStudiTemplate().cloneNode(DEEPCLONE);
-	    temp.setNodeValue(studi.getName());
+	    //temp.setNodeValue(studi.getName());
 	    return temp;
 	}
 
