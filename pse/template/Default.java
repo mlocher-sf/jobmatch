@@ -1,11 +1,4 @@
-// $Id: Default.java,v 1.1 2000/04/01 14:04:42 locher Exp $
-
-/*
- * $Log: Default.java,v $
- * Revision 1.1  2000/04/01 14:04:42  locher
- * Initial revision
- *
- */
+// $Id: Default.java,v 1.2 2000/05/12 08:46:10 locher Exp $
 
 package pack;
 
@@ -16,10 +9,9 @@ import java.io.Serializable;
  *
  *  @since erstellungsdatum
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class Default implements Cloneable, Serializable {
-
     
     public Default() {
 	super();
@@ -74,3 +66,11 @@ public class Default implements Cloneable, Serializable {
     }
        
 } //class
+
+// Document history
+/*
+ * $Log: Default.java,v $
+ * Revision 1.2  2000/05/12 08:46:10  locher
+ * log history moved to the end of the file
+ *
+ */
