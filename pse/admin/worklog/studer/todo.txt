@@ -1,4 +1,4 @@
-PSE Gruppe 4, <NAME>
+PSE Gruppe 4, Studer Marco
 ==============================================================================
 
 				 TODO
@@ -6,8 +6,10 @@ PSE Gruppe 4, <NAME>
 Deadline   Description
 ______________________________________________________________________________
 
-
+110400	   Features ueberlegen und in /kg2k/reg/features.txt schreiben
+110400	   Enhydra grob verstehen
+110400	   Prototyp erstellen (myapp)
 		
 
 ==============================================================================
-$Id: todo.txt,v 1.1 2000/04/03 06:40:15 studer Exp $
+$Id: todo.txt,v 1.2 2000/04/07 15:09:37 studer Exp $
