@@ -1,0 +1,64 @@
+#This file was created by <locher> Thu Apr  6 11:00:00 2000
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language english
+\inputencoding latin1
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4wide
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+
+\layout Title
+
+
+\emph on 
+KG 2000
+\newline 
+Requirements Document
+\layout Date
+
+DRAFT
+\newline 
+V 0.1
+\layout Author
+
+PSE 2000, Gruppe 4
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Section
+
+Description of the system
+\layout Standard
+
+Short description of the system
+\layout Section
+
+Functional requirements
+\layout Subsection
+
+Use Cases
+\layout Section
+
+Non-functional requirements
+\the_end
