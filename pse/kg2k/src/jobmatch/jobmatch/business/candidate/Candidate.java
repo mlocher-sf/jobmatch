@@ -1,16 +1,17 @@
-// $Id: Candidate.java,v 1.3 2000/05/23 14:10:53 locher Exp $
+// $Id: Candidate.java,v 1.4 2000/05/26 11:54:53 locher Exp $
 
 package jobmatch.business.candidate;
 
 import jobmatch.data.*;
-import java.io.Serializable;
+import jobmatch.business.candidate.cv.*;
+import java.util.*;
 
 /**
  *  Candidate Business Object
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public class Candidate extends CandidateBDO {
     
@@ -20,6 +21,10 @@ public class Candidate extends CandidateBDO {
 
     public Candidate(CandidateDO dataObject) {
 	super(dataObject);
+    }
+
+    public List getAllFormations() {
+	return Formation.getAllFormationsFor(this);
     }
     
     /** @see Object.equals **/
@@ -53,6 +58,9 @@ public class Candidate extends CandidateBDO {
 
 /*
  * $Log: Candidate.java,v $
+ * Revision 1.4  2000/05/26 11:54:53  locher
+ * Fromation object and query skeleton in Candidate
+ *
  * Revision 1.3  2000/05/23 14:10:53  locher
  * authentification mechanisms
  *

@@ -14,7 +14,8 @@ ROOT =	../../../..
 #
 PACKAGEDIR = jobmatch/business/candidate/cv
 
-CLASSES = 
+CLASSES = \
+	Formation
 
 USEICONTRACT=1
 

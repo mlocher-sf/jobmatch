@@ -4,9 +4,7 @@
 #
 #
 
-
-
-SUBDIRS = \
+POST_SUBDIRS = \
 	cv
 #
 #  Where is the root of the source tree?
