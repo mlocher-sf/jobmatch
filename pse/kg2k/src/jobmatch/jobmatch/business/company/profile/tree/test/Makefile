@@ -4,10 +4,6 @@
 #
 #
 
-
-
-SUBDIRS =
-
 #
 #  Where is the root of the source tree?
 #
