@@ -7,17 +7,17 @@
 
 
 SUBDIRS = \
-	profile
+	tree
 
 #
 #  Where is the root of the source tree?
 #
-ROOT =	../../..
+ROOT =	../../../..
 
 #
 #  What package does this directory represent? (use / instead of .)
 #
-PACKAGEDIR = jobmatch/business/company
+PACKAGEDIR = jobmatch/business/company/profile
 
 CLASSES =
 
