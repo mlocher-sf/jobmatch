@@ -1,4 +1,4 @@
-// $Id: School.java,v 1.6 2000/05/31 12:15:51 studer Exp $
+// $Id: School.java,v 1.7 2000/06/06 11:39:54 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -10,13 +10,14 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.6 $
+ *  @version $Revision: 1.7 $
  **/
 public class School extends SchoolBDO implements Description {
     
     private School(String description) throws Exception {
 	super();
 	this.setDescription(description);
+   	this.setType(Schooltype.getDefault());
 	this.commit();
     }
 
@@ -38,6 +39,17 @@ public class School extends SchoolBDO implements Description {
 		return new School(school);
 	    }
 	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
+    }
+
+    /**
+     * Return the Schooltype business object
+     **/
+    public Schooltype getSchoolTypeBO() {
+	try {
+	    return new Schooltype(this.getType());
+	} catch (Exception e) {
+	    throw new RuntimeException(e.toString());
+	}
     }
     
     /**
@@ -92,6 +104,9 @@ public class School extends SchoolBDO implements Description {
 
 /*
  * $Log: School.java,v $
+ * Revision 1.7  2000/06/06 11:39:54  studer
+ * getSchooltype methode hinzugefuegt
+ *
  * Revision 1.6  2000/05/31 12:15:51  studer
  * Javadoc added
  *

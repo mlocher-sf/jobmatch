@@ -1,4 +1,4 @@
-// $Id: Schooltype.java,v 1.5 2000/05/30 14:24:29 locher Exp $
+// $Id: Schooltype.java,v 1.6 2000/06/06 11:39:55 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -9,8 +9,8 @@ import java.util.*;
  *  Schooltype Business Object
  *
  *  @since May 26 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.5 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.6 $
  **/
 public class Schooltype extends SchooltypeBDO implements Description {
     
@@ -35,6 +35,10 @@ public class Schooltype extends SchooltypeBDO implements Description {
 		return new Schooltype(schooltype);
 	    }
 	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
+    }
+
+    public static Schooltype getDefault(){
+	return getSchooltype("Primarschule");
     }
 
     public static List getAllSchooltypes() {
@@ -86,6 +90,9 @@ public class Schooltype extends SchooltypeBDO implements Description {
 
 /*
  * $Log: Schooltype.java,v $
+ * Revision 1.6  2000/06/06 11:39:55  studer
+ * getSchooltype methode hinzugefuegt
+ *
  * Revision 1.5  2000/05/30 14:24:29  locher
  * toString defined
  *
