@@ -32,7 +32,8 @@ CLASSES = \
 	Welcome \
 	Student \
 	Picture \
-	Upload
+	Upload \
+	Sendmail
 
 HTML_DIR = .
 HTML_CLASSES = \
@@ -41,6 +42,7 @@ HTML_CLASSES = \
 	PictureHTML
 
 JAR_INSTALL = \
+	Mail.html\
 	Static.html\
 	style.css
 
