@@ -1,0 +1,19 @@
+Sitzungsprotokoll vom 31 Maerz 2000
+
+Ort: Exwi 3. Stock
+Zeit: 16.00 Uhr - 17.00 Uhr
+anwesend: alle + Assi
+
+Beschluesse:
+
+
+- Regelmaessige Meetings der ganzen Gruppe jeweils dienstags von 10  bis 12 Uhr
+- Jeder sammelt Fragen an den Kunden bis Dienstag, 4. April 2000
+- Es wird CVS benutzt
+- Rollenverteilung wurde noch nicht definiert
+- Locher uebernimmt das Versionsmanagement
+- Bruhin, dniederm erstellen eine Liste mit den Risiken bis Dienstag, 4. April
+- Teaching-Themen:
+	Enhydra		locher
+	JDBC		studer, loeffel
+	Junit		bruhin, dniederm
