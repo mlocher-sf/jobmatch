@@ -1,4 +1,4 @@
-#This file was created by <locher> Wed Apr 26 13:46:04 2000
+#This file was created by <locher> Thu Apr 27 11:27:54 2000
 #LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
@@ -26,6 +26,9 @@
 \layout Title
 
 Review des Pflichtenhefts der Gruppe 3
+\layout Author
+
+PSE Gruppe 4
 \layout Standard
 
 Datum: 25.
@@ -66,20 +69,23 @@ Das Pflichtenheft wird in der vorliegenden Version nicht akzeptiert.
 Zusammenfassung
 \layout Standard
 
-Erfuellt die Anforderungen an ein Pflichtenheft nicht.
+Das Dokument erfuellt die Anforderungen an ein Pflichtenheft nicht.
+ Die Funktionalen Anforderungen werden nur mit Diagrammen dokumentiert.
+ Zu den Use Cases muss unbedingt in sprachlicher Form eine Paraezisierung
+ erfolgen.
+ Ausserdem sind verschiede Anforderungen des Kunden nicht paezis oder falsch
+ uebernommen worden.
+ Ein Abgleich mit dem PSE WIKI und Rueckfragen an den Kunden sind zu empfehlen.
 \layout Section
 
 Liste der Befunde
-\layout Standard
-
-Gewichtung: 1-fataler Fehler; 2 - normaler Fehler; 3 - kosmetischer Fehler
 \layout Subsection
 
 Makroskopische Merkmale
 \layout Standard
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
 multicol5
-21 4 0 0 -1 -1 -1 -1
+14 4 0 0 -1 -1 -1 -1
 1 1 0 0
 1 0 0 0
 1 0 0 0
@@ -89,13 +95,6 @@ multicol5
 1 0 0 0
 1 0 0 0
 0 0 1 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
 1 0 0 0
 1 0 0 0
 1 0 0 0
@@ -136,34 +135,6 @@ multicol5
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 1 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
@@ -302,85 +273,17 @@ Nur Diagramme, kein Text.
 Keine Einfuehrung, Zusammenfassung.
 \newline 
 3
-\newline 
-13
-\newline 
+\layout Standard
 
-\newline 
-
-\newline 
-
-\newline 
-14
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-15
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
+Gewichtung: 1-fataler Fehler; 2 - normaler Fehler; 3 - kosmetischer Fehler
 \layout Subsection
 
 Mikroskopische Merkmale
 \layout Standard
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
 multicol5
-20 4 0 0 -1 -1 -1 -1
+5 4 0 0 -1 -1 -1 -1
 1 1 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
-1 0 0 0
 1 0 0 0
 1 0 0 0
 1 0 0 0
@@ -396,66 +299,6 @@ multicol5
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 2 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
 0 8 1 0 0 0 0 "" ""
@@ -496,137 +339,21 @@ Floskeln und unpraezise Ausdrucksformen
 \newline 
 3
 \newline 
-
+1
 \newline 
-
+Unangemessene Ausdruecke (zB.
+ Muell)
 \newline 
-
+2
 \newline 
 4
 \newline 
+1
+\newline 
+Tippfehler
+\newline 
+3
+\layout Standard
 
-\newline 
-
-\newline 
-
-\newline 
-5
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-6
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-7
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-8
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-9
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-10
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-11
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-12
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-13
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-14
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
-\newline 
-
+Gewichtung: 1-fataler Fehler; 2 - normaler Fehler; 3 - kosmetischer Fehler
 \the_end
