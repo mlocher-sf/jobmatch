@@ -1,8 +1,9 @@
-// $Id: Mailer.java,v 1.1 2000/05/19 10:59:33 locher Exp $
+// $Id: Mailer.java,v 1.2 2000/05/23 09:53:02 locher Exp $
 
 package jobmatch.business.service;
 
 import jobmatch.data.*;
+import jobmatch.business.util.TimeUtil;
 import com.lutris.dods.builder.generator.query.*;
 import java.sql.Timestamp;
 
@@ -11,7 +12,7 @@ import java.sql.Timestamp;
  *
  *  @since May 19 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class Mailer {
 
@@ -42,7 +43,7 @@ public class Mailer {
     public synchronized void schedule(MailMessage mail, int priority) {
 	try {
 	    MailQueueBDO job =  MailQueueBDO.createVirgin();
-	    job.setTime(Mailer.getTimeNow());
+	    job.setTime(TimeUtil.getTimeNow());
 	    job.setPriority(priority);
 	    job.commit();
 	} catch (Exception e) {
@@ -71,14 +72,13 @@ public class Mailer {
 	}
     }
 
-    private static Timestamp getTimeNow() {
-	return new Timestamp(System.currentTimeMillis());
-    }
-
 } //class
 
 /*
  * $Log: Mailer.java,v $
+ * Revision 1.2  2000/05/23 09:53:02  locher
+ * time utilities
+ *
  * Revision 1.1  2000/05/19 10:59:33  locher
  * matcher and mailer service including test skeletons
  *

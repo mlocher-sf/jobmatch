@@ -4,28 +4,19 @@
 #
 #
 
-SUBDIRS = \
-	util \
-	provider \
-	candidate \
-	company \
-	service
-
-POST_SUBDIRS = test
-
 #
 #  Where is the root of the source tree?
 #
-ROOT =	../..
+ROOT =	../../..
 
 #
 #  What package does this directory represent? (use / instead of .)
 #
-PACKAGEDIR = jobmatch/business
+PACKAGEDIR = jobmatch/business/util
 
-CLASSES =
+CLASSES = \
+	TimeUtil
 
-USEICONTRACT=1
 
 include $(ROOT)/config.mk
 
