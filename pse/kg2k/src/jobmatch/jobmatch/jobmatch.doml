@@ -28,9 +28,6 @@
           <column id="Natel" usedForQuery="true">
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
           </column>
-          <column id="Nationality" usedForQuery="true">
-            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
-          </column>
           <column id="PLZ" usedForQuery="true">
             <type canBeNull="true" dbType="MEDIUMINT UNSIGNED" javaType="int"/>
           </column>
@@ -55,10 +52,14 @@
           <column id="Birthdate" usedForQuery="true">
             <type canBeNull="true" dbType="DATE" javaType="java.sql.Date"/>
           </column>
+          <column id="Nationality" usedForQuery="true">
+            <referenceObject reference="jobmatch.data.Country"/>
+            <type canBeNull="true" dbType="none" javaType="jobmatch.data.CountryDO"/>
+          </column>
         </table>
         <table id="jobmatch.data.Company">
           <column id="Active">
-            <type dbType="BIT" javaType="boolean"/>
+            <type canBeNull="true" dbType="BIT" javaType="boolean"/>
           </column>
           <column id="Earnings">
             <type canBeNull="true" dbType="INTEGER" javaType="int"/>
@@ -70,7 +71,7 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="40"/>
           </column>
           <column id="Name" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="30"/>
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="30"/>
           </column>
           <column id="NumberEmployees">
             <type canBeNull="true" dbType="INTEGER" javaType="int"/>
@@ -125,41 +126,41 @@
         </table>
         <table id="jobmatch.data.Employer">
           <column id="Company" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="30"/>
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="30"/>
           </column>
           <column id="City" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="30"/>
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="30"/>
           </column>
           <column id="County" usedForQuery="true">
             <referenceObject reference="jobmatch.data.Country"/>
-            <type dbType="none" javaType="jobmatch.data.CountryDO"/>
+            <type canBeNull="true" dbType="none" javaType="jobmatch.data.CountryDO"/>
           </column>
         </table>
         <table id="jobmatch.data.Profile">
-          <column id="Name" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="40"/>
-          </column>
           <column id="Company" usedForQuery="true">
             <referenceObject constraint="true" reference="jobmatch.data.Company"/>
             <type dbType="none" javaType="jobmatch.data.CompanyDO"/>
           </column>
+          <column id="LastNotification" usedForQuery="true">
+            <type canBeNull="true" dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+          </column>
+          <column id="MatchTree" usedForQuery="true">
+            <type canBeNull="true" dbType="MEDIUMBLOB" javaType="byte[]"/>
+          </column>
+          <column id="Name" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="40"/>
+          </column>
           <column id="NeedsRematching" usedForQuery="true">
-            <type dbType="BIT" javaType="boolean"/>
+            <type canBeNull="true" dbType="BIT" javaType="boolean"/>
             <initialValue>true</initialValue>
           </column>
           <column id="Notify" usedForQuery="true">
-            <type dbType="BIT" javaType="boolean"/>
+            <type canBeNull="true" dbType="BIT" javaType="boolean"/>
             <initialValue>true</initialValue>
           </column>
-          <column id="Period" usedForQuery="true">
-            <type dbType="INTEGER" javaType="int"/>
+          <column id="NotificationPeriod" usedForQuery="true">
+            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
             <initialValue>0</initialValue>
-          </column>
-          <column id="MatchTree" usedForQuery="true">
-            <type dbType="MEDIUMBLOB" javaType="byte[]"/>
-          </column>
-          <column id="LastNotification" usedForQuery="true">
-            <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
           </column>
         </table>
         <table id="jobmatch.data.ConstantTable" dbTableName="NewDBTable" isAbstract="true">
@@ -426,6 +427,21 @@
           <column id="MaxSchoolType">
             <referenceObject constraint="true" reference="jobmatch.data.Schooltype"/>
             <type dbType="none" javaType="jobmatch.data.SchooltypeDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.PersonalProfile" extensionOf="jobmatch.data.TreeLeaf">
+          <column id="MinAge" usedForQuery="true">
+            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
+          </column>
+          <column id="MaxAge" usedForQuery="true">
+            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
+          </column>
+          <column id="Nationality" usedForQuery="true">
+            <referenceObject reference="jobmatch.data.Country"/>
+            <type canBeNull="true" dbType="none" javaType="jobmatch.data.CountryDO"/>
+          </column>
+          <column id="Sex" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
           </column>
         </table>
       </package>
