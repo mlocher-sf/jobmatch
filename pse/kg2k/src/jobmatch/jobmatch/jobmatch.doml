@@ -18,10 +18,6 @@
           <column id="AIESECMember" usedForQuery="true">
             <type dbType="BIT" javaType="boolean"/>
           </column>
-          <column id="Account" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.CandidateAccount"/>
-            <type dbType="none" javaType="jobmatch.data.CandidateAccountDO"/>
-          </column>
           <column id="City" usedForQuery="true">
             <type dbType="VARCHAR" javaType="String" size="30"/>
           </column>
@@ -38,7 +34,7 @@
             <type dbType="VARCHAR" javaType="String" size="5"/>
           </column>
           <column id="Jobwish" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Jobwish"/>
+            <referenceObject reference="jobmatch.data.Jobwish"/>
             <type canBeNull="true" dbType="none" javaType="jobmatch.data.JobwishDO"/>
           </column>
           <column id="Lname" usedForQuery="true">
@@ -98,16 +94,12 @@
             <type canBeNull="true" dbType="LONGVARCHAR" javaType="String"/>
           </column>
           <column id="Contact">
-            <referenceObject constraint="true" reference="jobmatch.data.Contactperson"/>
+            <referenceObject reference="jobmatch.data.Contactperson"/>
             <type dbType="none" javaType="jobmatch.data.ContactpersonDO"/>
           </column>
           <column id="Industry" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Industry"/>
+            <referenceObject reference="jobmatch.data.Industry"/>
             <type canBeNull="true" dbType="none" javaType="jobmatch.data.IndustryDO"/>
-          </column>
-          <column id="Account" usedForQuery="true">
-            <referenceObject reference="jobmatch.data.CompanyAccount"/>
-            <type dbType="none" javaType="jobmatch.data.CompanyAccountDO"/>
           </column>
           <column id="Presence" usedForQuery="true">
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="40"/>
@@ -124,11 +116,11 @@
             <type canBeNull="true" dbType="TEXT" javaType="String" size="70"/>
           </column>
           <column id="Industry">
-            <referenceObject constraint="true" reference="jobmatch.data.Industry"/>
+            <referenceObject reference="jobmatch.data.Industry"/>
             <type dbType="none" javaType="jobmatch.data.IndustryDO"/>
           </column>
           <column id="Area">
-            <referenceObject constraint="true" reference="jobmatch.data.Area"/>
+            <referenceObject reference="jobmatch.data.Area"/>
             <type dbType="none" javaType="jobmatch.data.AreaDO"/>
           </column>
           <column id="Function">
@@ -177,7 +169,7 @@
             <type dbType="VARCHAR" javaType="String" size="30"/>
           </column>
           <column id="County" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Country"/>
+            <referenceObject reference="jobmatch.data.Country"/>
             <type dbType="none" javaType="jobmatch.data.CountryDO"/>
           </column>
         </table>
@@ -217,7 +209,7 @@
             <type dbType="VARCHAR" javaType="String" size="40"/>
           </column>
           <column id="Type" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Schooltype"/>
+            <referenceObject reference="jobmatch.data.Schooltype"/>
             <type dbType="none" javaType="jobmatch.data.SchooltypeDO"/>
           </column>
         </table>
@@ -226,11 +218,11 @@
             <type dbType="VARCHAR" javaType="String" size="40"/>
           </column>
           <column id="MinSchoolType" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Schooltype"/>
+            <referenceObject reference="jobmatch.data.Schooltype"/>
             <type dbType="none" javaType="jobmatch.data.SchooltypeDO"/>
           </column>
           <column id="MaxSchoolType" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Schooltype"/>
+            <referenceObject reference="jobmatch.data.Schooltype"/>
             <type dbType="none" javaType="jobmatch.data.SchooltypeDO"/>
           </column>
           <column id="Company" usedForQuery="true">
@@ -282,11 +274,11 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
           </column>
           <column id="Written" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <referenceObject reference="jobmatch.data.Languagecapability"/>
             <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
           </column>
           <column id="Spoken" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <referenceObject reference="jobmatch.data.Languagecapability"/>
             <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
           </column>
         </table>
@@ -322,11 +314,11 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
           </column>
           <column id="MinWritten" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <referenceObject reference="jobmatch.data.Languagecapability"/>
             <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
           </column>
           <column id="MinSpoken" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <referenceObject reference="jobmatch.data.Languagecapability"/>
             <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
           </column>
         </table>
@@ -398,7 +390,7 @@
             <initialValue>0</initialValue>
           </column>
           <column id="MinCapability" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Compcapability"/>
+            <referenceObject reference="jobmatch.data.Compcapability"/>
             <type dbType="none" javaType="jobmatch.data.CompcapabilityDO"/>
           </column>
         </table>
@@ -450,7 +442,7 @@
         </table>
         <table id="jobmatch.data.CVComputer" dbTableName="SoftwareCandidate" isAbstract="true">
           <column id="Capability" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Compcapability"/>
+            <referenceObject reference="jobmatch.data.Compcapability"/>
             <type dbType="none" javaType="jobmatch.data.CompcapabilityDO"/>
           </column>
           <column id="Candidate" usedForQuery="true">
@@ -470,13 +462,13 @@
             <type dbType="none" javaType="jobmatch.data.ProgrammingDO"/>
           </column>
         </table>
-        <table id="jobmatch.data.OperatingsystemCandidate" dbTableName="OperatingSystemCandidate">
+        <table id="jobmatch.data.ProviderAccount" extensionOf="jobmatch.data.Account"/>
+        <table id="jobmatch.data.OperatingsystemCandidate" dbTableName="OperatingSystemCandidate" extensionOf="jobmatch.data.CVComputer">
           <column id="System" usedForQuery="true">
             <referenceObject constraint="true" reference="jobmatch.data.Operationgsystem"/>
             <type dbType="none" javaType="jobmatch.data.OperationgsystemDO"/>
           </column>
         </table>
-        <table id="jobmatch.data.ProviderAccount" extensionOf="jobmatch.data.Account"/>
       </package>
     </package>
   </database>
