@@ -1,0 +1,26 @@
+Sitzungsprotokoll PSE 2000, Gruppe 4
+==============================================================================
+Datum:  26 April 2000
+Zeit: 15.00 - 15.30
+Ort: Exwi B-Geschoss Studentenarbeitsplatz
+anwesend: alle + Assi
+-------------------------------------------------------------------------------
+
+Beschluesse:
+
+Michael, Michel, Marco, Denise machen Grobdesign 
+Grobdesignmeeting am Dienstag, 2. Mai 2000, 8.00 Uhr
+Mario macht update des Pflichtenheftes
+Michel, Denise machen Website Praesentation
+Weiterarbeit wie bisher:
+	Michael Matching
+	Mario, Marco Data Layer
+	Miche, Denise Storyboards
+
+Fragen an Assi:
+
+Werden beim Matching immer alle Studenten in den Speicher geladen
+Schnittstellenkapselung zwischen Data- und Businesslayer
+
+==============================================================================
+$Id: Protokoll20000426.txt,v 1.1 2000/04/26 15:00:56 dniederm Exp $
