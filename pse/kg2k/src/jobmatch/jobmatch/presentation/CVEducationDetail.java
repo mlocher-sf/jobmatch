@@ -23,17 +23,20 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 	    this.processData(candidate, comms);  
 	}   	
 	CVEducationDetailHTML page = (CVEducationDetailHTML)comms.xmlcFactory.create(CVEducationDetailHTML.class);
-	this.fillSchooltype(page, null);
-	this.fillGraduation(page, null);
 	
 	if (this.isEditing(comms)) {
 	    try {
 		Formation formation = this.getFormation(comms, candidate);
 		this.preparePageForNextCall(page, comms);
+		this.fillSchooltype(page, formation);
+		this.fillGraduation(page, formation);
 		this.fillPage(page, formation);
 	    } catch (Exception e) {
 		throw new RuntimeException(e.toString());
 	    }
+	} else {
+	    this.fillSchooltype(page, null);
+	    this.fillGraduation(page, null);
 	}
 	comms.response.writeHTML(page);
     }
@@ -72,7 +75,10 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
     private void fillGraduation(CVEducationDetailHTML page, Formation formation){
 	final EntityManager man = EntityManager.getUniqueInstance();
 	Collection data =  man.getGraduations();
-	Graduation selection = formation.getGraduationBO();
+	Graduation selection = null;
+	if (formation != null) {
+	    selection = formation.getGraduationBO();
+	}
 	HTMLOptionElement template = page.getElementTemplateGraduation();
 	this.fillListBox(template, data, selection);
     }
@@ -81,7 +87,7 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 	final EntityManager man = EntityManager.getUniqueInstance();
 	Collection data =  man.getSchooltypes();
 	Schooltype selection = null;
-	if (formation.getSchoolBO() != null) {
+	if (formation != null && formation.getSchoolBO() != null) {
 	    selection = formation.getSchoolBO().getSchoolTypeBO();
 	}
 	HTMLOptionElement template = page.getElementTemplateSchooltype();
