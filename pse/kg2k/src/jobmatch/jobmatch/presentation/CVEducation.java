@@ -19,6 +19,9 @@ public class CVEducation extends CVMultiSection implements HttpPresentation {
         comms.response.writeHTML(page);
     }
 
+    /**
+     * Inner class formats a HTMLElement for the education section
+     **/
     class EducationFormatter implements CVSectionFormatter {
 
 	public HTMLElement format(jobmatch.business.candidate.cv.CVSection section, HTMLObject page){
@@ -29,4 +32,4 @@ public class CVEducation extends CVMultiSection implements HttpPresentation {
 	    
     }//inner class
 
-}
+}//class

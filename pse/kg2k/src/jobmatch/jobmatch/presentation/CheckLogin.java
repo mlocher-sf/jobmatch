@@ -6,6 +6,10 @@ import jobmatch.business.util.TimeUtil;
 import com.lutris.appserver.server.session.*;
 import com.lutris.appserver.server.httpPresentation.*;
 
+
+/**
+ * Checks the login of a CanidateAccount
+ **/
 public class CheckLogin implements HttpPresentation {
 
     public static String getLoginURL(String username, String passphrase,
@@ -43,6 +47,9 @@ public class CheckLogin implements HttpPresentation {
 
     }
 
+    /**
+     * Stores the account in the session data
+     **/
     private void setAccount(SessionData sessionData, Account account) {
 	try {
 	    sessionData.set("account", account);

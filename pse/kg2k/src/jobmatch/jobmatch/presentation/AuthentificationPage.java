@@ -4,8 +4,14 @@ import jobmatch.business.provider.account.*;
 
 import com.lutris.appserver.server.httpPresentation.*;
 
+/**
+ * Provides Methods to legitimate an account
+ **/
 public abstract class AuthentificationPage implements HttpPresentation {
 
+    /**
+     * Checks the type of the current account
+     **/
     protected boolean isLegitimated(HttpPresentationComms comms, int accountType) {
 	try {
 	    Account account = this.getAccount(comms);
@@ -27,6 +33,9 @@ public abstract class AuthentificationPage implements HttpPresentation {
 	}
     }
 
+    /**
+     * Returns the current account
+     **/
     protected Account getAccount(HttpPresentationComms comms) {
 	Account account = null;
 	try {
@@ -37,6 +46,9 @@ public abstract class AuthentificationPage implements HttpPresentation {
 	return account;
     }
 
+    /**
+     * Return the current candidateaccount
+     **/
     protected CandidateAccount getCandidateAccount(HttpPresentationComms comms) {
 	return (CandidateAccount) this.getAccount(comms);
     }

@@ -1,4 +1,4 @@
-// $Id: CVSection.java,v 1.3 2000/05/31 06:09:29 studer Exp $
+// $Id: CVSection.java,v 1.4 2000/05/31 11:36:15 studer Exp $
 
 package jobmatch.presentation;
 
@@ -10,14 +10,18 @@ import com.lutris.xml.xmlc.*;
 import com.lutris.appserver.server.httpPresentation.*;
 
 /**
- *  Class description comes here
+ *  Provides a method to fill a ListBox with data
  *
  *  @since erstellungsdatum
  *  @author $Author: studer $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public abstract class CVSection extends AuthentificationPage implements  HttpPresentation {
 
+    /**
+     * Fills a listbox with data CV-data.
+     * Selects the right option.
+     **/
     public void fillListBox(HTMLOptionElement template, Collection descriptions, Description first_option){	 
 	Node select_node = template.getParentNode();
 	template.removeChild(template.getFirstChild());
@@ -46,16 +50,10 @@ public abstract class CVSection extends AuthentificationPage implements  HttpPre
 // Document history
 /*
  * $Log: CVSection.java,v $
+ * Revision 1.4  2000/05/31 11:36:15  studer
+ * javadoc added
+ *
  * Revision 1.3  2000/05/31 06:09:29  studer
  * Funktionalitaet zum dynamischen Fuellen einer Tabelle
- *
- * Revision 1.2  2000/05/30 12:47:56  studer
- * DropDown wird jetzt via DB abefuellt
- *
- * Revision 1.1  2000/05/29 12:07:15  studer
- * Initial import
- *
- * Revision 1.2  2000/05/12 08:46:10  locher
- * log history moved to the end of the file
  *
  */

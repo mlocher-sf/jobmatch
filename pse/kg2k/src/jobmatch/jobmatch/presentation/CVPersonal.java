@@ -19,11 +19,17 @@ public class CVPersonal extends CVSection implements HttpPresentation {
         comms.response.writeHTML(page);
     }
 
+    /**
+     * Fills the text fields with CV-data 
+     **/
     private void fillTextFields(CVPersonalHTML page, Candidate candidate){
 	
 	//fill all text fields with data 
     }
 
+    /**
+     * fills the nationality-list with CV-data
+     **/
     private void fillNationality(CVPersonalHTML page, Candidate candidate){
 	Country selected_option = null;
 	selected_option = candidate.getNationalityBO();
@@ -33,6 +39,9 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	fillListBox(template ,country_list, selected_option);
     }
 
+    /**
+     * fills the country-list with the CV-data
+     **/
     private void fillCountryList(CVPersonalHTML page){
 	EntityManager man = EntityManager.getUniqueInstance();
 	List country_list  =  man.getCountries();

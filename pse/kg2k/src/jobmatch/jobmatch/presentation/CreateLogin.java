@@ -1,4 +1,4 @@
-// $Id: CreateLogin.java,v 1.3 2000/05/23 14:11:00 locher Exp $
+// $Id: CreateLogin.java,v 1.4 2000/05/31 11:36:16 studer Exp $
 package jobmatch.presentation;
 
 import com.lutris.xml.xmlc.*;
@@ -7,9 +7,10 @@ import com.lutris.appserver.server.httpPresentation.*;
 import jobmatch.business.provider.account.*;
 
 /**
+ * Creates a new Candidateaccount
  *  @since May 16 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.4 $
  **/
 public class CreateLogin implements HttpPresentation {
 
@@ -49,6 +50,9 @@ public class CreateLogin implements HttpPresentation {
 	}
     }
 
+    /**
+     * Creates a new Candidateaccount 
+     **/
     private void createAccount(String username, String passphrase, String email) {
 	if (!AccountManager.getUniqueInstance().candidateUsernameExists(username)) {
 	    try {
@@ -68,6 +72,9 @@ public class CreateLogin implements HttpPresentation {
 // Document history
 /**
  * $Log: CreateLogin.java,v $
+ * Revision 1.4  2000/05/31 11:36:16  studer
+ * javadoc added
+ *
  * Revision 1.3  2000/05/23 14:11:00  locher
  * authentification mechanisms
  *
