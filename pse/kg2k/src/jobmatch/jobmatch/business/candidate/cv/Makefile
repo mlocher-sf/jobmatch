@@ -21,7 +21,9 @@ CLASSES = \
 	SoftwareSkill \
 	OperatingSystemSkill \
 	WorkingSkill \
-	LanguageSkill
+	LanguageSkill \
+	Hobby \
+	Jobwish
 
 USEICONTRACT=1
 
