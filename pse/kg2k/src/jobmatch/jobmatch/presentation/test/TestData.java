@@ -1,4 +1,4 @@
-// $Id: TestData.java,v 1.1 2000/05/23 08:27:32 studer Exp $
+// $Id: TestData.java,v 1.2 2000/05/23 10:32:45 studer Exp $
 
 package jobmatch.presentation.test;
 
@@ -12,7 +12,7 @@ import java.sql.*;
  *
  *  @since May 14 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class TestData  implements HttpPresentation {
     public final int DATA_COUNT = 10;
@@ -40,7 +40,6 @@ public class TestData  implements HttpPresentation {
 	String	city = "Bern";
 	String	fax = "1234345";
 	String	residence = "Bern";
-	String	nationality = "Schweizer";
 	String	competence = "zuverlaessig";
 	int plz = 1000;		
 	for ( int i=1;i<=DATA_COUNT;i++){
@@ -56,7 +55,7 @@ public class TestData  implements HttpPresentation {
 		candidate.setBirthdate(new Date(200,4,i));
 		candidate.setFax(fax+ i);
 		candidate.setResidence(residence + i);
-		candidate.setNationality(nationality + i);
+		//setNationality
 		candidate.setCompetence(competence + i);
 		candidate.setStatus(true);
 		CandidateAccountBDO candidate_account = CandidateAccountBDO.createVirgin();
@@ -84,6 +83,10 @@ public class TestData  implements HttpPresentation {
 // Document history
 /*
  * $Log: TestData.java,v $
+ * Revision 1.2  2000/05/23 10:32:45  studer
+ * PersonalProfile added
+ * Nullwerte korrigiert
+ *
  * Revision 1.1  2000/05/23 08:27:32  studer
  * TestData added
  *

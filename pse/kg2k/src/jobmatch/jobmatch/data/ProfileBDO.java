@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class ProfileBDO implements java.io.Serializable {
 
@@ -242,44 +242,6 @@ public class ProfileBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Name of the ProfileDO
-    *
-    * @return Name of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getName () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getName ();
-   }
-
-   
-   /**
-    * Set Name of the ProfileDO
-    *
-    * @param Name of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setName ( String Name ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setName ( Name );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
     * Get Company of the ProfileDO
     *
     * @return Company of the ProfileDO
@@ -364,6 +326,120 @@ public class ProfileBDO implements java.io.Serializable {
    
 
    /**
+    * Get LastNotification of the ProfileDO
+    *
+    * @return LastNotification of the ProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Timestamp getLastNotification () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLastNotification ();
+   }
+
+   
+   /**
+    * Set LastNotification of the ProfileDO
+    *
+    * @param LastNotification of the ProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLastNotification ( java.sql.Timestamp LastNotification ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLastNotification ( LastNotification );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get MatchTree of the ProfileDO
+    *
+    * @return MatchTree of the ProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public byte[] getMatchTree () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getMatchTree ();
+   }
+
+   
+   /**
+    * Set MatchTree of the ProfileDO
+    *
+    * @param MatchTree of the ProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setMatchTree ( byte[] MatchTree ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setMatchTree ( MatchTree );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Name of the ProfileDO
+    *
+    * @return Name of the ProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getName () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getName ();
+   }
+
+   
+   /**
+    * Set Name of the ProfileDO
+    *
+    * @param Name of the ProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setName ( String Name ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setName ( Name );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
     * Get NeedsRematching of the ProfileDO
     *
     * @return NeedsRematching of the ProfileDO
@@ -440,29 +516,29 @@ public class ProfileBDO implements java.io.Serializable {
    
 
    /**
-    * Get Period of the ProfileDO
+    * Get NotificationPeriod of the ProfileDO
     *
-    * @return Period of the ProfileDO
+    * @return NotificationPeriod of the ProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public int getPeriod () 
+   public int getNotificationPeriod () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getPeriod ();
+      return DO.getNotificationPeriod ();
    }
 
    
    /**
-    * Set Period of the ProfileDO
+    * Set NotificationPeriod of the ProfileDO
     *
-    * @param Period of the ProfileDO
+    * @param NotificationPeriod of the ProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setPeriod ( int Period ) 
+   public void setNotificationPeriod ( int NotificationPeriod ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -470,83 +546,7 @@ public class ProfileBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setPeriod ( Period );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get MatchTree of the ProfileDO
-    *
-    * @return MatchTree of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public byte[] getMatchTree () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getMatchTree ();
-   }
-
-   
-   /**
-    * Set MatchTree of the ProfileDO
-    *
-    * @param MatchTree of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setMatchTree ( byte[] MatchTree ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setMatchTree ( MatchTree );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get LastNotification of the ProfileDO
-    *
-    * @return LastNotification of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Timestamp getLastNotification () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getLastNotification ();
-   }
-
-   
-   /**
-    * Set LastNotification of the ProfileDO
-    *
-    * @param LastNotification of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setLastNotification ( java.sql.Timestamp LastNotification ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setLastNotification ( LastNotification );
+      DO.setNotificationPeriod ( NotificationPeriod );
       afterAnySet();	// business actions/assertions after data assignment
    }
 

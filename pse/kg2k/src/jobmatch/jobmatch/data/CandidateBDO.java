@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class CandidateBDO implements java.io.Serializable {
 
@@ -546,44 +546,6 @@ public class CandidateBDO implements java.io.Serializable {
    
 
    /**
-    * Get Nationality of the CandidateDO
-    *
-    * @return Nationality of the CandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getNationality () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getNationality ();
-   }
-
-   
-   /**
-    * Set Nationality of the CandidateDO
-    *
-    * @param Nationality of the CandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setNationality ( String Nationality ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setNationality ( Nationality );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
     * Get PLZ of the CandidateDO
     *
     * @return PLZ of the CandidateDO
@@ -884,6 +846,90 @@ public class CandidateBDO implements java.io.Serializable {
       afterAnySet();	// business actions/assertions after data assignment
    }
 
+
+   
+
+   /**
+    * Get Nationality of the CandidateDO
+    *
+    * @return Nationality of the CandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CountryDO getNationality () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getNationality ();
+   }
+
+   
+   /**
+    * Set Nationality of the CandidateDO
+    *
+    * @param Nationality of the CandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setNationality ( jobmatch.data.CountryDO Nationality ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setNationality ( Nationality );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Nationality of the CandidateDO
+    *
+    * @return BDO-wrapped Nationality of the CandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CountryBDO getNationalityBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.CountryBDO b = jobmatch.data.CountryBDO.createExisting(
+					  DO.getNationality () );
+      return b;
+   }
+
+   /**
+    * Set Nationality of the CandidateDO
+    *
+    * @param BDO-wrapped Nationality of the CandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setNationality ( jobmatch.data.CountryBDO Nationality ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Nationality ) {
+	  if ( true )
+	      DO.setNationality ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "CandidateBDO.setNationality does not allow NULL." );
+      } else {
+          DO.setNationality ( Nationality.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
 
    
     /**
@@ -1632,7 +1678,25 @@ public class CandidateBDO implements java.io.Serializable {
     modifyDO( dbt, true );
   }
 
-  
+      /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for writing to the database.
+     */
+    protected void okToCommitNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for deletion from the database.
+     */
+    protected void okToDeleteNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+
 
   /**
    * Modifies the DO within its table.
@@ -1696,7 +1760,25 @@ public class CandidateBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  
+	  	jobmatch.data.CountryDO Nationality_DO = DO.getNationality();
+	if ( null != Nationality_DO ) {
+	    if ( Nationality_DO.isLoaded() ) {
+		okToCommitNationality( Nationality_DO );
+		jobmatch.data.CountryBDO b = 
+		    jobmatch.data.CountryBDO.createExisting(
+						    Nationality_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit CandidateBDO ( " + toString() +
+		    " ) because Nationality is not allowed to be null." );
+	}
+
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

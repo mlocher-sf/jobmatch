@@ -1,11 +1,16 @@
 /* This SQL was generated for a Standard database. */
 
-create table Employer
+create table PersonalProfile
 (
-/* class Employer */
-    Company VARCHAR(30) DEFAULT ""    ,
-    City VARCHAR(30) DEFAULT ""    ,
-    County DECIMAL(19,0)     ,
+/* class TreeLeaf */
+    LeafNumber INTEGER     ,
+    Profile DECIMAL(19,0)  NOT NULL   ,
+    Mandatory BIT DEFAULT 0 NOT NULL   ,
+/* class PersonalProfile */
+    MinAge INTEGER     ,
+    MaxAge INTEGER     ,
+    Nationality DECIMAL(19,0)     ,
+    Sex VARCHAR(32) DEFAULT ""    ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

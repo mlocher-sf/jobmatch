@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 final public class ProfileQuery implements Query {
 
@@ -407,80 +407,6 @@ final public class ProfileQuery implements Query {
 
 
     /**
-     * Set the Name to query.
-     *
-     * @param x The Name of the Profile to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryName(
-				String x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    ProfileDO DO = ( ProfileDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		String s = DO.getName();
-		if ( null == s && null == x ) {
-		    equals = true;
-		} else if ( null != s && null != x ) {
-		    if ( exact ) 
-			equals = s.equals( x );
-		    else {
-			equals = ( -1 != s.toLowerCase().indexOf(
-					 x.toLowerCase() ) );
-		    }
-		} else {  // one is null, the other isn't
-		    equals = false;
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Name", x, "VARCHAR",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Name to query
-     * @param x The Name of the Profile to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryName( 
-				String x )
-    throws DataObjectException, QueryException {
-	setQueryName( x, true );
-    }
-
-    /**
-     * Add Name to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByName(boolean direction_flag) {
-        builder.addOrderByColumn("Name",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Name to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByName() {
-        builder.addOrderByColumn("Name","ASC");
-    }
-
-
-    /**
      * Set the Company to query.
      *
      * @param x The Company of the Profile to query.
@@ -556,6 +482,223 @@ System.err.println("x ="+x );
 
 
     /**
+     * Set the LastNotification to query.
+     *
+     * @param x The LastNotification of the Profile to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryLastNotification(
+				java.sql.Timestamp x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    ProfileDO DO = ( ProfileDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		Date d = (Date) DO.getLastNotification();
+		if ( null == d && null == x ) {
+		    equals = true;
+		} else if ( null != d && null != x ) {
+		    equals = d.equals( x );
+		} else {  // one is null, the other isn't
+		    equals = false;
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "LastNotification", x, "TIMESTAMP",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the LastNotification to query
+     * @param x The LastNotification of the Profile to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryLastNotification( 
+				java.sql.Timestamp x )
+    throws DataObjectException, QueryException {
+	setQueryLastNotification( x, true );
+    }
+
+    /**
+     * Add LastNotification to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByLastNotification(boolean direction_flag) {
+        builder.addOrderByColumn("LastNotification",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add LastNotification to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByLastNotification() {
+        builder.addOrderByColumn("LastNotification","ASC");
+    }
+
+
+    /**
+     * Set the MatchTree to query.
+     *
+     * @param x The MatchTree of the Profile to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryMatchTree(
+				byte[] x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    ProfileDO DO = ( ProfileDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		byte[] ba = DO.getMatchTree();
+		if ( ! (	null == ba && null == x ) ) {
+		    equals = false;
+		} else if ( ba.length != x.length ) {
+		    equals = false;
+		} else {
+		    for ( int j = 0; j < x.length; j++ ) {
+			if ( ba[j] != x[j] ) {
+			    equals = false;
+			    break;
+			}
+		    }
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "MatchTree", x, "MEDIUMBLOB",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the MatchTree to query
+     * @param x The MatchTree of the Profile to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryMatchTree( 
+				byte[] x )
+    throws DataObjectException, QueryException {
+	setQueryMatchTree( x, true );
+    }
+
+    /**
+     * Add MatchTree to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByMatchTree(boolean direction_flag) {
+        builder.addOrderByColumn("MatchTree",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add MatchTree to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByMatchTree() {
+        builder.addOrderByColumn("MatchTree","ASC");
+    }
+
+
+    /**
+     * Set the Name to query.
+     *
+     * @param x The Name of the Profile to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryName(
+				String x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    ProfileDO DO = ( ProfileDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		String s = DO.getName();
+		if ( null == s && null == x ) {
+		    equals = true;
+		} else if ( null != s && null != x ) {
+		    if ( exact ) 
+			equals = s.equals( x );
+		    else {
+			equals = ( -1 != s.toLowerCase().indexOf(
+					 x.toLowerCase() ) );
+		    }
+		} else {  // one is null, the other isn't
+		    equals = false;
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "Name", x, "VARCHAR",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the Name to query
+     * @param x The Name of the Profile to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryName( 
+				String x )
+    throws DataObjectException, QueryException {
+	setQueryName( x, true );
+    }
+
+    /**
+     * Add Name to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByName(boolean direction_flag) {
+        builder.addOrderByColumn("Name",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add Name to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByName() {
+        builder.addOrderByColumn("Name","ASC");
+    }
+
+
+    /**
      * Set the NeedsRematching to query.
      *
      * @param x The NeedsRematching of the Profile to query.
@@ -584,7 +727,7 @@ System.err.println("x ="+x );
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "NeedsRematching", x, "BIT",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -647,7 +790,7 @@ System.err.println("x ="+x );
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "Notify", x, "BIT",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -682,13 +825,13 @@ System.err.println("x ="+x );
 
 
     /**
-     * Set the Period to query.
+     * Set the NotificationPeriod to query.
      *
-     * @param x The Period of the Profile to query.
+     * @param x The NotificationPeriod of the Profile to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryPeriod(
+    public void setQueryNotificationPeriod(
 				int x, boolean exact)
     throws DataObjectException, QueryException
     {
@@ -700,7 +843,7 @@ System.err.println("x ="+x );
 	    boolean equals = true;
 	    
 		// primitive types are compared using the == operator.
-		equals = ( DO.getPeriod() == x );
+		equals = ( DO.getNotificationPeriod() == x );
 	    
 	    if ( ! equals )
 		cacheHits.removeElementAt( i-- );
@@ -709,181 +852,38 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Period", x, "INTEGER",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+	    builder.addWhereClause( "NotificationPeriod", x, "INTEGER",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
-     * Set the Period to query
-     * @param x The Period of the Profile to query.
+     * Set the NotificationPeriod to query
+     * @param x The NotificationPeriod of the Profile to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryPeriod( 
+    public void setQueryNotificationPeriod( 
 				int x )
     throws DataObjectException, QueryException {
-	setQueryPeriod( x, true );
+	setQueryNotificationPeriod( x, true );
     }
 
     /**
-     * Add Period to the ORDER BY clause.
+     * Add NotificationPeriod to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByPeriod(boolean direction_flag) {
-        builder.addOrderByColumn("Period",
+    public void addOrderByNotificationPeriod(boolean direction_flag) {
+        builder.addOrderByColumn("NotificationPeriod",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Period to the ORDER BY clause.  This convenience
+     * Add NotificationPeriod to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByPeriod() {
-        builder.addOrderByColumn("Period","ASC");
-    }
-
-
-    /**
-     * Set the MatchTree to query.
-     *
-     * @param x The MatchTree of the Profile to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryMatchTree(
-				byte[] x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    ProfileDO DO = ( ProfileDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		byte[] ba = DO.getMatchTree();
-		if ( ! (	null == ba && null == x ) ) {
-		    equals = false;
-		} else if ( ba.length != x.length ) {
-		    equals = false;
-		} else {
-		    for ( int j = 0; j < x.length; j++ ) {
-			if ( ba[j] != x[j] ) {
-			    equals = false;
-			    break;
-			}
-		    }
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "MatchTree", x, "MEDIUMBLOB",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the MatchTree to query
-     * @param x The MatchTree of the Profile to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryMatchTree( 
-				byte[] x )
-    throws DataObjectException, QueryException {
-	setQueryMatchTree( x, true );
-    }
-
-    /**
-     * Add MatchTree to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByMatchTree(boolean direction_flag) {
-        builder.addOrderByColumn("MatchTree",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add MatchTree to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByMatchTree() {
-        builder.addOrderByColumn("MatchTree","ASC");
-    }
-
-
-    /**
-     * Set the LastNotification to query.
-     *
-     * @param x The LastNotification of the Profile to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryLastNotification(
-				java.sql.Timestamp x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    ProfileDO DO = ( ProfileDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		Date d = (Date) DO.getLastNotification();
-		if ( null == d && null == x ) {
-		    equals = true;
-		} else if ( null != d && null != x ) {
-		    equals = d.equals( x );
-		} else {  // one is null, the other isn't
-		    equals = false;
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "LastNotification", x, "TIMESTAMP",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the LastNotification to query
-     * @param x The LastNotification of the Profile to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryLastNotification( 
-				java.sql.Timestamp x )
-    throws DataObjectException, QueryException {
-	setQueryLastNotification( x, true );
-    }
-
-    /**
-     * Add LastNotification to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByLastNotification(boolean direction_flag) {
-        builder.addOrderByColumn("LastNotification",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add LastNotification to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByLastNotification() {
-        builder.addOrderByColumn("LastNotification","ASC");
+    public void addOrderByNotificationPeriod() {
+        builder.addOrderByColumn("NotificationPeriod","ASC");
     }
 
     /**
@@ -963,7 +963,7 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOpenParen(); // patched by PSE 2000, 5/22/2000
+	builder.addWhereOpenParen(); // patched by PSE 2000, 5/23/2000
     }
 
     /**
@@ -973,6 +973,6 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereCloseParen(); // patched by PSE 2000, 5/22/2000
+	builder.addWhereCloseParen(); // patched by PSE 2000, 5/23/2000
     }
 }

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/studer_repositry/dataTest/jobmatch/data/LanguageDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/PersonalProfileDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -51,13 +51,13 @@ import com.lutris.dods.builder.generator.query.*;
 
 
 /**
- * Data core class, used to set, retrieve the LanguageDO information.
+ * Data core class, used to set, retrieve the PersonalProfileDO information.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.1 $
  * @author  studer
  * @since   jobmatch
  */
- public class LanguageDO extends jobmatch.data.ConstantTableDO implements java.io.Serializable {
+ public class PersonalProfileDO extends jobmatch.data.TreeLeafDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -95,11 +95,11 @@ import com.lutris.dods.builder.generator.query.*;
      *             String city = addr.getCity();
      *         }
      */
-    static public final RDBTable  table = new RDBTable( "Language" );
+    static public final RDBTable  table = new RDBTable( "PersonalProfile" );
 
     /**
-     * Return Language as the name of the table in the database
-     * which contains LanguageDO objects.
+     * Return PersonalProfile as the name of the table in the database
+     * which contains PersonalProfileDO objects.
      * This method overrides CoreDO.getTableName()
      * and is used by CoreDO.executeUpdate() during error handling.
      *
@@ -108,12 +108,12 @@ import com.lutris.dods.builder.generator.query.*;
      * @author Jay Gunter
      */
     protected String getTableName() {
-	return "Language";
+	return "PersonalProfile";
     }
 
     static public final RDBColumn PrimaryKey = new RDBColumn( table,
 					      GenericDO.getPrimaryKeyName() );
-    /* RDBColumns for LanguageDO attributes are defined below. */
+    /* RDBColumns for PersonalProfileDO attributes are defined below. */
 
     /* Using a DO (and its Query class) to access a VIEW instead of a TABLE:
      *
@@ -127,7 +127,7 @@ import com.lutris.dods.builder.generator.query.*;
      * A VIEW usually does not return "oid" and "version" columns;
      * often (but now always) a VIEW is defined to return the "oid" column
      * for one of the tables joined together in the definition of the VIEW.
-     * If the isView flag is true, LanguageDO.createExisting(ResultSet)
+     * If the isView flag is true, PersonalProfileDO.createExisting(ResultSet)
      * will NOT invoke the GenericDO(ResultSet) constructor
      * so to avoid attempting to extract the "oid" and "version" columns
      * from the ResultSet.
@@ -145,7 +145,7 @@ import com.lutris.dods.builder.generator.query.*;
      * allowing a DO object to be a lightweight placeholder
      * until its data is needed.
      */
-    private LanguageDataStruct data = null;
+    private PersonalProfileDataStruct data = null;
 
     /**
      * isReadOnly()
@@ -164,7 +164,7 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
      */
-    protected LanguageDO ( boolean is_view )
+    protected PersonalProfileDO ( boolean is_view )
     throws ObjectIdException, DatabaseManagerException {
         super( is_view );
     }
@@ -177,7 +177,7 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
      */
-    protected LanguageDO ()
+    protected PersonalProfileDO ()
     throws ObjectIdException, DatabaseManagerException {
         super( isView );
     }
@@ -208,7 +208,7 @@ import com.lutris.dods.builder.generator.query.*;
     {
 	if ( null == data ) {
 	    super.loadData();
-	    data = new LanguageDataStruct ();
+	    data = new PersonalProfileDataStruct ();
 	}
 
 	ObjectId id = getOId();
@@ -218,15 +218,15 @@ import com.lutris.dods.builder.generator.query.*;
 	    return;
 
 	// DO from createExisting.  Complain if no record in database.
-	LanguageQuery query = new LanguageQuery ();
+	PersonalProfileQuery query = new PersonalProfileQuery ();
 	query.setQueryOId( id );
 	query.requireUniqueInstance();
-	LanguageDO obj;
+	PersonalProfileDO obj;
 	try {
 	    obj = query.getNextDO();
 	    if ( null == obj )
 		throw new DataObjectException(
-		    "LanguageDO DO not found for id=" + id );
+		    "PersonalProfileDO DO not found for id=" + id );
 	    makeIdentical(obj);
 	    setVersion(    obj.getVersion() );
 	    setNewVersion( obj.getVersion() );
@@ -249,7 +249,7 @@ import com.lutris.dods.builder.generator.query.*;
 		loadData();
 	    } catch ( Exception e ) {
 		throw new DataObjectException(
-		    "Unable to load data for LanguageDO id=" + getOId() +
+		    "Unable to load data for PersonalProfileDO id=" + getOId() +
 		    ", error = " + e.getMessage() );
 	    }
     }
@@ -295,7 +295,7 @@ import com.lutris.dods.builder.generator.query.*;
      *   Should never see this exception since GenericDO.ctor(ObjectId)
      *   never accesses the database.
      */
-    protected LanguageDO( ObjectId id )
+    protected PersonalProfileDO( ObjectId id )
     throws SQLException, ObjectIdException, DataObjectException, DatabaseManagerException
     {
 	super( id );
@@ -316,15 +316,15 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception DatabaseManagerException
      *   If a connection to the database cannot be established, etc.
      */
-    public static LanguageDO createVirgin()
+    public static PersonalProfileDO createVirgin()
     throws DatabaseManagerException, ObjectIdException {
-	return new LanguageDO ();
+	return new PersonalProfileDO ();
     }
 
     /**
      * createExisting( BigDecimal )
      *
-     * Factory method creates a LanguageDO object by searching for it
+     * Factory method creates a PersonalProfileDO object by searching for it
      * in the database using the passed BigDecimal value as the primary key.
      *
      * Creates a DO that represents an existing entry in the database.
@@ -356,7 +356,7 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    public static LanguageDO createExisting( BigDecimal bd )
+    public static PersonalProfileDO createExisting( BigDecimal bd )
     throws SQLException, ObjectIdException, DataObjectException, DatabaseManagerException
     {
 	if ( null == bd )
@@ -365,11 +365,11 @@ import com.lutris.dods.builder.generator.query.*;
     }
 
     /**
-     * The createExisting method is used to create a <CODE>LanguageDO</CODE>
+     * The createExisting method is used to create a <CODE>PersonalProfileDO</CODE>
      * from a string handle.
      */
-    public static LanguageDO createExisting( String handle ) {
-	LanguageDO ret = null;
+    public static PersonalProfileDO createExisting( String handle ) {
+	PersonalProfileDO ret = null;
         try {
             BigDecimal bd = new BigDecimal( handle );
 	    ret = createExisting( bd );
@@ -381,7 +381,7 @@ import com.lutris.dods.builder.generator.query.*;
     /**
      * createExisting( ObjectId )
      *
-     * Factory method creates a LanguageDO object by searching for it
+     * Factory method creates a PersonalProfileDO object by searching for it
      * in the database using the passed ObjectID value as the primary key.
      *
      * @param id The ObjectId for the object.
@@ -396,13 +396,13 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected static LanguageDO createExisting( ObjectId id )
+    protected static PersonalProfileDO createExisting( ObjectId id )
     throws SQLException, ObjectIdException, DataObjectException, DatabaseManagerException
     {
 	if ( null == id )
 	    return null;
-	LanguageDO ret = null;
-	ret = new LanguageDO( id );
+	PersonalProfileDO ret = null;
+	ret = new PersonalProfileDO( id );
 	ret.setPersistent( true );  // mark DO as persistent (preexisting)
 	if ( ! false ) // If not lazy-loading, fetch DO data now.
 	    ret.loadData();
@@ -430,18 +430,18 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected static LanguageDO createExisting( ResultSet rs )
+    protected static PersonalProfileDO createExisting( ResultSet rs )
     throws SQLException, ObjectIdException, DataObjectException
 		, DatabaseManagerException
     {
 	if ( null == rs )
 	    return null;
-	LanguageDO ret = null;
+	PersonalProfileDO ret = null;
 	if ( isView ) {
-	    ret = new LanguageDO ();
+	    ret = new PersonalProfileDO ();
 	    ret.initFromResultSet( rs );
 	} else {
-	    ret = new LanguageDO ( rs );
+	    ret = new PersonalProfileDO ( rs );
 	}
 	return ret;
     }
@@ -449,14 +449,14 @@ import com.lutris.dods.builder.generator.query.*;
     /**
      * createExisting( RDBRow )
      *
-     * Factory method creates a LanguageDO object by searching for it
-     * in the database using the LanguageDO.PrimaryKey value
+     * Factory method creates a PersonalProfileDO object by searching for it
+     * in the database using the PersonalProfileDO.PrimaryKey value
      * in the passed RDBRow.
      *
      * @param RDBRow A row returned by QueryBuilder.getNextRow().
      *
      * @exception DataObjectException
-     *   If the RDBRow does not contain a LanguageDO.PrimaryKey.
+     *   If the RDBRow does not contain a PersonalProfileDO.PrimaryKey.
      *   If the object is not found in the database.
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
@@ -466,7 +466,7 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected static LanguageDO createExisting( RDBRow row )
+    protected static PersonalProfileDO createExisting( RDBRow row )
     throws SQLException, ObjectIdException, DataObjectException
 		, DatabaseManagerException
     {
@@ -474,26 +474,26 @@ import com.lutris.dods.builder.generator.query.*;
 	    return null;
         RDBColumnValue pk = null;
         try {
-	    pk = row.get( LanguageDO.PrimaryKey );
+	    pk = row.get( PersonalProfileDO.PrimaryKey );
 	    return createExisting( pk );
         } catch ( Exception e ) {
 	    throw new DataObjectException(
-		"Cannot create LanguageDO, row does not " +
-		"contain LanguageDO primary key." );
+		"Cannot create PersonalProfileDO, row does not " +
+		"contain PersonalProfileDO primary key." );
         }
     }
 
     /**
      * createExisting( RDBColumnValue )
      *
-     * Factory method creates a LanguageDO object by searching for it
-     * in the database using the passed LanguageDO.PrimaryKey.
+     * Factory method creates a PersonalProfileDO object by searching for it
+     * in the database using the passed PersonalProfileDO.PrimaryKey.
      *
      * @param RDBColumnValue a PrimaryKey column value from a row
      * that was returned by QueryBuilder.getNextRow().
      *
      * @exception DataObjectException
-     *   If the RDBColumnValue does not contain a LanguageDO.PrimaryKey.
+     *   If the RDBColumnValue does not contain a PersonalProfileDO.PrimaryKey.
      *   If the object is not found in the database.
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
@@ -503,22 +503,22 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected static LanguageDO createExisting( RDBColumnValue pk )
+    protected static PersonalProfileDO createExisting( RDBColumnValue pk )
     throws SQLException, ObjectIdException, DataObjectException
 		, DatabaseManagerException
     {
 	if ( null == pk )
 	    return null;
-	if ( ! pk.equals( LanguageDO.PrimaryKey ) )
+	if ( ! pk.equals( PersonalProfileDO.PrimaryKey ) )
 	    throw new DataObjectException(
-		"Cannot create LanguageDO, " +
-		"RDBColumnValue is not LanguageDO.PrimaryKey." );
+		"Cannot create PersonalProfileDO, " +
+		"RDBColumnValue is not PersonalProfileDO.PrimaryKey." );
 	BigDecimal bd = null;
         try {
 	    bd = pk.getBigDecimal();
         } catch ( Exception e ) {
 	    throw new DataObjectException(
-		"Cannot create LanguageDO, bad primary key." );
+		"Cannot create PersonalProfileDO, bad primary key." );
         }
 	if ( null == bd )
             return null;
@@ -539,10 +539,10 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception DatabaseManagerException
      *   If a connection to the database cannot be established, etc.
      */
-    public static LanguageDO createCopy( LanguageDataStruct data )
+    public static PersonalProfileDO createCopy( PersonalProfileDataStruct data )
     throws DatabaseManagerException, ObjectIdException {
-	LanguageDO ret = new LanguageDO ();
-	ret.data = ( LanguageDataStruct ) data.duplicate();
+	PersonalProfileDO ret = new PersonalProfileDO ();
+	ret.data = ( PersonalProfileDataStruct ) data.duplicate();
 	return ret;
     }
 
@@ -560,11 +560,11 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception DatabaseManagerException
      *   If a connection to the database cannot be established, etc.
      */
-    public static LanguageDO createCopy( LanguageDO orig )
+    public static PersonalProfileDO createCopy( PersonalProfileDO orig )
     throws DatabaseManagerException, ObjectIdException {
-	LanguageDO ret = new LanguageDO ();
+	PersonalProfileDO ret = new PersonalProfileDO ();
 	if ( null != orig.data ) {
-	    ret.data = ( LanguageDataStruct ) orig.data.duplicate();
+	    ret.data = ( PersonalProfileDataStruct ) orig.data.duplicate();
 	}
 	return ret;
     }
@@ -635,10 +635,202 @@ import com.lutris.dods.builder.generator.query.*;
      * @param orig The original DO.
      *
      */
-    protected void makeIdentical( LanguageDO orig ) {
+    protected void makeIdentical( PersonalProfileDO orig ) {
 	super.makeIdentical(orig);
 	data = orig.data;
     }
+
+////////////////////////// data member MinAge
+
+   /* static final RDBColumn MinAge for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn MinAge = 
+			    new RDBColumn( table, "MinAge" );
+
+   /**
+    * Get MinAge of the PersonalProfile
+    *
+    * @return MinAge of the PersonalProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public int getMinAge () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.MinAge;
+   }
+
+   /**
+    * Set MinAge of the PersonalProfile
+    *
+    * @param MinAge of the PersonalProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setMinAge ( int MinAge )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.MinAge =  markNewValue(
+	data.MinAge, MinAge  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member MaxAge
+
+   /* static final RDBColumn MaxAge for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn MaxAge = 
+			    new RDBColumn( table, "MaxAge" );
+
+   /**
+    * Get MaxAge of the PersonalProfile
+    *
+    * @return MaxAge of the PersonalProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public int getMaxAge () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.MaxAge;
+   }
+
+   /**
+    * Set MaxAge of the PersonalProfile
+    *
+    * @param MaxAge of the PersonalProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setMaxAge ( int MaxAge )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.MaxAge =  markNewValue(
+	data.MaxAge, MaxAge  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Nationality
+
+   /* static final RDBColumn Nationality for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Nationality = 
+			    new RDBColumn( table, "Nationality" );
+
+   /**
+    * Get Nationality of the PersonalProfile
+    *
+    * @return Nationality of the PersonalProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CountryDO getNationality () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Nationality;
+   }
+
+   /**
+    * Set Nationality of the PersonalProfile
+    *
+    * @param Nationality of the PersonalProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setNationality ( jobmatch.data.CountryDO Nationality )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Nationality = (jobmatch.data.CountryDO) markNewValue(
+	data.Nationality, Nationality  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Sex
+
+   /* static final RDBColumn Sex for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Sex = 
+			    new RDBColumn( table, "Sex" );
+
+   /**
+    * Get Sex of the PersonalProfile
+    *
+    * @return Sex of the PersonalProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getSex () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Sex;
+   }
+
+   /**
+    * Set Sex of the PersonalProfile
+    *
+    * @param Sex of the PersonalProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setSex ( String Sex )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Sex =  markNewValue(
+	data.Sex, Sex , 0, 32, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
     /**
      * Protected constructor.
      *
@@ -655,7 +847,7 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected LanguageDO(ResultSet rs)
+    protected PersonalProfileDO(ResultSet rs)
             throws SQLException, ObjectIdException, DataObjectException
  	    , DatabaseManagerException
     {
@@ -664,7 +856,7 @@ import com.lutris.dods.builder.generator.query.*;
     }
 
     /**
-     * initFromResultSet initializes the data members from Language.
+     * initFromResultSet initializes the data members from PersonalProfile.
      * This code was separated from the ResultSet constructor
      * so that createExisting(ResultSet) could handle VIEWs.
      */
@@ -674,12 +866,44 @@ import com.lutris.dods.builder.generator.query.*;
     {
 	// Constructing a DO from a ResultSet means we definitely need the 
 	// DataStruct ready for the setXxx methods invoked below.
-	data = new LanguageDataStruct ();
+	data = new PersonalProfileDataStruct ();
  
 	// writeMemberStuff uses the ResultSetExtraction.template
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
+		
+	setMinAge( 
+	    
+		rs.getInt( 
+			"MinAge"  )
+	    
+	);
 	
+	
+	setMaxAge( 
+	    
+		rs.getInt( 
+			"MaxAge"  )
+	    
+	);
+	
+	
+	setNationality( 
+	    jobmatch.data.CountryDO.createExisting( 
+		rs.getBigDecimal( 
+			"Nationality" , 0 )
+	     )
+	);
+	
+	
+	setSex( 
+	    
+		rs.getString( 
+			"Sex"  )
+	    
+	);
+	
+
  
         markClean();
     }        
@@ -712,7 +936,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Language ( Description, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ? )" );
+	    "insert into PersonalProfile ( LeafNumber, Profile, Mandatory, MinAge, MaxAge, Nationality, Sex, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -720,8 +944,20 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_String( stmt, param,
-		getDescription() );
+	    	setPrepStmtParam_int( stmt, param,
+		getLeafNumber() );
+	setPrepStmtParam_DO( stmt, param,
+		getProfile() );
+	setPrepStmtParam_boolean( stmt, param,
+		getMandatory() );
+	setPrepStmtParam_int( stmt, param,
+		getMinAge() );
+	setPrepStmtParam_int( stmt, param,
+		getMaxAge() );
+	setPrepStmtParam_DO( stmt, param,
+		getNationality() );
+	setPrepStmtParam_String( stmt, param,
+		getSex() );
 
 
 	    /* The order of the values being inserted must match
@@ -754,7 +990,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Language set " + getVersionColumnName() + " = ?, Description = ? " +
+	    "update PersonalProfile set " + getVersionColumnName() + " = ?, LeafNumber = ?, Profile = ?, Mandatory = ?, MinAge = ?, MaxAge = ?, Nationality = ?, Sex = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -764,8 +1000,20 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_String( stmt, param,
-		getDescription() );
+	    	setPrepStmtParam_int( stmt, param,
+		getLeafNumber() );
+	setPrepStmtParam_DO( stmt, param,
+		getProfile() );
+	setPrepStmtParam_boolean( stmt, param,
+		getMandatory() );
+	setPrepStmtParam_int( stmt, param,
+		getMinAge() );
+	setPrepStmtParam_int( stmt, param,
+		getMaxAge() );
+	setPrepStmtParam_DO( stmt, param,
+		getNationality() );
+	setPrepStmtParam_String( stmt, param,
+		getSex() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -794,7 +1042,7 @@ import com.lutris.dods.builder.generator.query.*;
             throws SQLException {
 
         String sql =
-            "delete from Language \n" +
+            "delete from PersonalProfile \n" +
             "where " + getOIdColumnName() + " = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setBigDecimal(1, getOId().toBigDecimal());
@@ -808,14 +1056,18 @@ import com.lutris.dods.builder.generator.query.*;
      */
 /*
     public String toString(){
-	String str = "LanguageDO:";
+	String str = "PersonalProfileDO:";
 	ObjectId oid = getOId();
 	String id = "virgin";
 	if ( null != oid ) 
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str ;
+	    str = str + "\n" + indent + "MinAge=" + data.MinAge
++ "\n" + indent + "MaxAge=" + data.MaxAge
++ "\n" + indent + "Nationality=" + ( null == data.Nationality ? null  : data.Nationality.toString( indentCount + 1 ) )
++ "\n" + indent + "Sex=" + data.Sex
+;
         return str + "; " + super.toString();
     }
 */
@@ -831,273 +1083,29 @@ import com.lutris.dods.builder.generator.query.*;
         for ( int i = 0; i < indentCount; i++ ) {
             indent += ". ";
         }
-        String str = indent + "LanguageDO:";
+        String str = indent + "PersonalProfileDO:";
         ObjectId oid = getOId();
         String id = "virgin";
         if ( null != oid )
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str ;
+            str = str + "\n" + indent + "MinAge=" + data.MinAge
++ "\n" + indent + "MaxAge=" + data.MaxAge
++ "\n" + indent + "Nationality=" + ( null == data.Nationality ? null  : data.Nationality.toString( indentCount + 1 ) )
++ "\n" + indent + "Sex=" + data.Sex
+;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
     }
 
     
-    /**
-     * Get array of LanguageCandidateDO objects that refer to this DO.
-     *
-     * @return array of LanguageCandidateDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public jobmatch.data.LanguageCandidateDO[] getLanguageCandidateDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.LanguageCandidateDO[] ret = null;
-	try {
-	    jobmatch.data.LanguageCandidateQuery q = new jobmatch.data.LanguageCandidateQuery();
-	    q.setQueryLanguage( this );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.LanguageCandidateDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single LanguageCandidateDO object
-     * that refers to this DO.
-     *
-     * @return LanguageCandidateDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     * @exception NonUniqueQueryException
-     *   If more than one LanguageCandidateDO object was found.
-     */
-    public jobmatch.data.LanguageCandidateDO getLanguageCandidateDO () 
-    throws DataObjectException, QueryException, NonUniqueQueryException {
-	jobmatch.data.LanguageCandidateQuery q = new jobmatch.data.LanguageCandidateQuery();
-	q.setQueryLanguage( this );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
-
-    /**
-     * Add (set & commit) a LanguageCandidateDO object that refers to this DO.
-     *
-     * @param referrer LanguageCandidateDO to be set to point to this DO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addLanguageCandidateDO( jobmatch.data.LanguageCandidateDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addLanguageCandidateDO( referrer, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a LanguageCandidateDO object that refers to this DO.
-     *
-     * @param referrer LanguageCandidateDO to be set to point to this DO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addLanguageCandidateDO( jobmatch.data.LanguageCandidateDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        referrer.setLanguage( this );
-        referrer.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a LanguageCandidateDO object that refers to this DO.
-     *
-     * @param referrer LanguageCandidateDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeLanguageCandidateDO( jobmatch.data.LanguageCandidateDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeLanguageCandidateDO( referrer, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a LanguageCandidateDO object that refers to this DO.
-     *
-     * @param referrer LanguageCandidateDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeLanguageCandidateDO( jobmatch.data.LanguageCandidateDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	LanguageDO referred = referrer.getLanguage();
-	String referredHandle = referred.getHandle();
-	String mydoHandle = this.getHandle();
-	if ( null == referredHandle || null == mydoHandle || 
-	     ( ! referredHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + referrer +
-		" does not refer to object " + this +
-		", cannot be removed this way." );
-	}
-        referrer.delete( tran );
-    }
- 
-
-    /**
-     * Get array of LanguageProfileDO objects that refer to this DO.
-     *
-     * @return array of LanguageProfileDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public jobmatch.data.LanguageProfileDO[] getLanguageProfileDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.LanguageProfileDO[] ret = null;
-	try {
-	    jobmatch.data.LanguageProfileQuery q = new jobmatch.data.LanguageProfileQuery();
-	    q.setQueryLanguage( this );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.LanguageProfileDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single LanguageProfileDO object
-     * that refers to this DO.
-     *
-     * @return LanguageProfileDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     * @exception NonUniqueQueryException
-     *   If more than one LanguageProfileDO object was found.
-     */
-    public jobmatch.data.LanguageProfileDO getLanguageProfileDO () 
-    throws DataObjectException, QueryException, NonUniqueQueryException {
-	jobmatch.data.LanguageProfileQuery q = new jobmatch.data.LanguageProfileQuery();
-	q.setQueryLanguage( this );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
-
-    /**
-     * Add (set & commit) a LanguageProfileDO object that refers to this DO.
-     *
-     * @param referrer LanguageProfileDO to be set to point to this DO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addLanguageProfileDO( jobmatch.data.LanguageProfileDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addLanguageProfileDO( referrer, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a LanguageProfileDO object that refers to this DO.
-     *
-     * @param referrer LanguageProfileDO to be set to point to this DO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addLanguageProfileDO( jobmatch.data.LanguageProfileDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        referrer.setLanguage( this );
-        referrer.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a LanguageProfileDO object that refers to this DO.
-     *
-     * @param referrer LanguageProfileDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeLanguageProfileDO( jobmatch.data.LanguageProfileDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeLanguageProfileDO( referrer, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a LanguageProfileDO object that refers to this DO.
-     *
-     * @param referrer LanguageProfileDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeLanguageProfileDO( jobmatch.data.LanguageProfileDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	LanguageDO referred = referrer.getLanguage();
-	String referredHandle = referred.getHandle();
-	String mydoHandle = this.getHandle();
-	if ( null == referredHandle || null == mydoHandle || 
-	     ( ! referredHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + referrer +
-		" does not refer to object " + this +
-		", cannot be removed this way." );
-	}
-        referrer.delete( tran );
-    }
- 
-
 
 
 
     /**
      * A stub method for implementing pre-commit assertions 
-     * for this LanguageDO.
+     * for this PersonalProfileDO.
      * Implement this stub to throw an RefAssertionException for cases
      * where this object is not valid for writing to the database.
      */
@@ -1106,7 +1114,7 @@ import com.lutris.dods.builder.generator.query.*;
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for this LanguageDO.
+     * for this PersonalProfileDO.
      * Implement this stub to throw an RefAssertionException for cases
      * where this object is not valid for deletion from the database.
      */
@@ -1169,7 +1177,43 @@ import com.lutris.dods.builder.generator.query.*;
     modifyDO( dbt, true );
   }
 
-  
+      /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Profile data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Profile is not valid for writing to the database.
+     */
+    protected void okToCommitProfile( jobmatch.data.ProfileDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Profile data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Profile is not valid for deletion from the database.
+     */
+    protected void okToDeleteProfile( jobmatch.data.ProfileDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for writing to the database.
+     */
+    protected void okToCommitNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for deletion from the database.
+     */
+    protected void okToDeleteNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+
 
   /**
    * Modifies the DO within its table.
@@ -1204,32 +1248,44 @@ import com.lutris.dods.builder.generator.query.*;
       if ( delete ) {
 	  // Code to perform cascading deletes is generated here
 	  // if cascading deletes are not supported by the database.      
-	  	
-	{
-	    // perform cascading delete on referring table
-	    jobmatch.data.LanguageCandidateDO[] a = getLanguageCandidateDOArray();
-	    for ( int i = 0; i < a.length; i++ ) {
-		a[ i ].delete( dbt );
-	    }
-	}
-	
-	
-	{
-	    // perform cascading delete on referring table
-	    jobmatch.data.LanguageProfileDO[] a = getLanguageProfileDOArray();
-	    for ( int i = 0; i < a.length; i++ ) {
-		a[ i ].delete( dbt );
-	    }
-	}
-	
-
+	  
 	  // The following line keeps the compiler happy 
 	  // when the CASCADING_DELETES tag is empty.
           if ( false )
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  
+	  	jobmatch.data.ProfileDO Profile_DO = getProfile();
+	if ( null != Profile_DO ) {
+	    if ( Profile_DO.isLoaded() ) {
+		okToCommitProfile( Profile_DO );
+		Profile_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit PersonalProfileDO ( " + toString() +
+		    " ) because Profile is not allowed to be null." );
+	}
+	jobmatch.data.CountryDO Nationality_DO = getNationality();
+	if ( null != Nationality_DO ) {
+	    if ( Nationality_DO.isLoaded() ) {
+		okToCommitNationality( Nationality_DO );
+		Nationality_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit PersonalProfileDO ( " + toString() +
+		    " ) because Nationality is not allowed to be null." );
+	}
+
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/studer_repositry/dataTest/jobmatch/data/AssociationCandidateQuery.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/PersonalProfileQuery.java
  *-----------------------------------------------------------------------------
  */
 
@@ -48,8 +48,8 @@ import java.util.*;
 import java.util.Date;  // when I say Date, I don't mean java.sql.Date
 
 /**
- * AssociationCandidateQuery is used to query the AssociationCandidate table in the database.<BR>
- * It returns objects of type AssociationCandidateDO.
+ * PersonalProfileQuery is used to query the PersonalProfile table in the database.<BR>
+ * It returns objects of type PersonalProfileDO.
  * <P>
  * General usage:
  * <P>
@@ -111,17 +111,17 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.1 $
  */
-final public class AssociationCandidateQuery implements Query {
+final public class PersonalProfileQuery implements Query {
 
     private QueryBuilder builder;
 
     /**
      * Public constructor.
      */
-    public AssociationCandidateQuery() {
-	builder = new QueryBuilder( "AssociationCandidate", "AssociationCandidate.*" );
+    public PersonalProfileQuery() {
+	builder = new QueryBuilder( "PersonalProfile", "PersonalProfile.*" );
 	builder.setDatabaseVendor( "Standard" );
 	builder.setStringMatchDetails( "MATCHES", "*" );
 	reset();
@@ -129,7 +129,7 @@ final public class AssociationCandidateQuery implements Query {
 
     private ResultSet		resultSet	= null;
     private boolean 		uniqueInstance	= false;
-    private AssociationCandidateDO[]	DOs		= null;
+    private PersonalProfileDO[]	DOs		= null;
     private int			arrayIndex	= -1;
     private boolean		needToRun	= true;
     private Vector		cacheHits	= null;
@@ -166,7 +166,7 @@ final public class AssociationCandidateQuery implements Query {
 		dbQuery.query( this );    // invokes executeQuery
 	        results = new Vector();
 	        while ( resultSet.next() ) {
-		    results.addElement( new AssociationCandidateDO ( resultSet ) );
+		    results.addElement( new PersonalProfileDO ( resultSet ) );
 	        }
 	    }
 	    */
@@ -177,8 +177,8 @@ final public class AssociationCandidateQuery implements Query {
 		dbQuery.query( this );    // invokes executeQuery
 	        results = new Vector();
 	        while ( resultSet.next() ) {
-//		    results.addElement( new AssociationCandidateDO ( resultSet ) );
-		    results.addElement( AssociationCandidateDO.createExisting ( resultSet ) );
+//		    results.addElement( new PersonalProfileDO ( resultSet ) );
+		    results.addElement( PersonalProfileDO.createExisting ( resultSet ) );
 	        }
 	    } else {
 		results = cacheHits;	 // executeQuery saw cache hits
@@ -187,9 +187,9 @@ final public class AssociationCandidateQuery implements Query {
 	    if ( results.size() > 1 && uniqueInstance )
 		throw new NonUniqueQueryException(
 		    "Too many rows returned from database" );
-	    DOs = new AssociationCandidateDO [ results.size() ];
+	    DOs = new PersonalProfileDO [ results.size() ];
 	    for ( int i = 0; i < results.size(); i++ ) {
-		DOs[i] = ( AssociationCandidateDO ) results.elementAt( i );
+		DOs[i] = ( PersonalProfileDO ) results.elementAt( i );
 	    }
 	    arrayIndex = 0;
 	} catch ( SQLException se ) {
@@ -224,7 +224,7 @@ final public class AssociationCandidateQuery implements Query {
      * @exception DataObjectException If a database access error occurs.
      * @exception NonUniqueQueryException If too many rows were found.
      */
-    public AssociationCandidateDO[] getDOArray()
+    public PersonalProfileDO[] getDOArray()
     throws DataObjectException, NonUniqueQueryException {
 	if ( needToRun )
 	    runQuery();
@@ -236,7 +236,7 @@ final public class AssociationCandidateQuery implements Query {
      * @exception DataObjectException If a database access error occurs.
      * @exception NonUniqueQueryException If too many rows were found.
      */
-    public AssociationCandidateDO getNextDO()
+    public PersonalProfileDO getNextDO()
     throws DataObjectException, NonUniqueQueryException {
 	if ( needToRun )
 	    runQuery();
@@ -257,13 +257,13 @@ final public class AssociationCandidateQuery implements Query {
      * @exception DataObjectException If a database access error occurs.
      * @exception NonUniqueQueryException If too many rows were found.
      */
-    public AssociationCandidateBDO[] getBDOArray()
+    public PersonalProfileBDO[] getBDOArray()
     throws DataObjectException, NonUniqueQueryException {
 	if ( needToRun )
 	    runQuery();
-	AssociationCandidateBDO[] BDOs = new AssociationCandidateBDO[ DOs.length ];
+	PersonalProfileBDO[] BDOs = new PersonalProfileBDO[ DOs.length ];
 	for ( int i = 0; i < DOs.length; i++ )
-	    BDOs[ i ] = AssociationCandidateBDO.createExisting( DOs[ i ] );
+	    BDOs[ i ] = PersonalProfileBDO.createExisting( DOs[ i ] );
 	return BDOs;
     }
 
@@ -272,18 +272,18 @@ final public class AssociationCandidateQuery implements Query {
      * @exception DataObjectException If a database access error occurs.
      * @exception NonUniqueQueryException If too many rows were found.
      */
-    public AssociationCandidateBDO getNextBDO()
+    public PersonalProfileBDO getNextBDO()
     throws DataObjectException, NonUniqueQueryException {
-	AssociationCandidateDO DO = getNextDO();
+	PersonalProfileDO DO = getNextDO();
 	if ( null == DO )
 	    return null;
-	return AssociationCandidateBDO.createExisting( DO );
+	return PersonalProfileBDO.createExisting( DO );
     }
 
 
     /**
      * Set the OID to query.
-     * WARNING!  This method assumes that table <CODE>AssociationCandidate</CODE>
+     * WARNING!  This method assumes that table <CODE>PersonalProfile</CODE>
      * has a column named <CODE>"oid"</CODE>.
      * This method is called from the DO classes to retrieve an object by id.
      *
@@ -296,7 +296,7 @@ final public class AssociationCandidateQuery implements Query {
 	    return;
 	requireUniqueInstance();
         for ( int i = 0; i < cacheHits.size(); i++ ) {
-            AssociationCandidateDO DO = ( AssociationCandidateDO ) cacheHits.elementAt( i );
+            PersonalProfileDO DO = ( PersonalProfileDO ) cacheHits.elementAt( i );
             if ( null == DO ) continue;
             boolean equals = true;
 	    ObjectId id = DO.getOId();
@@ -398,7 +398,7 @@ final public class AssociationCandidateQuery implements Query {
         if (!rs.next())
             return null;
 
-        return AssociationCandidateDO.createExisting(rs);
+        return PersonalProfileDO.createExisting(rs);
 	*/
 	throw new ObjectIdException(
 	    "next() should not be used.  Use getNextDO() instead." );
@@ -407,31 +407,94 @@ final public class AssociationCandidateQuery implements Query {
 
 
     /**
-     * Set the Candidate to query.
+     * Set the LeafNumber to query.
      *
-     * @param x The Candidate of the AssociationCandidate to query.
+     * @param x The LeafNumber of the PersonalProfile to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryCandidate(
-				jobmatch.data.CandidateDO x, boolean exact)
+    public void setQueryLeafNumber(
+				int x, boolean exact)
     throws DataObjectException, QueryException
     {
 	// Remove from cacheHits any DOs that do not meet this
 	// setQuery requirement.
 	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    AssociationCandidateDO DO = ( AssociationCandidateDO ) cacheHits.elementAt( i );
+	    PersonalProfileDO DO = ( PersonalProfileDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// primitive types are compared using the == operator.
+		equals = ( DO.getLeafNumber() == x );
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "LeafNumber", x, "INTEGER",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the LeafNumber to query
+     * @param x The LeafNumber of the PersonalProfile to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryLeafNumber( 
+				int x )
+    throws DataObjectException, QueryException {
+	setQueryLeafNumber( x, true );
+    }
+
+    /**
+     * Add LeafNumber to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByLeafNumber(boolean direction_flag) {
+        builder.addOrderByColumn("LeafNumber",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add LeafNumber to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByLeafNumber() {
+        builder.addOrderByColumn("LeafNumber","ASC");
+    }
+
+
+    /**
+     * Set the Profile to query.
+     *
+     * @param x The Profile of the PersonalProfile to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryProfile(
+				jobmatch.data.ProfileDO x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    PersonalProfileDO DO = ( PersonalProfileDO ) cacheHits.elementAt( i );
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
 		// DOs are compared by their handles..
-		jobmatch.data.CandidateDO m = DO.getCandidate();
+		jobmatch.data.ProfileDO m = DO.getProfile();
 		if ( null == m && null == x ) {
 		    equals = true;
 		} else if ( null == m || null == x ) {
 		    equals = false;
 		} else {
-		    equals = ( DO.getCandidate().getOId().toString().equals( x.getOId().toString() ) );
+		    equals = ( DO.getProfile().getOId().toString().equals( x.getOId().toString() ) );
 if ( equals && m != x ) {
 System.err.println("\n----------------------------------------------------------");
 System.err.println("m ="+m );
@@ -446,67 +509,193 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Candidate", x, "DECIMAL(19,0)",
+	    builder.addWhereClause( "Profile", x, "DECIMAL(19,0)",
                 QueryBuilder.NOT_NULL, exactFlag( exact ) );
     }
 
     /**
-     * Set the Candidate to query
-     * @param x The Candidate of the AssociationCandidate to query.
+     * Set the Profile to query
+     * @param x The Profile of the PersonalProfile to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryCandidate( 
-				jobmatch.data.CandidateDO x )
+    public void setQueryProfile( 
+				jobmatch.data.ProfileDO x )
     throws DataObjectException, QueryException {
-	setQueryCandidate( x, true );
+	setQueryProfile( x, true );
     }
 
     /**
-     * Add Candidate to the ORDER BY clause.
+     * Add Profile to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByCandidate(boolean direction_flag) {
-        builder.addOrderByColumn("Candidate",
+    public void addOrderByProfile(boolean direction_flag) {
+        builder.addOrderByColumn("Profile",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Candidate to the ORDER BY clause.  This convenience
+     * Add Profile to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByCandidate() {
-        builder.addOrderByColumn("Candidate","ASC");
+    public void addOrderByProfile() {
+        builder.addOrderByColumn("Profile","ASC");
     }
 
 
     /**
-     * Set the Association to query.
+     * Set the MinAge to query.
      *
-     * @param x The Association of the AssociationCandidate to query.
+     * @param x The MinAge of the PersonalProfile to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryAssociation(
-				jobmatch.data.AssociationDO x, boolean exact)
+    public void setQueryMinAge(
+				int x, boolean exact)
     throws DataObjectException, QueryException
     {
 	// Remove from cacheHits any DOs that do not meet this
 	// setQuery requirement.
 	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    AssociationCandidateDO DO = ( AssociationCandidateDO ) cacheHits.elementAt( i );
+	    PersonalProfileDO DO = ( PersonalProfileDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// primitive types are compared using the == operator.
+		equals = ( DO.getMinAge() == x );
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "MinAge", x, "INTEGER",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the MinAge to query
+     * @param x The MinAge of the PersonalProfile to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryMinAge( 
+				int x )
+    throws DataObjectException, QueryException {
+	setQueryMinAge( x, true );
+    }
+
+    /**
+     * Add MinAge to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByMinAge(boolean direction_flag) {
+        builder.addOrderByColumn("MinAge",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add MinAge to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByMinAge() {
+        builder.addOrderByColumn("MinAge","ASC");
+    }
+
+
+    /**
+     * Set the MaxAge to query.
+     *
+     * @param x The MaxAge of the PersonalProfile to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryMaxAge(
+				int x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    PersonalProfileDO DO = ( PersonalProfileDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// primitive types are compared using the == operator.
+		equals = ( DO.getMaxAge() == x );
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "MaxAge", x, "INTEGER",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the MaxAge to query
+     * @param x The MaxAge of the PersonalProfile to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryMaxAge( 
+				int x )
+    throws DataObjectException, QueryException {
+	setQueryMaxAge( x, true );
+    }
+
+    /**
+     * Add MaxAge to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByMaxAge(boolean direction_flag) {
+        builder.addOrderByColumn("MaxAge",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add MaxAge to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByMaxAge() {
+        builder.addOrderByColumn("MaxAge","ASC");
+    }
+
+
+    /**
+     * Set the Nationality to query.
+     *
+     * @param x The Nationality of the PersonalProfile to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryNationality(
+				jobmatch.data.CountryDO x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    PersonalProfileDO DO = ( PersonalProfileDO ) cacheHits.elementAt( i );
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
 		// DOs are compared by their handles..
-		jobmatch.data.AssociationDO m = DO.getAssociation();
+		jobmatch.data.CountryDO m = DO.getNationality();
 		if ( null == m && null == x ) {
 		    equals = true;
 		} else if ( null == m || null == x ) {
 		    equals = false;
 		} else {
-		    equals = ( DO.getAssociation().getOId().toString().equals( x.getOId().toString() ) );
+		    equals = ( DO.getNationality().getOId().toString().equals( x.getOId().toString() ) );
 if ( equals && m != x ) {
 System.err.println("\n----------------------------------------------------------");
 System.err.println("m ="+m );
@@ -521,60 +710,60 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Association", x, "DECIMAL(19,0)",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+	    builder.addWhereClause( "Nationality", x, "DECIMAL(19,0)",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
-     * Set the Association to query
-     * @param x The Association of the AssociationCandidate to query.
+     * Set the Nationality to query
+     * @param x The Nationality of the PersonalProfile to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryAssociation( 
-				jobmatch.data.AssociationDO x )
+    public void setQueryNationality( 
+				jobmatch.data.CountryDO x )
     throws DataObjectException, QueryException {
-	setQueryAssociation( x, true );
+	setQueryNationality( x, true );
     }
 
     /**
-     * Add Association to the ORDER BY clause.
+     * Add Nationality to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByAssociation(boolean direction_flag) {
-        builder.addOrderByColumn("Association",
+    public void addOrderByNationality(boolean direction_flag) {
+        builder.addOrderByColumn("Nationality",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Association to the ORDER BY clause.  This convenience
+     * Add Nationality to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByAssociation() {
-        builder.addOrderByColumn("Association","ASC");
+    public void addOrderByNationality() {
+        builder.addOrderByColumn("Nationality","ASC");
     }
 
 
     /**
-     * Set the Function to query.
+     * Set the Sex to query.
      *
-     * @param x The Function of the AssociationCandidate to query.
+     * @param x The Sex of the PersonalProfile to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryFunction(
+    public void setQuerySex(
 				String x, boolean exact)
     throws DataObjectException, QueryException
     {
 	// Remove from cacheHits any DOs that do not meet this
 	// setQuery requirement.
 	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    AssociationCandidateDO DO = ( AssociationCandidateDO ) cacheHits.elementAt( i );
+	    PersonalProfileDO DO = ( PersonalProfileDO ) cacheHits.elementAt( i );
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
-		String s = DO.getFunction();
+		String s = DO.getSex();
 		if ( null == s && null == x ) {
 		    equals = true;
 		} else if ( null != s && null != x ) {
@@ -595,44 +784,44 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Function", x, "VARCHAR",
+	    builder.addWhereClause( "Sex", x, "VARCHAR",
                 QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
-     * Set the Function to query
-     * @param x The Function of the AssociationCandidate to query.
+     * Set the Sex to query
+     * @param x The Sex of the PersonalProfile to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryFunction( 
+    public void setQuerySex( 
 				String x )
     throws DataObjectException, QueryException {
-	setQueryFunction( x, true );
+	setQuerySex( x, true );
     }
 
     /**
-     * Add Function to the ORDER BY clause.
+     * Add Sex to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByFunction(boolean direction_flag) {
-        builder.addOrderByColumn("Function",
+    public void addOrderBySex(boolean direction_flag) {
+        builder.addOrderByColumn("Sex",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Function to the ORDER BY clause.  This convenience
+     * Add Sex to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByFunction() {
-        builder.addOrderByColumn("Function","ASC");
+    public void addOrderBySex() {
+        builder.addOrderByColumn("Sex","ASC");
     }
 
     /**
-    * Returns the <code>QueryBuilder</code> that this <code>AssociationCandidateQuery</code>
+    * Returns the <code>QueryBuilder</code> that this <code>PersonalProfileQuery</code>
     * uses to construct and execute database queries.
-    * <code>AssociationCandidateQuery.setQueryXXX</code> methods use 
+    * <code>PersonalProfileQuery.setQueryXXX</code> methods use 
     * the <code>QueryBuilder</code> to
     * append SQL expressions to the <code>"WHERE"</code> clause to be executed.
     * The <code>QueryBuilder.addEndClause method.</code> can be used to
@@ -641,15 +830,15 @@ System.err.println("x ="+x );
     *
     * <b>Notes regarding cache-enabled DO classes:</b>
     * DO classes can be cache-enabled.  
-    * If when using a <code>AssociationCandidateQuery</code>, the application developer
+    * If when using a <code>PersonalProfileQuery</code>, the application developer
     * <b>does not call</b> <code>getQueryBuilder</code>,
-    * then <code>AssociationCandidateQuery.setQueryXXX</code> methods 
+    * then <code>PersonalProfileQuery.setQueryXXX</code> methods 
     * simply prune the DO cache and return the remaining results.
     * However, a <code>QueryBuilder</code> builds
     * <CODE>SELECT</CODE> statements for execution by the actual database,
     * and never searches the built-in cache for the DO.
     * So, if the DO class is cache-enabled, and <code>getQueryBuilder</code>
-    * is called, this <CODE>AssociationCandidateQuery</CODE> object ignores the cache 
+    * is called, this <CODE>PersonalProfileQuery</CODE> object ignores the cache 
     * and hits the actual database.
     */
     public QueryBuilder getQueryBuilder() {

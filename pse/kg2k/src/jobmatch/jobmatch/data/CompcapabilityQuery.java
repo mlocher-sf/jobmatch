@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 final public class CompcapabilityQuery implements Query {
 
@@ -619,7 +619,7 @@ final public class CompcapabilityQuery implements Query {
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOpenParen(); // patched by PSE 2000, 5/22/2000
+	builder.addWhereOpenParen(); // patched by PSE 2000, 5/23/2000
     }
 
     /**
@@ -629,6 +629,6 @@ final public class CompcapabilityQuery implements Query {
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereCloseParen(); // patched by PSE 2000, 5/22/2000
+	builder.addWhereCloseParen(); // patched by PSE 2000, 5/23/2000
     }
 }

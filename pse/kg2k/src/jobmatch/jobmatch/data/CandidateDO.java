@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CandidateDO information.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  studer
  * @since   jobmatch
  */
@@ -1024,54 +1024,6 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Nationality
-
-   /* static final RDBColumn Nationality for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Nationality = 
-			    new RDBColumn( table, "Nationality" );
-
-   /**
-    * Get Nationality of the Candidate
-    *
-    * @return Nationality of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getNationality () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Nationality;
-   }
-
-   /**
-    * Set Nationality of the Candidate
-    *
-    * @param Nationality of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setNationality ( String Nationality )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Nationality =  markNewValue(
-	data.Nationality, Nationality , 0, 25, true );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member PLZ
 
    /* static final RDBColumn PLZ for use with QueryBuilder.
@@ -1455,6 +1407,54 @@ import com.lutris.dods.builder.generator.query.*;
    }
    
 
+
+////////////////////////// data member Nationality
+
+   /* static final RDBColumn Nationality for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Nationality = 
+			    new RDBColumn( table, "Nationality" );
+
+   /**
+    * Get Nationality of the Candidate
+    *
+    * @return Nationality of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CountryDO getNationality () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Nationality;
+   }
+
+   /**
+    * Set Nationality of the Candidate
+    *
+    * @param Nationality of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setNationality ( jobmatch.data.CountryDO Nationality )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Nationality = (jobmatch.data.CountryDO) markNewValue(
+	data.Nationality, Nationality  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
     /**
      * Protected constructor.
      *
@@ -1560,14 +1560,6 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setNationality( 
-	    
-		rs.getString( 
-			"Nationality"  )
-	    
-	);
-	
-	
 	setPLZ( 
 	    
 		rs.getInt( 
@@ -1631,6 +1623,14 @@ import com.lutris.dods.builder.generator.query.*;
 	    
 	);
 	
+	
+	setNationality( 
+	    jobmatch.data.CountryDO.createExisting( 
+		rs.getBigDecimal( 
+			"Nationality" , 0 )
+	     )
+	);
+	
 
  
         markClean();
@@ -1664,7 +1664,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Candidate ( AIESECMember, City, Competence, Fax, Fname, HouseNumber, Lname, Natel, Nationality, PLZ, Phone, Picture, Residence, Status, Street, Sex, Birthdate, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into Candidate ( AIESECMember, City, Competence, Fax, Fname, HouseNumber, Lname, Natel, PLZ, Phone, Picture, Residence, Status, Street, Sex, Birthdate, Nationality, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1688,8 +1688,6 @@ import com.lutris.dods.builder.generator.query.*;
 		getLname() );
 	setPrepStmtParam_String( stmt, param,
 		getNatel() );
-	setPrepStmtParam_String( stmt, param,
-		getNationality() );
 	setPrepStmtParam_int( stmt, param,
 		getPLZ() );
 	setPrepStmtParam_String( stmt, param,
@@ -1706,6 +1704,8 @@ import com.lutris.dods.builder.generator.query.*;
 		getSex() );
 	setPrepStmtParam_java_sql_Date( stmt, param,
 		getBirthdate() );
+	setPrepStmtParam_DO( stmt, param,
+		getNationality() );
 
 
 	    /* The order of the values being inserted must match
@@ -1738,7 +1738,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Candidate set " + getVersionColumnName() + " = ?, AIESECMember = ?, City = ?, Competence = ?, Fax = ?, Fname = ?, HouseNumber = ?, Lname = ?, Natel = ?, Nationality = ?, PLZ = ?, Phone = ?, Picture = ?, Residence = ?, Status = ?, Street = ?, Sex = ?, Birthdate = ? " +
+	    "update Candidate set " + getVersionColumnName() + " = ?, AIESECMember = ?, City = ?, Competence = ?, Fax = ?, Fname = ?, HouseNumber = ?, Lname = ?, Natel = ?, PLZ = ?, Phone = ?, Picture = ?, Residence = ?, Status = ?, Street = ?, Sex = ?, Birthdate = ?, Nationality = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1764,8 +1764,6 @@ import com.lutris.dods.builder.generator.query.*;
 		getLname() );
 	setPrepStmtParam_String( stmt, param,
 		getNatel() );
-	setPrepStmtParam_String( stmt, param,
-		getNationality() );
 	setPrepStmtParam_int( stmt, param,
 		getPLZ() );
 	setPrepStmtParam_String( stmt, param,
@@ -1782,6 +1780,8 @@ import com.lutris.dods.builder.generator.query.*;
 		getSex() );
 	setPrepStmtParam_java_sql_Date( stmt, param,
 		getBirthdate() );
+	setPrepStmtParam_DO( stmt, param,
+		getNationality() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -1839,7 +1839,6 @@ import com.lutris.dods.builder.generator.query.*;
 + "\n" + indent + "HouseNumber=" + data.HouseNumber
 + "\n" + indent + "Lname=" + data.Lname
 + "\n" + indent + "Natel=" + data.Natel
-+ "\n" + indent + "Nationality=" + data.Nationality
 + "\n" + indent + "PLZ=" + data.PLZ
 + "\n" + indent + "Phone=" + data.Phone
 + "\n" + indent + "Picture=" + data.Picture
@@ -1848,6 +1847,7 @@ import com.lutris.dods.builder.generator.query.*;
 + "\n" + indent + "Street=" + data.Street
 + "\n" + indent + "Sex=" + data.Sex
 + "\n" + indent + "Birthdate=" + data.Birthdate
++ "\n" + indent + "Nationality=" + ( null == data.Nationality ? null  : data.Nationality.toString( indentCount + 1 ) )
 ;
         return str + "; " + super.toString();
     }
@@ -1879,7 +1879,6 @@ import com.lutris.dods.builder.generator.query.*;
 + "\n" + indent + "HouseNumber=" + data.HouseNumber
 + "\n" + indent + "Lname=" + data.Lname
 + "\n" + indent + "Natel=" + data.Natel
-+ "\n" + indent + "Nationality=" + data.Nationality
 + "\n" + indent + "PLZ=" + data.PLZ
 + "\n" + indent + "Phone=" + data.Phone
 + "\n" + indent + "Picture=" + data.Picture
@@ -1888,6 +1887,7 @@ import com.lutris.dods.builder.generator.query.*;
 + "\n" + indent + "Street=" + data.Street
 + "\n" + indent + "Sex=" + data.Sex
 + "\n" + indent + "Birthdate=" + data.Birthdate
++ "\n" + indent + "Nationality=" + ( null == data.Nationality ? null  : data.Nationality.toString( indentCount + 1 ) )
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -2458,7 +2458,25 @@ import com.lutris.dods.builder.generator.query.*;
     modifyDO( dbt, true );
   }
 
-  
+      /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for writing to the database.
+     */
+    protected void okToCommitNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for deletion from the database.
+     */
+    protected void okToDeleteNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+
 
   /**
    * Modifies the DO within its table.
@@ -2527,7 +2545,22 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  
+	  	jobmatch.data.CountryDO Nationality_DO = getNationality();
+	if ( null != Nationality_DO ) {
+	    if ( Nationality_DO.isLoaded() ) {
+		okToCommitNationality( Nationality_DO );
+		Nationality_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit CandidateDO ( " + toString() +
+		    " ) because Nationality is not allowed to be null." );
+	}
+
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

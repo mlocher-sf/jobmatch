@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  studer
  * @since   jobmatch
  */
@@ -110,11 +110,6 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Nationality = null;
-
-/**
- * 
- */
    public int PLZ = 0;
 
 /**
@@ -151,6 +146,11 @@ public class CandidateDataStruct implements Cloneable, Serializable {
  * 
  */
    public java.sql.Date Birthdate = null;
+
+/**
+ * 
+ */
+   public jobmatch.data.CountryDO Nationality = null;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -189,9 +189,6 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 	ret.Natel = Natel + "";
 	
 	
-	ret.Nationality = Nationality + "";
-	
-	
 	ret.PLZ = PLZ;
 	
 	
@@ -214,6 +211,9 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 	
 	
 	ret.Birthdate = new java.sql.Date(Birthdate.getTime() );
+	
+	
+	ret.Nationality = jobmatch.data.CountryDO.createCopy( Nationality );
 	
 
 

@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the ProfileDO information.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  studer
  * @since   jobmatch
  */
@@ -640,54 +640,6 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member Name
-
-   /* static final RDBColumn Name for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Name = 
-			    new RDBColumn( table, "Name" );
-
-   /**
-    * Get Name of the Profile
-    *
-    * @return Name of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getName () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Name;
-   }
-
-   /**
-    * Set Name of the Profile
-    *
-    * @param Name of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setName ( String Name )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Name =  markNewValue(
-	data.Name, Name , 0, 40, false );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Company
 
    /* static final RDBColumn Company for use with QueryBuilder.
@@ -731,6 +683,150 @@ import com.lutris.dods.builder.generator.query.*;
       checkLoad();
       data.Company = (jobmatch.data.CompanyDO) markNewValue(
 	data.Company, Company  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member LastNotification
+
+   /* static final RDBColumn LastNotification for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn LastNotification = 
+			    new RDBColumn( table, "LastNotification" );
+
+   /**
+    * Get LastNotification of the Profile
+    *
+    * @return LastNotification of the Profile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Timestamp getLastNotification () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.LastNotification;
+   }
+
+   /**
+    * Set LastNotification of the Profile
+    *
+    * @param LastNotification of the Profile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setLastNotification ( java.sql.Timestamp LastNotification )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.LastNotification =  markNewValue(
+	data.LastNotification, LastNotification  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member MatchTree
+
+   /* static final RDBColumn MatchTree for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn MatchTree = 
+			    new RDBColumn( table, "MatchTree" );
+
+   /**
+    * Get MatchTree of the Profile
+    *
+    * @return MatchTree of the Profile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public byte[] getMatchTree () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.MatchTree;
+   }
+
+   /**
+    * Set MatchTree of the Profile
+    *
+    * @param MatchTree of the Profile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setMatchTree ( byte[] MatchTree )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.MatchTree =  markNewValue(
+	data.MatchTree, MatchTree  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Name
+
+   /* static final RDBColumn Name for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Name = 
+			    new RDBColumn( table, "Name" );
+
+   /**
+    * Get Name of the Profile
+    *
+    * @return Name of the Profile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getName () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Name;
+   }
+
+   /**
+    * Set Name of the Profile
+    *
+    * @param Name of the Profile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setName ( String Name )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Name =  markNewValue(
+	data.Name, Name , 0, 40, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -832,39 +928,39 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Period
+////////////////////////// data member NotificationPeriod
 
-   /* static final RDBColumn Period for use with QueryBuilder.
+   /* static final RDBColumn NotificationPeriod for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Period = 
-			    new RDBColumn( table, "Period" );
+   static public final RDBColumn NotificationPeriod = 
+			    new RDBColumn( table, "NotificationPeriod" );
 
    /**
-    * Get Period of the Profile
+    * Get NotificationPeriod of the Profile
     *
-    * @return Period of the Profile
+    * @return NotificationPeriod of the Profile
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public int getPeriod () 
+   public int getNotificationPeriod () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Period;
+      return data.NotificationPeriod;
    }
 
    /**
-    * Set Period of the Profile
+    * Set NotificationPeriod of the Profile
     *
-    * @param Period of the Profile
+    * @param NotificationPeriod of the Profile
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setPeriod ( int Period )
+   public void setNotificationPeriod ( int NotificationPeriod )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -873,104 +969,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Period =  markNewValue(
-	data.Period, Period  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member MatchTree
-
-   /* static final RDBColumn MatchTree for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn MatchTree = 
-			    new RDBColumn( table, "MatchTree" );
-
-   /**
-    * Get MatchTree of the Profile
-    *
-    * @return MatchTree of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public byte[] getMatchTree () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.MatchTree;
-   }
-
-   /**
-    * Set MatchTree of the Profile
-    *
-    * @param MatchTree of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setMatchTree ( byte[] MatchTree )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.MatchTree =  markNewValue(
-	data.MatchTree, MatchTree  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member LastNotification
-
-   /* static final RDBColumn LastNotification for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn LastNotification = 
-			    new RDBColumn( table, "LastNotification" );
-
-   /**
-    * Get LastNotification of the Profile
-    *
-    * @return LastNotification of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Timestamp getLastNotification () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.LastNotification;
-   }
-
-   /**
-    * Set LastNotification of the Profile
-    *
-    * @param LastNotification of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setLastNotification ( java.sql.Timestamp LastNotification )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.LastNotification =  markNewValue(
-	data.LastNotification, LastNotification  );
+      data.NotificationPeriod =  markNewValue(
+	data.NotificationPeriod, NotificationPeriod  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -1016,19 +1016,35 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setName( 
-	    
-		rs.getString( 
-			"Name"  )
-	    
-	);
-	
-	
 	setCompany( 
 	    jobmatch.data.CompanyDO.createExisting( 
 		rs.getBigDecimal( 
 			"Company" , 0 )
 	     )
+	);
+	
+	
+	setLastNotification( 
+	    
+		rs.getTimestamp( 
+			"LastNotification"  )
+	    
+	);
+	
+	
+	setMatchTree( 
+	    
+		rs.getBytes( 
+			"MatchTree"  )
+	    
+	);
+	
+	
+	setName( 
+	    
+		rs.getString( 
+			"Name"  )
+	    
 	);
 	
 	
@@ -1048,26 +1064,10 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setPeriod( 
+	setNotificationPeriod( 
 	    
 		rs.getInt( 
-			"Period"  )
-	    
-	);
-	
-	
-	setMatchTree( 
-	    
-		rs.getBytes( 
-			"MatchTree"  )
-	    
-	);
-	
-	
-	setLastNotification( 
-	    
-		rs.getTimestamp( 
-			"LastNotification"  )
+			"NotificationPeriod"  )
 	    
 	);
 	
@@ -1104,7 +1104,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Profile ( Name, Company, NeedsRematching, Notify, Period, MatchTree, LastNotification, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into Profile ( Company, LastNotification, MatchTree, Name, NeedsRematching, Notify, NotificationPeriod, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1112,20 +1112,20 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_String( stmt, param,
-		getName() );
-	setPrepStmtParam_DO( stmt, param,
+	    	setPrepStmtParam_DO( stmt, param,
 		getCompany() );
+	setPrepStmtParam_java_sql_Timestamp( stmt, param,
+		getLastNotification() );
+	setPrepStmtParam_bytes( stmt, param,
+		getMatchTree() );
+	setPrepStmtParam_String( stmt, param,
+		getName() );
 	setPrepStmtParam_boolean( stmt, param,
 		getNeedsRematching() );
 	setPrepStmtParam_boolean( stmt, param,
 		getNotify() );
 	setPrepStmtParam_int( stmt, param,
-		getPeriod() );
-	setPrepStmtParam_bytes( stmt, param,
-		getMatchTree() );
-	setPrepStmtParam_java_sql_Timestamp( stmt, param,
-		getLastNotification() );
+		getNotificationPeriod() );
 
 
 	    /* The order of the values being inserted must match
@@ -1158,7 +1158,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Profile set " + getVersionColumnName() + " = ?, Name = ?, Company = ?, NeedsRematching = ?, Notify = ?, Period = ?, MatchTree = ?, LastNotification = ? " +
+	    "update Profile set " + getVersionColumnName() + " = ?, Company = ?, LastNotification = ?, MatchTree = ?, Name = ?, NeedsRematching = ?, Notify = ?, NotificationPeriod = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1168,20 +1168,20 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_String( stmt, param,
-		getName() );
-	setPrepStmtParam_DO( stmt, param,
+	    	setPrepStmtParam_DO( stmt, param,
 		getCompany() );
+	setPrepStmtParam_java_sql_Timestamp( stmt, param,
+		getLastNotification() );
+	setPrepStmtParam_bytes( stmt, param,
+		getMatchTree() );
+	setPrepStmtParam_String( stmt, param,
+		getName() );
 	setPrepStmtParam_boolean( stmt, param,
 		getNeedsRematching() );
 	setPrepStmtParam_boolean( stmt, param,
 		getNotify() );
 	setPrepStmtParam_int( stmt, param,
-		getPeriod() );
-	setPrepStmtParam_bytes( stmt, param,
-		getMatchTree() );
-	setPrepStmtParam_java_sql_Timestamp( stmt, param,
-		getLastNotification() );
+		getNotificationPeriod() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -1231,13 +1231,13 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "Company=" + ( null == data.Company ? null  : data.Company.toString( indentCount + 1 ) )
+	    str = str + "\n" + indent + "Company=" + ( null == data.Company ? null  : data.Company.toString( indentCount + 1 ) )
++ "\n" + indent + "LastNotification=" + data.LastNotification
++ "\n" + indent + "MatchTree=" + data.MatchTree
++ "\n" + indent + "Name=" + data.Name
 + "\n" + indent + "NeedsRematching=" + data.NeedsRematching
 + "\n" + indent + "Notify=" + data.Notify
-+ "\n" + indent + "Period=" + data.Period
-+ "\n" + indent + "MatchTree=" + data.MatchTree
-+ "\n" + indent + "LastNotification=" + data.LastNotification
++ "\n" + indent + "NotificationPeriod=" + data.NotificationPeriod
 ;
         return str + "; " + super.toString();
     }
@@ -1261,13 +1261,13 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "Company=" + ( null == data.Company ? null  : data.Company.toString( indentCount + 1 ) )
+            str = str + "\n" + indent + "Company=" + ( null == data.Company ? null  : data.Company.toString( indentCount + 1 ) )
++ "\n" + indent + "LastNotification=" + data.LastNotification
++ "\n" + indent + "MatchTree=" + data.MatchTree
++ "\n" + indent + "Name=" + data.Name
 + "\n" + indent + "NeedsRematching=" + data.NeedsRematching
 + "\n" + indent + "Notify=" + data.Notify
-+ "\n" + indent + "Period=" + data.Period
-+ "\n" + indent + "MatchTree=" + data.MatchTree
-+ "\n" + indent + "LastNotification=" + data.LastNotification
++ "\n" + indent + "NotificationPeriod=" + data.NotificationPeriod
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;

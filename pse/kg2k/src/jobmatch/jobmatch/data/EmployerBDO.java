@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class EmployerBDO implements java.io.Serializable {
 
@@ -387,7 +387,7 @@ public class EmployerBDO implements java.io.Serializable {
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       if ( null == County ) {
-	  if ( false )
+	  if ( true )
 	      DO.setCounty ( null );
 	  else 
 	      throw new DataObjectException( 
@@ -704,7 +704,7 @@ public class EmployerBDO implements java.io.Serializable {
 		// it cannot be dirty, so there is no need to commit it.
 	    }
 	} else {
-	    if ( ! false )
+	    if ( ! true )
 		throw new RefAssertionException(
 		    "Cannot commit EmployerBDO ( " + toString() +
 		    " ) because County is not allowed to be null." );

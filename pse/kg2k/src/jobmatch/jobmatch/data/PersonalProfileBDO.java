@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/studer_repositry/dataTest/jobmatch/data/HobbyBDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/PersonalProfileBDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -44,23 +44,23 @@ import com.lutris.appserver.server.sql.*;
 import com.lutris.dods.builder.generator.query.*;
 
 /**
- * HobbyBDO contains the same set and get methods as
- * the HobbyDO class.
+ * PersonalProfileBDO contains the same set and get methods as
+ * the PersonalProfileDO class.
  * Business Object (BO) classes typically need these set and get methods.
  * So by deriving a BO from a BDO, or by implementing a BO that 
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.1 $
  */
-public class HobbyBDO implements java.io.Serializable {
+public class PersonalProfileBDO implements java.io.Serializable {
 
     /**
-     * The HobbyDO object upon which the set and get methods operate.
-     * This member is protected so that classes derived from HobbyBDO
+     * The PersonalProfileDO object upon which the set and get methods operate.
+     * This member is protected so that classes derived from PersonalProfileBDO
      * can access the underlying Data Object.
      */
-    protected HobbyDO DO;
+    protected PersonalProfileDO DO;
 
     /**
      * Note:  This method is intended for use only by other BDO classes.
@@ -71,12 +71,12 @@ public class HobbyBDO implements java.io.Serializable {
      *
      * @return The DO object held by this BDO object.
      */
-    public HobbyDO getDO() { 
+    public PersonalProfileDO getDO() { 
 	return DO;
     }
 
     /**
-     * Like the class <CODE>HobbyDO</CODE>, 
+     * Like the class <CODE>PersonalProfileDO</CODE>, 
      * this class acts as a factory.
      * Business Object (BO) classes typically need these set and get methods.
      * So by deriving a BO from a BDO, or by implementing a BO that 
@@ -85,13 +85,13 @@ public class HobbyBDO implements java.io.Serializable {
      * @exception Exception
      *   If an error occurs.
      */
-    public static HobbyBDO createVirgin() throws Exception { 
-	HobbyBDO bdo = new HobbyBDO ();
+    public static PersonalProfileBDO createVirgin() throws Exception { 
+	PersonalProfileBDO bdo = new PersonalProfileBDO ();
 	return bdo;
     }
 
     /**
-     * Constructor for use by classes derived from <CODE>HobbyBDO</CODE>.
+     * Constructor for use by classes derived from <CODE>PersonalProfileBDO</CODE>.
      * Example usage:<CODE>
      *      class CustomerBO extends CustomerBDO {
      *          // a BDO class is commonly extended in order to implement:
@@ -114,62 +114,62 @@ public class HobbyBDO implements java.io.Serializable {
      *      }
      * </CODE>
      */
-    public HobbyBDO( HobbyDO DO ) { 
+    public PersonalProfileBDO( PersonalProfileDO DO ) { 
 	this.DO = DO;
     }
 
     /**
-     * Constructor required by <CODE>HobbyBDO.create</CODE> methods.
+     * Constructor required by <CODE>PersonalProfileBDO.create</CODE> methods.
      */
-    public HobbyBDO() throws Exception { 
-	this.DO = HobbyDO.createVirgin();
+    public PersonalProfileBDO() throws Exception { 
+	this.DO = PersonalProfileDO.createVirgin();
     }
 
     /**
-     * The createExisting method is used to create a <CODE>HobbyBDO</CODE>
-     * from a <CODE>HobbyDO</CODE> that was returned by 
-     * the <CODE>HobbyQuery</CODE> class.
+     * The createExisting method is used to create a <CODE>PersonalProfileBDO</CODE>
+     * from a <CODE>PersonalProfileDO</CODE> that was returned by 
+     * the <CODE>PersonalProfileQuery</CODE> class.
      */
-    public static HobbyBDO createExisting( HobbyDO DO ) { 
-	HobbyBDO bdo = new HobbyBDO ( DO );
+    public static PersonalProfileBDO createExisting( PersonalProfileDO DO ) { 
+	PersonalProfileBDO bdo = new PersonalProfileBDO ( DO );
 	return bdo;
     }
 
     /** 
      * The getBDOarray method performs a database query to
-     * return an array of <CODE>HobbyBDO</CODE> objects
-     * representing all the rows in the <CODE>Hobby</CODE> table.
+     * return an array of <CODE>PersonalProfileBDO</CODE> objects
+     * representing all the rows in the <CODE>PersonalProfile</CODE> table.
      *
      * This method is a minimal example of using a Query class.
      * To restrict the set of objects returned,  you could
      * invoke <CODE>query.setXxx()</CODE>, where <CODE>Xxx</CODE>
-     * is an Attribute of <CODE>HobbyDO</CODE> which was 
+     * is an Attribute of <CODE>PersonalProfileDO</CODE> which was 
      * marked as "Can be queried" in the DODS Attribute Editor.
      *
      * @exception DataObjectException
      *   If an object is not found in the database.
      */
-    public static HobbyBDO[] getBDOarray()
+    public static PersonalProfileBDO[] getBDOarray()
     throws DataObjectException {
-        HobbyDO[] DOarray = null;
+        PersonalProfileDO[] DOarray = null;
         try {
-            HobbyQuery query = new HobbyQuery();
+            PersonalProfileQuery query = new PersonalProfileQuery();
 	    // To restrict the set of objects returned,
 	    // you could invoke query.setXxx(), where Xxx
-	    // is an Attribute of <CODE>HobbyDO</CODE> which was 
+	    // is an Attribute of <CODE>PersonalProfileDO</CODE> which was 
 	    // marked as "Can be queried" in the DODS Attribute Editor.
             DOarray = query.getDOArray();
         } catch ( NonUniqueQueryException e1 ) {
-            // HobbyQuery will throw NonUniqueQueryException
+            // PersonalProfileQuery will throw NonUniqueQueryException
             // only if query.requireUniqueInstance() is called
 	    // and more than one DO was found.
         } catch ( DataObjectException e2 ) {
             // This could happen if the database server dies, etc.
             throw e2;
         }
-        HobbyBDO[] BDOarray = new HobbyBDO[ DOarray.length ];
+        PersonalProfileBDO[] BDOarray = new PersonalProfileBDO[ DOarray.length ];
         for ( int i = 0; i < DOarray.length; i++ )
-            BDOarray[i] = HobbyBDO.createExisting( DOarray[i] );
+            BDOarray[i] = PersonalProfileBDO.createExisting( DOarray[i] );
  
         return BDOarray;
     }
@@ -200,7 +200,7 @@ public class HobbyBDO implements java.io.Serializable {
      *     getHandle
      *     hasMatchingHandle
      * </CODE> are used by Presentation Objects that need to populate
-     * HTML select lists with <CODE>HobbyBDO</CODE> objects as options.
+     * HTML select lists with <CODE>PersonalProfileBDO</CODE> objects as options.
      *
      * The <CODE>getHandle()</CODE> method is used
      * to set the value for each option,
@@ -208,8 +208,8 @@ public class HobbyBDO implements java.io.Serializable {
      * methods are used to lookup the Data Object when the selection has
      * been made.
      *
-     * This HobbyBDO object holds a reference to a HobbyDO object.
-     * The id of this HobbyBDO is the id of its HobbyDO.
+     * This PersonalProfileBDO object holds a reference to a PersonalProfileDO object.
+     * The id of this PersonalProfileBDO is the id of its PersonalProfileDO.
      * @exception DatabaseManagerException
      *   If a connection to the database cannot be established, etc.
      * @return id of this BDO as a string
@@ -242,29 +242,29 @@ public class HobbyBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Candidate of the HobbyDO
+    * Get LeafNumber of the PersonalProfileDO
     *
-    * @return Candidate of the HobbyDO
+    * @return LeafNumber of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.CandidateDO getCandidate () 
+   public int getLeafNumber () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getCandidate ();
+      return DO.getLeafNumber ();
    }
 
    
    /**
-    * Set Candidate of the HobbyDO
+    * Set LeafNumber of the PersonalProfileDO
     *
-    * @param Candidate of the HobbyDO
+    * @param LeafNumber of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setCandidate ( jobmatch.data.CandidateDO Candidate ) 
+   public void setLeafNumber ( int LeafNumber ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,37 +272,75 @@ public class HobbyBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setCandidate ( Candidate );
+      DO.setLeafNumber ( LeafNumber );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Profile of the PersonalProfileDO
+    *
+    * @return Profile of the PersonalProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.ProfileDO getProfile () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getProfile ();
+   }
+
+   
+   /**
+    * Set Profile of the PersonalProfileDO
+    *
+    * @param Profile of the PersonalProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setProfile ( jobmatch.data.ProfileDO Profile ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setProfile ( Profile );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
    
 
    /**
-    * Get BDO-wrapped Candidate of the HobbyDO
+    * Get BDO-wrapped Profile of the PersonalProfileDO
     *
-    * @return BDO-wrapped Candidate of the HobbyDO
+    * @return BDO-wrapped Profile of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.CandidateBDO getCandidateBDO () 
+   public jobmatch.data.ProfileBDO getProfileBDO () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      jobmatch.data.CandidateBDO b = jobmatch.data.CandidateBDO.createExisting(
-					  DO.getCandidate () );
+      jobmatch.data.ProfileBDO b = jobmatch.data.ProfileBDO.createExisting(
+					  DO.getProfile () );
       return b;
    }
 
    /**
-    * Set Candidate of the HobbyDO
+    * Set Profile of the PersonalProfileDO
     *
-    * @param BDO-wrapped Candidate of the HobbyDO
+    * @param BDO-wrapped Profile of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setCandidate ( jobmatch.data.CandidateBDO Candidate ) 
+   public void setProfile ( jobmatch.data.ProfileBDO Profile ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -310,14 +348,14 @@ public class HobbyBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      if ( null == Candidate ) {
+      if ( null == Profile ) {
 	  if ( false )
-	      DO.setCandidate ( null );
+	      DO.setProfile ( null );
 	  else 
 	      throw new DataObjectException( 
-		  "HobbyBDO.setCandidate does not allow NULL." );
+		  "PersonalProfileBDO.setProfile does not allow NULL." );
       } else {
-          DO.setCandidate ( Candidate.getDO() );
+          DO.setProfile ( Profile.getDO() );
       }
       afterAnySet();	// business actions/assertions after data assignment
    }
@@ -326,29 +364,29 @@ public class HobbyBDO implements java.io.Serializable {
    
 
    /**
-    * Get Title of the HobbyDO
+    * Get Mandatory of the PersonalProfileDO
     *
-    * @return Title of the HobbyDO
+    * @return Mandatory of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getTitle () 
+   public boolean getMandatory () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getTitle ();
+      return DO.getMandatory ();
    }
 
    
    /**
-    * Set Title of the HobbyDO
+    * Set Mandatory of the PersonalProfileDO
     *
-    * @param Title of the HobbyDO
+    * @param Mandatory of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setTitle ( String Title ) 
+   public void setMandatory ( boolean Mandatory ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -356,7 +394,7 @@ public class HobbyBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setTitle ( Title );
+      DO.setMandatory ( Mandatory );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -364,29 +402,29 @@ public class HobbyBDO implements java.io.Serializable {
    
 
    /**
-    * Get Description of the HobbyDO
+    * Get MinAge of the PersonalProfileDO
     *
-    * @return Description of the HobbyDO
+    * @return MinAge of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getDescription () 
+   public int getMinAge () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getDescription ();
+      return DO.getMinAge ();
    }
 
    
    /**
-    * Set Description of the HobbyDO
+    * Set MinAge of the PersonalProfileDO
     *
-    * @param Description of the HobbyDO
+    * @param MinAge of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setDescription ( String Description ) 
+   public void setMinAge ( int MinAge ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -394,7 +432,7 @@ public class HobbyBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setDescription ( Description );
+      DO.setMinAge ( MinAge );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -402,29 +440,29 @@ public class HobbyBDO implements java.io.Serializable {
    
 
    /**
-    * Get Priority of the HobbyDO
+    * Get MaxAge of the PersonalProfileDO
     *
-    * @return Priority of the HobbyDO
+    * @return MaxAge of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public int getPriority () 
+   public int getMaxAge () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getPriority ();
+      return DO.getMaxAge ();
    }
 
    
    /**
-    * Set Priority of the HobbyDO
+    * Set MaxAge of the PersonalProfileDO
     *
-    * @param Priority of the HobbyDO
+    * @param MaxAge of the PersonalProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setPriority ( int Priority ) 
+   public void setMaxAge ( int MaxAge ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -432,7 +470,129 @@ public class HobbyBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setPriority ( Priority );
+      DO.setMaxAge ( MaxAge );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Nationality of the PersonalProfileDO
+    *
+    * @return Nationality of the PersonalProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CountryDO getNationality () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getNationality ();
+   }
+
+   
+   /**
+    * Set Nationality of the PersonalProfileDO
+    *
+    * @param Nationality of the PersonalProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setNationality ( jobmatch.data.CountryDO Nationality ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setNationality ( Nationality );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Nationality of the PersonalProfileDO
+    *
+    * @return BDO-wrapped Nationality of the PersonalProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CountryBDO getNationalityBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.CountryBDO b = jobmatch.data.CountryBDO.createExisting(
+					  DO.getNationality () );
+      return b;
+   }
+
+   /**
+    * Set Nationality of the PersonalProfileDO
+    *
+    * @param BDO-wrapped Nationality of the PersonalProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setNationality ( jobmatch.data.CountryBDO Nationality ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Nationality ) {
+	  if ( true )
+	      DO.setNationality ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "PersonalProfileBDO.setNationality does not allow NULL." );
+      } else {
+          DO.setNationality ( Nationality.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+   
+
+   /**
+    * Get Sex of the PersonalProfileDO
+    *
+    * @return Sex of the PersonalProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getSex () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getSex ();
+   }
+
+   
+   /**
+    * Set Sex of the PersonalProfileDO
+    *
+    * @param Sex of the PersonalProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setSex ( String Sex ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setSex ( Sex );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -497,20 +657,38 @@ public class HobbyBDO implements java.io.Serializable {
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the Candidate data member.
+     * for the Profile data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where Candidate is not valid for writing to the database.
+     * where Profile is not valid for writing to the database.
      */
-    protected void okToCommitCandidate( jobmatch.data.CandidateDO member ) 
+    protected void okToCommitProfile( jobmatch.data.ProfileDO member ) 
     throws RefAssertionException { }
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for the Candidate data member.
+     * for the Profile data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where Candidate is not valid for deletion from the database.
+     * where Profile is not valid for deletion from the database.
      */
-    protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    protected void okToDeleteProfile( jobmatch.data.ProfileDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for writing to the database.
+     */
+    protected void okToCommitNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for deletion from the database.
+     */
+    protected void okToDeleteNationality( jobmatch.data.CountryDO member ) 
     throws RefAssertionException { }
 
 
@@ -550,13 +728,13 @@ public class HobbyBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.CandidateDO Candidate_DO = DO.getCandidate();
-	if ( null != Candidate_DO ) {
-	    if ( Candidate_DO.isLoaded() ) {
-		okToCommitCandidate( Candidate_DO );
-		jobmatch.data.CandidateBDO b = 
-		    jobmatch.data.CandidateBDO.createExisting(
-						    Candidate_DO );
+	  	jobmatch.data.ProfileDO Profile_DO = DO.getProfile();
+	if ( null != Profile_DO ) {
+	    if ( Profile_DO.isLoaded() ) {
+		okToCommitProfile( Profile_DO );
+		jobmatch.data.ProfileBDO b = 
+		    jobmatch.data.ProfileBDO.createExisting(
+						    Profile_DO );
 		b.commit( dbt );
 	    } else {
 		// since the referenced DO is not loaded,
@@ -565,8 +743,26 @@ public class HobbyBDO implements java.io.Serializable {
 	} else {
 	    if ( ! false )
 		throw new RefAssertionException(
-		    "Cannot commit HobbyBDO ( " + toString() +
-		    " ) because Candidate is not allowed to be null." );
+		    "Cannot commit PersonalProfileBDO ( " + toString() +
+		    " ) because Profile is not allowed to be null." );
+	}
+	jobmatch.data.CountryDO Nationality_DO = DO.getNationality();
+	if ( null != Nationality_DO ) {
+	    if ( Nationality_DO.isLoaded() ) {
+		okToCommitNationality( Nationality_DO );
+		jobmatch.data.CountryBDO b = 
+		    jobmatch.data.CountryBDO.createExisting(
+						    Nationality_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit PersonalProfileBDO ( " + toString() +
+		    " ) because Nationality is not allowed to be null." );
 	}
 
       }

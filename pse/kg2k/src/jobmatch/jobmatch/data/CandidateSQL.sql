@@ -11,7 +11,6 @@ create table Candidate
     HouseNumber VARCHAR(5) DEFAULT ""    ,
     Lname VARCHAR(25) DEFAULT ""    ,
     Natel VARCHAR(25) DEFAULT ""    ,
-    Nationality VARCHAR(25) DEFAULT ""    ,
     PLZ MEDIUMINT UNSIGNED     ,
     Phone VARCHAR(25) DEFAULT ""    ,
     Picture MEDIUMBLOB     ,
@@ -20,6 +19,7 @@ create table Candidate
     Street VARCHAR(50) DEFAULT ""    ,
     Sex ENUM('w','m')(32) DEFAULT ""    ,
     Birthdate DATE     ,
+    Nationality DECIMAL(19,0)     ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

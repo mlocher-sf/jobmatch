@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the EmployerDO information.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  studer
  * @since   jobmatch
  */
@@ -682,7 +682,7 @@ import com.lutris.dods.builder.generator.query.*;
       }
       checkLoad();
       data.Company =  markNewValue(
-	data.Company, Company , 0, 30, false );
+	data.Company, Company , 0, 30, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -730,7 +730,7 @@ import com.lutris.dods.builder.generator.query.*;
       }
       checkLoad();
       data.City =  markNewValue(
-	data.City, City , 0, 30, false );
+	data.City, City , 0, 30, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -1306,7 +1306,7 @@ import com.lutris.dods.builder.generator.query.*;
 		// it cannot be dirty, so there is no need to commit it.
 	    }
 	} else {
-	    if ( ! false )
+	    if ( ! true )
 		throw new RefAssertionException(
 		    "Cannot commit EmployerDO ( " + toString() +
 		    " ) because County is not allowed to be null." );

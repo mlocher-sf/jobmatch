@@ -3,13 +3,13 @@
 create table Profile
 (
 /* class Profile */
-    Name VARCHAR(40) DEFAULT "" NOT NULL   ,
     Company DECIMAL(19,0)  NOT NULL  REFERENCES Company ( oid ) ,
-    NeedsRematching BIT DEFAULT 1 NOT NULL   ,
-    Notify BIT DEFAULT 1 NOT NULL   ,
-    Period INTEGER DEFAULT 0 NOT NULL   ,
-    MatchTree MEDIUMBLOB  NOT NULL   ,
-    LastNotification TIMESTAMP  NOT NULL   ,
+    LastNotification TIMESTAMP     ,
+    MatchTree MEDIUMBLOB     ,
+    Name VARCHAR(40) DEFAULT ""    ,
+    NeedsRematching BIT DEFAULT 1    ,
+    Notify BIT DEFAULT 1    ,
+    NotificationPeriod INTEGER DEFAULT 0    ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CompanyDO information.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  studer
  * @since   jobmatch
  */
@@ -874,7 +874,7 @@ import com.lutris.dods.builder.generator.query.*;
       }
       checkLoad();
       data.Name =  markNewValue(
-	data.Name, Name , 0, 30, false );
+	data.Name, Name , 0, 30, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
