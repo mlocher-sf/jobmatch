@@ -16,15 +16,25 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	Candidate candidate = account.getCandidateBO();
         CVPersonalHTML page = (CVPersonalHTML)comms.xmlcFactory.create(CVPersonalHTML.class);
 	fillNationality(page, candidate);
-        comms.response.writeHTML(page);
+	final String action = comms.request.getParameter("action");
+	if (action != null && action.equals("write")){ 
+	    fillTextFields(page, candidate, comms);
+	}
+	comms.response.writeHTML(page);
     }
 
     /**
      * Fills the text fields with CV-data 
      **/
-    private void fillTextFields(CVPersonalHTML page, Candidate candidate){
-	
-	//fill all text fields with data 
+    private void fillTextFields(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms){
+	try{
+	    candidate.setLname(comms.request.getParameter("lastName"));
+	    candidate.setNatel( comms.request.getParameter("mobile"));
+	    candidate.commit();
+	}
+	catch(Exception e){
+	    System.out.println(e.toString());
+	    throw new RuntimeException();}
     }
 
     /**
