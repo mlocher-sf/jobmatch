@@ -21,7 +21,8 @@ PACKAGEDIR = jobmatch/presentation
 # the PACKAGEDIR variable.
 #
 SUBDIRS = \
-	media
+	media \
+	test
 
 #
 # To add more Java classes, create the .java files and add their names to
@@ -33,7 +34,7 @@ CLASSES = \
 	CVPersonal \
 	Welcome \
 	Login \
-	CheckLogin
+	CheckLogin \
 
 
 XMLC_HTML_OPTS_FILE = options.xmlc
@@ -44,7 +45,6 @@ HTML_CLASSES = \
 	CVPersonalHTML \
 	WelcomeHTML \
 	LoginHTML
-
 
 JAR_INSTALL = \
 	./html/style.css
