@@ -162,7 +162,7 @@ create table Jobwish
 (
 /* class Jobwish */
     Pensum TINYINT UNSIGNED     ,
-    Remarks TEXT(70) DEFAULT ""    ,
+    Remarks TEXT DEFAULT ""    ,
     Industry DECIMAL(19,0)  NOT NULL  REFERENCES Industry ( oid ) ,
     Area DECIMAL(19,0)  NOT NULL  REFERENCES Area ( oid ) ,
     Function VARCHAR(50) DEFAULT ""    ,
@@ -221,7 +221,7 @@ create table Company
     Location VARCHAR(40) DEFAULT "" NOT NULL   ,
     Name VARCHAR(30) DEFAULT "" NOT NULL   ,
     NumberEmployees INTEGER     ,
-    ShortDescription LONGVARCHAR(32) DEFAULT ""    ,
+    ShortDescription TEXT DEFAULT ""    ,
     Contact DECIMAL(19,0)  NOT NULL  REFERENCES Contactperson ( oid ) ,
     Industry DECIMAL(19,0)    REFERENCES Industry ( oid ) ,
     Account DECIMAL(19,0)  NOT NULL   ,
@@ -253,11 +253,11 @@ create table Candidate
 /* class Candidate */
     AIESECMember BIT DEFAULT 0 NOT NULL   ,
     Nationality VARCHAR(25) DEFAULT "" NOT NULL   ,
-    Sex ENUM('w','m') DEFAULT 0 NOT NULL   ,
+    Sex ENUM('w','m') NOT NULL   ,
     Status BIT DEFAULT 0 NOT NULL   ,
     Competence VARCHAR(32) DEFAULT ""    ,
     Jobwish DECIMAL(19,0)    REFERENCES Jobwish ( oid ) ,
-    Picture VARBINARY     ,
+    Picture MEDIUMBLOB ,
     Lname VARCHAR(25) DEFAULT "" NOT NULL   ,
     Fname VARCHAR(20) DEFAULT "" NOT NULL   ,
     Email VARCHAR(50) DEFAULT "" NOT NULL   ,
