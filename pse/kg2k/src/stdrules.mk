@@ -31,10 +31,10 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #-----------------------------------------------------------------------------
-# $Id: stdrules.mk,v 1.1 2000/05/12 12:08:02 locher Exp $
+# $Id: stdrules.mk,v 1.2 2000/05/16 13:40:14 locher Exp $
 #-----------------------------------------------------------------------------
 
-#
+#-----------------------------------------------------------------------------
 # stdrules.mk
 #
 #  Standard rules for use for Enhydra server applications.  It contains rules
@@ -43,11 +43,35 @@
 #  from a top-level file, config.mk, which is included by each of the make
 #  files.
 # 
-#  This file includes stdconf.mk, which has the configuration variables for
-#  the location of programs, jars, etc needed by make.  It contains the 
-#  global defaults an Enhydra installation.  Individual applications can in
-#  turn override values with their config.mk file.  See stdconf.mk for
+#  This file includes stdconf.mk if it has not already been included.  The
+#  stdconf.mk file set the location of programs, jars, etc needed by make.  It
+#  contains the global defaults for an Enhydra installation.  Applications can
+#  override stdconf.mk values with their config.mk file.  See stdconf.mk for
 #  the variables it contains.
+#
+#  There are standard two ways to organize an applications make system.
+#  The first one requires only a single include of an external file, but
+#  has less flexibility when using GNU make conditionals, due to include
+#  order restrictions.  A summary of a makefile structure under this
+#  approach is:
+#
+#     ROOT = ../..  # Set root directory
+#     # Define CLASSES, SUBDIRS, etc
+#     include $(ROOT)/config.mk  # includes stdconf.mk, stdrules.mk
+#     # Define local rules, like clean::
+#
+#  The more flexable way, similar to that used by the Enhydra Makefiles,
+#  requires two includes
+#
+#     ROOT = ../..  # Set root directory
+#     include $(ROOT)/config.mk  # includes stdconf.mk
+#     # Define CLASSES, SUBDIRS, etc
+#     include $(STDRULES)
+#     # Define local rules, like clean::
+#
+#  This second approach is more flexable in that values set in config.mk
+#  can affect the values of makefile-specific defines which then affect
+#  stdrules.mk definitions.
 #
 #  This file also includes stdconf.mk, which is the site-wide configuration
 #  for an install Enhydra tree.  This file is created by the configure script.
@@ -56,8 +80,31 @@
 #  for tree structure is followed, specific application's can override these
 #  values in config.mk.
 #
-#  Individual Makefiles define the following variables to use the targets in
-#  this Makefile.
+#  The make is run in multiple passes.  For pass xxxx, the following make
+#  targets are defined:
+#     o xxxx_pass: - Target to run the pass in the current makefile.  This
+#       target invokes the other targets.
+#     o xxxx_pass_pre_targets:: - Target to build in current directory before
+#       subdirectories are built.  This is a double-colon rule and makefiles
+#       may add to this rule to perform tasks.
+#     o xxxx_pass_subdirs: - Rule to recursively run the pass on the subdirectories
+#       specified in SUBDIRS.
+#     o xxxx_pass_post_targets:: - Target to build in current directory after
+#       subdirectories are built.  This is a double-colon rule and makefiles
+#       may add to this rule to perform tasks.
+#
+#  The following passes are currently defined:
+#     o setup_pass: - This pass is used to do any initial setup and to
+#       build files required by the Java compile pass, but are not java
+#       sources themselves.  XMLC and JDDI files are compiled in the
+#       post-phase of this pass.
+#
+#     o java_pass: - Pass to compile all Java class files specified in the
+#       CLASSES variable.  They are compiled during the post-phase.  The
+#       MISC_BUILD targets and MISC_INSTALL files are also handled in the
+#       post-phase.
+#
+#  Individual Makefiles define the following variables:
 #
 #    o ROOT -- The path to the directory containing the config.mk file.  This
 #      defines the top of the build tree, with most paths being relative to
@@ -66,9 +113,7 @@
 #          ROOT= ../..
 #
 #      If absolute name expansion is needed in path names, it can be set to
-#      an absolute path. However this should only be used when required,
-#      as it may result in file paths containing spaces, which must be
-#      handled carefully where ever referenced.  For example:
+#      an absolute path. For example:
 #      
 #          ROOT = ${shell ../..;pwd}
 #
@@ -80,10 +125,10 @@
 #      rather than `='.   This value of the ENHYDRA_CLASS_PATH variable is
 #      built up using this style of assignment:
 #
-#         ENHYDRA_CLASSPATH:=${MY_CLASSES}${PS}${ENHYDRA_CLASS_PATH}
+#         ENHYDRA_CLASSPATH:=${MY_CLASSES}${PS}${ENHYDRA_CLASSPATH}
 #
 #      Use of `:=' allows paths to be preappended as needed, in this
-#      file and in application config.mk and Makefiles. ENHYDRA_CLASS_PATH
+#      file and in application config.mk and Makefiles. ENHYDRA_CLASSPATH
 #      must be set after including stdrules.mk if ${PS} is to be used.
 #      Any existing CLASSPATH environment variable is appended to the
 #      end of ENHYDRA_CLASSPATH.
@@ -101,12 +146,6 @@
 #      or .class extension.
 #
 #    o SUBDIRS -- Subdirectories, if any, to recursively build.
-#
-#    o POSTSUBDIRS -- Subdirectories, if any, to recursively build after
-#      the current directory has been processed.  This is useful for
-#      test subdirectories, that want to have JARNAME=tests.  If the
-#      test directories are compiled first, they will compile their
-#      dependencies into the wrong directory.
 #
 #    o PACKAGEDIR -- If CLASSES is not empty, the directory, relative to the
 #      install root, where the resulting class files will be written by javac.
@@ -134,6 +173,19 @@
 #    o XMLC_xxxx_OPTS_FILE - Name of .xmlc options file to use when compiling
 #      xxxx.html.
 #
+#    o WML_CLASSES - List of classes to be generated from WML using XMLC.
+#      These classes *must* be named in the form xxxxWML and be generated
+#      from a WML file named xxxx.wml in WML_DIR.  The names in this 
+#      variable must not include the .class extension.
+#
+#    o WML_DIR - Directory containing WML files to compile with XMLC.  It
+#      should be relative to the current directory or $(ROOT).  A rule also
+#      exists for compiling WML files in the current directory as well as
+#      this directory.
+#
+#    o XMLC_WML_OPTS - Options to pass to XMLC when compiling WML files.
+#      May be left unspecified or empty.
+#
 #    o XMLC_JAVAC_OPTS - Options use to specify the the java compile that
 #      XMLC will use.
 #
@@ -150,51 +202,42 @@
 #
 
 #----------------------------------------------------------------------------- 
-# Platform-specific separator for paths.
-#
-ifneq ($(OSTYPE),cygwin32)
-    PS=:
-else
-    PS=\;
-endif
+# General make setup
+.SUFFIXES: .java .class _Skel.class _Stub.class .sh .jpp .xml .jar .html
+
 
 #----------------------------------------------------------------------------- 
-# Absolute path to tree root
-ABS_ROOT = $(shell cd ${ROOT} && pwd)
-
-#----------------------------------------------------------------------------- 
-# Include site configuration.  Allow override the locaiton for the Enhydra
-# tree.
+# Include site configuration if it hasn't already been done.  Allow override
+# the location for the Enhydra tree.
 ifeq (${STDCONF},)
 #    STDCONF=${ENHYDRA_DIR}/lib/stdconf.mk
     STDCONF=${ROOT}/../stdconf.mk
 endif
-include ${STDCONF}
+ifeq (${STDCONF_INCLUDED},)
+    include ${STDCONF}
+endif
 
 #----------------------------------------------------------------------------- 
 # Class path to use for all Java compiles and execution.  This is a simply
 # expanded variable so that paths can be added by application config.mk and
-# Makefiles.  XTRA_CLASSPATH is obsolete.  Since ENHYDRA_CLASSPATH is simply
-# expanded, all defines must be set at the point they are added to
-# ENHYDRA_CLASSPATH.  It is seeded with the CLASSPATH environment variable
-# and the root of the application/
+# Makefiles.  Since ENHYDRA_CLASSPATH is simply expanded, all defines must be
+# set at the point they are added to ENHYDRA_CLASSPATH.  It is seeded with the
+# CLASSPATH environment variable and the root of the application.
 
-ENHYDRA_CLASSPATH:=$(XTRA_CLASSPATH)${PS}${ROOT}${PS}${ENHYDRA_CLASSPATH}${PS}${CLASSPATH}
+ENHYDRA_CLASSPATH:=${ROOT}${PS}${ENHYDRA_CLASSPATH}${PS}${CLASSPATH}
 
 #----------------------------------------------------------------------------- 
-# The full path to the Enhydra directory and classes.  ENHYDRA_DIR is
+# The full path to the Enhydra directory, classes and programs.  ENHYDRA_DIR is
 # normally set by the config.mk file that includes this file.
 #
-ifeq ($(ENHYDRA_DIR),)
-    ENHYDRA_DIR = /usr/local/enhydra
-endif
+ENHYDRA_LIB_DIR = $(ENHYDRA_DIR)/lib
 ifeq ($(ENHYDRA_CLASSES),)
     ENHYDRA_CLASSES = $(ENHYDRA_DIR)/lib/enhydra.jar
 endif
 ENHYDRA_CLASSPATH:=${ENHYDRA_CLASSES}${PS}${ENHYDRA_CLASSPATH}
 
 #
-# Jddi HTML compiler.
+# JDDI HTML compiler.
 #
 ifeq ($(JDDIC),)
     JDDIC = $(ENHYDRA_DIR)/bin/jddic 
@@ -229,7 +272,6 @@ endif
 
 #-----------------------------------------------------------------------------
 # Definitions of components of the source tree and destination tree.
-#----------------------------------------------------------------------------- 
 
 #
 # The directory that contains all generated files.  This is an image of
@@ -245,13 +287,35 @@ endif
 # below this directory according to package name.
 #
 ifeq ($(CLASS_OUTPUT),)
-ifeq ($(XMLC_AUTO_COMP),YES)
-    CLASS_OUTPUT = $(OUTPUT)/lib/classes
-else
-    CLASS_OUTPUT = $(ROOT)/classes
-endif
+    ifeq ($(XMLC_AUTO_COMP),YES)
+	CLASS_OUTPUT = $(OUTPUT)/lib/classes
+    else
+	CLASS_OUTPUT = $(ROOT)/classes
+    endif
 endif
 ENHYDRA_CLASSPATH:=${CLASS_OUTPUT}${PS}${ENHYDRA_CLASSPATH}
+
+#
+# Include Java extension jars.
+#
+ENHYDRA_CLASSPATH:=${JNDI_CLASSES}${PS}${ENHYDRA_CLASSPATH}
+ENHYDRA_CLASSPATH:=${JDBC_STDEXT_CLASSES}${PS}${ENHYDRA_CLASSPATH}
+ENHYDRA_CLASSPATH:=${JTA_CLASSES}${PS}${ENHYDRA_CLASSPATH}
+
+#
+# Other packages include with Enhydra
+#
+ENHYDRA_CLASSPATH:=${ENHYDRA_LIB_DIR}/castor.jar${PS}${ENHYDRA_CLASSPATH}
+
+#
+# J2EE for Enhydra Enterprise.  This must follow enhydra.jar or we get
+# the wrong DOM classes.
+#
+ifneq ($(J2EE_DIR),)
+    J2EE_CLASSES = ${J2EE_DIR}/lib/j2ee.jar
+    ENHYDRA_CLASSPATH:=${ENHYDRA_CLASSPATH}${PS}${J2EE_CLASSES}
+endif
+
 
 #
 # Where script command files go.
@@ -265,28 +329,6 @@ endif
 #
 ifeq ($(LIB_OUTPUT),)
     LIB_OUTPUT = $(OUTPUT)/lib
-endif
-
-#
-# Where Java Native Interface DLL's are placed.
-#
-ifeq ($(NATIVE_OUTPUT),)
-    NATIVE_OUTPUT = $(OUTPUT)/lib
-endif
-
-#
-# Where Java Native Interface generated include files go.
-#
-ifeq ($(INCLUDE_OUTPUT),)
-    INCLUDE_OUTPUT = $(OUTPUT)/include
-endif
-
-#  
-# Where Java Native Interface include files are placed.
-#  
-ifeq ($(JNI_INCLUDES),)
-    JNI_INCLUDES =  -I$(JDKDIR)/include -I$(JDKDIR)/include/$(JDKARCH) \
-		    -I$(INCLUDE_OUTPUT)
 endif
 
 #  
@@ -311,7 +353,7 @@ BUILD_TMP = ${ROOT}/tmp
 #
 # The '.' seperated package name derived from PACKAGEDIR
 #
-PACKAGE = $(shell echo $(PACKAGEDIR) | tr / .)
+PACKAGE = $(subst /,.,$(PACKAGEDIR))
 
 #
 # Package output directory.
@@ -319,18 +361,16 @@ PACKAGE = $(shell echo $(PACKAGEDIR) | tr / .)
 PACKAGE_OUTPUT = $(CLASS_OUTPUT)/$(PACKAGEDIR)
 
 #
-# File that is generated containing the list of out-of-date Java source
-# files for a package.
+# Package-specific make tmp directory
 #
-JAVA_OUTDATED_SRCS = ./java-outdated-srcs.tmp
+PACKAGE_TMP = ${BUILD_TMP}/pkg-tmp/${PACKAGEDIR}
 
-###############################################################################
-# Default "all" rule if none is specified in the subdir make file.
-###############################################################################
+#-----------------------------------------------------------------------------
+# Default "all" rule if none is specified on the command line.
 
-build_all:	echocp write_header check_sanity java_pass
+build_all: echocp check_sanity setup_pass java_pass
 
-all:		build_all
+all: build_all
 
 echocp:
 	@echo CLASSPATH='${ENHYDRA_CLASSPATH}'
@@ -351,135 +391,92 @@ rules:
 	@echo ""
 
 
-###############################################################################
-#				Java Build Rules
-###############################################################################
-
-#
-# Performs a Java target build pass at the current directory level.
-#
-java_pass:: do_xmlc_html_targets dojhtml_targets jpass_subdirs dojpass_targets jpass_post_subdirs dormi_targets donative_targets domisc_targets dojar_targets
-
-#
-# Default rule to build Java class targets.
-#
-dojpass_targets:: $(JDDI_CLASSES:%=$(PACKAGE_OUTPUT)/%.class) $(JOLT_CLASSES:%=$(PACKAGE_OUTPUT)/%.class) $(HTML_CLASSES:%=${PACKAGE_OUTPUT}/%.class) $(CLASSES:%=$(PACKAGE_OUTPUT)/%.class)
-
-#
-# Default rule to build JOLT source targets.
-#
-dojhtml_targets:: $(JDDI_CLASSES:%=%.jhtml) $(JOLT_CLASSES:%=%.jhtml)
-
-#
-# Default rule to build classes from HTML using XMLC
-#
-do_xmlc_html_targets:: $(HTML_CLASSES:%=${PACKAGE_OUTPUT}/%.class)
-
-#
-# Default rule to build rmi skeleton and stub classes.
-#
-dormi_targets:: $(RMI_CLASSES:%=$(PACKAGE_OUTPUT)/%.class) $(RMI_CLASSES:%=$(PACKAGE_OUTPUT)/%_Skel.class)
-
-#
-# Default rule to build native class targets.
-# FIX: this should not loop
-ifneq ($(NATIVE),)
-donative_targets::
-	@mkdir -p $(NATIVE_OUTPUT)
-	@for x in $(NATIVE); do \
-		$(MAKE) $(NATIVE_OUTPUT)/lib$$x.so || exit 1 ; \
-	done
-else
-donative_targets:
-endif
-
-#
-# Default rule to install MISC files.
-# FIX: this should not loop
-#
-domisc_targets:: domisc_build domisc_install
-
-domisc_build:: $(MISC_BUILD)
-
-ifneq ($(MISC_INSTALL),)
-domisc_install::
-	@mkdir -p $(OUTPUT)/$(PACKAGEDIR)
-	@for f in $(MISC_INSTALL) ; do \
-		ff=`basename $$f`; \
-		if cmp $$f $(OUTPUT)/$(PACKAGEDIR)/$$ff > /dev/null 2>&1; \
-		then \
-			: ; \
-		else \
-			echo Installing $$f; \
-			cp `basename $$f` $(OUTPUT)/$(PACKAGEDIR); \
-		fi; \
-	done
-else
-domisc_install::
-endif
-
-
-#
-# Copy files into the classes directory, so they will be put in the jar file.
-#
-dojar_targets:: dojar_install
-
-ifneq ($(JAR_INSTALL),)
-dojar_install::
-	@mkdir -p $(PACKAGE_OUTPUT)
-	@for f in $(JAR_INSTALL) ; do \
-		ff=`basename $$f`; \
-		if cmp $$f $(PACKAGE_OUTPUT)/$$ff > /dev/null 2>&1; \
-		then \
-			: ; \
-		else \
-			echo Adding to JAR classes: $$f; \
-			cp $$f $(PACKAGE_OUTPUT); \
-		fi; \
-	done
-else
-dojar_install::
-endif
-
-#
-# Default rule to run the Java target build pass on any subdirectories
-# listed in SUBDIRS. The build is performed depth-first, so that
-# subdirectories are output before targets at the current level are output.
-# NOTE: The funky assignment to $* (with set) is due to the fact
-# that Solaris sh can handle `for d in ${SUBDIRS} do if SUBDIRS is
+#-----------------------------------------------------------------------------
+# Set pass, add to setup_pass_pre_targets or setup_pass_post_targets to
+# include tasks.  The funky assignment to $* (with set) is due to the fact
+# that Solaris sh cann't handle `for d in ${SUBDIRS} do if SUBDIRS is
 # empty.
-#
-jpass_subdirs: pre_jpass_subdirs
+
+setup_pass:: setup_pass_pre_targets \
+	     setup_pass_subdirs \
+	     setup_pass_post_targets
+
+setup_pass_pre_targets::
+
+setup_pass_subdirs:
 	@set - $(SUBDIRS) ;\
 	for d do \
-	    (cd $$d && $(MAKE) java_pass) || exit 1 ;\
+	    (cd $$d && $(MAKE) setup_pass) || exit 1 ; \
 	done
 
-#
-# Always done before jpass_subdirs. Add dependencies to this target, don't
-# make *_subdirs a :: target.
-#
-pre_jpass_subdirs::
+setup_pass_post_targets:: xmlc_targets jddi_targets
 
-#
-# Subdirectories done after Java compile.
-#
-jpass_post_subdirs: dojpass_targets
-	@set - $(POST_SUBDIRS) ;\
+#-----------------------------------------------------------------------------
+# Java pass, add to java_pass_pre_targets or java_pass_post_targets to include
+# tasks.   See comment in setup_pass section on SUBDIRS loops.
+
+java_pass:: java_pass_pre_targets java_pass_subdirs java_pass_post_targets
+
+java_pass_pre_targets::
+
+java_pass_subdirs:
+	@set - $(SUBDIRS) ;\
 	for d do \
-	    (cd $$d && $(MAKE) java_pass) || exit 1 ;\
+	    (cd $$d && $(MAKE) java_pass) || exit 1 ; \
 	done
 
+java_pass_post_targets:: misc_build_targets java_targets rmi_targets \
+			 misc_install_targets jar_install_targets
 
+#-----------------------------------------------------------------------------
+# Standard targets referenced in xxxx_pass_targets
 
-###############################################################################
-#			  JavaDoc Documentation Rule
-###############################################################################
+# Java classes
+java_targets:: $(CLASSES:%=$(PACKAGE_OUTPUT)/%.class)
+
+# JDDI classes
+jddi_targets:: $(JDDI_CLASSES:%=$(PACKAGE_OUTPUT)/%.class) \
+	       $(JOLT_CLASSES:%=$(PACKAGE_OUTPUT)/%.class)
+
+# XMLC classes from HTML
+xmlc_targets:: $(HTML_CLASSES:%=${PACKAGE_OUTPUT}/%.class)
+
+# RMI stub and Skel
+rmi_targets:: $(RMI_CLASSES:%=$(PACKAGE_OUTPUT)/%.class) \
+	      $(RMI_CLASSES:%=$(PACKAGE_OUTPUT)/%_Skel.class) \
+	      $(RMI_CLASSES:%=$(PACKAGE_OUTPUT)/%_Stub.class)
+
+# Misc target to build
+misc_build_targets:: $(MISC_BUILD) domisc_targets
+
+# Misc targets to install in output.  FIXME: drop.
+misc_install_targets:: $(MISC_INSTALL:%=$(OUTPUT)/$(PACKAGEDIR)/%)
+
+$(OUTPUT)/$(PACKAGEDIR)/%: %
+	@mkdir -p `dirname $@`
+	cp -f $< $@
+
+# Misc targets to install in package class directory
+jar_install_targets:: $(JAR_INSTALL:%=$(PACKAGE_OUTPUT)/%) dojar_targets
+
+$(PACKAGE_OUTPUT)/%: %
+	@mkdir -p `dirname $@`
+	cp -f $< $@
+
+# Compatibility with older version of stdrules
+domisc_targets:: domisc_build domisc_install
+domisc_build:: 
+domisc_install::
+dojar_targets:: dojar_install
+dojar_install::
+
+#-----------------------------------------------------------------------------
+# JavaDoc rules
 #
-#    At any point in the tree, you can type "make javadoc", and you will
-# end up with a directory "jdoc". Normally this is run at the top of the
+# At any point in the tree, you can type "make javadoc", and you will end up
+# with a directory "jdoc". Normally this is run at the top of the
 # tree, but for testing you can run it in a subdirectory. 
-#
+
 
 # javadoc 1.1 didn't include runtime classes if user set CLASSPATH
 ifeq (${JDKVERSION},1.1)
@@ -532,14 +529,14 @@ endif
 #
 # Builds JavaDoc documentation from the source tree.
 #
-javadoc_pass::	javadoc_subdirs javadoc_targets
+javadoc_pass:: javadoc_subdirs javadoc_targets
 
 #
 # Default rule to descend the source tree and build all JavaDoc HTML
 # documentation from the source code.
 #
 javadoc_subdirs: pre_javadoc_subdirs
-	@set - $(SUBDIRS) $(POST_SUBDIRS) ;\
+	@set - $(SUBDIRS) ;\
 	for d do \
 	    (cd $$d && $(MAKE) javadoc_pass) || exit 1 ;\
 	done
@@ -598,7 +595,7 @@ clean::	clean_subdirs clean_current
 # Cleans up any subdirectories listed in SUBDIRS.
 #
 clean_subdirs:
-	@set - $(SUBDIRS) $(POST_SUBDIRS) ;\
+	@set - $(SUBDIRS) ;\
 	for d do \
 	    (cd $$d && $(MAKE) clean) || exit 1 ;\
 	done
@@ -624,9 +621,6 @@ endif
 ifneq ($(MISC_INSTALL),)
 	-rm -rf $(MISC_INSTALL:%=$(OUTPUT)/$(PACKAGEDIR)/%)
 endif
-ifneq ($(JAVA_OUTDATED_SRCS),)
-	-rm -f $(JAVA_OUTDATED_SRCS)
-endif
 
 #
 # Does a global cleanup -- removes the entire "output" tree and
@@ -640,51 +634,6 @@ clean_world:	clean_javadoc
 ###############################################################################
 
 #
-# Rule to build Java classes.  An intermediate list of files is generated
-# so that all of the out-of-date files in the package are compiled in
-# one Java command.  This is much faster.  The files that are current must
-# be touched after building ${JAVA_OUTDATED_SRCS}, otherwise they are out
-# of date relative to the just created ${JAVA_OUTDATED_SRCS}.  The ones to be
-# rebuilt are removed so they don't get touched.
-#
-
-# FIXME: This currently doesn't work for all cases.  Its breaking XMLC compiles,
-# disable it for now.
-ifeq (true, false)
-ifneq ($(CLASSES),)
-${JAVA_OUTDATED_SRCS}: $(CLASSES:%=%.java)
-	@mkdir -p $(PACKAGE_OUTPUT)
-	@cd $(PACKAGE_OUTPUT) && rm -f ${subst .java,.class,$?}
-	@echo $? >${JAVA_OUTDATED_SRCS}
-	@cd $(PACKAGE_OUTPUT) && touch -c ${subst .java,.class,$^}
-endif
-
-$(PACKAGE_OUTPUT)/%.class: ${JAVA_OUTDATED_SRCS}
-	@mkdir -p $(PACKAGE_OUTPUT)
-	@CLASSPATH="$(ENHYDRA_CLASSPATH):$(CLASS_OUTPUT)"; export CLASSPATH  ; \
-	javafiles="`cat ${JAVA_OUTDATED_SRCS}`" ;\
-	set -x ; \
-	$(ICONTRACT) $(ICONTRACTFLAGS) $$javafiles || exit 1 ;\
-	mv *.class $(PACKAGE_OUTPUT)
-else
-# Old, one at a time rule
-ifneq ($(USEICONTRACT),)	
-$(PACKAGE_OUTPUT)/%.class: %.java
-	@mkdir -p $(PACKAGE_OUTPUT)
-	@CLASSPATH="$(ENHYDRA_CLASSPATH):$(CLASS_OUTPUT)" ; export CLASSPATH ; \
-	set -x ; \
-	$(ICONTRACT) $(ICONTRACTFLAGS) $< || $(JAVAC) $(JCFLAGS) $< || exit 1;\
-	mv *.class $(PACKAGE_OUTPUT)
-else
-$(PACKAGE_OUTPUT)/%.class: %.java
-	@mkdir -p $(PACKAGE_OUTPUT)
-	@CLASSPATH="$(ENHYDRA_CLASSPATH)" ; export CLASSPATH ; \
-	set -x ; \
-	$(JAVAC) -d $(CLASS_OUTPUT) $(JCFLAGS) $< || exit 1
-endif
-endif
-
-#
 # Rule for building RMI stub and skeleton classes.
 #
 $(PACKAGE_OUTPUT)/%_Skel.class: $(PACKAGE_OUTPUT)/%.class
@@ -695,21 +644,62 @@ $(PACKAGE_OUTPUT)/%_Skel.class: $(PACKAGE_OUTPUT)/%.class
 
 
 #
-# Pattern-matching rule to build java native class methods.
-# to the $(OUTPUT) directory
+# Rule to build Java classes.  A list of the java sources to all outdated
+# files is generated by a recursive call to a special target.  This is then
+# used to compile all out-of-date java files in one execution of the
+# compiler, which is significantly faster.  These rules have been problematic
+# to get working, if a make file has trouble, set JAVAC_SIMPLE_MODE=YES
 #
-$(NATIVE_OUTPUT)/lib%.so: $(OUTPUT)/$(PACKAGEDIR)/%.class
-	@mkdir -p $(INCLUDE_OUTPUT) $(NATIVE_OUTPUT)
-	@class=`basename $< .class` ; \
-	includes="-I$(JDKDIR)/include -I$(JDKDIR)/include/solaris" ; \
-	includes="$$includes -I$(INCLUDE_OUTPUT)" ; \
-	CLASSPATH="$(ENHYDRA_CLASSPATH)"; export CLASSPATH ; \
+
+ifeq (${GET_OUTDATED},YES)
+# Recursively called to output list of out-of-date files.
+get-outdated: $(CLASSES:%=$(PACKAGE_OUTPUT)/%.class)
+
+$(PACKAGE_OUTPUT)/%.class: %.java
+	@echo $<
+
+else
+# Compile all at once.  Recursively calls make to get files.
+$(PACKAGE_OUTPUT)/%.class: %.java
+	@mkdir -p $(PACKAGE_OUTPUT)
+	@javafiles="`${MAKE} --no-print-directory --quiet get-outdated GET_OUTDATED=YES MAKEFLAGS=`" ; \
+	if [ "X$$javafiles" != "X" ] ; then \
+	(CLASSPATH="$(ENHYDRA_CLASSPATH)"; export CLASSPATH; set -x ; \
+	$(JAVAC) -d $(CLASS_OUTPUT) $(JCFLAGS) $$javafiles || exit 1) ;fi
+endif
+ifneq (${JAVAC_SIMPLE_MODE},YES)
+
+else
+
+# One at a time rule
+$(PACKAGE_OUTPUT)/%.class: %.java
+	@mkdir -p $(PACKAGE_OUTPUT)
+	@CLASSPATH="$(ENHYDRA_CLASSPATH)" ; export CLASSPATH ; \
 	set -x ; \
-	$(JAVAH) -jni -o $(INCLUDE_OUTPUT)/$$class.h $(PACKAGE).$$class || exit 1 ; \
-	$(CC) -G -o $@ $$includes $$class.c || exit 1 ; \
+	$(JAVAC) -d $(CLASS_OUTPUT) $(JCFLAGS) $< || exit 1
+endif
 
 #
-# Compile JoltHTML.
+# Rule for building RMI stub and skeleton classes. Note, both the Stub abnd
+# works around a very problem with this rule which appears to be a bug in
+# make.  If the $(PACKAGE_OUTPUT) directory didn't exists yet, the rule would
+# not be defined by make.  So the first time a make was done in a directory,
+# it couldn't find the rule to run make.  Wasted a lot of time trying to
+# figure out why. This recurses to run make a second time with a different
+# rule.
+#
+$(PACKAGE_OUTPUT)/%_Skel.class $(PACKAGE_OUTPUT)/%_Stub.class: $(PACKAGE_OUTPUT)/%.class
+ifeq (${RMI_RECURSE},YES)
+	@mkdir -p $(PACKAGE_OUTPUT)
+	@CLASSPATH="$(ENHYDRA_CLASSPATH)" ; export CLASSPATH ; set -x ; \
+	$(RMIC) -d $(CLASS_OUTPUT) $(PACKAGE).$* || exit 1
+else
+$(PACKAGE_OUTPUT)/%_Skel.class $(PACKAGE_OUTPUT)/%_Stub.class: %.java
+	${MAKE} RMI_RECURSE=YES
+endif
+
+#
+# Compile JDDI files
 #
 $(PACKAGE_OUTPUT)/%.class: %.jhtml
 	@mkdir -p $(PACKAGE_OUTPUT)
@@ -720,19 +710,16 @@ $(PACKAGE_OUTPUT)/%.class: %.jhtml
 # Support old name HTML_XMLC_OPTS_FILE
 #
 ifeq (${HTML_XMLC_OPTS_FILE},)
-    XMLC_HTML_OPTS_FILE += ${HTML_XMLC_OPTS_FILE}
+    error: HTML_XMLC_OPTS_FILE is no longer valied, switch to XMLC_HTML_OPTS_FILE
 endif
 
 #
-# Support for XMLC recompilation
+# HTML build rules
 #
 ifeq ($(XMLC_AUTO_COMP),YES)
     XMLC_HTML_OPTS += -for-recomp
 endif
 
-#
-# Compile HTML with XMLC
-#
 $(PACKAGE_OUTPUT)/%HTML.class: $(HTML_DIR)/%.html $(XMLC_HTML_OPTS_FILE) $(XMLC_%_OPTS_FILE)
 	@mkdir -p $(PACKAGE_OUTPUT)
 ifeq ($(XMLC_AUTO_COMP),YES)
@@ -752,46 +739,73 @@ endif
 	$(XMLC_CMD) -class $(PACKAGE).$*HTML $(XMLC_HTML_OPTS) $(XMLC_$*_OPTS) $(XMLC_JAVAC) $(XMLC_HTML_OPTS_FILE)  $*.html
 
 #
+# WML build rules
+#
+XMLC_WML_OPTS += -domfactory org.enhydra.wireless.wml.WMLDomFactory -xcatalog ${ENHYDRA_DIR}/xml/wml/wml.xcat
+ifeq ($(XMLC_AUTO_COMP),YES)
+    XMLC_WML_OPTS += -for-recomp
+endif
+
+$(PACKAGE_OUTPUT)/%WML.class: $(WML_DIR)/%.wml $(XMLC_WML_OPTS_FILE) $(XMLC_%_OPTS_FILE)
+	@mkdir -p $(PACKAGE_OUTPUT)
+ifeq ($(XMLC_AUTO_COMP),YES)
+	cp -f $(WML_DIR)/$*.wml $(PACKAGE_OUTPUT)
+endif
+	@CLASSPATH="$(ENHYDRA_CLASSPATH)" ; export CLASSPATH ; set -x ; \
+	$(XMLC_CMD) -class $(PACKAGE).$*WML $(XMLC_WML_OPTS) $(XMLC_$*_OPTS) \
+	    $(XMLC_JAVAC) $(XMLC_WML_OPTS_FILE) $(XMLC_$*_OPTS_FILE) $(WML_DIR)/$*.wml
+
+$(PACKAGE_OUTPUT)/%WML.class: %.wml $(XMLC_WML_OPTS_FILE) $(XMLC_%_OPTS_FILE)
+	@mkdir -p $(PACKAGE_OUTPUT)
+ifeq ($(XMLC_AUTO_COMP),YES)
+	cp -f $*.wml $(PACKAGE_OUTPUT)
+endif
+	@CLASSPATH="$(ENHYDRA_CLASSPATH)" ; export CLASSPATH ; set -x ; \
+	$(XMLC_CMD) -class $(PACKAGE).$*WML $(XMLC_WML_OPTS) $(XMLC_$*_OPTS) \
+	    $(XMLC_JAVAC) $(XMLC_WML_OPTS_FILE) $(XMLC_$*_OPTS_FILE) $*.wml
+
+do_xmlc_html_targets:: $(WML_CLASSES:%=${PACKAGE_OUTPUT}/%.class)
+
+#
 # Check for missing parts of the build environment.  If ENHYDRA_CHECK
 # is set to "YES", this checks for things in the enhydra directory that
 # are needed to build apps.
 #
 check_sanity:
-	@[ -d $(JDKDIR) -o -h $(JDKDIR) ] || (echo "ERROR: Unable to find JDK ($(JDKDIR)). You must set JDKDIR to point to your installation of Sun's Java Development Kit, in the files config.mk or ${STDCONF}" ; echo)
-	@[ -d $(JDKDIR) -o -h $(JDKDIR) ]
-	@[ -f $(JAVAC) ] || (echo "ERROR: Unable to find javac in the JDK ($(JAVAC)). You must set JDKDIR to point to your installation of Sun's Java Development Kit, in the files config.mk or ${STDCONF}" ; echo)
-	@[ -f $(JAVAC) ]
-	@[ -f $(JAVA) ] || (echo "ERROR: Unable to find java interpreter ($(JAVA)). You must set JDKDIR to point to your installation of Sun's Java Development Kit, in the files config.mk or /usr/local/enhydra/lib/stdrule.mk" ; echo)
-	@[ -f $(JAVA) ]
+	@[ -d $(JDKDIR) -o -h $(JDKDIR) ] || (echo "ERROR: Unable to find JDK ($(JDKDIR)). You must set JDKDIR to point to your installation of Sun's Java Development Kit, in the files config.mk or ${STDCONF}" ; echo; exit 1)
+	@[ -f $(JAVAC) ] || (echo "ERROR: Unable to find javac in the JDK ($(JAVAC)). You must set JDKDIR to point to your installation of Sun's Java Development Kit, in the files config.mk or ${STDCONF}" ; echo; exit 1)
+	@[ -f $(JAVA) ] || (echo "ERROR: Unable to find java interpreter ($(JAVA)). You must set JDKDIR to point to your installation of Sun's Java Development Kit, in the files config.mk or /usr/local/enhydra/lib/stdrule.mk" ; echo; exit 1)
 ifeq (${JDKVERSION},1.1)
 	@[ -d $(SWINGDIR) -o -h $(SWINGDIR) ] || (echo "WARNING: Unable to find SWING (JFC) ($(SWINGDIR)). To fix, set SWINGDIR to point to your installation of swing, in the files config.mk or ${STDCONF}" ; echo)
 endif
 ifeq ($(ENHYDRA_CHECK),YES)
-	@[ -d $(ENHYDRA_DIR) -o -h $(ENHYDRA_DIR) ] || (echo "ERROR: Unable to find the Enhydra directory ($(ENHYDRA_DIR)). You must set ENHYDRA_DIR to point to the Enhydra distribution directory in your file config.mk." ; echo)
-	@[ -d $(ENHYDRA_DIR) -o -h $(ENHYDRA_DIR) ]
-	@[ -f $(ENHYDRA_CLASSES) -o -d $(ENHYDRA_CLASSES) ] || (echo "ERROR: Unable to find either enhydra.jar or the enhydra classes directory ($(ENHYDRA_CLASSES)). You must set ENHYDRA_DIR to point to the Enhydra distribution directory in your file config.mk." ; echo)
-	@[ -f $(ENHYDRA_CLASSES) -o -d $(ENHYDRA_CLASSES) ] 
-	@[ -f $(JDDIC) ] || (echo "ERROR: Unable to find jddic ($(JDDIC)). You must set ENHYDRA_DIR to point to the Enhydra distribution directory in your file config.mk." ; echo)
-	@[ -f $(JDDIC) ]
+	@[ -d $(ENHYDRA_DIR) -o -h $(ENHYDRA_DIR) ] || (echo "ERROR: Unable to find the Enhydra directory ($(ENHYDRA_DIR)). You must set ENHYDRA_DIR to point to the Enhydra distribution directory in your file config.mk." ; echo; exit 1)
+	@[ -f $(ENHYDRA_CLASSES) -o -d $(ENHYDRA_CLASSES) ] || (echo "ERROR: Unable to find either enhydra.jar or the enhydra classes directory ($(ENHYDRA_CLASSES)). You must set ENHYDRA_DIR to point to the Enhydra distribution directory in your file config.mk." ; echo; exit 1)
+	@[ -f $(JDDIC) ] || (echo "ERROR: Unable to find jddic ($(JDDIC)). You must set ENHYDRA_DIR to point to the Enhydra distribution directory in your file config.mk." ; echo; exit 1)
 endif
 ifneq ($(XTRA_CLASSPATH),)
-	@echo
 	@echo "***"
-	@echo "*** Warning: Use of outdated make variable XTRA_CLASSPATH."
-	@echo "*** Please convert to prepending to the simple expanded"
-	@echo "*** ENHYDRA_CLASSPATH make variable.  See documentation in"
-	@echo "*** stdrules.mk."
+	@echo "*** Error: Use of outdated make variable XTRA_CLASSPATH."
+	@echo "*** Convert to prepending to the simple expanded ENHYDRA_CLASSPATH"
+	@echo "*** make variable.  See documentation in *** stdrules.mk."
 	@echo "***"
-	@echo
+	exit 1
 endif
 
-write_header:
-	@echo ; echo "Build Started `date`"
-
-JAR_FILE = $(shell mkdir -p $(LIB_OUTPUT) && cd $(LIB_OUTPUT) && pwd)/$(JARNAME).jar
+# FIXME: Setting XMLC_AUTO_COMP should only affect the XMLC generate objects
+# not the whole jar.  This will be easier when we go to building WARs for
+# EnhydraApps
 jar:
 ifneq ($(XMLC_AUTO_COMP),YES)
 	mkdir -p $(LIB_OUTPUT)
 	(cd $(CLASS_OUTPUT) && $(JAR) -c .) >$(LIB_OUTPUT)/$(JARNAME).jar.tmp
 	mv -f $(LIB_OUTPUT)/$(JARNAME).jar.tmp $(LIB_OUTPUT)/$(JARNAME).jar
 endif
+
+#
+# Create a jar for the current JARNAME
+#
+build-jar:
+	mkdir -p $(LIB_OUTPUT)
+	(cd $(CLASS_OUTPUT) && $(JAR) -c .) >$(LIB_OUTPUT)/$(JARNAME).jar.tmp
+	mv -f $(LIB_OUTPUT)/$(JARNAME).jar.tmp $(LIB_OUTPUT)/$(JARNAME).jar
