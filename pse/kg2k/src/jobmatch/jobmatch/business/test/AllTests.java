@@ -1,15 +1,15 @@
-// $Id: AllTests.java,v 1.5 2000/06/05 13:11:18 studer Exp $
+// $Id: AllTests.java,v 1.6 2000/06/12 21:52:26 locher Exp $
 
 package jobmatch.business.test;
 
 import junit.framework.*;
 
 /**
- *  TestSuite of all service tests
+ *  TestSuite of all business layer tests
  *
  *  @since May 19 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.5 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.6 $
  **/
 public class AllTests extends TestSuite {
 
@@ -29,6 +29,9 @@ public class AllTests extends TestSuite {
 // Document history
 /*
  * $Log: AllTests.java,v $
+ * Revision 1.6  2000/06/12 21:52:26  locher
+ * added DB Stress test
+ *
  * Revision 1.5  2000/06/05 13:11:18  studer
  * entity test added
  *

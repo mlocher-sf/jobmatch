@@ -1,4 +1,4 @@
-// $Id: BinaryTest.java,v 1.1 2000/06/12 16:28:01 locher Exp $
+// $Id: BinaryTest.java,v 1.2 2000/06/12 21:52:28 locher Exp $
 
 package jobmatch.data.test;
 
@@ -10,7 +10,7 @@ import jobmatch.data.*;
  *
  *  @since June 12 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class BinaryTest extends TestCase {
 
@@ -36,8 +36,8 @@ public class BinaryTest extends TestCase {
     }
 
     private void addTestData(int testSize) throws Exception{
-	final byte[] initialData = this.createTestData(testSize);
-	assert(this.verifyTestData(initialData));
+	final byte[] initialData = TestData.createTestData(testSize);
+	assert(TestData.verifyTestData(initialData));
 	PictureBDO picture = PictureBDO.createVirgin();
 	picture.setData(initialData);
 	picture.setMimeType(BinaryTest.testType);
@@ -53,30 +53,12 @@ public class BinaryTest extends TestCase {
 	PictureBDO item;
 	while (null != (item = query.getNextBDO())) {
 	    assert(BinaryTest.testType.equals(item.getMimeType()));
-	    assert(this.verifyTestData(item.getData()));
+	    assert(TestData.verifyTestData(item.getData()));
 	    count++;
 	    item.delete();
 	}
 	assert(count >= minRecordsExpected);
     }
-
-    private byte[] createTestData(int length) {
-	byte[] result = new byte[length];
-	for (int i=0; i < result.length; i++) {
-	    result[i] = (byte) (i % 127);
-	}
-	return result;
-    }
-
-    private boolean verifyTestData(byte[] data) {
-	for (int i=0; i < data.length; i++) {
-	    if (data[i] != (i % 127)) {
-		return false;
-	    }
-	}
-	return true;
-    }
-
 
     public static Test suite() { 
 	TestSuite suite= new TestSuite(BinaryTest.class);
@@ -88,6 +70,9 @@ public class BinaryTest extends TestCase {
 // Document history
 /*
  * $Log: BinaryTest.java,v $
+ * Revision 1.2  2000/06/12 21:52:28  locher
+ * added DB Stress test
+ *
  * Revision 1.1  2000/06/12 16:28:01  locher
  * added new data layer tests
  *

@@ -16,7 +16,10 @@ ROOT =	../../..
 PACKAGEDIR = jobmatch/data/test
 
 CLASSES = \
-	BinaryTest
+	TestData \
+	BinaryTest \
+	StressTest \
+	AllTests
 
 include $(ROOT)/config.mk
 

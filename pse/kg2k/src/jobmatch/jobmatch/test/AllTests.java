@@ -1,4 +1,4 @@
-// $Id: AllTests.java,v 1.4 2000/06/12 16:28:02 locher Exp $
+// $Id: AllTests.java,v 1.5 2000/06/12 21:52:31 locher Exp $
 
 package jobmatch.test;
 
@@ -10,7 +10,7 @@ import java.util.*;
  *
  *  @since May 12 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.4 $
+ *  @version $Revision: 1.5 $
  **/
 public class AllTests extends TestSuite {
 
@@ -24,7 +24,7 @@ public class AllTests extends TestSuite {
 
     private void addAllTests() {
 	this.addTest(jobmatch.business.test.AllTests.suite());
-	this.addTest(jobmatch.data.test.BinaryTest.suite());
+	this.addTest(jobmatch.data.test.AllTests.suite());
     }
 
     public void addTest(Test test) {
@@ -46,6 +46,9 @@ public class AllTests extends TestSuite {
 // Document history
 /*
  * $Log: AllTests.java,v $
+ * Revision 1.5  2000/06/12 21:52:31  locher
+ * added DB Stress test
+ *
  * Revision 1.4  2000/06/12 16:28:02  locher
  * added new data layer tests
  *
