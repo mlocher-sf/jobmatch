@@ -9,12 +9,22 @@ body, td, p, tt, code { font-size: 12pt }
 
 body { background-color: moccasin; }
 
+th { background-color: skyblue }
+td { background-color: powderblue }
+td.super { background-color: moccasin; vertical-align:top; padding: 6pt; }
+hr { color: teal; size: 5pt;}
+
+p.status {
+	border-width: 1pt;
+	border-color: red;
+	padding: 1pt;
+	}	
+
 h2, h3, h4 { 
 	border-stlye: ridge; 
 	border-width: 1pt;
 	padding: 1pt;
 	text-shadow: silver;
-	filter: DropShadow(color=silver, offx=2, offy=2)
 	}
 
 a { 
@@ -23,14 +33,10 @@ a {
 	font-weight: bold;
 	}
 
-a:active {
+a:hover {
 	text-decoration: underline;
 	color: lime;
-	cursor: hand;
-	font-weight: bolder
 	}
 
-hr { color: teal; size: 5pt;}
 
-th { background-color: silver }
-td { background-color: lightgrey }
+
