@@ -40,7 +40,9 @@ HTML_CLASSES = \
 	StudentHTML \
 	PictureHTML
 
-JAR_INSTALL = style.css
+JAR_INSTALL = \
+	Static.html\
+	style.css
 
 include $(ROOT)/config.mk
 
