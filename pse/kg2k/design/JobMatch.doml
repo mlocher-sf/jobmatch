@@ -14,6 +14,21 @@
               <type dbType="VARCHAR" javaType="String" size="30"/>
             </column>
           </table>
+          <table id="JobMatch.data.constant.Country">
+            <column id="Name">
+              <type dbType="VARCHAR" javaType="String" size="32"/>
+            </column>
+          </table>
+          <table id="JobMatch.data.constant.Country">
+            <column id="Name">
+              <type dbType="VARCHAR" javaType="String" size="32"/>
+            </column>
+          </table>
+          <table id="JobMatch.data.constant.Graduation">
+            <column id="Type">
+              <type dbType="VARCHAR" javaType="String" size="32"/>
+            </column>
+          </table>
         </package>
         <table id="JobMatch.data.Contactperson">
           <column id="Name">
@@ -114,6 +129,14 @@
           </column>
           <column id="Remarks">
             <type canBeNull="true" dbType="LONGVARCHAR" javaType="String"/>
+          </column>
+          <column id="Industry">
+            <referenceObject constraint="true" reference="JobMatch.data.constant.Industry"/>
+            <type dbType="none" javaType="JobMatch.data.constant.IndustryDO"/>
+          </column>
+          <column id="Area">
+            <referenceObject constraint="true" reference="JobMatch.data.constant.Area"/>
+            <type dbType="none" javaType="JobMatch.data.constant.AreaDO"/>
           </column>
         </table>
       </package>
