@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CompanyAccountDO information.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */
@@ -768,7 +768,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into CompanyAccount ( Username, Email, LastLogin, LoginReminder, Passphrase, Company, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into CompanyAccount ( Username, Email, LastLogin, LoginReminder, Passphrase, LastIP, LastHost, Company, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -786,6 +786,10 @@ import com.lutris.dods.builder.generator.query.*;
 		getLoginReminder() );
 	setPrepStmtParam_String( stmt, param,
 		getPassphrase() );
+	setPrepStmtParam_String( stmt, param,
+		getLastIP() );
+	setPrepStmtParam_String( stmt, param,
+		getLastHost() );
 	setPrepStmtParam_DO( stmt, param,
 		getCompany() );
 
@@ -820,7 +824,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update CompanyAccount set " + getVersionColumnName() + " = ?, Username = ?, Email = ?, LastLogin = ?, LoginReminder = ?, Passphrase = ?, Company = ? " +
+	    "update CompanyAccount set " + getVersionColumnName() + " = ?, Username = ?, Email = ?, LastLogin = ?, LoginReminder = ?, Passphrase = ?, LastIP = ?, LastHost = ?, Company = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -840,6 +844,10 @@ import com.lutris.dods.builder.generator.query.*;
 		getLoginReminder() );
 	setPrepStmtParam_String( stmt, param,
 		getPassphrase() );
+	setPrepStmtParam_String( stmt, param,
+		getLastIP() );
+	setPrepStmtParam_String( stmt, param,
+		getLastHost() );
 	setPrepStmtParam_DO( stmt, param,
 		getCompany() );
 

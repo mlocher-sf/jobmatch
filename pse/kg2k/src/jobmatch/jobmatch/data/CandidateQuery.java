@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 final public class CandidateQuery implements Query {
 
@@ -407,14 +407,14 @@ final public class CandidateQuery implements Query {
 
 
     /**
-     * Set the AIESECMember to query.
+     * Set the Adress to query.
      *
-     * @param x The AIESECMember of the Candidate to query.
+     * @param x The Adress of the Candidate to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryAIESECMember(
-				boolean x, boolean exact)
+    public void setQueryAdress(
+				jobmatch.data.AdressDO x, boolean exact)
     throws DataObjectException, QueryException
     {
 	// Remove from cacheHits any DOs that do not meet this
@@ -424,81 +424,19 @@ final public class CandidateQuery implements Query {
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
-		// primitive types are compared using the == operator.
-		equals = ( DO.getAIESECMember() == x );
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "AIESECMember", x, "BIT",
-                QueryBuilder.NULL_OK, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the AIESECMember to query
-     * @param x The AIESECMember of the Candidate to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryAIESECMember( 
-				boolean x )
-    throws DataObjectException, QueryException {
-	setQueryAIESECMember( x, true );
-    }
-
-    /**
-     * Add AIESECMember to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByAIESECMember(boolean direction_flag) {
-        builder.addOrderByColumn("AIESECMember",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add AIESECMember to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByAIESECMember() {
-        builder.addOrderByColumn("AIESECMember","ASC");
-    }
-
-
-    /**
-     * Set the City to query.
-     *
-     * @param x The City of the Candidate to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryCity(
-				String x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CandidateDO DO = ( CandidateDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		String s = DO.getCity();
-		if ( null == s && null == x ) {
+		// DOs are compared by their handles..
+		jobmatch.data.AdressDO m = DO.getAdress();
+		if ( null == m && null == x ) {
 		    equals = true;
-		} else if ( null != s && null != x ) {
-		    if ( exact ) 
-			equals = s.equals( x );
-		    else {
-			equals = ( -1 != s.toLowerCase().indexOf(
-					 x.toLowerCase() ) );
-		    }
-		} else {  // one is null, the other isn't
+		} else if ( null == m || null == x ) {
 		    equals = false;
+		} else {
+		    equals = ( DO.getAdress().getOId().toString().equals( x.getOId().toString() ) );
+if ( equals && m != x ) {
+System.err.println("\n----------------------------------------------------------");
+System.err.println("m ="+m );
+System.err.println("x ="+x );
+}
 		}
 	    
 	    if ( ! equals )
@@ -508,112 +446,38 @@ final public class CandidateQuery implements Query {
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "City", x, "VARCHAR",
+	    builder.addWhereClause( "Adress", x, "DECIMAL(19,0)",
                 QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
-     * Set the City to query
-     * @param x The City of the Candidate to query.
+     * Set the Adress to query
+     * @param x The Adress of the Candidate to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryCity( 
-				String x )
+    public void setQueryAdress( 
+				jobmatch.data.AdressDO x )
     throws DataObjectException, QueryException {
-	setQueryCity( x, true );
+	setQueryAdress( x, true );
     }
 
     /**
-     * Add City to the ORDER BY clause.
+     * Add Adress to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByCity(boolean direction_flag) {
-        builder.addOrderByColumn("City",
+    public void addOrderByAdress(boolean direction_flag) {
+        builder.addOrderByColumn("Adress",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add City to the ORDER BY clause.  This convenience
+     * Add Adress to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByCity() {
-        builder.addOrderByColumn("City","ASC");
-    }
-
-
-    /**
-     * Set the Fax to query.
-     *
-     * @param x The Fax of the Candidate to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryFax(
-				String x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CandidateDO DO = ( CandidateDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		String s = DO.getFax();
-		if ( null == s && null == x ) {
-		    equals = true;
-		} else if ( null != s && null != x ) {
-		    if ( exact ) 
-			equals = s.equals( x );
-		    else {
-			equals = ( -1 != s.toLowerCase().indexOf(
-					 x.toLowerCase() ) );
-		    }
-		} else {  // one is null, the other isn't
-		    equals = false;
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Fax", x, "VARCHAR",
-                QueryBuilder.NULL_OK, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Fax to query
-     * @param x The Fax of the Candidate to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryFax( 
-				String x )
-    throws DataObjectException, QueryException {
-	setQueryFax( x, true );
-    }
-
-    /**
-     * Add Fax to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByFax(boolean direction_flag) {
-        builder.addOrderByColumn("Fax",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Fax to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByFax() {
-        builder.addOrderByColumn("Fax","ASC");
+    public void addOrderByAdress() {
+        builder.addOrderByColumn("Adress","ASC");
     }
 
 
@@ -840,69 +704,6 @@ final public class CandidateQuery implements Query {
 
 
     /**
-     * Set the PLZ to query.
-     *
-     * @param x The PLZ of the Candidate to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryPLZ(
-				int x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CandidateDO DO = ( CandidateDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		// primitive types are compared using the == operator.
-		equals = ( DO.getPLZ() == x );
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "PLZ", x, "MEDIUMINT UNSIGNED",
-                QueryBuilder.NULL_OK, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the PLZ to query
-     * @param x The PLZ of the Candidate to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryPLZ( 
-				int x )
-    throws DataObjectException, QueryException {
-	setQueryPLZ( x, true );
-    }
-
-    /**
-     * Add PLZ to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByPLZ(boolean direction_flag) {
-        builder.addOrderByColumn("PLZ",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add PLZ to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByPLZ() {
-        builder.addOrderByColumn("PLZ","ASC");
-    }
-
-
-    /**
      * Set the Phone to query.
      *
      * @param x The Phone of the Candidate to query.
@@ -977,80 +778,6 @@ final public class CandidateQuery implements Query {
 
 
     /**
-     * Set the Picture to query.
-     *
-     * @param x The Picture of the Candidate to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryPicture(
-				byte[] x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CandidateDO DO = ( CandidateDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		byte[] ba = DO.getPicture();
-		if ( ! (	null == ba && null == x ) ) {
-		    equals = false;
-		} else if ( ba.length != x.length ) {
-		    equals = false;
-		} else {
-		    for ( int j = 0; j < x.length; j++ ) {
-			if ( ba[j] != x[j] ) {
-			    equals = false;
-			    break;
-			}
-		    }
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Picture", x, "MEDIUMBLOB",
-                QueryBuilder.NULL_OK, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Picture to query
-     * @param x The Picture of the Candidate to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryPicture( 
-				byte[] x )
-    throws DataObjectException, QueryException {
-	setQueryPicture( x, true );
-    }
-
-    /**
-     * Add Picture to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByPicture(boolean direction_flag) {
-        builder.addOrderByColumn("Picture",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Picture to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByPicture() {
-        builder.addOrderByColumn("Picture","ASC");
-    }
-
-
-    /**
      * Set the Residence to query.
      *
      * @param x The Residence of the Candidate to query.
@@ -1121,143 +848,6 @@ final public class CandidateQuery implements Query {
      */
     public void addOrderByResidence() {
         builder.addOrderByColumn("Residence","ASC");
-    }
-
-
-    /**
-     * Set the Status to query.
-     *
-     * @param x The Status of the Candidate to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryStatus(
-				boolean x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CandidateDO DO = ( CandidateDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		// primitive types are compared using the == operator.
-		equals = ( DO.getStatus() == x );
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Status", x, "BIT",
-                QueryBuilder.NULL_OK, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Status to query
-     * @param x The Status of the Candidate to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryStatus( 
-				boolean x )
-    throws DataObjectException, QueryException {
-	setQueryStatus( x, true );
-    }
-
-    /**
-     * Add Status to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByStatus(boolean direction_flag) {
-        builder.addOrderByColumn("Status",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Status to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByStatus() {
-        builder.addOrderByColumn("Status","ASC");
-    }
-
-
-    /**
-     * Set the Street to query.
-     *
-     * @param x The Street of the Candidate to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryStreet(
-				String x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CandidateDO DO = ( CandidateDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		String s = DO.getStreet();
-		if ( null == s && null == x ) {
-		    equals = true;
-		} else if ( null != s && null != x ) {
-		    if ( exact ) 
-			equals = s.equals( x );
-		    else {
-			equals = ( -1 != s.toLowerCase().indexOf(
-					 x.toLowerCase() ) );
-		    }
-		} else {  // one is null, the other isn't
-		    equals = false;
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Street", x, "VARCHAR",
-                QueryBuilder.NULL_OK, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Street to query
-     * @param x The Street of the Candidate to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryStreet( 
-				String x )
-    throws DataObjectException, QueryException {
-	setQueryStreet( x, true );
-    }
-
-    /**
-     * Add Street to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByStreet(boolean direction_flag) {
-        builder.addOrderByColumn("Street",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Street to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByStreet() {
-        builder.addOrderByColumn("Street","ASC");
     }
 
 
@@ -1478,6 +1068,132 @@ System.err.println("x ="+x );
         builder.addOrderByColumn("Nationality","ASC");
     }
 
+
+    /**
+     * Set the AIESECMember to query.
+     *
+     * @param x The AIESECMember of the Candidate to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryAIESECMember(
+				boolean x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    CandidateDO DO = ( CandidateDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// primitive types are compared using the == operator.
+		equals = ( DO.getAIESECMember() == x );
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "AIESECMember", x, "BIT",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the AIESECMember to query
+     * @param x The AIESECMember of the Candidate to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryAIESECMember( 
+				boolean x )
+    throws DataObjectException, QueryException {
+	setQueryAIESECMember( x, true );
+    }
+
+    /**
+     * Add AIESECMember to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByAIESECMember(boolean direction_flag) {
+        builder.addOrderByColumn("AIESECMember",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add AIESECMember to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByAIESECMember() {
+        builder.addOrderByColumn("AIESECMember","ASC");
+    }
+
+
+    /**
+     * Set the Status to query.
+     *
+     * @param x The Status of the Candidate to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryStatus(
+				boolean x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    CandidateDO DO = ( CandidateDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// primitive types are compared using the == operator.
+		equals = ( DO.getStatus() == x );
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "Status", x, "BIT",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the Status to query
+     * @param x The Status of the Candidate to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryStatus( 
+				boolean x )
+    throws DataObjectException, QueryException {
+	setQueryStatus( x, true );
+    }
+
+    /**
+     * Add Status to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByStatus(boolean direction_flag) {
+        builder.addOrderByColumn("Status",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add Status to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByStatus() {
+        builder.addOrderByColumn("Status","ASC");
+    }
+
     /**
     * Returns the <code>QueryBuilder</code> that this <code>CandidateQuery</code>
     * uses to construct and execute database queries.
@@ -1555,7 +1271,7 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOpenParen(); // patched by PSE 2000, 5/23/2000
+	builder.addWhereOpenParen();
     }
 
     /**
@@ -1565,6 +1281,6 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereCloseParen(); // patched by PSE 2000, 5/23/2000
+	builder.addWhereCloseParen();
     }
 }

@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the EmployerDO information.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  studer
  * @since   jobmatch
  */
@@ -640,39 +640,39 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member Company
+////////////////////////// data member Name
 
-   /* static final RDBColumn Company for use with QueryBuilder.
+   /* static final RDBColumn Name for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Company = 
-			    new RDBColumn( table, "Company" );
+   static public final RDBColumn Name = 
+			    new RDBColumn( table, "Name" );
 
    /**
-    * Get Company of the Employer
+    * Get Name of the Employer
     *
-    * @return Company of the Employer
+    * @return Name of the Employer
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getCompany () 
+   public String getName () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Company;
+      return data.Name;
    }
 
    /**
-    * Set Company of the Employer
+    * Set Name of the Employer
     *
-    * @param Company of the Employer
+    * @param Name of the Employer
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setCompany ( String Company )
+   public void setName ( String Name )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -681,46 +681,46 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Company =  markNewValue(
-	data.Company, Company , 0, 30, true );
+      data.Name =  markNewValue(
+	data.Name, Name , 0, 30, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
 
 
-////////////////////////// data member City
+////////////////////////// data member Adress
 
-   /* static final RDBColumn City for use with QueryBuilder.
+   /* static final RDBColumn Adress for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn City = 
-			    new RDBColumn( table, "City" );
+   static public final RDBColumn Adress = 
+			    new RDBColumn( table, "Adress" );
 
    /**
-    * Get City of the Employer
+    * Get Adress of the Employer
     *
-    * @return City of the Employer
+    * @return Adress of the Employer
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getCity () 
+   public jobmatch.data.AdressDO getAdress () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.City;
+      return data.Adress;
    }
 
    /**
-    * Set City of the Employer
+    * Set Adress of the Employer
     *
-    * @param City of the Employer
+    * @param Adress of the Employer
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setCity ( String City )
+   public void setAdress ( jobmatch.data.AdressDO Adress )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -729,56 +729,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.City =  markNewValue(
-	data.City, City , 0, 30, true );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member County
-
-   /* static final RDBColumn County for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn County = 
-			    new RDBColumn( table, "County" );
-
-   /**
-    * Get County of the Employer
-    *
-    * @return County of the Employer
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CountryDO getCounty () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.County;
-   }
-
-   /**
-    * Set County of the Employer
-    *
-    * @param County of the Employer
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setCounty ( jobmatch.data.CountryDO County )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.County = (jobmatch.data.CountryDO) markNewValue(
-	data.County, County  );
+      data.Adress = (jobmatch.data.AdressDO) markNewValue(
+	data.Adress, Adress  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -824,26 +776,18 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setCompany( 
+	setName( 
 	    
 		rs.getString( 
-			"Company"  )
+			"Name"  )
 	    
 	);
 	
 	
-	setCity( 
-	    
-		rs.getString( 
-			"City"  )
-	    
-	);
-	
-	
-	setCounty( 
-	    jobmatch.data.CountryDO.createExisting( 
+	setAdress( 
+	    jobmatch.data.AdressDO.createExisting( 
 		rs.getBigDecimal( 
-			"County" , 0 )
+			"Adress" , 0 )
 	     )
 	);
 	
@@ -880,7 +824,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Employer ( Company, City, County, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
+	    "insert into Employer ( Name, Adress, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -889,11 +833,9 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined in GenericDO.
 	try {
 	    	setPrepStmtParam_String( stmt, param,
-		getCompany() );
-	setPrepStmtParam_String( stmt, param,
-		getCity() );
+		getName() );
 	setPrepStmtParam_DO( stmt, param,
-		getCounty() );
+		getAdress() );
 
 
 	    /* The order of the values being inserted must match
@@ -926,7 +868,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Employer set " + getVersionColumnName() + " = ?, Company = ?, City = ?, County = ? " +
+	    "update Employer set " + getVersionColumnName() + " = ?, Name = ?, Adress = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -937,11 +879,9 @@ import com.lutris.dods.builder.generator.query.*;
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
 	    	setPrepStmtParam_String( stmt, param,
-		getCompany() );
-	setPrepStmtParam_String( stmt, param,
-		getCity() );
+		getName() );
 	setPrepStmtParam_DO( stmt, param,
-		getCounty() );
+		getAdress() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -991,9 +931,8 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Company=" + data.Company
-+ "\n" + indent + "City=" + data.City
-+ "\n" + indent + "County=" + ( null == data.County ? null  : data.County.toString( indentCount + 1 ) )
+	    str = str + "\n" + indent + "Name=" + data.Name
++ "\n" + indent + "Adress=" + ( null == data.Adress ? null  : data.Adress.toString( indentCount + 1 ) )
 ;
         return str + "; " + super.toString();
     }
@@ -1017,9 +956,8 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Company=" + data.Company
-+ "\n" + indent + "City=" + data.City
-+ "\n" + indent + "County=" + ( null == data.County ? null  : data.County.toString( indentCount + 1 ) )
+            str = str + "\n" + indent + "Name=" + data.Name
++ "\n" + indent + "Adress=" + ( null == data.Adress ? null  : data.Adress.toString( indentCount + 1 ) )
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -1229,20 +1167,20 @@ import com.lutris.dods.builder.generator.query.*;
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the County data member.
+     * for the Adress data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where County is not valid for writing to the database.
+     * where Adress is not valid for writing to the database.
      */
-    protected void okToCommitCounty( jobmatch.data.CountryDO member ) 
+    protected void okToCommitAdress( jobmatch.data.AdressDO member ) 
     throws RefAssertionException { }
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for the County data member.
+     * for the Adress data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where County is not valid for deletion from the database.
+     * where Adress is not valid for deletion from the database.
      */
-    protected void okToDeleteCounty( jobmatch.data.CountryDO member ) 
+    protected void okToDeleteAdress( jobmatch.data.AdressDO member ) 
     throws RefAssertionException { }
 
 
@@ -1296,11 +1234,11 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.CountryDO County_DO = getCounty();
-	if ( null != County_DO ) {
-	    if ( County_DO.isLoaded() ) {
-		okToCommitCounty( County_DO );
-		County_DO.commit( dbt );
+	  	jobmatch.data.AdressDO Adress_DO = getAdress();
+	if ( null != Adress_DO ) {
+	    if ( Adress_DO.isLoaded() ) {
+		okToCommitAdress( Adress_DO );
+		Adress_DO.commit( dbt );
 	    } else {
 		// since the referenced DO is not loaded,
 		// it cannot be dirty, so there is no need to commit it.
@@ -1309,7 +1247,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    if ( ! true )
 		throw new RefAssertionException(
 		    "Cannot commit EmployerDO ( " + toString() +
-		    " ) because County is not allowed to be null." );
+		    " ) because Adress is not allowed to be null." );
 	}
 
       }

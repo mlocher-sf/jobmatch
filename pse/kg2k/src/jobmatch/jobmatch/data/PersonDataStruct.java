@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
@@ -70,7 +70,12 @@ public class PersonDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Name = null;
+   public jobmatch.data.PictureDO Picture = null;
+
+/**
+ * 
+ */
+   public String Email = null;
 
 /**
  * 
@@ -80,7 +85,52 @@ public class PersonDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Email = null;
+   public jobmatch.data.AdressDO Adress = null;
+
+/**
+ * 
+ */
+   public String Fname = null;
+
+/**
+ * 
+ */
+   public String Lname = null;
+
+/**
+ * 
+ */
+   public String Natel = null;
+
+/**
+ * 
+ */
+   public String Phone = null;
+
+/**
+ * 
+ */
+   public String Residence = null;
+
+/**
+ * 
+ */
+   public String Sex = null;
+
+/**
+ * 
+ */
+   public java.sql.Date Birthdate = null;
+
+/**
+ * 
+ */
+   public jobmatch.data.CountryDO Nationality = null;
+
+/**
+ * 
+ */
+   public String URL = null;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -95,13 +145,43 @@ public class PersonDataStruct implements Cloneable, Serializable {
  
 
 		
-	ret.Name = Name + "";
+	ret.Picture = jobmatch.data.PictureDO.createCopy( Picture );
+	
+	
+	ret.Email = Email + "";
 	
 	
 	ret.Fax = Fax + "";
 	
 	
-	ret.Email = Email + "";
+	ret.Adress = jobmatch.data.AdressDO.createCopy( Adress );
+	
+	
+	ret.Fname = Fname + "";
+	
+	
+	ret.Lname = Lname + "";
+	
+	
+	ret.Natel = Natel + "";
+	
+	
+	ret.Phone = Phone + "";
+	
+	
+	ret.Residence = Residence + "";
+	
+	
+	ret.Sex = Sex + "";
+	
+	
+	ret.Birthdate = new java.sql.Date(Birthdate.getTime() );
+	
+	
+	ret.Nationality = jobmatch.data.CountryDO.createCopy( Nationality );
+	
+	
+	ret.URL = URL + "";
 	
 
 

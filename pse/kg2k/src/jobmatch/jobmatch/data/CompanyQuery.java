@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 final public class CompanyQuery implements Query {
 
@@ -407,80 +407,6 @@ final public class CompanyQuery implements Query {
 
 
     /**
-     * Set the Location to query.
-     *
-     * @param x The Location of the Company to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryLocation(
-				String x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CompanyDO DO = ( CompanyDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		String s = DO.getLocation();
-		if ( null == s && null == x ) {
-		    equals = true;
-		} else if ( null != s && null != x ) {
-		    if ( exact ) 
-			equals = s.equals( x );
-		    else {
-			equals = ( -1 != s.toLowerCase().indexOf(
-					 x.toLowerCase() ) );
-		    }
-		} else {  // one is null, the other isn't
-		    equals = false;
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Location", x, "VARCHAR",
-                QueryBuilder.NULL_OK, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Location to query
-     * @param x The Location of the Company to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryLocation( 
-				String x )
-    throws DataObjectException, QueryException {
-	setQueryLocation( x, true );
-    }
-
-    /**
-     * Add Location to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByLocation(boolean direction_flag) {
-        builder.addOrderByColumn("Location",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Location to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByLocation() {
-        builder.addOrderByColumn("Location","ASC");
-    }
-
-
-    /**
      * Set the Name to query.
      *
      * @param x The Name of the Company to query.
@@ -551,6 +477,81 @@ final public class CompanyQuery implements Query {
      */
     public void addOrderByName() {
         builder.addOrderByColumn("Name","ASC");
+    }
+
+
+    /**
+     * Set the Adress to query.
+     *
+     * @param x The Adress of the Company to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryAdress(
+				jobmatch.data.AdressDO x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    CompanyDO DO = ( CompanyDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// DOs are compared by their handles..
+		jobmatch.data.AdressDO m = DO.getAdress();
+		if ( null == m && null == x ) {
+		    equals = true;
+		} else if ( null == m || null == x ) {
+		    equals = false;
+		} else {
+		    equals = ( DO.getAdress().getOId().toString().equals( x.getOId().toString() ) );
+if ( equals && m != x ) {
+System.err.println("\n----------------------------------------------------------");
+System.err.println("m ="+m );
+System.err.println("x ="+x );
+}
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "Adress", x, "DECIMAL(19,0)",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the Adress to query
+     * @param x The Adress of the Company to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryAdress( 
+				jobmatch.data.AdressDO x )
+    throws DataObjectException, QueryException {
+	setQueryAdress( x, true );
+    }
+
+    /**
+     * Add Adress to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByAdress(boolean direction_flag) {
+        builder.addOrderByColumn("Adress",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add Adress to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByAdress() {
+        builder.addOrderByColumn("Adress","ASC");
     }
 
 
@@ -779,7 +780,7 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOpenParen(); // patched by PSE 2000, 5/23/2000
+	builder.addWhereOpenParen();
     }
 
     /**
@@ -789,6 +790,6 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereCloseParen(); // patched by PSE 2000, 5/23/2000
+	builder.addWhereCloseParen();
     }
 }

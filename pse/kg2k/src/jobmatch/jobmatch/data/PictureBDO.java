@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/studer_repositry/dataTest/jobmatch/data/ContactpersonBDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/PictureBDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -44,23 +44,23 @@ import com.lutris.appserver.server.sql.*;
 import com.lutris.dods.builder.generator.query.*;
 
 /**
- * ContactpersonBDO contains the same set and get methods as
- * the ContactpersonDO class.
+ * PictureBDO contains the same set and get methods as
+ * the PictureDO class.
  * Business Object (BO) classes typically need these set and get methods.
  * So by deriving a BO from a BDO, or by implementing a BO that 
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.1 $
  */
-public class ContactpersonBDO implements java.io.Serializable {
+public class PictureBDO implements java.io.Serializable {
 
     /**
-     * The ContactpersonDO object upon which the set and get methods operate.
-     * This member is protected so that classes derived from ContactpersonBDO
+     * The PictureDO object upon which the set and get methods operate.
+     * This member is protected so that classes derived from PictureBDO
      * can access the underlying Data Object.
      */
-    protected ContactpersonDO DO;
+    protected PictureDO DO;
 
     /**
      * Note:  This method is intended for use only by other BDO classes.
@@ -71,12 +71,12 @@ public class ContactpersonBDO implements java.io.Serializable {
      *
      * @return The DO object held by this BDO object.
      */
-    public ContactpersonDO getDO() { 
+    public PictureDO getDO() { 
 	return DO;
     }
 
     /**
-     * Like the class <CODE>ContactpersonDO</CODE>, 
+     * Like the class <CODE>PictureDO</CODE>, 
      * this class acts as a factory.
      * Business Object (BO) classes typically need these set and get methods.
      * So by deriving a BO from a BDO, or by implementing a BO that 
@@ -85,13 +85,13 @@ public class ContactpersonBDO implements java.io.Serializable {
      * @exception Exception
      *   If an error occurs.
      */
-    public static ContactpersonBDO createVirgin() throws Exception { 
-	ContactpersonBDO bdo = new ContactpersonBDO ();
+    public static PictureBDO createVirgin() throws Exception { 
+	PictureBDO bdo = new PictureBDO ();
 	return bdo;
     }
 
     /**
-     * Constructor for use by classes derived from <CODE>ContactpersonBDO</CODE>.
+     * Constructor for use by classes derived from <CODE>PictureBDO</CODE>.
      * Example usage:<CODE>
      *      class CustomerBO extends CustomerBDO {
      *          // a BDO class is commonly extended in order to implement:
@@ -114,62 +114,62 @@ public class ContactpersonBDO implements java.io.Serializable {
      *      }
      * </CODE>
      */
-    public ContactpersonBDO( ContactpersonDO DO ) { 
+    public PictureBDO( PictureDO DO ) { 
 	this.DO = DO;
     }
 
     /**
-     * Constructor required by <CODE>ContactpersonBDO.create</CODE> methods.
+     * Constructor required by <CODE>PictureBDO.create</CODE> methods.
      */
-    public ContactpersonBDO() throws Exception { 
-	this.DO = ContactpersonDO.createVirgin();
+    public PictureBDO() throws Exception { 
+	this.DO = PictureDO.createVirgin();
     }
 
     /**
-     * The createExisting method is used to create a <CODE>ContactpersonBDO</CODE>
-     * from a <CODE>ContactpersonDO</CODE> that was returned by 
-     * the <CODE>ContactpersonQuery</CODE> class.
+     * The createExisting method is used to create a <CODE>PictureBDO</CODE>
+     * from a <CODE>PictureDO</CODE> that was returned by 
+     * the <CODE>PictureQuery</CODE> class.
      */
-    public static ContactpersonBDO createExisting( ContactpersonDO DO ) { 
-	ContactpersonBDO bdo = new ContactpersonBDO ( DO );
+    public static PictureBDO createExisting( PictureDO DO ) { 
+	PictureBDO bdo = new PictureBDO ( DO );
 	return bdo;
     }
 
     /** 
      * The getBDOarray method performs a database query to
-     * return an array of <CODE>ContactpersonBDO</CODE> objects
-     * representing all the rows in the <CODE>Contactperson</CODE> table.
+     * return an array of <CODE>PictureBDO</CODE> objects
+     * representing all the rows in the <CODE>Picture</CODE> table.
      *
      * This method is a minimal example of using a Query class.
      * To restrict the set of objects returned,  you could
      * invoke <CODE>query.setXxx()</CODE>, where <CODE>Xxx</CODE>
-     * is an Attribute of <CODE>ContactpersonDO</CODE> which was 
+     * is an Attribute of <CODE>PictureDO</CODE> which was 
      * marked as "Can be queried" in the DODS Attribute Editor.
      *
      * @exception DataObjectException
      *   If an object is not found in the database.
      */
-    public static ContactpersonBDO[] getBDOarray()
+    public static PictureBDO[] getBDOarray()
     throws DataObjectException {
-        ContactpersonDO[] DOarray = null;
+        PictureDO[] DOarray = null;
         try {
-            ContactpersonQuery query = new ContactpersonQuery();
+            PictureQuery query = new PictureQuery();
 	    // To restrict the set of objects returned,
 	    // you could invoke query.setXxx(), where Xxx
-	    // is an Attribute of <CODE>ContactpersonDO</CODE> which was 
+	    // is an Attribute of <CODE>PictureDO</CODE> which was 
 	    // marked as "Can be queried" in the DODS Attribute Editor.
             DOarray = query.getDOArray();
         } catch ( NonUniqueQueryException e1 ) {
-            // ContactpersonQuery will throw NonUniqueQueryException
+            // PictureQuery will throw NonUniqueQueryException
             // only if query.requireUniqueInstance() is called
 	    // and more than one DO was found.
         } catch ( DataObjectException e2 ) {
             // This could happen if the database server dies, etc.
             throw e2;
         }
-        ContactpersonBDO[] BDOarray = new ContactpersonBDO[ DOarray.length ];
+        PictureBDO[] BDOarray = new PictureBDO[ DOarray.length ];
         for ( int i = 0; i < DOarray.length; i++ )
-            BDOarray[i] = ContactpersonBDO.createExisting( DOarray[i] );
+            BDOarray[i] = PictureBDO.createExisting( DOarray[i] );
  
         return BDOarray;
     }
@@ -200,7 +200,7 @@ public class ContactpersonBDO implements java.io.Serializable {
      *     getHandle
      *     hasMatchingHandle
      * </CODE> are used by Presentation Objects that need to populate
-     * HTML select lists with <CODE>ContactpersonBDO</CODE> objects as options.
+     * HTML select lists with <CODE>PictureBDO</CODE> objects as options.
      *
      * The <CODE>getHandle()</CODE> method is used
      * to set the value for each option,
@@ -208,8 +208,8 @@ public class ContactpersonBDO implements java.io.Serializable {
      * methods are used to lookup the Data Object when the selection has
      * been made.
      *
-     * This ContactpersonBDO object holds a reference to a ContactpersonDO object.
-     * The id of this ContactpersonBDO is the id of its ContactpersonDO.
+     * This PictureBDO object holds a reference to a PictureDO object.
+     * The id of this PictureBDO is the id of its PictureDO.
      * @exception DatabaseManagerException
      *   If a connection to the database cannot be established, etc.
      * @return id of this BDO as a string
@@ -242,29 +242,29 @@ public class ContactpersonBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Name of the ContactpersonDO
+    * Get MimeType of the PictureDO
     *
-    * @return Name of the ContactpersonDO
+    * @return MimeType of the PictureDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getName () 
+   public String getMimeType () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getName ();
+      return DO.getMimeType ();
    }
 
    
    /**
-    * Set Name of the ContactpersonDO
+    * Set MimeType of the PictureDO
     *
-    * @param Name of the ContactpersonDO
+    * @param MimeType of the PictureDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setName ( String Name ) 
+   public void setMimeType ( String MimeType ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,7 +272,7 @@ public class ContactpersonBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setName ( Name );
+      DO.setMimeType ( MimeType );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -280,29 +280,29 @@ public class ContactpersonBDO implements java.io.Serializable {
    
 
    /**
-    * Get Fax of the ContactpersonDO
+    * Get Data of the PictureDO
     *
-    * @return Fax of the ContactpersonDO
+    * @return Data of the PictureDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getFax () 
+   public byte[] getData () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getFax ();
+      return DO.getData ();
    }
 
    
    /**
-    * Set Fax of the ContactpersonDO
+    * Set Data of the PictureDO
     *
-    * @param Fax of the ContactpersonDO
+    * @param Data of the PictureDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setFax ( String Fax ) 
+   public void setData ( byte[] Data ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -310,45 +310,7 @@ public class ContactpersonBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setFax ( Fax );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get Email of the ContactpersonDO
-    *
-    * @return Email of the ContactpersonDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getEmail () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getEmail ();
-   }
-
-   
-   /**
-    * Set Email of the ContactpersonDO
-    *
-    * @param Email of the ContactpersonDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setEmail ( String Email ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setEmail ( Email );
+      DO.setData ( Data );
       afterAnySet();	// business actions/assertions after data assignment
    }
 

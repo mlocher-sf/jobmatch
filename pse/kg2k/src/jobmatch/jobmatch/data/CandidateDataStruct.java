@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  studer
  * @since   jobmatch
  */
@@ -70,17 +70,12 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public boolean AIESECMember = false;
+   public jobmatch.data.PictureDO Picture = null;
 
 /**
  * 
  */
-   public String City = null;
-
-/**
- * 
- */
-   public String Competence = null;
+   public String Email = null;
 
 /**
  * 
@@ -90,12 +85,12 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Fname = null;
+   public jobmatch.data.AdressDO Adress = null;
 
 /**
  * 
  */
-   public String HouseNumber = null;
+   public String Fname = null;
 
 /**
  * 
@@ -110,32 +105,12 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public int PLZ = 0;
-
-/**
- * 
- */
    public String Phone = null;
 
 /**
  * 
  */
-   public byte[] Picture = {0};
-
-/**
- * 
- */
    public String Residence = null;
-
-/**
- * 
- */
-   public boolean Status = false;
-
-/**
- * 
- */
-   public String Street = null;
 
 /**
  * 
@@ -151,6 +126,26 @@ public class CandidateDataStruct implements Cloneable, Serializable {
  * 
  */
    public jobmatch.data.CountryDO Nationality = null;
+
+/**
+ * 
+ */
+   public String URL = null;
+
+/**
+ * 
+ */
+   public boolean AIESECMember = false;
+
+/**
+ * 
+ */
+   public String Competence = null;
+
+/**
+ * 
+ */
+   public boolean Status = false;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -165,22 +160,19 @@ public class CandidateDataStruct implements Cloneable, Serializable {
  
 
 		
-	ret.AIESECMember = AIESECMember;
+	ret.Picture = jobmatch.data.PictureDO.createCopy( Picture );
 	
 	
-	ret.City = City + "";
-	
-	
-	ret.Competence = Competence + "";
+	ret.Email = Email + "";
 	
 	
 	ret.Fax = Fax + "";
 	
 	
+	ret.Adress = jobmatch.data.AdressDO.createCopy( Adress );
+	
+	
 	ret.Fname = Fname + "";
-	
-	
-	ret.HouseNumber = HouseNumber + "";
 	
 	
 	ret.Lname = Lname + "";
@@ -189,22 +181,10 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 	ret.Natel = Natel + "";
 	
 	
-	ret.PLZ = PLZ;
-	
-	
 	ret.Phone = Phone + "";
 	
 	
-	ret.Picture = copyByteArray(Picture);
-	
-	
 	ret.Residence = Residence + "";
-	
-	
-	ret.Status = Status;
-	
-	
-	ret.Street = Street + "";
 	
 	
 	ret.Sex = Sex + "";
@@ -214,6 +194,18 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 	
 	
 	ret.Nationality = jobmatch.data.CountryDO.createCopy( Nationality );
+	
+	
+	ret.URL = URL + "";
+	
+	
+	ret.AIESECMember = AIESECMember;
+	
+	
+	ret.Competence = Competence + "";
+	
+	
+	ret.Status = Status;
 	
 
 

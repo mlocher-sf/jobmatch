@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the AccountDO information.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */
@@ -530,6 +530,102 @@ abstract public class AccountDO extends com.lutris.dods.builder.generator.dataob
    }
    
 
+
+////////////////////////// data member LastIP
+
+   /* static final RDBColumn LastIP for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn LastIP = 
+			    new RDBColumn( table, "LastIP" );
+
+   /**
+    * Get LastIP of the Account
+    *
+    * @return LastIP of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getLastIP () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.LastIP;
+   }
+
+   /**
+    * Set LastIP of the Account
+    *
+    * @param LastIP of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setLastIP ( String LastIP )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.LastIP =  markNewValue(
+	data.LastIP, LastIP , 0, 25, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member LastHost
+
+   /* static final RDBColumn LastHost for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn LastHost = 
+			    new RDBColumn( table, "LastHost" );
+
+   /**
+    * Get LastHost of the Account
+    *
+    * @return LastHost of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getLastHost () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.LastHost;
+   }
+
+   /**
+    * Set LastHost of the Account
+    *
+    * @param LastHost of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setLastHost ( String LastHost )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.LastHost =  markNewValue(
+	data.LastHost, LastHost , 0, 30, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
     /**
      * Protected constructor.
      *
@@ -610,6 +706,22 @@ abstract public class AccountDO extends com.lutris.dods.builder.generator.dataob
 	    
 	);
 	
+	
+	setLastIP( 
+	    
+		rs.getString( 
+			"LastIP"  )
+	    
+	);
+	
+	
+	setLastHost( 
+	    
+		rs.getString( 
+			"LastHost"  )
+	    
+	);
+	
 
  
         markClean();
@@ -636,6 +748,8 @@ abstract public class AccountDO extends com.lutris.dods.builder.generator.dataob
 + "\n" + indent + "LastLogin=" + data.LastLogin
 + "\n" + indent + "LoginReminder=" + data.LoginReminder
 + "\n" + indent + "Passphrase=" + data.Passphrase
++ "\n" + indent + "LastIP=" + data.LastIP
++ "\n" + indent + "LastHost=" + data.LastHost
 ;
         return str + "; " + super.toString();
     }
@@ -664,6 +778,8 @@ abstract public class AccountDO extends com.lutris.dods.builder.generator.dataob
 + "\n" + indent + "LastLogin=" + data.LastLogin
 + "\n" + indent + "LoginReminder=" + data.LoginReminder
 + "\n" + indent + "Passphrase=" + data.Passphrase
++ "\n" + indent + "LastIP=" + data.LastIP
++ "\n" + indent + "LastHost=" + data.LastHost
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;

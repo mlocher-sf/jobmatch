@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/studer_repositry/dataTest/jobmatch/data/ContactpersonDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/PictureDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -51,13 +51,13 @@ import com.lutris.dods.builder.generator.query.*;
 
 
 /**
- * Data core class, used to set, retrieve the ContactpersonDO information.
+ * Data core class, used to set, retrieve the PictureDO information.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.1 $
  * @author  studer
  * @since   jobmatch
  */
- public class ContactpersonDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class PictureDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -95,11 +95,11 @@ import com.lutris.dods.builder.generator.query.*;
      *             String city = addr.getCity();
      *         }
      */
-    static public final RDBTable  table = new RDBTable( "Contactperson" );
+    static public final RDBTable  table = new RDBTable( "Picture" );
 
     /**
-     * Return Contactperson as the name of the table in the database
-     * which contains ContactpersonDO objects.
+     * Return Picture as the name of the table in the database
+     * which contains PictureDO objects.
      * This method overrides CoreDO.getTableName()
      * and is used by CoreDO.executeUpdate() during error handling.
      *
@@ -108,12 +108,12 @@ import com.lutris.dods.builder.generator.query.*;
      * @author Jay Gunter
      */
     protected String getTableName() {
-	return "Contactperson";
+	return "Picture";
     }
 
     static public final RDBColumn PrimaryKey = new RDBColumn( table,
 					      GenericDO.getPrimaryKeyName() );
-    /* RDBColumns for ContactpersonDO attributes are defined below. */
+    /* RDBColumns for PictureDO attributes are defined below. */
 
     /* Using a DO (and its Query class) to access a VIEW instead of a TABLE:
      *
@@ -127,7 +127,7 @@ import com.lutris.dods.builder.generator.query.*;
      * A VIEW usually does not return "oid" and "version" columns;
      * often (but now always) a VIEW is defined to return the "oid" column
      * for one of the tables joined together in the definition of the VIEW.
-     * If the isView flag is true, ContactpersonDO.createExisting(ResultSet)
+     * If the isView flag is true, PictureDO.createExisting(ResultSet)
      * will NOT invoke the GenericDO(ResultSet) constructor
      * so to avoid attempting to extract the "oid" and "version" columns
      * from the ResultSet.
@@ -145,7 +145,7 @@ import com.lutris.dods.builder.generator.query.*;
      * allowing a DO object to be a lightweight placeholder
      * until its data is needed.
      */
-    private ContactpersonDataStruct data = null;
+    private PictureDataStruct data = null;
 
     /**
      * isReadOnly()
@@ -164,7 +164,7 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
      */
-    protected ContactpersonDO ( boolean is_view )
+    protected PictureDO ( boolean is_view )
     throws ObjectIdException, DatabaseManagerException {
         super( is_view );
     }
@@ -177,7 +177,7 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
      */
-    protected ContactpersonDO ()
+    protected PictureDO ()
     throws ObjectIdException, DatabaseManagerException {
         super( isView );
     }
@@ -208,7 +208,7 @@ import com.lutris.dods.builder.generator.query.*;
     {
 	if ( null == data ) {
 	    
-	    data = new ContactpersonDataStruct ();
+	    data = new PictureDataStruct ();
 	}
 
 	ObjectId id = getOId();
@@ -218,15 +218,15 @@ import com.lutris.dods.builder.generator.query.*;
 	    return;
 
 	// DO from createExisting.  Complain if no record in database.
-	ContactpersonQuery query = new ContactpersonQuery ();
+	PictureQuery query = new PictureQuery ();
 	query.setQueryOId( id );
 	query.requireUniqueInstance();
-	ContactpersonDO obj;
+	PictureDO obj;
 	try {
 	    obj = query.getNextDO();
 	    if ( null == obj )
 		throw new DataObjectException(
-		    "ContactpersonDO DO not found for id=" + id );
+		    "PictureDO DO not found for id=" + id );
 	    makeIdentical(obj);
 	    setVersion(    obj.getVersion() );
 	    setNewVersion( obj.getVersion() );
@@ -249,7 +249,7 @@ import com.lutris.dods.builder.generator.query.*;
 		loadData();
 	    } catch ( Exception e ) {
 		throw new DataObjectException(
-		    "Unable to load data for ContactpersonDO id=" + getOId() +
+		    "Unable to load data for PictureDO id=" + getOId() +
 		    ", error = " + e.getMessage() );
 	    }
     }
@@ -295,7 +295,7 @@ import com.lutris.dods.builder.generator.query.*;
      *   Should never see this exception since GenericDO.ctor(ObjectId)
      *   never accesses the database.
      */
-    protected ContactpersonDO( ObjectId id )
+    protected PictureDO( ObjectId id )
     throws SQLException, ObjectIdException, DataObjectException, DatabaseManagerException
     {
 	super( id );
@@ -316,15 +316,15 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception DatabaseManagerException
      *   If a connection to the database cannot be established, etc.
      */
-    public static ContactpersonDO createVirgin()
+    public static PictureDO createVirgin()
     throws DatabaseManagerException, ObjectIdException {
-	return new ContactpersonDO ();
+	return new PictureDO ();
     }
 
     /**
      * createExisting( BigDecimal )
      *
-     * Factory method creates a ContactpersonDO object by searching for it
+     * Factory method creates a PictureDO object by searching for it
      * in the database using the passed BigDecimal value as the primary key.
      *
      * Creates a DO that represents an existing entry in the database.
@@ -356,7 +356,7 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    public static ContactpersonDO createExisting( BigDecimal bd )
+    public static PictureDO createExisting( BigDecimal bd )
     throws SQLException, ObjectIdException, DataObjectException, DatabaseManagerException
     {
 	if ( null == bd )
@@ -365,11 +365,11 @@ import com.lutris.dods.builder.generator.query.*;
     }
 
     /**
-     * The createExisting method is used to create a <CODE>ContactpersonDO</CODE>
+     * The createExisting method is used to create a <CODE>PictureDO</CODE>
      * from a string handle.
      */
-    public static ContactpersonDO createExisting( String handle ) {
-	ContactpersonDO ret = null;
+    public static PictureDO createExisting( String handle ) {
+	PictureDO ret = null;
         try {
             BigDecimal bd = new BigDecimal( handle );
 	    ret = createExisting( bd );
@@ -381,7 +381,7 @@ import com.lutris.dods.builder.generator.query.*;
     /**
      * createExisting( ObjectId )
      *
-     * Factory method creates a ContactpersonDO object by searching for it
+     * Factory method creates a PictureDO object by searching for it
      * in the database using the passed ObjectID value as the primary key.
      *
      * @param id The ObjectId for the object.
@@ -396,13 +396,13 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected static ContactpersonDO createExisting( ObjectId id )
+    protected static PictureDO createExisting( ObjectId id )
     throws SQLException, ObjectIdException, DataObjectException, DatabaseManagerException
     {
 	if ( null == id )
 	    return null;
-	ContactpersonDO ret = null;
-	ret = new ContactpersonDO( id );
+	PictureDO ret = null;
+	ret = new PictureDO( id );
 	ret.setPersistent( true );  // mark DO as persistent (preexisting)
 	if ( ! false ) // If not lazy-loading, fetch DO data now.
 	    ret.loadData();
@@ -430,18 +430,18 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected static ContactpersonDO createExisting( ResultSet rs )
+    protected static PictureDO createExisting( ResultSet rs )
     throws SQLException, ObjectIdException, DataObjectException
 		, DatabaseManagerException
     {
 	if ( null == rs )
 	    return null;
-	ContactpersonDO ret = null;
+	PictureDO ret = null;
 	if ( isView ) {
-	    ret = new ContactpersonDO ();
+	    ret = new PictureDO ();
 	    ret.initFromResultSet( rs );
 	} else {
-	    ret = new ContactpersonDO ( rs );
+	    ret = new PictureDO ( rs );
 	}
 	return ret;
     }
@@ -449,14 +449,14 @@ import com.lutris.dods.builder.generator.query.*;
     /**
      * createExisting( RDBRow )
      *
-     * Factory method creates a ContactpersonDO object by searching for it
-     * in the database using the ContactpersonDO.PrimaryKey value
+     * Factory method creates a PictureDO object by searching for it
+     * in the database using the PictureDO.PrimaryKey value
      * in the passed RDBRow.
      *
      * @param RDBRow A row returned by QueryBuilder.getNextRow().
      *
      * @exception DataObjectException
-     *   If the RDBRow does not contain a ContactpersonDO.PrimaryKey.
+     *   If the RDBRow does not contain a PictureDO.PrimaryKey.
      *   If the object is not found in the database.
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
@@ -466,7 +466,7 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected static ContactpersonDO createExisting( RDBRow row )
+    protected static PictureDO createExisting( RDBRow row )
     throws SQLException, ObjectIdException, DataObjectException
 		, DatabaseManagerException
     {
@@ -474,26 +474,26 @@ import com.lutris.dods.builder.generator.query.*;
 	    return null;
         RDBColumnValue pk = null;
         try {
-	    pk = row.get( ContactpersonDO.PrimaryKey );
+	    pk = row.get( PictureDO.PrimaryKey );
 	    return createExisting( pk );
         } catch ( Exception e ) {
 	    throw new DataObjectException(
-		"Cannot create ContactpersonDO, row does not " +
-		"contain ContactpersonDO primary key." );
+		"Cannot create PictureDO, row does not " +
+		"contain PictureDO primary key." );
         }
     }
 
     /**
      * createExisting( RDBColumnValue )
      *
-     * Factory method creates a ContactpersonDO object by searching for it
-     * in the database using the passed ContactpersonDO.PrimaryKey.
+     * Factory method creates a PictureDO object by searching for it
+     * in the database using the passed PictureDO.PrimaryKey.
      *
      * @param RDBColumnValue a PrimaryKey column value from a row
      * that was returned by QueryBuilder.getNextRow().
      *
      * @exception DataObjectException
-     *   If the RDBColumnValue does not contain a ContactpersonDO.PrimaryKey.
+     *   If the RDBColumnValue does not contain a PictureDO.PrimaryKey.
      *   If the object is not found in the database.
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
@@ -503,22 +503,22 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected static ContactpersonDO createExisting( RDBColumnValue pk )
+    protected static PictureDO createExisting( RDBColumnValue pk )
     throws SQLException, ObjectIdException, DataObjectException
 		, DatabaseManagerException
     {
 	if ( null == pk )
 	    return null;
-	if ( ! pk.equals( ContactpersonDO.PrimaryKey ) )
+	if ( ! pk.equals( PictureDO.PrimaryKey ) )
 	    throw new DataObjectException(
-		"Cannot create ContactpersonDO, " +
-		"RDBColumnValue is not ContactpersonDO.PrimaryKey." );
+		"Cannot create PictureDO, " +
+		"RDBColumnValue is not PictureDO.PrimaryKey." );
 	BigDecimal bd = null;
         try {
 	    bd = pk.getBigDecimal();
         } catch ( Exception e ) {
 	    throw new DataObjectException(
-		"Cannot create ContactpersonDO, bad primary key." );
+		"Cannot create PictureDO, bad primary key." );
         }
 	if ( null == bd )
             return null;
@@ -539,10 +539,10 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception DatabaseManagerException
      *   If a connection to the database cannot be established, etc.
      */
-    public static ContactpersonDO createCopy( ContactpersonDataStruct data )
+    public static PictureDO createCopy( PictureDataStruct data )
     throws DatabaseManagerException, ObjectIdException {
-	ContactpersonDO ret = new ContactpersonDO ();
-	ret.data = ( ContactpersonDataStruct ) data.duplicate();
+	PictureDO ret = new PictureDO ();
+	ret.data = ( PictureDataStruct ) data.duplicate();
 	return ret;
     }
 
@@ -560,11 +560,11 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception DatabaseManagerException
      *   If a connection to the database cannot be established, etc.
      */
-    public static ContactpersonDO createCopy( ContactpersonDO orig )
+    public static PictureDO createCopy( PictureDO orig )
     throws DatabaseManagerException, ObjectIdException {
-	ContactpersonDO ret = new ContactpersonDO ();
+	PictureDO ret = new PictureDO ();
 	if ( null != orig.data ) {
-	    ret.data = ( ContactpersonDataStruct ) orig.data.duplicate();
+	    ret.data = ( PictureDataStruct ) orig.data.duplicate();
 	}
 	return ret;
     }
@@ -635,44 +635,44 @@ import com.lutris.dods.builder.generator.query.*;
      * @param orig The original DO.
      *
      */
-    protected void makeIdentical( ContactpersonDO orig ) {
+    protected void makeIdentical( PictureDO orig ) {
 	super.makeIdentical(orig);
 	data = orig.data;
     }
 
-////////////////////////// data member Name
+////////////////////////// data member MimeType
 
-   /* static final RDBColumn Name for use with QueryBuilder.
+   /* static final RDBColumn MimeType for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Name = 
-			    new RDBColumn( table, "Name" );
+   static public final RDBColumn MimeType = 
+			    new RDBColumn( table, "MimeType" );
 
    /**
-    * Get Name of the Contactperson
+    * Get MimeType of the Picture
     *
-    * @return Name of the Contactperson
+    * @return MimeType of the Picture
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getName () 
+   public String getMimeType () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Name;
+      return data.MimeType;
    }
 
    /**
-    * Set Name of the Contactperson
+    * Set MimeType of the Picture
     *
-    * @param Name of the Contactperson
+    * @param MimeType of the Picture
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setName ( String Name )
+   public void setMimeType ( String MimeType )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -681,46 +681,46 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Name =  markNewValue(
-	data.Name, Name , 0, 40, false );
+      data.MimeType =  markNewValue(
+	data.MimeType, MimeType , 0, 30, false );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
 
 
-////////////////////////// data member Fax
+////////////////////////// data member Data
 
-   /* static final RDBColumn Fax for use with QueryBuilder.
+   /* static final RDBColumn Data for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Fax = 
-			    new RDBColumn( table, "Fax" );
+   static public final RDBColumn Data = 
+			    new RDBColumn( table, "Data" );
 
    /**
-    * Get Fax of the Contactperson
+    * Get Data of the Picture
     *
-    * @return Fax of the Contactperson
+    * @return Data of the Picture
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getFax () 
+   public byte[] getData () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Fax;
+      return data.Data;
    }
 
    /**
-    * Set Fax of the Contactperson
+    * Set Data of the Picture
     *
-    * @param Fax of the Contactperson
+    * @param Data of the Picture
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setFax ( String Fax )
+   public void setData ( byte[] Data )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -729,56 +729,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Fax =  markNewValue(
-	data.Fax, Fax , 0, 20, true );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Email
-
-   /* static final RDBColumn Email for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Email = 
-			    new RDBColumn( table, "Email" );
-
-   /**
-    * Get Email of the Contactperson
-    *
-    * @return Email of the Contactperson
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getEmail () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Email;
-   }
-
-   /**
-    * Set Email of the Contactperson
-    *
-    * @param Email of the Contactperson
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setEmail ( String Email )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Email =  markNewValue(
-	data.Email, Email , 0, 50, false );
+      data.Data =  markNewValue(
+	data.Data, Data  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -799,7 +751,7 @@ import com.lutris.dods.builder.generator.query.*;
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected ContactpersonDO(ResultSet rs)
+    protected PictureDO(ResultSet rs)
             throws SQLException, ObjectIdException, DataObjectException
  	    , DatabaseManagerException
     {
@@ -808,7 +760,7 @@ import com.lutris.dods.builder.generator.query.*;
     }
 
     /**
-     * initFromResultSet initializes the data members from Contactperson.
+     * initFromResultSet initializes the data members from Picture.
      * This code was separated from the ResultSet constructor
      * so that createExisting(ResultSet) could handle VIEWs.
      */
@@ -818,32 +770,24 @@ import com.lutris.dods.builder.generator.query.*;
     {
 	// Constructing a DO from a ResultSet means we definitely need the 
 	// DataStruct ready for the setXxx methods invoked below.
-	data = new ContactpersonDataStruct ();
+	data = new PictureDataStruct ();
  
 	// writeMemberStuff uses the ResultSetExtraction.template
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setName( 
+	setMimeType( 
 	    
 		rs.getString( 
-			"Name"  )
+			"MimeType"  )
 	    
 	);
 	
 	
-	setFax( 
+	setData( 
 	    
-		rs.getString( 
-			"Fax"  )
-	    
-	);
-	
-	
-	setEmail( 
-	    
-		rs.getString( 
-			"Email"  )
+		rs.getBytes( 
+			"Data"  )
 	    
 	);
 	
@@ -880,7 +824,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Contactperson ( Name, Fax, Email, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
+	    "insert into Picture ( MimeType, Data, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -889,11 +833,9 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined in GenericDO.
 	try {
 	    	setPrepStmtParam_String( stmt, param,
-		getName() );
-	setPrepStmtParam_String( stmt, param,
-		getFax() );
-	setPrepStmtParam_String( stmt, param,
-		getEmail() );
+		getMimeType() );
+	setPrepStmtParam_bytes( stmt, param,
+		getData() );
 
 
 	    /* The order of the values being inserted must match
@@ -926,7 +868,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Contactperson set " + getVersionColumnName() + " = ?, Name = ?, Fax = ?, Email = ? " +
+	    "update Picture set " + getVersionColumnName() + " = ?, MimeType = ?, Data = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -937,11 +879,9 @@ import com.lutris.dods.builder.generator.query.*;
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
 	    	setPrepStmtParam_String( stmt, param,
-		getName() );
-	setPrepStmtParam_String( stmt, param,
-		getFax() );
-	setPrepStmtParam_String( stmt, param,
-		getEmail() );
+		getMimeType() );
+	setPrepStmtParam_bytes( stmt, param,
+		getData() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -970,7 +910,7 @@ import com.lutris.dods.builder.generator.query.*;
             throws SQLException {
 
         String sql =
-            "delete from Contactperson \n" +
+            "delete from Picture \n" +
             "where " + getOIdColumnName() + " = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setBigDecimal(1, getOId().toBigDecimal());
@@ -984,16 +924,15 @@ import com.lutris.dods.builder.generator.query.*;
      */
 /*
     public String toString(){
-	String str = "ContactpersonDO:";
+	String str = "PictureDO:";
 	ObjectId oid = getOId();
 	String id = "virgin";
 	if ( null != oid ) 
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "Fax=" + data.Fax
-+ "\n" + indent + "Email=" + data.Email
+	    str = str + "\n" + indent + "MimeType=" + data.MimeType
++ "\n" + indent + "Data=" + data.Data
 ;
         return str + "; " + super.toString();
     }
@@ -1010,16 +949,15 @@ import com.lutris.dods.builder.generator.query.*;
         for ( int i = 0; i < indentCount; i++ ) {
             indent += ". ";
         }
-        String str = indent + "ContactpersonDO:";
+        String str = indent + "PictureDO:";
         ObjectId oid = getOId();
         String id = "virgin";
         if ( null != oid )
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "Fax=" + data.Fax
-+ "\n" + indent + "Email=" + data.Email
+            str = str + "\n" + indent + "MimeType=" + data.MimeType
++ "\n" + indent + "Data=" + data.Data
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -1031,7 +969,7 @@ import com.lutris.dods.builder.generator.query.*;
 
     /**
      * A stub method for implementing pre-commit assertions 
-     * for this ContactpersonDO.
+     * for this PictureDO.
      * Implement this stub to throw an RefAssertionException for cases
      * where this object is not valid for writing to the database.
      */
@@ -1040,7 +978,7 @@ import com.lutris.dods.builder.generator.query.*;
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for this ContactpersonDO.
+     * for this PictureDO.
      * Implement this stub to throw an RefAssertionException for cases
      * where this object is not valid for deletion from the database.
      */

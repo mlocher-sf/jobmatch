@@ -8,6 +8,8 @@ create table ProviderAccount
     LastLogin TIMESTAMP  NOT NULL   ,
     LoginReminder INTEGER DEFAULT 0 NOT NULL   ,
     Passphrase VARCHAR(20) DEFAULT "" NOT NULL   ,
+    LastIP VARCHAR(25) DEFAULT ""    ,
+    LastHost VARCHAR(30) DEFAULT ""    ,
 /* class ProviderAccount */
 
     /* NOTICE: */

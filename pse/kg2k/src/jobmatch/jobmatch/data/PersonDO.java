@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the PersonDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
@@ -95,10 +95,10 @@ import com.lutris.dods.builder.generator.query.*;
      *             String city = addr.getCity();
      *         }
      */
-    static public final RDBTable  table = new RDBTable( "Contactperson" );
+    static public final RDBTable  table = new RDBTable( "Person" );
 
     /**
-     * Return Contactperson as the name of the table in the database
+     * Return Person as the name of the table in the database
      * which contains PersonDO objects.
      * This method overrides CoreDO.getTableName()
      * and is used by CoreDO.executeUpdate() during error handling.
@@ -108,7 +108,7 @@ import com.lutris.dods.builder.generator.query.*;
      * @author Jay Gunter
      */
     protected String getTableName() {
-	return "Contactperson";
+	return "Person";
     }
 
     static public final RDBColumn PrimaryKey = new RDBColumn( table,
@@ -640,39 +640,39 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member Name
+////////////////////////// data member Picture
 
-   /* static final RDBColumn Name for use with QueryBuilder.
+   /* static final RDBColumn Picture for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Name = 
-			    new RDBColumn( table, "Name" );
+   static public final RDBColumn Picture = 
+			    new RDBColumn( table, "Picture" );
 
    /**
-    * Get Name of the Contactperson
+    * Get Picture of the Person
     *
-    * @return Name of the Contactperson
+    * @return Picture of the Person
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getName () 
+   public jobmatch.data.PictureDO getPicture () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Name;
+      return data.Picture;
    }
 
    /**
-    * Set Name of the Contactperson
+    * Set Picture of the Person
     *
-    * @param Name of the Contactperson
+    * @param Picture of the Person
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setName ( String Name )
+   public void setPicture ( jobmatch.data.PictureDO Picture )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -681,8 +681,56 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Name =  markNewValue(
-	data.Name, Name , 0, 40, false );
+      data.Picture = (jobmatch.data.PictureDO) markNewValue(
+	data.Picture, Picture  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Email
+
+   /* static final RDBColumn Email for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Email = 
+			    new RDBColumn( table, "Email" );
+
+   /**
+    * Get Email of the Person
+    *
+    * @return Email of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getEmail () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Email;
+   }
+
+   /**
+    * Set Email of the Person
+    *
+    * @param Email of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setEmail ( String Email )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Email =  markNewValue(
+	data.Email, Email , 0, 50, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -697,9 +745,9 @@ import com.lutris.dods.builder.generator.query.*;
 			    new RDBColumn( table, "Fax" );
 
    /**
-    * Get Fax of the Contactperson
+    * Get Fax of the Person
     *
-    * @return Fax of the Contactperson
+    * @return Fax of the Person
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
@@ -712,9 +760,9 @@ import com.lutris.dods.builder.generator.query.*;
    }
 
    /**
-    * Set Fax of the Contactperson
+    * Set Fax of the Person
     *
-    * @param Fax of the Contactperson
+    * @param Fax of the Person
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
@@ -736,39 +784,39 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Email
+////////////////////////// data member Adress
 
-   /* static final RDBColumn Email for use with QueryBuilder.
+   /* static final RDBColumn Adress for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Email = 
-			    new RDBColumn( table, "Email" );
+   static public final RDBColumn Adress = 
+			    new RDBColumn( table, "Adress" );
 
    /**
-    * Get Email of the Contactperson
+    * Get Adress of the Person
     *
-    * @return Email of the Contactperson
+    * @return Adress of the Person
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getEmail () 
+   public jobmatch.data.AdressDO getAdress () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Email;
+      return data.Adress;
    }
 
    /**
-    * Set Email of the Contactperson
+    * Set Adress of the Person
     *
-    * @param Email of the Contactperson
+    * @param Adress of the Person
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setEmail ( String Email )
+   public void setAdress ( jobmatch.data.AdressDO Adress )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -777,8 +825,440 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Email =  markNewValue(
-	data.Email, Email , 0, 50, true );
+      data.Adress = (jobmatch.data.AdressDO) markNewValue(
+	data.Adress, Adress  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Fname
+
+   /* static final RDBColumn Fname for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Fname = 
+			    new RDBColumn( table, "Fname" );
+
+   /**
+    * Get Fname of the Person
+    *
+    * @return Fname of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getFname () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Fname;
+   }
+
+   /**
+    * Set Fname of the Person
+    *
+    * @param Fname of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setFname ( String Fname )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Fname =  markNewValue(
+	data.Fname, Fname , 0, 20, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Lname
+
+   /* static final RDBColumn Lname for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Lname = 
+			    new RDBColumn( table, "Lname" );
+
+   /**
+    * Get Lname of the Person
+    *
+    * @return Lname of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getLname () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Lname;
+   }
+
+   /**
+    * Set Lname of the Person
+    *
+    * @param Lname of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setLname ( String Lname )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Lname =  markNewValue(
+	data.Lname, Lname , 0, 25, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Natel
+
+   /* static final RDBColumn Natel for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Natel = 
+			    new RDBColumn( table, "Natel" );
+
+   /**
+    * Get Natel of the Person
+    *
+    * @return Natel of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getNatel () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Natel;
+   }
+
+   /**
+    * Set Natel of the Person
+    *
+    * @param Natel of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setNatel ( String Natel )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Natel =  markNewValue(
+	data.Natel, Natel , 0, 25, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Phone
+
+   /* static final RDBColumn Phone for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Phone = 
+			    new RDBColumn( table, "Phone" );
+
+   /**
+    * Get Phone of the Person
+    *
+    * @return Phone of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getPhone () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Phone;
+   }
+
+   /**
+    * Set Phone of the Person
+    *
+    * @param Phone of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setPhone ( String Phone )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Phone =  markNewValue(
+	data.Phone, Phone , 0, 25, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Residence
+
+   /* static final RDBColumn Residence for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Residence = 
+			    new RDBColumn( table, "Residence" );
+
+   /**
+    * Get Residence of the Person
+    *
+    * @return Residence of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getResidence () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Residence;
+   }
+
+   /**
+    * Set Residence of the Person
+    *
+    * @param Residence of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setResidence ( String Residence )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Residence =  markNewValue(
+	data.Residence, Residence , 0, 50, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Sex
+
+   /* static final RDBColumn Sex for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Sex = 
+			    new RDBColumn( table, "Sex" );
+
+   /**
+    * Get Sex of the Person
+    *
+    * @return Sex of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getSex () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Sex;
+   }
+
+   /**
+    * Set Sex of the Person
+    *
+    * @param Sex of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setSex ( String Sex )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Sex =  markNewValue(
+	data.Sex, Sex , 0, 32, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Birthdate
+
+   /* static final RDBColumn Birthdate for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Birthdate = 
+			    new RDBColumn( table, "Birthdate" );
+
+   /**
+    * Get Birthdate of the Person
+    *
+    * @return Birthdate of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Date getBirthdate () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Birthdate;
+   }
+
+   /**
+    * Set Birthdate of the Person
+    *
+    * @param Birthdate of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setBirthdate ( java.sql.Date Birthdate )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Birthdate =  markNewValue(
+	data.Birthdate, Birthdate  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Nationality
+
+   /* static final RDBColumn Nationality for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Nationality = 
+			    new RDBColumn( table, "Nationality" );
+
+   /**
+    * Get Nationality of the Person
+    *
+    * @return Nationality of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CountryDO getNationality () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Nationality;
+   }
+
+   /**
+    * Set Nationality of the Person
+    *
+    * @param Nationality of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setNationality ( jobmatch.data.CountryDO Nationality )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Nationality = (jobmatch.data.CountryDO) markNewValue(
+	data.Nationality, Nationality  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member URL
+
+   /* static final RDBColumn URL for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn URL = 
+			    new RDBColumn( table, "URL" );
+
+   /**
+    * Get URL of the Person
+    *
+    * @return URL of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getURL () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.URL;
+   }
+
+   /**
+    * Set URL of the Person
+    *
+    * @param URL of the Person
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setURL ( String URL )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.URL =  markNewValue(
+	data.URL, URL , 0, 50, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -808,7 +1288,7 @@ import com.lutris.dods.builder.generator.query.*;
     }
 
     /**
-     * initFromResultSet initializes the data members from Contactperson.
+     * initFromResultSet initializes the data members from Person.
      * This code was separated from the ResultSet constructor
      * so that createExisting(ResultSet) could handle VIEWs.
      */
@@ -824,10 +1304,18 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setName( 
+	setPicture( 
+	    jobmatch.data.PictureDO.createExisting( 
+		rs.getBigDecimal( 
+			"Picture" , 0 )
+	     )
+	);
+	
+	
+	setEmail( 
 	    
 		rs.getString( 
-			"Name"  )
+			"Email"  )
 	    
 	);
 	
@@ -840,10 +1328,82 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setEmail( 
+	setAdress( 
+	    jobmatch.data.AdressDO.createExisting( 
+		rs.getBigDecimal( 
+			"Adress" , 0 )
+	     )
+	);
+	
+	
+	setFname( 
 	    
 		rs.getString( 
-			"Email"  )
+			"Fname"  )
+	    
+	);
+	
+	
+	setLname( 
+	    
+		rs.getString( 
+			"Lname"  )
+	    
+	);
+	
+	
+	setNatel( 
+	    
+		rs.getString( 
+			"Natel"  )
+	    
+	);
+	
+	
+	setPhone( 
+	    
+		rs.getString( 
+			"Phone"  )
+	    
+	);
+	
+	
+	setResidence( 
+	    
+		rs.getString( 
+			"Residence"  )
+	    
+	);
+	
+	
+	setSex( 
+	    
+		rs.getString( 
+			"Sex"  )
+	    
+	);
+	
+	
+	setBirthdate( 
+	    
+		rs.getDate( 
+			"Birthdate"  )
+	    
+	);
+	
+	
+	setNationality( 
+	    jobmatch.data.CountryDO.createExisting( 
+		rs.getBigDecimal( 
+			"Nationality" , 0 )
+	     )
+	);
+	
+	
+	setURL( 
+	    
+		rs.getString( 
+			"URL"  )
 	    
 	);
 	
@@ -880,7 +1440,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Contactperson ( Name, Fax, Email, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
+	    "insert into Person ( Picture, Email, Fax, Adress, Fname, Lname, Natel, Phone, Residence, Sex, Birthdate, Nationality, URL, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -888,12 +1448,32 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_String( stmt, param,
-		getName() );
-	setPrepStmtParam_String( stmt, param,
-		getFax() );
+	    	setPrepStmtParam_DO( stmt, param,
+		getPicture() );
 	setPrepStmtParam_String( stmt, param,
 		getEmail() );
+	setPrepStmtParam_String( stmt, param,
+		getFax() );
+	setPrepStmtParam_DO( stmt, param,
+		getAdress() );
+	setPrepStmtParam_String( stmt, param,
+		getFname() );
+	setPrepStmtParam_String( stmt, param,
+		getLname() );
+	setPrepStmtParam_String( stmt, param,
+		getNatel() );
+	setPrepStmtParam_String( stmt, param,
+		getPhone() );
+	setPrepStmtParam_String( stmt, param,
+		getResidence() );
+	setPrepStmtParam_String( stmt, param,
+		getSex() );
+	setPrepStmtParam_java_sql_Date( stmt, param,
+		getBirthdate() );
+	setPrepStmtParam_DO( stmt, param,
+		getNationality() );
+	setPrepStmtParam_String( stmt, param,
+		getURL() );
 
 
 	    /* The order of the values being inserted must match
@@ -926,7 +1506,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Contactperson set " + getVersionColumnName() + " = ?, Name = ?, Fax = ?, Email = ? " +
+	    "update Person set " + getVersionColumnName() + " = ?, Picture = ?, Email = ?, Fax = ?, Adress = ?, Fname = ?, Lname = ?, Natel = ?, Phone = ?, Residence = ?, Sex = ?, Birthdate = ?, Nationality = ?, URL = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -936,12 +1516,32 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_String( stmt, param,
-		getName() );
-	setPrepStmtParam_String( stmt, param,
-		getFax() );
+	    	setPrepStmtParam_DO( stmt, param,
+		getPicture() );
 	setPrepStmtParam_String( stmt, param,
 		getEmail() );
+	setPrepStmtParam_String( stmt, param,
+		getFax() );
+	setPrepStmtParam_DO( stmt, param,
+		getAdress() );
+	setPrepStmtParam_String( stmt, param,
+		getFname() );
+	setPrepStmtParam_String( stmt, param,
+		getLname() );
+	setPrepStmtParam_String( stmt, param,
+		getNatel() );
+	setPrepStmtParam_String( stmt, param,
+		getPhone() );
+	setPrepStmtParam_String( stmt, param,
+		getResidence() );
+	setPrepStmtParam_String( stmt, param,
+		getSex() );
+	setPrepStmtParam_java_sql_Date( stmt, param,
+		getBirthdate() );
+	setPrepStmtParam_DO( stmt, param,
+		getNationality() );
+	setPrepStmtParam_String( stmt, param,
+		getURL() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -970,7 +1570,7 @@ import com.lutris.dods.builder.generator.query.*;
             throws SQLException {
 
         String sql =
-            "delete from Contactperson \n" +
+            "delete from Person \n" +
             "where " + getOIdColumnName() + " = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setBigDecimal(1, getOId().toBigDecimal());
@@ -991,9 +1591,19 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "Fax=" + data.Fax
+	    str = str + "\n" + indent + "Picture=" + ( null == data.Picture ? null  : data.Picture.toString( indentCount + 1 ) )
 + "\n" + indent + "Email=" + data.Email
++ "\n" + indent + "Fax=" + data.Fax
++ "\n" + indent + "Adress=" + ( null == data.Adress ? null  : data.Adress.toString( indentCount + 1 ) )
++ "\n" + indent + "Fname=" + data.Fname
++ "\n" + indent + "Lname=" + data.Lname
++ "\n" + indent + "Natel=" + data.Natel
++ "\n" + indent + "Phone=" + data.Phone
++ "\n" + indent + "Residence=" + data.Residence
++ "\n" + indent + "Sex=" + data.Sex
++ "\n" + indent + "Birthdate=" + data.Birthdate
++ "\n" + indent + "Nationality=" + ( null == data.Nationality ? null  : data.Nationality.toString( indentCount + 1 ) )
++ "\n" + indent + "URL=" + data.URL
 ;
         return str + "; " + super.toString();
     }
@@ -1017,9 +1627,19 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "Fax=" + data.Fax
+            str = str + "\n" + indent + "Picture=" + ( null == data.Picture ? null  : data.Picture.toString( indentCount + 1 ) )
 + "\n" + indent + "Email=" + data.Email
++ "\n" + indent + "Fax=" + data.Fax
++ "\n" + indent + "Adress=" + ( null == data.Adress ? null  : data.Adress.toString( indentCount + 1 ) )
++ "\n" + indent + "Fname=" + data.Fname
++ "\n" + indent + "Lname=" + data.Lname
++ "\n" + indent + "Natel=" + data.Natel
++ "\n" + indent + "Phone=" + data.Phone
++ "\n" + indent + "Residence=" + data.Residence
++ "\n" + indent + "Sex=" + data.Sex
++ "\n" + indent + "Birthdate=" + data.Birthdate
++ "\n" + indent + "Nationality=" + ( null == data.Nationality ? null  : data.Nationality.toString( indentCount + 1 ) )
++ "\n" + indent + "URL=" + data.URL
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -1103,7 +1723,61 @@ import com.lutris.dods.builder.generator.query.*;
     modifyDO( dbt, true );
   }
 
-  
+      /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Picture data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Picture is not valid for writing to the database.
+     */
+    protected void okToCommitPicture( jobmatch.data.PictureDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Picture data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Picture is not valid for deletion from the database.
+     */
+    protected void okToDeletePicture( jobmatch.data.PictureDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for writing to the database.
+     */
+    protected void okToCommitAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for deletion from the database.
+     */
+    protected void okToDeleteAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for writing to the database.
+     */
+    protected void okToCommitNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for deletion from the database.
+     */
+    protected void okToDeleteNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+
 
   /**
    * Modifies the DO within its table.
@@ -1145,7 +1819,52 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  
+	  	jobmatch.data.PictureDO Picture_DO = getPicture();
+	if ( null != Picture_DO ) {
+	    if ( Picture_DO.isLoaded() ) {
+		okToCommitPicture( Picture_DO );
+		Picture_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit PersonDO ( " + toString() +
+		    " ) because Picture is not allowed to be null." );
+	}
+	jobmatch.data.AdressDO Adress_DO = getAdress();
+	if ( null != Adress_DO ) {
+	    if ( Adress_DO.isLoaded() ) {
+		okToCommitAdress( Adress_DO );
+		Adress_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit PersonDO ( " + toString() +
+		    " ) because Adress is not allowed to be null." );
+	}
+	jobmatch.data.CountryDO Nationality_DO = getNationality();
+	if ( null != Nationality_DO ) {
+	    if ( Nationality_DO.isLoaded() ) {
+		okToCommitNationality( Nationality_DO );
+		Nationality_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit PersonDO ( " + toString() +
+		    " ) because Nationality is not allowed to be null." );
+	}
+
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

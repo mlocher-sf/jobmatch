@@ -282,7 +282,6 @@
         </table>
         <table id="jobmatch.data.EmployerCandidate" extensionOf="jobmatch.data.CVTimespan">
           <column id="Employer" usedForQuery="true">
-            <error>Referencing an abstract Data Object</error>
             <referenceObject constraint="true" reference="jobmatch.data.Employer"/>
             <type dbType="none" javaType="jobmatch.data.EmployerDO"/>
           </column>
@@ -337,7 +336,49 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
           </column>
         </table>
-        <table id="jobmatch.data.Candidate" extensionOf="jobmatch.data.Person">
+        <table id="jobmatch.data.Candidate">
+          <column id="Picture">
+            <referenceObject reference="jobmatch.data.Picture"/>
+            <type canBeNull="true" dbType="none" javaType="jobmatch.data.PictureDO"/>
+          </column>
+          <column id="Email">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="50"/>
+          </column>
+          <column id="Fax">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="20"/>
+          </column>
+          <column id="Adress" usedForQuery="true">
+            <referenceObject reference="jobmatch.data.Adress"/>
+            <type canBeNull="true" dbType="none" javaType="jobmatch.data.AdressDO"/>
+          </column>
+          <column id="Fname" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="20"/>
+          </column>
+          <column id="Lname" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
+          </column>
+          <column id="Natel" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
+          </column>
+          <column id="Phone" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
+          </column>
+          <column id="Residence" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="50"/>
+          </column>
+          <column id="Sex" usedForQuery="true">
+            <type canBeNull="true" dbType="ENUM('w','m')" javaType="String"/>
+          </column>
+          <column id="Birthdate" usedForQuery="true">
+            <type canBeNull="true" dbType="DATE" javaType="java.sql.Date"/>
+          </column>
+          <column id="Nationality" usedForQuery="true">
+            <referenceObject reference="jobmatch.data.Country"/>
+            <type canBeNull="true" dbType="none" javaType="jobmatch.data.CountryDO"/>
+          </column>
+          <column id="URL">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="50"/>
+          </column>
           <column id="AIESECMember" usedForQuery="true">
             <type canBeNull="true" dbType="BIT" javaType="boolean"/>
           </column>
@@ -348,7 +389,14 @@
             <type canBeNull="true" dbType="BIT" javaType="boolean"/>
           </column>
         </table>
-        <table id="jobmatch.data.Company" extensionOf="jobmatch.data.Employer">
+        <table id="jobmatch.data.Company">
+          <column id="Name" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="30"/>
+          </column>
+          <column id="Adress" usedForQuery="true">
+            <referenceObject reference="jobmatch.data.Adress"/>
+            <type canBeNull="true" dbType="none" javaType="jobmatch.data.AdressDO"/>
+          </column>
           <column id="Active">
             <type canBeNull="true" dbType="BIT" javaType="boolean"/>
           </column>

@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CandidateAccountDO information.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */
@@ -768,7 +768,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into CandidateAccount ( Username, Email, LastLogin, LoginReminder, Passphrase, Candidate, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into CandidateAccount ( Username, Email, LastLogin, LoginReminder, Passphrase, LastIP, LastHost, Candidate, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -786,6 +786,10 @@ import com.lutris.dods.builder.generator.query.*;
 		getLoginReminder() );
 	setPrepStmtParam_String( stmt, param,
 		getPassphrase() );
+	setPrepStmtParam_String( stmt, param,
+		getLastIP() );
+	setPrepStmtParam_String( stmt, param,
+		getLastHost() );
 	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
 
@@ -820,7 +824,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update CandidateAccount set " + getVersionColumnName() + " = ?, Username = ?, Email = ?, LastLogin = ?, LoginReminder = ?, Passphrase = ?, Candidate = ? " +
+	    "update CandidateAccount set " + getVersionColumnName() + " = ?, Username = ?, Email = ?, LastLogin = ?, LoginReminder = ?, Passphrase = ?, LastIP = ?, LastHost = ?, Candidate = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -840,6 +844,10 @@ import com.lutris.dods.builder.generator.query.*;
 		getLoginReminder() );
 	setPrepStmtParam_String( stmt, param,
 		getPassphrase() );
+	setPrepStmtParam_String( stmt, param,
+		getLastIP() );
+	setPrepStmtParam_String( stmt, param,
+		getLastHost() );
 	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
 

@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class CompanyBDO implements java.io.Serializable {
 
@@ -242,6 +242,128 @@ public class CompanyBDO implements java.io.Serializable {
     }
 
    /**
+    * Get Name of the CompanyDO
+    *
+    * @return Name of the CompanyDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getName () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getName ();
+   }
+
+   
+   /**
+    * Set Name of the CompanyDO
+    *
+    * @param Name of the CompanyDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setName ( String Name ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setName ( Name );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Adress of the CompanyDO
+    *
+    * @return Adress of the CompanyDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.AdressDO getAdress () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getAdress ();
+   }
+
+   
+   /**
+    * Set Adress of the CompanyDO
+    *
+    * @param Adress of the CompanyDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setAdress ( jobmatch.data.AdressDO Adress ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setAdress ( Adress );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Adress of the CompanyDO
+    *
+    * @return BDO-wrapped Adress of the CompanyDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.AdressBDO getAdressBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.AdressBDO b = jobmatch.data.AdressBDO.createExisting(
+					  DO.getAdress () );
+      return b;
+   }
+
+   /**
+    * Set Adress of the CompanyDO
+    *
+    * @param BDO-wrapped Adress of the CompanyDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setAdress ( jobmatch.data.AdressBDO Adress ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Adress ) {
+	  if ( true )
+	      DO.setAdress ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "CompanyBDO.setAdress does not allow NULL." );
+      } else {
+          DO.setAdress ( Adress.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+   
+
+   /**
     * Get Active of the CompanyDO
     *
     * @return Active of the CompanyDO
@@ -349,82 +471,6 @@ public class CompanyBDO implements java.io.Serializable {
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       DO.setGraduatesPerYear ( GraduatesPerYear );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get Location of the CompanyDO
-    *
-    * @return Location of the CompanyDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getLocation () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getLocation ();
-   }
-
-   
-   /**
-    * Set Location of the CompanyDO
-    *
-    * @param Location of the CompanyDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setLocation ( String Location ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setLocation ( Location );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get Name of the CompanyDO
-    *
-    * @return Name of the CompanyDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getName () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getName ();
-   }
-
-   
-   /**
-    * Set Name of the CompanyDO
-    *
-    * @param Name of the CompanyDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setName ( String Name ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setName ( Name );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -1149,6 +1195,24 @@ public class CompanyBDO implements java.io.Serializable {
 
       /**
      * A stub method for implementing pre-commit assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for writing to the database.
+     */
+    protected void okToCommitAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for deletion from the database.
+     */
+    protected void okToDeleteAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
      * for the Contact data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Contact is not valid for writing to the database.
@@ -1238,7 +1302,25 @@ public class CompanyBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.PersonDO Contact_DO = DO.getContact();
+	  	jobmatch.data.AdressDO Adress_DO = DO.getAdress();
+	if ( null != Adress_DO ) {
+	    if ( Adress_DO.isLoaded() ) {
+		okToCommitAdress( Adress_DO );
+		jobmatch.data.AdressBDO b = 
+		    jobmatch.data.AdressBDO.createExisting(
+						    Adress_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit CompanyBDO ( " + toString() +
+		    " ) because Adress is not allowed to be null." );
+	}
+	jobmatch.data.PersonDO Contact_DO = DO.getContact();
 	if ( null != Contact_DO ) {
 	    if ( Contact_DO.isLoaded() ) {
 		okToCommitContact( Contact_DO );

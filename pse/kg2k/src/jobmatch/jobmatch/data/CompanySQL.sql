@@ -3,14 +3,14 @@
 create table Company
 (
 /* class Company */
+    Name VARCHAR(30) DEFAULT ""    ,
+    Adress DECIMAL(19,0)     ,
     Active BIT DEFAULT 0    ,
     Earnings INTEGER     ,
     GraduatesPerYear INTEGER     ,
-    Location VARCHAR(40) DEFAULT ""    ,
-    Name VARCHAR(30) DEFAULT ""    ,
     NumberEmployees INTEGER     ,
     ShortDescription TEXT(32) DEFAULT ""    ,
-    Contact DECIMAL(19,0)    REFERENCES Contactperson ( oid ) ,
+    Contact DECIMAL(19,0)    REFERENCES Person ( oid ) ,
     Industry DECIMAL(19,0)     ,
     Presence VARCHAR(40) DEFAULT ""    ,
     URL VARCHAR(50) DEFAULT ""    ,

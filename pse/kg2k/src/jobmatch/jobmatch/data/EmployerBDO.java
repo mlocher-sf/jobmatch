@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class EmployerBDO implements java.io.Serializable {
 
@@ -242,29 +242,29 @@ public class EmployerBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Company of the EmployerDO
+    * Get Name of the EmployerDO
     *
-    * @return Company of the EmployerDO
+    * @return Name of the EmployerDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getCompany () 
+   public String getName () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getCompany ();
+      return DO.getName ();
    }
 
    
    /**
-    * Set Company of the EmployerDO
+    * Set Name of the EmployerDO
     *
-    * @param Company of the EmployerDO
+    * @param Name of the EmployerDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setCompany ( String Company ) 
+   public void setName ( String Name ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,7 +272,7 @@ public class EmployerBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setCompany ( Company );
+      DO.setName ( Name );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -280,29 +280,29 @@ public class EmployerBDO implements java.io.Serializable {
    
 
    /**
-    * Get City of the EmployerDO
+    * Get Adress of the EmployerDO
     *
-    * @return City of the EmployerDO
+    * @return Adress of the EmployerDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getCity () 
+   public jobmatch.data.AdressDO getAdress () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getCity ();
+      return DO.getAdress ();
    }
 
    
    /**
-    * Set City of the EmployerDO
+    * Set Adress of the EmployerDO
     *
-    * @param City of the EmployerDO
+    * @param Adress of the EmployerDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setCity ( String City ) 
+   public void setAdress ( jobmatch.data.AdressDO Adress ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -310,75 +310,37 @@ public class EmployerBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setCity ( City );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get County of the EmployerDO
-    *
-    * @return County of the EmployerDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CountryDO getCounty () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getCounty ();
-   }
-
-   
-   /**
-    * Set County of the EmployerDO
-    *
-    * @param County of the EmployerDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setCounty ( jobmatch.data.CountryDO County ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setCounty ( County );
+      DO.setAdress ( Adress );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
    
 
    /**
-    * Get BDO-wrapped County of the EmployerDO
+    * Get BDO-wrapped Adress of the EmployerDO
     *
-    * @return BDO-wrapped County of the EmployerDO
+    * @return BDO-wrapped Adress of the EmployerDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.CountryBDO getCountyBDO () 
+   public jobmatch.data.AdressBDO getAdressBDO () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      jobmatch.data.CountryBDO b = jobmatch.data.CountryBDO.createExisting(
-					  DO.getCounty () );
+      jobmatch.data.AdressBDO b = jobmatch.data.AdressBDO.createExisting(
+					  DO.getAdress () );
       return b;
    }
 
    /**
-    * Set County of the EmployerDO
+    * Set Adress of the EmployerDO
     *
-    * @param BDO-wrapped County of the EmployerDO
+    * @param BDO-wrapped Adress of the EmployerDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setCounty ( jobmatch.data.CountryBDO County ) 
+   public void setAdress ( jobmatch.data.AdressBDO Adress ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -386,14 +348,14 @@ public class EmployerBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      if ( null == County ) {
+      if ( null == Adress ) {
 	  if ( true )
-	      DO.setCounty ( null );
+	      DO.setAdress ( null );
 	  else 
 	      throw new DataObjectException( 
-		  "EmployerBDO.setCounty does not allow NULL." );
+		  "EmployerBDO.setAdress does not allow NULL." );
       } else {
-          DO.setCounty ( County.getDO() );
+          DO.setAdress ( Adress.getDO() );
       }
       afterAnySet();	// business actions/assertions after data assignment
    }
@@ -629,20 +591,20 @@ public class EmployerBDO implements java.io.Serializable {
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the County data member.
+     * for the Adress data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where County is not valid for writing to the database.
+     * where Adress is not valid for writing to the database.
      */
-    protected void okToCommitCounty( jobmatch.data.CountryDO member ) 
+    protected void okToCommitAdress( jobmatch.data.AdressDO member ) 
     throws RefAssertionException { }
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for the County data member.
+     * for the Adress data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where County is not valid for deletion from the database.
+     * where Adress is not valid for deletion from the database.
      */
-    protected void okToDeleteCounty( jobmatch.data.CountryDO member ) 
+    protected void okToDeleteAdress( jobmatch.data.AdressDO member ) 
     throws RefAssertionException { }
 
 
@@ -691,13 +653,13 @@ public class EmployerBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.CountryDO County_DO = DO.getCounty();
-	if ( null != County_DO ) {
-	    if ( County_DO.isLoaded() ) {
-		okToCommitCounty( County_DO );
-		jobmatch.data.CountryBDO b = 
-		    jobmatch.data.CountryBDO.createExisting(
-						    County_DO );
+	  	jobmatch.data.AdressDO Adress_DO = DO.getAdress();
+	if ( null != Adress_DO ) {
+	    if ( Adress_DO.isLoaded() ) {
+		okToCommitAdress( Adress_DO );
+		jobmatch.data.AdressBDO b = 
+		    jobmatch.data.AdressBDO.createExisting(
+						    Adress_DO );
 		b.commit( dbt );
 	    } else {
 		// since the referenced DO is not loaded,
@@ -707,7 +669,7 @@ public class EmployerBDO implements java.io.Serializable {
 	    if ( ! true )
 		throw new RefAssertionException(
 		    "Cannot commit EmployerBDO ( " + toString() +
-		    " ) because County is not allowed to be null." );
+		    " ) because Adress is not allowed to be null." );
 	}
 
       }

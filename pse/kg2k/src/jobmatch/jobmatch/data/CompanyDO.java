@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CompanyDO information.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */
@@ -640,6 +640,102 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
+////////////////////////// data member Name
+
+   /* static final RDBColumn Name for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Name = 
+			    new RDBColumn( table, "Name" );
+
+   /**
+    * Get Name of the Company
+    *
+    * @return Name of the Company
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getName () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Name;
+   }
+
+   /**
+    * Set Name of the Company
+    *
+    * @param Name of the Company
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setName ( String Name )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Name =  markNewValue(
+	data.Name, Name , 0, 30, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Adress
+
+   /* static final RDBColumn Adress for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Adress = 
+			    new RDBColumn( table, "Adress" );
+
+   /**
+    * Get Adress of the Company
+    *
+    * @return Adress of the Company
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.AdressDO getAdress () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Adress;
+   }
+
+   /**
+    * Set Adress of the Company
+    *
+    * @param Adress of the Company
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setAdress ( jobmatch.data.AdressDO Adress )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Adress = (jobmatch.data.AdressDO) markNewValue(
+	data.Adress, Adress  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
 ////////////////////////// data member Active
 
    /* static final RDBColumn Active for use with QueryBuilder.
@@ -779,102 +875,6 @@ import com.lutris.dods.builder.generator.query.*;
       checkLoad();
       data.GraduatesPerYear =  markNewValue(
 	data.GraduatesPerYear, GraduatesPerYear  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Location
-
-   /* static final RDBColumn Location for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Location = 
-			    new RDBColumn( table, "Location" );
-
-   /**
-    * Get Location of the Company
-    *
-    * @return Location of the Company
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getLocation () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Location;
-   }
-
-   /**
-    * Set Location of the Company
-    *
-    * @param Location of the Company
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setLocation ( String Location )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Location =  markNewValue(
-	data.Location, Location , 0, 40, true );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Name
-
-   /* static final RDBColumn Name for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Name = 
-			    new RDBColumn( table, "Name" );
-
-   /**
-    * Get Name of the Company
-    *
-    * @return Name of the Company
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getName () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Name;
-   }
-
-   /**
-    * Set Name of the Company
-    *
-    * @param Name of the Company
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setName ( String Name )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Name =  markNewValue(
-	data.Name, Name , 0, 30, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -1208,6 +1208,22 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
+	setName( 
+	    
+		rs.getString( 
+			"Name"  )
+	    
+	);
+	
+	
+	setAdress( 
+	    jobmatch.data.AdressDO.createExisting( 
+		rs.getBigDecimal( 
+			"Adress" , 0 )
+	     )
+	);
+	
+	
 	setActive( 
 	    
 		rs.getBoolean( 
@@ -1228,22 +1244,6 @@ import com.lutris.dods.builder.generator.query.*;
 	    
 		rs.getInt( 
 			"GraduatesPerYear"  )
-	    
-	);
-	
-	
-	setLocation( 
-	    
-		rs.getString( 
-			"Location"  )
-	    
-	);
-	
-	
-	setName( 
-	    
-		rs.getString( 
-			"Name"  )
 	    
 	);
 	
@@ -1328,7 +1328,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Company ( Active, Earnings, GraduatesPerYear, Location, Name, NumberEmployees, ShortDescription, Contact, Industry, Presence, URL, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into Company ( Name, Adress, Active, Earnings, GraduatesPerYear, NumberEmployees, ShortDescription, Contact, Industry, Presence, URL, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1336,16 +1336,16 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_boolean( stmt, param,
+	    	setPrepStmtParam_String( stmt, param,
+		getName() );
+	setPrepStmtParam_DO( stmt, param,
+		getAdress() );
+	setPrepStmtParam_boolean( stmt, param,
 		getActive() );
 	setPrepStmtParam_int( stmt, param,
 		getEarnings() );
 	setPrepStmtParam_int( stmt, param,
 		getGraduatesPerYear() );
-	setPrepStmtParam_String( stmt, param,
-		getLocation() );
-	setPrepStmtParam_String( stmt, param,
-		getName() );
 	setPrepStmtParam_int( stmt, param,
 		getNumberEmployees() );
 	setPrepStmtParam_String( stmt, param,
@@ -1390,7 +1390,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Company set " + getVersionColumnName() + " = ?, Active = ?, Earnings = ?, GraduatesPerYear = ?, Location = ?, Name = ?, NumberEmployees = ?, ShortDescription = ?, Contact = ?, Industry = ?, Presence = ?, URL = ? " +
+	    "update Company set " + getVersionColumnName() + " = ?, Name = ?, Adress = ?, Active = ?, Earnings = ?, GraduatesPerYear = ?, NumberEmployees = ?, ShortDescription = ?, Contact = ?, Industry = ?, Presence = ?, URL = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1400,16 +1400,16 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_boolean( stmt, param,
+	    	setPrepStmtParam_String( stmt, param,
+		getName() );
+	setPrepStmtParam_DO( stmt, param,
+		getAdress() );
+	setPrepStmtParam_boolean( stmt, param,
 		getActive() );
 	setPrepStmtParam_int( stmt, param,
 		getEarnings() );
 	setPrepStmtParam_int( stmt, param,
 		getGraduatesPerYear() );
-	setPrepStmtParam_String( stmt, param,
-		getLocation() );
-	setPrepStmtParam_String( stmt, param,
-		getName() );
 	setPrepStmtParam_int( stmt, param,
 		getNumberEmployees() );
 	setPrepStmtParam_String( stmt, param,
@@ -1471,11 +1471,11 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Active=" + data.Active
+	    str = str + "\n" + indent + "Name=" + data.Name
++ "\n" + indent + "Adress=" + ( null == data.Adress ? null  : data.Adress.toString( indentCount + 1 ) )
++ "\n" + indent + "Active=" + data.Active
 + "\n" + indent + "Earnings=" + data.Earnings
 + "\n" + indent + "GraduatesPerYear=" + data.GraduatesPerYear
-+ "\n" + indent + "Location=" + data.Location
-+ "\n" + indent + "Name=" + data.Name
 + "\n" + indent + "NumberEmployees=" + data.NumberEmployees
 + "\n" + indent + "ShortDescription=" + data.ShortDescription
 + "\n" + indent + "Contact=" + ( null == data.Contact ? null  : data.Contact.toString( indentCount + 1 ) )
@@ -1505,11 +1505,11 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Active=" + data.Active
+            str = str + "\n" + indent + "Name=" + data.Name
++ "\n" + indent + "Adress=" + ( null == data.Adress ? null  : data.Adress.toString( indentCount + 1 ) )
++ "\n" + indent + "Active=" + data.Active
 + "\n" + indent + "Earnings=" + data.Earnings
 + "\n" + indent + "GraduatesPerYear=" + data.GraduatesPerYear
-+ "\n" + indent + "Location=" + data.Location
-+ "\n" + indent + "Name=" + data.Name
 + "\n" + indent + "NumberEmployees=" + data.NumberEmployees
 + "\n" + indent + "ShortDescription=" + data.ShortDescription
 + "\n" + indent + "Contact=" + ( null == data.Contact ? null  : data.Contact.toString( indentCount + 1 ) )
@@ -1849,6 +1849,24 @@ import com.lutris.dods.builder.generator.query.*;
 
       /**
      * A stub method for implementing pre-commit assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for writing to the database.
+     */
+    protected void okToCommitAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for deletion from the database.
+     */
+    protected void okToDeleteAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
      * for the Contact data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Contact is not valid for writing to the database.
@@ -1943,7 +1961,22 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.PersonDO Contact_DO = getContact();
+	  	jobmatch.data.AdressDO Adress_DO = getAdress();
+	if ( null != Adress_DO ) {
+	    if ( Adress_DO.isLoaded() ) {
+		okToCommitAdress( Adress_DO );
+		Adress_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit CompanyDO ( " + toString() +
+		    " ) because Adress is not allowed to be null." );
+	}
+	jobmatch.data.PersonDO Contact_DO = getContact();
 	if ( null != Contact_DO ) {
 	    if ( Contact_DO.isLoaded() ) {
 		okToCommitContact( Contact_DO );

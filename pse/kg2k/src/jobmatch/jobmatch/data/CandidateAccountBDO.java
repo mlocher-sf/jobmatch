@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class CandidateAccountBDO implements java.io.Serializable {
 
@@ -425,6 +425,82 @@ public class CandidateAccountBDO implements java.io.Serializable {
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       DO.setPassphrase ( Passphrase );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get LastIP of the CandidateAccountDO
+    *
+    * @return LastIP of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getLastIP () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLastIP ();
+   }
+
+   
+   /**
+    * Set LastIP of the CandidateAccountDO
+    *
+    * @param LastIP of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLastIP ( String LastIP ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLastIP ( LastIP );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get LastHost of the CandidateAccountDO
+    *
+    * @return LastHost of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getLastHost () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLastHost ();
+   }
+
+   
+   /**
+    * Set LastHost of the CandidateAccountDO
+    *
+    * @param LastHost of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLastHost ( String LastHost ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLastHost ( LastHost );
       afterAnySet();	// business actions/assertions after data assignment
    }
 

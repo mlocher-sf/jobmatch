@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CandidateDO information.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */
@@ -640,39 +640,39 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member AIESECMember
+////////////////////////// data member Picture
 
-   /* static final RDBColumn AIESECMember for use with QueryBuilder.
+   /* static final RDBColumn Picture for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn AIESECMember = 
-			    new RDBColumn( table, "AIESECMember" );
+   static public final RDBColumn Picture = 
+			    new RDBColumn( table, "Picture" );
 
    /**
-    * Get AIESECMember of the Candidate
+    * Get Picture of the Candidate
     *
-    * @return AIESECMember of the Candidate
+    * @return Picture of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public boolean getAIESECMember () 
+   public jobmatch.data.PictureDO getPicture () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.AIESECMember;
+      return data.Picture;
    }
 
    /**
-    * Set AIESECMember of the Candidate
+    * Set Picture of the Candidate
     *
-    * @param AIESECMember of the Candidate
+    * @param Picture of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setAIESECMember ( boolean AIESECMember )
+   public void setPicture ( jobmatch.data.PictureDO Picture )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -681,46 +681,46 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.AIESECMember =  markNewValue(
-	data.AIESECMember, AIESECMember  );
+      data.Picture = (jobmatch.data.PictureDO) markNewValue(
+	data.Picture, Picture  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
 
 
-////////////////////////// data member City
+////////////////////////// data member Email
 
-   /* static final RDBColumn City for use with QueryBuilder.
+   /* static final RDBColumn Email for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn City = 
-			    new RDBColumn( table, "City" );
+   static public final RDBColumn Email = 
+			    new RDBColumn( table, "Email" );
 
    /**
-    * Get City of the Candidate
+    * Get Email of the Candidate
     *
-    * @return City of the Candidate
+    * @return Email of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getCity () 
+   public String getEmail () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.City;
+      return data.Email;
    }
 
    /**
-    * Set City of the Candidate
+    * Set Email of the Candidate
     *
-    * @param City of the Candidate
+    * @param Email of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setCity ( String City )
+   public void setEmail ( String Email )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -729,56 +729,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.City =  markNewValue(
-	data.City, City , 0, 30, true );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Competence
-
-   /* static final RDBColumn Competence for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Competence = 
-			    new RDBColumn( table, "Competence" );
-
-   /**
-    * Get Competence of the Candidate
-    *
-    * @return Competence of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getCompetence () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Competence;
-   }
-
-   /**
-    * Set Competence of the Candidate
-    *
-    * @param Competence of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setCompetence ( String Competence )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Competence =  markNewValue(
-	data.Competence, Competence , 0, 32, true );
+      data.Email =  markNewValue(
+	data.Email, Email , 0, 50, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -826,7 +778,55 @@ import com.lutris.dods.builder.generator.query.*;
       }
       checkLoad();
       data.Fax =  markNewValue(
-	data.Fax, Fax , 0, 25, true );
+	data.Fax, Fax , 0, 20, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Adress
+
+   /* static final RDBColumn Adress for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Adress = 
+			    new RDBColumn( table, "Adress" );
+
+   /**
+    * Get Adress of the Candidate
+    *
+    * @return Adress of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.AdressDO getAdress () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Adress;
+   }
+
+   /**
+    * Set Adress of the Candidate
+    *
+    * @param Adress of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setAdress ( jobmatch.data.AdressDO Adress )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Adress = (jobmatch.data.AdressDO) markNewValue(
+	data.Adress, Adress  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -875,54 +875,6 @@ import com.lutris.dods.builder.generator.query.*;
       checkLoad();
       data.Fname =  markNewValue(
 	data.Fname, Fname , 0, 20, true );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member HouseNumber
-
-   /* static final RDBColumn HouseNumber for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn HouseNumber = 
-			    new RDBColumn( table, "HouseNumber" );
-
-   /**
-    * Get HouseNumber of the Candidate
-    *
-    * @return HouseNumber of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getHouseNumber () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.HouseNumber;
-   }
-
-   /**
-    * Set HouseNumber of the Candidate
-    *
-    * @param HouseNumber of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setHouseNumber ( String HouseNumber )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.HouseNumber =  markNewValue(
-	data.HouseNumber, HouseNumber , 0, 5, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -1024,54 +976,6 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member PLZ
-
-   /* static final RDBColumn PLZ for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn PLZ = 
-			    new RDBColumn( table, "PLZ" );
-
-   /**
-    * Get PLZ of the Candidate
-    *
-    * @return PLZ of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public int getPLZ () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.PLZ;
-   }
-
-   /**
-    * Set PLZ of the Candidate
-    *
-    * @param PLZ of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setPLZ ( int PLZ )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.PLZ =  markNewValue(
-	data.PLZ, PLZ  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Phone
 
    /* static final RDBColumn Phone for use with QueryBuilder.
@@ -1120,54 +1024,6 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Picture
-
-   /* static final RDBColumn Picture for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Picture = 
-			    new RDBColumn( table, "Picture" );
-
-   /**
-    * Get Picture of the Candidate
-    *
-    * @return Picture of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public byte[] getPicture () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Picture;
-   }
-
-   /**
-    * Set Picture of the Candidate
-    *
-    * @param Picture of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setPicture ( byte[] Picture )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Picture =  markNewValue(
-	data.Picture, Picture  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Residence
 
    /* static final RDBColumn Residence for use with QueryBuilder.
@@ -1211,102 +1067,6 @@ import com.lutris.dods.builder.generator.query.*;
       checkLoad();
       data.Residence =  markNewValue(
 	data.Residence, Residence , 0, 50, true );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Status
-
-   /* static final RDBColumn Status for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Status = 
-			    new RDBColumn( table, "Status" );
-
-   /**
-    * Get Status of the Candidate
-    *
-    * @return Status of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public boolean getStatus () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Status;
-   }
-
-   /**
-    * Set Status of the Candidate
-    *
-    * @param Status of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setStatus ( boolean Status )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Status =  markNewValue(
-	data.Status, Status  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Street
-
-   /* static final RDBColumn Street for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Street = 
-			    new RDBColumn( table, "Street" );
-
-   /**
-    * Get Street of the Candidate
-    *
-    * @return Street of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getStreet () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Street;
-   }
-
-   /**
-    * Set Street of the Candidate
-    *
-    * @param Street of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setStreet ( String Street )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Street =  markNewValue(
-	data.Street, Street , 0, 50, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -1455,6 +1215,198 @@ import com.lutris.dods.builder.generator.query.*;
    }
    
 
+
+////////////////////////// data member URL
+
+   /* static final RDBColumn URL for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn URL = 
+			    new RDBColumn( table, "URL" );
+
+   /**
+    * Get URL of the Candidate
+    *
+    * @return URL of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getURL () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.URL;
+   }
+
+   /**
+    * Set URL of the Candidate
+    *
+    * @param URL of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setURL ( String URL )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.URL =  markNewValue(
+	data.URL, URL , 0, 50, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member AIESECMember
+
+   /* static final RDBColumn AIESECMember for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn AIESECMember = 
+			    new RDBColumn( table, "AIESECMember" );
+
+   /**
+    * Get AIESECMember of the Candidate
+    *
+    * @return AIESECMember of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public boolean getAIESECMember () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.AIESECMember;
+   }
+
+   /**
+    * Set AIESECMember of the Candidate
+    *
+    * @param AIESECMember of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setAIESECMember ( boolean AIESECMember )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.AIESECMember =  markNewValue(
+	data.AIESECMember, AIESECMember  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Competence
+
+   /* static final RDBColumn Competence for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Competence = 
+			    new RDBColumn( table, "Competence" );
+
+   /**
+    * Get Competence of the Candidate
+    *
+    * @return Competence of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getCompetence () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Competence;
+   }
+
+   /**
+    * Set Competence of the Candidate
+    *
+    * @param Competence of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setCompetence ( String Competence )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Competence =  markNewValue(
+	data.Competence, Competence , 0, 32, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Status
+
+   /* static final RDBColumn Status for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Status = 
+			    new RDBColumn( table, "Status" );
+
+   /**
+    * Get Status of the Candidate
+    *
+    * @return Status of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public boolean getStatus () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Status;
+   }
+
+   /**
+    * Set Status of the Candidate
+    *
+    * @param Status of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setStatus ( boolean Status )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Status =  markNewValue(
+	data.Status, Status  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
     /**
      * Protected constructor.
      *
@@ -1496,26 +1448,18 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setAIESECMember( 
-	    
-		rs.getBoolean( 
-			"AIESECMember"  )
-	    
+	setPicture( 
+	    jobmatch.data.PictureDO.createExisting( 
+		rs.getBigDecimal( 
+			"Picture" , 0 )
+	     )
 	);
 	
 	
-	setCity( 
+	setEmail( 
 	    
 		rs.getString( 
-			"City"  )
-	    
-	);
-	
-	
-	setCompetence( 
-	    
-		rs.getString( 
-			"Competence"  )
+			"Email"  )
 	    
 	);
 	
@@ -1528,18 +1472,18 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
+	setAdress( 
+	    jobmatch.data.AdressDO.createExisting( 
+		rs.getBigDecimal( 
+			"Adress" , 0 )
+	     )
+	);
+	
+	
 	setFname( 
 	    
 		rs.getString( 
 			"Fname"  )
-	    
-	);
-	
-	
-	setHouseNumber( 
-	    
-		rs.getString( 
-			"HouseNumber"  )
 	    
 	);
 	
@@ -1560,14 +1504,6 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setPLZ( 
-	    
-		rs.getInt( 
-			"PLZ"  )
-	    
-	);
-	
-	
 	setPhone( 
 	    
 		rs.getString( 
@@ -1576,34 +1512,10 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setPicture( 
-	    
-		rs.getBytes( 
-			"Picture"  )
-	    
-	);
-	
-	
 	setResidence( 
 	    
 		rs.getString( 
 			"Residence"  )
-	    
-	);
-	
-	
-	setStatus( 
-	    
-		rs.getBoolean( 
-			"Status"  )
-	    
-	);
-	
-	
-	setStreet( 
-	    
-		rs.getString( 
-			"Street"  )
 	    
 	);
 	
@@ -1629,6 +1541,38 @@ import com.lutris.dods.builder.generator.query.*;
 		rs.getBigDecimal( 
 			"Nationality" , 0 )
 	     )
+	);
+	
+	
+	setURL( 
+	    
+		rs.getString( 
+			"URL"  )
+	    
+	);
+	
+	
+	setAIESECMember( 
+	    
+		rs.getBoolean( 
+			"AIESECMember"  )
+	    
+	);
+	
+	
+	setCompetence( 
+	    
+		rs.getString( 
+			"Competence"  )
+	    
+	);
+	
+	
+	setStatus( 
+	    
+		rs.getBoolean( 
+			"Status"  )
+	    
 	);
 	
 
@@ -1664,7 +1608,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Candidate ( AIESECMember, City, Competence, Fax, Fname, HouseNumber, Lname, Natel, PLZ, Phone, Picture, Residence, Status, Street, Sex, Birthdate, Nationality, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into Candidate ( Picture, Email, Fax, Adress, Fname, Lname, Natel, Phone, Residence, Sex, Birthdate, Nationality, URL, AIESECMember, Competence, Status, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1672,40 +1616,38 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_boolean( stmt, param,
-		getAIESECMember() );
+	    	setPrepStmtParam_DO( stmt, param,
+		getPicture() );
 	setPrepStmtParam_String( stmt, param,
-		getCity() );
-	setPrepStmtParam_String( stmt, param,
-		getCompetence() );
+		getEmail() );
 	setPrepStmtParam_String( stmt, param,
 		getFax() );
+	setPrepStmtParam_DO( stmt, param,
+		getAdress() );
 	setPrepStmtParam_String( stmt, param,
 		getFname() );
-	setPrepStmtParam_String( stmt, param,
-		getHouseNumber() );
 	setPrepStmtParam_String( stmt, param,
 		getLname() );
 	setPrepStmtParam_String( stmt, param,
 		getNatel() );
-	setPrepStmtParam_int( stmt, param,
-		getPLZ() );
 	setPrepStmtParam_String( stmt, param,
 		getPhone() );
-	setPrepStmtParam_bytes( stmt, param,
-		getPicture() );
 	setPrepStmtParam_String( stmt, param,
 		getResidence() );
-	setPrepStmtParam_boolean( stmt, param,
-		getStatus() );
-	setPrepStmtParam_String( stmt, param,
-		getStreet() );
 	setPrepStmtParam_String( stmt, param,
 		getSex() );
 	setPrepStmtParam_java_sql_Date( stmt, param,
 		getBirthdate() );
 	setPrepStmtParam_DO( stmt, param,
 		getNationality() );
+	setPrepStmtParam_String( stmt, param,
+		getURL() );
+	setPrepStmtParam_boolean( stmt, param,
+		getAIESECMember() );
+	setPrepStmtParam_String( stmt, param,
+		getCompetence() );
+	setPrepStmtParam_boolean( stmt, param,
+		getStatus() );
 
 
 	    /* The order of the values being inserted must match
@@ -1738,7 +1680,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Candidate set " + getVersionColumnName() + " = ?, AIESECMember = ?, City = ?, Competence = ?, Fax = ?, Fname = ?, HouseNumber = ?, Lname = ?, Natel = ?, PLZ = ?, Phone = ?, Picture = ?, Residence = ?, Status = ?, Street = ?, Sex = ?, Birthdate = ?, Nationality = ? " +
+	    "update Candidate set " + getVersionColumnName() + " = ?, Picture = ?, Email = ?, Fax = ?, Adress = ?, Fname = ?, Lname = ?, Natel = ?, Phone = ?, Residence = ?, Sex = ?, Birthdate = ?, Nationality = ?, URL = ?, AIESECMember = ?, Competence = ?, Status = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1748,40 +1690,38 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_boolean( stmt, param,
-		getAIESECMember() );
+	    	setPrepStmtParam_DO( stmt, param,
+		getPicture() );
 	setPrepStmtParam_String( stmt, param,
-		getCity() );
-	setPrepStmtParam_String( stmt, param,
-		getCompetence() );
+		getEmail() );
 	setPrepStmtParam_String( stmt, param,
 		getFax() );
+	setPrepStmtParam_DO( stmt, param,
+		getAdress() );
 	setPrepStmtParam_String( stmt, param,
 		getFname() );
-	setPrepStmtParam_String( stmt, param,
-		getHouseNumber() );
 	setPrepStmtParam_String( stmt, param,
 		getLname() );
 	setPrepStmtParam_String( stmt, param,
 		getNatel() );
-	setPrepStmtParam_int( stmt, param,
-		getPLZ() );
 	setPrepStmtParam_String( stmt, param,
 		getPhone() );
-	setPrepStmtParam_bytes( stmt, param,
-		getPicture() );
 	setPrepStmtParam_String( stmt, param,
 		getResidence() );
-	setPrepStmtParam_boolean( stmt, param,
-		getStatus() );
-	setPrepStmtParam_String( stmt, param,
-		getStreet() );
 	setPrepStmtParam_String( stmt, param,
 		getSex() );
 	setPrepStmtParam_java_sql_Date( stmt, param,
 		getBirthdate() );
 	setPrepStmtParam_DO( stmt, param,
 		getNationality() );
+	setPrepStmtParam_String( stmt, param,
+		getURL() );
+	setPrepStmtParam_boolean( stmt, param,
+		getAIESECMember() );
+	setPrepStmtParam_String( stmt, param,
+		getCompetence() );
+	setPrepStmtParam_boolean( stmt, param,
+		getStatus() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -1831,23 +1771,22 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "AIESECMember=" + data.AIESECMember
-+ "\n" + indent + "City=" + data.City
-+ "\n" + indent + "Competence=" + data.Competence
+	    str = str + "\n" + indent + "Picture=" + ( null == data.Picture ? null  : data.Picture.toString( indentCount + 1 ) )
++ "\n" + indent + "Email=" + data.Email
 + "\n" + indent + "Fax=" + data.Fax
++ "\n" + indent + "Adress=" + ( null == data.Adress ? null  : data.Adress.toString( indentCount + 1 ) )
 + "\n" + indent + "Fname=" + data.Fname
-+ "\n" + indent + "HouseNumber=" + data.HouseNumber
 + "\n" + indent + "Lname=" + data.Lname
 + "\n" + indent + "Natel=" + data.Natel
-+ "\n" + indent + "PLZ=" + data.PLZ
 + "\n" + indent + "Phone=" + data.Phone
-+ "\n" + indent + "Picture=" + data.Picture
 + "\n" + indent + "Residence=" + data.Residence
-+ "\n" + indent + "Status=" + data.Status
-+ "\n" + indent + "Street=" + data.Street
 + "\n" + indent + "Sex=" + data.Sex
 + "\n" + indent + "Birthdate=" + data.Birthdate
 + "\n" + indent + "Nationality=" + ( null == data.Nationality ? null  : data.Nationality.toString( indentCount + 1 ) )
++ "\n" + indent + "URL=" + data.URL
++ "\n" + indent + "AIESECMember=" + data.AIESECMember
++ "\n" + indent + "Competence=" + data.Competence
++ "\n" + indent + "Status=" + data.Status
 ;
         return str + "; " + super.toString();
     }
@@ -1871,23 +1810,22 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "AIESECMember=" + data.AIESECMember
-+ "\n" + indent + "City=" + data.City
-+ "\n" + indent + "Competence=" + data.Competence
+            str = str + "\n" + indent + "Picture=" + ( null == data.Picture ? null  : data.Picture.toString( indentCount + 1 ) )
++ "\n" + indent + "Email=" + data.Email
 + "\n" + indent + "Fax=" + data.Fax
++ "\n" + indent + "Adress=" + ( null == data.Adress ? null  : data.Adress.toString( indentCount + 1 ) )
 + "\n" + indent + "Fname=" + data.Fname
-+ "\n" + indent + "HouseNumber=" + data.HouseNumber
 + "\n" + indent + "Lname=" + data.Lname
 + "\n" + indent + "Natel=" + data.Natel
-+ "\n" + indent + "PLZ=" + data.PLZ
 + "\n" + indent + "Phone=" + data.Phone
-+ "\n" + indent + "Picture=" + data.Picture
 + "\n" + indent + "Residence=" + data.Residence
-+ "\n" + indent + "Status=" + data.Status
-+ "\n" + indent + "Street=" + data.Street
 + "\n" + indent + "Sex=" + data.Sex
 + "\n" + indent + "Birthdate=" + data.Birthdate
 + "\n" + indent + "Nationality=" + ( null == data.Nationality ? null  : data.Nationality.toString( indentCount + 1 ) )
++ "\n" + indent + "URL=" + data.URL
++ "\n" + indent + "AIESECMember=" + data.AIESECMember
++ "\n" + indent + "Competence=" + data.Competence
++ "\n" + indent + "Status=" + data.Status
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -2460,6 +2398,42 @@ import com.lutris.dods.builder.generator.query.*;
 
       /**
      * A stub method for implementing pre-commit assertions 
+     * for the Picture data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Picture is not valid for writing to the database.
+     */
+    protected void okToCommitPicture( jobmatch.data.PictureDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Picture data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Picture is not valid for deletion from the database.
+     */
+    protected void okToDeletePicture( jobmatch.data.PictureDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for writing to the database.
+     */
+    protected void okToCommitAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for deletion from the database.
+     */
+    protected void okToDeleteAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
      * for the Nationality data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Nationality is not valid for writing to the database.
@@ -2545,7 +2519,37 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.CountryDO Nationality_DO = getNationality();
+	  	jobmatch.data.PictureDO Picture_DO = getPicture();
+	if ( null != Picture_DO ) {
+	    if ( Picture_DO.isLoaded() ) {
+		okToCommitPicture( Picture_DO );
+		Picture_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit CandidateDO ( " + toString() +
+		    " ) because Picture is not allowed to be null." );
+	}
+	jobmatch.data.AdressDO Adress_DO = getAdress();
+	if ( null != Adress_DO ) {
+	    if ( Adress_DO.isLoaded() ) {
+		okToCommitAdress( Adress_DO );
+		Adress_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit CandidateDO ( " + toString() +
+		    " ) because Adress is not allowed to be null." );
+	}
+	jobmatch.data.CountryDO Nationality_DO = getNationality();
 	if ( null != Nationality_DO ) {
 	    if ( Nationality_DO.isLoaded() ) {
 		okToCommitNationality( Nationality_DO );

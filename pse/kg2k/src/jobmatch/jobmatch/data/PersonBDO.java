@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class PersonBDO implements java.io.Serializable {
 
@@ -138,7 +138,7 @@ public class PersonBDO implements java.io.Serializable {
     /** 
      * The getBDOarray method performs a database query to
      * return an array of <CODE>PersonBDO</CODE> objects
-     * representing all the rows in the <CODE>Contactperson</CODE> table.
+     * representing all the rows in the <CODE>Person</CODE> table.
      *
      * This method is a minimal example of using a Query class.
      * To restrict the set of objects returned,  you could
@@ -242,29 +242,29 @@ public class PersonBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Name of the PersonDO
+    * Get Picture of the PersonDO
     *
-    * @return Name of the PersonDO
+    * @return Picture of the PersonDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getName () 
+   public jobmatch.data.PictureDO getPicture () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getName ();
+      return DO.getPicture ();
    }
 
    
    /**
-    * Set Name of the PersonDO
+    * Set Picture of the PersonDO
     *
-    * @param Name of the PersonDO
+    * @param Picture of the PersonDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setName ( String Name ) 
+   public void setPicture ( jobmatch.data.PictureDO Picture ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,7 +272,91 @@ public class PersonBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setName ( Name );
+      DO.setPicture ( Picture );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Picture of the PersonDO
+    *
+    * @return BDO-wrapped Picture of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.PictureBDO getPictureBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.PictureBDO b = jobmatch.data.PictureBDO.createExisting(
+					  DO.getPicture () );
+      return b;
+   }
+
+   /**
+    * Set Picture of the PersonDO
+    *
+    * @param BDO-wrapped Picture of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setPicture ( jobmatch.data.PictureBDO Picture ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Picture ) {
+	  if ( true )
+	      DO.setPicture ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "PersonBDO.setPicture does not allow NULL." );
+      } else {
+          DO.setPicture ( Picture.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+   
+
+   /**
+    * Get Email of the PersonDO
+    *
+    * @return Email of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getEmail () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getEmail ();
+   }
+
+   
+   /**
+    * Set Email of the PersonDO
+    *
+    * @param Email of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setEmail ( String Email ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setEmail ( Email );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -318,29 +402,29 @@ public class PersonBDO implements java.io.Serializable {
    
 
    /**
-    * Get Email of the PersonDO
+    * Get Adress of the PersonDO
     *
-    * @return Email of the PersonDO
+    * @return Adress of the PersonDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getEmail () 
+   public jobmatch.data.AdressDO getAdress () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getEmail ();
+      return DO.getAdress ();
    }
 
    
    /**
-    * Set Email of the PersonDO
+    * Set Adress of the PersonDO
     *
-    * @param Email of the PersonDO
+    * @param Adress of the PersonDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setEmail ( String Email ) 
+   public void setAdress ( jobmatch.data.AdressDO Adress ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -348,7 +432,441 @@ public class PersonBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setEmail ( Email );
+      DO.setAdress ( Adress );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Adress of the PersonDO
+    *
+    * @return BDO-wrapped Adress of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.AdressBDO getAdressBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.AdressBDO b = jobmatch.data.AdressBDO.createExisting(
+					  DO.getAdress () );
+      return b;
+   }
+
+   /**
+    * Set Adress of the PersonDO
+    *
+    * @param BDO-wrapped Adress of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setAdress ( jobmatch.data.AdressBDO Adress ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Adress ) {
+	  if ( true )
+	      DO.setAdress ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "PersonBDO.setAdress does not allow NULL." );
+      } else {
+          DO.setAdress ( Adress.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+   
+
+   /**
+    * Get Fname of the PersonDO
+    *
+    * @return Fname of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getFname () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getFname ();
+   }
+
+   
+   /**
+    * Set Fname of the PersonDO
+    *
+    * @param Fname of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setFname ( String Fname ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setFname ( Fname );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Lname of the PersonDO
+    *
+    * @return Lname of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getLname () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLname ();
+   }
+
+   
+   /**
+    * Set Lname of the PersonDO
+    *
+    * @param Lname of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLname ( String Lname ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLname ( Lname );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Natel of the PersonDO
+    *
+    * @return Natel of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getNatel () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getNatel ();
+   }
+
+   
+   /**
+    * Set Natel of the PersonDO
+    *
+    * @param Natel of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setNatel ( String Natel ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setNatel ( Natel );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Phone of the PersonDO
+    *
+    * @return Phone of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getPhone () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getPhone ();
+   }
+
+   
+   /**
+    * Set Phone of the PersonDO
+    *
+    * @param Phone of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setPhone ( String Phone ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setPhone ( Phone );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Residence of the PersonDO
+    *
+    * @return Residence of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getResidence () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getResidence ();
+   }
+
+   
+   /**
+    * Set Residence of the PersonDO
+    *
+    * @param Residence of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setResidence ( String Residence ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setResidence ( Residence );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Sex of the PersonDO
+    *
+    * @return Sex of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getSex () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getSex ();
+   }
+
+   
+   /**
+    * Set Sex of the PersonDO
+    *
+    * @param Sex of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setSex ( String Sex ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setSex ( Sex );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Birthdate of the PersonDO
+    *
+    * @return Birthdate of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Date getBirthdate () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getBirthdate ();
+   }
+
+   
+   /**
+    * Set Birthdate of the PersonDO
+    *
+    * @param Birthdate of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setBirthdate ( java.sql.Date Birthdate ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setBirthdate ( Birthdate );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Nationality of the PersonDO
+    *
+    * @return Nationality of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CountryDO getNationality () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getNationality ();
+   }
+
+   
+   /**
+    * Set Nationality of the PersonDO
+    *
+    * @param Nationality of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setNationality ( jobmatch.data.CountryDO Nationality ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setNationality ( Nationality );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Nationality of the PersonDO
+    *
+    * @return BDO-wrapped Nationality of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CountryBDO getNationalityBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.CountryBDO b = jobmatch.data.CountryBDO.createExisting(
+					  DO.getNationality () );
+      return b;
+   }
+
+   /**
+    * Set Nationality of the PersonDO
+    *
+    * @param BDO-wrapped Nationality of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setNationality ( jobmatch.data.CountryBDO Nationality ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Nationality ) {
+	  if ( true )
+	      DO.setNationality ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "PersonBDO.setNationality does not allow NULL." );
+      } else {
+          DO.setNationality ( Nationality.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+   
+
+   /**
+    * Get URL of the PersonDO
+    *
+    * @return URL of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getURL () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getURL ();
+   }
+
+   
+   /**
+    * Set URL of the PersonDO
+    *
+    * @param URL of the PersonDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setURL ( String URL ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setURL ( URL );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -411,7 +929,61 @@ public class PersonBDO implements java.io.Serializable {
     modifyDO( dbt, true );
   }
 
-  
+      /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Picture data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Picture is not valid for writing to the database.
+     */
+    protected void okToCommitPicture( jobmatch.data.PictureDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Picture data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Picture is not valid for deletion from the database.
+     */
+    protected void okToDeletePicture( jobmatch.data.PictureDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for writing to the database.
+     */
+    protected void okToCommitAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Adress data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Adress is not valid for deletion from the database.
+     */
+    protected void okToDeleteAdress( jobmatch.data.AdressDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for writing to the database.
+     */
+    protected void okToCommitNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Nationality data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Nationality is not valid for deletion from the database.
+     */
+    protected void okToDeleteNationality( jobmatch.data.CountryDO member ) 
+    throws RefAssertionException { }
+
+
 
   /**
    * Modifies the DO within its table.
@@ -448,7 +1020,61 @@ public class PersonBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  
+	  	jobmatch.data.PictureDO Picture_DO = DO.getPicture();
+	if ( null != Picture_DO ) {
+	    if ( Picture_DO.isLoaded() ) {
+		okToCommitPicture( Picture_DO );
+		jobmatch.data.PictureBDO b = 
+		    jobmatch.data.PictureBDO.createExisting(
+						    Picture_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit PersonBDO ( " + toString() +
+		    " ) because Picture is not allowed to be null." );
+	}
+	jobmatch.data.AdressDO Adress_DO = DO.getAdress();
+	if ( null != Adress_DO ) {
+	    if ( Adress_DO.isLoaded() ) {
+		okToCommitAdress( Adress_DO );
+		jobmatch.data.AdressBDO b = 
+		    jobmatch.data.AdressBDO.createExisting(
+						    Adress_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit PersonBDO ( " + toString() +
+		    " ) because Adress is not allowed to be null." );
+	}
+	jobmatch.data.CountryDO Nationality_DO = DO.getNationality();
+	if ( null != Nationality_DO ) {
+	    if ( Nationality_DO.isLoaded() ) {
+		okToCommitNationality( Nationality_DO );
+		jobmatch.data.CountryBDO b = 
+		    jobmatch.data.CountryBDO.createExisting(
+						    Nationality_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! true )
+		throw new RefAssertionException(
+		    "Cannot commit PersonBDO ( " + toString() +
+		    " ) because Nationality is not allowed to be null." );
+	}
+
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

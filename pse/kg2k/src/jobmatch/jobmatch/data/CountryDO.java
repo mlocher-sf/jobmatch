@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CountryDO information.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */
@@ -845,6 +845,130 @@ import com.lutris.dods.builder.generator.query.*;
 
     
     /**
+     * Get array of AdressDO objects that refer to this DO.
+     *
+     * @return array of AdressDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.AdressDO[] getAdressDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.AdressDO[] ret = null;
+	try {
+	    jobmatch.data.AdressQuery q = new jobmatch.data.AdressQuery();
+	    q.setQueryCountry( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.AdressDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single AdressDO object
+     * that refers to this DO.
+     *
+     * @return AdressDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one AdressDO object was found.
+     */
+    public jobmatch.data.AdressDO getAdressDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.AdressQuery q = new jobmatch.data.AdressQuery();
+	q.setQueryCountry( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a AdressDO object that refers to this DO.
+     *
+     * @param referrer AdressDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addAdressDO( jobmatch.data.AdressDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addAdressDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a AdressDO object that refers to this DO.
+     *
+     * @param referrer AdressDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addAdressDO( jobmatch.data.AdressDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCountry( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a AdressDO object that refers to this DO.
+     *
+     * @param referrer AdressDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeAdressDO( jobmatch.data.AdressDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeAdressDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a AdressDO object that refers to this DO.
+     *
+     * @param referrer AdressDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeAdressDO( jobmatch.data.AdressDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CountryDO referred = referrer.getCountry();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
      * Get array of CandidateDO objects that refer to this DO.
      *
      * @return array of CandidateDO objects.
@@ -969,72 +1093,72 @@ import com.lutris.dods.builder.generator.query.*;
  
 
     /**
-     * Get array of EmployerDO objects that refer to this DO.
+     * Get array of PersonDO objects that refer to this DO.
      *
-     * @return array of EmployerDO objects.
+     * @return array of PersonDO objects.
      *
      * @exception DataObjectException
      *   If the object is not found in the database.
      * @exception QueryException
      *   If an error occured while building the query before execution.
      */
-    public jobmatch.data.EmployerDO[] getEmployerDOArray () 
+    public jobmatch.data.PersonDO[] getPersonDOArray () 
     throws DataObjectException, QueryException {
-	jobmatch.data.EmployerDO[] ret = null;
+	jobmatch.data.PersonDO[] ret = null;
 	try {
-	    jobmatch.data.EmployerQuery q = new jobmatch.data.EmployerQuery();
-	    q.setQueryCounty( this );
+	    jobmatch.data.PersonQuery q = new jobmatch.data.PersonQuery();
+	    q.setQueryNationality( this );
 	    ret = q.getDOArray();
 	} catch ( NonUniqueQueryException e ) { 
 	    throw new DataObjectException( 
 		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
 	} finally {
 	    if ( null == ret )
-		ret = new jobmatch.data.EmployerDO[ 0 ];
+		ret = new jobmatch.data.PersonDO[ 0 ];
 	}
 	return ret;
     }
 
     /**
-     * Get the single EmployerDO object
+     * Get the single PersonDO object
      * that refers to this DO.
      *
-     * @return EmployerDO object.
+     * @return PersonDO object.
      *
      * @exception DataObjectException
      *   If the object is not found in the database.
      * @exception QueryException
      *   If an error occured while building the query before execution.
      * @exception NonUniqueQueryException
-     *   If more than one EmployerDO object was found.
+     *   If more than one PersonDO object was found.
      */
-    public jobmatch.data.EmployerDO getEmployerDO () 
+    public jobmatch.data.PersonDO getPersonDO () 
     throws DataObjectException, QueryException, NonUniqueQueryException {
-	jobmatch.data.EmployerQuery q = new jobmatch.data.EmployerQuery();
-	q.setQueryCounty( this );
+	jobmatch.data.PersonQuery q = new jobmatch.data.PersonQuery();
+	q.setQueryNationality( this );
 	q.requireUniqueInstance();
 	return q.getNextDO();
     }
 
     /**
-     * Add (set & commit) a EmployerDO object that refers to this DO.
+     * Add (set & commit) a PersonDO object that refers to this DO.
      *
-     * @param referrer EmployerDO to be set to point to this DO and committed.
+     * @param referrer PersonDO to be set to point to this DO and committed.
      *
      * @exception DatabaseManagerException if could not create a transaction
      * @exception java.sql.SQLException if any SQL errors occur.
      * @exception DataObjectException If object is not found in the database.
      */
-    public void addEmployerDO( jobmatch.data.EmployerDO referrer )
+    public void addPersonDO( jobmatch.data.PersonDO referrer )
     throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addEmployerDO( referrer, null );
+        addPersonDO( referrer, null );
     }
  
  
     /**
-     * Add (set & commit) a EmployerDO object that refers to this DO.
+     * Add (set & commit) a PersonDO object that refers to this DO.
      *
-     * @param referrer EmployerDO to be set to point to this DO and committed.
+     * @param referrer PersonDO to be set to point to this DO and committed.
      *
      * @param tran The transaction to be used for the commit.
      * If null, a new transaction is created.
@@ -1043,32 +1167,32 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception java.sql.SQLException if any SQL errors occur.
      * @exception DataObjectException If object is not found in the database.
      */
-    public void addEmployerDO( jobmatch.data.EmployerDO referrer, DBTransaction tran )
+    public void addPersonDO( jobmatch.data.PersonDO referrer, DBTransaction tran )
     throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        referrer.setCounty( this );
+        referrer.setNationality( this );
         referrer.commit( tran );
     }
 
  
     /**
-     * Remove (delete) a EmployerDO object that refers to this DO.
+     * Remove (delete) a PersonDO object that refers to this DO.
      *
-     * @param referrer EmployerDO to be deleted.
+     * @param referrer PersonDO to be deleted.
      *
      * @exception DatabaseManagerException if could not create a transaction
      * @exception java.sql.SQLException if any SQL errors occur.
      * @exception DataObjectException If object is not found in the database.
      */
-    public void removeEmployerDO( jobmatch.data.EmployerDO referrer )
+    public void removePersonDO( jobmatch.data.PersonDO referrer )
     throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeEmployerDO( referrer, null );
+        removePersonDO( referrer, null );
     }
  
  
     /**
-     * Remove (delete) a EmployerDO object that refers to this DO.
+     * Remove (delete) a PersonDO object that refers to this DO.
      *
-     * @param referrer EmployerDO to be deleted.
+     * @param referrer PersonDO to be deleted.
      *
      * @param tran The transaction to be used for the commit.
      * If null, a new transaction is created.
@@ -1077,9 +1201,9 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception java.sql.SQLException if any SQL errors occur.
      * @exception DataObjectException If object is not found in the database.
      */
-    public void removeEmployerDO( jobmatch.data.EmployerDO referrer, DBTransaction tran )
+    public void removePersonDO( jobmatch.data.PersonDO referrer, DBTransaction tran )
     throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	CountryDO referred = referrer.getCounty();
+	CountryDO referred = referrer.getNationality();
 	String referredHandle = referred.getHandle();
 	String mydoHandle = this.getHandle();
 	if ( null == referredHandle || null == mydoHandle || 
@@ -1331,6 +1455,15 @@ import com.lutris.dods.builder.generator.query.*;
 	  	
 	{
 	    // perform cascading delete on referring table
+	    jobmatch.data.AdressDO[] a = getAdressDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
 	    jobmatch.data.CandidateDO[] a = getCandidateDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
@@ -1340,7 +1473,7 @@ import com.lutris.dods.builder.generator.query.*;
 	
 	{
 	    // perform cascading delete on referring table
-	    jobmatch.data.EmployerDO[] a = getEmployerDOArray();
+	    jobmatch.data.PersonDO[] a = getPersonDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }

@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  studer
  * @since   jobmatch
  */
@@ -91,6 +91,16 @@ public class AccountDataStruct implements Cloneable, Serializable {
  * 
  */
    public String Passphrase = null;
+
+/**
+ * 
+ */
+   public String LastIP = null;
+
+/**
+ * 
+ */
+   public String LastHost = null;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -118,6 +128,12 @@ public class AccountDataStruct implements Cloneable, Serializable {
 	
 	
 	ret.Passphrase = Passphrase + "";
+	
+	
+	ret.LastIP = LastIP + "";
+	
+	
+	ret.LastHost = LastHost + "";
 	
 
 

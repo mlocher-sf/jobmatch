@@ -3,23 +3,22 @@
 create table Candidate
 (
 /* class Candidate */
-    AIESECMember BIT DEFAULT 0    ,
-    City VARCHAR(30) DEFAULT ""    ,
-    Competence TEXT(32) DEFAULT ""    ,
-    Fax VARCHAR(25) DEFAULT ""    ,
+    Picture DECIMAL(19,0)     ,
+    Email VARCHAR(50) DEFAULT ""    ,
+    Fax VARCHAR(20) DEFAULT ""    ,
+    Adress DECIMAL(19,0)     ,
     Fname VARCHAR(20) DEFAULT ""    ,
-    HouseNumber VARCHAR(5) DEFAULT ""    ,
     Lname VARCHAR(25) DEFAULT ""    ,
     Natel VARCHAR(25) DEFAULT ""    ,
-    PLZ MEDIUMINT UNSIGNED     ,
     Phone VARCHAR(25) DEFAULT ""    ,
-    Picture MEDIUMBLOB     ,
     Residence VARCHAR(50) DEFAULT ""    ,
-    Status BIT DEFAULT 0    ,
-    Street VARCHAR(50) DEFAULT ""    ,
     Sex ENUM('w','m')(32) DEFAULT ""    ,
     Birthdate DATE     ,
     Nationality DECIMAL(19,0)     ,
+    URL VARCHAR(50) DEFAULT ""    ,
+    AIESECMember BIT DEFAULT 0    ,
+    Competence TEXT(32) DEFAULT ""    ,
+    Status BIT DEFAULT 0    ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

@@ -1,5 +1,59 @@
 /* This SQL was generated for a Standard database. */
 
+create table Compcapability
+(
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
+/* class Capability */
+    Ordinal INTEGER DEFAULT 0 NOT NULL   ,
+/* class Compcapability */
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table Language
+(
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
+/* class Language */
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
 create table Hobby
 (
 /* class CVSection */
@@ -29,11 +83,128 @@ create table Hobby
 
 /* This SQL was generated for a Standard database. */
 
-create table Industry
+create table Country
 (
 /* class ConstantTable */
     Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Industry */
+/* class Country */
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table ProviderAccount
+(
+/* class Account */
+    Username VARCHAR(40) DEFAULT "" NOT NULL   ,
+    Email VARCHAR(50) DEFAULT "" NOT NULL   ,
+    LastLogin TIMESTAMP  NOT NULL   ,
+    LoginReminder INTEGER DEFAULT 0 NOT NULL   ,
+    Passphrase VARCHAR(20) DEFAULT "" NOT NULL   ,
+    LastIP VARCHAR(25) DEFAULT ""    ,
+    LastHost VARCHAR(30) DEFAULT ""    ,
+/* class ProviderAccount */
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+CREATE INDEX I1_ProviderAccount ON ProviderAccount ( Username );
+
+/* This SQL was generated for a Standard database. */
+
+create table Languagecapability
+(
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
+/* class Capability */
+    Ordinal INTEGER DEFAULT 0 NOT NULL   ,
+/* class Languagecapability */
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table Schooltype
+(
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
+/* class Schooltype */
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table SchoolProfile
+(
+/* class TreeLeaf */
+    LeafNumber INTEGER     ,
+    Profile DECIMAL(19,0)  NOT NULL   ,
+    Mandatory BIT DEFAULT 0 NOT NULL   ,
+/* class SchoolProfile */
+    MinSchoolType DECIMAL(19,0)  NOT NULL  REFERENCES Schooltype ( oid ) ,
+    MaxSchoolType DECIMAL(19,0)  NOT NULL  REFERENCES Schooltype ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -81,42 +252,11 @@ create table Software
 
 /* This SQL was generated for a Standard database. */
 
-create table SoftwareCandidate
-(
-/* class CVSection */
-    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
-/* class CVComputer */
-    Capability DECIMAL(19,0)  NOT NULL   ,
-/* class SoftwareCandidate */
-    Software DECIMAL(19,0)  NOT NULL  REFERENCES Software ( oid ) ,
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table Languagecapability
+create table Association
 (
 /* class ConstantTable */
     Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Capability */
-    Ordinal INTEGER DEFAULT 0 NOT NULL   ,
-/* class Languagecapability */
+/* class Association */
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -164,42 +304,11 @@ create table Operatingsystem
 
 /* This SQL was generated for a Standard database. */
 
-create table ProviderAccount
-(
-/* class Account */
-    Username VARCHAR(40) DEFAULT "" NOT NULL   ,
-    Email VARCHAR(50) DEFAULT "" NOT NULL   ,
-    LastLogin TIMESTAMP  NOT NULL   ,
-    LoginReminder INTEGER DEFAULT 0 NOT NULL   ,
-    Passphrase VARCHAR(20) DEFAULT "" NOT NULL   ,
-/* class ProviderAccount */
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-CREATE INDEX I1_ProviderAccount ON ProviderAccount ( Username );
-
-/* This SQL was generated for a Standard database. */
-
-create table Programming
+create table Area
 (
 /* class ConstantTable */
     Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Programming */
+/* class Area */
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -249,11 +358,11 @@ create table MailQueue
 
 /* This SQL was generated for a Standard database. */
 
-create table Association
+create table Picture
 (
-/* class ConstantTable */
-    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Association */
+/* class Picture */
+    MimeType VARCHAR(30) DEFAULT "" NOT NULL   ,
+    Data MEDIUMBLOB  NOT NULL   ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -275,11 +384,11 @@ create table Association
 
 /* This SQL was generated for a Standard database. */
 
-create table Language
+create table Graduation
 (
 /* class ConstantTable */
     Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Language */
+/* class Graduation */
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -301,16 +410,11 @@ create table Language
 
 /* This SQL was generated for a Standard database. */
 
-create table OperatingsystemProfile
+create table Industry
 (
-/* class TreeLeaf */
-    LeafNumber INTEGER     ,
-    Profile DECIMAL(19,0)  NOT NULL   ,
-    Mandatory BIT DEFAULT 0 NOT NULL   ,
-/* class ComputerRequest */
-    MinCapability DECIMAL(19,0)  NOT NULL   ,
-/* class OperatingsystemProfile */
-    OperatingSystem DECIMAL(19,0)  NOT NULL  REFERENCES Operatingsystem ( oid ) ,
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
+/* class Industry */
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -332,11 +436,11 @@ create table OperatingsystemProfile
 
 /* This SQL was generated for a Standard database. */
 
-create table Area
+create table Programming
 (
 /* class ConstantTable */
     Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Area */
+/* class Programming */
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -366,89 +470,6 @@ create table OperatingSystemCandidate
     Capability DECIMAL(19,0)  NOT NULL   ,
 /* class OperatingsystemCandidate */
     Operatingsystem DECIMAL(19,0)  NOT NULL  REFERENCES Operatingsystem ( oid ) ,
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table Schooltype
-(
-/* class ConstantTable */
-    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Schooltype */
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table Country
-(
-/* class ConstantTable */
-    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Country */
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table SoftwareProfile
-(
-/* class TreeLeaf */
-    LeafNumber INTEGER     ,
-    Profile DECIMAL(19,0)  NOT NULL   ,
-    Mandatory BIT DEFAULT 0 NOT NULL   ,
-/* class ComputerRequest */
-    MinCapability DECIMAL(19,0)  NOT NULL   ,
-/* class SoftwareProfile */
-    Software DECIMAL(19,0)  NOT NULL  REFERENCES Software ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -501,218 +522,6 @@ create table Jobwish
 
 /* This SQL was generated for a Standard database. */
 
-create table Candidate
-(
-/* class Candidate */
-    AIESECMember BIT DEFAULT 0    ,
-    City VARCHAR(30) DEFAULT ""    ,
-    Competence TEXT DEFAULT ""    ,
-    Fax VARCHAR(25) DEFAULT ""    ,
-    Fname VARCHAR(20) DEFAULT ""    ,
-    HouseNumber VARCHAR(5) DEFAULT ""    ,
-    Lname VARCHAR(25) DEFAULT ""    ,
-    Natel VARCHAR(25) DEFAULT ""    ,
-    PLZ MEDIUMINT UNSIGNED     ,
-    Phone VARCHAR(25) DEFAULT ""    ,
-    Picture MEDIUMBLOB     ,
-    Residence VARCHAR(50) DEFAULT ""    ,
-    Status BIT DEFAULT 0    ,
-    Street VARCHAR(50) DEFAULT ""    ,
-    Sex ENUM('w','m') DEFAULT 'm'    ,
-    Birthdate DATE     ,
-    Nationality DECIMAL(19,0)     ,
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table Compcapability
-(
-/* class ConstantTable */
-    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Capability */
-    Ordinal INTEGER DEFAULT 0 NOT NULL   ,
-/* class Compcapability */
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table Graduation
-(
-/* class ConstantTable */
-    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class Graduation */
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table Contactperson
-(
-/* class Person */
-    Name VARCHAR(40) DEFAULT "" NOT NULL   ,
-    Fax VARCHAR(20) DEFAULT ""    ,
-    Email VARCHAR(50) DEFAULT ""    ,
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table CandidateAccount
-(
-/* class Account */
-    Username VARCHAR(40) DEFAULT "" NOT NULL   ,
-    Email VARCHAR(50) DEFAULT "" NOT NULL   ,
-    LastLogin TIMESTAMP  NOT NULL   ,
-    LoginReminder INTEGER DEFAULT 0 NOT NULL   ,
-    Passphrase VARCHAR(20) DEFAULT "" NOT NULL   ,
-/* class CandidateAccount */
-    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-CREATE INDEX I1_CandidateAccount ON CandidateAccount ( Username );
-
-/* This SQL was generated for a Standard database. */
-
-create table ProgrammingProfile
-(
-/* class TreeLeaf */
-    LeafNumber INTEGER     ,
-    Profile DECIMAL(19,0)  NOT NULL   ,
-    Mandatory BIT DEFAULT 0 NOT NULL   ,
-/* class ComputerRequest */
-    MinCapability DECIMAL(19,0)  NOT NULL   ,
-/* class ProgrammingProfile */
-    Language DECIMAL(19,0)  NOT NULL  REFERENCES Programming ( oid ) ,
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table Employer
-(
-/* class Employer */
-    Company VARCHAR(30) DEFAULT ""    ,
-    City VARCHAR(30) DEFAULT ""    ,
-    County DECIMAL(19,0)     ,
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
 create table LanguageCandidate
 (
 /* class CVSection */
@@ -743,14 +552,14 @@ create table LanguageCandidate
 
 /* This SQL was generated for a Standard database. */
 
-create table ProgrammingCandidate
+create table Adress
 (
-/* class CVSection */
-    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
-/* class CVComputer */
-    Capability DECIMAL(19,0)  NOT NULL   ,
-/* class ProgrammingCandidate */
-    Language DECIMAL(19,0)  NOT NULL  REFERENCES Programming ( oid ) ,
+/* class Adress */
+    Street VARCHAR(40) DEFAULT ""    ,
+    HouseNumber VARCHAR(5) DEFAULT ""    ,
+    ZIP VARCHAR(10) DEFAULT ""    ,
+    City VARCHAR(30) DEFAULT ""    ,
+    Country DECIMAL(19,0)     ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -832,6 +641,34 @@ create table AssociationCandidate
 
 /* This SQL was generated for a Standard database. */
 
+create table School
+(
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
+/* class School */
+    Location VARCHAR(40) DEFAULT ""    ,
+    Type DECIMAL(19,0)  NOT NULL  REFERENCES Schooltype ( oid ) ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
 create table LanguageProfile
 (
 /* class TreeLeaf */
@@ -864,19 +701,212 @@ create table LanguageProfile
 
 /* This SQL was generated for a Standard database. */
 
-create table Company
+create table SoftwareProfile
 (
-/* class Company */
-    Active BIT DEFAULT 0    ,
-    Earnings INTEGER     ,
-    GraduatesPerYear INTEGER     ,
-    Location VARCHAR(40) DEFAULT ""    ,
-    Name VARCHAR(30) DEFAULT ""    ,
-    NumberEmployees INTEGER     ,
-    ShortDescription TEXT DEFAULT ""    ,
-    Contact DECIMAL(19,0)    REFERENCES Contactperson ( oid ) ,
-    Industry DECIMAL(19,0)     ,
-    Presence VARCHAR(40) DEFAULT ""    ,
+/* class TreeLeaf */
+    LeafNumber INTEGER     ,
+    Profile DECIMAL(19,0)  NOT NULL   ,
+    Mandatory BIT DEFAULT 0 NOT NULL   ,
+/* class ComputerRequest */
+    MinCapability DECIMAL(19,0)  NOT NULL   ,
+/* class SoftwareProfile */
+    Software DECIMAL(19,0)  NOT NULL  REFERENCES Software ( oid ) ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table ProgrammingCandidate
+(
+/* class CVSection */
+    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
+/* class CVComputer */
+    Capability DECIMAL(19,0)  NOT NULL   ,
+/* class ProgrammingCandidate */
+    Language DECIMAL(19,0)  NOT NULL  REFERENCES Programming ( oid ) ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table Candidate
+(
+/* class Candidate */
+    Picture DECIMAL(19,0)     ,
+    Email VARCHAR(50) DEFAULT ""    ,
+    Fax VARCHAR(20) DEFAULT ""    ,
+    Adress DECIMAL(19,0)     ,
+    Fname VARCHAR(20) DEFAULT ""    ,
+    Lname VARCHAR(25) DEFAULT ""    ,
+    Natel VARCHAR(25) DEFAULT ""    ,
+    Phone VARCHAR(25) DEFAULT ""    ,
+    Residence VARCHAR(50) DEFAULT ""    ,
+    Sex ENUM('w','m') DEFAULT 'm'    ,
+    Birthdate DATE     ,
+    Nationality DECIMAL(19,0)     ,
+    URL VARCHAR(50) DEFAULT ""    ,
+    AIESECMember BIT DEFAULT 0    ,
+    Competence TEXT DEFAULT ""    ,
+    Status BIT DEFAULT 0    ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table SoftwareCandidate
+(
+/* class CVSection */
+    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
+/* class CVComputer */
+    Capability DECIMAL(19,0)  NOT NULL   ,
+/* class SoftwareCandidate */
+    Software DECIMAL(19,0)  NOT NULL  REFERENCES Software ( oid ) ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table ProgrammingProfile
+(
+/* class TreeLeaf */
+    LeafNumber INTEGER     ,
+    Profile DECIMAL(19,0)  NOT NULL   ,
+    Mandatory BIT DEFAULT 0 NOT NULL   ,
+/* class ComputerRequest */
+    MinCapability DECIMAL(19,0)  NOT NULL   ,
+/* class ProgrammingProfile */
+    Language DECIMAL(19,0)  NOT NULL  REFERENCES Programming ( oid ) ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table OperatingsystemProfile
+(
+/* class TreeLeaf */
+    LeafNumber INTEGER     ,
+    Profile DECIMAL(19,0)  NOT NULL   ,
+    Mandatory BIT DEFAULT 0 NOT NULL   ,
+/* class ComputerRequest */
+    MinCapability DECIMAL(19,0)  NOT NULL   ,
+/* class OperatingsystemProfile */
+    OperatingSystem DECIMAL(19,0)  NOT NULL  REFERENCES Operatingsystem ( oid ) ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table Person
+(
+/* class Person */
+    Picture DECIMAL(19,0)     ,
+    Email VARCHAR(50) DEFAULT ""    ,
+    Fax VARCHAR(20) DEFAULT ""    ,
+    Adress DECIMAL(19,0)     ,
+    Fname VARCHAR(20) DEFAULT ""    ,
+    Lname VARCHAR(25) DEFAULT ""    ,
+    Natel VARCHAR(25) DEFAULT ""    ,
+    Phone VARCHAR(25) DEFAULT ""    ,
+    Residence VARCHAR(50) DEFAULT ""    ,
+    Sex ENUM('w','m') DEFAULT 'm'    ,
+    Birthdate DATE     ,
+    Nationality DECIMAL(19,0)     ,
     URL VARCHAR(50) DEFAULT ""    ,
 
     /* NOTICE: */
@@ -899,13 +929,18 @@ create table Company
 
 /* This SQL was generated for a Standard database. */
 
-create table School
+create table CandidateAccount
 (
-/* class ConstantTable */
-    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
-/* class School */
-    Location VARCHAR(40) DEFAULT ""    ,
-    Type DECIMAL(19,0)  NOT NULL  REFERENCES Schooltype ( oid ) ,
+/* class Account */
+    Username VARCHAR(40) DEFAULT "" NOT NULL   ,
+    Email VARCHAR(50) DEFAULT "" NOT NULL   ,
+    LastLogin TIMESTAMP  NOT NULL   ,
+    LoginReminder INTEGER DEFAULT 0 NOT NULL   ,
+    Passphrase VARCHAR(20) DEFAULT "" NOT NULL   ,
+    LastIP VARCHAR(25) DEFAULT ""    ,
+    LastHost VARCHAR(30) DEFAULT ""    ,
+/* class CandidateAccount */
+    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -924,36 +959,7 @@ create table School
 
 );
 
-
-/* This SQL was generated for a Standard database. */
-
-create table SchoolProfile
-(
-/* class TreeLeaf */
-    LeafNumber INTEGER     ,
-    Profile DECIMAL(19,0)  NOT NULL   ,
-    Mandatory BIT DEFAULT 0 NOT NULL   ,
-/* class SchoolProfile */
-    MinSchoolType DECIMAL(19,0)  NOT NULL  REFERENCES Schooltype ( oid ) ,
-    MaxSchoolType DECIMAL(19,0)  NOT NULL  REFERENCES Schooltype ( oid ) ,
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
+CREATE INDEX I1_CandidateAccount ON CandidateAccount ( Username );
 
 /* This SQL was generated for a Standard database. */
 
@@ -984,43 +990,11 @@ create table MatchQueue
 
 /* This SQL was generated for a Standard database. */
 
-create table Profile
+create table Employer
 (
-/* class Profile */
-    Company DECIMAL(19,0)  NOT NULL  REFERENCES Company ( oid ) ,
-    LastNotification TIMESTAMP     ,
-    MatchTree MEDIUMBLOB     ,
-    Name VARCHAR(40) DEFAULT ""    ,
-    NeedsRematching BIT DEFAULT 1    ,
-    Notify BIT DEFAULT 1    ,
-    NotificationPeriod INTEGER DEFAULT 0    ,
-
-    /* NOTICE: */
-    /* This table represents a Data Object class  */
-    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
-    /* The class GenericDO contains: */
-    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
-    /* 2) an int      (version) which is stored as an INTEGER */
-    /* When creating Data Objects in DODS, these two columns */
-    /* (a.k.a class members, Data Object Attributes) */
-    /* should never be defined explicitly. */
-
-    /* These columns are defined here at the end of the */
-    /* CREATE TABLE statement to simplify the handling of commas. */
-    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
-    version INTEGER NOT NULL
-
-);
-
-
-/* This SQL was generated for a Standard database. */
-
-create table CandidateProfile
-(
-/* class CandidateProfile */
-    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
-    MatchingTime TIMESTAMP  NOT NULL   ,
-    Profile DECIMAL(19,0)  NOT NULL  REFERENCES Profile ( oid ) ,
+/* class Employer */
+    Name VARCHAR(30) DEFAULT ""    ,
+    Adress DECIMAL(19,0)     ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
@@ -1074,6 +1048,106 @@ create table SchoolCandidate
 
 /* This SQL was generated for a Standard database. */
 
+create table EmployerCandidate
+(
+/* class CVSection */
+    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
+/* class CVTimespan */
+    BeginDate DATE     ,
+    EndDate DATE     ,
+/* class EmployerCandidate */
+    Employer DECIMAL(19,0)  NOT NULL  REFERENCES Employer ( oid ) ,
+    Remarks TEXT  DEFAULT ""    ,
+    Reference VARCHAR(30) DEFAULT ""    ,
+    Function VARCHAR(20) DEFAULT ""    ,
+    Pensum INTEGER     ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table Company
+(
+/* class Company */
+    Name VARCHAR(30) DEFAULT ""    ,
+    Adress DECIMAL(19,0)     ,
+    Active BIT DEFAULT 0    ,
+    Earnings INTEGER     ,
+    GraduatesPerYear INTEGER     ,
+    NumberEmployees INTEGER     ,
+    ShortDescription TEXT  DEFAULT ""    ,
+    Contact DECIMAL(19,0)    REFERENCES Person ( oid ) ,
+    Industry DECIMAL(19,0)     ,
+    Presence VARCHAR(40) DEFAULT ""    ,
+    URL VARCHAR(50) DEFAULT ""    ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
+create table Profile
+(
+/* class Profile */
+    Company DECIMAL(19,0)  NOT NULL  REFERENCES Company ( oid ) ,
+    LastNotification TIMESTAMP     ,
+    MatchTree MEDIUMBLOB     ,
+    Name VARCHAR(40) DEFAULT ""    ,
+    NeedsRematching BIT DEFAULT 1    ,
+    Notify BIT DEFAULT 1    ,
+    NotificationPeriod INTEGER DEFAULT 0    ,
+
+    /* NOTICE: */
+    /* This table represents a Data Object class  */
+    /* derived from com.lutris.dods.builder.generator.dataobject.GenericDO. */
+    /* The class GenericDO contains: */
+    /* 1) an ObjectId (oid)     which is stored as a DECIMAL(19,0) */
+    /* 2) an int      (version) which is stored as an INTEGER */
+    /* When creating Data Objects in DODS, these two columns */
+    /* (a.k.a class members, Data Object Attributes) */
+    /* should never be defined explicitly. */
+
+    /* These columns are defined here at the end of the */
+    /* CREATE TABLE statement to simplify the handling of commas. */
+    oid DECIMAL(19,0) NOT NULL PRIMARY KEY,
+    version INTEGER NOT NULL
+
+);
+
+
+/* This SQL was generated for a Standard database. */
+
 create table CompanyAccount
 (
 /* class Account */
@@ -1082,6 +1156,8 @@ create table CompanyAccount
     LastLogin TIMESTAMP  NOT NULL   ,
     LoginReminder INTEGER DEFAULT 0 NOT NULL   ,
     Passphrase VARCHAR(20) DEFAULT "" NOT NULL   ,
+    LastIP VARCHAR(25) DEFAULT ""    ,
+    LastHost VARCHAR(30) DEFAULT ""    ,
 /* class CompanyAccount */
     Company DECIMAL(19,0)  NOT NULL  REFERENCES Company ( oid ) ,
 
@@ -1106,19 +1182,12 @@ CREATE INDEX I1_CompanyAccount ON CompanyAccount ( Username );
 
 /* This SQL was generated for a Standard database. */
 
-create table EmployerCandidate
+create table CandidateProfile
 (
-/* class CVSection */
+/* class CandidateProfile */
     Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
-/* class CVTimespan */
-    BeginDate DATE     ,
-    EndDate DATE     ,
-/* class EmployerCandidate */
-    Employer DECIMAL(19,0)  NOT NULL  REFERENCES Employer ( oid ) ,
-    Remarks TEXT  DEFAULT ""    ,
-    Reference VARCHAR(30) DEFAULT ""    ,
-    Function VARCHAR(20) DEFAULT ""    ,
-    Pensum INTEGER     ,
+    MatchingTime TIMESTAMP  NOT NULL   ,
+    Profile DECIMAL(19,0)  NOT NULL  REFERENCES Profile ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

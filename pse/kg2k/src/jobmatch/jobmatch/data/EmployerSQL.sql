@@ -3,9 +3,8 @@
 create table Employer
 (
 /* class Employer */
-    Company VARCHAR(30) DEFAULT ""    ,
-    City VARCHAR(30) DEFAULT ""    ,
-    County DECIMAL(19,0)     ,
+    Name VARCHAR(30) DEFAULT ""    ,
+    Adress DECIMAL(19,0)     ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

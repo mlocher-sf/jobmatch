@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/studer_repositry/dataTest/jobmatch/data/ContactpersonDataStruct.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/PictureDataStruct.java
  *-----------------------------------------------------------------------------
  */
 
@@ -49,11 +49,11 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.1 $
  * @author  studer
  * @since   jobmatch
  */
-public class ContactpersonDataStruct implements Cloneable, Serializable {
+public class PictureDataStruct implements Cloneable, Serializable {
 
     /**
      * A DO refers to this DataStruct.
@@ -70,17 +70,12 @@ public class ContactpersonDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Name = null;
+   public String MimeType = null;
 
 /**
  * 
  */
-   public String Fax = null;
-
-/**
- * 
- */
-   public String Email = null;
+   public byte[] Data = {0};
     /**
      * Create a copy of the guts of a DO.
      *
@@ -89,19 +84,16 @@ public class ContactpersonDataStruct implements Cloneable, Serializable {
      * @exception ObjectIdException 
      *       if GenericDO has trouble obtaining a valid id.
      */
-    public ContactpersonDataStruct duplicate() 
+    public PictureDataStruct duplicate() 
     throws DatabaseManagerException, ObjectIdException {
-        ContactpersonDataStruct ret = new ContactpersonDataStruct ();
+        PictureDataStruct ret = new PictureDataStruct ();
  
 
 		
-	ret.Name = Name + "";
+	ret.MimeType = MimeType + "";
 	
 	
-	ret.Fax = Fax + "";
-	
-	
-	ret.Email = Email + "";
+	ret.Data = copyByteArray(Data);
 	
 
 

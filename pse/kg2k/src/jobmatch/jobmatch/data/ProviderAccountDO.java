@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the ProviderAccountDO information.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  studer
  * @since   jobmatch
  */
@@ -712,7 +712,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into ProviderAccount ( Username, Email, LastLogin, LoginReminder, Passphrase, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into ProviderAccount ( Username, Email, LastLogin, LoginReminder, Passphrase, LastIP, LastHost, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -730,6 +730,10 @@ import com.lutris.dods.builder.generator.query.*;
 		getLoginReminder() );
 	setPrepStmtParam_String( stmt, param,
 		getPassphrase() );
+	setPrepStmtParam_String( stmt, param,
+		getLastIP() );
+	setPrepStmtParam_String( stmt, param,
+		getLastHost() );
 
 
 	    /* The order of the values being inserted must match
@@ -762,7 +766,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update ProviderAccount set " + getVersionColumnName() + " = ?, Username = ?, Email = ?, LastLogin = ?, LoginReminder = ?, Passphrase = ? " +
+	    "update ProviderAccount set " + getVersionColumnName() + " = ?, Username = ?, Email = ?, LastLogin = ?, LoginReminder = ?, Passphrase = ?, LastIP = ?, LastHost = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -782,6 +786,10 @@ import com.lutris.dods.builder.generator.query.*;
 		getLoginReminder() );
 	setPrepStmtParam_String( stmt, param,
 		getPassphrase() );
+	setPrepStmtParam_String( stmt, param,
+		getLastIP() );
+	setPrepStmtParam_String( stmt, param,
+		getLastHost() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag

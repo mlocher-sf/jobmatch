@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the IndustryDO information.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */
@@ -969,6 +969,121 @@ import com.lutris.dods.builder.generator.query.*;
  
 
 
+
+    /**
+     * From the many-to-many relationship expressed by CompanyDO,
+     * get array of AdressDO objects that indirectly refer
+     * to this DO.
+     *
+     * @return array of AdressDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.AdressDO[] getAdressDOArray_via_Company () 
+    throws DataObjectException {
+	jobmatch.data.AdressDO[] ret = null;
+	try {
+	    jobmatch.data.CompanyDO[] arr = getCompanyDOArray();
+	    ret = new jobmatch.data.AdressDO[ arr.length ];
+	    for ( int i = 0; i < arr.length; i++ ) {
+		ret[ i ] = arr[ i ].getAdress();
+	    }
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: ", e );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.AdressDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * To the many-to-many relationship expressed by CompanyDO,
+     * add a AdressDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The AdressDO to add to the CompanyDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapAdress_via_CompanyDO( jobmatch.data.AdressDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapAdress_via_CompanyDO( d, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by CompanyDO,
+     * add a AdressDO object that indirectly refers to this DO.
+     *
+     * @param b The AdressDO to add to the CompanyDO mapping for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapAdress_via_CompanyDO( jobmatch.data.AdressDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.CompanyDO m = null;
+	try {
+	    m = jobmatch.data.CompanyDO.createVirgin();
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"jobmatch.data.CompanyDO.createVirgin failed", e );
+	}
+	m.setAdress( d );
+	m.setIndustry( this );
+	m.commit( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by CompanyDO,
+     * remove (delete) the AdressDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The AdressDO to remove from the CompanyDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapAdress_via_CompanyDO( jobmatch.data.AdressDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapAdress_via_CompanyDO( d, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by CompanyDO,
+     * remove (delete) the AdressDO object that indirectly refers
+     * to this DO.
+     *
+     * @param b The AdressDO to remove from the CompanyDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapAdress_via_CompanyDO( jobmatch.data.AdressDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.CompanyQuery q = new jobmatch.data.CompanyQuery();
+	q.setQueryIndustry( this );
+	q.setQueryAdress( d );
+	q.requireUniqueInstance();
+	jobmatch.data.CompanyDO m = null;
+	try {
+	    m = q.getNextDO();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( "Multiple mappings for " +
+		this + " and " + d + " in jobmatch.data.Company table." );
+	}
+	m.delete( tran );
+    }
 
 
     /**

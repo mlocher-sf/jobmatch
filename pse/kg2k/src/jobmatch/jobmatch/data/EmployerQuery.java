@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 final public class EmployerQuery implements Query {
 
@@ -407,13 +407,13 @@ final public class EmployerQuery implements Query {
 
 
     /**
-     * Set the Company to query.
+     * Set the Name to query.
      *
-     * @param x The Company of the Employer to query.
+     * @param x The Name of the Employer to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryCompany(
+    public void setQueryName(
 				String x, boolean exact)
     throws DataObjectException, QueryException
     {
@@ -424,7 +424,7 @@ final public class EmployerQuery implements Query {
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
-		String s = DO.getCompany();
+		String s = DO.getName();
 		if ( null == s && null == x ) {
 		    equals = true;
 		} else if ( null != s && null != x ) {
@@ -445,124 +445,50 @@ final public class EmployerQuery implements Query {
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Company", x, "VARCHAR",
+	    builder.addWhereClause( "Name", x, "VARCHAR",
                 QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
-     * Set the Company to query
-     * @param x The Company of the Employer to query.
+     * Set the Name to query
+     * @param x The Name of the Employer to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryCompany( 
+    public void setQueryName( 
 				String x )
     throws DataObjectException, QueryException {
-	setQueryCompany( x, true );
+	setQueryName( x, true );
     }
 
     /**
-     * Add Company to the ORDER BY clause.
+     * Add Name to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByCompany(boolean direction_flag) {
-        builder.addOrderByColumn("Company",
+    public void addOrderByName(boolean direction_flag) {
+        builder.addOrderByColumn("Name",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Company to the ORDER BY clause.  This convenience
+     * Add Name to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByCompany() {
-        builder.addOrderByColumn("Company","ASC");
+    public void addOrderByName() {
+        builder.addOrderByColumn("Name","ASC");
     }
 
 
     /**
-     * Set the City to query.
+     * Set the Adress to query.
      *
-     * @param x The City of the Employer to query.
+     * @param x The Adress of the Employer to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryCity(
-				String x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    EmployerDO DO = ( EmployerDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		String s = DO.getCity();
-		if ( null == s && null == x ) {
-		    equals = true;
-		} else if ( null != s && null != x ) {
-		    if ( exact ) 
-			equals = s.equals( x );
-		    else {
-			equals = ( -1 != s.toLowerCase().indexOf(
-					 x.toLowerCase() ) );
-		    }
-		} else {  // one is null, the other isn't
-		    equals = false;
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "City", x, "VARCHAR",
-                QueryBuilder.NULL_OK, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the City to query
-     * @param x The City of the Employer to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryCity( 
-				String x )
-    throws DataObjectException, QueryException {
-	setQueryCity( x, true );
-    }
-
-    /**
-     * Add City to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByCity(boolean direction_flag) {
-        builder.addOrderByColumn("City",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add City to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByCity() {
-        builder.addOrderByColumn("City","ASC");
-    }
-
-
-    /**
-     * Set the County to query.
-     *
-     * @param x The County of the Employer to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryCounty(
-				jobmatch.data.CountryDO x, boolean exact)
+    public void setQueryAdress(
+				jobmatch.data.AdressDO x, boolean exact)
     throws DataObjectException, QueryException
     {
 	// Remove from cacheHits any DOs that do not meet this
@@ -573,13 +499,13 @@ final public class EmployerQuery implements Query {
 	    boolean equals = true;
 	    
 		// DOs are compared by their handles..
-		jobmatch.data.CountryDO m = DO.getCounty();
+		jobmatch.data.AdressDO m = DO.getAdress();
 		if ( null == m && null == x ) {
 		    equals = true;
 		} else if ( null == m || null == x ) {
 		    equals = false;
 		} else {
-		    equals = ( DO.getCounty().getOId().toString().equals( x.getOId().toString() ) );
+		    equals = ( DO.getAdress().getOId().toString().equals( x.getOId().toString() ) );
 if ( equals && m != x ) {
 System.err.println("\n----------------------------------------------------------");
 System.err.println("m ="+m );
@@ -594,38 +520,38 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "County", x, "DECIMAL(19,0)",
+	    builder.addWhereClause( "Adress", x, "DECIMAL(19,0)",
                 QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
-     * Set the County to query
-     * @param x The County of the Employer to query.
+     * Set the Adress to query
+     * @param x The Adress of the Employer to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryCounty( 
-				jobmatch.data.CountryDO x )
+    public void setQueryAdress( 
+				jobmatch.data.AdressDO x )
     throws DataObjectException, QueryException {
-	setQueryCounty( x, true );
+	setQueryAdress( x, true );
     }
 
     /**
-     * Add County to the ORDER BY clause.
+     * Add Adress to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByCounty(boolean direction_flag) {
-        builder.addOrderByColumn("County",
+    public void addOrderByAdress(boolean direction_flag) {
+        builder.addOrderByColumn("Adress",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add County to the ORDER BY clause.  This convenience
+     * Add Adress to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByCounty() {
-        builder.addOrderByColumn("County","ASC");
+    public void addOrderByAdress() {
+        builder.addOrderByColumn("Adress","ASC");
     }
 
     /**
@@ -705,7 +631,7 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOpenParen(); // patched by PSE 2000, 5/23/2000
+	builder.addWhereOpenParen();
     }
 
     /**
@@ -715,6 +641,6 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereCloseParen(); // patched by PSE 2000, 5/23/2000
+	builder.addWhereCloseParen();
     }
 }
