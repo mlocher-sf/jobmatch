@@ -9,8 +9,11 @@ ______________________________________________________________________________
 040400	      60		Meeting
 070400	      75		Meeting
 100400	     120		Enhydra tutorial
+110400	     120		Risikoanalyse, Arbeitsplan, Gantt...
+140400	      45		Feature Management
+170400	      60		Req Spec	
 
 		
 
 ==============================================================================
-$Id: worklog.txt,v 1.2 2000/04/10 14:49:54 dniederm Exp $
+$Id: worklog.txt,v 1.3 2000/04/17 14:46:44 dniederm Exp $

@@ -14,9 +14,12 @@ ______________________________________________________________________________
 0414	Storyboards
 0410	Features zur Liste hinzufuegen
 0411	Arbeitsplan
+0411	Risikoanalyse
+0414	Feature Management
+0417	Req Spec
 		
 
 		
 
 ==============================================================================
-$Id: todo.txt,v 1.2 2000/04/10 14:49:54 dniederm Exp $
+$Id: todo.txt,v 1.3 2000/04/17 14:46:44 dniederm Exp $
