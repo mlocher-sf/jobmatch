@@ -1,4 +1,4 @@
-// $Id: Graduation.java,v 1.6 2000/05/31 12:15:51 studer Exp $
+// $Id: Graduation.java,v 1.7 2000/05/31 13:34:15 loeffel Exp $
 
 package jobmatch.business.entity;
 
@@ -9,8 +9,8 @@ import java.util.*;
  *  Graduation Business Object
  *
  *  @since May 26 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.6 $
+ *  @author $Author: loeffel $
+ *  @version $Revision: 1.7 $
  **/
 public class Graduation extends GraduationBDO implements Description {
     
@@ -45,6 +45,7 @@ public class Graduation extends GraduationBDO implements Description {
 
     /**
      * Return a list with all graduationdata from the DB
+     **/
     public static List getAllGraduations() {
 	List result = new ArrayList();
 	try {
@@ -94,6 +95,9 @@ public class Graduation extends GraduationBDO implements Description {
 
 /*
  * $Log: Graduation.java,v $
+ * Revision 1.7  2000/05/31 13:34:15  loeffel
+ * Javadoc - Bug fixed
+ *
  * Revision 1.6  2000/05/31 12:15:51  studer
  * Javadoc added
  *
