@@ -1,4 +1,4 @@
-// $Id: School.java,v 1.3 2000/05/29 11:58:31 locher Exp $
+// $Id: School.java,v 1.4 2000/05/30 08:26:10 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,18 +10,31 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public class School extends SchoolBDO implements Description {
     
-    public School(String description) throws Exception {
+    private School(String description) throws Exception {
 	super();
 	this.setDescription(description);
 	this.commit();
     }
 
-    public School(SchoolDO dataObject) {
+    private School(SchoolDO dataObject) {
 	super(dataObject);
+    }
+
+   public static School getSchool(String school) {
+	try {
+	    SchoolQuery query = new SchoolQuery();
+	    query.setQueryDescription(school);
+	    SchoolDO element = query.getNextDO();
+	    if (element != null) {
+		return new School(element);
+	    } else {
+		return new School(school);
+	    }
+	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
     }
 
     public static List getAllSchools() {
@@ -69,6 +82,9 @@ public class School extends SchoolBDO implements Description {
 
 /*
  * $Log: School.java,v $
+ * Revision 1.4  2000/05/30 08:26:10  locher
+ * get methods for entities
+ *
  * Revision 1.3  2000/05/29 11:58:31  locher
  * added queries
  *

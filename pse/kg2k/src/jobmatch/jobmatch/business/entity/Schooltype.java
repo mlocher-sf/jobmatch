@@ -1,4 +1,4 @@
-// $Id: Schooltype.java,v 1.3 2000/05/29 11:58:32 locher Exp $
+// $Id: Schooltype.java,v 1.4 2000/05/30 08:26:11 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,18 +10,31 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public class Schooltype extends SchooltypeBDO implements Description {
     
-    public Schooltype(String description) throws Exception {
+    private Schooltype(String description) throws Exception {
 	super();
 	this.setDescription(description);
 	this.commit();
     }
 
-    public Schooltype(SchooltypeDO dataObject) {
+    private Schooltype(SchooltypeDO dataObject) {
 	super(dataObject);
+    }
+
+   public static Schooltype getSchooltype(String schooltype) {
+	try {
+	    SchooltypeQuery query = new SchooltypeQuery();
+	    query.setQueryDescription(schooltype);
+	    SchooltypeDO element = query.getNextDO();
+	    if (element != null) {
+		return new Schooltype(element);
+	    } else {
+		return new Schooltype(schooltype);
+	    }
+	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
     }
 
     public static List getAllSchooltypes() {
@@ -69,6 +82,9 @@ public class Schooltype extends SchooltypeBDO implements Description {
 
 /*
  * $Log: Schooltype.java,v $
+ * Revision 1.4  2000/05/30 08:26:11  locher
+ * get methods for entities
+ *
  * Revision 1.3  2000/05/29 11:58:32  locher
  * added queries
  *

@@ -1,4 +1,4 @@
-// $Id: Graduation.java,v 1.3 2000/05/29 11:58:31 locher Exp $
+// $Id: Graduation.java,v 1.4 2000/05/30 08:26:10 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,18 +10,31 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public class Graduation extends GraduationBDO implements Description {
     
-    public Graduation(String description) throws Exception {
+    private Graduation(String description) throws Exception {
 	super();
 	this.setDescription(description);
 	this.commit();
     }
 
-    public Graduation(GraduationDO dataObject) {
+    private Graduation(GraduationDO dataObject) {
 	super(dataObject);
+    }
+
+    public static Graduation getGraduation(String graduation) {
+	try {
+	    GraduationQuery query = new GraduationQuery();
+	    query.setQueryDescription(graduation);
+	    GraduationDO element = query.getNextDO();
+	    if (element != null) {
+		return new Graduation(element);
+	    } else {
+		return new Graduation(graduation);
+	    }
+	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
     }
 
     public static List getAllGraduations() {
@@ -69,6 +82,9 @@ public class Graduation extends GraduationBDO implements Description {
 
 /*
  * $Log: Graduation.java,v $
+ * Revision 1.4  2000/05/30 08:26:10  locher
+ * get methods for entities
+ *
  * Revision 1.3  2000/05/29 11:58:31  locher
  * added queries
  *
