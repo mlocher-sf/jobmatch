@@ -1,4 +1,4 @@
-// $Id: TimeUtil.java,v 1.2 2000/06/02 15:24:13 loeffel Exp $
+// $Id: TimeUtil.java,v 1.3 2000/06/05 11:38:45 loeffel Exp $
 
 package jobmatch.business.util;
 
@@ -9,7 +9,7 @@ import java.sql.*;
  *
  *  @since May 23 2000
  *  @author $Author: loeffel $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class TimeUtil {
 
@@ -22,15 +22,16 @@ public class TimeUtil {
     }
     
     public static int getYear(Date date) {
-	return 0;
+	return date.getYear();
     }
 
     public static int getMonth(Date date) {
-	return 0;
+	return date.getMonth();
     }
     
     public static int getDay(Date date) {
-	return 0;
+	// Man glaube oder auch nicht: getDate gibt den TAG des Monats zurueck
+	return date.getDate();
     }
     
 	
@@ -40,6 +41,9 @@ public class TimeUtil {
 // Document history
 /*
  * $Log: TimeUtil.java,v $
+ * Revision 1.3  2000/06/05 11:38:45  loeffel
+ * Set some temporary methods to return date
+ *
  * Revision 1.2  2000/06/02 15:24:13  loeffel
  * irgend
  *
