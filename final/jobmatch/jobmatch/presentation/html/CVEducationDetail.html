@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title> Ausbildung </title>
+    <link rel=stylesheet type="text/css" href="style.css">
+  </head>
+  
+  <body>
+    <hr>
+    <h1>Ausbildung</h1>  
+    <form action='./CVEducationDetail.html' method='get'>
+      <input type="hidden" name="action" value="write">
+      <input type ="hidden" id ="edit" name="edit">
+    <table border=1> <tr><td>
+    
+    Schultyp: </td><td> <select id="Schooltype" name ="Schooltype"> 
+	    <option id="templateSchooltype"> Sekundarschule
+	    </select> </td></tr><tr><td>
+
+    Name der Schule: </td><td> <input type = "text" name="Description" id="Description"> </td></tr><tr><td>
+    Beginn: </td><td> Tag   <input type = "text" name="BeginDay" id="BeginDay" size = 2, maxlength=2>
+                      Monat <input type = "text" name="BeginMonth" id="BeginMonth" size = 2, maxlength=2>
+                      Jahr  <input type = "text" name="BeginYear" id="BeginYear" size = 4, maxlength=4> </td></tr><tr><td>
+    Ende: </td><td> Tag   <input type = "text" name="EndDay" id="EndDay" size = 2, maxlength=2>
+                    Monat <input type = "text" name="EndMonth" id="EndMonth" size = 2, maxlength=2>
+                    Jahr  <input type = "text" name="EndYear" id="EndYear" size = 4, maxlength=4> </td></tr><tr><td>
+    
+    Abschluss: </td><td> <select id="Graduation" name ="Graduation"> 
+                         <option id="templateGraduation"> Diplom
+                         </select> </td></tr><tr><td>
+    Bemerkungen: </td><td> <textarea name= "Remarks" id="Remarks"  rows="3"  Cols= "30"></textarea> </td></tr><tr><td>
+    <input type="submit" name="submit" value="Daten speichern">
+    </td></tr>
+    </table>
+    </form>
+
+    <a href="./CVEducation.html"> Zurueck </a> <p>
+    <a href="./CandidateHome.html"> Zurueck zur Uebersicht </a> <p>
+    
+    <hr>
+  </body>
+</html>

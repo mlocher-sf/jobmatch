@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>JobScript Runner</title>
+    <link rel=stylesheet type="text/css" href="../style.css">
+  </head>
+
+  <body>
+    <h1>JobScript Runner</h1>
+    <a href="./JobScript.po">go to INTERPRETER</a>
+    <hr>
+    <table width="100%">
+      <tr>
+	<td>
+	  <h2>JobScripts</h2>
+	  <form id="chooseForm" action="./JobScriptRunner.po" method="get">
+	    <input type="hidden" name="action" value="execute">
+	    <strong>Choose a script</strong><br>
+	    <select name="file" size="6">
+	      <option id="fileEntry">a script</option>
+	    </select>
+	    <br>found <span id="number">#</span> script files.<br>
+	    <input type="submit" value="Execute">
+	  </form>
+	</td>
+	<td>
+	  <div id="lastDiv">
+	    <h2>Status of last run</h2>
+	    <code><span id="lastResult">result</span></code>
+	    
+	    <h3>Dictionary</h3>
+	    <form action="./JobScriptRunner.po" method="get">
+	      <input type="hidden" name="action" value="interpretLast">
+	      <input type="submit" value="Start Interpreter with this dictionary">
+	    </form>
+	    <p><code><span id="dictionary">dir()</span></code></p>
+	  </div>
+	</td>
+      </tr>
+    </table>
+    <hr>
+    written by Michael.Locher@iname.com | 
+    <a href="http://www.iamexwi.unibe.ch/studenten/pse4/">PSE 4</a>
+  </body>
+</html>

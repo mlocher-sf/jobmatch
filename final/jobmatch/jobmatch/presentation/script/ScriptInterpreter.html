@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>JobScript</title>
+    <link rel=stylesheet type="text/css" href="../style.css">
+  </head>
+
+  <body>
+    <h1>JobScript Interpreter</h1>
+    <p>use this fully functional <a href="http://www.jpython.org/">JPython</a> interpreter.
+</p>
+    <form action="./JobScript.po" method="get">
+      <input type="hidden" name="action" value="execute">
+      <strong>Command</strong><br>
+      <input type="text" name="command" size="80">
+      <input type="submit" value="Execute"><br>
+      <strong>Where</strong>
+      <input type="radio" name="where" value="same" checked="checked"> same interpreter
+      <input type="radio" name="where" value="new"> new interpreter
+    </form>
+    
+    <div id="lastDiv">
+      <p>
+	<strong>Last result</strong><br>
+	<code><span id="lastResult">last result</span></code>
+	</p>
+    </div>
+
+    <table width="100%" cellpadding="6pt">
+      <tr>
+	<td>
+	  <h2>Dictionary</h2>
+	  <p><code><span id="dictionary">dir()</span></code></p>
+	</td>
+	<td>
+	  <h2>History</h2>
+	  <table id="history" width="100%">
+	    <tr>
+	      <th>Command</th>
+	      <th>Result</th>
+	    </tr>
+	    <tr id="historyRow">
+	      <td><code><a id="cmndURL" href="cmndURL"><span id="command">command</span></a></code></td>
+	      <td><code><span id="result">result</span></code></td>
+	    </tr>
+	  </table>
+	</td>
+      </tr>
+    </table>
+    
+    <hr>
+    written by Michael.Locher@iname.com | 
+    <a href="http://www.iamexwi.unibe.ch/studenten/pse4/">PSE 4</a>
+  </body>
+</html>

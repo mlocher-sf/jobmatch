@@ -1,0 +1,76 @@
+#
+#  Simple Enhydra Multiserver config file that runs one application.
+#  See multiserver.config in the Enhydra installation for a
+#  description of the Multiserver config file format.
+#
+
+#
+# Where the config files are.
+#
+Server.ConfDir = @OUTPUT@
+
+#
+# Set up logging.
+# For more information, try adding DEBUG or CLASSLOAD.
+#
+Server.LogFile = @OUTPUT@/jobmatch.log
+Server.LogToFile[] = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, INFO
+Server.LogToStderr[] = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, INFO
+
+
+
+#
+# Specify only one application (no graphical administration).
+#
+Application.jobmatch.ConfFile = jobmatch.conf
+Application.jobmatch.Description = "An Enhydra Application"
+Application.jobmatch.Running = yes
+
+
+#
+# Open up a port.
+#
+Connection.p9004.Type = http
+Connection.p9004.Port = 9004
+
+
+#
+# Connect the port to the application.
+#
+Channel.p9004.aChan.Servlet = jobmatch
+Channel.p9004.aChan.Url = /
+Channel.p9004.aChan.Enabled = yes
+
+
+
+#
+# ----------------------------------------------------------------------
+#
+# If you want to use the Multiserver's graphical administration program,
+# first copy it's config file to the directory Server.confDir is set to:
+#
+#     cp /home/scg/Software/enhydra/enhydra3.0/apps/multiserverAdmin.conf @OUTPUT@
+#
+# Then uncomment the following lines, re-run the Multiserver (./start),
+# and connect to port 9001. The default username is "admin" and the default
+# password is "lutris". This can be changed by editing the local copy of
+# multiserverAdmin.conf.
+#
+# If you are going to be adding other applications, other servlets, or
+# other connections, it is highly recommended that you use the graphical
+# admin rather than edit this file by hand (remember to save your changes
+# by clicking on the "Save State" button!).
+#
+# Application.MultiserverAdmin.ConfFile = multiserverAdmin.conf
+# Application.MultiserverAdmin.Description = "The Enhydra Multiserver Management Console."
+# Application.MultiserverAdmin.Running = yes
+#
+# Connection.p9001.Type = http
+# Connection.p9001.Port = 9001
+#
+# Channel.p9001.aChan.Servlet = MultiserverAdmin
+# Channel.p9001.aChan.Url = /
+# Channel.p9001.aChan.Enabled = yes
+#
+# ----------------------------------------------------------------------
+

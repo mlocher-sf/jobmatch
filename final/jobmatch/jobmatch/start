@@ -1,0 +1,18 @@
+#!/usr/local/bin/tcsh
+
+echo "***"
+echo "***  Connect to http://`hostname`:9004/"
+echo "***"
+
+setenv CLASSPATH ./lib/jobmatch.jar:$CLASSPATH
+/home/scg/Software/enhydra/enhydra3.0/bin/multiserver ./multiserver.conf &
+
+/usr/bin/clear
+echo "***"
+echo "***  Connect to http://`hostname`:9004/"
+echo "***"
+
+jobs -l > /home/pse4/jobs/`uname -n`JOBS
+/usr/local/bin/awk '{print $3}' /home/pse4/jobs/`uname -n`JOBS > /home/pse4/jobs/`uname -n`PROTO.pid
+rm /home/pse4/jobs/`uname -n`JOBS
+chmod 775 /home/pse4/jobs/`uname -n`PROTO.pid

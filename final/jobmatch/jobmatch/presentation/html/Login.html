@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Login</title>
+    <link rel=stylesheet type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <hr>
+    <h1>Login</h1>
+    <form action="./HELPWelcome.html" method="get">
+    <table border=1>
+	<tr>
+	  <th colspan="2">
+	    Login
+	  </th>
+	</tr>
+	<tr>
+	  <td>Username</td>
+	  <td><input type="text" name="username" size="10" maxlength="20"></td>
+	</tr>
+	<tr>
+	  <td> Passwort </td>
+	  <td> <input type="password" name="passphrase" size="10" maxlength="20"></td>
+	</tr>
+	<tr>
+	  <td> Typ </td>
+	  <td> 
+	    <select name="type">
+	      <option id="candidate" value="candidate">Kandidat</option>
+	      <option id="company"  value="company">Firma</option>
+	      <option id="provider" value="provider">Administrator</option>
+	    </select>
+	  </td>
+	</tr>
+      </table>
+ 
+      <input id="grant" type="hidden" name="grantURL">
+      <input type="submit" name="submit" value="Login">
+      
+    </form>
+
+    <p>
+  
+    <a href="./Welcome.html"> Einstiegsseite </a>
+    <hr>
+    <a href="http://www.iamexwi.unibe.ch/studenten/pse4/">PSE 4</a>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+body { font-family: AvantGarde,Helvetica,Arial }
+tt, code { font-family: Courier,serif; font-weight: 600}
+
+h1 { font-size: 22pt}
+h2 { font-size: 16pt}
+h3, tr { font-size: 14pt}
+body, td, p, tt, code { font-size: 11pt }
+
+
+body { background-color: moccasin; }
+
+th { background-color: skyblue }
+td { background-color: powderblue ; vertical-align:top; }
+td.super { background-color: moccasin; vertical-align:top; padding: 6pt; }
+hr { color: teal; size: 5pt;}
+
+p.status {
+	border-width: 1pt;
+	border-color: red;
+	padding: 1pt;
+	}	
+
+h2, h3, h4 { 
+	border-stlye: ridge; 
+	border-width: 1pt;
+	padding: 1pt;
+	text-shadow: silver;
+	}
+
+a { 
+	text-decoration: none; 
+	color: teal; 
+	font-weight: bold;
+	}
+
+a:hover {
+	text-decoration: underline;
+	}
+
+
+

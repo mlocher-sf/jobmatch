@@ -1,0 +1,1039 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>DB Schema</title>
+<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+<a href="index.html">Homepage</a>
+<hr>
+<h1>DB-Schema</h1>
+
+    <h2>Visualisation</h2>
+    
+    <img src="./binary/data.png" alt="Graphische Darstellung des DODS Files">
+
+
+    <h2>Beschreibung</h2>
+    <strong>Achtung: Nicht up-to-date!</strong>
+
+<table border="1" width="855">
+  <tr>
+    <td width="123"><b>CandidateAccount</b></td>
+    <td width="107"><b>Username</b></td>
+    <td width="129"><b>Candidate</b></td>
+    <td width="117"><b>LoginReminder</b></td>
+    <td width="104"><b>LastLogin</b></td>
+    <td width="119"><b>Email</b></td>
+    <td width="110"><b>Passphrase</b></td>
+  </tr>
+  <tr>
+    <td width="123">&nbsp;</td>
+    <td width="107">VARCHAR(40)</td>
+    <td width="129">Ref. Candidate OID</td>
+    <td width="117">INT (init =0)</td>
+    <td width="104">TIMESTAMP</td>
+    <td width="119">VARCHAR(50)</td>
+    <td width="110">VARCHAR(20)</td>
+  </tr>
+</table>
+<br>
+
+<table border="1" width="844">
+  <tr>
+    <td width="118"><b>CompanyAccount</b></td>
+    <td width="106"><b>Username</b></td>
+    <td width="136"><b>Company</b></td>
+    <td width="122"><b>LoginReminder</b></td>
+    <td width="98"><b>LastLogin</b></td>
+    <td width="111"><b>Email</b></td>
+    <td width="107"><b>Passphrase</b></td>
+  </tr>
+  <tr>
+    <td width="118">&nbsp;</td>
+    <td width="106">VARCHAR(40)</td>
+    <td width="136">Ref. Company OID</td>
+    <td width="122">INT (init =0)</td>
+    <td width="98">TIMESTAMP</td>
+    <td width="111">VARCHAR(50)</td>
+    <td width="107">VARCHAR(20)</td>
+  </tr>
+</table><br>
+<table BORDER COLS=4 >
+<tr>
+<td WIDTH="100"><b>Employer</b></td>
+
+<td WIDTH="100"><b>Company</b></td>
+
+<td WIDTH="100"><b>City</b></td>
+
+<td WIDTH="100"><b>Country</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(30)</td>
+
+<td>VARCHAR(30)</td>
+
+<td>Ref. Country OID&nbsp;</td>
+</tr>
+</table>
+<br>
+<table BORDER="1" COLS=9 width="765" >
+<tr>
+<td WIDTH="134"><b>EmployerCandidate</b></td>
+
+<td WIDTH="115"><b>Candidate</b></td>
+
+<td width="130"><b>Employer</b></td>
+
+<td WIDTH="61"><b>From</b></td>
+
+<td WIDTH="67"><b>To</b></td>
+
+<td width="92"><b>Remarks</b></td>
+
+<td width="120"><b>Reference</b></td>
+
+</tr>
+
+<tr>
+<td width="134"></td>
+
+<td width="115">Ref. Candidate OID</td>
+
+<td width="130">Ref. Employer OID</td>
+
+<td width="61">DATE</td>
+
+<td width="67">DATE</td>
+
+<td width="92">TEXT (Null)</td>
+
+<td width="120">VARCHAR (Null)</td>
+
+</tr>
+
+<tr>
+
+<td width="134" ></td>
+<td width="115" ></td>
+<td width="130" ></td>
+<td width="61" ></td>
+<td width="67" ></td>
+<td width="92" ></td>
+<td WIDTH="120"></td>
+
+</tr>
+
+<tr>
+
+<td WIDTH="134"></td>
+
+<td WIDTH="115"><b>Function</b></td>
+
+<td WIDTH="130"><b>Pensum</b></td>
+<td WIDTH="61"></td>
+<td WIDTH="67"></td>
+<td WIDTH="92"></td>
+<td WIDTH="120"></td>
+
+</tr>
+
+<tr>
+
+<td width="134"></td>
+
+<td width="115">VARCHAR(20)</td>
+
+<td width="130">TINYINT UNSIGNED</td>
+<td WIDTH="61"></td>
+<td WIDTH="67"></td>
+<td WIDTH="92"></td>
+<td WIDTH="120"></td>
+
+</tr>
+</table>
+<br>
+<table BORDER="1" COLS=14 width="1160" height="10" >
+<tr>
+<td width="62" height="19"><b>Candidate</b></td>
+
+<td width="144" height="19"><b>Account</b></td>
+
+<td width="84" height="19"><b>Lname</b></td>
+
+<td width="75" height="19"><b>Fname</b></td>
+
+<td width="51" height="19"><b>Sex</b></td>
+
+<td width="77" height="19"><b>Street</b></td>
+
+<td width="77" height="19"><b>HouseNumber</b></td>
+
+<td width="77" height="19"><b>City</b></td>
+
+<td width="79" height="19"><b>PLZ</b></td>
+
+<td width="79" height="19"><b>PHONE</b></td>
+
+</tr>
+
+<tr>
+<td width="62" height="57"></td>
+
+<td width="144" height="57">Ref. CandidateAccount</td>
+
+<td width="84" height="57">VARCHAR(25)</td>
+
+<td width="75" height="57">VARCHAR(20)</td>
+
+<td width="51" height="57">ENUM('w','m')</td>
+
+<td width="77" height="57">VARCHAR(50)</td>
+
+<td width="77" height="57">VARCHAR(5)</td>
+
+<td width="77" height="57">VARCHAR(30)</td>
+
+<td width="79" height="57">MEDIUMINT UNSIGNED</td>
+
+<td width="79" height="57">VARCHAR(25)
+  <p>(Null)</td>
+
+</tr>
+
+<tr>
+<td width="62" height="2"></td>
+
+<td width="144" height="5"></td>
+
+<td width="84" height="5"></td>
+
+<td width="75" height="5"></td>
+
+<td width="51" height="5"></td>
+
+<td width="77" height="5"></td>
+
+<td width="77" height="5"></td>
+
+<td width="77" height="5"></td>
+
+<td width="79" height="5"></td>
+
+<td width="79" height="5"></td>
+
+</tr>
+
+<tr>
+<td width="62" height="19"></td>
+
+<td width="79" height="19"><b>Fax</b></td>
+
+<td width="106" height="19"><b>Picture</b></td>
+
+<td width="55" height="19"><b>Birthdate</b></td>
+
+<td WIDTH="75" height="19"><b>Residence</b></td>
+
+<td width="101" height="19"><b>Nationality</b></td>
+
+<td WIDTH="77" height="19"><b>Competence</b></td>
+
+<td WIDTH="37" height="19"><b>Status</b></td>
+
+<td width="106" height="19"><b>AIESECMember</b></td>
+
+<td width="79" height="19"><b>MobilePhone</b></td>
+
+</tr>
+
+<tr>
+<td width="62" height="57"></td>
+
+<td width="79" height="57">VARCHAR(25) (Null)</td>
+
+<td width="106" height="57">MEDIUMBLOB (Null)</td>
+
+<td width="55" height="57">DATE</td>
+
+<td width="75" height="57">VARCHAR(50) (Null)</td>
+
+<td width="101" height="57">VARCHAR(25)</td>
+
+<td width="77" height="57">TEXT (Null)</td>
+
+<td width="37" height="57">BIT</td>
+
+<td width="106" height="57">BIT</td>
+
+<td width="79" height="57">VARCHAR(25) (Null)</td>
+
+</tr>
+</table>
+<br>
+<table BORDER COLS=7 >
+<tr>
+<td WIDTH="100"><b>SchoolCandidate</b></td>
+
+<td><b>School</b></td>
+
+<td><b>Candidate</b></td>
+
+<td WIDTH="100"><b>From</b></td>
+
+<td WIDTH="100"><b>To</b></td>
+
+<td><b>Diploma</b></td>
+
+<td><b>Remarks</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref School OID</td>
+
+<td>Ref. Candidate OID&nbsp;</td>
+
+<td>DATE</td>
+
+<td>DATE</td>
+
+<td>Ref. Graduation OID (Null)</td>
+
+<td>TEXT (Null)</td>
+</tr>
+</table>
+<br>
+<table BORDER COLS=4 NOSAVE >
+<tr NOSAVE>
+<td WIDTH="100"><b>School</b></td>
+
+<td WIDTH="100"><b>Name</b></td>
+
+<td WIDTH="100"><b>Location</b></td>
+
+<td NOSAVE><b>Type</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(50)</td>
+
+<td>VARCHAR(40)</td>
+
+<td>Ref. Schooltype OID</td>
+</tr>
+</table>
+<br>
+<table BORDER COLS=2 >
+<tr>
+<td WIDTH="100"><b>Schooltype</b></td>
+
+<td WIDTH="100"><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table>
+<br>
+<table BORDER="1" COLS=6 height="49" >
+<tr>
+<td WIDTH="100" height="18"><b>Profile</b></td>
+
+<td height="18"><b>Name</b></td>
+
+<td height="18"><b>MinSchoolType</b></td>
+
+<td height="18"><b>MaxSchoolType</b></td>
+
+<td height="18"><b>Company</b></td>
+
+<td height="18"><b>Interval</b></td>
+
+<td height="18"><b>LastNotification</b></td>
+
+<td height="18"><b>MatchTree</b></td>
+
+<td height="18"><b>Notify</b></td>
+
+<td height="18"><b>NeedsRematching</b></td>
+</tr>
+
+<tr>
+<td height="19"></td>
+
+<td height="19">VARCHAR(40)</td>
+
+<td height="19">Ref. Schooltype OID&nbsp;</td>
+
+<td height="19">Ref. Schooltype OID&nbsp;</td>
+
+<td height="19">Ref. Company OID</td>
+
+<td height="19">INT</td>
+
+<td height="19">TIMESTAMP</td>
+
+<td height="19">MEDIUMBLOB</td>
+
+<td height="19">BIT (init=true)</td>
+
+<td height="19">BIT (init=true)</td>
+</tr>
+</table>
+<br>
+<table BORDER="1" COLS=12 width="1029" >
+<tr>
+<td WIDTH="97"><b>Company</b></td>
+
+<td width="141"><b>Account</b></td>
+
+<td width="71"><b>Name</b></td>
+
+<td width="152"><b>Location</b></td>
+
+<td width="144"><b>GraduatesPerYear</b></td>
+
+<td width="168"><b>ShortDescription</b></td>
+
+<td width="150"><b>Earnings</b></td>
+
+</tr>
+
+<tr>
+<td width="97"></td>
+
+<td width="141">Ref. CompanyAccount</td>
+
+<td width="71">VARCHAR(30)</td>
+
+<td width="152">VARCHAR(40)</td>
+
+<td width="144">INTEGER (Null)</td>
+
+<td width="168">TEXT (Null)</td>
+
+<td width="150">INTEGER (Null)</td>
+
+</tr>
+
+<tr>
+<td width="97">&nbsp;</td>
+
+<td width="141">&nbsp;</td>
+
+<td width="71">&nbsp;</td>
+
+<td width="152">&nbsp;</td>
+
+<td width="144">&nbsp;</td>
+
+<td width="168">&nbsp;</td>
+
+<td width="150">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td width="97">&nbsp;</td>
+
+<td width="141"><b>Presence</b></td>
+
+<td width="71"><b>Active</b></td>
+
+<td width="152"><b>Industry</b></td>
+
+<td width="144"><b>URL</b></td>
+
+<td width="168"><b>NumberEmployees</b></td>
+
+<td width="150"><b>Contact</b></td>
+</tr>
+
+<tr>
+<td width="97">&nbsp;</td>
+
+<td width="141">VARCHAR(40) (Null)</td>
+
+<td width="71">BIT</td>
+
+<td width="152">Ref. Industry OID (Null)</td>
+
+<td width="144">VARCHAR(50) (Null)</td>
+
+<td width="168">INTEGER (Null)</td>
+
+<td width="150">Ref. Contactperson OID</td>
+</tr>
+</table>
+<br>
+<table BORDER COLS=4 >
+<tr>
+<td WIDTH="100"><b>Contactperson</b></td>
+
+<td WIDTH="100"><b>Name</b></td>
+
+<td WIDTH="100"><b>Email</b></td>
+
+<td WIDTH="100"><b>Fax</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+
+<td>VARCHAR(50)</td>
+
+<td>VARCHAR(20) (Null)</td>
+</tr>
+</table><br>
+
+<table BORDER COLS=2 >
+<tr>
+<td WIDTH="100"><b>Software</b></td>
+
+<td WIDTH="100"><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table><br>
+
+<table BORDER COLS=2 >
+<tr>
+<td WIDTH="100"><b>Programming</b></td>
+
+<td WIDTH="100"><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table><br>
+
+<table BORDER COLS=2 >
+<tr>
+<td WIDTH="100"><b>Operatingsystem</b></td>
+
+<td WIDTH="100"><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table><br>
+
+<table BORDER="1" COLS=5 >
+<tr>
+<td WIDTH="100"><b>SoftwareProfile</b></td>
+
+<td><b>Software</b></td>
+
+<td><b>Profile</b></td>
+
+<td><b>Mandatory</b></td>
+
+<td><b>MinCapability</b></td>
+
+<td><b>LeafNumber</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref. Software OID&nbsp;</td>
+
+<td>Ref. Profile OID&nbsp;</td>
+
+<td>BIT</td>
+
+<td>Ref. CompCapability</td>
+
+<td>INTEGER (null)</td>
+</tr>
+</table><br>
+
+<table BORDER="1" COLS=5 >
+<tr>
+<td WIDTH="100"><b>ProgrammingProfile</b></td>
+
+<td><b>Language</b></td>
+
+<td><b>Profile</b></td>
+
+<td><b>Mandatory</b></td>
+
+<td><b>LeafNumber</b></td>
+
+<td><b>MinCapability</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref. Programming OID&nbsp;</td>
+
+<td>Ref. Profile OID&nbsp;</td>
+
+<td>BIT</td>
+
+<td>INTEGER (null)</td>
+
+<td>Ref. CompCapability</td>
+</tr>
+</table><br>
+
+<table BORDER="1" COLS=5 >
+<tr>
+<td WIDTH="100"><b>OperatingsystemProfile</b></td>
+
+<td><b>System</b></td>
+
+<td><b>Profile</b></td>
+
+<td><b>LeafNumber</b></td>
+
+<td><b>Mandatory</b></td>
+
+<td><b>MinCapability</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref. Operatingsystem OID&nbsp;</td>
+
+<td>Ref. Profile OID&nbsp;</td>
+
+<td>INTEGER (null)</td>
+
+<td>BIT</td>
+
+<td>Ref. CompCapability</td>
+</tr>
+</table>&nbsp;
+
+<table BORDER COLS=4 >
+<tr>
+<td WIDTH="100"><b>CompCapability</b></td>
+
+<td>Description</td>
+
+<td>Ordinal</td>
+
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+
+<td>INTEGER</td>
+
+</tr>
+</table>&nbsp;
+<table border="1" width="45%">
+  <tr>
+    <td width="15%"><b>LanguageCapability</b></td>
+    <td width="15%"><b>Description</b></td>
+    <td width="70%"><b>Ordinal</b></td>
+  </tr>
+  <tr>
+    <td width="15%">&nbsp;</td>
+    <td width="15%">VARCHAR(40)</td>
+    <td width="70%">INTEGER</td>
+  </tr>
+</table><br>
+
+<table BORDER COLS=4 >
+<tr>
+<td WIDTH="100"><b>SoftwareCandidate</b></td>
+
+<td><b>Software</b></td>
+
+<td><b>Candidate</b></td>
+
+<td><b>Capability</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref. Software OID&nbsp;</td>
+
+<td>Ref. Candidate OID&nbsp;</td>
+
+<td>Ref. CompCapability OID</td>
+</tr>
+</table>
+<br>
+<table BORDER COLS=4 >
+<tr>
+<td WIDTH="100"><b>ProgrammingCandidate</b></td>
+
+<td><b>Language</b></td>
+
+<td><b>Candidate</b></td>
+
+<td><b>Capability</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref. Programming OID&nbsp;</td>
+
+<td>Ref. Candidate OID (Null)</td>
+
+<td>Ref. CompCapability OID</td>
+</tr>
+</table><br>
+
+<table BORDER COLS=4 >
+<tr>
+<td WIDTH="100"><b>OperatingsystemCandidate</b></td>
+
+<td><b>System</b></td>
+
+<td><b>Candidate</b></td>
+
+<td><b>Capability</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref. Operatingsystem OID&nbsp;</td>
+
+<td>Ref. Candidate OID&nbsp;</td>
+
+<td>Ref. CompCapability OID</td>
+</tr>
+</table><br>
+
+<table BORDER COLS=2 >
+<tr>
+<td WIDTH="100"><b>Association</b></td>
+
+<td WIDTH="100"><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table><br>
+
+<table BORDER COLS=4 >
+<tr>
+<td WIDTH="100"><b>AssociationCandidate</b></td>
+
+<td><b>Candidate</b></td>
+
+<td><b>Association</b></td>
+
+<td><b>Function</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref. Candidate OID</td>
+
+<td>Ref. Association OID&nbsp;</td>
+
+<td>VARCHAR(40) (null)</td>
+</tr>
+</table><br>
+
+<table BORDER COLS=2 WIDTH="100" >
+<tr>
+<td WIDTH="100"><b>Language</b></td>
+
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table><br>
+
+<table BORDER COLS=7 >
+<tr>
+<td WIDTH="100"><b>LanguageCandidate</b></td>
+
+<td><b>Candidate</b></td>
+
+<td><b>Language</b></td>
+
+<td><b>Diploma</b></td>
+
+<td><b>Written</b></td>
+
+<td><b>Spoken</b></td>
+
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref. Candidate OID&nbsp;</td>
+
+<td>Ref. Language OID</td>
+
+<td>TEXT (null)</td>
+
+<td>Ref. LanguageCapability OID</td>
+
+<td>Ref. LanguageCapability OID</td>
+
+</tr>
+</table><br>
+
+<table BORDER COLS=5 >
+<tr>
+<td WIDTH="100"><b>Hobby</b></td>
+
+<td><b>Title</b></td>
+
+<td><b>Candidate</b></td>
+
+<td><b>Description</b></td>
+
+<td><b>Priority</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR</td>
+
+<td>Ref. Candidate OID</td>
+
+<td>TEXT (Null)</td>
+
+<td>TINYINT UNSIGNED (Null)</td>
+</tr>
+</table><br>
+
+<table BORDER="1" COLS=5 width="859" >
+<tr>
+<td WIDTH="111"><b>LanguageProfile</b></td>
+
+<td width="148"><b>MinSpoken</b></td>
+
+<td width="156"><b>MinWritten</b></td>
+
+<td width="83"><b>Mandatory</b></td>
+
+<td width="107"><b>Diploma</b></td>
+
+<td width="110"><b>Profile</b></td>
+
+<td width="98"><b>Language</b></td>
+</tr>
+
+<tr>
+<td width="111"></td>
+
+<td width="148">Ref. LanguageCapability OID (Null)</td>
+
+<td width="156">Ref. LanguageCapability OID (Null)</td>
+
+<td width="83">BIT</td>
+
+<td width="107">VARCHAR(40) (Null)</td>
+
+<td width="110">Ref. Profile OID</td>
+
+<td width="98">Ref. Language OID</td>
+</tr>
+</table><br>
+
+<table BORDER="1" COLS=5 width="582" >
+<tr>
+<td WIDTH="112"><b>CandidateProfile</b></td>
+
+<td width="127"><b>Candidate</b></td>
+
+<td width="106"><b>Profile</b></td>
+
+<td width="100"><b>MatchingTime</b></td>
+
+<td width="103"><b>Deleted</b></td>
+</tr>
+
+<tr>
+<td width="112"></td>
+
+<td width="127">Ref. Candidate OID&nbsp;</td>
+
+<td width="106">Ref. Profile OID&nbsp;</td>
+
+<td width="100">TIMESTAMP</td>
+
+<td width="103">BIT (init = false)</td>
+</tr>
+</table><br>
+
+<table BORDER="1" COLS=6 >
+<tr>
+<td WIDTH="100"><b>Jobwish</b></td>
+
+<td><b>Candidate</b></td>
+
+<td><b>Industry</b></td>
+
+<td><b>Area</b></td>
+
+<td><b>Function</b></td>
+
+<td><b>Pensum</b></td>
+
+<td><b>Remarks</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>Ref. Candidate OID</td>
+
+<td>Ref. Industry OID (Null)</td>
+
+<td>Ref. Area OID (Null)</td>
+
+<td>VARCHAR (Null)</td>
+
+<td>TINYINT UNSIGNED (Null)</td>
+
+<td>TEXT (Null)</td>
+</tr>
+</table><br>
+
+<table BORDER NOSAVE >
+<tr NOSAVE>
+<td WIDTH="100" NOSAVE><b>Country</b></td>
+
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table><br>
+
+<table BORDER NOSAVE >
+<tr NOSAVE>
+<td WIDTH="100" NOSAVE><b>Graduation</b></td>
+
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table><br>
+
+<table BORDER NOSAVE >
+<tr NOSAVE>
+<td WIDTH="100" NOSAVE><b>Area</b></td>
+
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table><br>
+
+<table BORDER NOSAVE >
+<tr NOSAVE>
+<td WIDTH="100" NOSAVE><b>Industry</b></td>
+
+<td><b>Description</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+</tr>
+</table><br>
+
+<table BORDER="1" NOSAVE >
+<tr NOSAVE>
+<td WIDTH="100" NOSAVE><b>MailQueue</b></td>
+
+<td><b>Mail</b></td>
+
+<td><b>Priority</b></td>
+
+<td width="119"><b>Time</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>MEDIUMBLOB</td>
+
+<td>INTEGER</td>
+
+<td width="119">TIMESTAMP</td>
+</tr>
+</table>
+<br>
+<table BORDER="1" NOSAVE width="364" >
+<tr NOSAVE>
+<td WIDTH="100" NOSAVE><b>MatchQueue</b></td>
+
+<td width="123"><b>Candidate</b></td>
+
+<td width="119"><b>Time</b></td>
+</tr>
+
+<tr>
+<td width="100"></td>
+
+<td width="123">Ref. Candidate OID</td>
+
+<td width="119">TIMESTAMP</td>
+</tr>
+</table>
+
+ 
+<hr>
+<address>
+<a href="index.html">PSE 4</a></address>
+
+<br><!-- Created: Fri Mar 31 13:38:33 MET DST 2000 --><!-- hhmts start -->Last
+modified: Thu Apr 27 10:17:43 MET DST 2000&nbsp;<!-- hhmts end --><font size=-1>|
+$Id: DBSchema.html,v 1.1 2000/06/20 13:33:39 pse4 Exp $</font>
+</body>
+</html>
+

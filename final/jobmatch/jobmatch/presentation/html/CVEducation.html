@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title> Ausbildung </title>
+    <link rel=stylesheet type="text/css" href="style.css">
+  </head>
+  
+  <body>
+    <hr>
+    <h1>Ausbildung</h1>    
+    <table id="formationTable"width="100%" border="1"> <tr>
+	<th>Schultyp </th><th>Name der Schule </th><th>Beginn </th><th>Ende </th><th>Abschluss </th><th>Bemerkungen</th></tr>
+      <tr id="templateRow"> 
+	<td><span id="schooltype"> Gymnasium</span></td>
+	<td><span id="schoolname"> Gymnasium Lerbermatt, Koeniz </span></td>
+	<td><span id="begin">01.01.1990 </span></td>
+	<td><span id="end">01.04.1994</span></td>
+	<td><span id="graduation"> Matur</span></td>
+	<td><span id="remarks">Typus D</span></td> 
+	<td><form action="./CVEducation.html" method="get">
+            <input type="hidden" name="delete" value="delete" id="deleteRow">
+            <input type="submit" name="submit" value="Loeschen"></form></td>
+	<td><form action="./CVEducationDetail.html" method="get">
+            <input type="hidden" name="edit" value="edit" id="editRow">
+            <input type="submit" name="submit" value="Bearbeiten"></form></td> </tr></tr> 
+      <tr class ="trash"> 
+	<td> Fachhochschule</td>
+	<td> École supérieure d'arts appliqués des Montagnes neuchâteloises, La Chaux-de-Fonds  </td>
+	<td>01.01.1994</td>
+	<td>01.04.1997</td>
+	<td>Diplom</td>
+	<td>Abschlussnote 5.7</td>
+	<td><a href="./CV.html"> Loeschen </a></td>
+	<td><a href="./CV.html"> Bearbeiten </a></td> </tr> </tr> 
+      <tr class ="trash"> 
+	<td> Universitaet</td>
+	<td> IDHEAP - Hochschulinstitut für öffentliche Verwaltung, Chavannes</td>
+	<td>01.05.1997</td>
+	<td>01.04.2000</td>
+	<td>Diplom</td>
+	<td>Abschlussnote 5.8</td>
+	<td><a href="./CV.html"> Loeschen </a></td>
+	<td><a href="./CV.html"> Bearbeiten </a></td> </tr> </tr>
+    </table><br>
+    <a href= "./CVEducationDetail.html">Schule eingeben</a><br>
+
+    <p>
+      <a href="./CVWorkingExperience.html"> Weiter </a> <p>
+      <a href="./CVPersonal.html"> Zurueck </a> <p>
+      <a href="./CandidateHome.html"> Zurueck zur Uebersicht </a> <p>
+          <hr>
+  </body>
+</html>

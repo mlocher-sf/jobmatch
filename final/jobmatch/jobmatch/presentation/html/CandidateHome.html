@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>CVOverview </title>
+    <link rel=stylesheet type="text/css" href="style.css">
+  </head>
+
+  <body>
+  <hr>
+  <h1>Kandidaten Homepage</h1>
+    <a href="./ChangePassphrase.html"> Passwort &auml;ndern </a> <br>
+  <h3>Lebenslauf</h3>
+  
+  <a href="./CVPersonal.html"> Persoenliche Daten </a> <br>
+  <a href="./CVEducation.html"> Ausbildung </a> <br>
+  <a href="./CVWorkingExperience.html"> Arbeitserfahrung </a> <br>
+  <a href="./CVLanguageExperience.html"> Sprachkenntnisse </a> <br>
+  <a href="./CVComputerExperience.html"> Computerkenntnisse </a> <br>
+  <a href="./CVMembership.html"> Mitgliedschaften </a> <br>
+  <a href="./CVHobbies.html"> Freizeitaktivitaeten </a> <br>
+  <a href="./CVJobWishes.html"> Jobwuensche </a> <br>
+
+    <p><a id="preview" href="./CurriculumVitae.po">Ueberblick als PDF</a></p>
+
+    <form action="./CandidateHome.html">
+      Status des Lebenslaufs: <input id="active" type="radio" name="status" value="active"> aktiv
+      <input id="inactive" type="radio" name="status" value="inactive"> inaktiv
+      
+      <h3>Sperrliste</h3>
+      <p>Diesen Firmen moechte ich meinen Lebenslauf nicht zukommen lassen.</p>
+      <table width="50%" border="1">
+	<tr><th>Firma</th></tr>
+	<tr><td>UBS</td></tr>
+	<tr class="trash"><td>SBB</td></tr>
+      </table>
+      <a href="./CandidateHome.html">Sperrliste bearbeiten</a>
+      
+      <p><input type="submit" value="Werte akzeptieren & Logout"></p>
+      <input type="hidden" name="action" value="logout">
+    </form>
+    <hr>
+  </body>
+</html>
+
