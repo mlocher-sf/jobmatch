@@ -1,4 +1,4 @@
-// $Id: Formation.java,v 1.4 2000/05/31 12:15:47 studer Exp $
+// $Id: Formation.java,v 1.5 2000/06/10 11:06:18 studer Exp $
 
 package jobmatch.business.candidate.cv;
 
@@ -12,7 +12,7 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.4 $
+ *  @version $Revision: 1.5 $
  **/
 public class Formation extends SchoolCandidateBDO implements CVSection {
     
@@ -56,7 +56,7 @@ public class Formation extends SchoolCandidateBDO implements CVSection {
     }
 
     /**
-     * Return the School business object
+     * Returns the School business object
      **/
     public School getSchoolBO() {
 	try {
@@ -109,6 +109,9 @@ public class Formation extends SchoolCandidateBDO implements CVSection {
 
 /*
  * $Log: Formation.java,v $
+ * Revision 1.5  2000/06/10 11:06:18  studer
+ * business object for cvsections
+ *
  * Revision 1.4  2000/05/31 12:15:47  studer
  * Javadoc added
  *

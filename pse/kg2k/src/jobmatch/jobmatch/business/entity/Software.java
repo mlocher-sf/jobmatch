@@ -1,4 +1,4 @@
-// $Id: Software.java,v 1.1 2000/06/09 12:00:20 studer Exp $
+// $Id: Software.java,v 1.2 2000/06/10 11:06:24 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -11,7 +11,7 @@ import java.util.*;
  *
  *  @since June 9 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class Software extends SoftwareBDO implements Description {
     
@@ -26,7 +26,7 @@ public class Software extends SoftwareBDO implements Description {
     }
     
     /**
-     * Returns the specified Software from the DB
+     * Returns the specified software from the DB
      **/
     public static Software getSoftware(String description) {
 	try {
@@ -42,7 +42,7 @@ public class Software extends SoftwareBDO implements Description {
     }
 
     /**
-     * Return a list of all Software in the DB
+     * Return a list of all software in the DB
      **/
     public static List getAllSoftware() {
 	List result = new ArrayList();
@@ -88,6 +88,9 @@ public class Software extends SoftwareBDO implements Description {
 
 /*
  * $Log: Software.java,v $
+ * Revision 1.2  2000/06/10 11:06:24  studer
+ * business object for cvsections
+ *
  * Revision 1.1  2000/06/09 12:00:20  studer
  * More Entities
  *

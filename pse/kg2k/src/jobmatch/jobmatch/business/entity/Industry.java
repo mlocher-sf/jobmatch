@@ -1,4 +1,4 @@
-// $Id: Association.java,v 1.2 2000/06/10 11:06:22 studer Exp $
+// $Id: Industry.java,v 1.1 2000/06/10 11:06:23 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -7,51 +7,51 @@ import jobmatch.data.*;
 import java.util.*;
 
 /**
- *  Association Business Object
+ *  Industry Business Object
  *
- *  @since June 9 2000
+ *  @since June 10 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.1 $
  **/
-public class Association extends AssociationBDO implements Description {
+public class Industry extends IndustryBDO implements Description {
     
-    private Association(String description) throws Exception {
+    private Industry(String description) throws Exception {
 	super();
 	this.setDescription(description);
 	this.commit();
     }
 
-    public Association(AssociationDO dataObject) {
+    public Industry(IndustryDO dataObject) {
 	super(dataObject);
     }
     
     /**
-     * Returns the specified Association from the DB
+     * Returns the specified industry from the DB
      **/
-    public static Association getAssociation(String description) {
+    public static Industry getIndustry(String industry) {
 	try {
-	    AssociationQuery query = new AssociationQuery();
-	    query.setQueryDescription(description);
-	    AssociationDO element = query.getNextDO();
+	    IndustryQuery query = new IndustryQuery();
+	    query.setQueryDescription(industry);
+	    IndustryDO element = query.getNextDO();
 	    if (element != null) {
-		return new Association(element);
+		return new Industry(element);
 	    } else {
-		return new Association(description);
+		return new Industry(industry);
 	    }
 	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
     }
 
     /**
-     * Return a list of all Associations in the DB
+     * Return a list of all industries in the DB
      **/
-    public static List getAllAssociations() {
+    public static List getAllIndustries() {
 	List result = new ArrayList();
 	try {
-	    AssociationQuery query = new AssociationQuery();
+	    IndustryQuery query = new IndustryQuery();
 	    query.addOrderByDescription();
-	    AssociationDO element = query.getNextDO();
+	    IndustryDO element = query.getNextDO();
 	    while ( element != null) {
-		result.add(new Association(element));
+		result.add(new Industry(element));
 		element = query.getNextDO();
 	    }
 	} catch (Exception e) { throw new RuntimeException(e.toString()); }
@@ -65,7 +65,7 @@ public class Association extends AssociationBDO implements Description {
 	}
 	
 	try {
-	    return (this.getHandle().equals(((AssociationBDO) other).getHandle()));
+	    return (this.getHandle().equals(((IndustryBDO) other).getHandle()));
 	}
 	catch (Exception e) {
 	    return false;
@@ -87,13 +87,9 @@ public class Association extends AssociationBDO implements Description {
 
 
 /*
- * $Log: Association.java,v $
- * Revision 1.2  2000/06/10 11:06:22  studer
+ * $Log: Industry.java,v $
+ * Revision 1.1  2000/06/10 11:06:23  studer
  * business object for cvsections
- *
- * Revision 1.1  2000/06/09 12:00:15  studer
- * More Entities
- *
  *
  *
  */

@@ -1,4 +1,4 @@
-// $Id: Association.java,v 1.2 2000/06/10 11:06:22 studer Exp $
+// $Id: Area.java,v 1.1 2000/06/10 11:06:21 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -7,51 +7,51 @@ import jobmatch.data.*;
 import java.util.*;
 
 /**
- *  Association Business Object
+ *  Area Business Object
  *
- *  @since June 9 2000
+ *  @since June 10 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.1 $
  **/
-public class Association extends AssociationBDO implements Description {
+public class Area extends AreaBDO implements Description {
     
-    private Association(String description) throws Exception {
+    private Area(String description) throws Exception {
 	super();
 	this.setDescription(description);
 	this.commit();
     }
 
-    public Association(AssociationDO dataObject) {
+    public Area(AreaDO dataObject) {
 	super(dataObject);
     }
     
     /**
-     * Returns the specified Association from the DB
+     * Returns the specified area from the DB
      **/
-    public static Association getAssociation(String description) {
+    public static Area getArea(String industry) {
 	try {
-	    AssociationQuery query = new AssociationQuery();
-	    query.setQueryDescription(description);
-	    AssociationDO element = query.getNextDO();
+	    AreaQuery query = new AreaQuery();
+	    query.setQueryDescription(industry);
+	    AreaDO element = query.getNextDO();
 	    if (element != null) {
-		return new Association(element);
+		return new Area(element);
 	    } else {
-		return new Association(description);
+		return new Area(industry);
 	    }
 	} catch (Exception e) { throw new RuntimeException(e.toString()); }	
     }
 
     /**
-     * Return a list of all Associations in the DB
+     * Return a list of all areas in the DB
      **/
-    public static List getAllAssociations() {
+    public static List getAllIndustries() {
 	List result = new ArrayList();
 	try {
-	    AssociationQuery query = new AssociationQuery();
+	    AreaQuery query = new AreaQuery();
 	    query.addOrderByDescription();
-	    AssociationDO element = query.getNextDO();
+	    AreaDO element = query.getNextDO();
 	    while ( element != null) {
-		result.add(new Association(element));
+		result.add(new Area(element));
 		element = query.getNextDO();
 	    }
 	} catch (Exception e) { throw new RuntimeException(e.toString()); }
@@ -65,7 +65,7 @@ public class Association extends AssociationBDO implements Description {
 	}
 	
 	try {
-	    return (this.getHandle().equals(((AssociationBDO) other).getHandle()));
+	    return (this.getHandle().equals(((AreaBDO) other).getHandle()));
 	}
 	catch (Exception e) {
 	    return false;
@@ -87,13 +87,9 @@ public class Association extends AssociationBDO implements Description {
 
 
 /*
- * $Log: Association.java,v $
- * Revision 1.2  2000/06/10 11:06:22  studer
+ * $Log: Area.java,v $
+ * Revision 1.1  2000/06/10 11:06:21  studer
  * business object for cvsections
- *
- * Revision 1.1  2000/06/09 12:00:15  studer
- * More Entities
- *
  *
  *
  */

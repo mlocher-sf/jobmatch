@@ -1,4 +1,4 @@
-// $Id: Language.java,v 1.1 2000/06/09 12:00:18 studer Exp $
+// $Id: Language.java,v 1.2 2000/06/10 11:06:23 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -11,7 +11,7 @@ import java.util.*;
  *
  *  @since June 9 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class Language extends LanguageBDO implements Description {
     
@@ -26,7 +26,7 @@ public class Language extends LanguageBDO implements Description {
     }
     
     /**
-     * Returns the specified Language from the DB
+     * Returns the specified language from the DB
      **/
     public static Language getLanguage(String description) {
 	try {
@@ -42,7 +42,7 @@ public class Language extends LanguageBDO implements Description {
     }
 
     /**
-     * Return a list of all Language in the DB
+     * Return a list of all languages in the DB
      **/
     public static List getAllLanguage() {
 	List result = new ArrayList();
@@ -88,6 +88,9 @@ public class Language extends LanguageBDO implements Description {
 
 /*
  * $Log: Language.java,v $
+ * Revision 1.2  2000/06/10 11:06:23  studer
+ * business object for cvsections
+ *
  * Revision 1.1  2000/06/09 12:00:18  studer
  * More Entities
  *

@@ -31,7 +31,11 @@ CLASSES = \
 	Programming \
 	OperatingSystem \
 	Language \
-	Association
+	Association \
+	ComputerCapability \
+	LanguageCapability \
+	Industry \
+	Area
 
 USEICONTRACT=1
 
