@@ -1,6 +1,6 @@
 #!/usr/local/bin/tcsh
 
-# $Id: genJavadoc,v 1.5 2000/05/10 16:50:21 locher Exp $
+# $Id: genJavadoc,v 1.6 2000/05/10 18:31:36 locher Exp $
 
 set SOURCE = pse/kg2k/src/jobmatch/
 set INDIR = /tmp/$SOURCE
@@ -11,7 +11,7 @@ set PARAMS = "-package -splitindex -use"
 set HEADER = "<b>PSE 2000 Group 4</b>"
 
 cd /tmp
-/usr/local/bin/cvs co $SOURCE
+/usr/local/bin/cvs -d /home/pse4/cvsroot co $SOURCE
 mkdir -p $OUTDIR
 cd $INDIR
 /usr/local/jdk1.2.2/bin/javadoc $PARAMS -header "$HEADER" -sourcepath $INDIR -d $OUTDIR @$CONTENTFILE
