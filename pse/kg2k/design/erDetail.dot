@@ -15,8 +15,8 @@ graph ER {
 	Suchprofil;
 	Bewerber;
 
-	Kenntniss;
-	"Sprache\nKenntniss";
+	Kentniss;
+	"Sprache\nKentniss";
 
 	// Relations
 	node [shape=diamond,style=filled,color=lightgrey, fontsize=10];
@@ -30,10 +30,10 @@ graph ER {
 	Suchresultate -- Bewerber [label=n];
 
 	Bewerber -- "Sprachen" [label=1]
-	"Sprachen" -- "Sprache\nKenntniss" [label=n];
+	"Sprachen" -- "Sprache\nKentniss" [label=n];
 
 	Suchprofil -- "Sprachen\nAnforderung" [label=n];
-	"Sprachen\nAnforderung" -- "Sprache\nKenntniss" [label=1];
+	"Sprachen\nAnforderung" -- "Sprache\nKentniss" [label=1];
 
 
 	//Attribute
@@ -46,16 +46,16 @@ graph ER {
 	Suchprofil -- "MatchTree";
 	"Sprachen\nAnforderung" -- MatchParameter;
 	"Sprachen\nAnforderung" -- "Leaf#";
-	Qualitaet -- Kenntniss;
+	Qualitaet -- Kentniss;
 
 	//Generalisierungen
 	
 	edge [label=Generalisierung, dir=back, len=2]
 	
-	"Sprache\nKenntniss" -- Kenntniss;
+	"Sprache\nKentniss" -- Kentniss;
 
 
-	label = "\n\nER Diagramm [DETAIL]\n Group 4 / $Id: erDetail.dot,v 1.1 2000/04/12 11:54:51 locher Exp $"
+	label = "\n\nER Diagramm [DETAIL]\n Group 4 / $Id: erDetail.dot,v 1.2 2000/04/18 14:28:09 locher Exp $"
 	
 
 }

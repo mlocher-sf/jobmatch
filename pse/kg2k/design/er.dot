@@ -17,11 +17,11 @@ graph ER {
 	Schulbesuch;
 	Arbeitserfahrung;
 	
-	Kenntniss;
-	"Sprache\nKenntniss";
-	"Software\nKenntniss";
-	"Programmier\nKenntniss";
-	"Betriebssystem\nKenntniss";
+	Kentniss;
+	"Sprache\nKentniss";
+	"Software\nKentniss";
+	"Programmier\nKentniss";
+	"Betriebssystem\nKentniss";
 
 	JobWunsch;
 	"Charakter\nEigenschaften";
@@ -41,7 +41,7 @@ graph ER {
 	Suchresultate -- Bewerber [label=n];
 
 	Bewerber -- "Sprachen" [label=1]
-	"Sprachen" -- "Sprache\nKenntniss" [label=n];
+	"Sprachen" -- "Sprache\nKentniss" [label=n];
 
 	Bewerber -- "Ausbildung" [label=1];
 	"Ausbildung" -- Schulbesuch [label=n];
@@ -49,13 +49,13 @@ graph ER {
 	Bewerber -- "Arbeitserfahrungen" [label=1];
 	"Arbeitserfahrungen" -- Arbeitserfahrung [label=n];
 
-	Bewerber -- "SoftwareKenntnisse" 
-	"SoftwareKenntnisse" -- "Software\nKenntniss";
-	Bewerber -- "ProgrammierKenntnisse" [label=1]
-	"ProgrammierKenntnisse" -- "Programmier\nKenntniss" [label=n];
+	Bewerber -- "SoftwareKentnisse" 
+	"SoftwareKentnisse" -- "Software\nKentniss";
+	Bewerber -- "ProgrammierKentnisse" [label=1]
+	"ProgrammierKentnisse" -- "Programmier\nKentniss" [label=n];
 
-	Bewerber -- "BetriebssystemKenntnisse" [label=1]
-	"BetriebssystemKenntnisse" -- "Betriebssystem\nKenntniss" [label=n];
+	Bewerber -- "BetriebssystemKentnisse" [label=1]
+	"BetriebssystemKentnisse" -- "Betriebssystem\nKentniss" [label=n];
 
 	Bewerber -- "Charakter" [label=1]
 	"Charakter" -- "Charakter\nEigenschaften" [label=n];
@@ -74,7 +74,7 @@ graph ER {
 
 	
 	Suchprofil -- "Sprachen\nAnforderung" [label=n];
-	"Sprachen\nAnforderung" -- "Sprache\nKenntniss" [label=1];
+	"Sprachen\nAnforderung" -- "Sprache\nKentniss" [label=1];
 
 	Suchprofil -- "Ausbildungs\nAnforderung" [label=n];
 	"Ausbildungs\nAnforderung" -- Schulbesuch [label=1];
@@ -82,14 +82,14 @@ graph ER {
 	Suchprofil -- "Arbeitserfahrung\nAnforderung" [label=n];
 	"Arbeitserfahrung\nAnforderung" -- Arbeitserfahrung [label=1];
 
-	Suchprofil -- "SoftwareKenntniss\nAnforderung" [label=n];
-	"SoftwareKenntniss\nAnforderung" -- "Software\nKenntnis" [label=1];
+	Suchprofil -- "SoftwareKentniss\nAnforderung" [label=n];
+	"SoftwareKentniss\nAnforderung" -- "Software\nKentniss" [label=1];
 
-	Suchprofil -- "ProgrammierKenntniss\nAnforderung" [label=n];
-	"ProgrammierKenntniss\nAnforderung" -- "Programmier\nKenntniss" [label=1];
+	Suchprofil -- "ProgrammierKentniss\nAnforderung" [label=n];
+	"ProgrammierKentniss\nAnforderung" -- "Programmier\nKentniss" [label=1];
 
-	Suchprofil -- "BetriebssystemKenntniss\nAnforderung" [label=n];
-	"BetriebssystemKenntniss\nAnforderung" -- "Betriebssystem\nKenntniss" [label=1];
+	Suchprofil -- "BetriebssystemKentniss\nAnforderung" [label=n];
+	"BetriebssystemKentniss\nAnforderung" -- "Betriebssystem\nKentniss" [label=1];
 
 	Suchprofil -- "Charakter\nAnforderung" [label=n];
 	"Charakter\nAnforderung" -- "Charakter\nEigenschaften" [label=1];
@@ -114,16 +114,16 @@ graph ER {
 	
 	edge [label=Generalisierung, dir=back, len=2]
 	
-	"Sprache\nKenntniss" -- Kenntniss;
-	"Software\nKenntniss" -- Kenntniss;
-	"Programmier\nKenntniss" -- Kenntniss;
-	"Betriebssystem\nKenntniss" -- Kenntniss;
+	"Sprache\nKentniss" -- Kentniss;
+	"Software\nKentniss" -- Kentniss;
+	"Programmier\nKentniss" -- Kentniss;
+	"Betriebssystem\nKentniss" -- Kentniss;
 
 	Schulbesuch -- Lebensabschnitt;
 	Arbeitserfahrung -- Lebensabschnitt;
 
 
-	label = "\n\nER Diagramm [TOTAL]\n Group 4 / $Id: er.dot,v 1.1 2000/04/12 11:54:51 locher Exp $"
+	label = "\n\nER Diagramm [TOTAL]\n Group 4 / $Id: er.dot,v 1.2 2000/04/18 14:28:08 locher Exp $"
 
 }
 	
