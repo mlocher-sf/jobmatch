@@ -1,8 +1,8 @@
-#This file was created by <locher> Tue Apr 18 16:14:47 2000
+#This file was created by <loeffel> Mon May  1 16:08:08 2000
 #LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
-\language german
+\language english
 \inputencoding latin1
 \fontscheme default
 \graphics default
@@ -30,6 +30,11 @@
 KG 2000
 \newline 
 Requirements Document
+\layout Date
+
+DRAFT
+\newline 
+V 0.2
 \layout Author
 
 PSE 2000, Gruppe 4
@@ -55,77 +60,6 @@ Die Online Kontaktboerse ist eine Web-Applikation, die den Service von AIESEC,
  die Firmen per Email.
 \layout Section
 
-Begriffe
-\layout Subsection
-
-Bewerber
-\layout Standard
-
-Ein Bewerber ist eine Person, die ihren Lebenslauf in der Kontaktboerse
- publiziert.
- Die Firmen konnen fuer sie passende Bewerber finden.
-\layout Subsection
-
-CV
-\layout Standard
-
-CuriculumVitae, der Lebenslauf eines Bewerbers.
- Enthaelt die Daten aus folgenden Bereichen:
-\layout Itemize
-
-Persoenliche Daten
-\layout Itemize
-
-Arbeitserfahrung
-\layout Itemize
-
-Ausbildung
-\layout Itemize
-
-Sprachen
-\layout Itemize
-
-Computerkentnisse
-\layout Itemize
-
-Mitgliedschaften
-\layout Itemize
-
-Hobbies
-\layout Subsection
-
-Anforderungsprofil
-\layout Standard
-
-Ein Anforderungsprofil ist eine Menge von Anforderungen an den Bewerber.
- Diese Anforderungen koennen beliebig kombiniert werden.
-\layout Standard
-
-Die Firma kann Anforderungen aus folgenden Bereichen wahlen:
-\layout Itemize
-
-Ausbildung
-\layout Itemize
-
-Arbeitserfahrung
-\layout Itemize
-
-Sprachfaehigkeiten
-\layout Itemize
-
-Computerfaehigkeiten (Software, Programmiersprachen, Betriebssysteme)
-\layout Itemize
-
-Persoenliche Daten (Alter, Nationalitaet, Geschlecht)
-\layout Subsection
-
-Matching
-\layout Standard
-
-Das Matching beschreibt, ob ein Bewerber ein bestimmtes Anforderungsprofil
- erfuellt.
-\layout Section
-
 Funktionale Anforderungen
 \layout Subsection
 
@@ -133,37 +67,40 @@ Authentifizierung
 \layout Itemize
 
 Jeder Bewerber kann sich auf der Einstiegsseite neu anmelden.
- Er kann sein Username, eine beliebige Zeichenkette, und sein Passwort selbst
- bestimmen.
- Der Username muss fuer alle Bewerber verschieden sein.
- Username und Passwort werden ihm via eMail zugesandt.
+ Er kann sein Passwort und seinen Usernamen selbst bestimmen.
+ 
 \layout Itemize
 
-Die Firma kann sich mit einem Login (Username/Passwort) einloggen, das sie
- von AIESEC erhaelt.
-\layout Subsection
-
-Funktionen ohne Authentifizierung
+Jeder Interessent kann sich als Gast (username: gast) einloggen.
+ Ein Gast kann die Kennzahlen (siehe ...) der Firmen anschauen, aber keinen
+ Lebenslauf (im Weiteren CV genannt) eingeben.
 \layout Itemize
 
-Nach Firmen suchen und deren Kenndaten abfragen.
+Die Firmen koennen sich nur mit Benutzerdaten einloggen, die sie von AIESEC
+ erhalten.
 \layout Subsection
 
 Funktionen der Bewerber
-\layout Standard
-
-Ein korrekt authentifizierter Bewerber kann folgende Aktionen ausfuehren:
 \layout Itemize
 
 Er kann seinen CV eingeben und editieren.
 \layout Itemize
 
-Er kann sein Konto aktivieren/deaktivieren.
- Ein deaktiviertes Konto wird bei Matching nicht beruecksichtigt.
+Er kann sein Konto deaktivieren, d.h.
+ sein CV wird bei der Profilsuche nicht mehr beruecksichtigt.
 \layout Itemize
 
-Der Bewerber kann angeben, welche Firmen mit einem EMail auf seinen CV hingewies
-en werden.
+Die Eintraege, die in einem CV enthalten sein muessen, sind von AIESEC in
+ einer uns zugaenglichen Liste zusammengefasst, und werden so uebernommen
+ .
+\layout Itemize
+
+Der Bewerber kann nach Firmen suchen und deren Kennzahlen abfragen.
+\layout Itemize
+
+Der Bewerber kann im CV angeben, welche Firmen er bevorzugt.
+ Diese Firmen werden per Email benachrichtigt.
+ Dies beeinflusst den Matchingprozess nicht.
 \layout Itemize
 
 Wenn der Bewerber sein Passwort vergisst, kann er das System veranlassen,
@@ -171,60 +108,84 @@ Wenn der Bewerber sein Passwort vergisst, kann er das System veranlassen,
 \layout Itemize
 
 Ein Bewerber kann zu seinem CV ein Bild hinzufuegen.
+ Dieses muss jedoch bereits in digitaler Form direkt ueber das Internet
+ heraufgeladen werden.
+ Es besteht keine Moeglichkeit, dass AIESEC irgendwelche von den Studenten
+ zugesandten Bilder digitalisiert und in die Datenbank einfuegt.
 \layout Itemize
 
 Wenn sich der Bewerber 6 Monate lang nicht eingeloggt hat, wird sein Konto
  automatisch deaktiviert.
- Loggt er sich weitere 6 Monate nicht mehr ein, bekommt er eine Warnung
- via Email, dass sein Konto in 10 Tagen gelöscht wird.
- Der Bewerber muss sich selbst wieder aktivieren, wenn er durch diesen Mechanism
-us deaktiviert wurde.
+ Loggt er sich ein Jahr nicht mehr ein, bekommt er eine Warnung via Email,
+ dass sein Konto in 10 Tagen gelöscht wird.
+ 
 \layout Subsection
 
 Funktionen der Firmen
-\layout Standard
-
-Eine korrekt authentifizierte Firma kann folgende Aktionen ausfuehren:
 \layout Itemize
 
-Sie koennen neue Anforderungsprofile hinzufuegen und bestehende editieren
- und loeschen.
+Sie koennen Anforderungsprofile fuer kuenftige Mitarbeiter eingeben und
+ editieren.
+ Zu den Eingabemoeglichkeiten zaehlt auch eine Gewichtung der einzelnen
+ Anforderungen in die Kategorien 
+\begin_inset Quotes eld
+\end_inset 
+
+unbedingt noetig
+\begin_inset Quotes erd
+\end_inset 
+
+, 
+\begin_inset Quotes eld
+\end_inset 
+
+wuenschenswert
+\begin_inset Quotes erd
+\end_inset 
+
+ und 
+\begin_inset Quotes eld
+\end_inset 
+
+unerwuenscht
+\begin_inset Quotes erd
+\end_inset 
+
+.
 \layout Itemize
 
-Die Kenndaten der Firma koennen in einem Formular eingegeben und editiert
- werden.
-\layout Subsubsection
-
-Suche nach Bewerberdaten
+Beim ersten Einloggen koennen sie ihre Kennzahlen eingeben.
+ Spaeter koennen sie diese editieren.
+ Zu den Kennzahlen gehoeren Firmengroesse, Taetigkeitsbereich, Angaben zu
+ der Regionalen Praesenz.
 \layout Itemize
 
-Die Suchprofile enthalten Anforderungen an die suchbaren Teile des Lebenslaufes.
- Diese Anforderungen koennen beliebig logisch verknuepft werden.
+Sie koennen die Studentendaten nach beliebigen Kriterien kostenlos abfragen.
+ Name und Adresse der Bewerber werden jedoch in diesem Modus nicht angezeigt.
+ 
 \layout Itemize
 
-Die Firma kann waehlen, ob die Resultate einer Suche abgespeichert werden.
- Aus abgespeicherten Resultaten lassen sich Bewerber entfernen.
-\layout Itemize
-
-Suchprofile, deren Resultate gespeichert werden, haben die Option, automatisch
- aktualisiert zu werden.
- Die Firma kann wahlweise benachrichtigt werden, wenn neue Suchresultate
- vorhanden sind.
- Das Zeitintervall und die eMail Adresse fuer diese Benachrichtigung ist
- waehlbar.
+Sie koennen fuer jedes Anforderungsprofil waehlen, wie und wie oft sie informier
+t werden wollen.
+ Dabei koennen sie waehlen, ob sie per Email benachrichtigt werden wollen
+ oder ob sie die Resultate nur online betrachten wollen.
+ Bei der Email-Benachrichtigung koennen sie zusaetzlich noch angeben, in
+ welchen Abstaenden ihnen ein Mail ueber die aktuellen Matchings zugesandt
+ wird.
 \layout Subsection
 
 Funktionen für AIESEC
 \layout Itemize
 
 Kann die Datenbank nach beliebigen Kriterien durchsuchen.
+ 
 \layout Itemize
 
 Kann Studenten aus der Datenbank loeschen.
  
 \layout Itemize
 
-Kann Firmen aktiv/inaktiv setzen oder loeschen.
+Kann Firmen inaktiv setzen oder loeschen.
  Die Daten sind nach der Deaktivierung nur noch fuer AIESEC sichtbar.
  
 \layout Itemize
@@ -235,12 +196,24 @@ Kann keine Daten editieren.
 Analysetool
 \layout Itemize
 
-Das Analysetool liefert fuer jedes Suchprofil einer Firma, wieviele Matches
- seit der Erstellung des Profils erzielt wurden.
+Dieser Teil des Programmpakets dient dazu, einen Ueberblick ueber den Nutzwert
+ der Applikation zu erhalten.
+ Es wird nicht ueber einen Web-Browser ablaufen, sondern als stand-alone
+ Tool zur Verfuegung stehen.
+ Somit kann auch die Gefaehrdung durch 
+\begin_inset Quotes eld
+\end_inset 
+
+Hacking
+\begin_inset Quotes erd
+\end_inset 
+
+ reduziert werden.
 \layout Itemize
 
-Das Analysetool liefert fuer jede Firma die Summen der Statistikdaten aus
- all ihren Suchprofilen.
+Das Analysetool liefert die Matchings pro Profil sowie den Matchingerfolg
+ aller Profile einer Firma auf.
+ 
 \layout Itemize
 
 Das Analysetool ist nur fuer AIESEC verfuegbar.
@@ -257,6 +230,10 @@ Anforderungen an die Zuverlässigkeit
 
 Das System soll durchgehend verfuegbar sein, ausser zu den Zeiten, in welchen
  die Datenbank gesichert wird.
+\layout Itemize
+
+Die Sicherung wird nachts ablaufen und wird beim Einsatz entsprechender
+ Hardware nicht ueber eine Stunde andauern
 \layout Subsubsection
 
 Anforderung an die Benutzbarkeit 
@@ -267,26 +244,41 @@ Das Web-Interface soll sich an den gaengigen Online-Formularen orientieren.
  wie zum Beispiel Textfelder und Dropdown Menues.
 \layout Itemize
 
-Eine Online-Hilfe steht zur Verfuegung.
+Die Administrationstools sollen keinen unnoetigen, komplizierten Aufgaben
+ genuegen, sondern die genau umsteckten Aufgaben aus 2.5 erfuellen.
+ Fuer diese jedoch muss eine Online-Hilfe zur Verfuegung stehen.
 \layout Subsubsection
 
 Anforderungen an das Zeit- und Verbrauchsverhalten 
 \layout Itemize
 
-Verbrauchsverhalten: Die Datenmenge, die hoechstens pro Bewerber gespeichert
- wird, kann auf eine bestimmbare Limite gesetzt werden, damit die Datenbankgroes
-se kontrollierbar bleibt.
+Verbrauchsverhalten: Das ER-Diagramm muss moeglichst wenig Redundanz aufweisen
+ und somit den Speicherplatz optimal ausnutzen und somit die Datenmenge,
+ die gesichert werden muss, gering halten.
 \layout Itemize
 
-Zeitverhalten: Die Performance ist weitgehend von der eingesetzten Java-,
- Enhydra - und Datenbankumgebung bestimmt.
+Zeitverhalten: Es sollen allgemeine Regeln der objektorientierten Programmierung
+ beachtet werden, um Redundanz und 
+\begin_inset Quotes eld
+\end_inset 
+
+schwerfaellige
+\begin_inset Quotes erd
+\end_inset 
+
+ Datentransporte zwischen den Objekten zu vermeiden.
+ Jedoch ist die Performance weitgehend von der Enhydra - und Datenbankumgebung
+ festgelegt.
 \layout Subsubsection
 
 Anforderungen an die Wartbarkeit 
 \layout Itemize
 
-Durch die transparente Anbindung der Datenbank, kann der Datenbanktyp jederzeit
- geaendert werden.
+Da die genauen Angaben zur definitiv zur Anwendung kommenden Datenbank noch
+ nicht bekannt sind, muss das System so allgemein wie moeglich gehalten
+ werden.
+ Die Anpassungen muessen innerhalb eines Arbeitstages vorgenommen werden
+ koennen.
 \layout Subsubsection
 
 Anforderungen für die Erweiterbarkeit 
@@ -298,7 +290,8 @@ Ein besonderes Augenmerk ist auf die Skalierbarkeit der Datenbank zu werfen,
 \layout Itemize
 
 Online Formulare muessen nachtraeglich von der Administration angepasst
- werden koennen.
+ werden koennen, ohne dass irgendwelche Modifikationen am DB-Schema oder
+ Anpassungen am Programmcode noetig werden.
 \layout Itemize
 
 Eine multilinguale Version soll ohne tiefgreifende Modifikation der Java-Kompone
@@ -313,11 +306,24 @@ Test
 Anforderungen an den Test 
 \layout Itemize
 
-Die haeufigen Releases werden benutzt, um Feedback zu sammeln.
+Besondere Aufmerksamkeit ist auf die Korrektheit der Datenbankmodifikation
+ zu widmen, um eine Datenkorruption auszuschliessen.
+ Dies bedingt eine einwandfreie Funktion der Java-SQL Kommandos.
 \layout Itemize
 
 Regression Tests garantieren, dass die Funktionalitaeten im inkrementellen
  Entwickeln ihre korrekte Funktionsweise beibehalten.
+\layout Itemize
+
+Testlaeufe im 
+\begin_inset Quotes eld
+\end_inset 
+
+real-life
+\begin_inset Quotes erd
+\end_inset 
+
+ Einsatz sind von AIESEC nicht verlangt.
 \layout Subsection
 
 Einsatz 
@@ -335,20 +341,7 @@ Anforderung an die Logistik der Betreuung
 Dies wird dem Team ueberlassen sein, das den Prototyp weiterentwickelt.
 \layout Subsection
 
-Umgebung
-\layout Subsubsection
-
-Anfoderung an die Client-Software
-\layout Standard
-
-Um die Dienste der Kontaktboerse nutzen zu koennen, wird einer der folgenden
- Browser oder ein gleichwertiger vorausgesetzt:
-\layout Itemize
-
-Microsoft Internet Explorer ab Version 4
-\layout Itemize
-
-Netscape Navigator ab Version 4
+Umgebungsbedingte Produkteigenschaften 
 \layout Subsubsection
 
 Anforderungen durch die Schnittstellen der Systembasis 
@@ -364,7 +357,7 @@ Die Applikation wird letztendlich auf einem NT-Server zum Einsatz kommen.
 Anforderungen an die Austauschbarkeit 
 \layout Itemize
 
-Es muss eine beliebige Datenbank verwendet werden koennen.
+Es muss eine jede JDBC kompatible Datenbank verwendet werden koennen.
  Dies soll einzig durch die Anpassung der JDBC Schnittstelle umsetzbar sein.
 \layout Subsubsection
 
@@ -372,5 +365,6 @@ Berücksichtigung zu verwendender Bausteine
 \layout Itemize
 
 Es werden die Enhydra-Umgebung und die Datenbank MySQL verwendet.
- Darueber hinaus werden Komponenten zum Mailversand integriert werden.
+ Darueber hinaus werden Komponenten zum Mailversand wie Javamail von SUN
+ integriert werden.
 \the_end
