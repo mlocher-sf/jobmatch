@@ -8,7 +8,9 @@ Name			        Description
 ______________________________________________________________________________
 Studi hinzufuegen               Student in DB aufnehmen
 CV bearbeiten			Aenderungen am CV
-Firma hinzufuegen
+Firma hinzufuegen		AIESEC kann Firmen hinzufuegen
+Firma loeschen
+Firma editieren
 Suchprofil hinzufuegen
 Suchprofil bearbeiten
 Suchprofil ausfuehren           Das Matching wird ausgefuehrt
@@ -29,7 +31,7 @@ eMail Benachrichtung nach Matching
 Foto im CV
 Alte CV mahnen                  eMail an Studi
 Alte CV warnung loeschen	letzte warnung vor dem loeschen
-Alte CV loeschen
+Alte CV loeschen		AIESEC kann CV loeschen aber nicht editieren
 Konfigurationsmoeglichkeiten
 Auswahllisten bearbeiten
 Studi kann CV zustellen         Firma wird benachrichtigt
@@ -40,4 +42,4 @@ Infos zum Projekt abfragen
 
 
 ==============================================================================
-$Id: features.txt,v 1.3 2000/04/11 06:36:25 bruhin Exp $
+$Id: features.txt,v 1.4 2000/04/11 07:28:51 studer Exp $
