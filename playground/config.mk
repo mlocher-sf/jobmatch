@@ -7,7 +7,7 @@
 #
 # The directory containing the Enhydra distribution.
 #
-ENHYDRA_DIR = /home/scg/Software/enhydra/enhydra2.3
+ENHYDRA_DIR = /home/scg/Software/enhydra/enhydra3.0
 
 
 #
