@@ -1,8 +1,10 @@
-Sitzungsprotokoll vom 4. April 2000
-
-Ort: Exwi A94
+Sitzungsprotokoll PSE 2000, Gruppe 4
+==============================================================================
+Datum:  4. April 2000
 Zeit: 10.00 Uhr - 11.15 Uhr
+Ort: Exwi A94
 anwesend: alle 
+-------------------------------------------------------------------------------
 
 Beschluesse:
 
@@ -17,3 +19,6 @@ Beschluesse:
 	servlets	studer, bruhin
 	Makefile	locher, dniederm
 	JDBC		loeffel
+
+==============================================================================
+$Id: Protokoll20000404.txt,v 1.2 2000/04/06 08:37:18 locher Exp $

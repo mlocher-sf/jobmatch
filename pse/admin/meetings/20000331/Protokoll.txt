@@ -1,13 +1,13 @@
-Sitzungsprotokoll vom 31 Maerz 2000
-
-Ort: Exwi 3. Stock
+Sitzungsprotokoll PSE 2000, Gruppe 4
+==============================================================================
+Datum: 31 Maerz 2000
 Zeit: 16.00 Uhr - 17.00 Uhr
+Ort: Exwi 3. Stock
 anwesend: alle + Assi
+-------------------------------------------------------------------------------
 
 Beschluesse:
-
-
-- Regelmaessige Meetings der ganzen Gruppe jeweils dienstags von 10  bis 12 Uhr
+- Regelmaessige Meetings der ganzen Gruppe jeweils dienstags von 10 bis 12 Uhr
 - Jeder sammelt Fragen an den Kunden bis Dienstag, 4. April 2000
 - Es wird CVS benutzt
 - Rollenverteilung wurde noch nicht definiert
@@ -17,3 +17,7 @@ Beschluesse:
 	Enhydra		locher
 	JDBC		studer, loeffel
 	Junit		bruhin, dniederm
+
+==============================================================================
+$Id: Protokoll.txt,v 1.2 2000/04/06 08:37:16 locher Exp $
+
