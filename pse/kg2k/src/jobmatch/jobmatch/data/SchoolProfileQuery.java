@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 final public class SchoolProfileQuery implements Query {
 

@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 final public class AssociationQuery implements Query {
 

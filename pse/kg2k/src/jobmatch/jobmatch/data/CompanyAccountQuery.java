@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  */
 final public class CompanyAccountQuery implements Query {
 

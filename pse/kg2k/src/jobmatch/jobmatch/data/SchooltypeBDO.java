@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class SchooltypeBDO implements java.io.Serializable {
 

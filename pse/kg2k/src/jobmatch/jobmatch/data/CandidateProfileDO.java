@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CandidateProfileDO information.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  studer
  * @since   jobmatch
  */

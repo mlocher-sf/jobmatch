@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the AssociationDO information.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */

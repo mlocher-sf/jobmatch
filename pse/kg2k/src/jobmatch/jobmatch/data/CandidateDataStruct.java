@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */
