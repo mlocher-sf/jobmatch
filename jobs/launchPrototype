@@ -1,0 +1,23 @@
+#!/usr/local/bin/tcsh
+
+# $Id: launchPrototype,v 1.1 2000/04/13 11:22:38 locher Exp $
+# make sure the prototype is running on vasarely.unibe.ch:9500
+# with the following crontab entry on vasarely.unibe.ch
+# 22,52 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
+
+source ~/.login 
+
+echo Running protolaunch on
+/usr/bin/uname -a
+/usr/bin/date
+echo " "
+
+cd /home/pse4/scr
+cvs co playground
+cd playground
+make
+cd output
+nohup start &
+
+
+
