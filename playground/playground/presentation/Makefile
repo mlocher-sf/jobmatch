@@ -30,12 +30,15 @@ SUBDIRS = \
 CLASSES = \
 	Redirect \
 	Welcome \
-	Student
+	Student \
+	Picture \
+	Upload
 
 HTML_DIR = .
 HTML_CLASSES = \
 	WelcomeHTML \
-	StudentHTML	
+	StudentHTML \
+	PictureHTML
 
 include $(ROOT)/config.mk
 

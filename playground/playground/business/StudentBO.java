@@ -1,7 +1,10 @@
-// $Id: Student.java,v 1.1 2000/04/10 12:15:48 locher Exp $
+// $Id: StudentBO.java,v 1.1 2000/04/11 15:53:52 locher Exp $
 
 /*
- * $Log: Student.java,v $
+ * $Log: StudentBO.java,v $
+ * Revision 1.1  2000/04/11 15:53:52  locher
+ * upload, BO interaction
+ *
  * Revision 1.1  2000/04/10 12:15:48  locher
  * added business objects
  *
@@ -21,15 +24,20 @@ import java.io.Serializable;
  *  @author $Author: locher $
  *  @version $Revision: 1.1 $
  **/
-public class Student implements Cloneable, Serializable {
+public class StudentBO implements Cloneable, Serializable {
 
         
     private String _name;
     
 
     
-    public Student() {
+    public StudentBO() {
 	super();
+    }
+
+    public StudentBO(String name) {
+	super();
+	this.setName(name);
     }
 
     /**
@@ -52,7 +60,7 @@ public class Student implements Cloneable, Serializable {
 	}
 	
 	try {
-	    return semanticEquality(this, (Student) other);
+	    return semanticEquality(this, (StudentBO) other);
 	}
 	catch (ClassCastException e) {
 	    return false;
@@ -60,7 +68,7 @@ public class Student implements Cloneable, Serializable {
     }
 
     /** @return true if a is considered the same as b **/
-    private static boolean semanticEquality(Student a, Student b) {
+    private static boolean semanticEquality(StudentBO a, StudentBO b) {
 	//XXX define the equality and remove the exception !!!
 	throw new RuntimeException("semanticEqualitiy not defined");
 	//return (a == b);
@@ -73,15 +81,15 @@ public class Student implements Cloneable, Serializable {
 
     /** @see Object.clone **/
     public Object clone() {
-	return this.cloneStudent();
+	return this.cloneStudentBO();
     }
     
     /** creates a clone of this object **/
-    private Student cloneStudent() {
+    private StudentBO cloneStudentBO() {
 	// Do the basic clone
-	Student theClone = null;
+	StudentBO theClone = null;
 	try {
-	    theClone = (Student) super.clone();
+	    theClone = (StudentBO) super.clone();
 	}
 	catch (CloneNotSupportedException e) {
 	    // Should never happen

@@ -1,7 +1,10 @@
-// $Id: Clipboard.java,v 1.1 2000/04/10 12:15:47 locher Exp $
+// $Id: Clipboard.java,v 1.2 2000/04/11 15:53:51 locher Exp $
 
 /*
  * $Log: Clipboard.java,v $
+ * Revision 1.2  2000/04/11 15:53:51  locher
+ * upload, BO interaction
+ *
  * Revision 1.1  2000/04/10 12:15:47  locher
  * added business objects
  *
@@ -23,7 +26,7 @@ import java.util.Iterator;
  *
  *  @since erstellungsdatum
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class Clipboard implements Cloneable, Serializable {
 
@@ -37,7 +40,7 @@ public class Clipboard implements Cloneable, Serializable {
     /**
      *  @pre studi != null
      **/
-    public void add(Student studi) {
+    public void add(StudentBO studi) {
 	_studenten.add(studi);
     }
 
@@ -45,6 +48,12 @@ public class Clipboard implements Cloneable, Serializable {
 	return _studenten.iterator();
     }
     
+    public static Clipboard getDemoClipboard() {
+	Clipboard clipb = new Clipboard();
+	clipb.add(new StudentBO("Hans"));
+	return clipb;
+    }
+
     /** @see Object.equals **/
     public boolean equals(Object other) {
 	if (other == null) {

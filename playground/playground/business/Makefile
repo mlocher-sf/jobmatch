@@ -15,7 +15,7 @@ ROOT =	../..
 PACKAGEDIR = playground/business
 
 CLASSES = \
-	Student \
+	StudentBO \
 	Clipboard
 
 include $(ROOT)/config.mk
