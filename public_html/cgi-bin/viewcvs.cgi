@@ -34,7 +34,7 @@
 #    http://www.lyra.org/greg/python/viewcvs/
 #
 # For tracking purposes, this software is identified by:
-#   $Id: viewcvs.cgi,v 1.1 2000/04/02 19:39:20 locher Exp $
+#   $Id: viewcvs.cgi,v 1.2 2000/04/04 14:46:32 locher Exp $
 #
 # -----------------------------------------------------------------------
 #
@@ -193,16 +193,9 @@ cfg.text.long_intro = """\
 
 cfg.text.doc_info = """
 <h4>CVS Documentation</h4>
-<blockquote>
 <p>
-  <a href="http://www.loria.fr/~molli/cvs/doc/cvs_toc.html">CVS
-  User's Guide</a><br>
-  <a href="http://www.arc.unm.edu/~rsahu/cvs.html">CVS Tutorial</a><br>
-  <a href="http://cellworks.washington.edu/pub/docs/cvs/tutorial/cvs_tutorial_1.html">Another CVS tutorial</a><br>
-  <a href="http://www.csc.calpoly.edu/~dbutler/tutorials/winter96/cvs/">Yet another CVS tutorial (a little old, but nice)</a><br>
-  <a href="http://www.cs.utah.edu/dept/old/texinfo/cvs/FAQ.txt">An old but very useful FAQ about CVS</a>
-</p>
-</blockquote>
+<a href="http://www.iamexwi.unibe.ch/studenten/pse4/cvs.html">see the CVS Tutorial</a>
+  </p>
 """
 
 # Fill in stuff on (say) anonymous pserver access here. For example, what
@@ -427,6 +420,7 @@ def html_header(title):
 <html><head>
 %s
 <title>%s</title>
+<link rel=stylesheet type="text/css" href="../style.css">
 </head>
 <body text="%s" bgcolor="%s">
 <table width="100&#37;" border=0 cellspacing=0 cellpadding=0>
