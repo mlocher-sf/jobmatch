@@ -16,5 +16,7 @@ PACKAGEDIR = jobmatch/business/candidate/cv
 
 CLASSES = 
 
+USEICONTRACT=1
+
 include $(ROOT)/config.mk
 

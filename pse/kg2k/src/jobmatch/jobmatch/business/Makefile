@@ -4,8 +4,6 @@
 #
 #
 
-
-
 SUBDIRS = \
 	provider \
 	candidate \
@@ -22,6 +20,8 @@ ROOT =	../..
 PACKAGEDIR = jobmatch/business
 
 CLASSES =
+
+USEICONTRACT=1
 
 include $(ROOT)/config.mk
 

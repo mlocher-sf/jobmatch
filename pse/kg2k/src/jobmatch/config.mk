@@ -37,7 +37,8 @@ XMLC_HTML_OPTS += -generate both
 #
 ENHYDRA_CHECK = YES
 
-include $(ENHYDRA_DIR)/lib/stdrules.mk
+#include $(ENHYDRA_DIR)/lib/stdrules.mk
+include $(ROOT)/../stdrules.mk
 
 #
 # Only used if ENHYDRA_DIR is not correct.

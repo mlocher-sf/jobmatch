@@ -19,5 +19,8 @@ CLASSES = \
 	CandidateAccount \
 	AccountManager
 
+
+USEICONTRACT=1
+
 include $(ROOT)/config.mk
 

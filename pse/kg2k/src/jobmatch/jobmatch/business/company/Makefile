@@ -21,5 +21,7 @@ PACKAGEDIR = jobmatch/business/company
 
 CLASSES =
 
+USEICONTRACT=1
+
 include $(ROOT)/config.mk
 
