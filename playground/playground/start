@@ -1,7 +1,11 @@
-#!/bin/sh
+#!/usr/local/bin/sh
 
 echo "***"
 echo "***  Connect to http://`hostname`:9500/"
 echo "***"
 
-/home/scg/Software/enhydra/enhydra2.3/bin/multiserver ./multiserver.conf
+nohup /home/scg/Software/enhydra/enhydra2.3/bin/multiserver ./multiserver.conf &
+
+jobs -l > /home/pse4/jobs/`uname -n`JOBS
+/usr/local/bin/awk '{print $3}' /home/pse4/jobs/`uname -n`JOBS > /home/pse4/jobs/`uname -n`PROTO.pid
+rm /home/pse4/jobs/`uname -n`JOBS
