@@ -1,4 +1,4 @@
-// $Id: Country.java,v 1.1 2000/05/29 11:24:10 locher Exp $
+// $Id: Country.java,v 1.2 2000/05/29 11:58:31 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,7 +10,7 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class Country extends CountryBDO implements Description {
     
@@ -26,10 +26,16 @@ public class Country extends CountryBDO implements Description {
 
     public static List getAllCountries() {
 	List result = new ArrayList();
-	
-	// make a query
-	// for every DO create a new Country(DO) and add to result
-	return result;
+	try {
+	    CountryQuery query = new CountryQuery();
+	    query.addOrderByDescription();
+	    CountryDO element = query.getNextDO();
+	    while ( element != null) {
+		result.add(new Country(element));
+		element = query.getNextDO();
+	    }
+	} catch (Exception e) { throw new RuntimeException(e.toString()); }
+ 	return result;
     }
     
     /** @see Object.equals **/
@@ -63,6 +69,9 @@ public class Country extends CountryBDO implements Description {
 
 /*
  * $Log: Country.java,v $
+ * Revision 1.2  2000/05/29 11:58:31  locher
+ * added queries
+ *
  * Revision 1.1  2000/05/29 11:24:10  locher
  * Entity Manager
  *

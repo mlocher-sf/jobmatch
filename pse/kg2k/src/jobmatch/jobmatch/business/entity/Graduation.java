@@ -1,4 +1,4 @@
-// $Id: Graduation.java,v 1.2 2000/05/29 11:24:11 locher Exp $
+// $Id: Graduation.java,v 1.3 2000/05/29 11:58:31 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,7 +10,7 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class Graduation extends GraduationBDO implements Description {
     
@@ -26,8 +26,15 @@ public class Graduation extends GraduationBDO implements Description {
 
     public static List getAllGraduations() {
 	List result = new ArrayList();
-	// make a query
-	// for every DO create a new Graduation(DO) and add to result
+	try {
+	    GraduationQuery query = new GraduationQuery();
+	    query.addOrderByDescription();
+	    GraduationDO element = query.getNextDO();
+	    while ( element != null) {
+		result.add(new Graduation(element));
+		element = query.getNextDO();
+	    }
+	} catch (Exception e) { throw new RuntimeException(e.toString()); }
 	return result;
     }
     
@@ -62,6 +69,9 @@ public class Graduation extends GraduationBDO implements Description {
 
 /*
  * $Log: Graduation.java,v $
+ * Revision 1.3  2000/05/29 11:58:31  locher
+ * added queries
+ *
  * Revision 1.2  2000/05/29 11:24:11  locher
  * Entity Manager
  *
