@@ -17,8 +17,8 @@
       Decide where your repositry should store its files. In this tutorial we use <tt>/home/pse4/cvsroot</tt>. Create this directory. Make sure that every member of the team has access to the directory.
     </p>
     <p>
-      Make sure that every team member's .login file contatins the following instructions:
-    </p>
+      Make sure that every team member's .cshrc file contatins the following
+instructions:     </p>
     <blockquote>
       <code>
 	set CVSROOT=/home/pse4/cvsroot<br>
@@ -47,7 +47,7 @@
     <h2>Let's work</h2>
     <p>
       change to your favourite working directory (eg. /scratch/subdir or /vat/tmp/subdir).<br>
-      Get the files with: <code>cvs checkout pse4</code><br>
+      Get the files with: <code>cvs checkout pse</code><br>
       Modify the files. Add new files with <code>cvs add filename</code>.<br>
       From time to time, check if your team mates have made some changes. In the <tt>pse4</tt> directory type: <code>cvs update</code>.<br>
       When you have finished your modifications share them with your team members. Type <code>cvs commit -m "comment of the change"</code>. This will save your modifications of all files in the current directory and its subdirectories. When cvs was successful you can delete your working copy.
@@ -77,6 +77,6 @@
 <!-- hhmts start -->
 Last modified: Sat Apr  1 15:49:20 CEST 2000
 <!-- hhmts end -->
-    <small>| $Id: cvs.html,v 1.1 2000/04/02 19:39:20 locher Exp $</small>
+    <small>| $Id: cvs.html,v 1.2 2000/04/03 10:01:30 studer Exp $</small>
   </body>
 </html>
