@@ -1,4 +1,4 @@
-// $Id: CVSection.java,v 1.5 2000/06/04 11:50:43 locher Exp $
+// $Id: CVSection.java,v 1.6 2000/06/04 18:17:32 locher Exp $
 
 package jobmatch.presentation;
 
@@ -13,7 +13,7 @@ import com.lutris.appserver.server.httpPresentation.*;
  *  Provides a method to fill a ListBox with descriptions.
  *
  *  @author $Author: locher $
- *  @version $Revision: 1.5 $
+ *  @version $Revision: 1.6 $
  **/
 public abstract class CVSection extends AuthentificationPage implements  HttpPresentation {
 
@@ -23,10 +23,10 @@ public abstract class CVSection extends AuthentificationPage implements  HttpPre
      * Removes the template from the listbox.
      **/
     public void fillListBox(HTMLOptionElement template, Collection descriptions, Description selection) {	 
-	Node select_node = template.getParentNode();
+	Node container = template.getParentNode();
 	template.removeChild(template.getFirstChild()); // remove the TextNode from the template
 	Iterator iterator = descriptions.iterator();
-	try{
+	try {
 	    while (iterator.hasNext()) {
 		final Description description = (Description) iterator.next();
 		String representation = description.getDescription();
@@ -39,12 +39,12 @@ public abstract class CVSection extends AuthentificationPage implements  HttpPre
 		if (selection != null && selection.equals(description)) {
 		    clonedOption.setSelected(true);
 		}
-		select_node.appendChild(clonedOption);
+		container.appendChild(clonedOption);
 	    }	
-	}catch (Exception e){
+	} catch (com.lutris.dods.builder.generator.query.DataObjectException e){
 	    throw new RuntimeException(e.toString());
 	}
-	select_node.removeChild(template);
+	container.removeChild(template);
     }
        
 } //class
@@ -52,6 +52,9 @@ public abstract class CVSection extends AuthentificationPage implements  HttpPre
 // Document history
 /*
  * $Log: CVSection.java,v $
+ * Revision 1.6  2000/06/04 18:17:32  locher
+ * evil equals s
+ *
  * Revision 1.5  2000/06/04 11:50:43  locher
  * many little fixes
  *

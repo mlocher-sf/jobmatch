@@ -1,4 +1,4 @@
-// $Id: Country.java,v 1.6 2000/05/31 12:15:50 studer Exp $
+// $Id: Country.java,v 1.7 2000/06/04 18:17:31 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,8 +10,8 @@ import java.util.*;
  *  Country Business Object
  *
  *  @since May 26 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.6 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.7 $
  **/
 public class Country extends CountryBDO implements Description {
     
@@ -65,20 +65,10 @@ public class Country extends CountryBDO implements Description {
 	}
 	
 	try {
-	    return semanticEquality(this, (Country) other);
+	    return (this.getHandle().equals(((CountryBDO) other).getHandle()));
 	}
-	catch (ClassCastException e) {
+	catch (Exception e) {
 	    return false;
-	}
-    }
-
-    /** @return true if a is considered the same as b **/
-    private boolean semanticEquality(Country a, Country b) {
-      	try{
-	    return (a.getDescription().equals(b.getDescription()));
-	}catch (Exception e) {
-	    System.out.println(e.toString());
-	    throw new RuntimeException(e.toString());
 	}
     }
 
@@ -98,6 +88,9 @@ public class Country extends CountryBDO implements Description {
 
 /*
  * $Log: Country.java,v $
+ * Revision 1.7  2000/06/04 18:17:31  locher
+ * evil equals s
+ *
  * Revision 1.6  2000/05/31 12:15:50  studer
  * Javadoc added
  *
