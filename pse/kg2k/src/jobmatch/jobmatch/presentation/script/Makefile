@@ -26,12 +26,14 @@ PACKAGEDIR = jobmatch/presentation/script
 # this list (without the .java extension).
 #
 CLASSES = \
-	JobScript
+	JobScript \
+	JobScriptRunner
 
 
 HTML_DIR = ./
 HTML_CLASSES = \
-	ScriptInterpreterHTML
+	ScriptInterpreterHTML \
+	JobScriptsHTML
 
 include $(ROOT)/config.mk
 
