@@ -78,6 +78,7 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	    page.getElementYear().setValue(splitDate(candidate.getBirthdate(), 3));
 	    page.getElementMonth().setValue(splitDate(candidate.getBirthdate(), 2));
 	    page.getElementDay().setValue(splitDate(candidate.getBirthdate(), 1));
+	    
 	    page.getElementResidence().setValue(candidate.getResidence());
 
 	    Address addr = candidate.getAddressBO();
@@ -143,6 +144,10 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 // Document history
 /*
  * $Log: CVPersonal.java,v $
+ * Revision 1.10  2000/06/05 11:39:37  loeffel
+ * CVPersonal should be finished: data can be inserted into the database
+ * and is read back
+ *
  * Revision 1.9  2000/06/04 11:50:43  locher
  * many little fixes
  *
