@@ -18,7 +18,8 @@ CLASSES = \
 	Description \
 	School \
 	Schooltype \
-	Graduation
+	Graduation \
+	EntityManager
 
 USEICONTRACT=1
 
