@@ -10,19 +10,48 @@
 <h1>
 DB-Schema</h1>
 
-<table border="1" width="44%">
+<table border="1" width="855">
   <tr>
-    <td width="15%"><b>Account</b></td>
-    <td width="18%"><b>Username</b></td>
-    <td width="67%"><b>Password</b></td>
+    <td width="123"><b>CandidateAccount</b></td>
+    <td width="107"><b>Username</b></td>
+    <td width="129"><b>Candidate</b></td>
+    <td width="117"><b>LoginReminder</b></td>
+    <td width="104"><b>LastLogin</b></td>
+    <td width="119"><b>Email</b></td>
+    <td width="110"><b>Passphrase</b></td>
   </tr>
   <tr>
-    <td width="15%">&nbsp;</td>
-    <td width="18%">VARCHAR(40)</td>
-    <td width="67%">VARCHAR(20)</td>
+    <td width="123">&nbsp;</td>
+    <td width="107">VARCHAR(40)</td>
+    <td width="129">Ref. Candidate OID</td>
+    <td width="117">INT (init =0)</td>
+    <td width="104">TIMESTAMP</td>
+    <td width="119">VARCHAR(50)</td>
+    <td width="110">VARCHAR(20)</td>
   </tr>
 </table>
 <br>
+
+<table border="1" width="844">
+  <tr>
+    <td width="118"><b>CompanyAccount</b></td>
+    <td width="106"><b>Username</b></td>
+    <td width="136"><b>Company</b></td>
+    <td width="122"><b>LoginReminder</b></td>
+    <td width="98"><b>LastLogin</b></td>
+    <td width="111"><b>Email</b></td>
+    <td width="107"><b>Passphrase</b></td>
+  </tr>
+  <tr>
+    <td width="118">&nbsp;</td>
+    <td width="106">VARCHAR(40)</td>
+    <td width="136">Ref. Company OID</td>
+    <td width="122">INT (init =0)</td>
+    <td width="98">TIMESTAMP</td>
+    <td width="111">VARCHAR(50)</td>
+    <td width="107">VARCHAR(20)</td>
+  </tr>
+</table><br>
 <table BORDER COLS=4 >
 <tr>
 <td WIDTH="100"><b>Employer</b></td>
@@ -37,53 +66,87 @@ DB-Schema</h1>
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(30)</td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(30)</td>
 
 <td>Ref. Country OID&nbsp;</td>
 </tr>
 </table>
 <br>
-<table BORDER="1" COLS=9 width="1057" >
+<table BORDER="1" COLS=9 width="765" >
 <tr>
-<td WIDTH="132"><b>EmployerCandidate</b></td>
+<td WIDTH="134"><b>EmployerCandidate</b></td>
 
-<td WIDTH="123"><b>Candidate</b></td>
+<td WIDTH="115"><b>Candidate</b></td>
 
-<td width="153"><b>Employer&nbsp;</b></td>
+<td width="130"><b>Employer</b></td>
 
-<td WIDTH="70"><b>From</b></td>
+<td WIDTH="61"><b>From</b></td>
 
-<td WIDTH="59"><b>To</b></td>
+<td WIDTH="67"><b>To</b></td>
 
-<td width="156"><b>Remarks</b></td>
+<td width="92"><b>Remarks</b></td>
 
 <td width="120"><b>Reference</b></td>
 
-<td WIDTH="94"><b>Function</b></td>
-
-<td WIDTH="92"><b>Pensum</b></td>
 </tr>
 
 <tr>
-<td width="132"></td>
+<td width="134"></td>
 
-<td width="123">Ref. Candidate OID</td>
+<td width="115">Ref. Candidate OID</td>
 
-<td width="153">Ref. Employer OID</td>
+<td width="130">Ref. Employer OID</td>
 
-<td width="70">DATE</td>
+<td width="61">DATE</td>
 
-<td width="59">DATE</td>
+<td width="67">DATE</td>
 
-<td width="156">VARCHAR (Null)</td>
+<td width="92">TEXT (Null)</td>
 
 <td width="120">VARCHAR (Null)</td>
 
-<td width="94">VARCHAR</td>
+</tr>
 
-<td width="92">INTEGER</td>
+<tr>
+
+<td width="134" ></td>
+<td width="115" ></td>
+<td width="130" ></td>
+<td width="61" ></td>
+<td width="67" ></td>
+<td width="92" ></td>
+<td WIDTH="120"></td>
+
+</tr>
+
+<tr>
+
+<td WIDTH="134"></td>
+
+<td WIDTH="115"><b>Function</b></td>
+
+<td WIDTH="130"><b>Pensum</b></td>
+<td WIDTH="61"></td>
+<td WIDTH="67"></td>
+<td WIDTH="92"></td>
+<td WIDTH="120"></td>
+
+</tr>
+
+<tr>
+
+<td width="134"></td>
+
+<td width="115">VARCHAR(20)</td>
+
+<td width="130">TINYINT UNSIGNED</td>
+<td WIDTH="61"></td>
+<td WIDTH="67"></td>
+<td WIDTH="92"></td>
+<td WIDTH="120"></td>
+
 </tr>
 </table>
 <br>
@@ -109,8 +172,6 @@ DB-Schema</h1>
 
 <td width="79" height="19"><b>PHONE</b></td>
 
-<td width="79" height="19"><b>MobilePhone</b></td>
-
 </tr>
 
 <tr>
@@ -135,9 +196,6 @@ DB-Schema</h1>
 <td width="79" height="57">VARCHAR(25)
   <p>(Null)</td>
 
-<td width="79" height="57">VARCHAR(25)
-  <p>(Null)&nbsp;</td>
-
 </tr>
 
 <tr>
@@ -161,8 +219,6 @@ DB-Schema</h1>
 
 <td width="79" height="5"></td>
 
-<td width="79" height="5"></td>
-
 </tr>
 
 <tr>
@@ -170,7 +226,7 @@ DB-Schema</h1>
 
 <td width="79" height="19"><b>Fax</b></td>
 
-<td width="77" height="19"><b>Email</b></td>
+<td width="106" height="19"><b>Picture</b></td>
 
 <td width="55" height="19"><b>Birthdate</b></td>
 
@@ -182,21 +238,18 @@ DB-Schema</h1>
 
 <td WIDTH="37" height="19"><b>Status</b></td>
 
-<td WIDTH="60" height="19"><b>LastLogin</b></td>
-
 <td width="106" height="19"><b>AIESECMember</b></td>
 
-<td width="106" height="19"><b>Picture</b></td>
+<td width="79" height="19"><b>MobilePhone</b></td>
 
 </tr>
 
 <tr>
 <td width="62" height="57"></td>
 
-<td width="79" height="57">VARCHAR(25)
-  <p>(Null)</td>
+<td width="79" height="57">VARCHAR(25) (Null)</td>
 
-<td width="77" height="57">VARCHAR(50)</td>
+<td width="106" height="57">MEDIUMBLOB (Null)</td>
 
 <td width="55" height="57">DATE</td>
 
@@ -204,15 +257,13 @@ DB-Schema</h1>
 
 <td width="101" height="57">VARCHAR(25)</td>
 
-<td width="77" height="57">VARCHAR (Null)</td>
+<td width="77" height="57">TEXT (Null)</td>
 
 <td width="37" height="57">BIT</td>
 
-<td width="60" height="57">TIMESTAMP</td>
-
 <td width="106" height="57">BIT</td>
 
-<td width="106" height="57">MEDIUMBLOB (Null)</td>
+<td width="79" height="57">VARCHAR(25) (Null)</td>
 
 </tr>
 </table>
@@ -247,7 +298,7 @@ DB-Schema</h1>
 
 <td>Ref. Graduation OID (Null)</td>
 
-<td>VARCHAR (Null)</td>
+<td>TEXT (Null)</td>
 </tr>
 </table>
 <br>
@@ -265,9 +316,9 @@ DB-Schema</h1>
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(50)</td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 
 <td>Ref. Schooltype OID</td>
 </tr>
@@ -277,43 +328,59 @@ DB-Schema</h1>
 <tr>
 <td WIDTH="100"><b>Schooltype</b></td>
 
-<td WIDTH="100"><b>Type</b></td>
+<td WIDTH="100"><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table>
 <br>
-<table BORDER COLS=6 >
+<table BORDER="1" COLS=6 height="49" >
 <tr>
-<td WIDTH="100"><b>Profile</b></td>
+<td WIDTH="100" height="18"><b>Profile</b></td>
 
-<td><b>Name</b></td>
+<td height="18"><b>Name</b></td>
 
-<td><b>MinSchoolType</b></td>
+<td height="18"><b>MinSchoolType</b></td>
 
-<td><b>MaxSchoolType</b></td>
+<td height="18"><b>MaxSchoolType</b></td>
 
-<td><b>Company</b></td>
+<td height="18"><b>Company</b></td>
 
-<td><b>MatchingThreshold</b></td>
+<td height="18"><b>Interval</b></td>
+
+<td height="18"><b>LastNotification</b></td>
+
+<td height="18"><b>MatchTree</b></td>
+
+<td height="18"><b>Notify</b></td>
+
+<td height="18"><b>NeedsRematching</b></td>
 </tr>
 
 <tr>
-<td></td>
+<td height="19"></td>
 
-<td>VARCHAR</td>
+<td height="19">VARCHAR(40)</td>
 
-<td>Ref. Schooltype OID&nbsp;</td>
+<td height="19">Ref. Schooltype OID&nbsp;</td>
 
-<td>Ref. Schooltype OID&nbsp;</td>
+<td height="19">Ref. Schooltype OID&nbsp;</td>
 
-<td>Ref. Company OID</td>
+<td height="19">Ref. Company OID</td>
 
-<td>INTEGER</td>
+<td height="19">INT</td>
+
+<td height="19">TIMESTAMP</td>
+
+<td height="19">MEDIUMBLOB</td>
+
+<td height="19">BIT (init=true)</td>
+
+<td height="19">BIT (init=true)</td>
 </tr>
 </table>
 <br>
@@ -340,13 +407,13 @@ DB-Schema</h1>
 
 <td width="141">Ref. CompanyAccount</td>
 
-<td width="71">VARCHAR</td>
+<td width="71">VARCHAR(30)</td>
 
-<td width="152">VARCHAR</td>
+<td width="152">VARCHAR(40)</td>
 
 <td width="144">INTEGER (Null)</td>
 
-<td width="168">LONGVARCHAR (Null)</td>
+<td width="168">TEXT (Null)</td>
 
 <td width="150">INTEGER (Null)</td>
 
@@ -388,13 +455,13 @@ DB-Schema</h1>
 <tr>
 <td width="97">&nbsp;</td>
 
-<td width="141">VARCHAR (Null)</td>
+<td width="141">VARCHAR(40) (Null)</td>
 
 <td width="71">BIT</td>
 
 <td width="152">Ref. Industry OID (Null)</td>
 
-<td width="144">VARCHAR (Null)</td>
+<td width="144">VARCHAR(50) (Null)</td>
 
 <td width="168">INTEGER (Null)</td>
 
@@ -416,11 +483,11 @@ DB-Schema</h1>
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(50)</td>
 
-<td>VARCHAR (Null)</td>
+<td>VARCHAR(20) (Null)</td>
 </tr>
 </table><br>
 
@@ -428,13 +495,13 @@ DB-Schema</h1>
 <tr>
 <td WIDTH="100"><b>Software</b></td>
 
-<td WIDTH="100"><b>Name</b></td>
+<td WIDTH="100"><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table><br>
 
@@ -442,13 +509,13 @@ DB-Schema</h1>
 <tr>
 <td WIDTH="100"><b>Programming</b></td>
 
-<td WIDTH="100"><b>Language</b></td>
+<td WIDTH="100"><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table><br>
 
@@ -456,17 +523,17 @@ DB-Schema</h1>
 <tr>
 <td WIDTH="100"><b>Operatingsystem</b></td>
 
-<td WIDTH="100"><b>System</b></td>
+<td WIDTH="100"><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table><br>
 
-<table BORDER COLS=5 >
+<table BORDER="1" COLS=5 >
 <tr>
 <td WIDTH="100"><b>SoftwareProfile</b></td>
 
@@ -477,6 +544,8 @@ DB-Schema</h1>
 <td><b>Mandatory</b></td>
 
 <td><b>MinCapability</b></td>
+
+<td><b>LeafNumber</b></td>
 </tr>
 
 <tr>
@@ -488,11 +557,13 @@ DB-Schema</h1>
 
 <td>BIT</td>
 
-<td>INTEGER</td>
+<td>Ref. CompCapability</td>
+
+<td>INTEGER (null)</td>
 </tr>
 </table><br>
 
-<table BORDER COLS=5 >
+<table BORDER="1" COLS=5 >
 <tr>
 <td WIDTH="100"><b>ProgrammingProfile</b></td>
 
@@ -501,6 +572,8 @@ DB-Schema</h1>
 <td><b>Profile</b></td>
 
 <td><b>Mandatory</b></td>
+
+<td><b>LeafNumber</b></td>
 
 <td><b>MinCapability</b></td>
 </tr>
@@ -514,17 +587,21 @@ DB-Schema</h1>
 
 <td>BIT</td>
 
-<td>INTEGER</td>
+<td>INTEGER (null)</td>
+
+<td>Ref. CompCapability</td>
 </tr>
 </table><br>
 
-<table BORDER COLS=5 >
+<table BORDER="1" COLS=5 >
 <tr>
 <td WIDTH="100"><b>OperatingsystemProfile</b></td>
 
 <td><b>System</b></td>
 
 <td><b>Profile</b></td>
+
+<td><b>LeafNumber</b></td>
 
 <td><b>Mandatory</b></td>
 
@@ -538,10 +615,44 @@ DB-Schema</h1>
 
 <td>Ref. Profile OID&nbsp;</td>
 
+<td>INTEGER (null)</td>
+
 <td>BIT</td>
 
-<td>INTEGER</td>
+<td>Ref. CompCapability</td>
 </tr>
+</table>&nbsp;
+
+<table BORDER COLS=4 >
+<tr>
+<td WIDTH="100"><b>CompCapability</b></td>
+
+<td>Description</td>
+
+<td>Ordinal</td>
+
+</tr>
+
+<tr>
+<td></td>
+
+<td>VARCHAR(40)</td>
+
+<td>INTEGER</td>
+
+</tr>
+</table>&nbsp;
+<table border="1" width="45%">
+  <tr>
+    <td width="15%"><b>LanguageCapability</b></td>
+    <td width="15%"><b>Description</b></td>
+    <td width="70%"><b>Ordinal</b></td>
+  </tr>
+  <tr>
+    <td width="15%">&nbsp;</td>
+    <td width="15%">VARCHAR(40)</td>
+    <td width="70%">INTEGER</td>
+  </tr>
 </table><br>
 
 <table BORDER COLS=4 >
@@ -562,10 +673,10 @@ DB-Schema</h1>
 
 <td>Ref. Candidate OID&nbsp;</td>
 
-<td>INTEGER</td>
+<td>Ref. CompCapability OID</td>
 </tr>
-</table><br>
-
+</table>
+<br>
 <table BORDER COLS=4 >
 <tr>
 <td WIDTH="100"><b>ProgrammingCandidate</b></td>
@@ -584,7 +695,7 @@ DB-Schema</h1>
 
 <td>Ref. Candidate OID (Null)</td>
 
-<td>INTEGER</td>
+<td>Ref. CompCapability OID</td>
 </tr>
 </table><br>
 
@@ -606,7 +717,7 @@ DB-Schema</h1>
 
 <td>Ref. Candidate OID&nbsp;</td>
 
-<td>INTEGER</td>
+<td>Ref. CompCapability OID</td>
 </tr>
 </table><br>
 
@@ -614,13 +725,13 @@ DB-Schema</h1>
 <tr>
 <td WIDTH="100"><b>Association</b></td>
 
-<td WIDTH="100"><b>Association</b></td>
+<td WIDTH="100"><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table><br>
 
@@ -642,7 +753,7 @@ DB-Schema</h1>
 
 <td>Ref. Association OID&nbsp;</td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40) (null)</td>
 </tr>
 </table><br>
 
@@ -650,13 +761,13 @@ DB-Schema</h1>
 <tr>
 <td WIDTH="100"><b>Language</b></td>
 
-<td><b>Language</b></td>
+<td><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table><br>
 
@@ -674,7 +785,6 @@ DB-Schema</h1>
 
 <td><b>Spoken</b></td>
 
-<td><b>Mothertongue</b></td>
 </tr>
 
 <tr>
@@ -684,13 +794,12 @@ DB-Schema</h1>
 
 <td>Ref. Language OID</td>
 
-<td>VARCHAR</td>
+<td>TEXT (null)</td>
 
-<td>INTEGER</td>
+<td>Ref. LanguageCapability OID</td>
 
-<td>INTEGER</td>
+<td>Ref. LanguageCapability OID</td>
 
-<td>BIT</td>
 </tr>
 </table><br>
 
@@ -714,61 +823,69 @@ DB-Schema</h1>
 
 <td>Ref. Candidate OID</td>
 
-<td>VARCHAR (Null)</td>
+<td>TEXT (Null)</td>
 
-<td>INTEGER (Null)</td>
+<td>TINYINT UNSIGNED (Null)</td>
 </tr>
 </table><br>
 
-<table BORDER COLS=5 >
+<table BORDER="1" COLS=5 width="859" >
 <tr>
-<td WIDTH="100"><b>LanguageProfile</b></td>
+<td WIDTH="111"><b>LanguageProfile</b></td>
 
-<td><b>MinSpoken</b></td>
+<td width="148"><b>MinSpoken</b></td>
 
-<td><b>MinWritten</b></td>
+<td width="156"><b>MinWritten</b></td>
 
-<td><b>Mandatory</b></td>
+<td width="83"><b>Mandatory</b></td>
 
-<td><b>Diploma</b></td>
+<td width="107"><b>Diploma</b></td>
+
+<td width="110"><b>Profile</b></td>
+
+<td width="98"><b>Language</b></td>
 </tr>
 
 <tr>
-<td></td>
+<td width="111"></td>
 
-<td>INTEGER (Null)</td>
+<td width="148">Ref. LanguageCapability OID (Null)</td>
 
-<td>INTEGER (Null)</td>
+<td width="156">Ref. LanguageCapability OID (Null)</td>
 
-<td>BIT</td>
+<td width="83">BIT</td>
 
-<td>BIT (Null)</td>
+<td width="107">VARCHAR(40) (Null)</td>
+
+<td width="110">Ref. Profile OID</td>
+
+<td width="98">Ref. Language OID</td>
 </tr>
 </table><br>
 
-<table BORDER COLS=5 >
+<table BORDER="1" COLS=5 width="582" >
 <tr>
-<td WIDTH="100"><b>Matching</b></td>
+<td WIDTH="112"><b>CandidateProfile</b></td>
 
-<td><b>Candidate</b></td>
+<td width="127"><b>Candidate</b></td>
 
-<td><b>Profile</b></td>
+<td width="106"><b>Profile</b></td>
 
-<td><b>MatchingTime</b></td>
+<td width="100"><b>MatchingTime</b></td>
 
-<td><b>Deleted</b></td>
+<td width="103"><b>Deleted</b></td>
 </tr>
 
 <tr>
-<td></td>
+<td width="112"></td>
 
-<td>Ref. Candidate OID&nbsp;</td>
+<td width="127">Ref. Candidate OID&nbsp;</td>
 
-<td>Ref. Profile OID&nbsp;</td>
+<td width="106">Ref. Profile OID&nbsp;</td>
 
-<td>DATETIME</td>
+<td width="100">TIMESTAMP</td>
 
-<td>BIT</td>
+<td width="103">BIT (init = false)</td>
 </tr>
 </table><br>
 
@@ -802,7 +919,7 @@ DB-Schema</h1>
 
 <td>TINYINT UNSIGNED (Null)</td>
 
-<td>TEXT(70) (Null)</td>
+<td>TEXT (Null)</td>
 </tr>
 </table><br>
 
@@ -810,13 +927,13 @@ DB-Schema</h1>
 <tr NOSAVE>
 <td WIDTH="100" NOSAVE><b>Country</b></td>
 
-<td><b>Name</b></td>
+<td><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table><br>
 
@@ -824,13 +941,13 @@ DB-Schema</h1>
 <tr NOSAVE>
 <td WIDTH="100" NOSAVE><b>Graduation</b></td>
 
-<td><b>Type</b></td>
+<td><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table><br>
 
@@ -838,13 +955,13 @@ DB-Schema</h1>
 <tr NOSAVE>
 <td WIDTH="100" NOSAVE><b>Area</b></td>
 
-<td><b>Name</b></td>
+<td><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table><br>
 
@@ -852,15 +969,55 @@ DB-Schema</h1>
 <tr NOSAVE>
 <td WIDTH="100" NOSAVE><b>Industry</b></td>
 
-<td><b>Type</b></td>
+<td><b>Description</b></td>
 </tr>
 
 <tr>
 <td></td>
 
-<td>VARCHAR</td>
+<td>VARCHAR(40)</td>
 </tr>
 </table><br>
+
+<table BORDER="1" NOSAVE >
+<tr NOSAVE>
+<td WIDTH="100" NOSAVE><b>MailQueue</b></td>
+
+<td><b>Mail</b></td>
+
+<td><b>Priority</b></td>
+
+<td width="119"><b>Time</b></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td>MEDIUMBLOB</td>
+
+<td>INTEGER</td>
+
+<td width="119">TIMESTAMP</td>
+</tr>
+</table>
+<br>
+<table BORDER="1" NOSAVE width="364" >
+<tr NOSAVE>
+<td WIDTH="100" NOSAVE><b>MatchQueue</b></td>
+
+<td width="123"><b>Candidate</b></td>
+
+<td width="119"><b>Time</b></td>
+</tr>
+
+<tr>
+<td width="100"></td>
+
+<td width="123">Ref. Candidate OID</td>
+
+<td width="119">TIMESTAMP</td>
+</tr>
+</table>
 
 <hr>
 <address>
@@ -868,6 +1025,7 @@ DB-Schema</h1>
 
 <br><!-- Created: Fri Mar 31 13:38:33 MET DST 2000 --><!-- hhmts start -->Last
 modified: Thu Apr 27 10:17:43 MET DST 2000&nbsp;<!-- hhmts end --><font size=-1>|
-$Id: DBSchema.html,v 1.7 2000/05/08 06:39:59 studer Exp $</font>
+$Id: DBSchema.html,v 1.8 2000/05/15 06:19:41 studer Exp $</font>
 </body>
 </html>
+
