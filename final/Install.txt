@@ -1,39 +1,28 @@
 
-
 Installation Instructions for ``JOBMATCH''
 
 
 1 Setting up the environment
 
-1.1 Required Modules
+1.1 Required components
 
-The following modules have to be loaded for proper compilation and
+The following components have to be installed for proper compilation and
 use of Jobmatch:
 
-* java2
+* java2         www.java.sun.com
 
 * enhydra3.0    www.enhydra.org
 
 * iText         www.lowagie.com
 
-* junit
+* junit         www.java.sun.com
 
-* jpython
+* jpython	www.jpython.org
 
-* icontract
+* icontract	www.reliable-systems.com
 
-* javamail
+* javamail	www.java.sun.com
 
-
-
-We suggest that you load these modules in your .login file. The specific
-part in a typical .login file may look like this:
-
-module unload java1
-
-module load java2
-
-module load junit jpython icontract javamail enhydra iText
 
 1.2 Unpacking and Compilation
 
@@ -42,8 +31,8 @@ module load junit jpython icontract javamail enhydra iText
 * After that, run the make-script in this directory.
 
 The application will then be compiled. As a final result, an Enhydra
-  Multiserver config file will be created in the output directory,
-  along with a start script.
+Multiserver config file will be created in the output directory,
+along with a start script.
 
 2 Running the Application
 
