@@ -24,7 +24,14 @@ CLASSES = \
 	Graduation \
 	Country \
 	Address \
-	EntityManager
+	EntityManager \
+	Employer \
+	Capability \
+	Software \
+	Programming \
+	OperatingSystem \
+	Language \
+	Association
 
 USEICONTRACT=1
 
