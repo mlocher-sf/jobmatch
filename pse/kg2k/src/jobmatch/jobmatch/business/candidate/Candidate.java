@@ -1,4 +1,4 @@
-// $Id: Candidate.java,v 1.9 2000/06/05 11:38:17 loeffel Exp $
+// $Id: Candidate.java,v 1.10 2000/06/10 13:35:37 studer Exp $
 
 package jobmatch.business.candidate;
 
@@ -13,8 +13,8 @@ import java.util.*;
  *  access to the database
  *
  *  @since May 4 2000
- *  @author $Author: loeffel $
- *  @version $Revision: 1.9 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.10 $
  **/
 public class Candidate extends CandidateBDO {
     
@@ -28,6 +28,10 @@ public class Candidate extends CandidateBDO {
 
     public List getAllFormations() {
 	return Formation.getAllFormationsFor(this);
+    }
+
+    public List getAllLanguageSkills(){
+	return LanguageSkill.getAllLanguageSkillsFor(this);
     }
 
     public boolean isMale() {
@@ -100,6 +104,9 @@ public class Candidate extends CandidateBDO {
 
 /*
  * $Log: Candidate.java,v $
+ * Revision 1.10  2000/06/10 13:35:37  studer
+ * *** empty log message ***
+ *
  * Revision 1.9  2000/06/05 11:38:17  loeffel
  * Fixed bug which did not set the link to the address
  *

@@ -9,14 +9,13 @@
     <hr>
     <h1> Sprachkenntnisse </h1>
     
-    <table width="100%" border="1"><tr>
-	<th>  Sprache </th><th>  schriftliche Kenntnis </th>
-	<th> muendliche Kenntnis </th><th>  
-	  Diplome </th>
-      </tr><form action="./CVLanguageDetailExperience.html" method="get"> 
-      <tr class = "trash">
-	
-	<td> Deutsch </td><td>Muttersprache </td><td>Muttersprache </td><td></td>	
+    <table id="languageTable" width="100%" border="1"><tr>
+	<th>  Sprache </th><th>  schriftliche Kenntnis </th><th> muendliche Kenntnis </th><th>  Diplome </th> </tr>
+        <tr id="templateRow">
+	<td><span id="language"> Deutsch </span></td>
+	<td><span id="written">Muttersprache</span></td>
+	<td><span id="spoken">Muttersprache</span></td>
+	<td><span id="diploma">First</span></td>	
 	<td><a href="./CV.html"> Loeschen </a></td>
 	<td><a href="./CV.html"> Bearbeiten </a></td> </tr>
       
@@ -29,11 +28,9 @@
 	<td>Englisch </td><td>Profi </td><td>Fortgeschrittener </td><td>PET </td>
 	<td><a href="./CV.html"> Loeschen </a></td>
 	<td><a href="./CV.html"> Bearbeiten </a></td></tr>
-      <tr><td>
-	  <input type="submit" name="submit" value="Neue Sprache eingeben">
-	</td></tr>  </form>
-  </table> 
-    
+    </table> <br>
+
+      <a href= "./CVLanguageDetailExperience.html">Sprache eingeben</a><br> 
     <p>
       <a href="./CVComputerExperience.html"> Weiter </a><p>
       <a href="./CVWorkingExperience.html"> Zurueck </a><p>

@@ -1,4 +1,4 @@
-// $Id: LanguageCapability.java,v 1.1 2000/06/10 11:06:24 studer Exp $
+// $Id: LanguageCapability.java,v 1.2 2000/06/10 13:35:39 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -11,7 +11,7 @@ import java.util.*;
  *
  *  @since June 10 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class LanguageCapability extends LanguagecapabilityBDO implements Capability {
     
@@ -29,7 +29,7 @@ public class LanguageCapability extends LanguagecapabilityBDO implements Capabil
      * Returns the specified Languagecapability from the DB
      * If it doesn`t exist, it`s been created.
      **/
-    public static Capability getCapability(String description) {
+    public static LanguageCapability getCapability(String description) {
 	try {
 	    LanguagecapabilityQuery query = new LanguagecapabilityQuery();
 	    query.setQueryDescription(description);
@@ -45,7 +45,7 @@ public class LanguageCapability extends LanguagecapabilityBDO implements Capabil
     /**
      * Returns a list of all Languagecapabilities in the DB
      **/
-    public  List getAllCapabilities() {
+    public  static List getAllCapabilities() {
 	List result = new ArrayList();
 	try {
 	    LanguagecapabilityQuery query = new LanguagecapabilityQuery();
@@ -89,6 +89,9 @@ public class LanguageCapability extends LanguagecapabilityBDO implements Capabil
 
 /*
  * $Log: LanguageCapability.java,v $
+ * Revision 1.2  2000/06/10 13:35:39  studer
+ * *** empty log message ***
+ *
  * Revision 1.1  2000/06/10 11:06:24  studer
  * business object for cvsections
  *

@@ -1,4 +1,4 @@
-// $Id: ComputerCapability.java,v 1.1 2000/06/10 11:06:23 studer Exp $
+// $Id: ComputerCapability.java,v 1.2 2000/06/10 13:35:38 studer Exp $
 
 package jobmatch.business.entity;
 
@@ -11,7 +11,7 @@ import java.util.*;
  *
  *  @since June 10 2000
  *  @author $Author: studer $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class ComputerCapability extends CompcapabilityBDO implements Capability {
     
@@ -28,7 +28,7 @@ public class ComputerCapability extends CompcapabilityBDO implements Capability 
     /**
      * Returns the specified Computercapability from the DB
      **/
-    public static Capability getCapability(String description) {
+    public static ComputerCapability getCapability(String description) {
 	try {
 	    CompcapabilityQuery query = new CompcapabilityQuery();
 	    query.setQueryDescription(description);
@@ -44,7 +44,7 @@ public class ComputerCapability extends CompcapabilityBDO implements Capability 
     /**
      * Returns a list of all Computercapabilities in the DB
      **/
-    public  List getAllCapabilities() {
+    public  static List getAllCapabilities() {
 	List result = new ArrayList();
 	try {
 	    CompcapabilityQuery query = new CompcapabilityQuery();
@@ -88,6 +88,9 @@ public class ComputerCapability extends CompcapabilityBDO implements Capability 
 
 /*
  * $Log: ComputerCapability.java,v $
+ * Revision 1.2  2000/06/10 13:35:38  studer
+ * *** empty log message ***
+ *
  * Revision 1.1  2000/06/10 11:06:23  studer
  * business object for cvsections
  *
