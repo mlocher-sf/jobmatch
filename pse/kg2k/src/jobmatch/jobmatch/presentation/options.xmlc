@@ -22,3 +22,4 @@
 -urlmapping './CVEducationDetail.html' './CVEducationDetail.po'
 -urlmapping './CVHobbiesDetail.html' './CVHobbiesDetail.po'
 -urlmapping './CVMembershipDetail.html' './CVMembershipDetail.po'
+-delete -class trash
