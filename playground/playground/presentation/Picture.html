@@ -8,15 +8,11 @@
   <body>
     <h1>Picture Upload Demo</h1>
 
-
-    <FORM ENCTYPE="multipart/form-data" ACTION="./Upload.po" METHOD="POST">
-
-    Image: <INPUT NAME="image" TYPE="file">
-
-    <INPUT TYPE="submit" VALUE="Upload !">
-
+    <FORM ENCTYPE="multipart/form-data" ACTION="./Upload.po" METHOD="GET">
+      <input type="hidden" name="event" value="upload" >
+      Image: <INPUT NAME="image" TYPE="file">
+      <INPUT TYPE="submit" VALUE="Upload !">
     </FORM>
-
 
     <hr>
     This is the ThrowAway Prototype: <a href="./">TOP</a> | <a href="http://www.iamexwi.unibe.ch/studenten/pse4/">PSE4</a>
