@@ -1,0 +1,151 @@
+#This file was created by <loeffel> Tue Jun 27 11:57:17 2000
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Installation Instructions for 
+\begin_inset Quotes eld
+\end_inset 
+
+JOBMATCH
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Section
+
+Setting up the environment
+\layout Subsection
+
+Required Modules
+\layout Standard
+
+The following modules have to be loaded for proper compilation and use of
+ Jobmatch:
+\layout Itemize
+
+java2
+\layout Itemize
+
+scg/junit
+\layout Itemize
+
+scg/jpython
+\layout Itemize
+
+scg/icontract
+\layout Itemize
+
+scg/javamail
+\layout Itemize
+
+scg/pse2000
+\layout Standard
+
+We suggest that you load these modules in your .login file.
+ The specific part in a typical .login file may look like this:
+\layout Paragraph
+
+
+\series medium 
+module unload java1
+\layout Standard
+
+module load java2
+\layout Paragraph
+
+
+\series medium 
+module load scg/junit scg/jpython scg/icontract scg/javamail scg/pse2000
+\layout Subsection
+
+Unpacking and Compilation
+\layout Itemize
+
+Unpack the files in a directory.
+\layout Itemize
+
+After that, run the make-script in this directory.
+\layout Paragraph
+
+
+\series medium 
+The application will then be compiled.
+ As a final result, an Enhydra Multiserver config file will be created in
+ the output directory, along with a start script.
+\layout Section
+
+Running the Application
+\layout Subsection
+
+Starting the Application
+\layout Itemize
+
+Type 
+\begin_inset Quotes eld
+\end_inset 
+
+cd output
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Itemize
+
+Type 
+\begin_inset Quotes eld
+\end_inset 
+
+./start
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Subsection
+
+Using the Application
+\layout Standard
+
+In order to see the application running, start your webbrowser and access
+ jobmatch at:
+\layout Description
+
+http://localhost:9004
+\layout Section
+
+General Considerations
+\layout Standard
+
+Watch out when compiling the application: On a SUN ULTRA1, equipped with
+ 64 MB of ram, this procedure may take over one hour to complete !
+\the_end
