@@ -1,11 +1,11 @@
 #!/usr/local/bin/tcsh
 
-# $Id: runProto,v 1.2 2000/04/13 14:38:12 locher Exp $
+# $Id: runProto,v 1.3 2000/04/25 14:29:46 locher Exp $
 # make sure the prototype is running on vasarely.unibe.ch:9500
 # with the following crontab entry on vasarely.unibe.ch
 # 22,52 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
 
-cd /home/pse4/scr/playground/output
+cd /home/pse4/scr/playground2/output
 
 if (-e /tmp/protoALIVE) then 
     rm /tmp/protoALIVE 
