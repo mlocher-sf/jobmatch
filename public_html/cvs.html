@@ -17,13 +17,12 @@
       Decide where your repositry should store its files. In this tutorial we use <tt>/home/pse4/cvsroot</tt>. Create this directory. Make sure that every member of the team has access to the directory.
     </p>
     <p>
-      Make sure that every team member's .cshrc file contatins the following
+      Make sure that every team member's .login file contatins the following
 instructions:     </p>
     <blockquote>
       <code>
-	set CVSROOT=/home/pse4/cvsroot<br>
-	set EDITOR=nedit<br>
-	export CVSROOT EDITOR
+	setenv EDITOR nedit
+	setenv CVSROOT /home/pse4/cvsrootset 
       </code>
     </blockquote>
     <p>
@@ -55,6 +54,8 @@ instructions:     </p>
 
     <h2>Good to know</h2>
     <ul>
+      <li>use the PCL CVS mode in XEmacs 21<br>
+	(add <code>module load xemacs</code> in your <tt>.login</tt> file, then choose Tools->PCL CVS)</li>
       <li>you can specify options in a .cvsrc file</li>
       <li>the <tt>cvs tag</tt> command can be used create releases</li>
     </ul>
@@ -75,8 +76,8 @@ instructions:     </p>
     <address><a href="./index.html">PSE 4</a></address>
 <!-- Created: Fri Mar 31 13:38:33 MET DST 2000 -->
 <!-- hhmts start -->
-Last modified: Mon Apr  3 12:16:22 MET DST 2000
+Last modified: Mon Apr  3 17:12:25 MET DST 2000
 <!-- hhmts end -->
-    <small>| $Id: cvs.html,v 1.3 2000/04/03 10:18:00 loeffel Exp $</small>
+    <small>| $Id: cvs.html,v 1.4 2000/04/03 15:12:59 locher Exp $</small>
   </body>
 </html>
