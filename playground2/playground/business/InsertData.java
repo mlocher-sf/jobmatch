@@ -10,8 +10,8 @@ public class InsertData{
     public static void insert() throws DataObjectException{
         try {
             studentsDO = StudentsDO.createVirgin();  
-	    studentsDO.setName("mario");
-	    studentsDO.setLname("loeffel");
+	    studentsDO.setName("Marco");
+	    studentsDO.setLname("Studer");
 	    studentsDO.commit();
         } catch(Exception ex) {
 	    String message = "Insertion into DB failed: "+ ex.getMessage(); 
