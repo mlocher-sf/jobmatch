@@ -1,4 +1,4 @@
-// $Id: ProfileKeyFigures.java,v 1.1 2000/06/13 13:44:59 dniederm Exp $
+// $Id: ProfileKeyFigures.java,v 1.2 2000/06/14 12:43:18 studer Exp $
 package jobmatch.presentation;
 
 import com.lutris.xml.xmlc.*;
@@ -10,8 +10,8 @@ import jobmatch.business.provider.account.*;
 /**
  * 
  *  @since June 13 2000
- *  @author $Author: dniederm $
- *  @version $Revision: 1.1 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.2 $
  **/
 public class ProfileKeyFigures extends AuthentificationPage implements HttpPresentation {
 
@@ -69,10 +69,6 @@ public class ProfileKeyFigures extends AuthentificationPage implements HttpPrese
 	    page.getElementStreet().setValue(addr.getStreet());
 	    page.getElementZip().setValue(String.valueOf(addr.getZIP()));
 	    page.getElementCity().setValue(addr.getCity());
-
-	  
-	    comms.response.writeHTML(page);
-    
 	}
 	catch(Exception e) {
 	    System.out.println(e.toString());
@@ -85,6 +81,9 @@ public class ProfileKeyFigures extends AuthentificationPage implements HttpPrese
 // Document history
 /**
  * $Log: ProfileKeyFigures.java,v $
+ * Revision 1.2  2000/06/14 12:43:18  studer
+ * keyfigures
+ *
  * Revision 1.1  2000/06/13 13:44:59  dniederm
  * *** empty log message ***
  *

@@ -1,16 +1,17 @@
-// $Id: Company.java,v 1.1 2000/05/30 15:52:19 locher Exp $
+// $Id: Company.java,v 1.2 2000/06/14 12:43:13 studer Exp $
 
 package jobmatch.business.company;
 
 import jobmatch.data.*;
 import jobmatch.business.company.profile.*;
+import jobmatch.business.entity.*;
 
 /**
  *  Represents a Company
  *
  *  @since May 30 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.2 $
  **/
 public class Company extends CompanyBDO {
     
@@ -22,6 +23,24 @@ public class Company extends CompanyBDO {
 	super(dataObject);
     }
 
+    /**
+     * Returns the company`s address
+     **/
+    public Address getAddressBO(){
+	try {
+	    AdressDO data = this.getAdress();
+	    if (data == null) {
+		data = AdressDO.createVirgin();
+		data.commit();
+		this.setAdress(data);
+		this.commit();
+	    }
+	    return new Address(data);
+	} catch (Exception err){
+	    throw new RuntimeException(err.toString());
+	}
+    }  
+ 
     /** @see Object.equals **/
     public boolean equals(Object other) {
 	if (other == null) {
@@ -53,6 +72,9 @@ public class Company extends CompanyBDO {
 // Document history
 /*
  * $Log: Company.java,v $
+ * Revision 1.2  2000/06/14 12:43:13  studer
+ * keyfigures
+ *
  * Revision 1.1  2000/05/30 15:52:19  locher
  * added Company and Profile BOs
  *
