@@ -14,7 +14,10 @@ ROOT =	../../../..
 #
 PACKAGEDIR = jobmatch/business/provider/account
 
-CLASSES = Account
+CLASSES = \
+	Account \
+	AbstractAccount \
+	CandidateAccount
 
 include $(ROOT)/config.mk
 
