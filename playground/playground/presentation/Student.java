@@ -1,6 +1,7 @@
 package playground.presentation;
 
 import playground.business.*;
+import playground.data.*;
 
 import java.util.Iterator;
 import org.w3c.dom.html.*;
@@ -16,10 +17,21 @@ public class Student implements HttpPresentation {
 	StudentHTML page = new StudentHTML();
 	
 	page.getElementName().setValue(now);
-	foo(page);
+	showData(page);
+//	foo(page);
         comms.response.writeHTML(page.toDocument());
     }
 
+    private void showData(StudentHTML page){
+	try{
+	StudentsDO[] student;
+	StudentsQuery studentquery = new StudentsQuery();
+	student = studentquery.getDOArray();
+	page.setTextStudis("Hallo");
+//	System.out.println(student[1].getName() + " " + student[1].getLname());
+	}catch(Exception e){}
+    }
+/**
     private void foo(StudentHTML page) {
 	Clipboard board = Clipboard.getDemoClipboard();
 	Iterator studis = board.getStudents();
@@ -28,13 +40,13 @@ public class Student implements HttpPresentation {
 	    StudentBO s = (StudentBO) studis.next();
 	    page.getElementStudis().appendChild(createStudiParagraph(s));
 	}
-    }
-
+    }*/
+/**
 	private HTMLParagraphElement createStudiParagraph(StudentBO studi) {
 	    final boolean DEEPCLONE = false;
 	    HTMLParagraphElement temp = (HTMLParagraphElement) new StudentHTML().getElementStudiTemplate().cloneNode(DEEPCLONE);
 	    //temp.setNodeValue(studi.getName());
 	    return temp;
 	}
-
+*/
 }
