@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class CandidateProfileBDO implements java.io.Serializable {
 
@@ -444,6 +444,44 @@ public class CandidateProfileBDO implements java.io.Serializable {
       afterAnySet();	// business actions/assertions after data assignment
    }
    
+
+   
+
+   /**
+    * Get Score of the CandidateProfileDO
+    *
+    * @return Score of the CandidateProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public double getScore () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getScore ();
+   }
+
+   
+   /**
+    * Set Score of the CandidateProfileDO
+    *
+    * @param Score of the CandidateProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setScore ( double Score ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setScore ( Score );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
 
    
 

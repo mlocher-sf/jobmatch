@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CandidateProfileDO information.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  studer
  * @since   jobmatch
  */
@@ -783,6 +783,54 @@ import com.lutris.dods.builder.generator.query.*;
    }
    
 
+
+////////////////////////// data member Score
+
+   /* static final RDBColumn Score for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Score = 
+			    new RDBColumn( table, "Score" );
+
+   /**
+    * Get Score of the CandidateProfile
+    *
+    * @return Score of the CandidateProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public double getScore () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Score;
+   }
+
+   /**
+    * Set Score of the CandidateProfile
+    *
+    * @param Score of the CandidateProfile
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setScore ( double Score )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Score =  markNewValue(
+	data.Score, Score  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
     /**
      * Protected constructor.
      *
@@ -847,6 +895,14 @@ import com.lutris.dods.builder.generator.query.*;
 	     )
 	);
 	
+	
+	setScore( 
+	    
+		rs.getDouble( 
+			"Score"  )
+	    
+	);
+	
 
  
         markClean();
@@ -880,7 +936,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into CandidateProfile ( Candidate, MatchingTime, Profile, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
+	    "insert into CandidateProfile ( Candidate, MatchingTime, Profile, Score, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -894,6 +950,8 @@ import com.lutris.dods.builder.generator.query.*;
 		getMatchingTime() );
 	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
+	setPrepStmtParam_double( stmt, param,
+		getScore() );
 
 
 	    /* The order of the values being inserted must match
@@ -926,7 +984,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update CandidateProfile set " + getVersionColumnName() + " = ?, Candidate = ?, MatchingTime = ?, Profile = ? " +
+	    "update CandidateProfile set " + getVersionColumnName() + " = ?, Candidate = ?, MatchingTime = ?, Profile = ?, Score = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -942,6 +1000,8 @@ import com.lutris.dods.builder.generator.query.*;
 		getMatchingTime() );
 	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
+	setPrepStmtParam_double( stmt, param,
+		getScore() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -994,6 +1054,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
 + "\n" + indent + "MatchingTime=" + data.MatchingTime
 + "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
++ "\n" + indent + "Score=" + data.Score
 ;
         return str + "; " + super.toString();
     }
@@ -1020,6 +1081,7 @@ import com.lutris.dods.builder.generator.query.*;
             str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
 + "\n" + indent + "MatchingTime=" + data.MatchingTime
 + "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
++ "\n" + indent + "Score=" + data.Score
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;

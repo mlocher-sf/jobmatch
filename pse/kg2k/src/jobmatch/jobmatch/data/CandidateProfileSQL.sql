@@ -6,6 +6,7 @@ create table CandidateProfile
     Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
     MatchingTime TIMESTAMP  NOT NULL   ,
     Profile DECIMAL(19,0)  NOT NULL  REFERENCES Profile ( oid ) ,
+    Score DOUBLE     ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */
