@@ -1,0 +1,49 @@
+#!/usr/local/bin/python
+
+# creates the directory hierarchy for the project
+# Michael Locher
+# $Id: makehierarchy,v 1.1 2000/04/01 14:04:43 locher Exp $
+
+from os import mkdir
+
+ROOT = './work/'
+MEMBERROOT = 'admin/worklog/'
+
+DIRS = ( 'admin',
+         'admin/meetings',
+         'admin/worklog',
+         'release',
+
+         'kg2k',
+         'kg2k/lib',
+         'kg2k/doc',
+         'kg2k/req',
+         'kg2k/spec',
+         'kg2k/design',
+         'kg2k/src',
+         'kg2k/src/test',
+
+         'tool',
+         'template'
+         )
+
+MEMBERS= ('bruhin',
+          'locher',
+          'loeffel',
+          'dniederm',
+          'studer'
+          )
+
+def myMkdir(path):
+    mkdir( ROOT + path)
+
+
+
+# __________________________________________________
+myMkdir('')
+
+for d in DIRS:
+    myMkdir(d)
+
+for m in MEMBERS:
+    myMkdir( MEMBERROOT + m )
