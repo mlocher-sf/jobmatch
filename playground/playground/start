@@ -1,4 +1,4 @@
-#!/usr/local/bin/sh
+#!/usr/local/bin/tcsh
 
 echo "***"
 echo "***  Connect to http://`hostname`:9500/"
