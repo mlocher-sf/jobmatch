@@ -10,6 +10,7 @@ import com.lutris.xml.xmlc.*;
 import com.lutris.appserver.server.httpPresentation.*;
 import jobmatch.business.util.TimeUtil;
 import jobmatch.business.candidate.cv.*;
+import jobmatch.business.entity.*;
 
 public class CVEducationDetail extends CVSection implements HttpPresentation {
 
@@ -22,15 +23,13 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 	Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
 	
 	final String action = comms.request.getParameter("action");
-	if (action != null && action.equals("write")){ 
+	if (action != null && action.equals("write")) 
 	    this.processData(page, candidate, comms);
-	    }
-	    
+
 	this.fillSchooltype(page, candidate);
 	this.fillGraduation(page, candidate);
 
 	comms.response.writeHTML(page);
-
     }
 
     private void fillGraduation(CVEducationDetailHTML page, Candidate candidate){
@@ -49,6 +48,11 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 
     private void processData(CVEducationDetailHTML page, Candidate candidate, HttpPresentationComms comms) {
 	try{
+	    School school = School.getSchool(comms.request.getParameter("Description"));
+	    school.setType(Schooltype.getSchooltype(comms.request.getParameter("Schooltype")));
+	    System.out.println(school.toString());
+	    school.commit();
+	    
 	    Formation formation = new Formation();
 	    formation.setCandidate(candidate);
 	    formation.setBeginDate(TimeUtil.getDate(Integer.parseInt(comms.request.getParameter("BeginYear")),
@@ -58,6 +62,7 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 						    Integer.parseInt(comms.request.getParameter("EndMonth")),
 						    Integer.parseInt(comms.request.getParameter("EndDay"))));
 	    formation.setRemarks(comms.request.getParameter("Remarks"));
+	    formation.setSchool(school);
 	    formation.commit();
 	}
 	catch(Exception e) {
