@@ -11,7 +11,9 @@ jobmatch.business.company.profile.tree.test
 jobmatch.business.service
 jobmatch.business.service.test
 jobmatch.business.entity
+jobmatch.business.entity.test
 jobmatch.business.util
 jobmatch.business.test
 jobmatch.data
+jobmatch.data.test
 jobmatch.test
