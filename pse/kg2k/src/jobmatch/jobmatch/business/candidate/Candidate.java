@@ -1,4 +1,4 @@
-// $Id: Candidate.java,v 1.8 2000/06/04 11:50:41 locher Exp $
+// $Id: Candidate.java,v 1.9 2000/06/05 11:38:17 loeffel Exp $
 
 package jobmatch.business.candidate;
 
@@ -13,8 +13,8 @@ import java.util.*;
  *  access to the database
  *
  *  @since May 4 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.8 $
+ *  @author $Author: loeffel $
+ *  @version $Revision: 1.9 $
  **/
 public class Candidate extends CandidateBDO {
     
@@ -58,6 +58,8 @@ public class Candidate extends CandidateBDO {
 	    if (data == null) {
 		data = AdressDO.createVirgin();
 		data.commit();
+		this.setAdress(data);
+		this.commit();
 	    }
 	    return new Address(data);
 	} catch (Exception err){
@@ -98,6 +100,9 @@ public class Candidate extends CandidateBDO {
 
 /*
  * $Log: Candidate.java,v $
+ * Revision 1.9  2000/06/05 11:38:17  loeffel
+ * Fixed bug which did not set the link to the address
+ *
  * Revision 1.8  2000/06/04 11:50:41  locher
  * many little fixes
  *
