@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
@@ -70,21 +70,6 @@ public class ComputerRequestDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public jobmatch.data.ProfileDO Profile = null;
-
-/**
- * 
- */
-   public boolean Mandatory = false;
-
-/**
- * 
- */
-   public int LeafNumber = 0;
-
-/**
- * 
- */
    public jobmatch.data.CompcapabilityDO MinCapability = null;
     /**
      * Create a copy of the guts of a DO.
@@ -100,15 +85,6 @@ public class ComputerRequestDataStruct implements Cloneable, Serializable {
  
 
 		
-	ret.Profile = jobmatch.data.ProfileDO.createCopy( Profile );
-	
-	
-	ret.Mandatory = Mandatory;
-	
-	
-	ret.LeafNumber = LeafNumber;
-	
-	
 	ret.MinCapability = jobmatch.data.CompcapabilityDO.createCopy( MinCapability );
 	
 

@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 final public class OperatingsystemCandidateQuery implements Query {
 
@@ -557,13 +557,13 @@ System.err.println("x ="+x );
 
 
     /**
-     * Set the System to query.
+     * Set the Operatingsystem to query.
      *
-     * @param x The System of the OperatingSystemCandidate to query.
+     * @param x The Operatingsystem of the OperatingSystemCandidate to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQuerySystem(
+    public void setQueryOperatingsystem(
 				jobmatch.data.OperatingsystemDO x, boolean exact)
     throws DataObjectException, QueryException
     {
@@ -575,13 +575,13 @@ System.err.println("x ="+x );
 	    boolean equals = true;
 	    
 		// DOs are compared by their handles..
-		jobmatch.data.OperatingsystemDO m = DO.getSystem();
+		jobmatch.data.OperatingsystemDO m = DO.getOperatingsystem();
 		if ( null == m && null == x ) {
 		    equals = true;
 		} else if ( null == m || null == x ) {
 		    equals = false;
 		} else {
-		    equals = ( DO.getSystem().getOId().toString().equals( x.getOId().toString() ) );
+		    equals = ( DO.getOperatingsystem().getOId().toString().equals( x.getOId().toString() ) );
 if ( equals && m != x ) {
 System.err.println("\n----------------------------------------------------------");
 System.err.println("m ="+m );
@@ -596,38 +596,38 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "System", x, "DECIMAL(19,0)",
+	    builder.addWhereClause( "Operatingsystem", x, "DECIMAL(19,0)",
                 QueryBuilder.NOT_NULL, exactFlag( exact ) );
     }
 
     /**
-     * Set the System to query
-     * @param x The System of the OperatingSystemCandidate to query.
+     * Set the Operatingsystem to query
+     * @param x The Operatingsystem of the OperatingSystemCandidate to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQuerySystem( 
+    public void setQueryOperatingsystem( 
 				jobmatch.data.OperatingsystemDO x )
     throws DataObjectException, QueryException {
-	setQuerySystem( x, true );
+	setQueryOperatingsystem( x, true );
     }
 
     /**
-     * Add System to the ORDER BY clause.
+     * Add Operatingsystem to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderBySystem(boolean direction_flag) {
-        builder.addOrderByColumn("System",
+    public void addOrderByOperatingsystem(boolean direction_flag) {
+        builder.addOrderByColumn("Operatingsystem",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add System to the ORDER BY clause.  This convenience
+     * Add Operatingsystem to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderBySystem() {
-        builder.addOrderByColumn("System","ASC");
+    public void addOrderByOperatingsystem() {
+        builder.addOrderByColumn("Operatingsystem","ASC");
     }
 
     /**

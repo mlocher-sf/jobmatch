@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the ProgrammingProfileDO information.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
@@ -768,7 +768,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into ProgrammingProfile ( Profile, Mandatory, LeafNumber, MinCapability, Language, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into ProgrammingProfile ( LeafNumber, Profile, Mandatory, MinCapability, Language, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -776,12 +776,12 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_DO( stmt, param,
+	    	setPrepStmtParam_int( stmt, param,
+		getLeafNumber() );
+	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
 	setPrepStmtParam_boolean( stmt, param,
 		getMandatory() );
-	setPrepStmtParam_int( stmt, param,
-		getLeafNumber() );
 	setPrepStmtParam_DO( stmt, param,
 		getMinCapability() );
 	setPrepStmtParam_DO( stmt, param,
@@ -818,7 +818,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update ProgrammingProfile set " + getVersionColumnName() + " = ?, Profile = ?, Mandatory = ?, LeafNumber = ?, MinCapability = ?, Language = ? " +
+	    "update ProgrammingProfile set " + getVersionColumnName() + " = ?, LeafNumber = ?, Profile = ?, Mandatory = ?, MinCapability = ?, Language = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -828,12 +828,12 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_DO( stmt, param,
+	    	setPrepStmtParam_int( stmt, param,
+		getLeafNumber() );
+	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
 	setPrepStmtParam_boolean( stmt, param,
 		getMandatory() );
-	setPrepStmtParam_int( stmt, param,
-		getLeafNumber() );
 	setPrepStmtParam_DO( stmt, param,
 		getMinCapability() );
 	setPrepStmtParam_DO( stmt, param,

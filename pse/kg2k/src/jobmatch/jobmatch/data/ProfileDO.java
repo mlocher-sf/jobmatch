@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the ProfileDO information.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
@@ -1522,130 +1522,6 @@ import com.lutris.dods.builder.generator.query.*;
     }
  
 
-    /**
-     * Get array of LanguageProfileDO objects that refer to this DO.
-     *
-     * @return array of LanguageProfileDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public jobmatch.data.LanguageProfileDO[] getLanguageProfileDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.LanguageProfileDO[] ret = null;
-	try {
-	    jobmatch.data.LanguageProfileQuery q = new jobmatch.data.LanguageProfileQuery();
-	    q.setQueryProfile( this );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.LanguageProfileDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single LanguageProfileDO object
-     * that refers to this DO.
-     *
-     * @return LanguageProfileDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     * @exception NonUniqueQueryException
-     *   If more than one LanguageProfileDO object was found.
-     */
-    public jobmatch.data.LanguageProfileDO getLanguageProfileDO () 
-    throws DataObjectException, QueryException, NonUniqueQueryException {
-	jobmatch.data.LanguageProfileQuery q = new jobmatch.data.LanguageProfileQuery();
-	q.setQueryProfile( this );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
-
-    /**
-     * Add (set & commit) a LanguageProfileDO object that refers to this DO.
-     *
-     * @param referrer LanguageProfileDO to be set to point to this DO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addLanguageProfileDO( jobmatch.data.LanguageProfileDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addLanguageProfileDO( referrer, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a LanguageProfileDO object that refers to this DO.
-     *
-     * @param referrer LanguageProfileDO to be set to point to this DO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addLanguageProfileDO( jobmatch.data.LanguageProfileDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        referrer.setProfile( this );
-        referrer.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a LanguageProfileDO object that refers to this DO.
-     *
-     * @param referrer LanguageProfileDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeLanguageProfileDO( jobmatch.data.LanguageProfileDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeLanguageProfileDO( referrer, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a LanguageProfileDO object that refers to this DO.
-     *
-     * @param referrer LanguageProfileDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeLanguageProfileDO( jobmatch.data.LanguageProfileDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	ProfileDO referred = referrer.getProfile();
-	String referredHandle = referred.getHandle();
-	String mydoHandle = this.getHandle();
-	if ( null == referredHandle || null == mydoHandle || 
-	     ( ! referredHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + referrer +
-		" does not refer to object " + this +
-		", cannot be removed this way." );
-	}
-        referrer.delete( tran );
-    }
- 
-
 
 
     /**
@@ -1931,15 +1807,6 @@ import com.lutris.dods.builder.generator.query.*;
 	{
 	    // perform cascading delete on referring table
 	    jobmatch.data.CandidateProfileDO[] a = getCandidateProfileDOArray();
-	    for ( int i = 0; i < a.length; i++ ) {
-		a[ i ].delete( dbt );
-	    }
-	}
-	
-	
-	{
-	    // perform cascading delete on referring table
-	    jobmatch.data.LanguageProfileDO[] a = getLanguageProfileDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }

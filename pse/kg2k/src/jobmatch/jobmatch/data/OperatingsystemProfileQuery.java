@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 final public class OperatingsystemProfileQuery implements Query {
 
@@ -407,6 +407,69 @@ final public class OperatingsystemProfileQuery implements Query {
 
 
     /**
+     * Set the LeafNumber to query.
+     *
+     * @param x The LeafNumber of the OperatingsystemProfile to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryLeafNumber(
+				int x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    OperatingsystemProfileDO DO = ( OperatingsystemProfileDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// primitive types are compared using the == operator.
+		equals = ( DO.getLeafNumber() == x );
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "LeafNumber", x, "INTEGER",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the LeafNumber to query
+     * @param x The LeafNumber of the OperatingsystemProfile to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryLeafNumber( 
+				int x )
+    throws DataObjectException, QueryException {
+	setQueryLeafNumber( x, true );
+    }
+
+    /**
+     * Add LeafNumber to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByLeafNumber(boolean direction_flag) {
+        builder.addOrderByColumn("LeafNumber",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add LeafNumber to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByLeafNumber() {
+        builder.addOrderByColumn("LeafNumber","ASC");
+    }
+
+
+    /**
      * Set the Profile to query.
      *
      * @param x The Profile of the OperatingsystemProfile to query.
@@ -478,132 +541,6 @@ System.err.println("x ="+x );
      */
     public void addOrderByProfile() {
         builder.addOrderByColumn("Profile","ASC");
-    }
-
-
-    /**
-     * Set the Mandatory to query.
-     *
-     * @param x The Mandatory of the OperatingsystemProfile to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryMandatory(
-				boolean x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    OperatingsystemProfileDO DO = ( OperatingsystemProfileDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		// primitive types are compared using the == operator.
-		equals = ( DO.getMandatory() == x );
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Mandatory", x, "BIT",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Mandatory to query
-     * @param x The Mandatory of the OperatingsystemProfile to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryMandatory( 
-				boolean x )
-    throws DataObjectException, QueryException {
-	setQueryMandatory( x, true );
-    }
-
-    /**
-     * Add Mandatory to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByMandatory(boolean direction_flag) {
-        builder.addOrderByColumn("Mandatory",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Mandatory to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByMandatory() {
-        builder.addOrderByColumn("Mandatory","ASC");
-    }
-
-
-    /**
-     * Set the LeafNumber to query.
-     *
-     * @param x The LeafNumber of the OperatingsystemProfile to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryLeafNumber(
-				int x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    OperatingsystemProfileDO DO = ( OperatingsystemProfileDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		// primitive types are compared using the == operator.
-		equals = ( DO.getLeafNumber() == x );
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "LeafNumber", x, "INTEGER",
-                QueryBuilder.NULL_OK, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the LeafNumber to query
-     * @param x The LeafNumber of the OperatingsystemProfile to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryLeafNumber( 
-				int x )
-    throws DataObjectException, QueryException {
-	setQueryLeafNumber( x, true );
-    }
-
-    /**
-     * Add LeafNumber to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByLeafNumber(boolean direction_flag) {
-        builder.addOrderByColumn("LeafNumber",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add LeafNumber to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByLeafNumber() {
-        builder.addOrderByColumn("LeafNumber","ASC");
     }
 
 
@@ -683,13 +620,13 @@ System.err.println("x ="+x );
 
 
     /**
-     * Set the System to query.
+     * Set the OperatingSystem to query.
      *
-     * @param x The System of the OperatingsystemProfile to query.
+     * @param x The OperatingSystem of the OperatingsystemProfile to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQuerySystem(
+    public void setQueryOperatingSystem(
 				jobmatch.data.OperatingsystemDO x, boolean exact)
     throws DataObjectException, QueryException
     {
@@ -701,13 +638,13 @@ System.err.println("x ="+x );
 	    boolean equals = true;
 	    
 		// DOs are compared by their handles..
-		jobmatch.data.OperatingsystemDO m = DO.getSystem();
+		jobmatch.data.OperatingsystemDO m = DO.getOperatingSystem();
 		if ( null == m && null == x ) {
 		    equals = true;
 		} else if ( null == m || null == x ) {
 		    equals = false;
 		} else {
-		    equals = ( DO.getSystem().getOId().toString().equals( x.getOId().toString() ) );
+		    equals = ( DO.getOperatingSystem().getOId().toString().equals( x.getOId().toString() ) );
 if ( equals && m != x ) {
 System.err.println("\n----------------------------------------------------------");
 System.err.println("m ="+m );
@@ -722,38 +659,38 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "System", x, "DECIMAL(19,0)",
+	    builder.addWhereClause( "OperatingSystem", x, "DECIMAL(19,0)",
                 QueryBuilder.NOT_NULL, exactFlag( exact ) );
     }
 
     /**
-     * Set the System to query
-     * @param x The System of the OperatingsystemProfile to query.
+     * Set the OperatingSystem to query
+     * @param x The OperatingSystem of the OperatingsystemProfile to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQuerySystem( 
+    public void setQueryOperatingSystem( 
 				jobmatch.data.OperatingsystemDO x )
     throws DataObjectException, QueryException {
-	setQuerySystem( x, true );
+	setQueryOperatingSystem( x, true );
     }
 
     /**
-     * Add System to the ORDER BY clause.
+     * Add OperatingSystem to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderBySystem(boolean direction_flag) {
-        builder.addOrderByColumn("System",
+    public void addOrderByOperatingSystem(boolean direction_flag) {
+        builder.addOrderByColumn("OperatingSystem",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add System to the ORDER BY clause.  This convenience
+     * Add OperatingSystem to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderBySystem() {
-        builder.addOrderByColumn("System","ASC");
+    public void addOrderByOperatingSystem() {
+        builder.addOrderByColumn("OperatingSystem","ASC");
     }
 
     /**

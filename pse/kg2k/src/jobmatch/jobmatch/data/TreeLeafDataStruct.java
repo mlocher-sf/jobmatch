@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/studer_repositry/dataTest/jobmatch/data/ConstantTableDataStruct.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/TreeLeafDataStruct.java
  *-----------------------------------------------------------------------------
  */
 
@@ -49,11 +49,11 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  * @author  studer
  * @since   jobmatch
  */
-public class ConstantTableDataStruct implements Cloneable, Serializable {
+public class TreeLeafDataStruct implements Cloneable, Serializable {
 
     /**
      * A DO refers to this DataStruct.
@@ -70,7 +70,17 @@ public class ConstantTableDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Description = null;
+   public int LeafNumber = 0;
+
+/**
+ * 
+ */
+   public jobmatch.data.ProfileDO Profile = null;
+
+/**
+ * 
+ */
+   public boolean Mandatory = false;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -79,13 +89,19 @@ public class ConstantTableDataStruct implements Cloneable, Serializable {
      * @exception ObjectIdException 
      *       if GenericDO has trouble obtaining a valid id.
      */
-    public ConstantTableDataStruct duplicate() 
+    public TreeLeafDataStruct duplicate() 
     throws DatabaseManagerException, ObjectIdException {
-        ConstantTableDataStruct ret = new ConstantTableDataStruct ();
+        TreeLeafDataStruct ret = new TreeLeafDataStruct ();
  
 
 		
-	ret.Description = Description + "";
+	ret.LeafNumber = LeafNumber;
+	
+	
+	ret.Profile = jobmatch.data.ProfileDO.createCopy( Profile );
+	
+	
+	ret.Mandatory = Mandatory;
 	
 
 

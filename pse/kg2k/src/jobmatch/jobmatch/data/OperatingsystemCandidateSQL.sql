@@ -6,7 +6,7 @@ create table OperatingSystemCandidate
     Capability DECIMAL(19,0)  NOT NULL   ,
     Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
 /* class OperatingsystemCandidate */
-    System DECIMAL(19,0)  NOT NULL  REFERENCES Operatingsystem ( oid ) ,
+    Operatingsystem DECIMAL(19,0)  NOT NULL  REFERENCES Operatingsystem ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

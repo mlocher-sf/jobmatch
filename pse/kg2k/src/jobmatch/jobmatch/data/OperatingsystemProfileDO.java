@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the OperatingsystemProfileDO information.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
@@ -640,39 +640,39 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member System
+////////////////////////// data member OperatingSystem
 
-   /* static final RDBColumn System for use with QueryBuilder.
+   /* static final RDBColumn OperatingSystem for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn System = 
-			    new RDBColumn( table, "System" );
+   static public final RDBColumn OperatingSystem = 
+			    new RDBColumn( table, "OperatingSystem" );
 
    /**
-    * Get System of the OperatingsystemProfile
+    * Get OperatingSystem of the OperatingsystemProfile
     *
-    * @return System of the OperatingsystemProfile
+    * @return OperatingSystem of the OperatingsystemProfile
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.OperatingsystemDO getSystem () 
+   public jobmatch.data.OperatingsystemDO getOperatingSystem () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.System;
+      return data.OperatingSystem;
    }
 
    /**
-    * Set System of the OperatingsystemProfile
+    * Set OperatingSystem of the OperatingsystemProfile
     *
-    * @param System of the OperatingsystemProfile
+    * @param OperatingSystem of the OperatingsystemProfile
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setSystem ( jobmatch.data.OperatingsystemDO System )
+   public void setOperatingSystem ( jobmatch.data.OperatingsystemDO OperatingSystem )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -681,8 +681,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.System = (jobmatch.data.OperatingsystemDO) markNewValue(
-	data.System, System  );
+      data.OperatingSystem = (jobmatch.data.OperatingsystemDO) markNewValue(
+	data.OperatingSystem, OperatingSystem  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -728,10 +728,10 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setSystem( 
+	setOperatingSystem( 
 	    jobmatch.data.OperatingsystemDO.createExisting( 
 		rs.getBigDecimal( 
-			"System" , 0 )
+			"OperatingSystem" , 0 )
 	     )
 	);
 	
@@ -768,7 +768,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into OperatingsystemProfile ( Profile, Mandatory, LeafNumber, MinCapability, System, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into OperatingsystemProfile ( LeafNumber, Profile, Mandatory, MinCapability, OperatingSystem, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -776,16 +776,16 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_DO( stmt, param,
+	    	setPrepStmtParam_int( stmt, param,
+		getLeafNumber() );
+	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
 	setPrepStmtParam_boolean( stmt, param,
 		getMandatory() );
-	setPrepStmtParam_int( stmt, param,
-		getLeafNumber() );
 	setPrepStmtParam_DO( stmt, param,
 		getMinCapability() );
 	setPrepStmtParam_DO( stmt, param,
-		getSystem() );
+		getOperatingSystem() );
 
 
 	    /* The order of the values being inserted must match
@@ -818,7 +818,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update OperatingsystemProfile set " + getVersionColumnName() + " = ?, Profile = ?, Mandatory = ?, LeafNumber = ?, MinCapability = ?, System = ? " +
+	    "update OperatingsystemProfile set " + getVersionColumnName() + " = ?, LeafNumber = ?, Profile = ?, Mandatory = ?, MinCapability = ?, OperatingSystem = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -828,16 +828,16 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_DO( stmt, param,
+	    	setPrepStmtParam_int( stmt, param,
+		getLeafNumber() );
+	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
 	setPrepStmtParam_boolean( stmt, param,
 		getMandatory() );
-	setPrepStmtParam_int( stmt, param,
-		getLeafNumber() );
 	setPrepStmtParam_DO( stmt, param,
 		getMinCapability() );
 	setPrepStmtParam_DO( stmt, param,
-		getSystem() );
+		getOperatingSystem() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -887,7 +887,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "System=" + ( null == data.System ? null  : data.System.toString( indentCount + 1 ) )
+	    str = str + "\n" + indent + "OperatingSystem=" + ( null == data.OperatingSystem ? null  : data.OperatingSystem.toString( indentCount + 1 ) )
 ;
         return str + "; " + super.toString();
     }
@@ -911,7 +911,7 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "System=" + ( null == data.System ? null  : data.System.toString( indentCount + 1 ) )
+            str = str + "\n" + indent + "OperatingSystem=" + ( null == data.OperatingSystem ? null  : data.OperatingSystem.toString( indentCount + 1 ) )
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -1033,20 +1033,20 @@ import com.lutris.dods.builder.generator.query.*;
 
     /**
      * A stub method for implementing pre-commit assertions 
-     * for the System data member.
+     * for the OperatingSystem data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where System is not valid for writing to the database.
+     * where OperatingSystem is not valid for writing to the database.
      */
-    protected void okToCommitSystem( jobmatch.data.OperatingsystemDO member ) 
+    protected void okToCommitOperatingSystem( jobmatch.data.OperatingsystemDO member ) 
     throws RefAssertionException { }
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for the System data member.
+     * for the OperatingSystem data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where System is not valid for deletion from the database.
+     * where OperatingSystem is not valid for deletion from the database.
      */
-    protected void okToDeleteSystem( jobmatch.data.OperatingsystemDO member ) 
+    protected void okToDeleteOperatingSystem( jobmatch.data.OperatingsystemDO member ) 
     throws RefAssertionException { }
 
 
@@ -1121,11 +1121,11 @@ import com.lutris.dods.builder.generator.query.*;
 		    "Cannot commit OperatingsystemProfileDO ( " + toString() +
 		    " ) because MinCapability is not allowed to be null." );
 	}
-	jobmatch.data.OperatingsystemDO System_DO = getSystem();
-	if ( null != System_DO ) {
-	    if ( System_DO.isLoaded() ) {
-		okToCommitSystem( System_DO );
-		System_DO.commit( dbt );
+	jobmatch.data.OperatingsystemDO OperatingSystem_DO = getOperatingSystem();
+	if ( null != OperatingSystem_DO ) {
+	    if ( OperatingSystem_DO.isLoaded() ) {
+		okToCommitOperatingSystem( OperatingSystem_DO );
+		OperatingSystem_DO.commit( dbt );
 	    } else {
 		// since the referenced DO is not loaded,
 		// it cannot be dirty, so there is no need to commit it.
@@ -1134,7 +1134,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    if ( ! false )
 		throw new RefAssertionException(
 		    "Cannot commit OperatingsystemProfileDO ( " + toString() +
-		    " ) because System is not allowed to be null." );
+		    " ) because OperatingSystem is not allowed to be null." );
 	}
 
       }

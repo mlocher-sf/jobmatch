@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
@@ -70,7 +70,7 @@ public class OperatingsystemProfileDataStruct implements Cloneable, Serializable
 /**
  * 
  */
-   public jobmatch.data.OperatingsystemDO System = null;
+   public jobmatch.data.OperatingsystemDO OperatingSystem = null;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -85,7 +85,7 @@ public class OperatingsystemProfileDataStruct implements Cloneable, Serializable
  
 
 		
-	ret.System = jobmatch.data.OperatingsystemDO.createCopy( System );
+	ret.OperatingSystem = jobmatch.data.OperatingsystemDO.createCopy( OperatingSystem );
 	
 
 

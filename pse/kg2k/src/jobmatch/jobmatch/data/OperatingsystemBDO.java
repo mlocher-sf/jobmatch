@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class OperatingsystemBDO implements java.io.Serializable {
 
@@ -279,176 +279,6 @@ public class OperatingsystemBDO implements java.io.Serializable {
 
    
     /**
-     * Get array of OperatingsystemProfileDO objects that refer to the DO held by this BDO.
-     *
-     * @return array of OperatingsystemProfileDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.OperatingsystemProfileDO[] getOperatingsystemProfileDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.OperatingsystemProfileDO[] ret = null;
-	try {
-	    jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
-	    q.setQuerySystem( DO );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.OperatingsystemProfileDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single OperatingsystemProfileDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return OperatingsystemProfileDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one OperatingsystemProfileDO object was found.
-     */
-    public jobmatch.data.OperatingsystemProfileDO getOperatingsystemProfileDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
-	q.setQuerySystem( DO );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
-
-    /**
-     * Get array of OperatingsystemProfileBDO objects holding OperatingsystemProfileDO objects
-     * that refer to the DO held by this BDO.
-     *
-     * @return array of OperatingsystemProfileBDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.OperatingsystemProfileBDO[] getOperatingsystemProfileBDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.OperatingsystemProfileBDO[] ret = null;
-	try {
-	    jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
-	    q.setQuerySystem( DO );
-	    ret = q.getBDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.OperatingsystemProfileBDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single OperatingsystemProfileBDO object holding a OperatingsystemProfileDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return OperatingsystemProfileBDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one OperatingsystemProfileBDO object was found.
-     */
-    public jobmatch.data.OperatingsystemProfileBDO getOperatingsystemProfileBDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
-	q.setQuerySystem( DO );
-	q.requireUniqueInstance();
-	return q.getNextBDO();
-    }
-
- 
-    /**
-     * Add (set & commit) a OperatingsystemProfileBDO object whose OperatingsystemProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo OperatingsystemProfileBDO to be set to point to this BDO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addOperatingsystemProfileBDO( jobmatch.data.OperatingsystemProfileBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addOperatingsystemProfileBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a OperatingsystemProfileBDO object whose OperatingsystemProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo OperatingsystemProfileBDO to be set to point to this BDO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addOperatingsystemProfileBDO( jobmatch.data.OperatingsystemProfileBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        rbdo.setSystem( this.DO );
-        rbdo.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a OperatingsystemProfileBDO object whose OperatingsystemProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r OperatingsystemProfileBDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeOperatingsystemProfileBDO( jobmatch.data.OperatingsystemProfileBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeOperatingsystemProfileBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a OperatingsystemProfileBDO object whose OperatingsystemProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r OperatingsystemProfileBDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeOperatingsystemProfileBDO( jobmatch.data.OperatingsystemProfileBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	OperatingsystemDO rdo = rbdo.getSystem();
-	String rdoHandle = rdo.getHandle();
-	String mydoHandle = DO.getHandle();
-	if ( null == rdoHandle || null == mydoHandle || 
-	     ( ! rdoHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + rdo +
-		" does not refer to object " + DO +
-		", cannot be removed this way." );
-	}
-        rbdo.delete( tran );
-    }
- 
-
-    /**
      * Get array of OperatingsystemCandidateDO objects that refer to the DO held by this BDO.
      *
      * @return array of OperatingsystemCandidateDO objects.
@@ -461,7 +291,7 @@ public class OperatingsystemBDO implements java.io.Serializable {
 	jobmatch.data.OperatingsystemCandidateDO[] ret = null;
 	try {
 	    jobmatch.data.OperatingsystemCandidateQuery q = new jobmatch.data.OperatingsystemCandidateQuery();
-	    q.setQuerySystem( DO );
+	    q.setQueryOperatingsystem( DO );
 	    ret = q.getDOArray();
 	} catch ( NonUniqueQueryException e ) { 
 	    throw new DataObjectException( 
@@ -487,7 +317,7 @@ public class OperatingsystemBDO implements java.io.Serializable {
     public jobmatch.data.OperatingsystemCandidateDO getOperatingsystemCandidateDO () 
     throws DataObjectException, NonUniqueQueryException, QueryException {
 	jobmatch.data.OperatingsystemCandidateQuery q = new jobmatch.data.OperatingsystemCandidateQuery();
-	q.setQuerySystem( DO );
+	q.setQueryOperatingsystem( DO );
 	q.requireUniqueInstance();
 	return q.getNextDO();
     }
@@ -506,7 +336,7 @@ public class OperatingsystemBDO implements java.io.Serializable {
 	jobmatch.data.OperatingsystemCandidateBDO[] ret = null;
 	try {
 	    jobmatch.data.OperatingsystemCandidateQuery q = new jobmatch.data.OperatingsystemCandidateQuery();
-	    q.setQuerySystem( DO );
+	    q.setQueryOperatingsystem( DO );
 	    ret = q.getBDOArray();
 	} catch ( NonUniqueQueryException e ) { 
 	    throw new DataObjectException( 
@@ -532,7 +362,7 @@ public class OperatingsystemBDO implements java.io.Serializable {
     public jobmatch.data.OperatingsystemCandidateBDO getOperatingsystemCandidateBDO () 
     throws DataObjectException, NonUniqueQueryException, QueryException {
 	jobmatch.data.OperatingsystemCandidateQuery q = new jobmatch.data.OperatingsystemCandidateQuery();
-	q.setQuerySystem( DO );
+	q.setQueryOperatingsystem( DO );
 	q.requireUniqueInstance();
 	return q.getNextBDO();
     }
@@ -569,7 +399,7 @@ public class OperatingsystemBDO implements java.io.Serializable {
      */
     public void addOperatingsystemCandidateBDO( jobmatch.data.OperatingsystemCandidateBDO rbdo, DBTransaction tran )
     throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        rbdo.setSystem( this.DO );
+        rbdo.setOperatingsystem( this.DO );
         rbdo.commit( tran );
     }
 
@@ -605,7 +435,177 @@ public class OperatingsystemBDO implements java.io.Serializable {
      */
     public void removeOperatingsystemCandidateBDO( jobmatch.data.OperatingsystemCandidateBDO rbdo, DBTransaction tran )
     throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	OperatingsystemDO rdo = rbdo.getSystem();
+	OperatingsystemDO rdo = rbdo.getOperatingsystem();
+	String rdoHandle = rdo.getHandle();
+	String mydoHandle = DO.getHandle();
+	if ( null == rdoHandle || null == mydoHandle || 
+	     ( ! rdoHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + rdo +
+		" does not refer to object " + DO +
+		", cannot be removed this way." );
+	}
+        rbdo.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of OperatingsystemProfileDO objects that refer to the DO held by this BDO.
+     *
+     * @return array of OperatingsystemProfileDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.OperatingsystemProfileDO[] getOperatingsystemProfileDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.OperatingsystemProfileDO[] ret = null;
+	try {
+	    jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
+	    q.setQueryOperatingSystem( DO );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.OperatingsystemProfileDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single OperatingsystemProfileDO object
+     * that refers to the DO held by this BDO.
+     *
+     * @return OperatingsystemProfileDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception NonUniqueQueryException
+     *   If more than one OperatingsystemProfileDO object was found.
+     */
+    public jobmatch.data.OperatingsystemProfileDO getOperatingsystemProfileDO () 
+    throws DataObjectException, NonUniqueQueryException, QueryException {
+	jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
+	q.setQueryOperatingSystem( DO );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Get array of OperatingsystemProfileBDO objects holding OperatingsystemProfileDO objects
+     * that refer to the DO held by this BDO.
+     *
+     * @return array of OperatingsystemProfileBDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.OperatingsystemProfileBDO[] getOperatingsystemProfileBDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.OperatingsystemProfileBDO[] ret = null;
+	try {
+	    jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
+	    q.setQueryOperatingSystem( DO );
+	    ret = q.getBDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.OperatingsystemProfileBDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single OperatingsystemProfileBDO object holding a OperatingsystemProfileDO object
+     * that refers to the DO held by this BDO.
+     *
+     * @return OperatingsystemProfileBDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception NonUniqueQueryException
+     *   If more than one OperatingsystemProfileBDO object was found.
+     */
+    public jobmatch.data.OperatingsystemProfileBDO getOperatingsystemProfileBDO () 
+    throws DataObjectException, NonUniqueQueryException, QueryException {
+	jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
+	q.setQueryOperatingSystem( DO );
+	q.requireUniqueInstance();
+	return q.getNextBDO();
+    }
+
+ 
+    /**
+     * Add (set & commit) a OperatingsystemProfileBDO object whose OperatingsystemProfileDO
+     * refers to the DO held by this BDO.
+     *
+     * @param rbdo OperatingsystemProfileBDO to be set to point to this BDO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addOperatingsystemProfileBDO( jobmatch.data.OperatingsystemProfileBDO rbdo )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addOperatingsystemProfileBDO( rbdo, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a OperatingsystemProfileBDO object whose OperatingsystemProfileDO
+     * refers to the DO held by this BDO.
+     *
+     * @param rbdo OperatingsystemProfileBDO to be set to point to this BDO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addOperatingsystemProfileBDO( jobmatch.data.OperatingsystemProfileBDO rbdo, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        rbdo.setOperatingSystem( this.DO );
+        rbdo.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a OperatingsystemProfileBDO object whose OperatingsystemProfileDO
+     * refers to the DO held by this BDO.
+     *
+     * @param r OperatingsystemProfileBDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeOperatingsystemProfileBDO( jobmatch.data.OperatingsystemProfileBDO rbdo )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeOperatingsystemProfileBDO( rbdo, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a OperatingsystemProfileBDO object whose OperatingsystemProfileDO
+     * refers to the DO held by this BDO.
+     *
+     * @param r OperatingsystemProfileBDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeOperatingsystemProfileBDO( jobmatch.data.OperatingsystemProfileBDO rbdo, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	OperatingsystemDO rdo = rbdo.getOperatingSystem();
 	String rdoHandle = rdo.getHandle();
 	String mydoHandle = DO.getHandle();
 	if ( null == rdoHandle || null == mydoHandle || 
@@ -708,7 +708,7 @@ public class OperatingsystemBDO implements java.io.Serializable {
 	  	
 	{
 	    // perform cascading delete on referring table
-	    jobmatch.data.OperatingsystemProfileBDO[] a = getOperatingsystemProfileBDOArray();
+	    jobmatch.data.OperatingsystemCandidateBDO[] a = getOperatingsystemCandidateBDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }
@@ -717,7 +717,7 @@ public class OperatingsystemBDO implements java.io.Serializable {
 	
 	{
 	    // perform cascading delete on referring table
-	    jobmatch.data.OperatingsystemCandidateBDO[] a = getOperatingsystemCandidateBDOArray();
+	    jobmatch.data.OperatingsystemProfileBDO[] a = getOperatingsystemProfileBDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }

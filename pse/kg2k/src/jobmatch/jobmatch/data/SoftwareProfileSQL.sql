@@ -2,10 +2,11 @@
 
 create table SoftwareProfile
 (
-/* class ComputerRequest */
-    Profile DECIMAL(19,0)  NOT NULL  REFERENCES Profile ( oid ) ,
+/* class TreeLeaf */
+    LeafNumber INTEGER     ,
+    Profile DECIMAL(19,0)  NOT NULL   ,
     Mandatory BIT DEFAULT 0 NOT NULL   ,
-    LeafNumber INTEGER DEFAULT 0    ,
+/* class ComputerRequest */
     MinCapability DECIMAL(19,0)  NOT NULL   ,
 /* class SoftwareProfile */
     Software DECIMAL(19,0)  NOT NULL  REFERENCES Software ( oid ) ,

@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the OperatingsystemCandidateDO information.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
@@ -640,39 +640,39 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member System
+////////////////////////// data member Operatingsystem
 
-   /* static final RDBColumn System for use with QueryBuilder.
+   /* static final RDBColumn Operatingsystem for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn System = 
-			    new RDBColumn( table, "System" );
+   static public final RDBColumn Operatingsystem = 
+			    new RDBColumn( table, "Operatingsystem" );
 
    /**
-    * Get System of the OperatingSystemCandidate
+    * Get Operatingsystem of the OperatingSystemCandidate
     *
-    * @return System of the OperatingSystemCandidate
+    * @return Operatingsystem of the OperatingSystemCandidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.OperatingsystemDO getSystem () 
+   public jobmatch.data.OperatingsystemDO getOperatingsystem () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.System;
+      return data.Operatingsystem;
    }
 
    /**
-    * Set System of the OperatingSystemCandidate
+    * Set Operatingsystem of the OperatingSystemCandidate
     *
-    * @param System of the OperatingSystemCandidate
+    * @param Operatingsystem of the OperatingSystemCandidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setSystem ( jobmatch.data.OperatingsystemDO System )
+   public void setOperatingsystem ( jobmatch.data.OperatingsystemDO Operatingsystem )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -681,8 +681,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.System = (jobmatch.data.OperatingsystemDO) markNewValue(
-	data.System, System  );
+      data.Operatingsystem = (jobmatch.data.OperatingsystemDO) markNewValue(
+	data.Operatingsystem, Operatingsystem  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -728,10 +728,10 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setSystem( 
+	setOperatingsystem( 
 	    jobmatch.data.OperatingsystemDO.createExisting( 
 		rs.getBigDecimal( 
-			"System" , 0 )
+			"Operatingsystem" , 0 )
 	     )
 	);
 	
@@ -768,7 +768,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into OperatingSystemCandidate ( Capability, Candidate, System, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
+	    "insert into OperatingSystemCandidate ( Capability, Candidate, Operatingsystem, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -781,7 +781,7 @@ import com.lutris.dods.builder.generator.query.*;
 	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
 	setPrepStmtParam_DO( stmt, param,
-		getSystem() );
+		getOperatingsystem() );
 
 
 	    /* The order of the values being inserted must match
@@ -814,7 +814,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update OperatingSystemCandidate set " + getVersionColumnName() + " = ?, Capability = ?, Candidate = ?, System = ? " +
+	    "update OperatingSystemCandidate set " + getVersionColumnName() + " = ?, Capability = ?, Candidate = ?, Operatingsystem = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -829,7 +829,7 @@ import com.lutris.dods.builder.generator.query.*;
 	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
 	setPrepStmtParam_DO( stmt, param,
-		getSystem() );
+		getOperatingsystem() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -879,7 +879,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "System=" + ( null == data.System ? null  : data.System.toString( indentCount + 1 ) )
+	    str = str + "\n" + indent + "Operatingsystem=" + ( null == data.Operatingsystem ? null  : data.Operatingsystem.toString( indentCount + 1 ) )
 ;
         return str + "; " + super.toString();
     }
@@ -903,7 +903,7 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "System=" + ( null == data.System ? null  : data.System.toString( indentCount + 1 ) )
+            str = str + "\n" + indent + "Operatingsystem=" + ( null == data.Operatingsystem ? null  : data.Operatingsystem.toString( indentCount + 1 ) )
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -1025,20 +1025,20 @@ import com.lutris.dods.builder.generator.query.*;
 
     /**
      * A stub method for implementing pre-commit assertions 
-     * for the System data member.
+     * for the Operatingsystem data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where System is not valid for writing to the database.
+     * where Operatingsystem is not valid for writing to the database.
      */
-    protected void okToCommitSystem( jobmatch.data.OperatingsystemDO member ) 
+    protected void okToCommitOperatingsystem( jobmatch.data.OperatingsystemDO member ) 
     throws RefAssertionException { }
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for the System data member.
+     * for the Operatingsystem data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where System is not valid for deletion from the database.
+     * where Operatingsystem is not valid for deletion from the database.
      */
-    protected void okToDeleteSystem( jobmatch.data.OperatingsystemDO member ) 
+    protected void okToDeleteOperatingsystem( jobmatch.data.OperatingsystemDO member ) 
     throws RefAssertionException { }
 
 
@@ -1113,11 +1113,11 @@ import com.lutris.dods.builder.generator.query.*;
 		    "Cannot commit OperatingsystemCandidateDO ( " + toString() +
 		    " ) because Candidate is not allowed to be null." );
 	}
-	jobmatch.data.OperatingsystemDO System_DO = getSystem();
-	if ( null != System_DO ) {
-	    if ( System_DO.isLoaded() ) {
-		okToCommitSystem( System_DO );
-		System_DO.commit( dbt );
+	jobmatch.data.OperatingsystemDO Operatingsystem_DO = getOperatingsystem();
+	if ( null != Operatingsystem_DO ) {
+	    if ( Operatingsystem_DO.isLoaded() ) {
+		okToCommitOperatingsystem( Operatingsystem_DO );
+		Operatingsystem_DO.commit( dbt );
 	    } else {
 		// since the referenced DO is not loaded,
 		// it cannot be dirty, so there is no need to commit it.
@@ -1126,7 +1126,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    if ( ! false )
 		throw new RefAssertionException(
 		    "Cannot commit OperatingsystemCandidateDO ( " + toString() +
-		    " ) because System is not allowed to be null." );
+		    " ) because Operatingsystem is not allowed to be null." );
 	}
 
       }

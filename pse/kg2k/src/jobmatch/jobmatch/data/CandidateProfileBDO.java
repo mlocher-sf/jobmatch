@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class CandidateProfileBDO implements java.io.Serializable {
 
@@ -326,6 +326,82 @@ public class CandidateProfileBDO implements java.io.Serializable {
    
 
    /**
+    * Get MatchingTime of the CandidateProfileDO
+    *
+    * @return MatchingTime of the CandidateProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Timestamp getMatchingTime () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getMatchingTime ();
+   }
+
+   
+   /**
+    * Set MatchingTime of the CandidateProfileDO
+    *
+    * @param MatchingTime of the CandidateProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setMatchingTime ( java.sql.Timestamp MatchingTime ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setMatchingTime ( MatchingTime );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Deleted of the CandidateProfileDO
+    *
+    * @return Deleted of the CandidateProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public boolean getDeleted () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getDeleted ();
+   }
+
+   
+   /**
+    * Set Deleted of the CandidateProfileDO
+    *
+    * @param Deleted of the CandidateProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setDeleted ( boolean Deleted ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setDeleted ( Deleted );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
     * Get Profile of the CandidateProfileDO
     *
     * @return Profile of the CandidateProfileDO
@@ -406,82 +482,6 @@ public class CandidateProfileBDO implements java.io.Serializable {
       afterAnySet();	// business actions/assertions after data assignment
    }
    
-
-   
-
-   /**
-    * Get MatchingTime of the CandidateProfileDO
-    *
-    * @return MatchingTime of the CandidateProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Timestamp getMatchingTime () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getMatchingTime ();
-   }
-
-   
-   /**
-    * Set MatchingTime of the CandidateProfileDO
-    *
-    * @param MatchingTime of the CandidateProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setMatchingTime ( java.sql.Timestamp MatchingTime ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setMatchingTime ( MatchingTime );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get Deleted of the CandidateProfileDO
-    *
-    * @return Deleted of the CandidateProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public boolean getDeleted () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getDeleted ();
-   }
-
-   
-   /**
-    * Set Deleted of the CandidateProfileDO
-    *
-    * @param Deleted of the CandidateProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setDeleted ( boolean Deleted ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setDeleted ( Deleted );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
 
    
 

@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the OperatingsystemDO information.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
@@ -845,130 +845,6 @@ import com.lutris.dods.builder.generator.query.*;
 
     
     /**
-     * Get array of OperatingsystemProfileDO objects that refer to this DO.
-     *
-     * @return array of OperatingsystemProfileDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public jobmatch.data.OperatingsystemProfileDO[] getOperatingsystemProfileDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.OperatingsystemProfileDO[] ret = null;
-	try {
-	    jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
-	    q.setQuerySystem( this );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.OperatingsystemProfileDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single OperatingsystemProfileDO object
-     * that refers to this DO.
-     *
-     * @return OperatingsystemProfileDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     * @exception NonUniqueQueryException
-     *   If more than one OperatingsystemProfileDO object was found.
-     */
-    public jobmatch.data.OperatingsystemProfileDO getOperatingsystemProfileDO () 
-    throws DataObjectException, QueryException, NonUniqueQueryException {
-	jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
-	q.setQuerySystem( this );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
-
-    /**
-     * Add (set & commit) a OperatingsystemProfileDO object that refers to this DO.
-     *
-     * @param referrer OperatingsystemProfileDO to be set to point to this DO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addOperatingsystemProfileDO( jobmatch.data.OperatingsystemProfileDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addOperatingsystemProfileDO( referrer, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a OperatingsystemProfileDO object that refers to this DO.
-     *
-     * @param referrer OperatingsystemProfileDO to be set to point to this DO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addOperatingsystemProfileDO( jobmatch.data.OperatingsystemProfileDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        referrer.setSystem( this );
-        referrer.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a OperatingsystemProfileDO object that refers to this DO.
-     *
-     * @param referrer OperatingsystemProfileDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeOperatingsystemProfileDO( jobmatch.data.OperatingsystemProfileDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeOperatingsystemProfileDO( referrer, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a OperatingsystemProfileDO object that refers to this DO.
-     *
-     * @param referrer OperatingsystemProfileDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeOperatingsystemProfileDO( jobmatch.data.OperatingsystemProfileDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	OperatingsystemDO referred = referrer.getSystem();
-	String referredHandle = referred.getHandle();
-	String mydoHandle = this.getHandle();
-	if ( null == referredHandle || null == mydoHandle || 
-	     ( ! referredHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + referrer +
-		" does not refer to object " + this +
-		", cannot be removed this way." );
-	}
-        referrer.delete( tran );
-    }
- 
-
-    /**
      * Get array of OperatingsystemCandidateDO objects that refer to this DO.
      *
      * @return array of OperatingsystemCandidateDO objects.
@@ -983,7 +859,7 @@ import com.lutris.dods.builder.generator.query.*;
 	jobmatch.data.OperatingsystemCandidateDO[] ret = null;
 	try {
 	    jobmatch.data.OperatingsystemCandidateQuery q = new jobmatch.data.OperatingsystemCandidateQuery();
-	    q.setQuerySystem( this );
+	    q.setQueryOperatingsystem( this );
 	    ret = q.getDOArray();
 	} catch ( NonUniqueQueryException e ) { 
 	    throw new DataObjectException( 
@@ -1011,7 +887,7 @@ import com.lutris.dods.builder.generator.query.*;
     public jobmatch.data.OperatingsystemCandidateDO getOperatingsystemCandidateDO () 
     throws DataObjectException, QueryException, NonUniqueQueryException {
 	jobmatch.data.OperatingsystemCandidateQuery q = new jobmatch.data.OperatingsystemCandidateQuery();
-	q.setQuerySystem( this );
+	q.setQueryOperatingsystem( this );
 	q.requireUniqueInstance();
 	return q.getNextDO();
     }
@@ -1045,7 +921,7 @@ import com.lutris.dods.builder.generator.query.*;
      */
     public void addOperatingsystemCandidateDO( jobmatch.data.OperatingsystemCandidateDO referrer, DBTransaction tran )
     throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        referrer.setSystem( this );
+        referrer.setOperatingsystem( this );
         referrer.commit( tran );
     }
 
@@ -1079,7 +955,131 @@ import com.lutris.dods.builder.generator.query.*;
      */
     public void removeOperatingsystemCandidateDO( jobmatch.data.OperatingsystemCandidateDO referrer, DBTransaction tran )
     throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	OperatingsystemDO referred = referrer.getSystem();
+	OperatingsystemDO referred = referrer.getOperatingsystem();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of OperatingsystemProfileDO objects that refer to this DO.
+     *
+     * @return array of OperatingsystemProfileDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.OperatingsystemProfileDO[] getOperatingsystemProfileDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.OperatingsystemProfileDO[] ret = null;
+	try {
+	    jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
+	    q.setQueryOperatingSystem( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.OperatingsystemProfileDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single OperatingsystemProfileDO object
+     * that refers to this DO.
+     *
+     * @return OperatingsystemProfileDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one OperatingsystemProfileDO object was found.
+     */
+    public jobmatch.data.OperatingsystemProfileDO getOperatingsystemProfileDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.OperatingsystemProfileQuery q = new jobmatch.data.OperatingsystemProfileQuery();
+	q.setQueryOperatingSystem( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a OperatingsystemProfileDO object that refers to this DO.
+     *
+     * @param referrer OperatingsystemProfileDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addOperatingsystemProfileDO( jobmatch.data.OperatingsystemProfileDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addOperatingsystemProfileDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a OperatingsystemProfileDO object that refers to this DO.
+     *
+     * @param referrer OperatingsystemProfileDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addOperatingsystemProfileDO( jobmatch.data.OperatingsystemProfileDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setOperatingSystem( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a OperatingsystemProfileDO object that refers to this DO.
+     *
+     * @param referrer OperatingsystemProfileDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeOperatingsystemProfileDO( jobmatch.data.OperatingsystemProfileDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeOperatingsystemProfileDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a OperatingsystemProfileDO object that refers to this DO.
+     *
+     * @param referrer OperatingsystemProfileDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeOperatingsystemProfileDO( jobmatch.data.OperatingsystemProfileDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	OperatingsystemDO referred = referrer.getOperatingSystem();
 	String referredHandle = referred.getHandle();
 	String mydoHandle = this.getHandle();
 	if ( null == referredHandle || null == mydoHandle || 
@@ -1207,7 +1207,7 @@ import com.lutris.dods.builder.generator.query.*;
 	  	
 	{
 	    // perform cascading delete on referring table
-	    jobmatch.data.OperatingsystemProfileDO[] a = getOperatingsystemProfileDOArray();
+	    jobmatch.data.OperatingsystemCandidateDO[] a = getOperatingsystemCandidateDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }
@@ -1216,7 +1216,7 @@ import com.lutris.dods.builder.generator.query.*;
 	
 	{
 	    // perform cascading delete on referring table
-	    jobmatch.data.OperatingsystemCandidateDO[] a = getOperatingsystemCandidateDOArray();
+	    jobmatch.data.OperatingsystemProfileDO[] a = getOperatingsystemProfileDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }

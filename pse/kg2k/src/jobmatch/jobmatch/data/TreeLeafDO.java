@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/studer_repositry/dataTest/jobmatch/data/CapabilityDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/TreeLeafDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -51,13 +51,13 @@ import com.lutris.dods.builder.generator.query.*;
 
 
 /**
- * Data core class, used to set, retrieve the CapabilityDO information.
+ * Data core class, used to set, retrieve the TreeLeafDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.1 $
  * @author  studer
  * @since   jobmatch
  */
-abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO implements java.io.Serializable {
+abstract public class TreeLeafDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -99,7 +99,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
 
     /**
      * Return NewDBTable as the name of the table in the database
-     * which contains CapabilityDO objects.
+     * which contains TreeLeafDO objects.
      * This method overrides CoreDO.getTableName()
      * and is used by CoreDO.executeUpdate() during error handling.
      *
@@ -113,7 +113,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
 
     static public final RDBColumn PrimaryKey = new RDBColumn( table,
 					      GenericDO.getPrimaryKeyName() );
-    /* RDBColumns for CapabilityDO attributes are defined below. */
+    /* RDBColumns for TreeLeafDO attributes are defined below. */
 
     /* Using a DO (and its Query class) to access a VIEW instead of a TABLE:
      *
@@ -127,7 +127,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
      * A VIEW usually does not return "oid" and "version" columns;
      * often (but now always) a VIEW is defined to return the "oid" column
      * for one of the tables joined together in the definition of the VIEW.
-     * If the isView flag is true, CapabilityDO.createExisting(ResultSet)
+     * If the isView flag is true, TreeLeafDO.createExisting(ResultSet)
      * will NOT invoke the GenericDO(ResultSet) constructor
      * so to avoid attempting to extract the "oid" and "version" columns
      * from the ResultSet.
@@ -145,7 +145,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
      * allowing a DO object to be a lightweight placeholder
      * until its data is needed.
      */
-    private CapabilityDataStruct data = null;
+    private TreeLeafDataStruct data = null;
 
     /**
      * isReadOnly()
@@ -164,7 +164,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
      */
-    protected CapabilityDO ( boolean is_view )
+    protected TreeLeafDO ( boolean is_view )
     throws ObjectIdException, DatabaseManagerException {
         super( is_view );
     }
@@ -177,7 +177,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
      * @exception com.lutris.appserver.server.sql.ObjectIdException
      *   If an object id can't be allocated for this object.
      */
-    protected CapabilityDO ()
+    protected TreeLeafDO ()
     throws ObjectIdException, DatabaseManagerException {
         super( isView );
     }
@@ -207,8 +207,8 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    super.loadData();
-	    data = new CapabilityDataStruct ();
+	    
+	    data = new TreeLeafDataStruct ();
 	}
     }
     /**
@@ -224,7 +224,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
 		loadData();
 	    } catch ( Exception e ) {
 		throw new DataObjectException(
-		    "Unable to load data for CapabilityDO id=" + getOId() +
+		    "Unable to load data for TreeLeafDO id=" + getOId() +
 		    ", error = " + e.getMessage() );
 	    }
     }
@@ -270,7 +270,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
      *   Should never see this exception since GenericDO.ctor(ObjectId)
      *   never accesses the database.
      */
-    protected CapabilityDO( ObjectId id )
+    protected TreeLeafDO( ObjectId id )
     throws SQLException, ObjectIdException, DataObjectException, DatabaseManagerException
     {
 	super( id );
@@ -286,44 +286,44 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
      * @param orig The original DO.
      *
      */
-    protected void makeIdentical( CapabilityDO orig ) {
+    protected void makeIdentical( TreeLeafDO orig ) {
 	super.makeIdentical(orig);
 	data = orig.data;
     }
 
-////////////////////////// data member Ordinal
+////////////////////////// data member LeafNumber
 
-   /* static final RDBColumn Ordinal for use with QueryBuilder.
+   /* static final RDBColumn LeafNumber for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Ordinal = 
-			    new RDBColumn( table, "Ordinal" );
+   static public final RDBColumn LeafNumber = 
+			    new RDBColumn( table, "LeafNumber" );
 
    /**
-    * Get Ordinal of the NewDBTable
+    * Get LeafNumber of the NewDBTable
     *
-    * @return Ordinal of the NewDBTable
+    * @return LeafNumber of the NewDBTable
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public int getOrdinal () 
+   public int getLeafNumber () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Ordinal;
+      return data.LeafNumber;
    }
 
    /**
-    * Set Ordinal of the NewDBTable
+    * Set LeafNumber of the NewDBTable
     *
-    * @param Ordinal of the NewDBTable
+    * @param LeafNumber of the NewDBTable
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setOrdinal ( int Ordinal )
+   public void setLeafNumber ( int LeafNumber )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -332,8 +332,104 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Ordinal =  markNewValue(
-	data.Ordinal, Ordinal  );
+      data.LeafNumber =  markNewValue(
+	data.LeafNumber, LeafNumber  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Profile
+
+   /* static final RDBColumn Profile for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Profile = 
+			    new RDBColumn( table, "Profile" );
+
+   /**
+    * Get Profile of the NewDBTable
+    *
+    * @return Profile of the NewDBTable
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.ProfileDO getProfile () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Profile;
+   }
+
+   /**
+    * Set Profile of the NewDBTable
+    *
+    * @param Profile of the NewDBTable
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setProfile ( jobmatch.data.ProfileDO Profile )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Profile = (jobmatch.data.ProfileDO) markNewValue(
+	data.Profile, Profile  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Mandatory
+
+   /* static final RDBColumn Mandatory for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Mandatory = 
+			    new RDBColumn( table, "Mandatory" );
+
+   /**
+    * Get Mandatory of the NewDBTable
+    *
+    * @return Mandatory of the NewDBTable
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public boolean getMandatory () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Mandatory;
+   }
+
+   /**
+    * Set Mandatory of the NewDBTable
+    *
+    * @param Mandatory of the NewDBTable
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setMandatory ( boolean Mandatory )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Mandatory =  markNewValue(
+	data.Mandatory, Mandatory  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -354,7 +450,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
      *   If the database rejects the SQL generated to retrieve data
      *   for this object, or if the table contains a bad foreign key, etc.
      */
-    protected CapabilityDO(ResultSet rs)
+    protected TreeLeafDO(ResultSet rs)
             throws SQLException, ObjectIdException, DataObjectException
  	    , DatabaseManagerException
     {
@@ -373,16 +469,32 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
     {
 	// Constructing a DO from a ResultSet means we definitely need the 
 	// DataStruct ready for the setXxx methods invoked below.
-	data = new CapabilityDataStruct ();
+	data = new TreeLeafDataStruct ();
  
 	// writeMemberStuff uses the ResultSetExtraction.template
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setOrdinal( 
+	setLeafNumber( 
 	    
 		rs.getInt( 
-			"Ordinal"  )
+			"LeafNumber"  )
+	    
+	);
+	
+	
+	setProfile( 
+	    jobmatch.data.ProfileDO.createExisting( 
+		rs.getBigDecimal( 
+			"Profile" , 0 )
+	     )
+	);
+	
+	
+	setMandatory( 
+	    
+		rs.getBoolean( 
+			"Mandatory"  )
 	    
 	);
 	
@@ -400,14 +512,16 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
      */
 /*
     public String toString(){
-	String str = "CapabilityDO:";
+	String str = "TreeLeafDO:";
 	ObjectId oid = getOId();
 	String id = "virgin";
 	if ( null != oid ) 
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Ordinal=" + data.Ordinal
+	    str = str + "\n" + indent + "LeafNumber=" + data.LeafNumber
++ "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
++ "\n" + indent + "Mandatory=" + data.Mandatory
 ;
         return str + "; " + super.toString();
     }
@@ -424,14 +538,16 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
         for ( int i = 0; i < indentCount; i++ ) {
             indent += ". ";
         }
-        String str = indent + "CapabilityDO:";
+        String str = indent + "TreeLeafDO:";
         ObjectId oid = getOId();
         String id = "virgin";
         if ( null != oid )
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Ordinal=" + data.Ordinal
+            str = str + "\n" + indent + "LeafNumber=" + data.LeafNumber
++ "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
++ "\n" + indent + "Mandatory=" + data.Mandatory
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -443,7 +559,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
 
     /**
      * A stub method for implementing pre-commit assertions 
-     * for this CapabilityDO.
+     * for this TreeLeafDO.
      * Implement this stub to throw an RefAssertionException for cases
      * where this object is not valid for writing to the database.
      */
@@ -452,7 +568,7 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for this CapabilityDO.
+     * for this TreeLeafDO.
      * Implement this stub to throw an RefAssertionException for cases
      * where this object is not valid for deletion from the database.
      */
@@ -515,7 +631,25 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
     modifyDO( dbt, true );
   }
 
-  
+      /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Profile data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Profile is not valid for writing to the database.
+     */
+    protected void okToCommitProfile( jobmatch.data.ProfileDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Profile data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Profile is not valid for deletion from the database.
+     */
+    protected void okToDeleteProfile( jobmatch.data.ProfileDO member ) 
+    throws RefAssertionException { }
+
+
 
   /**
    * Modifies the DO within its table.
@@ -557,7 +691,22 @@ abstract public class CapabilityDO extends jobmatch.data.ConstantTableDO impleme
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  
+	  	jobmatch.data.ProfileDO Profile_DO = getProfile();
+	if ( null != Profile_DO ) {
+	    if ( Profile_DO.isLoaded() ) {
+		okToCommitProfile( Profile_DO );
+		Profile_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit TreeLeafDO ( " + toString() +
+		    " ) because Profile is not allowed to be null." );
+	}
+
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

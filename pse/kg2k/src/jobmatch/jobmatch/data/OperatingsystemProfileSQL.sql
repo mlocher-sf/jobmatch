@@ -2,13 +2,14 @@
 
 create table OperatingsystemProfile
 (
-/* class ComputerRequest */
-    Profile DECIMAL(19,0)  NOT NULL  REFERENCES Profile ( oid ) ,
+/* class TreeLeaf */
+    LeafNumber INTEGER     ,
+    Profile DECIMAL(19,0)  NOT NULL   ,
     Mandatory BIT DEFAULT 0 NOT NULL   ,
-    LeafNumber INTEGER DEFAULT 0    ,
+/* class ComputerRequest */
     MinCapability DECIMAL(19,0)  NOT NULL   ,
 /* class OperatingsystemProfile */
-    System DECIMAL(19,0)  NOT NULL  REFERENCES Operatingsystem ( oid ) ,
+    OperatingSystem DECIMAL(19,0)  NOT NULL  REFERENCES Operatingsystem ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

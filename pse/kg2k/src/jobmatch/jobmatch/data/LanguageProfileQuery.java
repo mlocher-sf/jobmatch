@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 final public class LanguageProfileQuery implements Query {
 
@@ -407,14 +407,14 @@ final public class LanguageProfileQuery implements Query {
 
 
     /**
-     * Set the Language to query.
+     * Set the LeafNumber to query.
      *
-     * @param x The Language of the LanguageProfile to query.
+     * @param x The LeafNumber of the LanguageProfile to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryLanguage(
-				jobmatch.data.LanguageDO x, boolean exact)
+    public void setQueryLeafNumber(
+				int x, boolean exact)
     throws DataObjectException, QueryException
     {
 	// Remove from cacheHits any DOs that do not meet this
@@ -424,20 +424,8 @@ final public class LanguageProfileQuery implements Query {
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
-		// DOs are compared by their handles..
-		jobmatch.data.LanguageDO m = DO.getLanguage();
-		if ( null == m && null == x ) {
-		    equals = true;
-		} else if ( null == m || null == x ) {
-		    equals = false;
-		} else {
-		    equals = ( DO.getLanguage().getOId().toString().equals( x.getOId().toString() ) );
-if ( equals && m != x ) {
-System.err.println("\n----------------------------------------------------------");
-System.err.println("m ="+m );
-System.err.println("x ="+x );
-}
-		}
+		// primitive types are compared using the == operator.
+		equals = ( DO.getLeafNumber() == x );
 	    
 	    if ( ! equals )
 		cacheHits.removeElementAt( i-- );
@@ -446,38 +434,38 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Language", x, "DECIMAL(19,0)",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+	    builder.addWhereClause( "LeafNumber", x, "INTEGER",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
-     * Set the Language to query
-     * @param x The Language of the LanguageProfile to query.
+     * Set the LeafNumber to query
+     * @param x The LeafNumber of the LanguageProfile to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryLanguage( 
-				jobmatch.data.LanguageDO x )
+    public void setQueryLeafNumber( 
+				int x )
     throws DataObjectException, QueryException {
-	setQueryLanguage( x, true );
+	setQueryLeafNumber( x, true );
     }
 
     /**
-     * Add Language to the ORDER BY clause.
+     * Add LeafNumber to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByLanguage(boolean direction_flag) {
-        builder.addOrderByColumn("Language",
+    public void addOrderByLeafNumber(boolean direction_flag) {
+        builder.addOrderByColumn("LeafNumber",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Language to the ORDER BY clause.  This convenience
+     * Add LeafNumber to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByLanguage() {
-        builder.addOrderByColumn("Language","ASC");
+    public void addOrderByLeafNumber() {
+        builder.addOrderByColumn("LeafNumber","ASC");
     }
 
 
@@ -557,14 +545,14 @@ System.err.println("x ="+x );
 
 
     /**
-     * Set the Mandatory to query.
+     * Set the Language to query.
      *
-     * @param x The Mandatory of the LanguageProfile to query.
+     * @param x The Language of the LanguageProfile to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryMandatory(
-				boolean x, boolean exact)
+    public void setQueryLanguage(
+				jobmatch.data.LanguageDO x, boolean exact)
     throws DataObjectException, QueryException
     {
 	// Remove from cacheHits any DOs that do not meet this
@@ -574,8 +562,20 @@ System.err.println("x ="+x );
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
-		// primitive types are compared using the == operator.
-		equals = ( DO.getMandatory() == x );
+		// DOs are compared by their handles..
+		jobmatch.data.LanguageDO m = DO.getLanguage();
+		if ( null == m && null == x ) {
+		    equals = true;
+		} else if ( null == m || null == x ) {
+		    equals = false;
+		} else {
+		    equals = ( DO.getLanguage().getOId().toString().equals( x.getOId().toString() ) );
+if ( equals && m != x ) {
+System.err.println("\n----------------------------------------------------------");
+System.err.println("m ="+m );
+System.err.println("x ="+x );
+}
+		}
 	    
 	    if ( ! equals )
 		cacheHits.removeElementAt( i-- );
@@ -584,38 +584,38 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Mandatory", x, "BIT",
+	    builder.addWhereClause( "Language", x, "DECIMAL(19,0)",
                 QueryBuilder.NOT_NULL, exactFlag( exact ) );
     }
 
     /**
-     * Set the Mandatory to query
-     * @param x The Mandatory of the LanguageProfile to query.
+     * Set the Language to query
+     * @param x The Language of the LanguageProfile to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryMandatory( 
-				boolean x )
+    public void setQueryLanguage( 
+				jobmatch.data.LanguageDO x )
     throws DataObjectException, QueryException {
-	setQueryMandatory( x, true );
+	setQueryLanguage( x, true );
     }
 
     /**
-     * Add Mandatory to the ORDER BY clause.
+     * Add Language to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByMandatory(boolean direction_flag) {
-        builder.addOrderByColumn("Mandatory",
+    public void addOrderByLanguage(boolean direction_flag) {
+        builder.addOrderByColumn("Language",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Mandatory to the ORDER BY clause.  This convenience
+     * Add Language to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByMandatory() {
-        builder.addOrderByColumn("Mandatory","ASC");
+    public void addOrderByLanguage() {
+        builder.addOrderByColumn("Language","ASC");
     }
 
 

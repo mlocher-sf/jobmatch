@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 final public class CandidateProfileQuery implements Query {
 
@@ -482,81 +482,6 @@ System.err.println("x ="+x );
 
 
     /**
-     * Set the Profile to query.
-     *
-     * @param x The Profile of the CandidateProfile to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryProfile(
-				jobmatch.data.ProfileDO x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CandidateProfileDO DO = ( CandidateProfileDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		// DOs are compared by their handles..
-		jobmatch.data.ProfileDO m = DO.getProfile();
-		if ( null == m && null == x ) {
-		    equals = true;
-		} else if ( null == m || null == x ) {
-		    equals = false;
-		} else {
-		    equals = ( DO.getProfile().getOId().toString().equals( x.getOId().toString() ) );
-if ( equals && m != x ) {
-System.err.println("\n----------------------------------------------------------");
-System.err.println("m ="+m );
-System.err.println("x ="+x );
-}
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Profile", x, "DECIMAL(19,0)",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Profile to query
-     * @param x The Profile of the CandidateProfile to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryProfile( 
-				jobmatch.data.ProfileDO x )
-    throws DataObjectException, QueryException {
-	setQueryProfile( x, true );
-    }
-
-    /**
-     * Add Profile to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByProfile(boolean direction_flag) {
-        builder.addOrderByColumn("Profile",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Profile to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByProfile() {
-        builder.addOrderByColumn("Profile","ASC");
-    }
-
-
-    /**
      * Set the MatchingTime to query.
      *
      * @param x The MatchingTime of the CandidateProfile to query.
@@ -685,6 +610,81 @@ System.err.println("x ="+x );
      */
     public void addOrderByDeleted() {
         builder.addOrderByColumn("Deleted","ASC");
+    }
+
+
+    /**
+     * Set the Profile to query.
+     *
+     * @param x The Profile of the CandidateProfile to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryProfile(
+				jobmatch.data.ProfileDO x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    CandidateProfileDO DO = ( CandidateProfileDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// DOs are compared by their handles..
+		jobmatch.data.ProfileDO m = DO.getProfile();
+		if ( null == m && null == x ) {
+		    equals = true;
+		} else if ( null == m || null == x ) {
+		    equals = false;
+		} else {
+		    equals = ( DO.getProfile().getOId().toString().equals( x.getOId().toString() ) );
+if ( equals && m != x ) {
+System.err.println("\n----------------------------------------------------------");
+System.err.println("m ="+m );
+System.err.println("x ="+x );
+}
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "Profile", x, "DECIMAL(19,0)",
+                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the Profile to query
+     * @param x The Profile of the CandidateProfile to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryProfile( 
+				jobmatch.data.ProfileDO x )
+    throws DataObjectException, QueryException {
+	setQueryProfile( x, true );
+    }
+
+    /**
+     * Add Profile to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByProfile(boolean direction_flag) {
+        builder.addOrderByColumn("Profile",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add Profile to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByProfile() {
+        builder.addOrderByColumn("Profile","ASC");
     }
 
     /**

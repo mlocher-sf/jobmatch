@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ProfileBDO implements java.io.Serializable {
 
@@ -890,176 +890,6 @@ public class ProfileBDO implements java.io.Serializable {
     }
  
 
-    /**
-     * Get array of LanguageProfileDO objects that refer to the DO held by this BDO.
-     *
-     * @return array of LanguageProfileDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.LanguageProfileDO[] getLanguageProfileDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.LanguageProfileDO[] ret = null;
-	try {
-	    jobmatch.data.LanguageProfileQuery q = new jobmatch.data.LanguageProfileQuery();
-	    q.setQueryProfile( DO );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.LanguageProfileDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single LanguageProfileDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return LanguageProfileDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one LanguageProfileDO object was found.
-     */
-    public jobmatch.data.LanguageProfileDO getLanguageProfileDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.LanguageProfileQuery q = new jobmatch.data.LanguageProfileQuery();
-	q.setQueryProfile( DO );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
-
-    /**
-     * Get array of LanguageProfileBDO objects holding LanguageProfileDO objects
-     * that refer to the DO held by this BDO.
-     *
-     * @return array of LanguageProfileBDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.LanguageProfileBDO[] getLanguageProfileBDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.LanguageProfileBDO[] ret = null;
-	try {
-	    jobmatch.data.LanguageProfileQuery q = new jobmatch.data.LanguageProfileQuery();
-	    q.setQueryProfile( DO );
-	    ret = q.getBDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.LanguageProfileBDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single LanguageProfileBDO object holding a LanguageProfileDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return LanguageProfileBDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one LanguageProfileBDO object was found.
-     */
-    public jobmatch.data.LanguageProfileBDO getLanguageProfileBDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.LanguageProfileQuery q = new jobmatch.data.LanguageProfileQuery();
-	q.setQueryProfile( DO );
-	q.requireUniqueInstance();
-	return q.getNextBDO();
-    }
-
- 
-    /**
-     * Add (set & commit) a LanguageProfileBDO object whose LanguageProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo LanguageProfileBDO to be set to point to this BDO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addLanguageProfileBDO( jobmatch.data.LanguageProfileBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addLanguageProfileBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a LanguageProfileBDO object whose LanguageProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo LanguageProfileBDO to be set to point to this BDO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addLanguageProfileBDO( jobmatch.data.LanguageProfileBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        rbdo.setProfile( this.DO );
-        rbdo.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a LanguageProfileBDO object whose LanguageProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r LanguageProfileBDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeLanguageProfileBDO( jobmatch.data.LanguageProfileBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeLanguageProfileBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a LanguageProfileBDO object whose LanguageProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r LanguageProfileBDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeLanguageProfileBDO( jobmatch.data.LanguageProfileBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	ProfileDO rdo = rbdo.getProfile();
-	String rdoHandle = rdo.getHandle();
-	String mydoHandle = DO.getHandle();
-	if ( null == rdoHandle || null == mydoHandle || 
-	     ( ! rdoHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + rdo +
-		" does not refer to object " + DO +
-		", cannot be removed this way." );
-	}
-        rbdo.delete( tran );
-    }
- 
-
 
 
     /**
@@ -1384,15 +1214,6 @@ public class ProfileBDO implements java.io.Serializable {
 	{
 	    // perform cascading delete on referring table
 	    jobmatch.data.CandidateProfileBDO[] a = getCandidateProfileBDOArray();
-	    for ( int i = 0; i < a.length; i++ ) {
-		a[ i ].delete( dbt );
-	    }
-	}
-	
-	
-	{
-	    // perform cascading delete on referring table
-	    jobmatch.data.LanguageProfileBDO[] a = getLanguageProfileBDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }

@@ -2,13 +2,15 @@
 
 create table LanguageProfile
 (
+/* class TreeLeaf */
+    LeafNumber INTEGER     ,
+    Profile DECIMAL(19,0)  NOT NULL   ,
+    Mandatory BIT DEFAULT 0 NOT NULL   ,
 /* class LanguageProfile */
     Language DECIMAL(19,0)  NOT NULL  REFERENCES Language ( oid ) ,
-    Profile DECIMAL(19,0)  NOT NULL  REFERENCES Profile ( oid ) ,
-    Mandatory BIT DEFAULT 0 NOT NULL   ,
     Diploma VARCHAR(32) DEFAULT ""    ,
-    MinWritten DECIMAL(19,0)  NOT NULL   ,
-    MinSpoken DECIMAL(19,0)  NOT NULL   ,
+    MinWritten DECIMAL(19,0)  NOT NULL  REFERENCES Languagecapability ( oid ) ,
+    MinSpoken DECIMAL(19,0)  NOT NULL  REFERENCES Languagecapability ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

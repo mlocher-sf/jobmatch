@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ProgrammingBDO implements java.io.Serializable {
 
@@ -279,176 +279,6 @@ public class ProgrammingBDO implements java.io.Serializable {
 
    
     /**
-     * Get array of ProgrammingProfileDO objects that refer to the DO held by this BDO.
-     *
-     * @return array of ProgrammingProfileDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.ProgrammingProfileDO[] getProgrammingProfileDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.ProgrammingProfileDO[] ret = null;
-	try {
-	    jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
-	    q.setQueryLanguage( DO );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.ProgrammingProfileDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single ProgrammingProfileDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return ProgrammingProfileDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one ProgrammingProfileDO object was found.
-     */
-    public jobmatch.data.ProgrammingProfileDO getProgrammingProfileDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
-	q.setQueryLanguage( DO );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
-
-    /**
-     * Get array of ProgrammingProfileBDO objects holding ProgrammingProfileDO objects
-     * that refer to the DO held by this BDO.
-     *
-     * @return array of ProgrammingProfileBDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.ProgrammingProfileBDO[] getProgrammingProfileBDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.ProgrammingProfileBDO[] ret = null;
-	try {
-	    jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
-	    q.setQueryLanguage( DO );
-	    ret = q.getBDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.ProgrammingProfileBDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single ProgrammingProfileBDO object holding a ProgrammingProfileDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return ProgrammingProfileBDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one ProgrammingProfileBDO object was found.
-     */
-    public jobmatch.data.ProgrammingProfileBDO getProgrammingProfileBDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
-	q.setQueryLanguage( DO );
-	q.requireUniqueInstance();
-	return q.getNextBDO();
-    }
-
- 
-    /**
-     * Add (set & commit) a ProgrammingProfileBDO object whose ProgrammingProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo ProgrammingProfileBDO to be set to point to this BDO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addProgrammingProfileBDO( jobmatch.data.ProgrammingProfileBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addProgrammingProfileBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a ProgrammingProfileBDO object whose ProgrammingProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo ProgrammingProfileBDO to be set to point to this BDO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addProgrammingProfileBDO( jobmatch.data.ProgrammingProfileBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        rbdo.setLanguage( this.DO );
-        rbdo.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a ProgrammingProfileBDO object whose ProgrammingProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r ProgrammingProfileBDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeProgrammingProfileBDO( jobmatch.data.ProgrammingProfileBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeProgrammingProfileBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a ProgrammingProfileBDO object whose ProgrammingProfileDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r ProgrammingProfileBDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeProgrammingProfileBDO( jobmatch.data.ProgrammingProfileBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	ProgrammingDO rdo = rbdo.getLanguage();
-	String rdoHandle = rdo.getHandle();
-	String mydoHandle = DO.getHandle();
-	if ( null == rdoHandle || null == mydoHandle || 
-	     ( ! rdoHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + rdo +
-		" does not refer to object " + DO +
-		", cannot be removed this way." );
-	}
-        rbdo.delete( tran );
-    }
- 
-
-    /**
      * Get array of ProgrammingCandidateDO objects that refer to the DO held by this BDO.
      *
      * @return array of ProgrammingCandidateDO objects.
@@ -618,6 +448,176 @@ public class ProgrammingBDO implements java.io.Serializable {
     }
  
 
+    /**
+     * Get array of ProgrammingProfileDO objects that refer to the DO held by this BDO.
+     *
+     * @return array of ProgrammingProfileDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.ProgrammingProfileDO[] getProgrammingProfileDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.ProgrammingProfileDO[] ret = null;
+	try {
+	    jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
+	    q.setQueryLanguage( DO );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.ProgrammingProfileDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single ProgrammingProfileDO object
+     * that refers to the DO held by this BDO.
+     *
+     * @return ProgrammingProfileDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception NonUniqueQueryException
+     *   If more than one ProgrammingProfileDO object was found.
+     */
+    public jobmatch.data.ProgrammingProfileDO getProgrammingProfileDO () 
+    throws DataObjectException, NonUniqueQueryException, QueryException {
+	jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
+	q.setQueryLanguage( DO );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Get array of ProgrammingProfileBDO objects holding ProgrammingProfileDO objects
+     * that refer to the DO held by this BDO.
+     *
+     * @return array of ProgrammingProfileBDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.ProgrammingProfileBDO[] getProgrammingProfileBDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.ProgrammingProfileBDO[] ret = null;
+	try {
+	    jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
+	    q.setQueryLanguage( DO );
+	    ret = q.getBDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.ProgrammingProfileBDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single ProgrammingProfileBDO object holding a ProgrammingProfileDO object
+     * that refers to the DO held by this BDO.
+     *
+     * @return ProgrammingProfileBDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception NonUniqueQueryException
+     *   If more than one ProgrammingProfileBDO object was found.
+     */
+    public jobmatch.data.ProgrammingProfileBDO getProgrammingProfileBDO () 
+    throws DataObjectException, NonUniqueQueryException, QueryException {
+	jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
+	q.setQueryLanguage( DO );
+	q.requireUniqueInstance();
+	return q.getNextBDO();
+    }
+
+ 
+    /**
+     * Add (set & commit) a ProgrammingProfileBDO object whose ProgrammingProfileDO
+     * refers to the DO held by this BDO.
+     *
+     * @param rbdo ProgrammingProfileBDO to be set to point to this BDO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addProgrammingProfileBDO( jobmatch.data.ProgrammingProfileBDO rbdo )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addProgrammingProfileBDO( rbdo, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a ProgrammingProfileBDO object whose ProgrammingProfileDO
+     * refers to the DO held by this BDO.
+     *
+     * @param rbdo ProgrammingProfileBDO to be set to point to this BDO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addProgrammingProfileBDO( jobmatch.data.ProgrammingProfileBDO rbdo, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        rbdo.setLanguage( this.DO );
+        rbdo.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a ProgrammingProfileBDO object whose ProgrammingProfileDO
+     * refers to the DO held by this BDO.
+     *
+     * @param r ProgrammingProfileBDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeProgrammingProfileBDO( jobmatch.data.ProgrammingProfileBDO rbdo )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeProgrammingProfileBDO( rbdo, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a ProgrammingProfileBDO object whose ProgrammingProfileDO
+     * refers to the DO held by this BDO.
+     *
+     * @param r ProgrammingProfileBDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeProgrammingProfileBDO( jobmatch.data.ProgrammingProfileBDO rbdo, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	ProgrammingDO rdo = rbdo.getLanguage();
+	String rdoHandle = rdo.getHandle();
+	String mydoHandle = DO.getHandle();
+	if ( null == rdoHandle || null == mydoHandle || 
+	     ( ! rdoHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + rdo +
+		" does not refer to object " + DO +
+		", cannot be removed this way." );
+	}
+        rbdo.delete( tran );
+    }
+ 
+
 
 
 
@@ -708,7 +708,7 @@ public class ProgrammingBDO implements java.io.Serializable {
 	  	
 	{
 	    // perform cascading delete on referring table
-	    jobmatch.data.ProgrammingProfileBDO[] a = getProgrammingProfileBDOArray();
+	    jobmatch.data.ProgrammingCandidateBDO[] a = getProgrammingCandidateBDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }
@@ -717,7 +717,7 @@ public class ProgrammingBDO implements java.io.Serializable {
 	
 	{
 	    // perform cascading delete on referring table
-	    jobmatch.data.ProgrammingCandidateBDO[] a = getProgrammingCandidateBDOArray();
+	    jobmatch.data.ProgrammingProfileBDO[] a = getProgrammingProfileBDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }

@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the ProgrammingDO information.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
@@ -845,130 +845,6 @@ import com.lutris.dods.builder.generator.query.*;
 
     
     /**
-     * Get array of ProgrammingProfileDO objects that refer to this DO.
-     *
-     * @return array of ProgrammingProfileDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public jobmatch.data.ProgrammingProfileDO[] getProgrammingProfileDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.ProgrammingProfileDO[] ret = null;
-	try {
-	    jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
-	    q.setQueryLanguage( this );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.ProgrammingProfileDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single ProgrammingProfileDO object
-     * that refers to this DO.
-     *
-     * @return ProgrammingProfileDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     * @exception NonUniqueQueryException
-     *   If more than one ProgrammingProfileDO object was found.
-     */
-    public jobmatch.data.ProgrammingProfileDO getProgrammingProfileDO () 
-    throws DataObjectException, QueryException, NonUniqueQueryException {
-	jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
-	q.setQueryLanguage( this );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
-
-    /**
-     * Add (set & commit) a ProgrammingProfileDO object that refers to this DO.
-     *
-     * @param referrer ProgrammingProfileDO to be set to point to this DO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addProgrammingProfileDO( jobmatch.data.ProgrammingProfileDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addProgrammingProfileDO( referrer, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a ProgrammingProfileDO object that refers to this DO.
-     *
-     * @param referrer ProgrammingProfileDO to be set to point to this DO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addProgrammingProfileDO( jobmatch.data.ProgrammingProfileDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        referrer.setLanguage( this );
-        referrer.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a ProgrammingProfileDO object that refers to this DO.
-     *
-     * @param referrer ProgrammingProfileDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeProgrammingProfileDO( jobmatch.data.ProgrammingProfileDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeProgrammingProfileDO( referrer, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a ProgrammingProfileDO object that refers to this DO.
-     *
-     * @param referrer ProgrammingProfileDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeProgrammingProfileDO( jobmatch.data.ProgrammingProfileDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	ProgrammingDO referred = referrer.getLanguage();
-	String referredHandle = referred.getHandle();
-	String mydoHandle = this.getHandle();
-	if ( null == referredHandle || null == mydoHandle || 
-	     ( ! referredHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + referrer +
-		" does not refer to object " + this +
-		", cannot be removed this way." );
-	}
-        referrer.delete( tran );
-    }
- 
-
-    /**
      * Get array of ProgrammingCandidateDO objects that refer to this DO.
      *
      * @return array of ProgrammingCandidateDO objects.
@@ -1078,6 +954,130 @@ import com.lutris.dods.builder.generator.query.*;
      * @exception DataObjectException If object is not found in the database.
      */
     public void removeProgrammingCandidateDO( jobmatch.data.ProgrammingCandidateDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	ProgrammingDO referred = referrer.getLanguage();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of ProgrammingProfileDO objects that refer to this DO.
+     *
+     * @return array of ProgrammingProfileDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.ProgrammingProfileDO[] getProgrammingProfileDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.ProgrammingProfileDO[] ret = null;
+	try {
+	    jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
+	    q.setQueryLanguage( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.ProgrammingProfileDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single ProgrammingProfileDO object
+     * that refers to this DO.
+     *
+     * @return ProgrammingProfileDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one ProgrammingProfileDO object was found.
+     */
+    public jobmatch.data.ProgrammingProfileDO getProgrammingProfileDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.ProgrammingProfileQuery q = new jobmatch.data.ProgrammingProfileQuery();
+	q.setQueryLanguage( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a ProgrammingProfileDO object that refers to this DO.
+     *
+     * @param referrer ProgrammingProfileDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addProgrammingProfileDO( jobmatch.data.ProgrammingProfileDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addProgrammingProfileDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a ProgrammingProfileDO object that refers to this DO.
+     *
+     * @param referrer ProgrammingProfileDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addProgrammingProfileDO( jobmatch.data.ProgrammingProfileDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setLanguage( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a ProgrammingProfileDO object that refers to this DO.
+     *
+     * @param referrer ProgrammingProfileDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeProgrammingProfileDO( jobmatch.data.ProgrammingProfileDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeProgrammingProfileDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a ProgrammingProfileDO object that refers to this DO.
+     *
+     * @param referrer ProgrammingProfileDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeProgrammingProfileDO( jobmatch.data.ProgrammingProfileDO referrer, DBTransaction tran )
     throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
 	ProgrammingDO referred = referrer.getLanguage();
 	String referredHandle = referred.getHandle();
@@ -1207,7 +1207,7 @@ import com.lutris.dods.builder.generator.query.*;
 	  	
 	{
 	    // perform cascading delete on referring table
-	    jobmatch.data.ProgrammingProfileDO[] a = getProgrammingProfileDOArray();
+	    jobmatch.data.ProgrammingCandidateDO[] a = getProgrammingCandidateDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }
@@ -1216,7 +1216,7 @@ import com.lutris.dods.builder.generator.query.*;
 	
 	{
 	    // perform cascading delete on referring table
-	    jobmatch.data.ProgrammingCandidateDO[] a = getProgrammingCandidateDOArray();
+	    jobmatch.data.ProgrammingProfileDO[] a = getProgrammingProfileDOArray();
 	    for ( int i = 0; i < a.length; i++ ) {
 		a[ i ].delete( dbt );
 	    }

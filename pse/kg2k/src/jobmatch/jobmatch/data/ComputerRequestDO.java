@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the ComputerRequestDO information.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
-abstract public class ComputerRequestDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+abstract public class ComputerRequestDO extends jobmatch.data.TreeLeafDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ abstract public class ComputerRequestDO extends com.lutris.dods.builder.generato
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new ComputerRequestDataStruct ();
 	}
     }
@@ -290,150 +290,6 @@ abstract public class ComputerRequestDO extends com.lutris.dods.builder.generato
 	super.makeIdentical(orig);
 	data = orig.data;
     }
-
-////////////////////////// data member Profile
-
-   /* static final RDBColumn Profile for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Profile = 
-			    new RDBColumn( table, "Profile" );
-
-   /**
-    * Get Profile of the NewDBTable
-    *
-    * @return Profile of the NewDBTable
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.ProfileDO getProfile () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Profile;
-   }
-
-   /**
-    * Set Profile of the NewDBTable
-    *
-    * @param Profile of the NewDBTable
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setProfile ( jobmatch.data.ProfileDO Profile )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Profile = (jobmatch.data.ProfileDO) markNewValue(
-	data.Profile, Profile  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Mandatory
-
-   /* static final RDBColumn Mandatory for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Mandatory = 
-			    new RDBColumn( table, "Mandatory" );
-
-   /**
-    * Get Mandatory of the NewDBTable
-    *
-    * @return Mandatory of the NewDBTable
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public boolean getMandatory () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Mandatory;
-   }
-
-   /**
-    * Set Mandatory of the NewDBTable
-    *
-    * @param Mandatory of the NewDBTable
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setMandatory ( boolean Mandatory )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Mandatory =  markNewValue(
-	data.Mandatory, Mandatory  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member LeafNumber
-
-   /* static final RDBColumn LeafNumber for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn LeafNumber = 
-			    new RDBColumn( table, "LeafNumber" );
-
-   /**
-    * Get LeafNumber of the NewDBTable
-    *
-    * @return LeafNumber of the NewDBTable
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public int getLeafNumber () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.LeafNumber;
-   }
-
-   /**
-    * Set LeafNumber of the NewDBTable
-    *
-    * @param LeafNumber of the NewDBTable
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setLeafNumber ( int LeafNumber )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.LeafNumber =  markNewValue(
-	data.LeafNumber, LeafNumber  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
 
 ////////////////////////// data member MinCapability
 
@@ -523,30 +379,6 @@ abstract public class ComputerRequestDO extends com.lutris.dods.builder.generato
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setProfile( 
-	    jobmatch.data.ProfileDO.createExisting( 
-		rs.getBigDecimal( 
-			"Profile" , 0 )
-	     )
-	);
-	
-	
-	setMandatory( 
-	    
-		rs.getBoolean( 
-			"Mandatory"  )
-	    
-	);
-	
-	
-	setLeafNumber( 
-	    
-		rs.getInt( 
-			"LeafNumber"  )
-	    
-	);
-	
-	
 	setMinCapability( 
 	    jobmatch.data.CompcapabilityDO.createExisting( 
 		rs.getBigDecimal( 
@@ -575,10 +407,7 @@ abstract public class ComputerRequestDO extends com.lutris.dods.builder.generato
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
-+ "\n" + indent + "Mandatory=" + data.Mandatory
-+ "\n" + indent + "LeafNumber=" + data.LeafNumber
-+ "\n" + indent + "MinCapability=" + ( null == data.MinCapability ? null  : data.MinCapability.toString( indentCount + 1 ) )
+	    str = str + "\n" + indent + "MinCapability=" + ( null == data.MinCapability ? null  : data.MinCapability.toString( indentCount + 1 ) )
 ;
         return str + "; " + super.toString();
     }
@@ -602,10 +431,7 @@ abstract public class ComputerRequestDO extends com.lutris.dods.builder.generato
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
-+ "\n" + indent + "Mandatory=" + data.Mandatory
-+ "\n" + indent + "LeafNumber=" + data.LeafNumber
-+ "\n" + indent + "MinCapability=" + ( null == data.MinCapability ? null  : data.MinCapability.toString( indentCount + 1 ) )
+            str = str + "\n" + indent + "MinCapability=" + ( null == data.MinCapability ? null  : data.MinCapability.toString( indentCount + 1 ) )
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;

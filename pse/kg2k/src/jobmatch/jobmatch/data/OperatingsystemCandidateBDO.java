@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class OperatingsystemCandidateBDO implements java.io.Serializable {
 
@@ -410,29 +410,29 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
    
 
    /**
-    * Get System of the OperatingsystemCandidateDO
+    * Get Operatingsystem of the OperatingsystemCandidateDO
     *
-    * @return System of the OperatingsystemCandidateDO
+    * @return Operatingsystem of the OperatingsystemCandidateDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.OperatingsystemDO getSystem () 
+   public jobmatch.data.OperatingsystemDO getOperatingsystem () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getSystem ();
+      return DO.getOperatingsystem ();
    }
 
    
    /**
-    * Set System of the OperatingsystemCandidateDO
+    * Set Operatingsystem of the OperatingsystemCandidateDO
     *
-    * @param System of the OperatingsystemCandidateDO
+    * @param Operatingsystem of the OperatingsystemCandidateDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setSystem ( jobmatch.data.OperatingsystemDO System ) 
+   public void setOperatingsystem ( jobmatch.data.OperatingsystemDO Operatingsystem ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -440,37 +440,37 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setSystem ( System );
+      DO.setOperatingsystem ( Operatingsystem );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
    
 
    /**
-    * Get BDO-wrapped System of the OperatingsystemCandidateDO
+    * Get BDO-wrapped Operatingsystem of the OperatingsystemCandidateDO
     *
-    * @return BDO-wrapped System of the OperatingsystemCandidateDO
+    * @return BDO-wrapped Operatingsystem of the OperatingsystemCandidateDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.OperatingsystemBDO getSystemBDO () 
+   public jobmatch.data.OperatingsystemBDO getOperatingsystemBDO () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       jobmatch.data.OperatingsystemBDO b = jobmatch.data.OperatingsystemBDO.createExisting(
-					  DO.getSystem () );
+					  DO.getOperatingsystem () );
       return b;
    }
 
    /**
-    * Set System of the OperatingsystemCandidateDO
+    * Set Operatingsystem of the OperatingsystemCandidateDO
     *
-    * @param BDO-wrapped System of the OperatingsystemCandidateDO
+    * @param BDO-wrapped Operatingsystem of the OperatingsystemCandidateDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setSystem ( jobmatch.data.OperatingsystemBDO System ) 
+   public void setOperatingsystem ( jobmatch.data.OperatingsystemBDO Operatingsystem ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -478,14 +478,14 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      if ( null == System ) {
+      if ( null == Operatingsystem ) {
 	  if ( false )
-	      DO.setSystem ( null );
+	      DO.setOperatingsystem ( null );
 	  else 
 	      throw new DataObjectException( 
-		  "OperatingsystemCandidateBDO.setSystem does not allow NULL." );
+		  "OperatingsystemCandidateBDO.setOperatingsystem does not allow NULL." );
       } else {
-          DO.setSystem ( System.getDO() );
+          DO.setOperatingsystem ( Operatingsystem.getDO() );
       }
       afterAnySet();	// business actions/assertions after data assignment
    }
@@ -587,20 +587,20 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
 
     /**
      * A stub method for implementing pre-commit assertions 
-     * for the System data member.
+     * for the Operatingsystem data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where System is not valid for writing to the database.
+     * where Operatingsystem is not valid for writing to the database.
      */
-    protected void okToCommitSystem( jobmatch.data.OperatingsystemDO member ) 
+    protected void okToCommitOperatingsystem( jobmatch.data.OperatingsystemDO member ) 
     throws RefAssertionException { }
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for the System data member.
+     * for the Operatingsystem data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where System is not valid for deletion from the database.
+     * where Operatingsystem is not valid for deletion from the database.
      */
-    protected void okToDeleteSystem( jobmatch.data.OperatingsystemDO member ) 
+    protected void okToDeleteOperatingsystem( jobmatch.data.OperatingsystemDO member ) 
     throws RefAssertionException { }
 
 
@@ -676,13 +676,13 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
 		    "Cannot commit OperatingsystemCandidateBDO ( " + toString() +
 		    " ) because Candidate is not allowed to be null." );
 	}
-	jobmatch.data.OperatingsystemDO System_DO = DO.getSystem();
-	if ( null != System_DO ) {
-	    if ( System_DO.isLoaded() ) {
-		okToCommitSystem( System_DO );
+	jobmatch.data.OperatingsystemDO Operatingsystem_DO = DO.getOperatingsystem();
+	if ( null != Operatingsystem_DO ) {
+	    if ( Operatingsystem_DO.isLoaded() ) {
+		okToCommitOperatingsystem( Operatingsystem_DO );
 		jobmatch.data.OperatingsystemBDO b = 
 		    jobmatch.data.OperatingsystemBDO.createExisting(
-						    System_DO );
+						    Operatingsystem_DO );
 		b.commit( dbt );
 	    } else {
 		// since the referenced DO is not loaded,
@@ -692,7 +692,7 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
 	    if ( ! false )
 		throw new RefAssertionException(
 		    "Cannot commit OperatingsystemCandidateBDO ( " + toString() +
-		    " ) because System is not allowed to be null." );
+		    " ) because Operatingsystem is not allowed to be null." );
 	}
 
       }

@@ -4,9 +4,9 @@ create table CandidateProfile
 (
 /* class CandidateProfile */
     Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
-    Profile DECIMAL(19,0)  NOT NULL  REFERENCES Profile ( oid ) ,
     MatchingTime TIMESTAMP  NOT NULL   ,
     Deleted BIT DEFAULT 0 NOT NULL   ,
+    Profile DECIMAL(19,0)  NOT NULL  REFERENCES Profile ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

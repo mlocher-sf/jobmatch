@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ProgrammingProfileBDO implements java.io.Serializable {
 
@@ -242,6 +242,44 @@ public class ProgrammingProfileBDO implements java.io.Serializable {
     }
 
    /**
+    * Get LeafNumber of the ProgrammingProfileDO
+    *
+    * @return LeafNumber of the ProgrammingProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public int getLeafNumber () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLeafNumber ();
+   }
+
+   
+   /**
+    * Set LeafNumber of the ProgrammingProfileDO
+    *
+    * @param LeafNumber of the ProgrammingProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLeafNumber ( int LeafNumber ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLeafNumber ( LeafNumber );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
     * Get Profile of the ProgrammingProfileDO
     *
     * @return Profile of the ProgrammingProfileDO
@@ -357,44 +395,6 @@ public class ProgrammingProfileBDO implements java.io.Serializable {
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       DO.setMandatory ( Mandatory );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get LeafNumber of the ProgrammingProfileDO
-    *
-    * @return LeafNumber of the ProgrammingProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public int getLeafNumber () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getLeafNumber ();
-   }
-
-   
-   /**
-    * Set LeafNumber of the ProgrammingProfileDO
-    *
-    * @param LeafNumber of the ProgrammingProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setLeafNumber ( int LeafNumber ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setLeafNumber ( LeafNumber );
       afterAnySet();	// business actions/assertions after data assignment
    }
 

@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class LanguageProfileBDO implements java.io.Serializable {
 
@@ -242,29 +242,29 @@ public class LanguageProfileBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Language of the LanguageProfileDO
+    * Get LeafNumber of the LanguageProfileDO
     *
-    * @return Language of the LanguageProfileDO
+    * @return LeafNumber of the LanguageProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.LanguageDO getLanguage () 
+   public int getLeafNumber () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getLanguage ();
+      return DO.getLeafNumber ();
    }
 
    
    /**
-    * Set Language of the LanguageProfileDO
+    * Set LeafNumber of the LanguageProfileDO
     *
-    * @param Language of the LanguageProfileDO
+    * @param LeafNumber of the LanguageProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setLanguage ( jobmatch.data.LanguageDO Language ) 
+   public void setLeafNumber ( int LeafNumber ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,56 +272,10 @@ public class LanguageProfileBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setLanguage ( Language );
+      DO.setLeafNumber ( LeafNumber );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
-   
-
-   /**
-    * Get BDO-wrapped Language of the LanguageProfileDO
-    *
-    * @return BDO-wrapped Language of the LanguageProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.LanguageBDO getLanguageBDO () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      jobmatch.data.LanguageBDO b = jobmatch.data.LanguageBDO.createExisting(
-					  DO.getLanguage () );
-      return b;
-   }
-
-   /**
-    * Set Language of the LanguageProfileDO
-    *
-    * @param BDO-wrapped Language of the LanguageProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setLanguage ( jobmatch.data.LanguageBDO Language ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      if ( null == Language ) {
-	  if ( false )
-	      DO.setLanguage ( null );
-	  else 
-	      throw new DataObjectException( 
-		  "LanguageProfileBDO.setLanguage does not allow NULL." );
-      } else {
-          DO.setLanguage ( Language.getDO() );
-      }
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
 
    
 
@@ -444,6 +398,90 @@ public class LanguageProfileBDO implements java.io.Serializable {
       afterAnySet();	// business actions/assertions after data assignment
    }
 
+
+   
+
+   /**
+    * Get Language of the LanguageProfileDO
+    *
+    * @return Language of the LanguageProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.LanguageDO getLanguage () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLanguage ();
+   }
+
+   
+   /**
+    * Set Language of the LanguageProfileDO
+    *
+    * @param Language of the LanguageProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLanguage ( jobmatch.data.LanguageDO Language ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLanguage ( Language );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Language of the LanguageProfileDO
+    *
+    * @return BDO-wrapped Language of the LanguageProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.LanguageBDO getLanguageBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.LanguageBDO b = jobmatch.data.LanguageBDO.createExisting(
+					  DO.getLanguage () );
+      return b;
+   }
+
+   /**
+    * Set Language of the LanguageProfileDO
+    *
+    * @param BDO-wrapped Language of the LanguageProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLanguage ( jobmatch.data.LanguageBDO Language ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Language ) {
+	  if ( false )
+	      DO.setLanguage ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "LanguageProfileBDO.setLanguage does not allow NULL." );
+      } else {
+          DO.setLanguage ( Language.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
 
    
 
@@ -711,24 +749,6 @@ public class LanguageProfileBDO implements java.io.Serializable {
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the Language data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Language is not valid for writing to the database.
-     */
-    protected void okToCommitLanguage( jobmatch.data.LanguageDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Language data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Language is not valid for deletion from the database.
-     */
-    protected void okToDeleteLanguage( jobmatch.data.LanguageDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
      * for the Profile data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Profile is not valid for writing to the database.
@@ -743,6 +763,24 @@ public class LanguageProfileBDO implements java.io.Serializable {
      * where Profile is not valid for deletion from the database.
      */
     protected void okToDeleteProfile( jobmatch.data.ProfileDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Language data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Language is not valid for writing to the database.
+     */
+    protected void okToCommitLanguage( jobmatch.data.LanguageDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Language data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Language is not valid for deletion from the database.
+     */
+    protected void okToDeleteLanguage( jobmatch.data.LanguageDO member ) 
     throws RefAssertionException { }
 
     /**
@@ -818,25 +856,7 @@ public class LanguageProfileBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.LanguageDO Language_DO = DO.getLanguage();
-	if ( null != Language_DO ) {
-	    if ( Language_DO.isLoaded() ) {
-		okToCommitLanguage( Language_DO );
-		jobmatch.data.LanguageBDO b = 
-		    jobmatch.data.LanguageBDO.createExisting(
-						    Language_DO );
-		b.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit LanguageProfileBDO ( " + toString() +
-		    " ) because Language is not allowed to be null." );
-	}
-	jobmatch.data.ProfileDO Profile_DO = DO.getProfile();
+	  	jobmatch.data.ProfileDO Profile_DO = DO.getProfile();
 	if ( null != Profile_DO ) {
 	    if ( Profile_DO.isLoaded() ) {
 		okToCommitProfile( Profile_DO );
@@ -853,6 +873,24 @@ public class LanguageProfileBDO implements java.io.Serializable {
 		throw new RefAssertionException(
 		    "Cannot commit LanguageProfileBDO ( " + toString() +
 		    " ) because Profile is not allowed to be null." );
+	}
+	jobmatch.data.LanguageDO Language_DO = DO.getLanguage();
+	if ( null != Language_DO ) {
+	    if ( Language_DO.isLoaded() ) {
+		okToCommitLanguage( Language_DO );
+		jobmatch.data.LanguageBDO b = 
+		    jobmatch.data.LanguageBDO.createExisting(
+						    Language_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit LanguageProfileBDO ( " + toString() +
+		    " ) because Language is not allowed to be null." );
 	}
 	jobmatch.data.LanguagecapabilityDO MinWritten_DO = DO.getMinWritten();
 	if ( null != MinWritten_DO ) {

@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class OperatingsystemProfileBDO implements java.io.Serializable {
 
@@ -242,6 +242,44 @@ public class OperatingsystemProfileBDO implements java.io.Serializable {
     }
 
    /**
+    * Get LeafNumber of the OperatingsystemProfileDO
+    *
+    * @return LeafNumber of the OperatingsystemProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public int getLeafNumber () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLeafNumber ();
+   }
+
+   
+   /**
+    * Set LeafNumber of the OperatingsystemProfileDO
+    *
+    * @param LeafNumber of the OperatingsystemProfileDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLeafNumber ( int LeafNumber ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLeafNumber ( LeafNumber );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
     * Get Profile of the OperatingsystemProfileDO
     *
     * @return Profile of the OperatingsystemProfileDO
@@ -364,44 +402,6 @@ public class OperatingsystemProfileBDO implements java.io.Serializable {
    
 
    /**
-    * Get LeafNumber of the OperatingsystemProfileDO
-    *
-    * @return LeafNumber of the OperatingsystemProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public int getLeafNumber () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getLeafNumber ();
-   }
-
-   
-   /**
-    * Set LeafNumber of the OperatingsystemProfileDO
-    *
-    * @param LeafNumber of the OperatingsystemProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setLeafNumber ( int LeafNumber ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setLeafNumber ( LeafNumber );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
     * Get MinCapability of the OperatingsystemProfileDO
     *
     * @return MinCapability of the OperatingsystemProfileDO
@@ -486,29 +486,29 @@ public class OperatingsystemProfileBDO implements java.io.Serializable {
    
 
    /**
-    * Get System of the OperatingsystemProfileDO
+    * Get OperatingSystem of the OperatingsystemProfileDO
     *
-    * @return System of the OperatingsystemProfileDO
+    * @return OperatingSystem of the OperatingsystemProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.OperatingsystemDO getSystem () 
+   public jobmatch.data.OperatingsystemDO getOperatingSystem () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getSystem ();
+      return DO.getOperatingSystem ();
    }
 
    
    /**
-    * Set System of the OperatingsystemProfileDO
+    * Set OperatingSystem of the OperatingsystemProfileDO
     *
-    * @param System of the OperatingsystemProfileDO
+    * @param OperatingSystem of the OperatingsystemProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setSystem ( jobmatch.data.OperatingsystemDO System ) 
+   public void setOperatingSystem ( jobmatch.data.OperatingsystemDO OperatingSystem ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -516,37 +516,37 @@ public class OperatingsystemProfileBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setSystem ( System );
+      DO.setOperatingSystem ( OperatingSystem );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
    
 
    /**
-    * Get BDO-wrapped System of the OperatingsystemProfileDO
+    * Get BDO-wrapped OperatingSystem of the OperatingsystemProfileDO
     *
-    * @return BDO-wrapped System of the OperatingsystemProfileDO
+    * @return BDO-wrapped OperatingSystem of the OperatingsystemProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.OperatingsystemBDO getSystemBDO () 
+   public jobmatch.data.OperatingsystemBDO getOperatingSystemBDO () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       jobmatch.data.OperatingsystemBDO b = jobmatch.data.OperatingsystemBDO.createExisting(
-					  DO.getSystem () );
+					  DO.getOperatingSystem () );
       return b;
    }
 
    /**
-    * Set System of the OperatingsystemProfileDO
+    * Set OperatingSystem of the OperatingsystemProfileDO
     *
-    * @param BDO-wrapped System of the OperatingsystemProfileDO
+    * @param BDO-wrapped OperatingSystem of the OperatingsystemProfileDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setSystem ( jobmatch.data.OperatingsystemBDO System ) 
+   public void setOperatingSystem ( jobmatch.data.OperatingsystemBDO OperatingSystem ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -554,14 +554,14 @@ public class OperatingsystemProfileBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      if ( null == System ) {
+      if ( null == OperatingSystem ) {
 	  if ( false )
-	      DO.setSystem ( null );
+	      DO.setOperatingSystem ( null );
 	  else 
 	      throw new DataObjectException( 
-		  "OperatingsystemProfileBDO.setSystem does not allow NULL." );
+		  "OperatingsystemProfileBDO.setOperatingSystem does not allow NULL." );
       } else {
-          DO.setSystem ( System.getDO() );
+          DO.setOperatingSystem ( OperatingSystem.getDO() );
       }
       afterAnySet();	// business actions/assertions after data assignment
    }
@@ -663,20 +663,20 @@ public class OperatingsystemProfileBDO implements java.io.Serializable {
 
     /**
      * A stub method for implementing pre-commit assertions 
-     * for the System data member.
+     * for the OperatingSystem data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where System is not valid for writing to the database.
+     * where OperatingSystem is not valid for writing to the database.
      */
-    protected void okToCommitSystem( jobmatch.data.OperatingsystemDO member ) 
+    protected void okToCommitOperatingSystem( jobmatch.data.OperatingsystemDO member ) 
     throws RefAssertionException { }
 
     /**
      * A stub method for implementing pre-delete assertions 
-     * for the System data member.
+     * for the OperatingSystem data member.
      * Implement this stub to throw an RefAssertionException for cases
-     * where System is not valid for deletion from the database.
+     * where OperatingSystem is not valid for deletion from the database.
      */
-    protected void okToDeleteSystem( jobmatch.data.OperatingsystemDO member ) 
+    protected void okToDeleteOperatingSystem( jobmatch.data.OperatingsystemDO member ) 
     throws RefAssertionException { }
 
 
@@ -752,13 +752,13 @@ public class OperatingsystemProfileBDO implements java.io.Serializable {
 		    "Cannot commit OperatingsystemProfileBDO ( " + toString() +
 		    " ) because MinCapability is not allowed to be null." );
 	}
-	jobmatch.data.OperatingsystemDO System_DO = DO.getSystem();
-	if ( null != System_DO ) {
-	    if ( System_DO.isLoaded() ) {
-		okToCommitSystem( System_DO );
+	jobmatch.data.OperatingsystemDO OperatingSystem_DO = DO.getOperatingSystem();
+	if ( null != OperatingSystem_DO ) {
+	    if ( OperatingSystem_DO.isLoaded() ) {
+		okToCommitOperatingSystem( OperatingSystem_DO );
 		jobmatch.data.OperatingsystemBDO b = 
 		    jobmatch.data.OperatingsystemBDO.createExisting(
-						    System_DO );
+						    OperatingSystem_DO );
 		b.commit( dbt );
 	    } else {
 		// since the referenced DO is not loaded,
@@ -768,7 +768,7 @@ public class OperatingsystemProfileBDO implements java.io.Serializable {
 	    if ( ! false )
 		throw new RefAssertionException(
 		    "Cannot commit OperatingsystemProfileBDO ( " + toString() +
-		    " ) because System is not allowed to be null." );
+		    " ) because OperatingSystem is not allowed to be null." );
 	}
 
       }

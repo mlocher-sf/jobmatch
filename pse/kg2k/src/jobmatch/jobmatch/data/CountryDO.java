@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CountryDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */

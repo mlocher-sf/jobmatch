@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the LanguageProfileDO information.
  *
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  studer
  * @since   jobmatch
  */
- public class LanguageProfileDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class LanguageProfileDO extends jobmatch.data.TreeLeafDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ import com.lutris.dods.builder.generator.query.*;
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new LanguageProfileDataStruct ();
 	}
 
@@ -688,102 +688,6 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Profile
-
-   /* static final RDBColumn Profile for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Profile = 
-			    new RDBColumn( table, "Profile" );
-
-   /**
-    * Get Profile of the LanguageProfile
-    *
-    * @return Profile of the LanguageProfile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.ProfileDO getProfile () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Profile;
-   }
-
-   /**
-    * Set Profile of the LanguageProfile
-    *
-    * @param Profile of the LanguageProfile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setProfile ( jobmatch.data.ProfileDO Profile )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Profile = (jobmatch.data.ProfileDO) markNewValue(
-	data.Profile, Profile  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Mandatory
-
-   /* static final RDBColumn Mandatory for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Mandatory = 
-			    new RDBColumn( table, "Mandatory" );
-
-   /**
-    * Get Mandatory of the LanguageProfile
-    *
-    * @return Mandatory of the LanguageProfile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public boolean getMandatory () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Mandatory;
-   }
-
-   /**
-    * Set Mandatory of the LanguageProfile
-    *
-    * @param Mandatory of the LanguageProfile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setMandatory ( boolean Mandatory )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Mandatory =  markNewValue(
-	data.Mandatory, Mandatory  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Diploma
 
    /* static final RDBColumn Diploma for use with QueryBuilder.
@@ -976,22 +880,6 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setProfile( 
-	    jobmatch.data.ProfileDO.createExisting( 
-		rs.getBigDecimal( 
-			"Profile" , 0 )
-	     )
-	);
-	
-	
-	setMandatory( 
-	    
-		rs.getBoolean( 
-			"Mandatory"  )
-	    
-	);
-	
-	
 	setDiploma( 
 	    
 		rs.getString( 
@@ -1048,7 +936,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into LanguageProfile ( Language, Profile, Mandatory, Diploma, MinWritten, MinSpoken, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into LanguageProfile ( LeafNumber, Profile, Mandatory, Language, Diploma, MinWritten, MinSpoken, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1056,12 +944,14 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_DO( stmt, param,
-		getLanguage() );
+	    	setPrepStmtParam_int( stmt, param,
+		getLeafNumber() );
 	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
 	setPrepStmtParam_boolean( stmt, param,
 		getMandatory() );
+	setPrepStmtParam_DO( stmt, param,
+		getLanguage() );
 	setPrepStmtParam_String( stmt, param,
 		getDiploma() );
 	setPrepStmtParam_DO( stmt, param,
@@ -1100,7 +990,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update LanguageProfile set " + getVersionColumnName() + " = ?, Language = ?, Profile = ?, Mandatory = ?, Diploma = ?, MinWritten = ?, MinSpoken = ? " +
+	    "update LanguageProfile set " + getVersionColumnName() + " = ?, LeafNumber = ?, Profile = ?, Mandatory = ?, Language = ?, Diploma = ?, MinWritten = ?, MinSpoken = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1110,12 +1000,14 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_DO( stmt, param,
-		getLanguage() );
+	    	setPrepStmtParam_int( stmt, param,
+		getLeafNumber() );
 	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
 	setPrepStmtParam_boolean( stmt, param,
 		getMandatory() );
+	setPrepStmtParam_DO( stmt, param,
+		getLanguage() );
 	setPrepStmtParam_String( stmt, param,
 		getDiploma() );
 	setPrepStmtParam_DO( stmt, param,
@@ -1172,8 +1064,6 @@ import com.lutris.dods.builder.generator.query.*;
 	str += " OID=" + id;
 	if ( null != data ) 
 	    str = str + "\n" + indent + "Language=" + ( null == data.Language ? null  : data.Language.toString( indentCount + 1 ) )
-+ "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
-+ "\n" + indent + "Mandatory=" + data.Mandatory
 + "\n" + indent + "Diploma=" + data.Diploma
 + "\n" + indent + "MinWritten=" + ( null == data.MinWritten ? null  : data.MinWritten.toString( indentCount + 1 ) )
 + "\n" + indent + "MinSpoken=" + ( null == data.MinSpoken ? null  : data.MinSpoken.toString( indentCount + 1 ) )
@@ -1201,8 +1091,6 @@ import com.lutris.dods.builder.generator.query.*;
         str += " OID=" + id;
         if ( null != data )
             str = str + "\n" + indent + "Language=" + ( null == data.Language ? null  : data.Language.toString( indentCount + 1 ) )
-+ "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
-+ "\n" + indent + "Mandatory=" + data.Mandatory
 + "\n" + indent + "Diploma=" + data.Diploma
 + "\n" + indent + "MinWritten=" + ( null == data.MinWritten ? null  : data.MinWritten.toString( indentCount + 1 ) )
 + "\n" + indent + "MinSpoken=" + ( null == data.MinSpoken ? null  : data.MinSpoken.toString( indentCount + 1 ) )
@@ -1291,24 +1179,6 @@ import com.lutris.dods.builder.generator.query.*;
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the Language data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Language is not valid for writing to the database.
-     */
-    protected void okToCommitLanguage( jobmatch.data.LanguageDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Language data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Language is not valid for deletion from the database.
-     */
-    protected void okToDeleteLanguage( jobmatch.data.LanguageDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
      * for the Profile data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Profile is not valid for writing to the database.
@@ -1323,6 +1193,24 @@ import com.lutris.dods.builder.generator.query.*;
      * where Profile is not valid for deletion from the database.
      */
     protected void okToDeleteProfile( jobmatch.data.ProfileDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Language data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Language is not valid for writing to the database.
+     */
+    protected void okToCommitLanguage( jobmatch.data.LanguageDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Language data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Language is not valid for deletion from the database.
+     */
+    protected void okToDeleteLanguage( jobmatch.data.LanguageDO member ) 
     throws RefAssertionException { }
 
     /**
@@ -1403,22 +1291,7 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.LanguageDO Language_DO = getLanguage();
-	if ( null != Language_DO ) {
-	    if ( Language_DO.isLoaded() ) {
-		okToCommitLanguage( Language_DO );
-		Language_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit LanguageProfileDO ( " + toString() +
-		    " ) because Language is not allowed to be null." );
-	}
-	jobmatch.data.ProfileDO Profile_DO = getProfile();
+	  	jobmatch.data.ProfileDO Profile_DO = getProfile();
 	if ( null != Profile_DO ) {
 	    if ( Profile_DO.isLoaded() ) {
 		okToCommitProfile( Profile_DO );
@@ -1432,6 +1305,21 @@ import com.lutris.dods.builder.generator.query.*;
 		throw new RefAssertionException(
 		    "Cannot commit LanguageProfileDO ( " + toString() +
 		    " ) because Profile is not allowed to be null." );
+	}
+	jobmatch.data.LanguageDO Language_DO = getLanguage();
+	if ( null != Language_DO ) {
+	    if ( Language_DO.isLoaded() ) {
+		okToCommitLanguage( Language_DO );
+		Language_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit LanguageProfileDO ( " + toString() +
+		    " ) because Language is not allowed to be null." );
 	}
 	jobmatch.data.LanguagecapabilityDO MinWritten_DO = getMinWritten();
 	if ( null != MinWritten_DO ) {
