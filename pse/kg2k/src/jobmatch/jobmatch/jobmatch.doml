@@ -366,7 +366,7 @@
         <table id="jobmatch.data.Schooltype" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Software" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Programming" extensionOf="jobmatch.data.ConstantTable"/>
-        <table id="jobmatch.data.Operatingsystem" dbTableName="Operatingsystem" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Operatingsystem" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Language" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Industry" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Graduation" extensionOf="jobmatch.data.ConstantTable"/>
@@ -461,8 +461,8 @@
         <table id="jobmatch.data.ProviderAccount" extensionOf="jobmatch.data.Account"/>
         <table id="jobmatch.data.OperatingsystemCandidate" dbTableName="OperatingSystemCandidate" extensionOf="jobmatch.data.CVComputer">
           <column id="System" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Operationgsystem"/>
-            <type dbType="none" javaType="jobmatch.data.OperationgsystemDO"/>
+            <referenceObject constraint="true" reference="jobmatch.data.Operatingsystem"/>
+            <type dbType="none" javaType="jobmatch.data.OperatingsystemDO"/>
           </column>
         </table>
       </package>
