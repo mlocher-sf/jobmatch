@@ -1,6 +1,8 @@
 #!/usr/local/bin/tcsh
 
-# $Id: genJavadoc,v 1.7 2000/05/14 12:01:50 locher Exp $
+# $Id: genJavadoc,v 1.8 2000/05/14 15:32:47 locher Exp $
+
+source ~/.login
 
 set SOURCE = pse/kg2k/src/jobmatch/
 set INDIR = /tmp/$SOURCE
