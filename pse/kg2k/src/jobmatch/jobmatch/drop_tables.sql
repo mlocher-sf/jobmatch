@@ -1,0 +1,12 @@
+drop table Candidate;
+drop table Company;
+drop table Country;
+drop table Jobwish;
+drop table Industry;
+drop table Contactperson;
+drop table CompanyAccount;
+drop table Area;
+drop table Account;
+drop table CandidateAccount;
+drop table Graduation;
+drop table objectid;
