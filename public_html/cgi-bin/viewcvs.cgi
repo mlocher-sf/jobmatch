@@ -34,7 +34,7 @@
 #    http://www.lyra.org/greg/python/viewcvs/
 #
 # For tracking purposes, this software is identified by:
-#   $Id: viewcvs.cgi,v 1.3 2000/04/04 14:48:21 locher Exp $
+#   $Id: viewcvs.cgi,v 1.4 2000/04/04 14:54:34 locher Exp $
 #
 # -----------------------------------------------------------------------
 #
@@ -420,8 +420,8 @@ def html_header(title):
 <html><head>
 %s
 <title>%s</title>
-<link rel=stylesheet type="text/css" href="http://www.iamexwi.unibe.ch/studenten/pse4/style.css">
 </head>
+<link rel=stylesheet type="text/css" href="http://www.iamexwi.unibe.ch/studenten/pse4/style.css">
 <body text="%s" bgcolor="%s">
 <table width="100&#37;" border=0 cellspacing=0 cellpadding=0>
   <tr><td><h1>%s</h1></td><td align=right>%s</td></tr></table>
