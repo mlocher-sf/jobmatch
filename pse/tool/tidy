@@ -1,0 +1,4 @@
+#!/usr/local/bin/tcsh
+
+java -cp ./Tidy.jar org.w3c.tidy.Tidy $*
+
