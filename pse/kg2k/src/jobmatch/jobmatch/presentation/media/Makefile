@@ -23,7 +23,8 @@ JAR_INSTALL = \
 	notPRESS.gif \
 	or.gif \
 	orACTIVE.gif \
-	orPRESS.gif
+	orPRESS.gif \
+	logo.gif
 
 include $(ROOT)/config.mk
 
