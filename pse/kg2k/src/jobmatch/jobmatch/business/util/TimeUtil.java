@@ -1,4 +1,4 @@
-// $Id: TimeUtil.java,v 1.4 2000/06/05 12:00:14 locher Exp $
+// $Id: TimeUtil.java,v 1.5 2000/06/05 12:13:08 locher Exp $
 
 package jobmatch.business.util;
 
@@ -10,7 +10,7 @@ import java.util.Calendar;
  *
  *  @since May 23 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.4 $
+ *  @version $Revision: 1.5 $
  **/
 public class TimeUtil {
 
@@ -45,7 +45,7 @@ public class TimeUtil {
     public static int getMonth(Date date) {
 	Calendar cal = Calendar.getInstance();
 	cal.setTime(date);
-	return cal.get(Calendar.MONTH);
+	return cal.get(Calendar.MONTH) + 1;
     }
 
     /** 
@@ -63,6 +63,9 @@ public class TimeUtil {
 // Document history
 /*
  * $Log: TimeUtil.java,v $
+ * Revision 1.5  2000/06/05 12:13:08  locher
+ * fix month 1 based
+ *
  * Revision 1.4  2000/06/05 12:00:14  locher
  * implemented TimeUtil
  *
