@@ -20,6 +20,7 @@ public class CVPersonal extends CVSection implements HttpPresentation {
     }
 
     private void fillTextFields(CVPersonalHTML page, Candidate candidate){
+	
 	//fill all text fields with data 
     }
 

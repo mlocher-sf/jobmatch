@@ -60,7 +60,9 @@ CLASSES = \
 	CVWorkingDetailExperience \
 	CVWorkingExperience \
 	Password \
-	CVSection 
+	CVSection \
+	CVMultiSection \
+	CVSectionFormatter
 
 XMLC_HTML_OPTS_FILE = options.xmlc
 

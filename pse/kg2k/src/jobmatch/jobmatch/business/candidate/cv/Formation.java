@@ -1,4 +1,4 @@
-// $Id: Formation.java,v 1.2 2000/05/26 13:59:55 locher Exp $
+// $Id: Formation.java,v 1.3 2000/05/31 06:09:25 studer Exp $
 
 package jobmatch.business.candidate.cv;
 
@@ -11,10 +11,10 @@ import java.util.*;
  *  Formation Business Object
  *
  *  @since May 26 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.3 $
  **/
-public class Formation extends SchoolCandidateBDO {
+public class Formation extends SchoolCandidateBDO implements CVSection {
     
     public Formation() throws Exception {
 	super();
@@ -26,9 +26,27 @@ public class Formation extends SchoolCandidateBDO {
 
     public static List getAllFormationsFor(Candidate candidate) {
 	List result = new ArrayList();
-	// make a query
-	// for every DO create a new Formation(DO) and add to result
+	try{
+	    SchoolCandidateQuery query = new SchoolCandidateQuery();
+	    query.setQueryCandidate(candidate.getDO());
+	    SchoolCandidateDO element  = query.getNextDO();
+	     while ( element != null) {
+		result.add(new Formation(element));
+		element = query.getNextDO();
+	    }
+	} catch (Exception qe) {
+	    System.err.println(qe);
+	}
 	return result;
+    }
+
+    public Candidate getCandidateBO(){
+	try {
+	    return new Candidate(this.getCandidate());
+	}
+	catch (Exception e) {
+	    throw new RuntimeException(e.toString());
+	}
     }
 
     public School getSchoolBO() {
@@ -80,6 +98,9 @@ public class Formation extends SchoolCandidateBDO {
 
 /*
  * $Log: Formation.java,v $
+ * Revision 1.3  2000/05/31 06:09:25  studer
+ * Funktionalitaet zum dynamischen Fuellen einer Tabelle
+ *
  * Revision 1.2  2000/05/26 13:59:55  locher
  * introduced entity package
  *

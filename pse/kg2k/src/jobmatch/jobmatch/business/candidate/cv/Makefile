@@ -15,7 +15,8 @@ ROOT =	../../../..
 PACKAGEDIR = jobmatch/business/candidate/cv
 
 CLASSES = \
-	Formation
+	Formation \
+	CVSection
 
 USEICONTRACT=1
 

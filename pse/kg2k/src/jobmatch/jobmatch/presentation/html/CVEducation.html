@@ -7,10 +7,9 @@
   <body>
     <hr>
     <h1>Ausbildung</h1>    
-    <table width="100%" border="1"> <tr>
+    <table id="formationTable"width="100%" border="1"> <tr>
 	<th>Schultyp </th><th>Name der Schule </th><th>Beginn </th><th>Ende </th><th>Abschluss </th><th>Bemerkungen</th></tr>
-    <form action="./CVEducationDetail.html" method="get"> 
-      <tr class ="trash"> 
+      <tr id="templateRow"> 
 	<td> Gymnasium</td>
 	<td> Gymnasium Lerbermatt, Koeniz </td>
 	<td>01.01.1990</td>
@@ -40,8 +39,8 @@
       <tr><td>
 	  <input type="submit" name="submit" value="Schule eingeben">
 	</td></tr>
-    </table>
-    </form>
+    </table><br>
+    <a href= "./CVEducationDetail.html">Schule eingeben</a><br>
 
     <p>
       <a href="./CVWorkingExperience.html"> Weiter </a> <p>
