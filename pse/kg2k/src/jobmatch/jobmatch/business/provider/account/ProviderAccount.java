@@ -1,4 +1,4 @@
-// $Id: ProviderAccount.java,v 1.1 2000/06/02 14:56:15 locher Exp $
+// $Id: ProviderAccount.java,v 1.2 2000/06/03 09:15:42 locher Exp $
 
 package jobmatch.business.provider.account;
 
@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class ProviderAccount extends ProviderAccountBDO implements Account {
         
@@ -33,8 +33,8 @@ public class ProviderAccount extends ProviderAccountBDO implements Account {
 	try {
 	    this.setLoginReminder(0);
 	    this.setLastLogin(time);
-// 	    this.setLastIP(ip);
-// 	    this.setLastHost(host);
+ 	    this.setLastIP(ip);
+ 	    this.setLastHost(host);
 	    this.commit();
 	}  catch (Exception e) {
 	    throw new RuntimeException(e.toString());
@@ -71,6 +71,9 @@ public class ProviderAccount extends ProviderAccountBDO implements Account {
 
 /*
  * $Log: ProviderAccount.java,v $
+ * Revision 1.2  2000/06/03 09:15:42  locher
+ * IP logging enabled
+ *
  * Revision 1.1  2000/06/02 14:56:15  locher
  * extended login behaviour
  *

@@ -1,4 +1,4 @@
-// $Id: CompanyAccount.java,v 1.3 2000/06/02 14:56:14 locher Exp $
+// $Id: CompanyAccount.java,v 1.4 2000/06/03 09:15:42 locher Exp $
 
 package jobmatch.business.provider.account;
 
@@ -11,7 +11,7 @@ import jobmatch.business.company.Company;
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public class CompanyAccount extends CompanyAccountBDO implements Account {
         
@@ -34,8 +34,8 @@ public class CompanyAccount extends CompanyAccountBDO implements Account {
 	try {
 	    this.setLoginReminder(0);
 	    this.setLastLogin(time);
-// 	    this.setLastIP(ip);
-// 	    this.setLastHost(host);
+ 	    this.setLastIP(ip);
+ 	    this.setLastHost(host);
 	    this.commit();
 	}  catch (Exception e) {
 	    throw new RuntimeException(e.toString());
@@ -83,6 +83,9 @@ public class CompanyAccount extends CompanyAccountBDO implements Account {
 
 /*
  * $Log: CompanyAccount.java,v $
+ * Revision 1.4  2000/06/03 09:15:42  locher
+ * IP logging enabled
+ *
  * Revision 1.3  2000/06/02 14:56:14  locher
  * extended login behaviour
  *
