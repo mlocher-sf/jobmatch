@@ -1,8 +1,8 @@
-#This file was created by <locher> Tue Apr 18 10:33:50 2000
+#This file was created by <locher> Tue Apr 18 16:14:47 2000
 #LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
-\language english
+\language german
 \inputencoding latin1
 \fontscheme default
 \graphics default
@@ -30,11 +30,6 @@
 KG 2000
 \newline 
 Requirements Document
-\layout Date
-
-DRAFT
-\newline 
-V 0.1
 \layout Author
 
 PSE 2000, Gruppe 4
@@ -64,6 +59,11 @@ Begriffe
 \layout Subsection
 
 Bewerber
+\layout Standard
+
+Ein Bewerber ist eine Person, die ihren Lebenslauf in der Kontaktboerse
+ publiziert.
+ Die Firmen konnen fuer sie passende Bewerber finden.
 \layout Subsection
 
 CV
@@ -73,13 +73,25 @@ CuriculumVitae, der Lebenslauf eines Bewerbers.
  Enthaelt die Daten aus folgenden Bereichen:
 \layout Itemize
 
-dfdf
+Persoenliche Daten
 \layout Itemize
 
-dfdf
+Arbeitserfahrung
 \layout Itemize
 
-df
+Ausbildung
+\layout Itemize
+
+Sprachen
+\layout Itemize
+
+Computerkentnisse
+\layout Itemize
+
+Mitgliedschaften
+\layout Itemize
+
+Hobbies
 \layout Subsection
 
 Anforderungsprofil
@@ -323,7 +335,7 @@ Anforderung an die Logistik der Betreuung
 Dies wird dem Team ueberlassen sein, das den Prototyp weiterentwickelt.
 \layout Subsection
 
-Umgebungsbedingte Produkteigenschaften
+Umgebung
 \layout Subsubsection
 
 Anfoderung an die Client-Software

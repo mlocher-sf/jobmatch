@@ -1,0 +1,161 @@
+digraph "BEWERBER" {
+	graph [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		bb = "0,0,458,300"
+		lp = "229,0"
+		color = "black"
+	]
+	node [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		shape = "ellipse"
+		color = "black"
+	]
+	edge [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		color = "black"
+	]
+	"n0" [
+		label = "active"
+		color = "black"
+		width = "0.750000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "72,282"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"n1" [
+		label = "inactive"
+		color = "black"
+		width = "0.890000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "71,194"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"n2" [
+		label = "fresh"
+		color = "black"
+		width = "0.750000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "344,282"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"n3" [
+		label = "hold"
+		color = "black"
+		width = "0.750000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "297,194"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"n4" [
+		label = "warn"
+		color = "black"
+		width = "0.750000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "356,106"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"n5" [
+		label = "kill"
+		color = "black"
+		width = "0.750000"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		pos = "356,18"
+		height = "0.500000"
+		shape = "ellipse"
+	]
+	"n2" -> "n3" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "6 months idle"
+		pos = "e,275,204  319,275 292,268 252,256 229,246 213,239 241,221 266,208"
+		lp = "277,238"
+		color = "black"
+	]
+	"n3" -> "n4" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "6 months idle"
+		pos = "e,336,118  298,176 300,164 303,150 308,142 312,135 321,128 330,122"
+		lp = "353,150"
+		color = "black"
+	]
+	"n4" -> "n5" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "10 days idle"
+		pos = "e,356,36  356,88 356,76 356,59 356,45"
+		lp = "397,62"
+		color = "black"
+	]
+	"n2" -> "n2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "login"
+		pos = "e,364,294  364,270 377,266 389,270 389,282 389,291 382,295 374,295"
+		lp = "410,282"
+		color = "black"
+	]
+	"n3" -> "n2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "login"
+		pos = "s,340,264  338,257 336,247 332,237 329,230 328,229 319,219 311,210"
+		lp = "355,238"
+		color = "black"
+	]
+	"n4" -> "n2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "login"
+		pos = "s,363,269  371,262 376,257 381,251 384,246 397,218 399,187 405,158 406,152 408,145 405,142 401,138 387,127 375,119"
+		lp = "422,194"
+		color = "black"
+	]
+	"n0" -> "n1" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "deactivate"
+		pos = "e,51,208  54,268 45,261 35,253 29,246 22,237 33,224 45,213"
+		lp = "66,238"
+		color = "black"
+	]
+	"n1" -> "n0" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "activate"
+		pos = "s,89,268  94,263 105,252 116,239 109,230 105,223 97,216 89,209"
+		lp = "141,238"
+		color = "black"
+	]
+}
