@@ -1,6 +1,6 @@
 #!/usr/local/bin/tcsh
 
-# $Id: genJavadoc,v 1.4 2000/05/10 16:45:53 locher Exp $
+# $Id: genJavadoc,v 1.5 2000/05/10 16:50:21 locher Exp $
 
 set SOURCE = pse/kg2k/src/jobmatch/
 set INDIR = /tmp/$SOURCE
@@ -15,4 +15,4 @@ cd /tmp
 mkdir -p $OUTDIR
 cd $INDIR
 /usr/local/jdk1.2.2/bin/javadoc $PARAMS -header "$HEADER" -sourcepath $INDIR -d $OUTDIR @$CONTENTFILE
-chmod -R 775 $OUTDIR
+chmod -R 775 $OUTDIR/* $OUTDIR
