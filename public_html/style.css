@@ -14,12 +14,20 @@ h2, h3, h4 {
 	border-width: 1pt;
 	padding: 1pt;
 	text-shadow: silver;
+	filter: DropShadow(color=silver, offx=2, offy=2)
 	}
 
 a { 
 	text-decoration: none; 
 	color: teal; 
 	font-weight: bold;
+	}
+
+a:active {
+	text-decoration: underline;
+	color: lime;
+	cursor: hand;
+	font-weight: bolder
 	}
 
 hr { color: teal; size: 5pt;}
