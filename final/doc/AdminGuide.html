@@ -9,6 +9,36 @@
     <hr>
     <h1>Administrator User Guide</h1>
     
+    <h2>Start des Systems</h2>
+
+    <p>Jobmatch wird mit dem <code>start</code>-Skript im Unterverzeichnis <code>jobmatch/output</code> gestartet und steht anschliessend auf Port 9004 zur Verfuegung</p>
+
+    <h2>Stop des Systems</h2>
+
+    <p>Jobmatch wird beendet, indem der zugehoerige Java Prozess terminiert wird. (zB mittels <code>kill</code>)</p>
+
+    <h2>Laufzeiteinstellungen</h2>
+
+    <p>Alle Einstellungen die der/die Administrator zur Laufzeit ausfuehren kann, sind unter der URL <code>#JOBMATCH#/admin/ControlCenter.po</code> erreichbar.<br>
+      Die Verwaltung der Administratoren- und Firmen Konten ist selbsterklaehrend.
+    </p>
+
+    <h3>JPython Scripting</h3>
+
+    <p>Jobmatch verfuegt ueber eine eingebaute Skripting Engine.<br>
+      <a href="http://www.jpython.org">Dokumentation zu JPython</a>
+    </p>
+    <p>
+      Der Benutzer kann die <a href="http://www.iamexwi.unibe.ch/studenten/pse4/doc/index.html">Funktionen von Jobmatch</a> in seinen Skripts benutzten.
+    </p>
+    
+    <h4>Interpreter</h4>
+    <p>Mit dem Interpreter werden zeilenweise Befehle versandt.</p>
+    
+    <h4>Skripts ausf&uuml;hren</h4>
+    <p>Mit dem JobScript Runner werden ganze Skript Dateien abgearbeitet.<br>
+      Der Benutzer kann selbst neue erstellen, indem er Python Skripts in das bei der <a href="./Config.html">Konfiguration</a> angebenen Verzeichnis kopiert. Die Endung auf .pz ist zwingend.
+    </p>
 
     <hr>
     <address><a href="index.html">Jobmatch Dokumentation</a></address>
