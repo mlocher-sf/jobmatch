@@ -132,7 +132,7 @@ public class JobScriptRunner implements HttpPresentation {
 
     private String getScriptDir(Application application) {
 	try {
-	    return application.getConfig().getString("JobScript.Directory", ".");
+	    return application.getConfig().getString("Jobmatch.JobScript.Directory", ".");
 	} catch (Exception e) {
 	    throw new RuntimeException(e.toString());
 	}
