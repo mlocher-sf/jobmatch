@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/AccountDataStruct.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/AccountDataStruct.java
  *-----------------------------------------------------------------------------
  */
 
@@ -49,8 +49,8 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
 public class AccountDataStruct implements Cloneable, Serializable {
@@ -75,7 +75,22 @@ public class AccountDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Password = null;
+   public String Email = null;
+
+/**
+ * 
+ */
+   public java.sql.Timestamp LastLogin = null;
+
+/**
+ * 
+ */
+   public int LoginReminder = 0;
+
+/**
+ * 
+ */
+   public String Passphrase = null;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -93,7 +108,16 @@ public class AccountDataStruct implements Cloneable, Serializable {
 	ret.Username = Username + "";
 	
 	
-	ret.Password = Password + "";
+	ret.Email = Email + "";
+	
+	
+	ret.LastLogin = new java.sql.Timestamp(LastLogin.getTime() );
+	
+	
+	ret.LoginReminder = LoginReminder;
+	
+	
+	ret.Passphrase = Passphrase + "";
 	
 
 

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CountryBDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CountryBDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -50,8 +50,8 @@ import com.lutris.dods.builder.generator.query.*;
  * So by deriving a BO from a BDO, or by implementing a BO that 
  * contains a BDO, the developer of the BO is spared some work.
  *
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 public class CountryBDO implements java.io.Serializable {
 
@@ -242,29 +242,29 @@ public class CountryBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Name of the CountryDO
+    * Get Description of the CountryDO
     *
-    * @return Name of the CountryDO
+    * @return Description of the CountryDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getName () 
+   public String getDescription () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getName ();
+      return DO.getDescription ();
    }
 
    
    /**
-    * Set Name of the CountryDO
+    * Set Description of the CountryDO
     *
-    * @param Name of the CountryDO
+    * @param Description of the CountryDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setName ( String Name ) 
+   public void setDescription ( String Description ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,12 +272,182 @@ public class CountryBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setName ( Name );
+      DO.setDescription ( Description );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
 
    
+    /**
+     * Get array of EmployerDO objects that refer to the DO held by this BDO.
+     *
+     * @return array of EmployerDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.EmployerDO[] getEmployerDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.EmployerDO[] ret = null;
+	try {
+	    jobmatch.data.EmployerQuery q = new jobmatch.data.EmployerQuery();
+	    q.setQueryCounty( DO );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.EmployerDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single EmployerDO object
+     * that refers to the DO held by this BDO.
+     *
+     * @return EmployerDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception NonUniqueQueryException
+     *   If more than one EmployerDO object was found.
+     */
+    public jobmatch.data.EmployerDO getEmployerDO () 
+    throws DataObjectException, NonUniqueQueryException, QueryException {
+	jobmatch.data.EmployerQuery q = new jobmatch.data.EmployerQuery();
+	q.setQueryCounty( DO );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Get array of EmployerBDO objects holding EmployerDO objects
+     * that refer to the DO held by this BDO.
+     *
+     * @return array of EmployerBDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.EmployerBDO[] getEmployerBDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.EmployerBDO[] ret = null;
+	try {
+	    jobmatch.data.EmployerQuery q = new jobmatch.data.EmployerQuery();
+	    q.setQueryCounty( DO );
+	    ret = q.getBDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.EmployerBDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single EmployerBDO object holding a EmployerDO object
+     * that refers to the DO held by this BDO.
+     *
+     * @return EmployerBDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception NonUniqueQueryException
+     *   If more than one EmployerBDO object was found.
+     */
+    public jobmatch.data.EmployerBDO getEmployerBDO () 
+    throws DataObjectException, NonUniqueQueryException, QueryException {
+	jobmatch.data.EmployerQuery q = new jobmatch.data.EmployerQuery();
+	q.setQueryCounty( DO );
+	q.requireUniqueInstance();
+	return q.getNextBDO();
+    }
+
+ 
+    /**
+     * Add (set & commit) a EmployerBDO object whose EmployerDO
+     * refers to the DO held by this BDO.
+     *
+     * @param rbdo EmployerBDO to be set to point to this BDO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addEmployerBDO( jobmatch.data.EmployerBDO rbdo )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addEmployerBDO( rbdo, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a EmployerBDO object whose EmployerDO
+     * refers to the DO held by this BDO.
+     *
+     * @param rbdo EmployerBDO to be set to point to this BDO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addEmployerBDO( jobmatch.data.EmployerBDO rbdo, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        rbdo.setCounty( this.DO );
+        rbdo.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a EmployerBDO object whose EmployerDO
+     * refers to the DO held by this BDO.
+     *
+     * @param r EmployerBDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeEmployerBDO( jobmatch.data.EmployerBDO rbdo )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeEmployerBDO( rbdo, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a EmployerBDO object whose EmployerDO
+     * refers to the DO held by this BDO.
+     *
+     * @param r EmployerBDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeEmployerBDO( jobmatch.data.EmployerBDO rbdo, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CountryDO rdo = rbdo.getCounty();
+	String rdoHandle = rdo.getHandle();
+	String mydoHandle = DO.getHandle();
+	if ( null == rdoHandle || null == mydoHandle || 
+	     ( ! rdoHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + rdo +
+		" does not refer to object " + DO +
+		", cannot be removed this way." );
+	}
+        rbdo.delete( tran );
+    }
+ 
+
 
 
 
@@ -365,7 +535,16 @@ public class CountryBDO implements java.io.Serializable {
       if ( delete ) {
 	  // Code to perform cascading deletes is generated here
 	  // if cascading deletes are not supported by the database.      
-	  
+	  	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.EmployerBDO[] a = getEmployerBDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+
           // The following line keeps the compiler happy
           // when the CASCADING_DELETES tag is empty.
           if ( false )

@@ -2,8 +2,9 @@
 
 create table Graduation
 (
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
 /* class Graduation */
-    Type VARCHAR(32) DEFAULT "" NOT NULL   ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

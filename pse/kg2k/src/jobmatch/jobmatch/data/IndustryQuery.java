@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/IndustryQuery.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/IndustryQuery.java
  *-----------------------------------------------------------------------------
  */
 
@@ -110,8 +110,8 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  * <P><PRE>
  *             dq.reset();
  * </PRE>
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 final public class IndustryQuery implements Query {
 
@@ -407,13 +407,13 @@ final public class IndustryQuery implements Query {
 
 
     /**
-     * Set the Type to query.
+     * Set the Description to query.
      *
-     * @param x The Type of the Industry to query.
+     * @param x The Description of the Industry to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryType(
+    public void setQueryDescription(
 				String x, boolean exact)
     throws DataObjectException, QueryException
     {
@@ -424,7 +424,7 @@ final public class IndustryQuery implements Query {
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
-		String s = DO.getType();
+		String s = DO.getDescription();
 		if ( null == s && null == x ) {
 		    equals = true;
 		} else if ( null != s && null != x ) {
@@ -445,38 +445,38 @@ final public class IndustryQuery implements Query {
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Type", x, "VARCHAR",
+	    builder.addWhereClause( "Description", x, "VARCHAR",
                 QueryBuilder.NOT_NULL, exactFlag( exact ) );
     }
 
     /**
-     * Set the Type to query
-     * @param x The Type of the Industry to query.
+     * Set the Description to query
+     * @param x The Description of the Industry to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryType( 
+    public void setQueryDescription( 
 				String x )
     throws DataObjectException, QueryException {
-	setQueryType( x, true );
+	setQueryDescription( x, true );
     }
 
     /**
-     * Add Type to the ORDER BY clause.
+     * Add Description to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByType(boolean direction_flag) {
-        builder.addOrderByColumn("Type",
+    public void addOrderByDescription(boolean direction_flag) {
+        builder.addOrderByColumn("Description",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Type to the ORDER BY clause.  This convenience
+     * Add Description to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByType() {
-        builder.addOrderByColumn("Type","ASC");
+    public void addOrderByDescription() {
+        builder.addOrderByColumn("Description","ASC");
     }
 
     /**

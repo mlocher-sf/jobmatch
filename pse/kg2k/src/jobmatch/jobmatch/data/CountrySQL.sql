@@ -2,8 +2,9 @@
 
 create table Country
 (
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
 /* class Country */
-    Name VARCHAR(32) DEFAULT "" NOT NULL   ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

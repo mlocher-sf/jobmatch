@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/AccountDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/AccountDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -53,8 +53,8 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the AccountDO information.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
 abstract public class AccountDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
@@ -339,39 +339,39 @@ abstract public class AccountDO extends com.lutris.dods.builder.generator.dataob
    
 
 
-////////////////////////// data member Password
+////////////////////////// data member Email
 
-   /* static final RDBColumn Password for use with QueryBuilder.
+   /* static final RDBColumn Email for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Password = 
-			    new RDBColumn( table, "Password" );
+   static public final RDBColumn Email = 
+			    new RDBColumn( table, "Email" );
 
    /**
-    * Get Password of the Account
+    * Get Email of the Account
     *
-    * @return Password of the Account
+    * @return Email of the Account
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getPassword () 
+   public String getEmail () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Password;
+      return data.Email;
    }
 
    /**
-    * Set Password of the Account
+    * Set Email of the Account
     *
-    * @param Password of the Account
+    * @param Email of the Account
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setPassword ( String Password )
+   public void setEmail ( String Email )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -380,8 +380,152 @@ abstract public class AccountDO extends com.lutris.dods.builder.generator.dataob
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Password =  markNewValue(
-	data.Password, Password , 0, 20, false );
+      data.Email =  markNewValue(
+	data.Email, Email , 0, 50, false );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member LastLogin
+
+   /* static final RDBColumn LastLogin for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn LastLogin = 
+			    new RDBColumn( table, "LastLogin" );
+
+   /**
+    * Get LastLogin of the Account
+    *
+    * @return LastLogin of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Timestamp getLastLogin () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.LastLogin;
+   }
+
+   /**
+    * Set LastLogin of the Account
+    *
+    * @param LastLogin of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setLastLogin ( java.sql.Timestamp LastLogin )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.LastLogin =  markNewValue(
+	data.LastLogin, LastLogin  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member LoginReminder
+
+   /* static final RDBColumn LoginReminder for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn LoginReminder = 
+			    new RDBColumn( table, "LoginReminder" );
+
+   /**
+    * Get LoginReminder of the Account
+    *
+    * @return LoginReminder of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public int getLoginReminder () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.LoginReminder;
+   }
+
+   /**
+    * Set LoginReminder of the Account
+    *
+    * @param LoginReminder of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setLoginReminder ( int LoginReminder )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.LoginReminder =  markNewValue(
+	data.LoginReminder, LoginReminder  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Passphrase
+
+   /* static final RDBColumn Passphrase for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Passphrase = 
+			    new RDBColumn( table, "Passphrase" );
+
+   /**
+    * Get Passphrase of the Account
+    *
+    * @return Passphrase of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getPassphrase () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Passphrase;
+   }
+
+   /**
+    * Set Passphrase of the Account
+    *
+    * @param Passphrase of the Account
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setPassphrase ( String Passphrase )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Passphrase =  markNewValue(
+	data.Passphrase, Passphrase , 0, 20, false );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -435,10 +579,34 @@ abstract public class AccountDO extends com.lutris.dods.builder.generator.dataob
 	);
 	
 	
-	setPassword( 
+	setEmail( 
 	    
 		rs.getString( 
-			"Password"  )
+			"Email"  )
+	    
+	);
+	
+	
+	setLastLogin( 
+	    
+		rs.getTimestamp( 
+			"LastLogin"  )
+	    
+	);
+	
+	
+	setLoginReminder( 
+	    
+		rs.getInt( 
+			"LoginReminder"  )
+	    
+	);
+	
+	
+	setPassphrase( 
+	    
+		rs.getString( 
+			"Passphrase"  )
 	    
 	);
 	
@@ -464,7 +632,10 @@ abstract public class AccountDO extends com.lutris.dods.builder.generator.dataob
 	str += " OID=" + id;
 	if ( null != data ) 
 	    str = str + "\n" + indent + "Username=" + data.Username
-+ "\n" + indent + "Password=" + data.Password
++ "\n" + indent + "Email=" + data.Email
++ "\n" + indent + "LastLogin=" + data.LastLogin
++ "\n" + indent + "LoginReminder=" + data.LoginReminder
++ "\n" + indent + "Passphrase=" + data.Passphrase
 ;
         return str + "; " + super.toString();
     }
@@ -489,7 +660,10 @@ abstract public class AccountDO extends com.lutris.dods.builder.generator.dataob
         str += " OID=" + id;
         if ( null != data )
             str = str + "\n" + indent + "Username=" + data.Username
-+ "\n" + indent + "Password=" + data.Password
++ "\n" + indent + "Email=" + data.Email
++ "\n" + indent + "LastLogin=" + data.LastLogin
++ "\n" + indent + "LoginReminder=" + data.LoginReminder
++ "\n" + indent + "Passphrase=" + data.Passphrase
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;

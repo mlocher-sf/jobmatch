@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/IndustryBDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/IndustryBDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -50,8 +50,8 @@ import com.lutris.dods.builder.generator.query.*;
  * So by deriving a BO from a BDO, or by implementing a BO that 
  * contains a BDO, the developer of the BO is spared some work.
  *
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 public class IndustryBDO implements java.io.Serializable {
 
@@ -242,29 +242,29 @@ public class IndustryBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Type of the IndustryDO
+    * Get Description of the IndustryDO
     *
-    * @return Type of the IndustryDO
+    * @return Description of the IndustryDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getType () 
+   public String getDescription () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getType ();
+      return DO.getDescription ();
    }
 
    
    /**
-    * Set Type of the IndustryDO
+    * Set Description of the IndustryDO
     *
-    * @param Type of the IndustryDO
+    * @param Description of the IndustryDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setType ( String Type ) 
+   public void setDescription ( String Description ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,7 +272,7 @@ public class IndustryBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setType ( Type );
+      DO.setDescription ( Description );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -449,185 +449,6 @@ public class IndustryBDO implements java.io.Serializable {
  
 
 
-
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * get array of CompanyAccountDO objects that indirectly refer
-     * to the DO held by this BDO.
-     *
-     * @return array of CompanyAccountDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.CompanyAccountDO[] getCompanyAccountDOArray_via_Company () 
-    throws DataObjectException {
-	jobmatch.data.CompanyAccountDO[] ret = null;
-	try {
-	    jobmatch.data.CompanyDO[] arr = getCompanyDOArray();
-	    ret = new jobmatch.data.CompanyAccountDO[ arr.length ];
-	    for ( int i = 0; i < arr.length; i++ ) {
-		ret[ i ] = arr[ i ].getAccount();
-	    }
-	} catch ( Exception e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: ", e );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.CompanyAccountDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a CompanyAccountDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param d The CompanyAccountDO to add to the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapCompanyAccount_via_CompanyDO( jobmatch.data.CompanyAccountDO d )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	mapCompanyAccount_via_CompanyDO( d, null );
-    }
-
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a CompanyAccountDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param d The CompanyAccountDO to add to the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapCompanyAccount_via_CompanyDO( jobmatch.data.CompanyAccountDO d, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.CompanyAccountBDO b = jobmatch.data.CompanyAccountBDO.createExisting( d );
-	mapCompanyAccount_via_CompanyBDO( b, tran );
-    }
-
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a CompanyAccountDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param b The CompanyAccountBDO to add to the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapCompanyAccount_via_CompanyBDO( jobmatch.data.CompanyAccountBDO b )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	mapCompanyAccount_via_CompanyBDO( b, null );
-    }
-
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a CompanyAccountDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param b The CompanyAccountBDO to add to the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapCompanyAccount_via_CompanyBDO( jobmatch.data.CompanyAccountBDO b, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.CompanyBDO m = null;
-	try {
-	    m = jobmatch.data.CompanyBDO.createVirgin();
-	} catch ( Exception e ) { 
-	    throw new DataObjectException( 
-		"jobmatch.data.CompanyBDO.createVirgin failed", e );
-	}
-	m.setAccount( b );
-	m.setIndustry( this );
-	m.commit( tran );
-    }
-
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the CompanyAccountDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param d The CompanyAccountDO to remove from the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void unmapCompanyAccount_via_CompanyDO( jobmatch.data.CompanyAccountDO d )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	unmapCompanyAccount_via_CompanyDO( d, null );
-    }
-
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the CompanyAccountDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param d The CompanyAccountDO to remove from the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void unmapCompanyAccount_via_CompanyDO( jobmatch.data.CompanyAccountDO d, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.CompanyAccountBDO b = jobmatch.data.CompanyAccountBDO.createExisting( d );
-	unmapCompanyAccount_via_CompanyBDO( b, tran );
-    }
-
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the CompanyAccountDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param b The CompanyAccountBDO to remove from the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void unmapCompanyAccount_via_CompanyBDO( jobmatch.data.CompanyAccountBDO b )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	unmapCompanyAccount_via_CompanyBDO( b, null );
-    }
-
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the CompanyAccountDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param b The CompanyAccountBDO to remove from the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void unmapCompanyAccount_via_CompanyBDO( jobmatch.data.CompanyAccountBDO b, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.CompanyQuery q = new jobmatch.data.CompanyQuery();
-	q.setQueryIndustry( DO );
-	q.setQueryAccount( b.getDO() );
-	q.requireUniqueInstance();
-	jobmatch.data.CompanyBDO m = null;
-	try {
-	    m = q.getNextBDO();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( "Multiple mappings for " +
-		DO + " and " + b.getDO() + " in jobmatch.data.Company table." );
-	}
-	m.delete( tran );
-    }
 
 
   /**

@@ -4,8 +4,12 @@ create table CandidateAccount
 (
 /* class Account */
     Username VARCHAR(40) DEFAULT "" NOT NULL   ,
-    Password VARCHAR(20) DEFAULT "" NOT NULL   ,
+    Email VARCHAR(50) DEFAULT "" NOT NULL   ,
+    LastLogin TIMESTAMP  NOT NULL   ,
+    LoginReminder INTEGER DEFAULT 0 NOT NULL   ,
+    Passphrase VARCHAR(20) DEFAULT "" NOT NULL   ,
 /* class CandidateAccount */
+    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

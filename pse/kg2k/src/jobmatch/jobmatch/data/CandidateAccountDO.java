@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CandidateAccountDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CandidateAccountDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -53,8 +53,8 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CandidateAccountDO information.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
  public class CandidateAccountDO extends jobmatch.data.AccountDO implements java.io.Serializable {
@@ -639,6 +639,54 @@ import com.lutris.dods.builder.generator.query.*;
 	super.makeIdentical(orig);
 	data = orig.data;
     }
+
+////////////////////////// data member Candidate
+
+   /* static final RDBColumn Candidate for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Candidate = 
+			    new RDBColumn( table, "Candidate" );
+
+   /**
+    * Get Candidate of the CandidateAccount
+    *
+    * @return Candidate of the CandidateAccount
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CandidateDO getCandidate () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Candidate;
+   }
+
+   /**
+    * Set Candidate of the CandidateAccount
+    *
+    * @param Candidate of the CandidateAccount
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setCandidate ( jobmatch.data.CandidateDO Candidate )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Candidate = (jobmatch.data.CandidateDO) markNewValue(
+	data.Candidate, Candidate  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
     /**
      * Protected constructor.
      *
@@ -679,7 +727,15 @@ import com.lutris.dods.builder.generator.query.*;
 	// writeMemberStuff uses the ResultSetExtraction.template
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
+		
+	setCandidate( 
+	    jobmatch.data.CandidateDO.createExisting( 
+		rs.getBigDecimal( 
+			"Candidate" , 0 )
+	     )
+	);
 	
+
  
         markClean();
     }        
@@ -712,7 +768,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into CandidateAccount ( Username, Password, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ? )" );
+	    "insert into CandidateAccount ( Username, Email, LastLogin, LoginReminder, Passphrase, Candidate, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -723,7 +779,15 @@ import com.lutris.dods.builder.generator.query.*;
 	    	setPrepStmtParam_String( stmt, param,
 		getUsername() );
 	setPrepStmtParam_String( stmt, param,
-		getPassword() );
+		getEmail() );
+	setPrepStmtParam_java_sql_Timestamp( stmt, param,
+		getLastLogin() );
+	setPrepStmtParam_int( stmt, param,
+		getLoginReminder() );
+	setPrepStmtParam_String( stmt, param,
+		getPassphrase() );
+	setPrepStmtParam_DO( stmt, param,
+		getCandidate() );
 
 
 	    /* The order of the values being inserted must match
@@ -756,7 +820,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update CandidateAccount set " + getVersionColumnName() + " = ?, Username = ?, Password = ? " +
+	    "update CandidateAccount set " + getVersionColumnName() + " = ?, Username = ?, Email = ?, LastLogin = ?, LoginReminder = ?, Passphrase = ?, Candidate = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -769,7 +833,15 @@ import com.lutris.dods.builder.generator.query.*;
 	    	setPrepStmtParam_String( stmt, param,
 		getUsername() );
 	setPrepStmtParam_String( stmt, param,
-		getPassword() );
+		getEmail() );
+	setPrepStmtParam_java_sql_Timestamp( stmt, param,
+		getLastLogin() );
+	setPrepStmtParam_int( stmt, param,
+		getLoginReminder() );
+	setPrepStmtParam_String( stmt, param,
+		getPassphrase() );
+	setPrepStmtParam_DO( stmt, param,
+		getCandidate() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -819,7 +891,8 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str ;
+	    str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
+;
         return str + "; " + super.toString();
     }
 */
@@ -842,136 +915,13 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str ;
+            str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
+;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
     }
 
     
-    /**
-     * Get array of CandidateDO objects that refer to this DO.
-     *
-     * @return array of CandidateDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public jobmatch.data.CandidateDO[] getCandidateDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.CandidateDO[] ret = null;
-	try {
-	    jobmatch.data.CandidateQuery q = new jobmatch.data.CandidateQuery();
-	    q.setQueryAccount( this );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.CandidateDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single CandidateDO object
-     * that refers to this DO.
-     *
-     * @return CandidateDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     * @exception NonUniqueQueryException
-     *   If more than one CandidateDO object was found.
-     */
-    public jobmatch.data.CandidateDO getCandidateDO () 
-    throws DataObjectException, QueryException, NonUniqueQueryException {
-	jobmatch.data.CandidateQuery q = new jobmatch.data.CandidateQuery();
-	q.setQueryAccount( this );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
-
-    /**
-     * Add (set & commit) a CandidateDO object that refers to this DO.
-     *
-     * @param referrer CandidateDO to be set to point to this DO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addCandidateDO( jobmatch.data.CandidateDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addCandidateDO( referrer, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a CandidateDO object that refers to this DO.
-     *
-     * @param referrer CandidateDO to be set to point to this DO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addCandidateDO( jobmatch.data.CandidateDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        referrer.setAccount( this );
-        referrer.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a CandidateDO object that refers to this DO.
-     *
-     * @param referrer CandidateDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeCandidateDO( jobmatch.data.CandidateDO referrer )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeCandidateDO( referrer, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a CandidateDO object that refers to this DO.
-     *
-     * @param referrer CandidateDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeCandidateDO( jobmatch.data.CandidateDO referrer, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	CandidateAccountDO referred = referrer.getAccount();
-	String referredHandle = referred.getHandle();
-	String mydoHandle = this.getHandle();
-	if ( null == referredHandle || null == mydoHandle || 
-	     ( ! referredHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + referrer +
-		" does not refer to object " + this +
-		", cannot be removed this way." );
-	}
-        referrer.delete( tran );
-    }
- 
-
 
 
 
@@ -1049,7 +999,25 @@ import com.lutris.dods.builder.generator.query.*;
     modifyDO( dbt, true );
   }
 
-  
+      /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for writing to the database.
+     */
+    protected void okToCommitCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for deletion from the database.
+     */
+    protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+
 
   /**
    * Modifies the DO within its table.
@@ -1084,23 +1052,29 @@ import com.lutris.dods.builder.generator.query.*;
       if ( delete ) {
 	  // Code to perform cascading deletes is generated here
 	  // if cascading deletes are not supported by the database.      
-	  	
-	{
-	    // perform cascading delete on referring table
-	    jobmatch.data.CandidateDO[] a = getCandidateDOArray();
-	    for ( int i = 0; i < a.length; i++ ) {
-		a[ i ].delete( dbt );
-	    }
-	}
-	
-
+	  
 	  // The following line keeps the compiler happy 
 	  // when the CASCADING_DELETES tag is empty.
           if ( false )
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  
+	  	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
+	if ( null != Candidate_DO ) {
+	    if ( Candidate_DO.isLoaded() ) {
+		okToCommitCandidate( Candidate_DO );
+		Candidate_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit CandidateAccountDO ( " + toString() +
+		    " ) because Candidate is not allowed to be null." );
+	}
+
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CompanyAccountDataStruct.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CompanyAccountDataStruct.java
  *-----------------------------------------------------------------------------
  */
 
@@ -49,8 +49,8 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
 public class CompanyAccountDataStruct implements Cloneable, Serializable {
@@ -66,6 +66,11 @@ public class CompanyAccountDataStruct implements Cloneable, Serializable {
 	System.arraycopy( source, 0, dest, 0, source.length );
 	return dest;
     }
+
+/**
+ * 
+ */
+   public jobmatch.data.CompanyDO Company = null;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -79,7 +84,10 @@ public class CompanyAccountDataStruct implements Cloneable, Serializable {
         CompanyAccountDataStruct ret = new CompanyAccountDataStruct ();
  
 
+		
+	ret.Company = jobmatch.data.CompanyDO.createCopy( Company );
 	
+
 
 	return ret;
     }

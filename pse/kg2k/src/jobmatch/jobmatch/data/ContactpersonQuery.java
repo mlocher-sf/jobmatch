@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/ContactpersonQuery.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/ContactpersonQuery.java
  *-----------------------------------------------------------------------------
  */
 
@@ -110,8 +110,8 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  * <P><PRE>
  *             dq.reset();
  * </PRE>
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 final public class ContactpersonQuery implements Query {
 

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/AreaQuery.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/AreaQuery.java
  *-----------------------------------------------------------------------------
  */
 
@@ -110,8 +110,8 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  * <P><PRE>
  *             dq.reset();
  * </PRE>
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 final public class AreaQuery implements Query {
 
@@ -407,13 +407,13 @@ final public class AreaQuery implements Query {
 
 
     /**
-     * Set the Name to query.
+     * Set the Description to query.
      *
-     * @param x The Name of the Area to query.
+     * @param x The Description of the Area to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryName(
+    public void setQueryDescription(
 				String x, boolean exact)
     throws DataObjectException, QueryException
     {
@@ -424,7 +424,7 @@ final public class AreaQuery implements Query {
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
-		String s = DO.getName();
+		String s = DO.getDescription();
 		if ( null == s && null == x ) {
 		    equals = true;
 		} else if ( null != s && null != x ) {
@@ -445,38 +445,38 @@ final public class AreaQuery implements Query {
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Name", x, "VARCHAR",
+	    builder.addWhereClause( "Description", x, "VARCHAR",
                 QueryBuilder.NOT_NULL, exactFlag( exact ) );
     }
 
     /**
-     * Set the Name to query
-     * @param x The Name of the Area to query.
+     * Set the Description to query
+     * @param x The Description of the Area to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryName( 
+    public void setQueryDescription( 
 				String x )
     throws DataObjectException, QueryException {
-	setQueryName( x, true );
+	setQueryDescription( x, true );
     }
 
     /**
-     * Add Name to the ORDER BY clause.
+     * Add Description to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByName(boolean direction_flag) {
-        builder.addOrderByColumn("Name",
+    public void addOrderByDescription(boolean direction_flag) {
+        builder.addOrderByColumn("Description",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Name to the ORDER BY clause.  This convenience
+     * Add Description to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByName() {
-        builder.addOrderByColumn("Name","ASC");
+    public void addOrderByDescription() {
+        builder.addOrderByColumn("Description","ASC");
     }
 
     /**

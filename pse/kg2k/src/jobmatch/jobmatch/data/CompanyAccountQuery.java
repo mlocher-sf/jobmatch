@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CompanyAccountQuery.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CompanyAccountQuery.java
  *-----------------------------------------------------------------------------
  */
 
@@ -110,8 +110,8 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  * <P><PRE>
  *             dq.reset();
  * </PRE>
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 final public class CompanyAccountQuery implements Query {
 
@@ -477,6 +477,287 @@ final public class CompanyAccountQuery implements Query {
      */
     public void addOrderByUsername() {
         builder.addOrderByColumn("Username","ASC");
+    }
+
+
+    /**
+     * Set the Email to query.
+     *
+     * @param x The Email of the CompanyAccount to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryEmail(
+				String x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    CompanyAccountDO DO = ( CompanyAccountDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		String s = DO.getEmail();
+		if ( null == s && null == x ) {
+		    equals = true;
+		} else if ( null != s && null != x ) {
+		    if ( exact ) 
+			equals = s.equals( x );
+		    else {
+			equals = ( -1 != s.toLowerCase().indexOf(
+					 x.toLowerCase() ) );
+		    }
+		} else {  // one is null, the other isn't
+		    equals = false;
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "Email", x, "VARCHAR",
+                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the Email to query
+     * @param x The Email of the CompanyAccount to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryEmail( 
+				String x )
+    throws DataObjectException, QueryException {
+	setQueryEmail( x, true );
+    }
+
+    /**
+     * Add Email to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByEmail(boolean direction_flag) {
+        builder.addOrderByColumn("Email",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add Email to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByEmail() {
+        builder.addOrderByColumn("Email","ASC");
+    }
+
+
+    /**
+     * Set the LastLogin to query.
+     *
+     * @param x The LastLogin of the CompanyAccount to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryLastLogin(
+				java.sql.Timestamp x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    CompanyAccountDO DO = ( CompanyAccountDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		Date d = (Date) DO.getLastLogin();
+		if ( null == d && null == x ) {
+		    equals = true;
+		} else if ( null != d && null != x ) {
+		    equals = d.equals( x );
+		} else {  // one is null, the other isn't
+		    equals = false;
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "LastLogin", x, "TIMESTAMP",
+                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the LastLogin to query
+     * @param x The LastLogin of the CompanyAccount to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryLastLogin( 
+				java.sql.Timestamp x )
+    throws DataObjectException, QueryException {
+	setQueryLastLogin( x, true );
+    }
+
+    /**
+     * Add LastLogin to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByLastLogin(boolean direction_flag) {
+        builder.addOrderByColumn("LastLogin",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add LastLogin to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByLastLogin() {
+        builder.addOrderByColumn("LastLogin","ASC");
+    }
+
+
+    /**
+     * Set the LoginReminder to query.
+     *
+     * @param x The LoginReminder of the CompanyAccount to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryLoginReminder(
+				int x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    CompanyAccountDO DO = ( CompanyAccountDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// primitive types are compared using the == operator.
+		equals = ( DO.getLoginReminder() == x );
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "LoginReminder", x, "INTEGER",
+                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the LoginReminder to query
+     * @param x The LoginReminder of the CompanyAccount to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryLoginReminder( 
+				int x )
+    throws DataObjectException, QueryException {
+	setQueryLoginReminder( x, true );
+    }
+
+    /**
+     * Add LoginReminder to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByLoginReminder(boolean direction_flag) {
+        builder.addOrderByColumn("LoginReminder",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add LoginReminder to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByLoginReminder() {
+        builder.addOrderByColumn("LoginReminder","ASC");
+    }
+
+
+    /**
+     * Set the Company to query.
+     *
+     * @param x The Company of the CompanyAccount to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryCompany(
+				jobmatch.data.CompanyDO x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    CompanyAccountDO DO = ( CompanyAccountDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// DOs are compared by their handles..
+		jobmatch.data.CompanyDO m = DO.getCompany();
+		if ( null == m && null == x ) {
+		    equals = true;
+		} else if ( null == m || null == x ) {
+		    equals = false;
+		} else {
+		    equals = ( DO.getCompany().getOId().toString().equals( x.getOId().toString() ) );
+if ( equals && m != x ) {
+System.err.println("\n----------------------------------------------------------");
+System.err.println("m ="+m );
+System.err.println("x ="+x );
+}
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "Company", x, "DECIMAL(19,0)",
+                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the Company to query
+     * @param x The Company of the CompanyAccount to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryCompany( 
+				jobmatch.data.CompanyDO x )
+    throws DataObjectException, QueryException {
+	setQueryCompany( x, true );
+    }
+
+    /**
+     * Add Company to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByCompany(boolean direction_flag) {
+        builder.addOrderByColumn("Company",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add Company to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByCompany() {
+        builder.addOrderByColumn("Company","ASC");
     }
 
     /**

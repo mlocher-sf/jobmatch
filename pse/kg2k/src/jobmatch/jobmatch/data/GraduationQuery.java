@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/GraduationQuery.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/GraduationQuery.java
  *-----------------------------------------------------------------------------
  */
 
@@ -110,8 +110,8 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  * <P><PRE>
  *             dq.reset();
  * </PRE>
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 final public class GraduationQuery implements Query {
 
@@ -403,6 +403,80 @@ final public class GraduationQuery implements Query {
 	throw new ObjectIdException(
 	    "next() should not be used.  Use getNextDO() instead." );
 	//return null;
+    }
+
+
+    /**
+     * Set the Description to query.
+     *
+     * @param x The Description of the Graduation to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryDescription(
+				String x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    GraduationDO DO = ( GraduationDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		String s = DO.getDescription();
+		if ( null == s && null == x ) {
+		    equals = true;
+		} else if ( null != s && null != x ) {
+		    if ( exact ) 
+			equals = s.equals( x );
+		    else {
+			equals = ( -1 != s.toLowerCase().indexOf(
+					 x.toLowerCase() ) );
+		    }
+		} else {  // one is null, the other isn't
+		    equals = false;
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "Description", x, "VARCHAR",
+                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the Description to query
+     * @param x The Description of the Graduation to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryDescription( 
+				String x )
+    throws DataObjectException, QueryException {
+	setQueryDescription( x, true );
+    }
+
+    /**
+     * Add Description to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByDescription(boolean direction_flag) {
+        builder.addOrderByColumn("Description",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add Description to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByDescription() {
+        builder.addOrderByColumn("Description","ASC");
     }
 
     /**

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/ContactpersonDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/ContactpersonDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -53,8 +53,8 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the ContactpersonDO information.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
  public class ContactpersonDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {

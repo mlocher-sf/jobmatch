@@ -10,9 +10,8 @@ create table Company
     Name VARCHAR(30) DEFAULT "" NOT NULL   ,
     NumberEmployees INTEGER     ,
     ShortDescription LONGVARCHAR(32) DEFAULT ""    ,
-    Contact DECIMAL(19,0)  NOT NULL  REFERENCES Contactperson ( oid ) ,
-    Industry DECIMAL(19,0)    REFERENCES Industry ( oid ) ,
-    Account DECIMAL(19,0)  NOT NULL   ,
+    Contact DECIMAL(19,0)  NOT NULL   ,
+    Industry DECIMAL(19,0)     ,
     Presence VARCHAR(40) DEFAULT ""    ,
     URL VARCHAR(50) DEFAULT ""    ,
 

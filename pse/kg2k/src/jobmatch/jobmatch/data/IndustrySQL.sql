@@ -2,8 +2,9 @@
 
 create table Industry
 (
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
 /* class Industry */
-    Type VARCHAR(30) DEFAULT "" NOT NULL   ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CandidateDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CandidateDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -53,8 +53,8 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CandidateDO information.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
  public class CandidateDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
@@ -688,39 +688,39 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Nationality
+////////////////////////// data member City
 
-   /* static final RDBColumn Nationality for use with QueryBuilder.
+   /* static final RDBColumn City for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Nationality = 
-			    new RDBColumn( table, "Nationality" );
+   static public final RDBColumn City = 
+			    new RDBColumn( table, "City" );
 
    /**
-    * Get Nationality of the Candidate
+    * Get City of the Candidate
     *
-    * @return Nationality of the Candidate
+    * @return City of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getNationality () 
+   public String getCity () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Nationality;
+      return data.City;
    }
 
    /**
-    * Set Nationality of the Candidate
+    * Set City of the Candidate
     *
-    * @param Nationality of the Candidate
+    * @param City of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setNationality ( String Nationality )
+   public void setCity ( String City )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -729,104 +729,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Nationality =  markNewValue(
-	data.Nationality, Nationality , 0, 25, false );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Sex
-
-   /* static final RDBColumn Sex for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Sex = 
-			    new RDBColumn( table, "Sex" );
-
-   /**
-    * Get Sex of the Candidate
-    *
-    * @return Sex of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public boolean getSex () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Sex;
-   }
-
-   /**
-    * Set Sex of the Candidate
-    *
-    * @param Sex of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setSex ( boolean Sex )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Sex =  markNewValue(
-	data.Sex, Sex  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Status
-
-   /* static final RDBColumn Status for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Status = 
-			    new RDBColumn( table, "Status" );
-
-   /**
-    * Get Status of the Candidate
-    *
-    * @return Status of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public boolean getStatus () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Status;
-   }
-
-   /**
-    * Set Status of the Candidate
-    *
-    * @param Status of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setStatus ( boolean Status )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Status =  markNewValue(
-	data.Status, Status  );
+      data.City =  markNewValue(
+	data.City, City , 0, 30, false );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -880,39 +784,39 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Jobwish
+////////////////////////// data member Fax
 
-   /* static final RDBColumn Jobwish for use with QueryBuilder.
+   /* static final RDBColumn Fax for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Jobwish = 
-			    new RDBColumn( table, "Jobwish" );
+   static public final RDBColumn Fax = 
+			    new RDBColumn( table, "Fax" );
 
    /**
-    * Get Jobwish of the Candidate
+    * Get Fax of the Candidate
     *
-    * @return Jobwish of the Candidate
+    * @return Fax of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.JobwishDO getJobwish () 
+   public String getFax () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Jobwish;
+      return data.Fax;
    }
 
    /**
-    * Set Jobwish of the Candidate
+    * Set Fax of the Candidate
     *
-    * @param Jobwish of the Candidate
+    * @param Fax of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setJobwish ( jobmatch.data.JobwishDO Jobwish )
+   public void setFax ( String Fax )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -921,104 +825,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Jobwish = (jobmatch.data.JobwishDO) markNewValue(
-	data.Jobwish, Jobwish  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Picture
-
-   /* static final RDBColumn Picture for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Picture = 
-			    new RDBColumn( table, "Picture" );
-
-   /**
-    * Get Picture of the Candidate
-    *
-    * @return Picture of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public byte[] getPicture () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Picture;
-   }
-
-   /**
-    * Set Picture of the Candidate
-    *
-    * @param Picture of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setPicture ( byte[] Picture )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Picture =  markNewValue(
-	data.Picture, Picture  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Lname
-
-   /* static final RDBColumn Lname for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Lname = 
-			    new RDBColumn( table, "Lname" );
-
-   /**
-    * Get Lname of the Candidate
-    *
-    * @return Lname of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getLname () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Lname;
-   }
-
-   /**
-    * Set Lname of the Candidate
-    *
-    * @param Lname of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setLname ( String Lname )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Lname =  markNewValue(
-	data.Lname, Lname , 0, 25, false );
+      data.Fax =  markNewValue(
+	data.Fax, Fax , 0, 25, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -1072,198 +880,6 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Email
-
-   /* static final RDBColumn Email for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Email = 
-			    new RDBColumn( table, "Email" );
-
-   /**
-    * Get Email of the Candidate
-    *
-    * @return Email of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getEmail () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Email;
-   }
-
-   /**
-    * Set Email of the Candidate
-    *
-    * @param Email of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setEmail ( String Email )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Email =  markNewValue(
-	data.Email, Email , 0, 50, false );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Birthdate
-
-   /* static final RDBColumn Birthdate for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Birthdate = 
-			    new RDBColumn( table, "Birthdate" );
-
-   /**
-    * Get Birthdate of the Candidate
-    *
-    * @return Birthdate of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Date getBirthdate () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Birthdate;
-   }
-
-   /**
-    * Set Birthdate of the Candidate
-    *
-    * @param Birthdate of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setBirthdate ( java.sql.Date Birthdate )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Birthdate =  markNewValue(
-	data.Birthdate, Birthdate  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Residence
-
-   /* static final RDBColumn Residence for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Residence = 
-			    new RDBColumn( table, "Residence" );
-
-   /**
-    * Get Residence of the Candidate
-    *
-    * @return Residence of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getResidence () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Residence;
-   }
-
-   /**
-    * Set Residence of the Candidate
-    *
-    * @param Residence of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setResidence ( String Residence )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Residence =  markNewValue(
-	data.Residence, Residence , 0, 50, true );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Street
-
-   /* static final RDBColumn Street for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Street = 
-			    new RDBColumn( table, "Street" );
-
-   /**
-    * Get Street of the Candidate
-    *
-    * @return Street of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getStreet () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Street;
-   }
-
-   /**
-    * Set Street of the Candidate
-    *
-    * @param Street of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setStreet ( String Street )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Street =  markNewValue(
-	data.Street, Street , 0, 50, false );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member HouseNumber
 
    /* static final RDBColumn HouseNumber for use with QueryBuilder.
@@ -1312,39 +928,39 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member PLZ
+////////////////////////// data member Lname
 
-   /* static final RDBColumn PLZ for use with QueryBuilder.
+   /* static final RDBColumn Lname for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn PLZ = 
-			    new RDBColumn( table, "PLZ" );
+   static public final RDBColumn Lname = 
+			    new RDBColumn( table, "Lname" );
 
    /**
-    * Get PLZ of the Candidate
+    * Get Lname of the Candidate
     *
-    * @return PLZ of the Candidate
+    * @return Lname of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public int getPLZ () 
+   public String getLname () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.PLZ;
+      return data.Lname;
    }
 
    /**
-    * Set PLZ of the Candidate
+    * Set Lname of the Candidate
     *
-    * @param PLZ of the Candidate
+    * @param Lname of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setPLZ ( int PLZ )
+   public void setLname ( String Lname )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -1353,104 +969,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.PLZ =  markNewValue(
-	data.PLZ, PLZ  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member City
-
-   /* static final RDBColumn City for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn City = 
-			    new RDBColumn( table, "City" );
-
-   /**
-    * Get City of the Candidate
-    *
-    * @return City of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getCity () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.City;
-   }
-
-   /**
-    * Set City of the Candidate
-    *
-    * @param City of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setCity ( String City )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.City =  markNewValue(
-	data.City, City , 0, 30, false );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Phone
-
-   /* static final RDBColumn Phone for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Phone = 
-			    new RDBColumn( table, "Phone" );
-
-   /**
-    * Get Phone of the Candidate
-    *
-    * @return Phone of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getPhone () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Phone;
-   }
-
-   /**
-    * Set Phone of the Candidate
-    *
-    * @param Phone of the Candidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setPhone ( String Phone )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Phone =  markNewValue(
-	data.Phone, Phone , 0, 25, true );
+      data.Lname =  markNewValue(
+	data.Lname, Lname , 0, 25, false );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -1504,39 +1024,39 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Fax
+////////////////////////// data member Nationality
 
-   /* static final RDBColumn Fax for use with QueryBuilder.
+   /* static final RDBColumn Nationality for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Fax = 
-			    new RDBColumn( table, "Fax" );
+   static public final RDBColumn Nationality = 
+			    new RDBColumn( table, "Nationality" );
 
    /**
-    * Get Fax of the Candidate
+    * Get Nationality of the Candidate
     *
-    * @return Fax of the Candidate
+    * @return Nationality of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getFax () 
+   public String getNationality () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Fax;
+      return data.Nationality;
    }
 
    /**
-    * Set Fax of the Candidate
+    * Set Nationality of the Candidate
     *
-    * @param Fax of the Candidate
+    * @param Nationality of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setFax ( String Fax )
+   public void setNationality ( String Nationality )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -1545,46 +1065,46 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Fax =  markNewValue(
-	data.Fax, Fax , 0, 25, true );
+      data.Nationality =  markNewValue(
+	data.Nationality, Nationality , 0, 25, false );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
 
 
-////////////////////////// data member LastLogin
+////////////////////////// data member PLZ
 
-   /* static final RDBColumn LastLogin for use with QueryBuilder.
+   /* static final RDBColumn PLZ for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn LastLogin = 
-			    new RDBColumn( table, "LastLogin" );
+   static public final RDBColumn PLZ = 
+			    new RDBColumn( table, "PLZ" );
 
    /**
-    * Get LastLogin of the Candidate
+    * Get PLZ of the Candidate
     *
-    * @return LastLogin of the Candidate
+    * @return PLZ of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public java.sql.Timestamp getLastLogin () 
+   public int getPLZ () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.LastLogin;
+      return data.PLZ;
    }
 
    /**
-    * Set LastLogin of the Candidate
+    * Set PLZ of the Candidate
     *
-    * @param LastLogin of the Candidate
+    * @param PLZ of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setLastLogin ( java.sql.Timestamp LastLogin )
+   public void setPLZ ( int PLZ )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -1593,46 +1113,46 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.LastLogin =  markNewValue(
-	data.LastLogin, LastLogin  );
+      data.PLZ =  markNewValue(
+	data.PLZ, PLZ  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
 
 
-////////////////////////// data member Account
+////////////////////////// data member Phone
 
-   /* static final RDBColumn Account for use with QueryBuilder.
+   /* static final RDBColumn Phone for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Account = 
-			    new RDBColumn( table, "Account" );
+   static public final RDBColumn Phone = 
+			    new RDBColumn( table, "Phone" );
 
    /**
-    * Get Account of the Candidate
+    * Get Phone of the Candidate
     *
-    * @return Account of the Candidate
+    * @return Phone of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.CandidateAccountDO getAccount () 
+   public String getPhone () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Account;
+      return data.Phone;
    }
 
    /**
-    * Set Account of the Candidate
+    * Set Phone of the Candidate
     *
-    * @param Account of the Candidate
+    * @param Phone of the Candidate
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setAccount ( jobmatch.data.CandidateAccountDO Account )
+   public void setPhone ( String Phone )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -1641,8 +1161,296 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Account = (jobmatch.data.CandidateAccountDO) markNewValue(
-	data.Account, Account  );
+      data.Phone =  markNewValue(
+	data.Phone, Phone , 0, 25, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Picture
+
+   /* static final RDBColumn Picture for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Picture = 
+			    new RDBColumn( table, "Picture" );
+
+   /**
+    * Get Picture of the Candidate
+    *
+    * @return Picture of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public byte[] getPicture () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Picture;
+   }
+
+   /**
+    * Set Picture of the Candidate
+    *
+    * @param Picture of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setPicture ( byte[] Picture )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Picture =  markNewValue(
+	data.Picture, Picture  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Residence
+
+   /* static final RDBColumn Residence for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Residence = 
+			    new RDBColumn( table, "Residence" );
+
+   /**
+    * Get Residence of the Candidate
+    *
+    * @return Residence of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getResidence () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Residence;
+   }
+
+   /**
+    * Set Residence of the Candidate
+    *
+    * @param Residence of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setResidence ( String Residence )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Residence =  markNewValue(
+	data.Residence, Residence , 0, 50, true );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Status
+
+   /* static final RDBColumn Status for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Status = 
+			    new RDBColumn( table, "Status" );
+
+   /**
+    * Get Status of the Candidate
+    *
+    * @return Status of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public boolean getStatus () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Status;
+   }
+
+   /**
+    * Set Status of the Candidate
+    *
+    * @param Status of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setStatus ( boolean Status )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Status =  markNewValue(
+	data.Status, Status  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Street
+
+   /* static final RDBColumn Street for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Street = 
+			    new RDBColumn( table, "Street" );
+
+   /**
+    * Get Street of the Candidate
+    *
+    * @return Street of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getStreet () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Street;
+   }
+
+   /**
+    * Set Street of the Candidate
+    *
+    * @param Street of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setStreet ( String Street )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Street =  markNewValue(
+	data.Street, Street , 0, 50, false );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Sex
+
+   /* static final RDBColumn Sex for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Sex = 
+			    new RDBColumn( table, "Sex" );
+
+   /**
+    * Get Sex of the Candidate
+    *
+    * @return Sex of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getSex () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Sex;
+   }
+
+   /**
+    * Set Sex of the Candidate
+    *
+    * @param Sex of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setSex ( String Sex )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Sex =  markNewValue(
+	data.Sex, Sex , 0, 32, false );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+
+////////////////////////// data member Birthdate
+
+   /* static final RDBColumn Birthdate for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Birthdate = 
+			    new RDBColumn( table, "Birthdate" );
+
+   /**
+    * Get Birthdate of the Candidate
+    *
+    * @return Birthdate of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Date getBirthdate () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Birthdate;
+   }
+
+   /**
+    * Set Birthdate of the Candidate
+    *
+    * @param Birthdate of the Candidate
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setBirthdate ( java.sql.Date Birthdate )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Birthdate =  markNewValue(
+	data.Birthdate, Birthdate  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -1696,26 +1504,10 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setNationality( 
+	setCity( 
 	    
 		rs.getString( 
-			"Nationality"  )
-	    
-	);
-	
-	
-	setSex( 
-	    
-		rs.getBoolean( 
-			"Sex"  )
-	    
-	);
-	
-	
-	setStatus( 
-	    
-		rs.getBoolean( 
-			"Status"  )
+			"City"  )
 	    
 	);
 	
@@ -1728,26 +1520,10 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setJobwish( 
-	    jobmatch.data.JobwishDO.createExisting( 
-		rs.getBigDecimal( 
-			"Jobwish" , 0 )
-	     )
-	);
-	
-	
-	setPicture( 
-	    
-		rs.getBytes( 
-			"Picture"  )
-	    
-	);
-	
-	
-	setLname( 
+	setFax( 
 	    
 		rs.getString( 
-			"Lname"  )
+			"Fax"  )
 	    
 	);
 	
@@ -1760,38 +1536,6 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setEmail( 
-	    
-		rs.getString( 
-			"Email"  )
-	    
-	);
-	
-	
-	setBirthdate( 
-	    
-		rs.getDate( 
-			"Birthdate"  )
-	    
-	);
-	
-	
-	setResidence( 
-	    
-		rs.getString( 
-			"Residence"  )
-	    
-	);
-	
-	
-	setStreet( 
-	    
-		rs.getString( 
-			"Street"  )
-	    
-	);
-	
-	
 	setHouseNumber( 
 	    
 		rs.getString( 
@@ -1800,26 +1544,10 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setPLZ( 
-	    
-		rs.getInt( 
-			"PLZ"  )
-	    
-	);
-	
-	
-	setCity( 
+	setLname( 
 	    
 		rs.getString( 
-			"City"  )
-	    
-	);
-	
-	
-	setPhone( 
-	    
-		rs.getString( 
-			"Phone"  )
+			"Lname"  )
 	    
 	);
 	
@@ -1832,27 +1560,75 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setFax( 
+	setNationality( 
 	    
 		rs.getString( 
-			"Fax"  )
+			"Nationality"  )
 	    
 	);
 	
 	
-	setLastLogin( 
+	setPLZ( 
 	    
-		rs.getTimestamp( 
-			"LastLogin"  )
+		rs.getInt( 
+			"PLZ"  )
 	    
 	);
 	
 	
-	setAccount( 
-	    jobmatch.data.CandidateAccountDO.createExisting( 
-		rs.getBigDecimal( 
-			"Account" , 0 )
-	     )
+	setPhone( 
+	    
+		rs.getString( 
+			"Phone"  )
+	    
+	);
+	
+	
+	setPicture( 
+	    
+		rs.getBytes( 
+			"Picture"  )
+	    
+	);
+	
+	
+	setResidence( 
+	    
+		rs.getString( 
+			"Residence"  )
+	    
+	);
+	
+	
+	setStatus( 
+	    
+		rs.getBoolean( 
+			"Status"  )
+	    
+	);
+	
+	
+	setStreet( 
+	    
+		rs.getString( 
+			"Street"  )
+	    
+	);
+	
+	
+	setSex( 
+	    
+		rs.getString( 
+			"Sex"  )
+	    
+	);
+	
+	
+	setBirthdate( 
+	    
+		rs.getDate( 
+			"Birthdate"  )
+	    
 	);
 	
 
@@ -1888,7 +1664,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Candidate ( AIESECMember, Nationality, Sex, Status, Competence, Jobwish, Picture, Lname, Fname, Email, Birthdate, Residence, Street, HouseNumber, PLZ, City, Phone, Natel, Fax, LastLogin, Account, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into Candidate ( AIESECMember, City, Competence, Fax, Fname, HouseNumber, Lname, Natel, Nationality, PLZ, Phone, Picture, Residence, Status, Street, Sex, Birthdate, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1899,45 +1675,37 @@ import com.lutris.dods.builder.generator.query.*;
 	    	setPrepStmtParam_boolean( stmt, param,
 		getAIESECMember() );
 	setPrepStmtParam_String( stmt, param,
-		getNationality() );
-	setPrepStmtParam_boolean( stmt, param,
-		getSex() );
-	setPrepStmtParam_boolean( stmt, param,
-		getStatus() );
+		getCity() );
 	setPrepStmtParam_String( stmt, param,
 		getCompetence() );
-	setPrepStmtParam_DO( stmt, param,
-		getJobwish() );
-	setPrepStmtParam_bytes( stmt, param,
-		getPicture() );
 	setPrepStmtParam_String( stmt, param,
-		getLname() );
+		getFax() );
 	setPrepStmtParam_String( stmt, param,
 		getFname() );
 	setPrepStmtParam_String( stmt, param,
-		getEmail() );
-	setPrepStmtParam_java_sql_Date( stmt, param,
-		getBirthdate() );
-	setPrepStmtParam_String( stmt, param,
-		getResidence() );
-	setPrepStmtParam_String( stmt, param,
-		getStreet() );
-	setPrepStmtParam_String( stmt, param,
 		getHouseNumber() );
-	setPrepStmtParam_int( stmt, param,
-		getPLZ() );
 	setPrepStmtParam_String( stmt, param,
-		getCity() );
-	setPrepStmtParam_String( stmt, param,
-		getPhone() );
+		getLname() );
 	setPrepStmtParam_String( stmt, param,
 		getNatel() );
 	setPrepStmtParam_String( stmt, param,
-		getFax() );
-	setPrepStmtParam_java_sql_Timestamp( stmt, param,
-		getLastLogin() );
-	setPrepStmtParam_DO( stmt, param,
-		getAccount() );
+		getNationality() );
+	setPrepStmtParam_int( stmt, param,
+		getPLZ() );
+	setPrepStmtParam_String( stmt, param,
+		getPhone() );
+	setPrepStmtParam_bytes( stmt, param,
+		getPicture() );
+	setPrepStmtParam_String( stmt, param,
+		getResidence() );
+	setPrepStmtParam_boolean( stmt, param,
+		getStatus() );
+	setPrepStmtParam_String( stmt, param,
+		getStreet() );
+	setPrepStmtParam_String( stmt, param,
+		getSex() );
+	setPrepStmtParam_java_sql_Date( stmt, param,
+		getBirthdate() );
 
 
 	    /* The order of the values being inserted must match
@@ -1970,7 +1738,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Candidate set " + getVersionColumnName() + " = ?, AIESECMember = ?, Nationality = ?, Sex = ?, Status = ?, Competence = ?, Jobwish = ?, Picture = ?, Lname = ?, Fname = ?, Email = ?, Birthdate = ?, Residence = ?, Street = ?, HouseNumber = ?, PLZ = ?, City = ?, Phone = ?, Natel = ?, Fax = ?, LastLogin = ?, Account = ? " +
+	    "update Candidate set " + getVersionColumnName() + " = ?, AIESECMember = ?, City = ?, Competence = ?, Fax = ?, Fname = ?, HouseNumber = ?, Lname = ?, Natel = ?, Nationality = ?, PLZ = ?, Phone = ?, Picture = ?, Residence = ?, Status = ?, Street = ?, Sex = ?, Birthdate = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1983,45 +1751,37 @@ import com.lutris.dods.builder.generator.query.*;
 	    	setPrepStmtParam_boolean( stmt, param,
 		getAIESECMember() );
 	setPrepStmtParam_String( stmt, param,
-		getNationality() );
-	setPrepStmtParam_boolean( stmt, param,
-		getSex() );
-	setPrepStmtParam_boolean( stmt, param,
-		getStatus() );
+		getCity() );
 	setPrepStmtParam_String( stmt, param,
 		getCompetence() );
-	setPrepStmtParam_DO( stmt, param,
-		getJobwish() );
-	setPrepStmtParam_bytes( stmt, param,
-		getPicture() );
 	setPrepStmtParam_String( stmt, param,
-		getLname() );
+		getFax() );
 	setPrepStmtParam_String( stmt, param,
 		getFname() );
 	setPrepStmtParam_String( stmt, param,
-		getEmail() );
-	setPrepStmtParam_java_sql_Date( stmt, param,
-		getBirthdate() );
-	setPrepStmtParam_String( stmt, param,
-		getResidence() );
-	setPrepStmtParam_String( stmt, param,
-		getStreet() );
-	setPrepStmtParam_String( stmt, param,
 		getHouseNumber() );
-	setPrepStmtParam_int( stmt, param,
-		getPLZ() );
 	setPrepStmtParam_String( stmt, param,
-		getCity() );
-	setPrepStmtParam_String( stmt, param,
-		getPhone() );
+		getLname() );
 	setPrepStmtParam_String( stmt, param,
 		getNatel() );
 	setPrepStmtParam_String( stmt, param,
-		getFax() );
-	setPrepStmtParam_java_sql_Timestamp( stmt, param,
-		getLastLogin() );
-	setPrepStmtParam_DO( stmt, param,
-		getAccount() );
+		getNationality() );
+	setPrepStmtParam_int( stmt, param,
+		getPLZ() );
+	setPrepStmtParam_String( stmt, param,
+		getPhone() );
+	setPrepStmtParam_bytes( stmt, param,
+		getPicture() );
+	setPrepStmtParam_String( stmt, param,
+		getResidence() );
+	setPrepStmtParam_boolean( stmt, param,
+		getStatus() );
+	setPrepStmtParam_String( stmt, param,
+		getStreet() );
+	setPrepStmtParam_String( stmt, param,
+		getSex() );
+	setPrepStmtParam_java_sql_Date( stmt, param,
+		getBirthdate() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -2072,26 +1832,22 @@ import com.lutris.dods.builder.generator.query.*;
 	str += " OID=" + id;
 	if ( null != data ) 
 	    str = str + "\n" + indent + "AIESECMember=" + data.AIESECMember
-+ "\n" + indent + "Nationality=" + data.Nationality
-+ "\n" + indent + "Sex=" + data.Sex
-+ "\n" + indent + "Status=" + data.Status
-+ "\n" + indent + "Competence=" + data.Competence
-+ "\n" + indent + "Jobwish=" + ( null == data.Jobwish ? null  : data.Jobwish.toString( indentCount + 1 ) )
-+ "\n" + indent + "Picture=" + data.Picture
-+ "\n" + indent + "Lname=" + data.Lname
-+ "\n" + indent + "Fname=" + data.Fname
-+ "\n" + indent + "Email=" + data.Email
-+ "\n" + indent + "Birthdate=" + data.Birthdate
-+ "\n" + indent + "Residence=" + data.Residence
-+ "\n" + indent + "Street=" + data.Street
-+ "\n" + indent + "HouseNumber=" + data.HouseNumber
-+ "\n" + indent + "PLZ=" + data.PLZ
 + "\n" + indent + "City=" + data.City
-+ "\n" + indent + "Phone=" + data.Phone
-+ "\n" + indent + "Natel=" + data.Natel
++ "\n" + indent + "Competence=" + data.Competence
 + "\n" + indent + "Fax=" + data.Fax
-+ "\n" + indent + "LastLogin=" + data.LastLogin
-+ "\n" + indent + "Account=" + ( null == data.Account ? null  : data.Account.toString( indentCount + 1 ) )
++ "\n" + indent + "Fname=" + data.Fname
++ "\n" + indent + "HouseNumber=" + data.HouseNumber
++ "\n" + indent + "Lname=" + data.Lname
++ "\n" + indent + "Natel=" + data.Natel
++ "\n" + indent + "Nationality=" + data.Nationality
++ "\n" + indent + "PLZ=" + data.PLZ
++ "\n" + indent + "Phone=" + data.Phone
++ "\n" + indent + "Picture=" + data.Picture
++ "\n" + indent + "Residence=" + data.Residence
++ "\n" + indent + "Status=" + data.Status
++ "\n" + indent + "Street=" + data.Street
++ "\n" + indent + "Sex=" + data.Sex
++ "\n" + indent + "Birthdate=" + data.Birthdate
 ;
         return str + "; " + super.toString();
     }
@@ -2116,33 +1872,1490 @@ import com.lutris.dods.builder.generator.query.*;
         str += " OID=" + id;
         if ( null != data )
             str = str + "\n" + indent + "AIESECMember=" + data.AIESECMember
-+ "\n" + indent + "Nationality=" + data.Nationality
-+ "\n" + indent + "Sex=" + data.Sex
-+ "\n" + indent + "Status=" + data.Status
-+ "\n" + indent + "Competence=" + data.Competence
-+ "\n" + indent + "Jobwish=" + ( null == data.Jobwish ? null  : data.Jobwish.toString( indentCount + 1 ) )
-+ "\n" + indent + "Picture=" + data.Picture
-+ "\n" + indent + "Lname=" + data.Lname
-+ "\n" + indent + "Fname=" + data.Fname
-+ "\n" + indent + "Email=" + data.Email
-+ "\n" + indent + "Birthdate=" + data.Birthdate
-+ "\n" + indent + "Residence=" + data.Residence
-+ "\n" + indent + "Street=" + data.Street
-+ "\n" + indent + "HouseNumber=" + data.HouseNumber
-+ "\n" + indent + "PLZ=" + data.PLZ
 + "\n" + indent + "City=" + data.City
-+ "\n" + indent + "Phone=" + data.Phone
-+ "\n" + indent + "Natel=" + data.Natel
++ "\n" + indent + "Competence=" + data.Competence
 + "\n" + indent + "Fax=" + data.Fax
-+ "\n" + indent + "LastLogin=" + data.LastLogin
-+ "\n" + indent + "Account=" + ( null == data.Account ? null  : data.Account.toString( indentCount + 1 ) )
++ "\n" + indent + "Fname=" + data.Fname
++ "\n" + indent + "HouseNumber=" + data.HouseNumber
++ "\n" + indent + "Lname=" + data.Lname
++ "\n" + indent + "Natel=" + data.Natel
++ "\n" + indent + "Nationality=" + data.Nationality
++ "\n" + indent + "PLZ=" + data.PLZ
++ "\n" + indent + "Phone=" + data.Phone
++ "\n" + indent + "Picture=" + data.Picture
++ "\n" + indent + "Residence=" + data.Residence
++ "\n" + indent + "Status=" + data.Status
++ "\n" + indent + "Street=" + data.Street
++ "\n" + indent + "Sex=" + data.Sex
++ "\n" + indent + "Birthdate=" + data.Birthdate
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
     }
 
     
+    /**
+     * Get array of AssociationCandidateDO objects that refer to this DO.
+     *
+     * @return array of AssociationCandidateDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.AssociationCandidateDO[] getAssociationCandidateDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.AssociationCandidateDO[] ret = null;
+	try {
+	    jobmatch.data.AssociationCandidateQuery q = new jobmatch.data.AssociationCandidateQuery();
+	    q.setQueryCandidate( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.AssociationCandidateDO[ 0 ];
+	}
+	return ret;
+    }
 
+    /**
+     * Get the single AssociationCandidateDO object
+     * that refers to this DO.
+     *
+     * @return AssociationCandidateDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one AssociationCandidateDO object was found.
+     */
+    public jobmatch.data.AssociationCandidateDO getAssociationCandidateDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.AssociationCandidateQuery q = new jobmatch.data.AssociationCandidateQuery();
+	q.setQueryCandidate( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a AssociationCandidateDO object that refers to this DO.
+     *
+     * @param referrer AssociationCandidateDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addAssociationCandidateDO( jobmatch.data.AssociationCandidateDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addAssociationCandidateDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a AssociationCandidateDO object that refers to this DO.
+     *
+     * @param referrer AssociationCandidateDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addAssociationCandidateDO( jobmatch.data.AssociationCandidateDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCandidate( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a AssociationCandidateDO object that refers to this DO.
+     *
+     * @param referrer AssociationCandidateDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeAssociationCandidateDO( jobmatch.data.AssociationCandidateDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeAssociationCandidateDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a AssociationCandidateDO object that refers to this DO.
+     *
+     * @param referrer AssociationCandidateDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeAssociationCandidateDO( jobmatch.data.AssociationCandidateDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CandidateDO referred = referrer.getCandidate();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of CandidateAccountDO objects that refer to this DO.
+     *
+     * @return array of CandidateAccountDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.CandidateAccountDO[] getCandidateAccountDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.CandidateAccountDO[] ret = null;
+	try {
+	    jobmatch.data.CandidateAccountQuery q = new jobmatch.data.CandidateAccountQuery();
+	    q.setQueryCandidate( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.CandidateAccountDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single CandidateAccountDO object
+     * that refers to this DO.
+     *
+     * @return CandidateAccountDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one CandidateAccountDO object was found.
+     */
+    public jobmatch.data.CandidateAccountDO getCandidateAccountDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.CandidateAccountQuery q = new jobmatch.data.CandidateAccountQuery();
+	q.setQueryCandidate( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a CandidateAccountDO object that refers to this DO.
+     *
+     * @param referrer CandidateAccountDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addCandidateAccountDO( jobmatch.data.CandidateAccountDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addCandidateAccountDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a CandidateAccountDO object that refers to this DO.
+     *
+     * @param referrer CandidateAccountDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addCandidateAccountDO( jobmatch.data.CandidateAccountDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCandidate( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a CandidateAccountDO object that refers to this DO.
+     *
+     * @param referrer CandidateAccountDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeCandidateAccountDO( jobmatch.data.CandidateAccountDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeCandidateAccountDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a CandidateAccountDO object that refers to this DO.
+     *
+     * @param referrer CandidateAccountDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeCandidateAccountDO( jobmatch.data.CandidateAccountDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CandidateDO referred = referrer.getCandidate();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of CandidateProfileDO objects that refer to this DO.
+     *
+     * @return array of CandidateProfileDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.CandidateProfileDO[] getCandidateProfileDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.CandidateProfileDO[] ret = null;
+	try {
+	    jobmatch.data.CandidateProfileQuery q = new jobmatch.data.CandidateProfileQuery();
+	    q.setQueryCandidate( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.CandidateProfileDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single CandidateProfileDO object
+     * that refers to this DO.
+     *
+     * @return CandidateProfileDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one CandidateProfileDO object was found.
+     */
+    public jobmatch.data.CandidateProfileDO getCandidateProfileDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.CandidateProfileQuery q = new jobmatch.data.CandidateProfileQuery();
+	q.setQueryCandidate( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a CandidateProfileDO object that refers to this DO.
+     *
+     * @param referrer CandidateProfileDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addCandidateProfileDO( jobmatch.data.CandidateProfileDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addCandidateProfileDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a CandidateProfileDO object that refers to this DO.
+     *
+     * @param referrer CandidateProfileDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addCandidateProfileDO( jobmatch.data.CandidateProfileDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCandidate( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a CandidateProfileDO object that refers to this DO.
+     *
+     * @param referrer CandidateProfileDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeCandidateProfileDO( jobmatch.data.CandidateProfileDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeCandidateProfileDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a CandidateProfileDO object that refers to this DO.
+     *
+     * @param referrer CandidateProfileDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeCandidateProfileDO( jobmatch.data.CandidateProfileDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CandidateDO referred = referrer.getCandidate();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of EmployerCandidateDO objects that refer to this DO.
+     *
+     * @return array of EmployerCandidateDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.EmployerCandidateDO[] getEmployerCandidateDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.EmployerCandidateDO[] ret = null;
+	try {
+	    jobmatch.data.EmployerCandidateQuery q = new jobmatch.data.EmployerCandidateQuery();
+	    q.setQueryCandidate( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.EmployerCandidateDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single EmployerCandidateDO object
+     * that refers to this DO.
+     *
+     * @return EmployerCandidateDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one EmployerCandidateDO object was found.
+     */
+    public jobmatch.data.EmployerCandidateDO getEmployerCandidateDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.EmployerCandidateQuery q = new jobmatch.data.EmployerCandidateQuery();
+	q.setQueryCandidate( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a EmployerCandidateDO object that refers to this DO.
+     *
+     * @param referrer EmployerCandidateDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addEmployerCandidateDO( jobmatch.data.EmployerCandidateDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addEmployerCandidateDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a EmployerCandidateDO object that refers to this DO.
+     *
+     * @param referrer EmployerCandidateDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addEmployerCandidateDO( jobmatch.data.EmployerCandidateDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCandidate( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a EmployerCandidateDO object that refers to this DO.
+     *
+     * @param referrer EmployerCandidateDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeEmployerCandidateDO( jobmatch.data.EmployerCandidateDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeEmployerCandidateDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a EmployerCandidateDO object that refers to this DO.
+     *
+     * @param referrer EmployerCandidateDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeEmployerCandidateDO( jobmatch.data.EmployerCandidateDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CandidateDO referred = referrer.getCandidate();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of HobbyDO objects that refer to this DO.
+     *
+     * @return array of HobbyDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.HobbyDO[] getHobbyDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.HobbyDO[] ret = null;
+	try {
+	    jobmatch.data.HobbyQuery q = new jobmatch.data.HobbyQuery();
+	    q.setQueryCandidate( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.HobbyDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single HobbyDO object
+     * that refers to this DO.
+     *
+     * @return HobbyDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one HobbyDO object was found.
+     */
+    public jobmatch.data.HobbyDO getHobbyDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.HobbyQuery q = new jobmatch.data.HobbyQuery();
+	q.setQueryCandidate( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a HobbyDO object that refers to this DO.
+     *
+     * @param referrer HobbyDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addHobbyDO( jobmatch.data.HobbyDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addHobbyDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a HobbyDO object that refers to this DO.
+     *
+     * @param referrer HobbyDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addHobbyDO( jobmatch.data.HobbyDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCandidate( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a HobbyDO object that refers to this DO.
+     *
+     * @param referrer HobbyDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeHobbyDO( jobmatch.data.HobbyDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeHobbyDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a HobbyDO object that refers to this DO.
+     *
+     * @param referrer HobbyDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeHobbyDO( jobmatch.data.HobbyDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CandidateDO referred = referrer.getCandidate();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of JobwishDO objects that refer to this DO.
+     *
+     * @return array of JobwishDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.JobwishDO[] getJobwishDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.JobwishDO[] ret = null;
+	try {
+	    jobmatch.data.JobwishQuery q = new jobmatch.data.JobwishQuery();
+	    q.setQueryCandidate( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.JobwishDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single JobwishDO object
+     * that refers to this DO.
+     *
+     * @return JobwishDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one JobwishDO object was found.
+     */
+    public jobmatch.data.JobwishDO getJobwishDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.JobwishQuery q = new jobmatch.data.JobwishQuery();
+	q.setQueryCandidate( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a JobwishDO object that refers to this DO.
+     *
+     * @param referrer JobwishDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addJobwishDO( jobmatch.data.JobwishDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addJobwishDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a JobwishDO object that refers to this DO.
+     *
+     * @param referrer JobwishDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addJobwishDO( jobmatch.data.JobwishDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCandidate( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a JobwishDO object that refers to this DO.
+     *
+     * @param referrer JobwishDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeJobwishDO( jobmatch.data.JobwishDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeJobwishDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a JobwishDO object that refers to this DO.
+     *
+     * @param referrer JobwishDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeJobwishDO( jobmatch.data.JobwishDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CandidateDO referred = referrer.getCandidate();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of LanguageCandidateDO objects that refer to this DO.
+     *
+     * @return array of LanguageCandidateDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.LanguageCandidateDO[] getLanguageCandidateDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.LanguageCandidateDO[] ret = null;
+	try {
+	    jobmatch.data.LanguageCandidateQuery q = new jobmatch.data.LanguageCandidateQuery();
+	    q.setQueryCandidate( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.LanguageCandidateDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single LanguageCandidateDO object
+     * that refers to this DO.
+     *
+     * @return LanguageCandidateDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one LanguageCandidateDO object was found.
+     */
+    public jobmatch.data.LanguageCandidateDO getLanguageCandidateDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.LanguageCandidateQuery q = new jobmatch.data.LanguageCandidateQuery();
+	q.setQueryCandidate( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a LanguageCandidateDO object that refers to this DO.
+     *
+     * @param referrer LanguageCandidateDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addLanguageCandidateDO( jobmatch.data.LanguageCandidateDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addLanguageCandidateDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a LanguageCandidateDO object that refers to this DO.
+     *
+     * @param referrer LanguageCandidateDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addLanguageCandidateDO( jobmatch.data.LanguageCandidateDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCandidate( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a LanguageCandidateDO object that refers to this DO.
+     *
+     * @param referrer LanguageCandidateDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeLanguageCandidateDO( jobmatch.data.LanguageCandidateDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeLanguageCandidateDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a LanguageCandidateDO object that refers to this DO.
+     *
+     * @param referrer LanguageCandidateDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeLanguageCandidateDO( jobmatch.data.LanguageCandidateDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CandidateDO referred = referrer.getCandidate();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of MatchQueueDO objects that refer to this DO.
+     *
+     * @return array of MatchQueueDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.MatchQueueDO[] getMatchQueueDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.MatchQueueDO[] ret = null;
+	try {
+	    jobmatch.data.MatchQueueQuery q = new jobmatch.data.MatchQueueQuery();
+	    q.setQueryCandidate( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.MatchQueueDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single MatchQueueDO object
+     * that refers to this DO.
+     *
+     * @return MatchQueueDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one MatchQueueDO object was found.
+     */
+    public jobmatch.data.MatchQueueDO getMatchQueueDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.MatchQueueQuery q = new jobmatch.data.MatchQueueQuery();
+	q.setQueryCandidate( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a MatchQueueDO object that refers to this DO.
+     *
+     * @param referrer MatchQueueDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addMatchQueueDO( jobmatch.data.MatchQueueDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addMatchQueueDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a MatchQueueDO object that refers to this DO.
+     *
+     * @param referrer MatchQueueDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addMatchQueueDO( jobmatch.data.MatchQueueDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCandidate( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a MatchQueueDO object that refers to this DO.
+     *
+     * @param referrer MatchQueueDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeMatchQueueDO( jobmatch.data.MatchQueueDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeMatchQueueDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a MatchQueueDO object that refers to this DO.
+     *
+     * @param referrer MatchQueueDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeMatchQueueDO( jobmatch.data.MatchQueueDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CandidateDO referred = referrer.getCandidate();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of SchoolCandidateDO objects that refer to this DO.
+     *
+     * @return array of SchoolCandidateDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.SchoolCandidateDO[] getSchoolCandidateDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.SchoolCandidateDO[] ret = null;
+	try {
+	    jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	    q.setQueryCandidate( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.SchoolCandidateDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single SchoolCandidateDO object
+     * that refers to this DO.
+     *
+     * @return SchoolCandidateDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one SchoolCandidateDO object was found.
+     */
+    public jobmatch.data.SchoolCandidateDO getSchoolCandidateDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	q.setQueryCandidate( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a SchoolCandidateDO object that refers to this DO.
+     *
+     * @param referrer SchoolCandidateDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addSchoolCandidateDO( jobmatch.data.SchoolCandidateDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addSchoolCandidateDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a SchoolCandidateDO object that refers to this DO.
+     *
+     * @param referrer SchoolCandidateDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addSchoolCandidateDO( jobmatch.data.SchoolCandidateDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCandidate( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a SchoolCandidateDO object that refers to this DO.
+     *
+     * @param referrer SchoolCandidateDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeSchoolCandidateDO( jobmatch.data.SchoolCandidateDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeSchoolCandidateDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a SchoolCandidateDO object that refers to this DO.
+     *
+     * @param referrer SchoolCandidateDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeSchoolCandidateDO( jobmatch.data.SchoolCandidateDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CandidateDO referred = referrer.getCandidate();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+
+
+    /**
+     * From the many-to-many relationship expressed by AssociationCandidateDO,
+     * get array of AssociationDO objects that indirectly refer
+     * to this DO.
+     *
+     * @return array of AssociationDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.AssociationDO[] getAssociationDOArray_via_AssociationCandidate () 
+    throws DataObjectException {
+	jobmatch.data.AssociationDO[] ret = null;
+	try {
+	    jobmatch.data.AssociationCandidateDO[] arr = getAssociationCandidateDOArray();
+	    ret = new jobmatch.data.AssociationDO[ arr.length ];
+	    for ( int i = 0; i < arr.length; i++ ) {
+		ret[ i ] = arr[ i ].getAssociation();
+	    }
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: ", e );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.AssociationDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * To the many-to-many relationship expressed by AssociationCandidateDO,
+     * add a AssociationDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The AssociationDO to add to the AssociationCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapAssociation_via_AssociationCandidateDO( jobmatch.data.AssociationDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapAssociation_via_AssociationCandidateDO( d, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by AssociationCandidateDO,
+     * add a AssociationDO object that indirectly refers to this DO.
+     *
+     * @param b The AssociationDO to add to the AssociationCandidateDO mapping for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapAssociation_via_AssociationCandidateDO( jobmatch.data.AssociationDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.AssociationCandidateDO m = null;
+	try {
+	    m = jobmatch.data.AssociationCandidateDO.createVirgin();
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"jobmatch.data.AssociationCandidateDO.createVirgin failed", e );
+	}
+	m.setAssociation( d );
+	m.setCandidate( this );
+	m.commit( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by AssociationCandidateDO,
+     * remove (delete) the AssociationDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The AssociationDO to remove from the AssociationCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapAssociation_via_AssociationCandidateDO( jobmatch.data.AssociationDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapAssociation_via_AssociationCandidateDO( d, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by AssociationCandidateDO,
+     * remove (delete) the AssociationDO object that indirectly refers
+     * to this DO.
+     *
+     * @param b The AssociationDO to remove from the AssociationCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapAssociation_via_AssociationCandidateDO( jobmatch.data.AssociationDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.AssociationCandidateQuery q = new jobmatch.data.AssociationCandidateQuery();
+	q.setQueryCandidate( this );
+	q.setQueryAssociation( d );
+	q.requireUniqueInstance();
+	jobmatch.data.AssociationCandidateDO m = null;
+	try {
+	    m = q.getNextDO();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( "Multiple mappings for " +
+		this + " and " + d + " in jobmatch.data.AssociationCandidate table." );
+	}
+	m.delete( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by CandidateProfileDO,
+     * get array of ProfileDO objects that indirectly refer
+     * to this DO.
+     *
+     * @return array of ProfileDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.ProfileDO[] getProfileDOArray_via_CandidateProfile () 
+    throws DataObjectException {
+	jobmatch.data.ProfileDO[] ret = null;
+	try {
+	    jobmatch.data.CandidateProfileDO[] arr = getCandidateProfileDOArray();
+	    ret = new jobmatch.data.ProfileDO[ arr.length ];
+	    for ( int i = 0; i < arr.length; i++ ) {
+		ret[ i ] = arr[ i ].getProfile();
+	    }
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: ", e );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.ProfileDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * To the many-to-many relationship expressed by CandidateProfileDO,
+     * add a ProfileDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The ProfileDO to add to the CandidateProfileDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapProfile_via_CandidateProfileDO( jobmatch.data.ProfileDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapProfile_via_CandidateProfileDO( d, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by CandidateProfileDO,
+     * add a ProfileDO object that indirectly refers to this DO.
+     *
+     * @param b The ProfileDO to add to the CandidateProfileDO mapping for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapProfile_via_CandidateProfileDO( jobmatch.data.ProfileDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.CandidateProfileDO m = null;
+	try {
+	    m = jobmatch.data.CandidateProfileDO.createVirgin();
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"jobmatch.data.CandidateProfileDO.createVirgin failed", e );
+	}
+	m.setProfile( d );
+	m.setCandidate( this );
+	m.commit( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by CandidateProfileDO,
+     * remove (delete) the ProfileDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The ProfileDO to remove from the CandidateProfileDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapProfile_via_CandidateProfileDO( jobmatch.data.ProfileDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapProfile_via_CandidateProfileDO( d, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by CandidateProfileDO,
+     * remove (delete) the ProfileDO object that indirectly refers
+     * to this DO.
+     *
+     * @param b The ProfileDO to remove from the CandidateProfileDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapProfile_via_CandidateProfileDO( jobmatch.data.ProfileDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.CandidateProfileQuery q = new jobmatch.data.CandidateProfileQuery();
+	q.setQueryCandidate( this );
+	q.setQueryProfile( d );
+	q.requireUniqueInstance();
+	jobmatch.data.CandidateProfileDO m = null;
+	try {
+	    m = q.getNextDO();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( "Multiple mappings for " +
+		this + " and " + d + " in jobmatch.data.CandidateProfile table." );
+	}
+	m.delete( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by EmployerCandidateDO,
+     * get array of EmployerDO objects that indirectly refer
+     * to this DO.
+     *
+     * @return array of EmployerDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.EmployerDO[] getEmployerDOArray_via_EmployerCandidate () 
+    throws DataObjectException {
+	jobmatch.data.EmployerDO[] ret = null;
+	try {
+	    jobmatch.data.EmployerCandidateDO[] arr = getEmployerCandidateDOArray();
+	    ret = new jobmatch.data.EmployerDO[ arr.length ];
+	    for ( int i = 0; i < arr.length; i++ ) {
+		ret[ i ] = arr[ i ].getEmployer();
+	    }
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: ", e );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.EmployerDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * To the many-to-many relationship expressed by EmployerCandidateDO,
+     * add a EmployerDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The EmployerDO to add to the EmployerCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapEmployer_via_EmployerCandidateDO( jobmatch.data.EmployerDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapEmployer_via_EmployerCandidateDO( d, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by EmployerCandidateDO,
+     * add a EmployerDO object that indirectly refers to this DO.
+     *
+     * @param b The EmployerDO to add to the EmployerCandidateDO mapping for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapEmployer_via_EmployerCandidateDO( jobmatch.data.EmployerDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.EmployerCandidateDO m = null;
+	try {
+	    m = jobmatch.data.EmployerCandidateDO.createVirgin();
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"jobmatch.data.EmployerCandidateDO.createVirgin failed", e );
+	}
+	m.setEmployer( d );
+	m.setCandidate( this );
+	m.commit( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by EmployerCandidateDO,
+     * remove (delete) the EmployerDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The EmployerDO to remove from the EmployerCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapEmployer_via_EmployerCandidateDO( jobmatch.data.EmployerDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapEmployer_via_EmployerCandidateDO( d, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by EmployerCandidateDO,
+     * remove (delete) the EmployerDO object that indirectly refers
+     * to this DO.
+     *
+     * @param b The EmployerDO to remove from the EmployerCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapEmployer_via_EmployerCandidateDO( jobmatch.data.EmployerDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.EmployerCandidateQuery q = new jobmatch.data.EmployerCandidateQuery();
+	q.setQueryCandidate( this );
+	q.setQueryEmployer( d );
+	q.requireUniqueInstance();
+	jobmatch.data.EmployerCandidateDO m = null;
+	try {
+	    m = q.getNextDO();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( "Multiple mappings for " +
+		this + " and " + d + " in jobmatch.data.EmployerCandidate table." );
+	}
+	m.delete( tran );
+    }
 
 
     /**
@@ -2219,43 +3432,7 @@ import com.lutris.dods.builder.generator.query.*;
     modifyDO( dbt, true );
   }
 
-      /**
-     * A stub method for implementing pre-commit assertions 
-     * for the Jobwish data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Jobwish is not valid for writing to the database.
-     */
-    protected void okToCommitJobwish( jobmatch.data.JobwishDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Jobwish data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Jobwish is not valid for deletion from the database.
-     */
-    protected void okToDeleteJobwish( jobmatch.data.JobwishDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
-     * for the Account data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Account is not valid for writing to the database.
-     */
-    protected void okToCommitAccount( jobmatch.data.CandidateAccountDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Account data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Account is not valid for deletion from the database.
-     */
-    protected void okToDeleteAccount( jobmatch.data.CandidateAccountDO member ) 
-    throws RefAssertionException { }
-
-
+  
 
   /**
    * Modifies the DO within its table.
@@ -2290,44 +3467,95 @@ import com.lutris.dods.builder.generator.query.*;
       if ( delete ) {
 	  // Code to perform cascading deletes is generated here
 	  // if cascading deletes are not supported by the database.      
-	  
+	  	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.AssociationCandidateDO[] a = getAssociationCandidateDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.CandidateAccountDO[] a = getCandidateAccountDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.CandidateProfileDO[] a = getCandidateProfileDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.EmployerCandidateDO[] a = getEmployerCandidateDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.HobbyDO[] a = getHobbyDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.JobwishDO[] a = getJobwishDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.LanguageCandidateDO[] a = getLanguageCandidateDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.MatchQueueDO[] a = getMatchQueueDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.SchoolCandidateDO[] a = getSchoolCandidateDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+
 	  // The following line keeps the compiler happy 
 	  // when the CASCADING_DELETES tag is empty.
           if ( false )
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.JobwishDO Jobwish_DO = getJobwish();
-	if ( null != Jobwish_DO ) {
-	    if ( Jobwish_DO.isLoaded() ) {
-		okToCommitJobwish( Jobwish_DO );
-		Jobwish_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! true )
-		throw new RefAssertionException(
-		    "Cannot commit CandidateDO ( " + toString() +
-		    " ) because Jobwish is not allowed to be null." );
-	}
-	jobmatch.data.CandidateAccountDO Account_DO = getAccount();
-	if ( null != Account_DO ) {
-	    if ( Account_DO.isLoaded() ) {
-		okToCommitAccount( Account_DO );
-		Account_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit CandidateDO ( " + toString() +
-		    " ) because Account is not allowed to be null." );
-	}
-
+	  
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CandidateDataStruct.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CandidateDataStruct.java
  *-----------------------------------------------------------------------------
  */
 
@@ -49,8 +49,8 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
 public class CandidateDataStruct implements Cloneable, Serializable {
@@ -75,17 +75,7 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Nationality = null;
-
-/**
- * 
- */
-   public boolean Sex = false;
-
-/**
- * 
- */
-   public boolean Status = false;
+   public String City = null;
 
 /**
  * 
@@ -95,17 +85,7 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public jobmatch.data.JobwishDO Jobwish = null;
-
-/**
- * 
- */
-   public byte[] Picture = {0};
-
-/**
- * 
- */
-   public String Lname = null;
+   public String Fax = null;
 
 /**
  * 
@@ -115,42 +95,12 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Email = null;
-
-/**
- * 
- */
-   public java.sql.Date Birthdate = null;
-
-/**
- * 
- */
-   public String Residence = null;
-
-/**
- * 
- */
-   public String Street = null;
-
-/**
- * 
- */
    public String HouseNumber = null;
 
 /**
  * 
  */
-   public int PLZ = 0;
-
-/**
- * 
- */
-   public String City = null;
-
-/**
- * 
- */
-   public String Phone = null;
+   public String Lname = null;
 
 /**
  * 
@@ -160,17 +110,47 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public String Fax = null;
+   public String Nationality = null;
 
 /**
  * 
  */
-   public java.sql.Timestamp LastLogin = null;
+   public int PLZ = 0;
 
 /**
  * 
  */
-   public jobmatch.data.CandidateAccountDO Account = null;
+   public String Phone = null;
+
+/**
+ * 
+ */
+   public byte[] Picture = {0};
+
+/**
+ * 
+ */
+   public String Residence = null;
+
+/**
+ * 
+ */
+   public boolean Status = false;
+
+/**
+ * 
+ */
+   public String Street = null;
+
+/**
+ * 
+ */
+   public String Sex = null;
+
+/**
+ * 
+ */
+   public java.sql.Date Birthdate = null;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -188,64 +168,52 @@ public class CandidateDataStruct implements Cloneable, Serializable {
 	ret.AIESECMember = AIESECMember;
 	
 	
-	ret.Nationality = Nationality + "";
-	
-	
-	ret.Sex = Sex;
-	
-	
-	ret.Status = Status;
+	ret.City = City + "";
 	
 	
 	ret.Competence = Competence + "";
 	
 	
-	ret.Jobwish = jobmatch.data.JobwishDO.createCopy( Jobwish );
-	
-	
-	ret.Picture = copyByteArray(Picture);
-	
-	
-	ret.Lname = Lname + "";
+	ret.Fax = Fax + "";
 	
 	
 	ret.Fname = Fname + "";
 	
 	
-	ret.Email = Email + "";
-	
-	
-	ret.Birthdate = new java.sql.Date(Birthdate.getTime() );
-	
-	
-	ret.Residence = Residence + "";
-	
-	
-	ret.Street = Street + "";
-	
-	
 	ret.HouseNumber = HouseNumber + "";
 	
 	
-	ret.PLZ = PLZ;
-	
-	
-	ret.City = City + "";
-	
-	
-	ret.Phone = Phone + "";
+	ret.Lname = Lname + "";
 	
 	
 	ret.Natel = Natel + "";
 	
 	
-	ret.Fax = Fax + "";
+	ret.Nationality = Nationality + "";
 	
 	
-	ret.LastLogin = new java.sql.Timestamp(LastLogin.getTime() );
+	ret.PLZ = PLZ;
 	
 	
-	ret.Account = jobmatch.data.CandidateAccountDO.createCopy( Account );
+	ret.Phone = Phone + "";
+	
+	
+	ret.Picture = copyByteArray(Picture);
+	
+	
+	ret.Residence = Residence + "";
+	
+	
+	ret.Status = Status;
+	
+	
+	ret.Street = Street + "";
+	
+	
+	ret.Sex = Sex + "";
+	
+	
+	ret.Birthdate = new java.sql.Date(Birthdate.getTime() );
 	
 
 

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/IndustryDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/IndustryDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the IndustryDO information.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
- public class IndustryDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class IndustryDO extends jobmatch.data.ConstantTableDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ import com.lutris.dods.builder.generator.query.*;
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new IndustryDataStruct ();
 	}
 
@@ -639,54 +639,6 @@ import com.lutris.dods.builder.generator.query.*;
 	super.makeIdentical(orig);
 	data = orig.data;
     }
-
-////////////////////////// data member Type
-
-   /* static final RDBColumn Type for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Type = 
-			    new RDBColumn( table, "Type" );
-
-   /**
-    * Get Type of the Industry
-    *
-    * @return Type of the Industry
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getType () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Type;
-   }
-
-   /**
-    * Set Type of the Industry
-    *
-    * @param Type of the Industry
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setType ( String Type )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Type =  markNewValue(
-	data.Type, Type , 0, 30, false );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
     /**
      * Protected constructor.
      *
@@ -727,15 +679,7 @@ import com.lutris.dods.builder.generator.query.*;
 	// writeMemberStuff uses the ResultSetExtraction.template
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
-		
-	setType( 
-	    
-		rs.getString( 
-			"Type"  )
-	    
-	);
 	
-
  
         markClean();
     }        
@@ -768,7 +712,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Industry ( Type, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ? )" );
+	    "insert into Industry ( Description, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -777,7 +721,7 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined in GenericDO.
 	try {
 	    	setPrepStmtParam_String( stmt, param,
-		getType() );
+		getDescription() );
 
 
 	    /* The order of the values being inserted must match
@@ -810,7 +754,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Industry set " + getVersionColumnName() + " = ?, Type = ? " +
+	    "update Industry set " + getVersionColumnName() + " = ?, Description = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -821,7 +765,7 @@ import com.lutris.dods.builder.generator.query.*;
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
 	    	setPrepStmtParam_String( stmt, param,
-		getType() );
+		getDescription() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -871,8 +815,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Type=" + data.Type
-;
+	    str = str ;
         return str + "; " + super.toString();
     }
 */
@@ -895,8 +838,7 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Type=" + data.Type
-;
+            str = str ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
     }
@@ -1027,121 +969,6 @@ import com.lutris.dods.builder.generator.query.*;
  
 
 
-
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * get array of CompanyAccountDO objects that indirectly refer
-     * to this DO.
-     *
-     * @return array of CompanyAccountDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.CompanyAccountDO[] getCompanyAccountDOArray_via_Company () 
-    throws DataObjectException {
-	jobmatch.data.CompanyAccountDO[] ret = null;
-	try {
-	    jobmatch.data.CompanyDO[] arr = getCompanyDOArray();
-	    ret = new jobmatch.data.CompanyAccountDO[ arr.length ];
-	    for ( int i = 0; i < arr.length; i++ ) {
-		ret[ i ] = arr[ i ].getAccount();
-	    }
-	} catch ( Exception e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: ", e );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.CompanyAccountDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a CompanyAccountDO object that indirectly refers
-     * to this DO.
-     *
-     * @param d The CompanyAccountDO to add to the CompanyDO mapping
-     * for this DO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapCompanyAccount_via_CompanyDO( jobmatch.data.CompanyAccountDO d )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	mapCompanyAccount_via_CompanyDO( d, null );
-    }
-
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a CompanyAccountDO object that indirectly refers to this DO.
-     *
-     * @param b The CompanyAccountDO to add to the CompanyDO mapping for this DO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapCompanyAccount_via_CompanyDO( jobmatch.data.CompanyAccountDO d, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.CompanyDO m = null;
-	try {
-	    m = jobmatch.data.CompanyDO.createVirgin();
-	} catch ( Exception e ) { 
-	    throw new DataObjectException( 
-		"jobmatch.data.CompanyDO.createVirgin failed", e );
-	}
-	m.setAccount( d );
-	m.setIndustry( this );
-	m.commit( tran );
-    }
-
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the CompanyAccountDO object that indirectly refers
-     * to this DO.
-     *
-     * @param d The CompanyAccountDO to remove from the CompanyDO mapping
-     * for this DO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public void unmapCompanyAccount_via_CompanyDO( jobmatch.data.CompanyAccountDO d )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	unmapCompanyAccount_via_CompanyDO( d, null );
-    }
-
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the CompanyAccountDO object that indirectly refers
-     * to this DO.
-     *
-     * @param b The CompanyAccountDO to remove from the CompanyDO mapping
-     * for this DO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public void unmapCompanyAccount_via_CompanyDO( jobmatch.data.CompanyAccountDO d, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.CompanyQuery q = new jobmatch.data.CompanyQuery();
-	q.setQueryIndustry( this );
-	q.setQueryAccount( d );
-	q.requireUniqueInstance();
-	jobmatch.data.CompanyDO m = null;
-	try {
-	    m = q.getNextDO();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( "Multiple mappings for " +
-		this + " and " + d + " in jobmatch.data.Company table." );
-	}
-	m.delete( tran );
-    }
 
 
     /**

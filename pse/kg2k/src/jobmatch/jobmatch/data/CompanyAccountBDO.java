@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CompanyAccountBDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CompanyAccountBDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -50,8 +50,8 @@ import com.lutris.dods.builder.generator.query.*;
  * So by deriving a BO from a BDO, or by implementing a BO that 
  * contains a BDO, the developer of the BO is spared some work.
  *
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 public class CompanyAccountBDO implements java.io.Serializable {
 
@@ -280,29 +280,29 @@ public class CompanyAccountBDO implements java.io.Serializable {
    
 
    /**
-    * Get Password of the CompanyAccountDO
+    * Get Email of the CompanyAccountDO
     *
-    * @return Password of the CompanyAccountDO
+    * @return Email of the CompanyAccountDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getPassword () 
+   public String getEmail () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getPassword ();
+      return DO.getEmail ();
    }
 
    
    /**
-    * Set Password of the CompanyAccountDO
+    * Set Email of the CompanyAccountDO
     *
-    * @param Password of the CompanyAccountDO
+    * @param Email of the CompanyAccountDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setPassword ( String Password ) 
+   public void setEmail ( String Email ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -310,362 +310,211 @@ public class CompanyAccountBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setPassword ( Password );
+      DO.setEmail ( Email );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
 
    
-    /**
-     * Get array of CompanyDO objects that refer to the DO held by this BDO.
-     *
-     * @return array of CompanyDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.CompanyDO[] getCompanyDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.CompanyDO[] ret = null;
-	try {
-	    jobmatch.data.CompanyQuery q = new jobmatch.data.CompanyQuery();
-	    q.setQueryAccount( DO );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.CompanyDO[ 0 ];
-	}
-	return ret;
-    }
 
-    /**
-     * Get the single CompanyDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return CompanyDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one CompanyDO object was found.
-     */
-    public jobmatch.data.CompanyDO getCompanyDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.CompanyQuery q = new jobmatch.data.CompanyQuery();
-	q.setQueryAccount( DO );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
+   /**
+    * Get LastLogin of the CompanyAccountDO
+    *
+    * @return LastLogin of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Timestamp getLastLogin () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLastLogin ();
+   }
 
-    /**
-     * Get array of CompanyBDO objects holding CompanyDO objects
-     * that refer to the DO held by this BDO.
-     *
-     * @return array of CompanyBDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.CompanyBDO[] getCompanyBDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.CompanyBDO[] ret = null;
-	try {
-	    jobmatch.data.CompanyQuery q = new jobmatch.data.CompanyQuery();
-	    q.setQueryAccount( DO );
-	    ret = q.getBDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.CompanyBDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * Get the single CompanyBDO object holding a CompanyDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return CompanyBDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one CompanyBDO object was found.
-     */
-    public jobmatch.data.CompanyBDO getCompanyBDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.CompanyQuery q = new jobmatch.data.CompanyQuery();
-	q.setQueryAccount( DO );
-	q.requireUniqueInstance();
-	return q.getNextBDO();
-    }
-
- 
-    /**
-     * Add (set & commit) a CompanyBDO object whose CompanyDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo CompanyBDO to be set to point to this BDO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addCompanyBDO( jobmatch.data.CompanyBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addCompanyBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a CompanyBDO object whose CompanyDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo CompanyBDO to be set to point to this BDO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addCompanyBDO( jobmatch.data.CompanyBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        rbdo.setAccount( this.DO );
-        rbdo.commit( tran );
-    }
-
- 
-    /**
-     * Remove (delete) a CompanyBDO object whose CompanyDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r CompanyBDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeCompanyBDO( jobmatch.data.CompanyBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeCompanyBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a CompanyBDO object whose CompanyDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r CompanyBDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeCompanyBDO( jobmatch.data.CompanyBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	CompanyAccountDO rdo = rbdo.getAccount();
-	String rdoHandle = rdo.getHandle();
-	String mydoHandle = DO.getHandle();
-	if ( null == rdoHandle || null == mydoHandle || 
-	     ( ! rdoHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + rdo +
-		" does not refer to object " + DO +
-		", cannot be removed this way." );
-	}
-        rbdo.delete( tran );
-    }
- 
+   
+   /**
+    * Set LastLogin of the CompanyAccountDO
+    *
+    * @param LastLogin of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLastLogin ( java.sql.Timestamp LastLogin ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLastLogin ( LastLogin );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
 
 
+   
 
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * get array of IndustryDO objects that indirectly refer
-     * to the DO held by this BDO.
-     *
-     * @return array of IndustryDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.IndustryDO[] getIndustryDOArray_via_Company () 
-    throws DataObjectException {
-	jobmatch.data.IndustryDO[] ret = null;
-	try {
-	    jobmatch.data.CompanyDO[] arr = getCompanyDOArray();
-	    ret = new jobmatch.data.IndustryDO[ arr.length ];
-	    for ( int i = 0; i < arr.length; i++ ) {
-		ret[ i ] = arr[ i ].getIndustry();
-	    }
-	} catch ( Exception e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: ", e );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.IndustryDO[ 0 ];
-	}
-	return ret;
-    }
+   /**
+    * Get LoginReminder of the CompanyAccountDO
+    *
+    * @return LoginReminder of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public int getLoginReminder () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLoginReminder ();
+   }
 
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a IndustryDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param d The IndustryDO to add to the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapIndustry_via_CompanyDO( jobmatch.data.IndustryDO d )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	mapIndustry_via_CompanyDO( d, null );
-    }
+   
+   /**
+    * Set LoginReminder of the CompanyAccountDO
+    *
+    * @param LoginReminder of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLoginReminder ( int LoginReminder ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLoginReminder ( LoginReminder );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
 
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a IndustryDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param d The IndustryDO to add to the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapIndustry_via_CompanyDO( jobmatch.data.IndustryDO d, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.IndustryBDO b = jobmatch.data.IndustryBDO.createExisting( d );
-	mapIndustry_via_CompanyBDO( b, tran );
-    }
 
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a IndustryDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param b The IndustryBDO to add to the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapIndustry_via_CompanyBDO( jobmatch.data.IndustryBDO b )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	mapIndustry_via_CompanyBDO( b, null );
-    }
+   
 
-    /**
-     * To the many-to-many relationship expressed by CompanyDO,
-     * add a IndustryDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param b The IndustryBDO to add to the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapIndustry_via_CompanyBDO( jobmatch.data.IndustryBDO b, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.CompanyBDO m = null;
-	try {
-	    m = jobmatch.data.CompanyBDO.createVirgin();
-	} catch ( Exception e ) { 
-	    throw new DataObjectException( 
-		"jobmatch.data.CompanyBDO.createVirgin failed", e );
-	}
-	m.setIndustry( b );
-	m.setAccount( this );
-	m.commit( tran );
-    }
+   /**
+    * Get Passphrase of the CompanyAccountDO
+    *
+    * @return Passphrase of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getPassphrase () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getPassphrase ();
+   }
 
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the IndustryDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param d The IndustryDO to remove from the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void unmapIndustry_via_CompanyDO( jobmatch.data.IndustryDO d )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	unmapIndustry_via_CompanyDO( d, null );
-    }
+   
+   /**
+    * Set Passphrase of the CompanyAccountDO
+    *
+    * @param Passphrase of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setPassphrase ( String Passphrase ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setPassphrase ( Passphrase );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
 
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the IndustryDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param d The IndustryDO to remove from the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void unmapIndustry_via_CompanyDO( jobmatch.data.IndustryDO d, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.IndustryBDO b = jobmatch.data.IndustryBDO.createExisting( d );
-	unmapIndustry_via_CompanyBDO( b, tran );
-    }
 
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the IndustryDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param b The IndustryBDO to remove from the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void unmapIndustry_via_CompanyBDO( jobmatch.data.IndustryBDO b )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	unmapIndustry_via_CompanyBDO( b, null );
-    }
+   
 
-    /**
-     * From the many-to-many relationship expressed by CompanyDO,
-     * remove (delete) the IndustryDO object that indirectly refers
-     * to the DO held by this BDO.
-     *
-     * @param b The IndustryBDO to remove from the CompanyDO mapping
-     * for this BDO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void unmapIndustry_via_CompanyBDO( jobmatch.data.IndustryBDO b, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.CompanyQuery q = new jobmatch.data.CompanyQuery();
-	q.setQueryAccount( DO );
-	q.setQueryIndustry( b.getDO() );
-	q.requireUniqueInstance();
-	jobmatch.data.CompanyBDO m = null;
-	try {
-	    m = q.getNextBDO();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( "Multiple mappings for " +
-		DO + " and " + b.getDO() + " in jobmatch.data.Company table." );
-	}
-	m.delete( tran );
-    }
+   /**
+    * Get Company of the CompanyAccountDO
+    *
+    * @return Company of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CompanyDO getCompany () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getCompany ();
+   }
+
+   
+   /**
+    * Set Company of the CompanyAccountDO
+    *
+    * @param Company of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setCompany ( jobmatch.data.CompanyDO Company ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setCompany ( Company );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Company of the CompanyAccountDO
+    *
+    * @return BDO-wrapped Company of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CompanyBDO getCompanyBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.CompanyBDO b = jobmatch.data.CompanyBDO.createExisting(
+					  DO.getCompany () );
+      return b;
+   }
+
+   /**
+    * Set Company of the CompanyAccountDO
+    *
+    * @param BDO-wrapped Company of the CompanyAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setCompany ( jobmatch.data.CompanyBDO Company ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Company ) {
+	  if ( false )
+	      DO.setCompany ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "CompanyAccountBDO.setCompany does not allow NULL." );
+      } else {
+          DO.setCompany ( Company.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+   
+
 
 
   /**
@@ -722,7 +571,25 @@ public class CompanyAccountBDO implements java.io.Serializable {
     modifyDO( dbt, true );
   }
 
-  
+      /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Company data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Company is not valid for writing to the database.
+     */
+    protected void okToCommitCompany( jobmatch.data.CompanyDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Company data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Company is not valid for deletion from the database.
+     */
+    protected void okToDeleteCompany( jobmatch.data.CompanyDO member ) 
+    throws RefAssertionException { }
+
+
 
   /**
    * Modifies the DO within its table.
@@ -752,23 +619,32 @@ public class CompanyAccountBDO implements java.io.Serializable {
       if ( delete ) {
 	  // Code to perform cascading deletes is generated here
 	  // if cascading deletes are not supported by the database.      
-	  	
-	{
-	    // perform cascading delete on referring table
-	    jobmatch.data.CompanyBDO[] a = getCompanyBDOArray();
-	    for ( int i = 0; i < a.length; i++ ) {
-		a[ i ].delete( dbt );
-	    }
-	}
-	
-
+	  
           // The following line keeps the compiler happy
           // when the CASCADING_DELETES tag is empty.
           if ( false )
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  
+	  	jobmatch.data.CompanyDO Company_DO = DO.getCompany();
+	if ( null != Company_DO ) {
+	    if ( Company_DO.isLoaded() ) {
+		okToCommitCompany( Company_DO );
+		jobmatch.data.CompanyBDO b = 
+		    jobmatch.data.CompanyBDO.createExisting(
+						    Company_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit CompanyAccountBDO ( " + toString() +
+		    " ) because Company is not allowed to be null." );
+	}
+
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/GraduationBDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/GraduationBDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -50,8 +50,8 @@ import com.lutris.dods.builder.generator.query.*;
  * So by deriving a BO from a BDO, or by implementing a BO that 
  * contains a BDO, the developer of the BO is spared some work.
  *
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 public class GraduationBDO implements java.io.Serializable {
 
@@ -242,29 +242,29 @@ public class GraduationBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Type of the GraduationDO
+    * Get Description of the GraduationDO
     *
-    * @return Type of the GraduationDO
+    * @return Description of the GraduationDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getType () 
+   public String getDescription () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getType ();
+      return DO.getDescription ();
    }
 
    
    /**
-    * Set Type of the GraduationDO
+    * Set Description of the GraduationDO
     *
-    * @param Type of the GraduationDO
+    * @param Description of the GraduationDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setType ( String Type ) 
+   public void setDescription ( String Description ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,12 +272,182 @@ public class GraduationBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setType ( Type );
+      DO.setDescription ( Description );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
 
    
+    /**
+     * Get array of SchoolCandidateDO objects that refer to the DO held by this BDO.
+     *
+     * @return array of SchoolCandidateDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.SchoolCandidateDO[] getSchoolCandidateDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.SchoolCandidateDO[] ret = null;
+	try {
+	    jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	    q.setQueryDiploma( DO );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.SchoolCandidateDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single SchoolCandidateDO object
+     * that refers to the DO held by this BDO.
+     *
+     * @return SchoolCandidateDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception NonUniqueQueryException
+     *   If more than one SchoolCandidateDO object was found.
+     */
+    public jobmatch.data.SchoolCandidateDO getSchoolCandidateDO () 
+    throws DataObjectException, NonUniqueQueryException, QueryException {
+	jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	q.setQueryDiploma( DO );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Get array of SchoolCandidateBDO objects holding SchoolCandidateDO objects
+     * that refer to the DO held by this BDO.
+     *
+     * @return array of SchoolCandidateBDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.SchoolCandidateBDO[] getSchoolCandidateBDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.SchoolCandidateBDO[] ret = null;
+	try {
+	    jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	    q.setQueryDiploma( DO );
+	    ret = q.getBDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.SchoolCandidateBDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single SchoolCandidateBDO object holding a SchoolCandidateDO object
+     * that refers to the DO held by this BDO.
+     *
+     * @return SchoolCandidateBDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception NonUniqueQueryException
+     *   If more than one SchoolCandidateBDO object was found.
+     */
+    public jobmatch.data.SchoolCandidateBDO getSchoolCandidateBDO () 
+    throws DataObjectException, NonUniqueQueryException, QueryException {
+	jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	q.setQueryDiploma( DO );
+	q.requireUniqueInstance();
+	return q.getNextBDO();
+    }
+
+ 
+    /**
+     * Add (set & commit) a SchoolCandidateBDO object whose SchoolCandidateDO
+     * refers to the DO held by this BDO.
+     *
+     * @param rbdo SchoolCandidateBDO to be set to point to this BDO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addSchoolCandidateBDO( jobmatch.data.SchoolCandidateBDO rbdo )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addSchoolCandidateBDO( rbdo, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a SchoolCandidateBDO object whose SchoolCandidateDO
+     * refers to the DO held by this BDO.
+     *
+     * @param rbdo SchoolCandidateBDO to be set to point to this BDO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addSchoolCandidateBDO( jobmatch.data.SchoolCandidateBDO rbdo, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        rbdo.setDiploma( this.DO );
+        rbdo.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a SchoolCandidateBDO object whose SchoolCandidateDO
+     * refers to the DO held by this BDO.
+     *
+     * @param r SchoolCandidateBDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeSchoolCandidateBDO( jobmatch.data.SchoolCandidateBDO rbdo )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeSchoolCandidateBDO( rbdo, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a SchoolCandidateBDO object whose SchoolCandidateDO
+     * refers to the DO held by this BDO.
+     *
+     * @param r SchoolCandidateBDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeSchoolCandidateBDO( jobmatch.data.SchoolCandidateBDO rbdo, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	GraduationDO rdo = rbdo.getDiploma();
+	String rdoHandle = rdo.getHandle();
+	String mydoHandle = DO.getHandle();
+	if ( null == rdoHandle || null == mydoHandle || 
+	     ( ! rdoHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + rdo +
+		" does not refer to object " + DO +
+		", cannot be removed this way." );
+	}
+        rbdo.delete( tran );
+    }
+ 
+
 
 
 
@@ -365,7 +535,16 @@ public class GraduationBDO implements java.io.Serializable {
       if ( delete ) {
 	  // Code to perform cascading deletes is generated here
 	  // if cascading deletes are not supported by the database.      
-	  
+	  	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.SchoolCandidateBDO[] a = getSchoolCandidateBDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+
           // The following line keeps the compiler happy
           // when the CASCADING_DELETES tag is empty.
           if ( false )

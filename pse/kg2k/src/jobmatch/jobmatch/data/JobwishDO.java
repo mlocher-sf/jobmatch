@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/JobwishDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/JobwishDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -53,8 +53,8 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the JobwishDO information.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
  public class JobwishDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
@@ -879,6 +879,54 @@ import com.lutris.dods.builder.generator.query.*;
    }
    
 
+
+////////////////////////// data member Candidate
+
+   /* static final RDBColumn Candidate for use with QueryBuilder.
+    * See RDBColumn PrimaryKey at the top of this file for usage example.
+    */
+   static public final RDBColumn Candidate = 
+			    new RDBColumn( table, "Candidate" );
+
+   /**
+    * Get Candidate of the Jobwish
+    *
+    * @return Candidate of the Jobwish
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CandidateDO getCandidate () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      checkLoad();
+      return data.Candidate;
+   }
+
+   /**
+    * Set Candidate of the Jobwish
+    *
+    * @param Candidate of the Jobwish
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   
+   public void setCandidate ( jobmatch.data.CandidateDO Candidate )
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      checkLoad();
+      data.Candidate = (jobmatch.data.CandidateDO) markNewValue(
+	data.Candidate, Candidate  );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
     /**
      * Protected constructor.
      *
@@ -959,6 +1007,14 @@ import com.lutris.dods.builder.generator.query.*;
 	    
 	);
 	
+	
+	setCandidate( 
+	    jobmatch.data.CandidateDO.createExisting( 
+		rs.getBigDecimal( 
+			"Candidate" , 0 )
+	     )
+	);
+	
 
  
         markClean();
@@ -992,7 +1048,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Jobwish ( Pensum, Remarks, Industry, Area, Function, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into Jobwish ( Pensum, Remarks, Industry, Area, Function, Candidate, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1010,6 +1066,8 @@ import com.lutris.dods.builder.generator.query.*;
 		getArea() );
 	setPrepStmtParam_String( stmt, param,
 		getFunction() );
+	setPrepStmtParam_DO( stmt, param,
+		getCandidate() );
 
 
 	    /* The order of the values being inserted must match
@@ -1042,7 +1100,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Jobwish set " + getVersionColumnName() + " = ?, Pensum = ?, Remarks = ?, Industry = ?, Area = ?, Function = ? " +
+	    "update Jobwish set " + getVersionColumnName() + " = ?, Pensum = ?, Remarks = ?, Industry = ?, Area = ?, Function = ?, Candidate = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1062,6 +1120,8 @@ import com.lutris.dods.builder.generator.query.*;
 		getArea() );
 	setPrepStmtParam_String( stmt, param,
 		getFunction() );
+	setPrepStmtParam_DO( stmt, param,
+		getCandidate() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -1116,6 +1176,7 @@ import com.lutris.dods.builder.generator.query.*;
 + "\n" + indent + "Industry=" + ( null == data.Industry ? null  : data.Industry.toString( indentCount + 1 ) )
 + "\n" + indent + "Area=" + ( null == data.Area ? null  : data.Area.toString( indentCount + 1 ) )
 + "\n" + indent + "Function=" + data.Function
++ "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
 ;
         return str + "; " + super.toString();
     }
@@ -1144,6 +1205,7 @@ import com.lutris.dods.builder.generator.query.*;
 + "\n" + indent + "Industry=" + ( null == data.Industry ? null  : data.Industry.toString( indentCount + 1 ) )
 + "\n" + indent + "Area=" + ( null == data.Area ? null  : data.Area.toString( indentCount + 1 ) )
 + "\n" + indent + "Function=" + data.Function
++ "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -1263,6 +1325,24 @@ import com.lutris.dods.builder.generator.query.*;
     protected void okToDeleteArea( jobmatch.data.AreaDO member ) 
     throws RefAssertionException { }
 
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for writing to the database.
+     */
+    protected void okToCommitCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for deletion from the database.
+     */
+    protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
 
 
   /**
@@ -1334,6 +1414,21 @@ import com.lutris.dods.builder.generator.query.*;
 		throw new RefAssertionException(
 		    "Cannot commit JobwishDO ( " + toString() +
 		    " ) because Area is not allowed to be null." );
+	}
+	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
+	if ( null != Candidate_DO ) {
+	    if ( Candidate_DO.isLoaded() ) {
+		okToCommitCandidate( Candidate_DO );
+		Candidate_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit JobwishDO ( " + toString() +
+		    " ) because Candidate is not allowed to be null." );
 	}
 
       }

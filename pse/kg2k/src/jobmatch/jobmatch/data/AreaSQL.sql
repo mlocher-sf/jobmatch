@@ -2,8 +2,9 @@
 
 create table Area
 (
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
 /* class Area */
-    Name VARCHAR(30) DEFAULT "" NOT NULL   ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

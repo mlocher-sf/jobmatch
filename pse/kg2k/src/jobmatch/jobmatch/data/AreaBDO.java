@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/AreaBDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/AreaBDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -50,8 +50,8 @@ import com.lutris.dods.builder.generator.query.*;
  * So by deriving a BO from a BDO, or by implementing a BO that 
  * contains a BDO, the developer of the BO is spared some work.
  *
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 public class AreaBDO implements java.io.Serializable {
 
@@ -242,29 +242,29 @@ public class AreaBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Name of the AreaDO
+    * Get Description of the AreaDO
     *
-    * @return Name of the AreaDO
+    * @return Description of the AreaDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getName () 
+   public String getDescription () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getName ();
+      return DO.getDescription ();
    }
 
    
    /**
-    * Set Name of the AreaDO
+    * Set Description of the AreaDO
     *
-    * @param Name of the AreaDO
+    * @param Description of the AreaDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setName ( String Name ) 
+   public void setDescription ( String Description ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,7 +272,7 @@ public class AreaBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setName ( Name );
+      DO.setDescription ( Description );
       afterAnySet();	// business actions/assertions after data assignment
    }
 

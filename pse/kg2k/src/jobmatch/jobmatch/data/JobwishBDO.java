@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/JobwishBDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/JobwishBDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -50,8 +50,8 @@ import com.lutris.dods.builder.generator.query.*;
  * So by deriving a BO from a BDO, or by implementing a BO that 
  * contains a BDO, the developer of the BO is spared some work.
  *
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 public class JobwishBDO implements java.io.Serializable {
 
@@ -523,6 +523,90 @@ public class JobwishBDO implements java.io.Serializable {
 
    
 
+   /**
+    * Get Candidate of the JobwishDO
+    *
+    * @return Candidate of the JobwishDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CandidateDO getCandidate () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getCandidate ();
+   }
+
+   
+   /**
+    * Set Candidate of the JobwishDO
+    *
+    * @param Candidate of the JobwishDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setCandidate ( jobmatch.data.CandidateDO Candidate ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setCandidate ( Candidate );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Candidate of the JobwishDO
+    *
+    * @return BDO-wrapped Candidate of the JobwishDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CandidateBDO getCandidateBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.CandidateBDO b = jobmatch.data.CandidateBDO.createExisting(
+					  DO.getCandidate () );
+      return b;
+   }
+
+   /**
+    * Set Candidate of the JobwishDO
+    *
+    * @param BDO-wrapped Candidate of the JobwishDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setCandidate ( jobmatch.data.CandidateBDO Candidate ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Candidate ) {
+	  if ( false )
+	      DO.setCandidate ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "JobwishBDO.setCandidate does not allow NULL." );
+      } else {
+          DO.setCandidate ( Candidate.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+   
+
 
 
   /**
@@ -615,6 +699,24 @@ public class JobwishBDO implements java.io.Serializable {
     protected void okToDeleteArea( jobmatch.data.AreaDO member ) 
     throws RefAssertionException { }
 
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for writing to the database.
+     */
+    protected void okToCommitCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for deletion from the database.
+     */
+    protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
 
 
   /**
@@ -687,6 +789,24 @@ public class JobwishBDO implements java.io.Serializable {
 		throw new RefAssertionException(
 		    "Cannot commit JobwishBDO ( " + toString() +
 		    " ) because Area is not allowed to be null." );
+	}
+	jobmatch.data.CandidateDO Candidate_DO = DO.getCandidate();
+	if ( null != Candidate_DO ) {
+	    if ( Candidate_DO.isLoaded() ) {
+		okToCommitCandidate( Candidate_DO );
+		jobmatch.data.CandidateBDO b = 
+		    jobmatch.data.CandidateBDO.createExisting(
+						    Candidate_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit JobwishBDO ( " + toString() +
+		    " ) because Candidate is not allowed to be null." );
 	}
 
       }

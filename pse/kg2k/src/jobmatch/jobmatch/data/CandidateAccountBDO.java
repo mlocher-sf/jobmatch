@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CandidateAccountBDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CandidateAccountBDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -50,8 +50,8 @@ import com.lutris.dods.builder.generator.query.*;
  * So by deriving a BO from a BDO, or by implementing a BO that 
  * contains a BDO, the developer of the BO is spared some work.
  *
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 public class CandidateAccountBDO implements java.io.Serializable {
 
@@ -280,29 +280,29 @@ public class CandidateAccountBDO implements java.io.Serializable {
    
 
    /**
-    * Get Password of the CandidateAccountDO
+    * Get Email of the CandidateAccountDO
     *
-    * @return Password of the CandidateAccountDO
+    * @return Email of the CandidateAccountDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getPassword () 
+   public String getEmail () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getPassword ();
+      return DO.getEmail ();
    }
 
    
    /**
-    * Set Password of the CandidateAccountDO
+    * Set Email of the CandidateAccountDO
     *
-    * @param Password of the CandidateAccountDO
+    * @param Email of the CandidateAccountDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setPassword ( String Password ) 
+   public void setEmail ( String Email ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -310,182 +310,210 @@ public class CandidateAccountBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setPassword ( Password );
+      DO.setEmail ( Email );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
 
    
-    /**
-     * Get array of CandidateDO objects that refer to the DO held by this BDO.
-     *
-     * @return array of CandidateDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.CandidateDO[] getCandidateDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.CandidateDO[] ret = null;
-	try {
-	    jobmatch.data.CandidateQuery q = new jobmatch.data.CandidateQuery();
-	    q.setQueryAccount( DO );
-	    ret = q.getDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.CandidateDO[ 0 ];
-	}
-	return ret;
-    }
 
-    /**
-     * Get the single CandidateDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return CandidateDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one CandidateDO object was found.
-     */
-    public jobmatch.data.CandidateDO getCandidateDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.CandidateQuery q = new jobmatch.data.CandidateQuery();
-	q.setQueryAccount( DO );
-	q.requireUniqueInstance();
-	return q.getNextDO();
-    }
+   /**
+    * Get LastLogin of the CandidateAccountDO
+    *
+    * @return LastLogin of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Timestamp getLastLogin () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLastLogin ();
+   }
 
-    /**
-     * Get array of CandidateBDO objects holding CandidateDO objects
-     * that refer to the DO held by this BDO.
-     *
-     * @return array of CandidateBDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.CandidateBDO[] getCandidateBDOArray () 
-    throws DataObjectException, QueryException {
-	jobmatch.data.CandidateBDO[] ret = null;
-	try {
-	    jobmatch.data.CandidateQuery q = new jobmatch.data.CandidateQuery();
-	    q.setQueryAccount( DO );
-	    ret = q.getBDOArray();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.CandidateBDO[ 0 ];
-	}
-	return ret;
-    }
+   
+   /**
+    * Set LastLogin of the CandidateAccountDO
+    *
+    * @param LastLogin of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLastLogin ( java.sql.Timestamp LastLogin ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLastLogin ( LastLogin );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
 
-    /**
-     * Get the single CandidateBDO object holding a CandidateDO object
-     * that refers to the DO held by this BDO.
-     *
-     * @return CandidateBDO object.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception NonUniqueQueryException
-     *   If more than one CandidateBDO object was found.
-     */
-    public jobmatch.data.CandidateBDO getCandidateBDO () 
-    throws DataObjectException, NonUniqueQueryException, QueryException {
-	jobmatch.data.CandidateQuery q = new jobmatch.data.CandidateQuery();
-	q.setQueryAccount( DO );
-	q.requireUniqueInstance();
-	return q.getNextBDO();
-    }
 
- 
-    /**
-     * Add (set & commit) a CandidateBDO object whose CandidateDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo CandidateBDO to be set to point to this BDO and committed.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addCandidateBDO( jobmatch.data.CandidateBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        addCandidateBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Add (set & commit) a CandidateBDO object whose CandidateDO
-     * refers to the DO held by this BDO.
-     *
-     * @param rbdo CandidateBDO to be set to point to this BDO and committed.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void addCandidateBDO( jobmatch.data.CandidateBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        rbdo.setAccount( this.DO );
-        rbdo.commit( tran );
-    }
+   
 
- 
-    /**
-     * Remove (delete) a CandidateBDO object whose CandidateDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r CandidateBDO to be deleted.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeCandidateBDO( jobmatch.data.CandidateBDO rbdo )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-        removeCandidateBDO( rbdo, null );
-    }
- 
- 
-    /**
-     * Remove (delete) a CandidateBDO object whose CandidateDO
-     * refers to the DO held by this BDO.
-     *
-     * @param r CandidateBDO to be deleted.
-     *
-     * @param tran The transaction to be used for the commit.
-     * If null, a new transaction is created.
-     *
-     * @exception DatabaseManagerException if could not create a transaction
-     * @exception java.sql.SQLException if any SQL errors occur.
-     * @exception DataObjectException If object is not found in the database.
-     */
-    public void removeCandidateBDO( jobmatch.data.CandidateBDO rbdo, DBTransaction tran )
-    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
-	CandidateAccountDO rdo = rbdo.getAccount();
-	String rdoHandle = rdo.getHandle();
-	String mydoHandle = DO.getHandle();
-	if ( null == rdoHandle || null == mydoHandle || 
-	     ( ! rdoHandle.equals( mydoHandle ) ) ) {
-	    throw new DataObjectException( "Object " + rdo +
-		" does not refer to object " + DO +
-		", cannot be removed this way." );
-	}
-        rbdo.delete( tran );
-    }
- 
+   /**
+    * Get LoginReminder of the CandidateAccountDO
+    *
+    * @return LoginReminder of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public int getLoginReminder () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getLoginReminder ();
+   }
 
+   
+   /**
+    * Set LoginReminder of the CandidateAccountDO
+    *
+    * @param LoginReminder of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setLoginReminder ( int LoginReminder ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setLoginReminder ( LoginReminder );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Passphrase of the CandidateAccountDO
+    *
+    * @return Passphrase of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public String getPassphrase () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getPassphrase ();
+   }
+
+   
+   /**
+    * Set Passphrase of the CandidateAccountDO
+    *
+    * @param Passphrase of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setPassphrase ( String Passphrase ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setPassphrase ( Passphrase );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get Candidate of the CandidateAccountDO
+    *
+    * @return Candidate of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CandidateDO getCandidate () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getCandidate ();
+   }
+
+   
+   /**
+    * Set Candidate of the CandidateAccountDO
+    *
+    * @param Candidate of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setCandidate ( jobmatch.data.CandidateDO Candidate ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setCandidate ( Candidate );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Candidate of the CandidateAccountDO
+    *
+    * @return BDO-wrapped Candidate of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CandidateBDO getCandidateBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.CandidateBDO b = jobmatch.data.CandidateBDO.createExisting(
+					  DO.getCandidate () );
+      return b;
+   }
+
+   /**
+    * Set Candidate of the CandidateAccountDO
+    *
+    * @param BDO-wrapped Candidate of the CandidateAccountDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setCandidate ( jobmatch.data.CandidateBDO Candidate ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Candidate ) {
+	  if ( false )
+	      DO.setCandidate ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "CandidateAccountBDO.setCandidate does not allow NULL." );
+      } else {
+          DO.setCandidate ( Candidate.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+   
 
 
 
@@ -543,7 +571,25 @@ public class CandidateAccountBDO implements java.io.Serializable {
     modifyDO( dbt, true );
   }
 
-  
+      /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for writing to the database.
+     */
+    protected void okToCommitCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for deletion from the database.
+     */
+    protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+
 
   /**
    * Modifies the DO within its table.
@@ -573,23 +619,32 @@ public class CandidateAccountBDO implements java.io.Serializable {
       if ( delete ) {
 	  // Code to perform cascading deletes is generated here
 	  // if cascading deletes are not supported by the database.      
-	  	
-	{
-	    // perform cascading delete on referring table
-	    jobmatch.data.CandidateBDO[] a = getCandidateBDOArray();
-	    for ( int i = 0; i < a.length; i++ ) {
-		a[ i ].delete( dbt );
-	    }
-	}
-	
-
+	  
           // The following line keeps the compiler happy
           // when the CASCADING_DELETES tag is empty.
           if ( false )
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  
+	  	jobmatch.data.CandidateDO Candidate_DO = DO.getCandidate();
+	if ( null != Candidate_DO ) {
+	    if ( Candidate_DO.isLoaded() ) {
+		okToCommitCandidate( Candidate_DO );
+		jobmatch.data.CandidateBDO b = 
+		    jobmatch.data.CandidateBDO.createExisting(
+						    Candidate_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit CandidateAccountBDO ( " + toString() +
+		    " ) because Candidate is not allowed to be null." );
+	}
+
       }
       if ( false ) {
 	  // This throw is here to keep the compiler happy

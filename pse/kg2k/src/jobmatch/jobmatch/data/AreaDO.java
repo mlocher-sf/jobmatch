@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/AreaDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/AreaDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the AreaDO information.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
- public class AreaDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class AreaDO extends jobmatch.data.ConstantTableDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ import com.lutris.dods.builder.generator.query.*;
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new AreaDataStruct ();
 	}
 
@@ -639,54 +639,6 @@ import com.lutris.dods.builder.generator.query.*;
 	super.makeIdentical(orig);
 	data = orig.data;
     }
-
-////////////////////////// data member Name
-
-   /* static final RDBColumn Name for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Name = 
-			    new RDBColumn( table, "Name" );
-
-   /**
-    * Get Name of the Area
-    *
-    * @return Name of the Area
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getName () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Name;
-   }
-
-   /**
-    * Set Name of the Area
-    *
-    * @param Name of the Area
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setName ( String Name )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Name =  markNewValue(
-	data.Name, Name , 0, 30, false );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
     /**
      * Protected constructor.
      *
@@ -727,15 +679,7 @@ import com.lutris.dods.builder.generator.query.*;
 	// writeMemberStuff uses the ResultSetExtraction.template
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
-		
-	setName( 
-	    
-		rs.getString( 
-			"Name"  )
-	    
-	);
 	
-
  
         markClean();
     }        
@@ -768,7 +712,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Area ( Name, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ? )" );
+	    "insert into Area ( Description, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -777,7 +721,7 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined in GenericDO.
 	try {
 	    	setPrepStmtParam_String( stmt, param,
-		getName() );
+		getDescription() );
 
 
 	    /* The order of the values being inserted must match
@@ -810,7 +754,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Area set " + getVersionColumnName() + " = ?, Name = ? " +
+	    "update Area set " + getVersionColumnName() + " = ?, Description = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -821,7 +765,7 @@ import com.lutris.dods.builder.generator.query.*;
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
 	    	setPrepStmtParam_String( stmt, param,
-		getName() );
+		getDescription() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -871,8 +815,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Name=" + data.Name
-;
+	    str = str ;
         return str + "; " + super.toString();
     }
 */
@@ -895,8 +838,7 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Name=" + data.Name
-;
+            str = str ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
     }

@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CompanyDO.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CompanyDO.java
  *-----------------------------------------------------------------------------
  */
 
@@ -53,8 +53,8 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CompanyDO information.
  *
- * @version $Revision: 1.1 $
- * @author  locher
+ * @version $Revision: 1.2 $
+ * @author  studer
  * @since   jobmatch
  */
  public class CompanyDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
@@ -1072,54 +1072,6 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Account
-
-   /* static final RDBColumn Account for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Account = 
-			    new RDBColumn( table, "Account" );
-
-   /**
-    * Get Account of the Company
-    *
-    * @return Account of the Company
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CompanyAccountDO getAccount () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Account;
-   }
-
-   /**
-    * Set Account of the Company
-    *
-    * @param Account of the Company
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setAccount ( jobmatch.data.CompanyAccountDO Account )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Account = (jobmatch.data.CompanyAccountDO) markNewValue(
-	data.Account, Account  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Presence
 
    /* static final RDBColumn Presence for use with QueryBuilder.
@@ -1328,14 +1280,6 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setAccount( 
-	    jobmatch.data.CompanyAccountDO.createExisting( 
-		rs.getBigDecimal( 
-			"Account" , 0 )
-	     )
-	);
-	
-	
 	setPresence( 
 	    
 		rs.getString( 
@@ -1384,7 +1328,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Company ( Active, Earnings, GraduatesPerYear, Location, Name, NumberEmployees, ShortDescription, Contact, Industry, Account, Presence, URL, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into Company ( Active, Earnings, GraduatesPerYear, Location, Name, NumberEmployees, ShortDescription, Contact, Industry, Presence, URL, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1410,8 +1354,6 @@ import com.lutris.dods.builder.generator.query.*;
 		getContact() );
 	setPrepStmtParam_DO( stmt, param,
 		getIndustry() );
-	setPrepStmtParam_DO( stmt, param,
-		getAccount() );
 	setPrepStmtParam_String( stmt, param,
 		getPresence() );
 	setPrepStmtParam_String( stmt, param,
@@ -1448,7 +1390,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Company set " + getVersionColumnName() + " = ?, Active = ?, Earnings = ?, GraduatesPerYear = ?, Location = ?, Name = ?, NumberEmployees = ?, ShortDescription = ?, Contact = ?, Industry = ?, Account = ?, Presence = ?, URL = ? " +
+	    "update Company set " + getVersionColumnName() + " = ?, Active = ?, Earnings = ?, GraduatesPerYear = ?, Location = ?, Name = ?, NumberEmployees = ?, ShortDescription = ?, Contact = ?, Industry = ?, Presence = ?, URL = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1476,8 +1418,6 @@ import com.lutris.dods.builder.generator.query.*;
 		getContact() );
 	setPrepStmtParam_DO( stmt, param,
 		getIndustry() );
-	setPrepStmtParam_DO( stmt, param,
-		getAccount() );
 	setPrepStmtParam_String( stmt, param,
 		getPresence() );
 	setPrepStmtParam_String( stmt, param,
@@ -1540,7 +1480,6 @@ import com.lutris.dods.builder.generator.query.*;
 + "\n" + indent + "ShortDescription=" + data.ShortDescription
 + "\n" + indent + "Contact=" + ( null == data.Contact ? null  : data.Contact.toString( indentCount + 1 ) )
 + "\n" + indent + "Industry=" + ( null == data.Industry ? null  : data.Industry.toString( indentCount + 1 ) )
-+ "\n" + indent + "Account=" + ( null == data.Account ? null  : data.Account.toString( indentCount + 1 ) )
 + "\n" + indent + "Presence=" + data.Presence
 + "\n" + indent + "URL=" + data.URL
 ;
@@ -1575,7 +1514,6 @@ import com.lutris.dods.builder.generator.query.*;
 + "\n" + indent + "ShortDescription=" + data.ShortDescription
 + "\n" + indent + "Contact=" + ( null == data.Contact ? null  : data.Contact.toString( indentCount + 1 ) )
 + "\n" + indent + "Industry=" + ( null == data.Industry ? null  : data.Industry.toString( indentCount + 1 ) )
-+ "\n" + indent + "Account=" + ( null == data.Account ? null  : data.Account.toString( indentCount + 1 ) )
 + "\n" + indent + "Presence=" + data.Presence
 + "\n" + indent + "URL=" + data.URL
 ;
@@ -1584,6 +1522,254 @@ import com.lutris.dods.builder.generator.query.*;
     }
 
     
+    /**
+     * Get array of CompanyAccountDO objects that refer to this DO.
+     *
+     * @return array of CompanyAccountDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.CompanyAccountDO[] getCompanyAccountDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.CompanyAccountDO[] ret = null;
+	try {
+	    jobmatch.data.CompanyAccountQuery q = new jobmatch.data.CompanyAccountQuery();
+	    q.setQueryCompany( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.CompanyAccountDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single CompanyAccountDO object
+     * that refers to this DO.
+     *
+     * @return CompanyAccountDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one CompanyAccountDO object was found.
+     */
+    public jobmatch.data.CompanyAccountDO getCompanyAccountDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.CompanyAccountQuery q = new jobmatch.data.CompanyAccountQuery();
+	q.setQueryCompany( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a CompanyAccountDO object that refers to this DO.
+     *
+     * @param referrer CompanyAccountDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addCompanyAccountDO( jobmatch.data.CompanyAccountDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addCompanyAccountDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a CompanyAccountDO object that refers to this DO.
+     *
+     * @param referrer CompanyAccountDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addCompanyAccountDO( jobmatch.data.CompanyAccountDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCompany( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a CompanyAccountDO object that refers to this DO.
+     *
+     * @param referrer CompanyAccountDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeCompanyAccountDO( jobmatch.data.CompanyAccountDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeCompanyAccountDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a CompanyAccountDO object that refers to this DO.
+     *
+     * @param referrer CompanyAccountDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeCompanyAccountDO( jobmatch.data.CompanyAccountDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CompanyDO referred = referrer.getCompany();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
+    /**
+     * Get array of ProfileDO objects that refer to this DO.
+     *
+     * @return array of ProfileDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public jobmatch.data.ProfileDO[] getProfileDOArray () 
+    throws DataObjectException, QueryException {
+	jobmatch.data.ProfileDO[] ret = null;
+	try {
+	    jobmatch.data.ProfileQuery q = new jobmatch.data.ProfileQuery();
+	    q.setQueryCompany( this );
+	    ret = q.getDOArray();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: unexpected NonUniqueQueryException" );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.ProfileDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * Get the single ProfileDO object
+     * that refers to this DO.
+     *
+     * @return ProfileDO object.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     * @exception NonUniqueQueryException
+     *   If more than one ProfileDO object was found.
+     */
+    public jobmatch.data.ProfileDO getProfileDO () 
+    throws DataObjectException, QueryException, NonUniqueQueryException {
+	jobmatch.data.ProfileQuery q = new jobmatch.data.ProfileQuery();
+	q.setQueryCompany( this );
+	q.requireUniqueInstance();
+	return q.getNextDO();
+    }
+
+    /**
+     * Add (set & commit) a ProfileDO object that refers to this DO.
+     *
+     * @param referrer ProfileDO to be set to point to this DO and committed.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addProfileDO( jobmatch.data.ProfileDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        addProfileDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Add (set & commit) a ProfileDO object that refers to this DO.
+     *
+     * @param referrer ProfileDO to be set to point to this DO and committed.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void addProfileDO( jobmatch.data.ProfileDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        referrer.setCompany( this );
+        referrer.commit( tran );
+    }
+
+ 
+    /**
+     * Remove (delete) a ProfileDO object that refers to this DO.
+     *
+     * @param referrer ProfileDO to be deleted.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeProfileDO( jobmatch.data.ProfileDO referrer )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+        removeProfileDO( referrer, null );
+    }
+ 
+ 
+    /**
+     * Remove (delete) a ProfileDO object that refers to this DO.
+     *
+     * @param referrer ProfileDO to be deleted.
+     *
+     * @param tran The transaction to be used for the commit.
+     * If null, a new transaction is created.
+     *
+     * @exception DatabaseManagerException if could not create a transaction
+     * @exception java.sql.SQLException if any SQL errors occur.
+     * @exception DataObjectException If object is not found in the database.
+     */
+    public void removeProfileDO( jobmatch.data.ProfileDO referrer, DBTransaction tran )
+    throws SQLException, DatabaseManagerException, DataObjectException, RefAssertionException, DBRowUpdateException, QueryException {
+	CompanyDO referred = referrer.getCompany();
+	String referredHandle = referred.getHandle();
+	String mydoHandle = this.getHandle();
+	if ( null == referredHandle || null == mydoHandle || 
+	     ( ! referredHandle.equals( mydoHandle ) ) ) {
+	    throw new DataObjectException( "Object " + referrer +
+		" does not refer to object " + this +
+		", cannot be removed this way." );
+	}
+        referrer.delete( tran );
+    }
+ 
+
 
 
 
@@ -1697,24 +1883,6 @@ import com.lutris.dods.builder.generator.query.*;
     protected void okToDeleteIndustry( jobmatch.data.IndustryDO member ) 
     throws RefAssertionException { }
 
-    /**
-     * A stub method for implementing pre-commit assertions 
-     * for the Account data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Account is not valid for writing to the database.
-     */
-    protected void okToCommitAccount( jobmatch.data.CompanyAccountDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Account data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Account is not valid for deletion from the database.
-     */
-    protected void okToDeleteAccount( jobmatch.data.CompanyAccountDO member ) 
-    throws RefAssertionException { }
-
 
 
   /**
@@ -1750,7 +1918,25 @@ import com.lutris.dods.builder.generator.query.*;
       if ( delete ) {
 	  // Code to perform cascading deletes is generated here
 	  // if cascading deletes are not supported by the database.      
-	  
+	  	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.CompanyAccountDO[] a = getCompanyAccountDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+	
+	{
+	    // perform cascading delete on referring table
+	    jobmatch.data.ProfileDO[] a = getProfileDOArray();
+	    for ( int i = 0; i < a.length; i++ ) {
+		a[ i ].delete( dbt );
+	    }
+	}
+	
+
 	  // The following line keeps the compiler happy 
 	  // when the CASCADING_DELETES tag is empty.
           if ( false )
@@ -1786,21 +1972,6 @@ import com.lutris.dods.builder.generator.query.*;
 		throw new RefAssertionException(
 		    "Cannot commit CompanyDO ( " + toString() +
 		    " ) because Industry is not allowed to be null." );
-	}
-	jobmatch.data.CompanyAccountDO Account_DO = getAccount();
-	if ( null != Account_DO ) {
-	    if ( Account_DO.isLoaded() ) {
-		okToCommitAccount( Account_DO );
-		Account_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit CompanyDO ( " + toString() +
-		    " ) because Account is not allowed to be null." );
 	}
 
       }

@@ -4,8 +4,12 @@ create table CompanyAccount
 (
 /* class Account */
     Username VARCHAR(40) DEFAULT "" NOT NULL   ,
-    Password VARCHAR(20) DEFAULT "" NOT NULL   ,
+    Email VARCHAR(50) DEFAULT "" NOT NULL   ,
+    LastLogin TIMESTAMP  NOT NULL   ,
+    LoginReminder INTEGER DEFAULT 0 NOT NULL   ,
+    Passphrase VARCHAR(20) DEFAULT "" NOT NULL   ,
 /* class CompanyAccount */
+    Company DECIMAL(19,0)  NOT NULL  REFERENCES Company ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

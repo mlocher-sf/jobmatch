@@ -31,7 +31,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *-----------------------------------------------------------------------------
- * /scratch/locher/pse/kg2k/src/jobmatch/jobmatch/ble/jobmatch/data/CompanyQuery.java
+ * /scratch/studer_repositry/dataTest/jobmatch/data/CompanyQuery.java
  *-----------------------------------------------------------------------------
  */
 
@@ -110,8 +110,8 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  * <P><PRE>
  *             dq.reset();
  * </PRE>
- * @author locher
- * @version $Revision: 1.1 $
+ * @author studer
+ * @version $Revision: 1.2 $
  */
 final public class CompanyQuery implements Query {
 
@@ -626,81 +626,6 @@ System.err.println("x ="+x );
      */
     public void addOrderByIndustry() {
         builder.addOrderByColumn("Industry","ASC");
-    }
-
-
-    /**
-     * Set the Account to query.
-     *
-     * @param x The Account of the Company to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryAccount(
-				jobmatch.data.CompanyAccountDO x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CompanyDO DO = ( CompanyDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		// DOs are compared by their handles..
-		jobmatch.data.CompanyAccountDO m = DO.getAccount();
-		if ( null == m && null == x ) {
-		    equals = true;
-		} else if ( null == m || null == x ) {
-		    equals = false;
-		} else {
-		    equals = ( DO.getAccount().getOId().toString().equals( x.getOId().toString() ) );
-if ( equals && m != x ) {
-System.err.println("\n----------------------------------------------------------");
-System.err.println("m ="+m );
-System.err.println("x ="+x );
-}
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Account", x, "DECIMAL(19,0)",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Account to query
-     * @param x The Account of the Company to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryAccount( 
-				jobmatch.data.CompanyAccountDO x )
-    throws DataObjectException, QueryException {
-	setQueryAccount( x, true );
-    }
-
-    /**
-     * Add Account to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByAccount(boolean direction_flag) {
-        builder.addOrderByColumn("Account",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Account to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByAccount() {
-        builder.addOrderByColumn("Account","ASC");
     }
 
 
