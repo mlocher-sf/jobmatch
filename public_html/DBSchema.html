@@ -1,712 +1,769 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <html>
-<head>
-</head>
-<link rel=stylesheet type="text/css" href="style.css">
-<body>
+  <head>
+    <title>DB Schema</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
 
-<h1>
-DB-Schema</h1>
+  <body>
+    <a href="./index.html">Homepage</a> 
+    <hr>
 
-<p>
-<br>
-<br>
-<table BORDER COLS=4 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Arbeitgeber</td>
+    <h1>DB-Schema</h1>
 
-<td WIDTH="100" NOSAVE>Firma</td>
+    <table border cols="4">
+      <tr>
+        <td width="100">Arbeitgeber</td>
 
-<td WIDTH="100" NOSAVE>Ort</td>
+        <td width="100">Firma</td>
 
-<td WIDTH="100" NOSAVE>Land</td>
-</tr>
+        <td width="100">Ort</td>
 
-<tr>
-<td></td>
+        <td width="100">Land</td>
+      </tr>
 
-<td>VARCHAR</td>
+      <tr>
+        <td>
+        </td>
 
-<td>VARCHAR</td>
+        <td>VARCHAR</td>
 
-<td>VARCHAR</td>
-</tr>
-</table>
+        <td>VARCHAR</td>
 
-<br>&nbsp;
-<table BORDER COLS=9 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="120" NOSAVE>ArbeitgeberKandidat</td>
+        <td>VARCHAR</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td WIDTH="100" NOSAVE>Kandidat OID</td>
+    <table border cols="9">
+      <tr>
+        <td width="120">ArbeitgeberKandidat</td>
 
-<td>Arbeitgeber OID</td>
+        <td width="100">Kandidat OID</td>
 
-<td WIDTH="50" NOSAVE>Von</td>
+        <td>Arbeitgeber OID</td>
 
-<td WIDTH="50" NOSAVE>Bis</td>
+        <td width="50">Von</td>
 
-<td>Bemerkungen</td>
+        <td width="50">Bis</td>
 
-<td>Referenz</td>
+        <td>Bemerkungen</td>
 
-<td WIDTH="100" NOSAVE>Funktion</td>
+        <td>Referenz</td>
 
-<td WIDTH="75" NOSAVE>Pensum</td>
-</tr>
+        <td width="100">Funktion</td>
 
-<tr>
-<td></td>
+        <td width="75">Pensum</td>
+      </tr>
 
-<td></td>
+      <tr>
+        <td>
+        </td>
 
-<td>(Null)</td>
+        <td>
+        </td>
 
-<td>DATE</td>
+        <td>(Null)</td>
 
-<td>DATE</td>
+        <td>DATE</td>
 
-<td>VARCHAR (Null)</td>
+        <td>DATE</td>
 
-<td>VARCHAR (Null)</td>
+        <td>VARCHAR (Null)</td>
 
-<td>VARCHAR</td>
+        <td>VARCHAR (Null)</td>
 
-<td>INTEGER</td>
-</tr>
-</table>
+        <td>VARCHAR</td>
 
-<br>&nbsp;
-<table BORDER COLS=15 NOSAVE >
-<tr NOSAVE>
-<td NOSAVE>Kandidat</td>
+        <td>INTEGER</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Name</td>
+    <table border cols="15">
+      <tr>
+        <td>Kandidat</td>
 
-<td>Vorname</td>
+        <td>Name</td>
 
-<td>Geschlecht</td>
+        <td>Vorname</td>
 
-<td>Adresse</td>
+        <td>Geschlecht</td>
 
-<td>Email</td>
+        <td>Adresse</td>
 
-<td>GebDatum</td>
+        <td>Email</td>
 
-<td WIDTH="100" NOSAVE>Heimatort</td>
+        <td>GebDatum</td>
 
-<td>Nationalitaet</td>
+        <td width="100">Heimatort</td>
 
-<td WIDTH="100" NOSAVE>Charakter</td>
+        <td>Nationalitaet</td>
 
-<td WIDTH="50" NOSAVE>Status</td>
+        <td width="100">Charakter</td>
 
-<td WIDTH="50" NOSAVE>LastLogin</td>
+        <td width="50">Status</td>
 
-<td>AIESECMitglied</td>
+        <td width="50">LastLogin</td>
 
-<td WIDTH="120" NOSAVE>Hobby</td>
+        <td>AIESECMitglied</td>
 
-<td WIDTH="150" NOSAVE>Jobwunsch</td>
-</tr>
+        <td width="120">Hobby</td>
 
-<tr>
-<td></td>
+        <td width="150">Jobwunsch</td>
+      </tr>
 
-<td>VARCHAR</td>
+      <tr>
+        <td>
+        </td>
 
-<td>VARCHAR</td>
+        <td>VARCHAR</td>
 
-<td>BIT</td>
+        <td>VARCHAR</td>
 
-<td>VARCHAR</td>
+        <td>BIT</td>
 
-<td>VARCHAR</td>
+        <td>VARCHAR</td>
 
-<td>DATE</td>
+        <td>VARCHAR</td>
 
-<td>VARCHAR (Null)</td>
+        <td>DATE</td>
 
-<td>VARCHAR</td>
+        <td>VARCHAR (Null)</td>
 
-<td>VARCHAR (Null)</td>
+        <td>VARCHAR</td>
 
-<td>BIT</td>
+        <td>VARCHAR (Null)</td>
 
-<td>DATE</td>
+        <td>BIT</td>
 
-<td>BIT</td>
+        <td>DATE</td>
 
-<td>Ref. Hobby OID (Null)</td>
+        <td>BIT</td>
 
-<td>Ref .Jobwunsch OID (Null)</td>
-</tr>
-</table>
+        <td>Ref. Hobby OID (Null)</td>
 
-<br>&nbsp;
-<table BORDER COLS=7 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>KandidatSchule</td>
+        <td>Ref .Jobwunsch OID (Null)</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Schule</td>
+    <table border cols="7">
+      <tr>
+        <td width="100">KandidatSchule</td>
 
-<td>Kandidat</td>
+        <td>Schule</td>
 
-<td WIDTH="100" NOSAVE>Von</td>
+        <td>Kandidat</td>
 
-<td WIDTH="100" NOSAVE>Bis</td>
+        <td width="100">Von</td>
 
-<td>Diplom</td>
+        <td width="100">Bis</td>
 
-<td>Bemerkungen</td>
-</tr>
+        <td>Diplom</td>
 
-<tr>
-<td></td>
+        <td>Bemerkungen</td>
+      </tr>
 
-<td>Ref Schule OID</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Kandidat OID (Null)</td>
+        <td>Ref Schule OID</td>
 
-<td>DATE</td>
+        <td>Ref. Kandidat OID (Null)</td>
 
-<td>DATE</td>
+        <td>DATE</td>
 
-<td>VARCHAR (Null)</td>
+        <td>DATE</td>
 
-<td>VARCHAR (Null)</td>
-</tr>
-</table>
+        <td>VARCHAR (Null)</td>
 
-<br>&nbsp;
-<table BORDER COLS=4 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Schule</td>
+        <td>VARCHAR (Null)</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td WIDTH="100" NOSAVE>Name</td>
+    <table border cols="4">
+      <tr>
+        <td width="100">Schule</td>
 
-<td WIDTH="100" NOSAVE>Ort</td>
+        <td width="100">Name</td>
 
-<td WIDTH="100" NOSAVE>Schultyp</td>
-</tr>
+        <td width="100">Ort</td>
 
-<tr>
-<td></td>
+        <td width="100">Schultyp</td>
+      </tr>
 
-<td>VARCHAR</td>
+      <tr>
+        <td>
+        </td>
 
-<td>VARCHAR</td>
+        <td>VARCHAR</td>
 
-<td>Ref. Schultyp OID</td>
-</tr>
-</table>
+        <td>VARCHAR</td>
 
-<br>&nbsp;
-<table BORDER COLS=2 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Schultyp</td>
+        <td>Ref. Schultyp OID</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td WIDTH="100" NOSAVE>Typ</td>
-</tr>
+    <table border cols="2">
+      <tr>
+        <td width="100">Schultyp</td>
 
-<tr>
-<td></td>
+        <td width="100">Typ</td>
+      </tr>
 
-<td>VARCHAR</td>
-</tr>
-</table>
+      <tr>
+        <td>
+        </td>
 
-<br>&nbsp;
-<table BORDER COLS=6 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Profil</td>
+        <td>VARCHAR</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Name</td>
+    <table border cols="6">
+      <tr>
+        <td width="100">Profil</td>
 
-<td>MinSchultyp&nbsp;</td>
+        <td>Name</td>
 
-<td>MaxSchultyp&nbsp;</td>
+        <td>MinSchultyp</td>
 
-<td>Kontaktperson</td>
+        <td>MaxSchultyp</td>
 
-<td>Firma</td>
-</tr>
+        <td>Kontaktperson</td>
 
-<tr>
-<td></td>
+        <td>Firma</td>
+      </tr>
 
-<td>VARCHAR</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Schultyp OID (Null)</td>
+        <td>VARCHAR</td>
 
-<td>Ref. Schultyp OID (Null)</td>
+        <td>Ref. Schultyp OID (Null)</td>
 
-<td>Ref. Kontaktperson OID</td>
+        <td>Ref. Schultyp OID (Null)</td>
 
-<td>Ref. Firma OID</td>
-</tr>
-</table>
+        <td>Ref. Kontaktperson OID</td>
 
-<br>&nbsp;
-<table BORDER COLS=11 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Firma</td>
+        <td>Ref. Firma OID</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Name</td>
+    <table border cols="11">
+      <tr>
+        <td width="100">Firma</td>
 
-<td>Sitz</td>
+        <td>Name</td>
 
-<td>AkademikerProJahr</td>
+        <td>Sitz</td>
 
-<td>KurzeVorstellung</td>
+        <td>AkademikerProJahr</td>
 
-<td>Umsatz</td>
+        <td>KurzeVorstellung</td>
 
-<td>Verbreitung</td>
+        <td>Umsatz</td>
 
-<td>Aktiv</td>
+        <td>Verbreitung</td>
 
-<td>Branche</td>
+        <td>Aktiv</td>
 
-<td>URL</td>
+        <td>Branche</td>
 
-<td>AnzahlMitarbeiter</td>
-</tr>
+        <td>URL</td>
 
-<tr>
-<td></td>
+        <td>AnzahlMitarbeiter</td>
+      </tr>
 
-<td>VARCHAR</td>
+      <tr>
+        <td>
+        </td>
 
-<td>VARCHAR</td>
+        <td>VARCHAR</td>
 
-<td>INTEGER (Null)</td>
+        <td>VARCHAR</td>
 
-<td>LONGVARCHAR (Null)</td>
+        <td>INTEGER (Null)</td>
 
-<td>INTEGER (Null)</td>
+        <td>LONGVARCHAR (Null)</td>
 
-<td>VARCHAR (Null)</td>
+        <td>INTEGER (Null)</td>
 
-<td>BIT</td>
+        <td>VARCHAR (Null)</td>
 
-<td>VARCHAR (Null)</td>
+        <td>BIT</td>
 
-<td>VARCHAR (Null)</td>
+        <td>VARCHAR (Null)</td>
 
-<td>INTEGER (Null)</td>
-</tr>
-</table>
+        <td>VARCHAR (Null)</td>
 
-<br>&nbsp;
-<table BORDER COLS=4 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Kontaktperson</td>
+        <td>INTEGER (Null)</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td WIDTH="100" NOSAVE>Name</td>
+    <table border cols="4">
+      <tr>
+        <td width="100">Kontaktperson</td>
 
-<td WIDTH="100" NOSAVE>Email</td>
+        <td width="100">Name</td>
 
-<td WIDTH="100" NOSAVE>Fax</td>
-</tr>
+        <td width="100">Email</td>
 
-<tr>
-<td></td>
+        <td width="100">Fax</td>
+      </tr>
 
-<td>VARCHAR</td>
+      <tr>
+        <td>
+        </td>
 
-<td>VARCHAR</td>
+        <td>VARCHAR</td>
 
-<td>VARCHAR (Null)</td>
-</tr>
-</table>
+        <td>VARCHAR</td>
 
-<br>&nbsp;
-<table BORDER COLS=2 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Software</td>
+        <td>VARCHAR (Null)</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td WIDTH="100" NOSAVE>Name</td>
-</tr>
+    <table border cols="2">
+      <tr>
+        <td width="100">Software</td>
 
-<tr>
-<td></td>
+        <td width="100">Name</td>
+      </tr>
 
-<td>VARCHAR</td>
-</tr>
-</table>
+      <tr>
+        <td>
+        </td>
 
-<table BORDER COLS=2 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>ProgSprachen</td>
+        <td>VARCHAR</td>
+      </tr>
+    </table>
 
-<td WIDTH="100" NOSAVE>Sprache</td>
-</tr>
+    <table border cols="2">
+      <tr>
+        <td width="100">ProgSprachen</td>
 
-<tr>
-<td></td>
+        <td width="100">Sprache</td>
+      </tr>
 
-<td>VARCHAR</td>
-</tr>
-</table>
+      <tr>
+        <td>
+        </td>
 
-<table BORDER COLS=2 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Betriebssystem</td>
+        <td>VARCHAR</td>
+      </tr>
+    </table>
 
-<td WIDTH="100" NOSAVE>System</td>
-</tr>
+    <table border cols="2">
+      <tr>
+        <td width="100">Betriebssystem</td>
 
-<tr>
-<td></td>
+        <td width="100">System</td>
+      </tr>
 
-<td>VARCHAR</td>
-</tr>
-</table>
+      <tr>
+        <td>
+        </td>
 
-<br>&nbsp;
-<table BORDER COLS=5 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>SofProfil</td>
+        <td>VARCHAR</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Software</td>
+    <table border cols="5">
+      <tr>
+        <td width="100">SofProfil</td>
 
-<td>Profil</td>
+        <td>Software</td>
 
-<td>Unabdingbar</td>
+        <td>Profil</td>
 
-<td>MindKenntnisse</td>
-</tr>
+        <td>Unabdingbar</td>
 
-<tr>
-<td></td>
+        <td>MindKenntnisse</td>
+      </tr>
 
-<td>Ref. Software OID (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Profil OID (Null)</td>
+        <td>Ref. Software OID (Null)</td>
 
-<td>BIT</td>
+        <td>Ref. Profil OID (Null)</td>
 
-<td>INTEGER</td>
-</tr>
-</table>
+        <td>BIT</td>
 
-<table BORDER COLS=5 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>ProgProfil</td>
+        <td>INTEGER</td>
+      </tr>
+    </table>
 
-<td>Prog</td>
+    <table border cols="5">
+      <tr>
+        <td width="100">ProgProfil</td>
 
-<td>Profil</td>
+        <td>Prog</td>
 
-<td>Unabdingbar</td>
+        <td>Profil</td>
 
-<td>MindKenntnisse</td>
-</tr>
+        <td>Unabdingbar</td>
 
-<tr>
-<td></td>
+        <td>MindKenntnisse</td>
+      </tr>
 
-<td>Ref. ProgSprachen OID (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Profil OID (Null)</td>
+        <td>Ref. ProgSprachen OID (Null)</td>
 
-<td>BIT</td>
+        <td>Ref. Profil OID (Null)</td>
 
-<td>INTEGER</td>
-</tr>
-</table>
+        <td>BIT</td>
 
-<table BORDER COLS=5 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>SysProfil</td>
+        <td>INTEGER</td>
+      </tr>
+    </table>
 
-<td>System</td>
+    <table border cols="5">
+      <tr>
+        <td width="100">SysProfil</td>
 
-<td>Profil</td>
+        <td>System</td>
 
-<td>Unabdingbar</td>
+        <td>Profil</td>
 
-<td>MindKenntnisse</td>
-</tr>
+        <td>Unabdingbar</td>
 
-<tr>
-<td></td>
+        <td>MindKenntnisse</td>
+      </tr>
 
-<td>Ref. Betriebssystem OID (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Profil OID (Null)</td>
+        <td>Ref. Betriebssystem OID (Null)</td>
 
-<td>BIT</td>
+        <td>Ref. Profil OID (Null)</td>
 
-<td>INTEGER</td>
-</tr>
-</table>
+        <td>BIT</td>
 
-<br>&nbsp;
-<table BORDER COLS=4 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>SoftKandidat</td>
+        <td>INTEGER</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Software</td>
+    <table border cols="4">
+      <tr>
+        <td width="100">SoftKandidat</td>
 
-<td>Kandidat</td>
+        <td>Software</td>
 
-<td>Kenntniss</td>
-</tr>
+        <td>Kandidat</td>
 
-<tr>
-<td></td>
+        <td>Kenntniss</td>
+      </tr>
 
-<td>Ref. Software OID (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Kandidat OID (Null)</td>
+        <td>Ref. Software OID (Null)</td>
 
-<td>INTEGER</td>
-</tr>
-</table>
+        <td>Ref. Kandidat OID (Null)</td>
 
-<br>&nbsp;
-<table BORDER COLS=4 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>ProgKandidat</td>
+        <td>INTEGER</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Prog</td>
+    <table border cols="4">
+      <tr>
+        <td width="100">ProgKandidat</td>
 
-<td>Kandidat</td>
+        <td>Prog</td>
 
-<td>Kenntniss</td>
-</tr>
+        <td>Kandidat</td>
 
-<tr>
-<td></td>
+        <td>Kenntniss</td>
+      </tr>
 
-<td>Ref. ProgSprachen OID (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Kandidat OID (Null)</td>
+        <td>Ref. ProgSprachen OID (Null)</td>
 
-<td>INTEGER</td>
-</tr>
-</table>
+        <td>Ref. Kandidat OID (Null)</td>
 
-<br>&nbsp;
-<table BORDER COLS=4 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>SysKandidat</td>
+        <td>INTEGER</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>System</td>
+    <table border cols="4">
+      <tr>
+        <td width="100">SysKandidat</td>
 
-<td>Kandidat</td>
+        <td>System</td>
 
-<td>Kenntniss</td>
-</tr>
+        <td>Kandidat</td>
 
-<tr>
-<td></td>
+        <td>Kenntniss</td>
+      </tr>
 
-<td>Ref. Betriebssystem OID (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Kandidat OID (Null)</td>
+        <td>Ref. Betriebssystem OID (Null)</td>
 
-<td>INTEGER</td>
-</tr>
-</table>
+        <td>Ref. Kandidat OID (Null)</td>
 
-<br>&nbsp;
-<table BORDER COLS=2 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Verein</td>
+        <td>INTEGER</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td WIDTH="100" NOSAVE>Verein</td>
-</tr>
+    <table border cols="2">
+      <tr>
+        <td width="100">Verein</td>
 
-<tr>
-<td></td>
+        <td width="100">Verein</td>
+      </tr>
 
-<td>VARCHAR</td>
-</tr>
-</table>
+      <tr>
+        <td>
+        </td>
 
-<br>&nbsp;
-<table BORDER COLS=4 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>VereinKandidat</td>
+        <td>VARCHAR</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Kandidat</td>
+    <table border cols="4">
+      <tr>
+        <td width="100">VereinKandidat</td>
 
-<td>Verein</td>
+        <td>Kandidat</td>
 
-<td>Funktion</td>
-</tr>
+        <td>Verein</td>
 
-<tr>
-<td></td>
+        <td>Funktion</td>
+      </tr>
 
-<td>Ref. Kandidat OID</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Verein OID (Null)</td>
+        <td>Ref. Kandidat OID</td>
 
-<td>VARCHAR</td>
-</tr>
-</table>
+        <td>Ref. Verein OID (Null)</td>
 
-<br>&nbsp;
-<table BORDER COLS=2 WIDTH="100" NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Sprache</td>
+        <td>VARCHAR</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Sprache</td>
-</tr>
+    <table border cols="2" width="100">
+      <tr>
+        <td width="100">Sprache</td>
 
-<tr>
-<td></td>
+        <td>Sprache</td>
+      </tr>
 
-<td>VARCHAR</td>
-</tr>
-</table>
+      <tr>
+        <td>
+        </td>
 
-<br>&nbsp;
-<table BORDER COLS=7 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>SpracheKandidat</td>
+        <td>VARCHAR</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Kandidat</td>
+    <table border cols="7">
+      <tr>
+        <td width="100">SpracheKandidat</td>
 
-<td>Sprache</td>
+        <td>Kandidat</td>
 
-<td>Diplom</td>
+        <td>Sprache</td>
 
-<td>Schriftlich</td>
+        <td>Diplom</td>
 
-<td>Muendlich</td>
+        <td>Schriftlich</td>
 
-<td>Muttersprache</td>
-</tr>
+        <td>Muendlich</td>
 
-<tr>
-<td></td>
+        <td>Muttersprache</td>
+      </tr>
 
-<td>Ref. Kandidat OID (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Sprache OID&nbsp;</td>
+        <td>Ref. Kandidat OID (Null)</td>
 
-<td>VARCHAR</td>
+        <td>Ref. Sprache OID</td>
 
-<td>INTEGER</td>
+        <td>VARCHAR</td>
 
-<td>INTEGER</td>
+        <td>INTEGER</td>
 
-<td>INTEGER</td>
-</tr>
-</table>
+        <td>INTEGER</td>
 
-<br>&nbsp;
-<table BORDER COLS=4 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Hobby</td>
+        <td>INTEGER</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Titel</td>
+    <table border cols="4">
+      <tr>
+        <td width="100">Hobby</td>
 
-<td>Beschreibung</td>
+        <td>Titel</td>
 
-<td>Prioritaet</td>
-</tr>
+        <td>Beschreibung</td>
 
-<tr>
-<td></td>
+        <td>Prioritaet</td>
+      </tr>
 
-<td>VARCHAR</td>
+      <tr>
+        <td>
+        </td>
 
-<td>VARCHAR (Null)</td>
+        <td>VARCHAR</td>
 
-<td>INTEGER (Null)</td>
-</tr>
-</table>
+        <td>VARCHAR (Null)</td>
 
-<br>&nbsp;
-<table BORDER COLS=5 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>SpracheProfil</td>
+        <td>INTEGER (Null)</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>MinMuendlich</td>
+    <table border cols="5">
+      <tr>
+        <td width="100">SpracheProfil</td>
 
-<td>MinSchriftlich</td>
+        <td>MinMuendlich</td>
 
-<td>Unabdingbar</td>
+        <td>MinSchriftlich</td>
 
-<td>Diplom</td>
-</tr>
+        <td>Unabdingbar</td>
 
-<tr>
-<td></td>
+        <td>Diplom</td>
+      </tr>
 
-<td>INTEGER (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>INTEGER (Null)</td>
+        <td>INTEGER (Null)</td>
 
-<td>BIT</td>
+        <td>INTEGER (Null)</td>
 
-<td>BIT (Null)</td>
-</tr>
-</table>
+        <td>BIT</td>
 
-<br>&nbsp;
-<table BORDER COLS=5 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Matching</td>
+        <td>BIT (Null)</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Kandidat</td>
+    <table border cols="5">
+      <tr>
+        <td width="100">Matching</td>
 
-<td>Profil</td>
+        <td>Kandidat</td>
 
-<td>MatchingTime</td>
+        <td>Profil</td>
 
-<td>Geloescht</td>
-</tr>
+        <td>MatchingTime</td>
 
-<tr>
-<td></td>
+        <td>Geloescht</td>
+      </tr>
 
-<td>Ref. Kandidat OID (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>Ref. Profil OID (Null)</td>
+        <td>Ref. Kandidat OID (Null)</td>
 
-<td>DATETIME</td>
+        <td>Ref. Profil OID (Null)</td>
 
-<td>BIT</td>
-</tr>
-</table>
+        <td>DATETIME</td>
 
-<br>&nbsp;
-<table BORDER COLS=6 NOSAVE >
-<tr NOSAVE>
-<td WIDTH="100" NOSAVE>Jobwunsch</td>
+        <td>BIT</td>
+      </tr>
+    </table>
+    <br>
+     
 
-<td>Branche</td>
+    <table border cols="6">
+      <tr>
+        <td width="100">Jobwunsch</td>
 
-<td>Region</td>
+        <td>Branche</td>
 
-<td>Funktion</td>
+        <td>Region</td>
 
-<td>Pensum</td>
+        <td>Funktion</td>
 
-<td>Bemerkungen</td>
-</tr>
+        <td>Pensum</td>
 
-<tr>
-<td></td>
+        <td>Bemerkungen</td>
+      </tr>
 
-<td>VARCHAR (Null)</td>
+      <tr>
+        <td>
+        </td>
 
-<td>VARCHAR (Null)</td>
+        <td>VARCHAR (Null)</td>
 
-<td>VARCHAR (Null)</td>
+        <td>VARCHAR (Null)</td>
 
-<td>INTEGER (Null)</td>
+        <td>VARCHAR (Null)</td>
 
-<td>VARCHAR (Null)</td>
-</tr>
-</table>
+        <td>INTEGER (Null)</td>
 
-</body>
+        <td>VARCHAR (Null)</td>
+      </tr>
+    </table>
+    <hr>
+
+    <address>
+      <a href="./index.html">PSE 4</a>
+    </address>
+    <!-- Created: Fri Mar 31 13:38:33 MET DST 2000 -->
+    <!-- hhmts start -->Last modified: Thu Apr 27 10:17:43 MET DST 2000 
+    <!-- hhmts end --> <small>| $Id: storyboard.html,v 1.3 2000/04/27
+    08:03:20 locher Exp $</small>
+  </body>
 </html>
+

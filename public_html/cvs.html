@@ -1,85 +1,103 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <html>
   <head>
     <title>CVS Tutorial</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <link rel=stylesheet type="text/css" href="style.css">
 
   <body>
-    <a href="./index.html">Homepage</a>
+    <a href="./index.html">Homepage</a> 
     <hr>
 
     <h1>CVS Tutorial</h1>
 
     <h2>Prepare your environment</h2>
-    
-    <p>
-      Decide where your repositry should store its files. In this tutorial we use <tt>/home/pse4/cvsroot</tt>. Create this directory. Make sure that every member of the team has access to the directory.
-    </p>
-    <p>
-      Make sure that every team member's .login file contatins the following
-instructions:     </p>
+
+    <p>Decide where your repositry should store its files. In this tutorial
+    we use <tt>/home/pse4/cvsroot</tt>. Create this directory. Make sure that
+    every member of the team has access to the directory.</p>
+
+    <p>Make sure that every team member's .login file contatins the following
+    instructions:</p>
+
     <blockquote>
-      <code>
-	setenv EDITOR nedit<br>
-	setenv CVSROOT /home/pse4/cvsroot
-      </code>
+      <code>setenv EDITOR nedit<br>
+       setenv CVSROOT /home/pse4/cvsroot</code>
     </blockquote>
-    <p>
-      replace <tt>/home/pse4/cvsroot</tt> with the location that you have choosen.
-    </p>
-    <p>
-      Depending on your system configuration you need to logout and re-login to activate the changes.<br>
-      Verify the changes with the commands: <code>echo $CVSROOT $EDITOR</code>
-    </p>
+
+    <p>replace <tt>/home/pse4/cvsroot</tt> with the location that you have
+    choosen.</p>
+
+    <p>Depending on your system configuration you need to logout and re-login
+    to activate the changes.<br>
+     Verify the changes with the commands: <code>echo $CVSROOT
+    $EDITOR</code></p>
 
     <h2>Initialize the repositry</h2>
+
     <p>issue the following command: <code>cvs init</code></p>
 
     <h2>Import content</h2>
-    <p>
-      Change your working directory to the location where your have stored your source files (or directory stubs).<br>
-      issue the following command: <code>cvs import -m "initial import" pse team4 start</code><br>
-      replace <code>pse</code> according to your needs (it's the title of the import)
-    </p>
+
+    <p>Change your working directory to the location where your have stored
+    your source files (or directory stubs).<br>
+     issue the following command: <code>cvs import -m "initial import" pse
+    team4 start</code><br>
+     replace <code>pse</code> according to your needs (it's the title of the
+    import)</p>
 
     <h2>Let's work</h2>
-    <p>
-      change to your favourite working directory (eg. /scratch/subdir or /vat/tmp/subdir).<br>
-      Get the files with: <code>cvs checkout pse</code><br>
-      Modify the files. Add new files with <code>cvs add filename</code>.<br>
-      From time to time, check if your team mates have made some changes. In the <tt>pse</tt> directory type: <code>cvs update</code>.<br>
-      When you have finished your modifications share them with your team members. Type <code>cvs commit -m "comment of the change"</code>. This will save your modifications of all files in the current directory and its subdirectories. When cvs was successful you can delete your working copy.
-    </p>
+
+    <p>change to your favourite working directory (eg. /scratch/subdir or
+    /vat/tmp/subdir).<br>
+     Get the files with: <code>cvs checkout pse</code><br>
+     Modify the files. Add new files with <code>cvs add filename</code>.<br>
+     From time to time, check if your team mates have made some changes. In
+    the <tt>pse</tt> directory type: <code>cvs update</code>.<br>
+     When you have finished your modifications share them with your team
+    members. Type <code>cvs commit -m "comment of the change"</code>. This
+    will save your modifications of all files in the current directory and
+    its subdirectories. When cvs was successful you can delete your working
+    copy.</p>
 
     <h2>Good to know</h2>
+
     <ul>
-      <li>binary files <b>must</b> be added with the parameter -kb <a href="http://www.loria.fr/~molli/cvs/doc/cvs_9.html#SEC74">(see the documentation)</a></li>
+      <li>binary files <strong>must</strong> be added with the parameter -kb
+      <a href="http://www.loria.fr/~molli/cvs/doc/cvs_9.html#SEC74">(see the
+      documentation)</a></li>
+
       <li>use the PCL CVS mode in XEmacs 21<br>
-	(add <code>module load xemacs</code> in your <tt>.login</tt> file, then choose Tools->PCL CVS)</li>
+       (add <code>module load xemacs</code> in your <tt>.login</tt> file,
+      then choose Tools-&gt;PCL CVS)</li>
+
       <li>you can specify options in a .cvsrc file</li>
+
       <li>the <tt>cvs tag</tt> command can be used create releases</li>
     </ul>
-      
+
     <h2>Links</h2>
-    <p>
-      <a href="http://www.loria.fr/~molli/cvs/doc/cvs_toc.html">CVS User's Guide</a><br>
-      <a href="http://cvsbook.red-bean.com/">A Free CVS Book</a><br>
-      <a href="http://www.arc.unm.edu/~rsahu/cvs.html">CVS Tutorial</a><br>
-      <a href="http://cellworks.washington.edu/pub/docs/cvs/tutorial/cvs_tutorial_1.html">Another CVS tutorial</a><br>
-      <a href="http://www.csc.calpoly.edu/~dbutler/tutorials/winter96/cvs/">Yet another CVS tutorial (a little old, but nice)</a><br>
-      <a href="http://www.cs.utah.edu/dept/old/texinfo/cvs/FAQ.txt">An old but very useful FAQ about CVS</a>
-    </p>
 
-
-
-
+    <p><a href="http://www.loria.fr/~molli/cvs/doc/cvs_toc.html">CVS User's
+    Guide</a><br>
+     <a href="http://cvsbook.red-bean.com/">A Free CVS Book</a><br>
+     <a href="http://www.arc.unm.edu/~rsahu/cvs.html">CVS Tutorial</a><br>
+     <a href= 
+    "http://cellworks.washington.edu/pub/docs/cvs/tutorial/cvs_tutorial_1.html">
+    Another CVS tutorial</a><br>
+     <a href="http://www.csc.calpoly.edu/~dbutler/tutorials/winter96/cvs/">
+    Yet another CVS tutorial (a little old, but nice)</a><br>
+     <a href="http://www.cs.utah.edu/dept/old/texinfo/cvs/FAQ.txt">An old but
+    very useful FAQ about CVS</a></p>
     <hr>
-    <address><a href="./index.html">PSE 4</a></address>
-<!-- Created: Fri Mar 31 13:38:33 MET DST 2000 -->
-<!-- hhmts start -->
-Last modified: Mon Apr 10 11:49:22 MET DST 2000
-<!-- hhmts end -->
-    <small>| $Id: cvs.html,v 1.8 2000/04/10 09:50:51 locher Exp $</small>
+
+    <address>
+      <a href="./index.html">PSE 4</a>
+    </address>
+    <!-- Created: Fri Mar 31 13:38:33 MET DST 2000 -->
+    <!-- hhmts start -->Last modified: Mon Apr 10 11:49:22 MET DST 2000 
+    <!-- hhmts end --> <small>| $Id: cvs.html,v 1.8 2000/04/10 09:50:51
+    locher Exp $</small>
   </body>
 </html>
+
