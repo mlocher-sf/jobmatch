@@ -1,4 +1,4 @@
-#This file was created by <studer> Mon Apr 17 11:15:56 2000
+#This file was created by <loeffel> Mon Apr 17 18:18:08 2000
 #LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
@@ -165,4 +165,135 @@ Das Analysetool ist nur fuer AIESEC verfuegbar.
 \layout Section
 
 Non-functional requirements
+\layout Subsection
+
+Qualitätsbedingte Produkteigenschaften 
+\layout Subsubsection
+
+Anforderungen an die Zuverlässigkeit 
+\layout Itemize
+
+Das System soll durchgehend verfuegbar sein, ausser zu den Zeiten, in welchen
+ die Datenbank gesichert wird; somit soll das System 23 Stunden pro Tag
+ benutzbar sein.
+\layout Subsubsection
+
+Anforderung an die Benutzbarkeit 
+\layout Itemize
+
+Das Web-Interface soll sich an den gaengigen Online-Formularen orientieren.
+ Das heisst, dass alle Komponenten der Dateneingabe als bekannt gelten muessen,
+ wie zum Beispiel Textfelder und Dropdown Menues.
+\layout Itemize
+
+Die Administrationstools sollen keinen unnoetigen, komplizierten Aufgaben
+ genuegen, sondern ganz genau umsteckte Aufgaben erfuellen.
+ Fuer diese jedoch muss eine Online-Hilfe zur Verfuegung stehen.
+\layout Subsubsection
+
+Anforderungen an das Zeit- und Verbrauchsverhalten 
+\layout Itemize
+
+Verbrauchsverhalten: Das ER-Diagramm muss moeglichst wenig Redundanz aufweisen
+ und somit den Speicherplatz optimal ausnutzen sowie die Datenmenge, die
+ gesichert werden muss, gering halten.
+\layout Itemize
+
+Zeitverhalten: Es sollen allgemeine Regeln der objektorientierten Programmierung
+ beachtet werden, um Redundanz und 
+\begin_inset Quotes eld
+\end_inset 
+
+schwerfaellige
+\begin_inset Quotes erd
+\end_inset 
+
+ Datentransporte zwischen den Objekten zu vermeiden.
+ Jedoch ist die Performance weitgehend von der Enhydra - und Datenbankumgebung
+ festgelegt.
+\layout Subsubsection
+
+Anforderungen an die Wartbarkeit 
+\layout Itemize
+
+Da die genauen Angaben zur definitiv zur Anwendung kommenden Datenbank noch
+ nicht bekannt sind, muss das System so allgemein wie moeglich gehalten
+ werden.
+ Die Anpassungen muessen innerhalb eines Arbeitstages vorgenommen werden
+ koennen.
+\layout Subsubsection
+
+Anforderungen für die Erweiterbarkeit 
+\layout Itemize
+
+Ein besonderes Augenmerk ist auf die Skalierbarkeit der Datenbank zu werfen,
+ damit eine Einbindung mehrerer Universitaeten ohne Umstellung des Designs
+ erfolgen kann.
+\layout Itemize
+
+Online Formulare muessen nachtraeglich von der Administration angepasst
+ werden koennen.
+\layout Itemize
+
+Eine multilinguale Version soll ohne tiefgreifende Modifikation der Java-Kompone
+nten erfolgen koennen.
+ Die Verantwortlichkeit dafuer soll weitgehend beim Webdesigner und der
+ Datenbankadministration liegen.
+\layout Subsection
+
+Test 
+\layout Subsubsection
+
+Anforderungen an den Test 
+\layout Itemize
+
+Besondere Aufmerksamkeit ist auf die Korrektheit der Datenbankmodifikation
+ zu widmen, um eine Datenkorruption auszuschliessen.
+ Dies bedingt eine einwandfreie Funktion der Java-SQL Kommandos.
+\layout Itemize
+
+Regression Tests garantieren, dass die Funktionalitaeten im inkrementellen
+ Entwickeln ihre korrekte Funktionsweise beibehalten.
+\layout Subsection
+
+Einsatz 
+\layout Subsubsection
+
+Anforderungen an die Logistik der Installation 
+\layout Itemize
+
+Randbedingungen fuer eine Inbetriebnahme sind vorerst nicht festgelegt.
+\layout Subsubsection
+
+Anforderung an die Logistik der Betreuung 
+\layout Itemize
+
+Dies wird dem Team ueberlassen sein, das den Prototyp weiterentwickelt.
+\layout Subsection
+
+Umgebungsbedingte Produkteigenschaften 
+\layout Subsubsection
+
+Anforderungen durch die Schnittstellen der Systembasis 
+\layout Itemize
+
+Es besteht kein System, das eine Anbindung erfordert.
+ Ebenfalls sind keine Datensaetze vorhanden, die zu uebernehmen waeren.
+\layout Itemize
+
+Die Applikation wird letztendlich auf einem NT-Server zum Einsatz kommen.
+\layout Subsubsection
+
+Anforderungen an die Austauschbarkeit 
+\layout Itemize
+
+Es muss eine beliebige Datenbank verwendet werden koennen.
+ Dies soll einzig durch die Anpassung der JDBC Schnittstelle umsetzbar sein.
+\layout Subsubsection
+
+Berücksichtigung zu verwendender Bausteine 
+\layout Itemize
+
+Es werden die Enhydra-Umgebung und die Datenbank MySQL verwendet.
+ Darueber hinaus werden Komponenten zum Mailversand integriert werden.
 \the_end
