@@ -1,7 +1,8 @@
-// $Id: Candidate.java,v 1.4 2000/05/26 11:54:53 locher Exp $
+// $Id: Candidate.java,v 1.5 2000/05/30 12:47:52 studer Exp $
 
 package jobmatch.business.candidate;
 
+import jobmatch.business.entity.*;
 import jobmatch.data.*;
 import jobmatch.business.candidate.cv.*;
 import java.util.*;
@@ -10,8 +11,8 @@ import java.util.*;
  *  Candidate Business Object
  *
  *  @since May 4 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.4 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.5 $
  **/
 public class Candidate extends CandidateBDO {
     
@@ -26,6 +27,16 @@ public class Candidate extends CandidateBDO {
     public List getAllFormations() {
 	return Formation.getAllFormationsFor(this);
     }
+
+    public Country getNationalityBO(){
+	try{
+	    return new Country(this.getNationality());
+	}catch (Exception err){
+	    throw new RuntimeException(err.toString());
+	}
+    }
+	    
+	    
     
     /** @see Object.equals **/
     public boolean equals(Object other) {
@@ -58,6 +69,9 @@ public class Candidate extends CandidateBDO {
 
 /*
  * $Log: Candidate.java,v $
+ * Revision 1.5  2000/05/30 12:47:52  studer
+ * DropDown wird jetzt via DB abefuellt
+ *
  * Revision 1.4  2000/05/26 11:54:53  locher
  * Fromation object and query skeleton in Candidate
  *

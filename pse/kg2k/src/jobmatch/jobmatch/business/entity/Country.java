@@ -1,7 +1,8 @@
-// $Id: Country.java,v 1.3 2000/05/30 08:26:09 locher Exp $
+// $Id: Country.java,v 1.4 2000/05/30 12:47:54 studer Exp $
 
 package jobmatch.business.entity;
 
+import com.lutris.dods.builder.generator.query.DataObjectException;
 import jobmatch.data.*;
 import java.util.*;
 
@@ -9,8 +10,8 @@ import java.util.*;
  *  Country Business Object
  *
  *  @since May 26 2000
- *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @author $Author: studer $
+ *  @version $Revision: 1.4 $
  **/
 public class Country extends CountryBDO implements Description {
     
@@ -20,7 +21,7 @@ public class Country extends CountryBDO implements Description {
 	this.commit();
     }
 
-    private Country(CountryDO dataObject) {
+    public Country(CountryDO dataObject) {
 	super(dataObject);
     }
 
@@ -66,10 +67,13 @@ public class Country extends CountryBDO implements Description {
     }
 
     /** @return true if a is considered the same as b **/
-    private static boolean semanticEquality(Country a, Country b) {
-	//XXX define the equality and remove the exception !!!
-	throw new RuntimeException("semanticEqualitiy not defined");
-	//return (a == b);
+    private boolean semanticEquality(Country a, Country b) {
+      	try{
+	    return (a.getDescription().equals(b.getDescription()));
+	}catch (Exception e) {
+	    System.out.println(e.toString());
+	    throw new RuntimeException(e.toString());
+	}
     }
 
     /** @see Object.toString **/
@@ -82,6 +86,9 @@ public class Country extends CountryBDO implements Description {
 
 /*
  * $Log: Country.java,v $
+ * Revision 1.4  2000/05/30 12:47:54  studer
+ * DropDown wird jetzt via DB abefuellt
+ *
  * Revision 1.3  2000/05/30 08:26:09  locher
  * get methods for entities
  *

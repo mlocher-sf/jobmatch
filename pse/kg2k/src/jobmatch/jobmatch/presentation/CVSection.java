@@ -1,4 +1,4 @@
-// $Id: CVSection.java,v 1.1 2000/05/29 12:07:15 studer Exp $
+// $Id: CVSection.java,v 1.2 2000/05/30 12:47:56 studer Exp $
 
 package jobmatch.presentation;
 
@@ -14,24 +14,30 @@ import com.lutris.appserver.server.httpPresentation.*;
  *
  *  @since erstellungsdatum
  *  @author $Author: studer $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public abstract class CVSection extends AuthentificationPage implements  HttpPresentation {
 
-    public void fillListBox(HTMLOptionElement template, Collection descriptions){	 
+    public void fillListBox(HTMLOptionElement template, Collection descriptions, Description first_option){	 
 	Node select_node = template.getParentNode();
+	template.removeChild(template.getFirstChild());
+	System.out.println(template);
 	Iterator iterator = descriptions.iterator();
 	try{
 	    while (iterator.hasNext()){
 		final Description description = (Description) iterator.next();
 		HTMLOptionElement clonedOption = (HTMLOptionElement) template.cloneNode(true);
-		template.setValue(description.getDescription());
-		Node optionNode = clonedOption.getOwnerDocument().createTextNode(description.getDescription());
-		template.appendChild(optionNode);
+		clonedOption.setValue(description.getDescription());
+		Node optionNode = template.getOwnerDocument().createTextNode(description.getDescription());
+		System.out.println("vor der Schleife" + description);
+		if (first_option != null && description.equals(first_option)){
+		    clonedOption.setSelected(true);
+		}
+		clonedOption.appendChild(optionNode);
 		select_node.appendChild(clonedOption);
 	    }	
 	}catch (Exception e){
-	   System.err.println(e);
+	    throw new RuntimeException(e.toString());
 	}
 	select_node.removeChild(template);
     }
@@ -42,6 +48,9 @@ public abstract class CVSection extends AuthentificationPage implements  HttpPre
 // Document history
 /*
  * $Log: CVSection.java,v $
+ * Revision 1.2  2000/05/30 12:47:56  studer
+ * DropDown wird jetzt via DB abefuellt
+ *
  * Revision 1.1  2000/05/29 12:07:15  studer
  * Initial import
  *
