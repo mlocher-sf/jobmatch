@@ -19,6 +19,7 @@ CLASSES = \
 	School \
 	Schooltype \
 	Graduation \
+	Country \
 	EntityManager
 
 USEICONTRACT=1

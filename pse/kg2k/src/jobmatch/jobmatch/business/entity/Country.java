@@ -1,4 +1,4 @@
-// $Id: Graduation.java,v 1.2 2000/05/29 11:24:11 locher Exp $
+// $Id: Country.java,v 1.1 2000/05/29 11:24:10 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -6,28 +6,29 @@ import jobmatch.data.*;
 import java.util.*;
 
 /**
- *  Graduation Business Object
+ *  Country Business Object
  *
  *  @since May 26 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.1 $
  **/
-public class Graduation extends GraduationBDO implements Description {
+public class Country extends CountryBDO implements Description {
     
-    public Graduation(String description) throws Exception {
+    public Country(String description) throws Exception {
 	super();
 	this.setDescription(description);
 	this.commit();
     }
 
-    public Graduation(GraduationDO dataObject) {
+    public Country(CountryDO dataObject) {
 	super(dataObject);
     }
 
-    public static List getAllGraduations() {
+    public static List getAllCountries() {
 	List result = new ArrayList();
+	
 	// make a query
-	// for every DO create a new Graduation(DO) and add to result
+	// for every DO create a new Country(DO) and add to result
 	return result;
     }
     
@@ -38,7 +39,7 @@ public class Graduation extends GraduationBDO implements Description {
 	}
 	
 	try {
-	    return semanticEquality(this, (Graduation) other);
+	    return semanticEquality(this, (Country) other);
 	}
 	catch (ClassCastException e) {
 	    return false;
@@ -46,7 +47,7 @@ public class Graduation extends GraduationBDO implements Description {
     }
 
     /** @return true if a is considered the same as b **/
-    private static boolean semanticEquality(Graduation a, Graduation b) {
+    private static boolean semanticEquality(Country a, Country b) {
 	//XXX define the equality and remove the exception !!!
 	throw new RuntimeException("semanticEqualitiy not defined");
 	//return (a == b);
@@ -61,11 +62,11 @@ public class Graduation extends GraduationBDO implements Description {
 
 
 /*
- * $Log: Graduation.java,v $
- * Revision 1.2  2000/05/29 11:24:11  locher
+ * $Log: Country.java,v $
+ * Revision 1.1  2000/05/29 11:24:10  locher
  * Entity Manager
  *
- * Revision 1.1  2000/05/26 13:59:57  locher
+ * Revision 1.1  2000/05/26 13:59:59  locher
  * introduced entity package
  *
  */

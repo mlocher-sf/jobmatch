@@ -1,4 +1,4 @@
-// $Id: EntityManager.java,v 1.1 2000/05/29 11:06:13 locher Exp $
+// $Id: EntityManager.java,v 1.2 2000/05/29 11:24:11 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -11,7 +11,7 @@ import com.lutris.dods.builder.generator.query.*;
  *
  *  @since May 29 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 final public class EntityManager {
 
@@ -30,14 +30,28 @@ final public class EntityManager {
     }
 
     public static List getCountries() {
-	// do a query and return a list of Countries
-	return new ArrayList();
+	return Country.getAllCountries();
+    }
+
+    public static List getSchools() {
+	return School.getAllSchools();
+    }
+
+    public static List getSchooltypes() {
+	return Schooltype.getAllSchooltypes();
+    }
+
+    public static List getGraduations() {
+	return Graduation.getAllGraduations();
     }
     
 } //class
 
 /*
  * $Log: EntityManager.java,v $
+ * Revision 1.2  2000/05/29 11:24:11  locher
+ * Entity Manager
+ *
  * Revision 1.1  2000/05/29 11:06:13  locher
  * Entity Manager
  *

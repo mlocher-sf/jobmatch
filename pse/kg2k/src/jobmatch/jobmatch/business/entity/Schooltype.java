@@ -1,4 +1,4 @@
-// $Id: Schooltype.java,v 1.1 2000/05/26 13:59:59 locher Exp $
+// $Id: Schooltype.java,v 1.2 2000/05/29 11:24:12 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,12 +10,14 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class Schooltype extends SchooltypeBDO implements Description {
     
-    public Schooltype() throws Exception {
+    public Schooltype(String description) throws Exception {
 	super();
+	this.setDescription(description);
+	this.commit();
     }
 
     public Schooltype(SchooltypeDO dataObject) {
@@ -60,6 +62,9 @@ public class Schooltype extends SchooltypeBDO implements Description {
 
 /*
  * $Log: Schooltype.java,v $
+ * Revision 1.2  2000/05/29 11:24:12  locher
+ * Entity Manager
+ *
  * Revision 1.1  2000/05/26 13:59:59  locher
  * introduced entity package
  *
