@@ -67,8 +67,7 @@ CLASSES = \
 	Logout \
 	DocumentPresentation \
 	PDFPresentation \
-	CurriculumVitae \
-	CreateCompany
+	CurriculumVitae
 
 XMLC_HTML_OPTS_FILE = options.xmlc
 
@@ -99,8 +98,7 @@ HTML_CLASSES = \
 	CVSoftwareExperienceHTML \
 	CVWorkingDetailExperienceHTML \
 	CVWorkingExperienceHTML \
-	PasswordHTML \
-	CreateCompanyHTML
+	PasswordHTML
 
 JAR_INSTALL = \
 	./html/style.css

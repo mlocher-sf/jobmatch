@@ -26,13 +26,15 @@ PACKAGEDIR = jobmatch/presentation/admin
 # this list (without the .java extension).
 #
 CLASSES = \
-	ControlCenter
+	ControlCenter \
+	CreateCompany
 
 XMLC_HTML_OPTS_FILE = ../options.xmlc
 
 HTML_DIR = ../html
 HTML_CLASSES = \
-	ControlCenterHTML
+	ControlCenterHTML \
+	CreateCompanyHTML
 
 include $(ROOT)/config.mk
 
