@@ -9,6 +9,7 @@ import jobmatch.business.entity.*;
 import com.lutris.xml.xmlc.*;
 import com.lutris.appserver.server.httpPresentation.*;
 import jobmatch.business.util.TimeUtil;
+import jobmatch.business.candidate.cv.*;
 
 public class CVEducationDetail extends CVSection implements HttpPresentation {
 
@@ -19,16 +20,17 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 	
 	this.assertLegitimation(comms, Account.TYPE_CANDIDATE, "Welcome.po");
 	Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
-
+	
 	final String action = comms.request.getParameter("action");
 	if (action != null && action.equals("write")){ 
 	    this.processData(page, candidate, comms);
-	}
-
+	    }
+	    
 	this.fillSchooltype(page, candidate);
 	this.fillGraduation(page, candidate);
-	this.fillPage(page, candidate, comms);
+
 	comms.response.writeHTML(page);
+
     }
 
     private void fillGraduation(CVEducationDetailHTML page, Candidate candidate){
@@ -47,9 +49,16 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 
     private void processData(CVEducationDetailHTML page, Candidate candidate, HttpPresentationComms comms) {
 	try{
-
-	    
-
+	    Formation formation = new Formation();
+	    formation.setCandidate(candidate);
+	    formation.setBeginDate(TimeUtil.getDate(Integer.parseInt(comms.request.getParameter("BeginYear")),
+						    Integer.parseInt(comms.request.getParameter("BeginMonth")),
+						    Integer.parseInt(comms.request.getParameter("BeginDay"))));
+	    formation.setEndDate(TimeUtil.getDate(Integer.parseInt(comms.request.getParameter("EndYear")),
+						    Integer.parseInt(comms.request.getParameter("EndMonth")),
+						    Integer.parseInt(comms.request.getParameter("EndDay"))));
+	    formation.setRemarks(comms.request.getParameter("Remarks"));
+	    formation.commit();
 	}
 	catch(Exception e) {
 	    System.out.println(e.toString());
@@ -57,15 +66,40 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 	}
     }
 
-    private void fillPage(CVEducationDetailHTML page, Candidate candidate, HttpPresentationComms comms) {
+   /* private void fillPage(CVEducationDetailHTML page, Formation formation, HttpPresentationComms comms) {
 	try {
-    
+	    page.getElementBeginYear().setValue(splitDate(formation.getBeginDate(), 3));
+	    page.getElementBeginMonth().setValue(splitDate(formation.getBeginDate(), 2));
+	    page.getElementBeginDay().setValue(splitDate(formation.getBeginDate(), 1));
+
+	    page.getElementEndYear().setValue(splitDate(formation.getEndDate(), 3));
+	    page.getElementEndMonth().setValue(splitDate(formation.getEndDate(), 2));
+	    page.getElementEndDay().setValue(splitDate(formation.getEndDate(), 1));
+
+	    page.getElementRemarks().setValue(formation.getRemarks());
 	}
 	catch(Exception e) {
 	    System.out.println(e.toString());
 	    throw new RuntimeException();
 	}
     }
-
+    
+    private String splitDate(Date d, int selector){
+	String result;
+	switch (selector) {
+	case 3:
+	    result = String.valueOf(TimeUtil.getYear(d));
+	    break;
+	case 2:
+	    result = String.valueOf(TimeUtil.getMonth(d));
+	    break;
+	case 1:
+	    result = String.valueOf(TimeUtil.getDay(d));
+	    break;
+	default:
+	    result = d.toString();
+	}
+	return result;
+    }*/
 
 }
