@@ -32,7 +32,8 @@ CLASSES = \
 	CandidateHome \
 	CVPersonal \
 	Welcome \
-	Login
+	Login \
+	CheckLogin
 
 
 XMLC_HTML_OPTS_FILE = options.xmlc
