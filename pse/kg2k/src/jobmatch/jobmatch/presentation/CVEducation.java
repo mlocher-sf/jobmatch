@@ -34,17 +34,23 @@ public class CVEducation extends CVMultiSection implements HttpPresentation {
 
 	public HTMLElement format(jobmatch.business.candidate.cv.CVSection section) {
 	    Formation formation = (Formation) section;
-	    HTMLTableRowElement template_row =
-	    this.page.getElementTemplateRow();
 	    try{
-	    page.setTextRemarks(formation.getRemarks());
-	    page.setTextGraduation(formation.getGraduationBO().getDescription());
-	    page.setTextBegin(formation.getBeginDate().toString());
-	    page.setTextEnd(formation.getEndDate().toString());
-	    page.setTextSchooltype(formation.getSchoolBO().getSchoolTypeBO().getDescription());
-	    page.setTextSchoolname(formation.getSchoolBO().getDescription());
+		
+		page.setTextRemarks(formation.getRemarks());
+		//Graduation can be null
+		try {
+		    page.setTextGraduation(formation.getGraduationBO().getDescription());
+		}catch (NullPointerException e){
+		    page.setTextGraduation("");
+		}
+		page.setTextBegin(formation.getBeginDate().toString());
+		page.setTextEnd(formation.getEndDate().toString());
+		//   System.out.println(formation.getSchoolBO().getSchoolTypeBO().getDescription());
+		page.setTextSchooltype(formation.getSchoolBO().getSchoolTypeBO().getDescription());
+		page.setTextSchoolname(formation.getSchoolBO().getDescription());
 	    }catch (Exception e){
-		System.out.println("Exception in class EducationFormatter");
+		System.out.println("Exception int class EducationFormatter");
+		throw new RuntimeException(e.toString());
 	    }
 	    return (HTMLElement) this.page.getElementTemplateRow().cloneNode(true);
 	}
