@@ -26,4 +26,13 @@
 -urlmapping './Profile.html' './Profile.po'
 -urlmapping './ProfileResults.html' './ProfileResults.po'
 -urlmapping './LoginCompanies.html' './LoginCompanies.po'
+-urlmapping './ChangePassphrase.html' './ChangePassephrase.po'
+-urlmapping './Password.html' './Password.po'
+-urlmapping './ProfileLanguageDetailExperience.html' './ProfileLanguageDetailExperience.po'
+-urlmapping './ProfileOperatingSystemExperience.html' './ProfileOperatingSystemExperience.po'
+-urlmapping './ProfileLanguageExperience.html' './ProfileLanguageExperience.po'
+-urlmapping './ProfilePersonal.html' './ProfilePersonal.po'
+-urlmapping './ProfilePersonalDetail.html' './ProfilePersonalDetail.po'
+-urlmapping './ProfileProgrammingExperience.html' './ProfileProgrammingExperience.po'
+-urlmapping './ProfileSoftwareExperience.html' './ProfileSoftwareExperience.po'
 -delete-class trash

@@ -41,8 +41,23 @@ CLASSES = \
 	CreateLogin \
 	LoginCompanies \
 	Profile \
-	ProfileResults
-
+	ProfileResults \
+	CVComputerExperience \
+	CVEducation \
+	CVEducationDetail \
+	CVHobbies \
+	CVHobbiesDetail \
+	CVJobWishes \
+	CVLanguageDetailExperience \
+	CVLanguageExperience \
+	CVMembership \
+	CVMembershipDetail \
+	CVOperatingSystemExperience \
+	CVProgrammingExperience \
+	CVSoftwareExperience \
+	CVWorkingDetailExperience \
+	CVWorkingExperience \
+	Password \
 
 XMLC_HTML_OPTS_FILE = options.xmlc
 
@@ -57,8 +72,23 @@ HTML_CLASSES = \
 	LoginCompaniesHTML \
 	ProfileHTML \
 	ProfileResultsHTML \
-	SectionHTML
-
+	SectionHTML \
+	CVComputerExperienceHTML \
+	CVEducationHTML \
+	CVEducationDetailHTML \
+	CVHobbiesHTML \
+	CVHobbiesDetailHTML \
+	CVJobWishesHTML \
+	CVLanguageDetailExperienceHTML \
+	CVLanguageExperienceHTML \
+	CVMembershipHTML \
+	CVMembershipDetailHTML \
+	CVOperatingSystemExperienceHTML \
+	CVProgrammingExperienceHTML \
+	CVSoftwareExperienceHTML \
+	CVWorkingDetailExperienceHTML \
+	CVWorkingExperienceHTML \
+	PasswordHTML
 
 JAR_INSTALL = \
 	./html/style.css
