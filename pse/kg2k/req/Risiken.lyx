@@ -1,0 +1,95 @@
+#This file was created by <bruhin> Tue Apr  4 11:52:38 2000
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Risiken
+\layout Section
+
+Projekt Risiken
+\layout Itemize
+
+Ausfall eines Team-Mitgliedes
+\layout Itemize
+
+Probleme mit dem Zeitplan (schlechte Zeiteinteilung)
+\layout Itemize
+
+Personelle und moralische Probleme (mangelnde Kommunikation, falsche Einstellung
+ zum Projekt)
+\layout Itemize
+
+Groesse des Projektes wird unterschaetzt (man mutet sich zuviel zu)
+\layout Itemize
+
+Es werden zu komplexe Resourcen gebraucht (man braucht zu lang, um sich
+ einzuarbeiten)
+\layout Section
+
+Technische Risiken
+\layout Itemize
+
+Implementations Technologie wurde unpassend gewaehlt (z.B.
+ Enhydra wird schlecht verstanden) 
+\layout Itemize
+
+Schlechtes Design
+\layout Itemize
+
+Probleme mit der Datenbank
+\layout Itemize
+
+Verification: Fehler wurden uebersehen (ungenuegende Tests)
+\layout Itemize
+
+Falsche Einschaetzung der Requirements
+\layout Itemize
+
+Zuviel Aufwand fuer die Wartung des Systems
+\layout Section
+
+Geschaefts Risiken
+\layout Itemize
+
+Verpflichtungen werden nicht richtig erfuellt
+\layout Title
+
+Massnahmen
+\layout Itemize
+
+Risiken so frueh wie moeglich erkennen
+\layout Itemize
+
+Risikofaktoren waehrend des Softwarezykluses beobachten
+\layout Itemize
+
+Checkliste (Top Ten) der Risiken erstellen
+\layout Itemize
+
+Training/Prototyping
+\layout Itemize
+
+Umfangreiche Reviews
+\the_end
