@@ -41,9 +41,6 @@
             <referenceObject constraint="true" reference="jobmatch.data.Jobwish"/>
             <type canBeNull="true" dbType="none" javaType="jobmatch.data.JobwishDO"/>
           </column>
-          <column id="LastLogin" usedForQuery="true">
-            <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
-          </column>
           <column id="Lname" usedForQuery="true">
             <type dbType="VARCHAR" javaType="String" size="25"/>
           </column>
@@ -137,38 +134,39 @@
           <column id="Function">
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="50"/>
           </column>
+          <column id="Candidate" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Candidate"/>
+            <type dbType="none" javaType="jobmatch.data.CandidateDO"/>
+          </column>
         </table>
         <table id="jobmatch.data.Account" isAbstract="true">
           <column id="Username" isIndex="true" usedForQuery="true">
             <type dbType="VARCHAR" javaType="String" size="40"/>
           </column>
-          <column id="Password">
-            <type dbType="VARCHAR" javaType="String" size="20"/>
-          </column>
           <column id="Email" usedForQuery="true">
             <type dbType="VARCHAR" javaType="String" size="50"/>
           </column>
-        </table>
-        <table id="jobmatch.data.CandidateAccount" extensionOf="jobmatch.data.Account"/>
-        <table id="jobmatch.data.CompanyAccount" extensionOf="jobmatch.data.Account"/>
-        <table id="jobmatch.data.Area">
-          <column id="Name" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="30"/>
+          <column id="LastLogin" usedForQuery="true">
+            <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+          </column>
+          <column id="LoginReminder" usedForQuery="true">
+            <type dbType="INTEGER" javaType="int"/>
+            <initialValue>0</initialValue>
+          </column>
+          <column id="Passphrase">
+            <type dbType="VARCHAR" javaType="String" size="20"/>
           </column>
         </table>
-        <table id="jobmatch.data.Country">
-          <column id="Name">
-            <type dbType="VARCHAR" javaType="String" size="32"/>
+        <table id="jobmatch.data.CandidateAccount" extensionOf="jobmatch.data.Account">
+          <column id="Candidate" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Candidate"/>
+            <type dbType="none" javaType="jobmatch.data.CandidateDO"/>
           </column>
         </table>
-        <table id="jobmatch.data.Graduation">
-          <column id="Type">
-            <type dbType="VARCHAR" javaType="String" size="32"/>
-          </column>
-        </table>
-        <table id="jobmatch.data.Industry">
-          <column id="Type" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="30"/>
+        <table id="jobmatch.data.CompanyAccount" extensionOf="jobmatch.data.Account">
+          <column id="Company" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Company"/>
+            <type dbType="none" javaType="jobmatch.data.CompanyDO"/>
           </column>
         </table>
         <table id="jobmatch.data.Employer">
@@ -223,11 +221,6 @@
             <type dbType="none" javaType="jobmatch.data.SchooltypeDO"/>
           </column>
         </table>
-        <table id="jobmatch.data.Schooltype">
-          <column id="Type" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="40"/>
-          </column>
-        </table>
         <table id="jobmatch.data.Profile">
           <column id="Name" usedForQuery="true">
             <type dbType="VARCHAR" javaType="String" size="40"/>
@@ -244,77 +237,23 @@
             <referenceObject constraint="true" reference="jobmatch.data.Company"/>
             <type dbType="none" javaType="jobmatch.data.CompanyDO"/>
           </column>
-          <column id="MatchingThreshold" usedForQuery="true">
+          <column id="NeedsRematching" usedForQuery="true">
+            <type dbType="BIT" javaType="boolean"/>
+            <initialValue>true</initialValue>
+          </column>
+          <column id="Notify" usedForQuery="true">
+            <type dbType="BIT" javaType="boolean"/>
+            <initialValue>true</initialValue>
+          </column>
+          <column id="Interval" usedForQuery="true">
             <type dbType="INTEGER" javaType="int"/>
             <initialValue>0</initialValue>
           </column>
-        </table>
-        <table id="jobmatch.data.Software">
-          <column id="Name" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="20"/>
+          <column id="MatchTree" usedForQuery="true">
+            <type dbType="BINARY" javaType="byte[]"/>
           </column>
-        </table>
-        <table id="jobmatch.data.Programming">
-          <column id="Language" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="15"/>
-          </column>
-        </table>
-        <table id="jobmatch.data.Operationgsystem" dbTableName="Operatingsystem">
-          <column id="System" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="10"/>
-          </column>
-        </table>
-        <table id="jobmatch.data.SoftwareProfil">
-          <column id="Software" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Software"/>
-            <type dbType="none" javaType="jobmatch.data.SoftwareDO"/>
-          </column>
-          <column id="Profile" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Profile"/>
-            <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
-          </column>
-          <column id="Mandatory" usedForQuery="true">
-            <type dbType="BIT" javaType="boolean"/>
-          </column>
-          <column id="MinCapability" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String"/>
-          </column>
-        </table>
-        <table id="jobmatch.data.ProgrammingProfile">
-          <column id="Profile" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Profile"/>
-            <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
-          </column>
-          <column id="Mandatory" usedForQuery="true">
-            <type dbType="BIT" javaType="boolean"/>
-          </column>
-          <column id="MinCapability" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String"/>
-          </column>
-          <column id="Language" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Programming"/>
-            <type dbType="none" javaType="jobmatch.data.ProgrammingDO"/>
-          </column>
-        </table>
-        <table id="jobmatch.data.OperationgsystemProfile">
-          <column id="System" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Operationgsystem"/>
-            <type dbType="none" javaType="jobmatch.data.OperationgsystemDO"/>
-          </column>
-          <column id="Profile" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Profile"/>
-            <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
-          </column>
-          <column id="Mandatory" usedForQuery="true">
-            <type dbType="BIT" javaType="boolean"/>
-          </column>
-          <column id="MinCapability" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String"/>
-          </column>
-        </table>
-        <table id="jobmatch.data.Association">
-          <column id="Association" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="40"/>
+          <column id="LastNotification" usedForQuery="true">
+            <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
           </column>
         </table>
         <table id="jobmatch.data.AssociationCandidate">
@@ -330,11 +269,6 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String" size="40"/>
           </column>
         </table>
-        <table id="jobmatch.data.Language">
-          <column id="Language" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String" size="40"/>
-          </column>
-        </table>
         <table id="jobmatch.data.LanguageCandidate">
           <column id="Candidate" usedForQuery="true">
             <referenceObject constraint="true" reference="jobmatch.data.Candidate"/>
@@ -348,10 +282,12 @@
             <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
           </column>
           <column id="Written" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String"/>
+            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
           </column>
           <column id="Spoken" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String"/>
+            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
           </column>
         </table>
         <table id="jobmatch.data.Hobby">
@@ -379,17 +315,19 @@
             <referenceObject constraint="true" reference="jobmatch.data.Profile"/>
             <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
           </column>
-          <column id="MinWritten" usedForQuery="true">
-            <type dbType="VARCHAR" javaType="String"/>
-          </column>
-          <column id="MinSpoken">
-            <type dbType="VARCHAR" javaType="String"/>
-          </column>
           <column id="Mandatory" usedForQuery="true">
             <type dbType="BIT" javaType="boolean"/>
           </column>
           <column id="Diploma" usedForQuery="true">
             <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+          </column>
+          <column id="MinWritten" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
+          </column>
+          <column id="MinSpoken" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
           </column>
         </table>
         <table id="jobmatch.data.CandidateProfile">
@@ -430,6 +368,84 @@
           </column>
           <column id="Remarks" usedForQuery="true">
             <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.ConstantTable" dbTableName="NewDBTable" isAbstract="true">
+          <column id="Description" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="40"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.Schooltype" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Software" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Programming" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Operationgsystem" dbTableName="Operatingsystem" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Language" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Industry" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Graduation" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Country" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Association" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.Area" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.ComputerRequest" dbTableName="NewDBTable" isAbstract="true">
+          <column id="Profile" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Profile"/>
+            <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
+          </column>
+          <column id="Mandatory" usedForQuery="true">
+            <type dbType="BIT" javaType="boolean"/>
+          </column>
+          <column id="LeafNumber" usedForQuery="true">
+            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
+            <initialValue>0</initialValue>
+          </column>
+          <column id="MinCapability" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Compcapability"/>
+            <type dbType="none" javaType="jobmatch.data.CompcapabilityDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.OperationgsystemProfile" extensionOf="jobmatch.data.ComputerRequest">
+          <column id="System" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Operationgsystem"/>
+            <type dbType="none" javaType="jobmatch.data.OperationgsystemDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.ProgrammingProfile" extensionOf="jobmatch.data.ComputerRequest">
+          <column id="Language" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Programming"/>
+            <type dbType="none" javaType="jobmatch.data.ProgrammingDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.SoftwareProfile" extensionOf="jobmatch.data.ComputerRequest">
+          <column id="Software" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Software"/>
+            <type dbType="none" javaType="jobmatch.data.SoftwareDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.Compcapability" extensionOf="jobmatch.data.Capability"/>
+        <table id="jobmatch.data.Languagecapability" extensionOf="jobmatch.data.Capability"/>
+        <table id="jobmatch.data.Capability" dbTableName="NewDBTable" extensionOf="jobmatch.data.ConstantTable" isAbstract="true">
+          <column id="Ordinal" usedForQuery="true">
+            <type dbType="INTEGER" javaType="int"/>
+            <initialValue>0</initialValue>
+          </column>
+        </table>
+        <table id="jobmatch.data.MailQueue">
+          <column id="Mail" usedForQuery="true">
+            <type dbType="BINARY" javaType="byte[]"/>
+          </column>
+          <column id="Priority" usedForQuery="true">
+            <type dbType="INTEGER" javaType="int"/>
+          </column>
+          <column id="Time" usedForQuery="true">
+            <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.MatchQueue">
+          <column id="Time" usedForQuery="true">
+            <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+          </column>
+          <column id="Candidate" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Candidate"/>
+            <type dbType="none" javaType="jobmatch.data.CandidateDO"/>
           </column>
         </table>
       </package>
