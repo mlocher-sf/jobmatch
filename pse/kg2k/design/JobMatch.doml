@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doml>
+  <database database="Standard">
+    <package id="JobMatch">
+      <package id="JobMatch.Data">
+        <table id="JobMatch.Data.Candidat">
+          <column id="AIESECMember" usedForQuery="true">
+            <type dbType="BIT" javaType="boolean"/>
+          </column>
+          <column id="Adress" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="40"/>
+          </column>
+          <column id="BirthDate" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="10"/>
+          </column>
+          <column id="Character">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+          </column>
+          <column id="Home">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="40"/>
+          </column>
+          <column id="Lname" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="35"/>
+          </column>
+          <column id="Nationality" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="25"/>
+          </column>
+          <column id="Sex" usedForQuery="true">
+            <type dbType="BIT" javaType="boolean"/>
+          </column>
+          <column id="Status" usedForQuery="true">
+            <type dbType="BIT" javaType="boolean"/>
+          </column>
+          <column id="LastLogin" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="10"/>
+          </column>
+          <column id="Fname" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="35"/>
+          </column>
+          <column id="Email" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="40"/>
+          </column>
+        </table>
+        <table id="JobMatch.Data.Company">
+          <column id="Activ">
+            <type dbType="BIT" javaType="boolean"/>
+          </column>
+          <column id="GratuatesAYear">
+            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
+          </column>
+          <column id="Headquarter" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="35"/>
+          </column>
+          <column id="Link">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+          </column>
+          <column id="Name" usedForQuery="true">
+            <type dbType="VARCHAR" javaType="String" size="30"/>
+          </column>
+          <column id="ShortDescription">
+            <type canBeNull="true" dbType="LONGVARCHAR" javaType="String"/>
+          </column>
+          <column id="NumberOfEmployees">
+            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
+          </column>
+          <column id="Conversion">
+            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
+          </column>
+          <column id="Spreading" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+          </column>
+          <column id="Industry" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="30"/>
+          </column>
+        </table>
+      </package>
+    </package>
+  </database>
+</doml>
