@@ -1,0 +1,365 @@
+#This file was created by <studer> Mon May 22 14:03:56 2000
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language german
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+
+\layout Title
+
+Review des Pflichtenhefts der Gruppe 3
+\layout Author
+
+PSE Gruppe 4
+\layout Standard
+
+Datum: 22.
+ Mai 2000
+\layout Standard
+
+Dauer: 60 Minuten
+\layout Standard
+
+Reviewer: Denise Niedermann, Marco Studer
+\layout Standard
+
+Vorbereitungszeit: 30 Minuten
+\layout Paragraph
+
+Pruefling
+\layout Standard
+
+First Product der Gruppe 1, PSE 2000
+\layout Paragraph
+
+Referenzunterlagen
+\layout Enumerate
+
+Readme
+\layout Enumerate
+
+Install
+\layout Enumerate
+
+First Product
+\layout Paragraph
+
+Empfehlung
+\layout Standard
+
+Das First Product wird in der vorliegenden Version akzeptiert.
+ Eine Ueberarbeitung mit kleinen Aenderungen ist erforderlich.
+\layout Section
+
+Zusammenfassung
+\layout Standard
+
+Das Dokument erfuellt die Anforderungen an ein Pflichtenheft nicht.
+ Die Funktionalen Anforderungen werden nur mit Diagrammen dokumentiert.
+ Zu den Use Cases muss unbedingt in sprachlicher Form eine Paraezisierung
+ erfolgen.
+ Ausserdem sind verschiede Anforderungen des Kunden nicht paezis oder falsch
+ uebernommen worden.
+ Ein Abgleich mit dem PSE WIKI und Rueckfragen an den Kunden sind zu empfehlen.
+\layout Section
+
+Liste der Befunde
+\layout Subsection
+
+Makroskopische Merkmale
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol5
+14 4 0 0 -1 -1 -1 -1
+1 1 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+0 0 1 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 "" ""
+8 1 0 "" ""
+2 1 0 "8cm" ""
+8 1 1 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+
+Nr
+\newline 
+Referenz
+\newline 
+Beschreibung
+\newline 
+Gewicht
+\newline 
+1
+\newline 
+
+\newline 
+Wenn sich ein Student neu anmeldet, muss er sich danach nocheinmal einloggen.
+\newline 
+
+\newline 
+2
+\newline 
+
+\newline 
+Bei den CV-Sektionen koennen nur eine begrenzte Anzahl Werte eingegeben
+ werden.
+\newline 
+
+\newline 
+3
+\newline 
+
+\newline 
+Fuer die Sperrliste ist nur ein Eingabefeld vorgesehen.
+\newline 
+
+\newline 
+4
+\newline 
+
+\newline 
+Es sind keine Dokumentationen vorhanden, die die Funktionalitaet des Produktes
+ beschreiben.
+\newline 
+
+\newline 
+5
+\newline 
+
+\newline 
+Die Installationsanleitung beschreibt nur die Installionsschritte fuer Unix.
+\newline 
+
+\newline 
+6
+\newline 
+
+\newline 
+Die Titel in den Drop-Down-Felder sind klein geschrieben.
+\newline 
+
+\newline 
+7
+\newline 
+
+\newline 
+Im Readme fehlen genauere Angaben ueber Vorraussetzungen bezueglich der
+ Software.
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+8
+\newline 
+
+\newline 
+Ein Testverfahren, das ueberprueft, ob die Installation erfolgreich war,
+ fehlt.
+\newline 
+
+\newline 
+9
+\newline 
+
+\newline 
+Beim Erstellen eines Accounts fehlt das Eingabefeld fuer die Email-Adresse.
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\layout Standard
+
+Gewichtung: 1-fataler Fehler; 2 - normaler Fehler; 3 - kosmetischer Fehler
+\layout Subsection
+
+Mikroskopische Merkmale
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol5
+5 4 0 0 -1 -1 -1 -1
+1 1 0 0
+1 0 0 0
+1 0 0 0
+1 0 0 0
+1 1 0 0
+8 1 0 "" ""
+8 1 0 "" ""
+2 1 0 "8cm" ""
+8 1 1 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+
+Nr
+\newline 
+Referenz
+\newline 
+Beschreibung
+\newline 
+Gewicht
+\newline 
+1
+\newline 
+1,2
+\newline 
+Name des Kunden erscheint in 3 verschiedenen Schreibweisen.
+\newline 
+1
+\newline 
+2
+\newline 
+1
+\newline 
+Floskeln und unpraezise Ausdrucksformen
+\newline 
+2
+\newline 
+3
+\newline 
+1
+\newline 
+Unangemessene Ausdruecke (zB.
+ Muell)
+\newline 
+2
+\newline 
+4
+\newline 
+1
+\newline 
+Tippfehler
+\newline 
+3
+\layout Standard
+
+Gewichtung: 1-fataler Fehler; 2 - normaler Fehler; 3 - kosmetischer Fehler
+\the_end
