@@ -1,39 +1,46 @@
-// $Id: CVMultiSection.java,v 1.2 2000/05/31 11:36:15 studer Exp $
+// $Id: CVMultiSection.java,v 1.3 2000/06/04 11:50:43 locher Exp $
 
 package jobmatch.presentation;
 import java.util.*;
 import org.w3c.dom.html.*;
 import org.enhydra.xml.xmlc.html.*;
 /**
- *  Provides a method to fill a table with data from the db
+ *  Provides a method to fill a table with data.
  *
- *  @since 30.5.00
- *  @author $Author: studer $
- *  @version $Revision: 1.2 $
+ *  @since May 30 2000
+ *  @author $Author: locher $
+ *  @version $Revision: 1.3 $
  **/
 public abstract class CVMultiSection extends CVSection{
     
     /**
-     * Fills the HTML-Table with the specified formatter and data
+     * formats all CVSections contained in data with the provided formater
+     * and puts the results into the container.
      **/
-    public void fillTable(HTMLObject page, CVSectionFormatter formatter, Collection data, HTMLElement container){
+    public void fillTable(HTMLElement container, CVSectionFormatter formatter, Collection data) {
 	Iterator iterator = data.iterator();
-	try{
-	    while (iterator.hasNext()){
+	try {
+	    while (iterator.hasNext()) {
 		final jobmatch.business.candidate.cv.CVSection section =
 		    (jobmatch.business.candidate.cv.CVSection) iterator.next();
-		HTMLElement clonedRow = formatter.format(section, page);
-      		container.appendChild(clonedRow);
+		final HTMLElement formated = formatter.format(section);
+		if (formated != null) {
+		    container.appendChild(formated);
+		}
 	    }	
-	}catch (Exception e){
+	} catch (Exception e) {
 	    throw new RuntimeException(e.toString());
 	}
     }
+
 } //class
 
 // Document history
 /*
  * $Log: CVMultiSection.java,v $
+ * Revision 1.3  2000/06/04 11:50:43  locher
+ * many little fixes
+ *
  * Revision 1.2  2000/05/31 11:36:15  studer
  * javadoc added
  *

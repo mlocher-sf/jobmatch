@@ -1,4 +1,4 @@
-// $Id: Candidate.java,v 1.7 2000/06/02 16:02:29 locher Exp $
+// $Id: Candidate.java,v 1.8 2000/06/04 11:50:41 locher Exp $
 
 package jobmatch.business.candidate;
 
@@ -14,7 +14,7 @@ import java.util.*;
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.7 $
+ *  @version $Revision: 1.8 $
  **/
 public class Candidate extends CandidateBDO {
     
@@ -30,13 +30,21 @@ public class Candidate extends CandidateBDO {
 	return Formation.getAllFormationsFor(this);
     }
 
+    public boolean isMale() {
+	try {
+	    return "m".equals(this.getSex());
+	}catch (Exception err){
+	    throw new RuntimeException(err.toString());
+	}
+    }
+
     /**
      * Returns the candidates nationality
      **/
     public Country getNationalityBO(){
-	try{
+	try {
 	    return new Country(this.getNationality());
-	}catch (Exception err){
+	} catch (Exception err) {
 	    throw new RuntimeException(err.toString());
 	}
     }
@@ -90,6 +98,9 @@ public class Candidate extends CandidateBDO {
 
 /*
  * $Log: Candidate.java,v $
+ * Revision 1.8  2000/06/04 11:50:41  locher
+ * many little fixes
+ *
  * Revision 1.7  2000/06/02 16:02:29  locher
  * introduced address entities
  *

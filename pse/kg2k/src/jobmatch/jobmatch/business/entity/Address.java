@@ -1,4 +1,4 @@
-// $Id: Address.java,v 1.1 2000/06/02 16:02:31 locher Exp $
+// $Id: Address.java,v 1.2 2000/06/04 11:50:42 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,7 +10,7 @@ import jobmatch.data.*;
  *
  *  @since May 26 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class Address extends AdressBDO {
     
@@ -20,6 +20,14 @@ public class Address extends AdressBDO {
 
     public Address(AdressDO dataObject) {
 	super(dataObject);
+    }
+
+    public Country getCountryBO() {
+	try {
+	    return new Country(this.getCountry());
+	} catch (Exception e) {
+	    throw new RuntimeException(e.toString());
+	}
     }
     
     /** @see Object.equals **/
@@ -60,6 +68,9 @@ public class Address extends AdressBDO {
 
 /*
  * $Log: Address.java,v $
+ * Revision 1.2  2000/06/04 11:50:42  locher
+ * many little fixes
+ *
  * Revision 1.1  2000/06/02 16:02:31  locher
  * introduced address entities
  *

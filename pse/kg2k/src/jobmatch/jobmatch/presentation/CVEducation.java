@@ -13,23 +13,29 @@ public class CVEducation extends CVMultiSection implements HttpPresentation {
         throws HttpPresentationException {
 	assertLegitimation(comms,  Account.TYPE_CANDIDATE, "Welcome.po");
         CVEducationHTML page = (CVEducationHTML)comms.xmlcFactory.create(CVEducationHTML.class);
-	CandidateAccount account = this.getCandidateAccount(comms);
-	fillTable(page,  new EducationFormatter(), account.getCandidateBO().getAllFormations(), 
-		  page.getElementFormationTable());
+	Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
+	this.fillTable(page.getElementFormationTable(),
+		       new EducationFormatter(page), candidate.getAllFormations());
+	page.getElementTemplateRow().getParentNode().removeChild(page.getElementTemplateRow());
         comms.response.writeHTML(page);
     }
 
     /**
-     * Inner class formats a HTMLElement for the education section
+     * Inner class returns a formated HTMLElement for a given education section
      **/
     class EducationFormatter implements CVSectionFormatter {
+	
+	private CVEducationHTML page;
 
-	public HTMLElement format(jobmatch.business.candidate.cv.CVSection section, HTMLObject page){
+	public EducationFormatter(CVEducationHTML page) {
+	    this.page = page;
+	}
+
+	public HTMLElement format(jobmatch.business.candidate.cv.CVSection section) {
 	    Formation formation = (Formation) section;
-	    CVEducationHTML education_page = (CVEducationHTML) page;
-	    return (HTMLElement)education_page.getElementTemplateRow().cloneNode(true);
+	    return (HTMLElement) this.page.getElementTemplateRow().cloneNode(true);
 	}
 	    
-    }//inner class
+    } //inner class
 
 }//class

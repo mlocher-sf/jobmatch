@@ -1,4 +1,4 @@
-// $Id: CVSection.java,v 1.4 2000/05/31 11:36:15 studer Exp $
+// $Id: CVSection.java,v 1.5 2000/06/04 11:50:43 locher Exp $
 
 package jobmatch.presentation;
 
@@ -10,32 +10,35 @@ import com.lutris.xml.xmlc.*;
 import com.lutris.appserver.server.httpPresentation.*;
 
 /**
- *  Provides a method to fill a ListBox with data
+ *  Provides a method to fill a ListBox with descriptions.
  *
- *  @since erstellungsdatum
- *  @author $Author: studer $
- *  @version $Revision: 1.4 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.5 $
  **/
 public abstract class CVSection extends AuthentificationPage implements  HttpPresentation {
 
     /**
-     * Fills a listbox with data CV-data.
-     * Selects the right option.
+     * Fills the listbox of the provided OptionElement with the descriptions
+     * in the collection. Selects the entry which equals the selection argument.
+     * Removes the template from the listbox.
      **/
-    public void fillListBox(HTMLOptionElement template, Collection descriptions, Description first_option){	 
+    public void fillListBox(HTMLOptionElement template, Collection descriptions, Description selection) {	 
 	Node select_node = template.getParentNode();
-	template.removeChild(template.getFirstChild());
+	template.removeChild(template.getFirstChild()); // remove the TextNode from the template
 	Iterator iterator = descriptions.iterator();
 	try{
-	    while (iterator.hasNext()){
+	    while (iterator.hasNext()) {
 		final Description description = (Description) iterator.next();
-		HTMLOptionElement clonedOption = (HTMLOptionElement) template.cloneNode(true);
-		clonedOption.setValue(description.getDescription());
-		Node optionNode = template.getOwnerDocument().createTextNode(description.getDescription());
-		if (first_option != null && description.equals(first_option)){
+		String representation = description.getDescription();
+		if (representation == null) {
+		    representation = (description.toString() == null)?"???":description.toString();
+		}
+		final HTMLOptionElement clonedOption = (HTMLOptionElement) template.cloneNode(true); 
+		clonedOption.setValue(representation);
+		clonedOption.appendChild(template.getOwnerDocument().createTextNode(representation));
+		if (selection != null && selection.equals(description)) {
 		    clonedOption.setSelected(true);
 		}
-		clonedOption.appendChild(optionNode);
 		select_node.appendChild(clonedOption);
 	    }	
 	}catch (Exception e){
@@ -43,13 +46,15 @@ public abstract class CVSection extends AuthentificationPage implements  HttpPre
 	}
 	select_node.removeChild(template);
     }
- 
        
 } //class
 
 // Document history
 /*
  * $Log: CVSection.java,v $
+ * Revision 1.5  2000/06/04 11:50:43  locher
+ * many little fixes
+ *
  * Revision 1.4  2000/05/31 11:36:15  studer
  * javadoc added
  *

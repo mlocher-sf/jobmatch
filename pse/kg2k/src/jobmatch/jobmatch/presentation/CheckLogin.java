@@ -58,7 +58,7 @@ public class CheckLogin implements HttpPresentation {
 	    }
 	} else {
 	    if (accType.equals("company")) {
-		if (manager.isValidCandidateLogin(username, passphrase)) {
+		if (manager.isValidCompanyLogin(username, passphrase)) {
 		    account = manager.getCompanyAccount(username);
 		    if (grantURL == null) {
 			grantURL = DEFAULT_GRANT_COMPANY;
@@ -93,11 +93,7 @@ public class CheckLogin implements HttpPresentation {
      **/
     private void setAccount(SessionData sessionData, Account account) {
 	try {
-	    if (account != null) {
-	        sessionData.set("account", account);
-	    } else {
-		sessionData.remove("account");
-	    }
+	    sessionData.set("account", account);
 	} catch (Exception e) {
 	    throw new RuntimeException(e.toString());
 	}

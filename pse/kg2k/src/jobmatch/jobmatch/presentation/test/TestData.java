@@ -1,4 +1,4 @@
-// $Id: TestData.java,v 1.2 2000/05/23 10:32:45 studer Exp $
+// $Id: TestData.java,v 1.3 2000/06/04 11:50:44 locher Exp $
 
 package jobmatch.presentation.test;
 
@@ -11,8 +11,8 @@ import java.sql.*;
  *  Test the CandidateBDO Class
  *
  *  @since May 14 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.2 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.3 $
  **/
 public class TestData  implements HttpPresentation {
     public final int DATA_COUNT = 10;
@@ -48,21 +48,15 @@ public class TestData  implements HttpPresentation {
 		candidate.setLname(lname + i);
 		candidate.setFname(fname +i);
 		candidate.setSex(sex);
-		candidate.setStreet(street + i);
-		candidate.setHouseNumber(house_no+ i );
-		candidate.setCity(city+ i );
-		candidate.setPLZ(plz+ i);
 		candidate.setBirthdate(new Date(200,4,i));
 		candidate.setFax(fax+ i);
 		candidate.setResidence(residence + i);
-		//setNationality
 		candidate.setCompetence(competence + i);
 		candidate.setStatus(true);
 		CandidateAccountBDO candidate_account = CandidateAccountBDO.createVirgin();
 		candidate_account.setUsername(username + i);
 		candidate_account.setCandidate(candidate);
 		candidate_account.setLoginReminder(login_reminder + i);
-		candidate_account.setLastLogin(new Timestamp(2000,4,6,13,i,0,0));
 		candidate_account.setEmail(email + i);
 		candidate_account.setPassphrase(passphrase + i);
 		candidate_account.commit();
@@ -83,23 +77,14 @@ public class TestData  implements HttpPresentation {
 // Document history
 /*
  * $Log: TestData.java,v $
+ * Revision 1.3  2000/06/04 11:50:44  locher
+ * many little fixes
+ *
  * Revision 1.2  2000/05/23 10:32:45  studer
  * PersonalProfile added
  * Nullwerte korrigiert
  *
  * Revision 1.1  2000/05/23 08:27:32  studer
  * TestData added
- *
- * Revision 1.4  2000/05/16 07:39:51  locher
- * test operation nodes
- *
- * Revision 1.3  2000/05/16 07:20:30  locher
- * match tree
- *
- * Revision 1.2  2000/05/14 17:09:26  locher
- * begin matchtree
- *
- * Revision 1.1  2000/05/14 16:18:26  locher
- * display test results
  *
  */

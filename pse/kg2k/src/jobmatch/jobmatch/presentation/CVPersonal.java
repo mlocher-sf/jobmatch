@@ -4,7 +4,7 @@ import jobmatch.business.candidate.*;
 import jobmatch.business.provider.account.*;
 import org.w3c.dom.html.*;
 import java.sql.Date;
-import java.util.List;
+import java.util.Collection;
 import jobmatch.business.entity.*;
 import com.lutris.xml.xmlc.*;
 import com.lutris.appserver.server.httpPresentation.*;
@@ -14,71 +14,71 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
-	CandidateAccount account = getCandidateAccount(comms);
-	Candidate candidate = account.getCandidateBO();
-        CVPersonalHTML page = (CVPersonalHTML)comms.xmlcFactory.create(CVPersonalHTML.class);
-	fillNationality(page, candidate);
+	Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
+        CVPersonalHTML page = (CVPersonalHTML) comms.xmlcFactory.create(CVPersonalHTML.class);
+
 	final String action = comms.request.getParameter("action");
-	//System.out.println("Die Action lautet: " + action);
-	writeTextFields(page, candidate, comms);
 	if (action != null && action.equals("write")){ 
-	    readTextFields(page, candidate, comms);
+	    this.processData(page, candidate, comms);
 	}
+
+	this.fillCountry(page, candidate);
+	this.fillNationality(page, candidate);
+	this.fillPage(page, candidate, comms);
+
 	comms.response.writeHTML(page);
     }
 
     /**
      * Fills the text fields with CV-data 
      **/
-    private void readTextFields(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms){
+    private void processData(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms) {
 	try{
 	    candidate.setLname(comms.request.getParameter("lName"));
 	    candidate.setFname(comms.request.getParameter("fName"));
 	    candidate.setSex(comms.request.getParameter("sex"));
 	    candidate.setBirthdate(TimeUtil.getDate(Integer.parseInt(comms.request.getParameter("year")),
-						    Integer.parseInt(comms.request.getParameter("month"))-1,
+						    Integer.parseInt(comms.request.getParameter("month")),
 						    Integer.parseInt(comms.request.getParameter("day"))));
 	    candidate.setResidence(comms.request.getParameter("residence"));
-	    //candidate.setNationality(comms.request.getParameter("nationality"));
+	    candidate.setNationality(Country.getCountry(comms.request.getParameter("nationality")));
 
 	    Address addr = candidate.getAddressBO();
 	    addr.setStreet(comms.request.getParameter("street"));
 	    addr.setHouseNumber(comms.request.getParameter("housenumber"));
 	    addr.setZIP(comms.request.getParameter("zip"));
 	    addr.setCity(comms.request.getParameter("city"));
+	    addr.setCountry(Country.getCountry(comms.request.getParameter("country")));
 	    addr.commit();
-	    //addr.setCountry(comms.request.getParameter("country"));
 	    candidate.setPhone(comms.request.getParameter("phonenumber"));
 	    candidate.setFax(comms.request.getParameter("faxnumber"));
 	    candidate.setNatel(comms.request.getParameter("natel"));
-	    //candidate.setPicture(comms.request.getParameter("picture")); 
 	    candidate.commit();
 	}
-	catch(Exception e){
+	catch(Exception e) {
 	    System.out.println(e.toString());
-	    throw new RuntimeException();}
+	    throw new RuntimeException();
+	}
     }
     
-    private void writeTextFields(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms){
-	try{
+    private void fillPage(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms) {
+	try {
 
 	    page.getElementLName().setValue(candidate.getLname());
 	    page.getElementFName().setValue(candidate.getFname());
 	    
-	    /*if (candidate.getSex().equals("w")){
-		page.getElementWsex().setSelected(true);
-		page.getElementMsex().setSelected(false);
+	    if (candidate.isMale()) {
+		page.getElementWsex().setChecked(false);
+		page.getElementMsex().setChecked(true);
+	    } else {
+		page.getElementWsex().setChecked(true);
+		page.getElementMsex().setChecked(false);
 	    }
-	    else{
-		page.getElementMsex().setSelected(true);
-		page.getElementWsex().setSelected(false);
-	    }*/
 		
-	   // page.getElementYear().setValue(splitDate(candidate.getBirthdate(),3));
-	    //page.getElementMonth().setValue(splitDate(candidate.getBirthdate(),2));
-	    //page.getElementDay().setValue(splitDate(candidate.getBirthdate(),1));
+	    page.getElementYear().setValue(splitDate(candidate.getBirthdate(), 3));
+	    page.getElementMonth().setValue(splitDate(candidate.getBirthdate(), 2));
+	    page.getElementDay().setValue(splitDate(candidate.getBirthdate(), 1));
 	    page.getElementResidence().setValue(candidate.getResidence());
-
 
 	    Address addr = candidate.getAddressBO();
 	    page.getElementStreet().setValue(addr.getStreet());
@@ -92,21 +92,27 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	    comms.response.writeHTML(page);
     
 	}
-	catch(Exception e){
+	catch(Exception e) {
 	    System.out.println(e.toString());
-	    throw new RuntimeException();}
-	    
+	    throw new RuntimeException();
+	}
     }
-	
 
     private String splitDate(Date d, int selector){
-	String result = " ";
-	if (selector == 3)
+	String result;
+	switch (selector) {
+	case 3:
 	    result = String.valueOf(TimeUtil.getYear(d));
-	if (selector == 2)
+	    break;
+	case 2:
 	    result = String.valueOf(TimeUtil.getMonth(d));
-	if (selector == 1)
+	    break;
+	case 1:
 	    result = String.valueOf(TimeUtil.getDay(d));
+	    break;
+	default:
+	    result = d.toString();
+	}
 	return result;
     }
 
@@ -114,22 +120,30 @@ public class CVPersonal extends CVSection implements HttpPresentation {
      * fills the nationality-list with CV-data
      **/
     private void fillNationality(CVPersonalHTML page, Candidate candidate){
-	Country selected_option = null;
-	selected_option = candidate.getNationalityBO();
-	EntityManager man = EntityManager.getUniqueInstance();
-	List country_list  =  man.getCountries();
+	final EntityManager man = EntityManager.getUniqueInstance();
+	Collection data =  man.getCountries();
+	Country selection = candidate.getNationalityBO();
 	HTMLOptionElement template = page.getElementTemplateNationality();
-	fillListBox(template ,country_list, selected_option);
+	this.fillListBox(template, data, selection);
     }
 
     /**
      * fills the country-list with the CV-data
      **/
-    private void fillCountryList(CVPersonalHTML page){
-	EntityManager man = EntityManager.getUniqueInstance();
-	List country_list  =  man.getCountries();
+    private void fillCountry(CVPersonalHTML page, Candidate candidate){
+	final EntityManager man = EntityManager.getUniqueInstance();
+	Collection data =  man.getCountries();
+	Country selection = candidate.getAddressBO().getCountryBO();
 	HTMLOptionElement template = page.getElementTemplateCountry();
-	fillListBox(template ,country_list, null);
+	this.fillListBox(template, data, selection);
     }
+    
+} //class
 
-}
+// Document history
+/*
+ * $Log: CVPersonal.java,v $
+ * Revision 1.9  2000/06/04 11:50:43  locher
+ * many little fixes
+ *
+ */
