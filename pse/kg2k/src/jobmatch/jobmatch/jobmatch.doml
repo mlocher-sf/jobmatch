@@ -294,47 +294,6 @@
             <initialValue>0</initialValue>
           </column>
         </table>
-        <table id="jobmatch.data.LanguageProfile">
-          <column id="Language" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Language"/>
-            <type dbType="none" javaType="jobmatch.data.LanguageDO"/>
-          </column>
-          <column id="Profile" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Profile"/>
-            <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
-          </column>
-          <column id="Mandatory" usedForQuery="true">
-            <type dbType="BIT" javaType="boolean"/>
-          </column>
-          <column id="Diploma" usedForQuery="true">
-            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
-          </column>
-          <column id="MinWritten" usedForQuery="true">
-            <referenceObject reference="jobmatch.data.Languagecapability"/>
-            <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
-          </column>
-          <column id="MinSpoken" usedForQuery="true">
-            <referenceObject reference="jobmatch.data.Languagecapability"/>
-            <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
-          </column>
-        </table>
-        <table id="jobmatch.data.CandidateProfile">
-          <column id="Candidate" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Candidate"/>
-            <type dbType="none" javaType="jobmatch.data.CandidateDO"/>
-          </column>
-          <column id="Profile" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Profile"/>
-            <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
-          </column>
-          <column id="MatchingTime" usedForQuery="true">
-            <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
-          </column>
-          <column id="Deleted" usedForQuery="true">
-            <type dbType="BIT" javaType="boolean"/>
-            <initialValue>false</initialValue>
-          </column>
-        </table>
         <table id="jobmatch.data.SchoolCandidate">
           <column id="School" usedForQuery="true">
             <referenceObject constraint="true" reference="jobmatch.data.School"/>
@@ -366,32 +325,14 @@
         <table id="jobmatch.data.Schooltype" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Software" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Programming" extensionOf="jobmatch.data.ConstantTable"/>
-        <table id="jobmatch.data.Operatingsystem" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Language" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Industry" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Graduation" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Country" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Association" extensionOf="jobmatch.data.ConstantTable"/>
         <table id="jobmatch.data.Area" extensionOf="jobmatch.data.ConstantTable"/>
-        <table id="jobmatch.data.ComputerRequest" dbTableName="NewDBTable" isAbstract="true">
-          <column id="Profile" usedForQuery="true">
-            <referenceObject constraint="true" reference="jobmatch.data.Profile"/>
-            <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
-          </column>
-          <column id="Mandatory" usedForQuery="true">
-            <type dbType="BIT" javaType="boolean"/>
-          </column>
-          <column id="LeafNumber" usedForQuery="true">
-            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
-            <initialValue>0</initialValue>
-          </column>
-          <column id="MinCapability" usedForQuery="true">
-            <referenceObject reference="jobmatch.data.Compcapability"/>
-            <type dbType="none" javaType="jobmatch.data.CompcapabilityDO"/>
-          </column>
-        </table>
         <table id="jobmatch.data.OperatingsystemProfile" extensionOf="jobmatch.data.ComputerRequest">
-          <column id="System" usedForQuery="true">
+          <column id="OperatingSystem" usedForQuery="true">
             <referenceObject constraint="true" reference="jobmatch.data.Operatingsystem"/>
             <type dbType="none" javaType="jobmatch.data.OperatingsystemDO"/>
           </column>
@@ -460,9 +401,63 @@
         </table>
         <table id="jobmatch.data.ProviderAccount" extensionOf="jobmatch.data.Account"/>
         <table id="jobmatch.data.OperatingsystemCandidate" dbTableName="OperatingSystemCandidate" extensionOf="jobmatch.data.CVComputer">
-          <column id="System" usedForQuery="true">
+          <column id="Operatingsystem" usedForQuery="true">
             <referenceObject constraint="true" reference="jobmatch.data.Operatingsystem"/>
             <type dbType="none" javaType="jobmatch.data.OperatingsystemDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.Operatingsystem" extensionOf="jobmatch.data.ConstantTable"/>
+        <table id="jobmatch.data.TreeLeaf" dbTableName="NewDBTable" isAbstract="true">
+          <column id="LeafNumber" usedForQuery="true">
+            <type canBeNull="true" dbType="INTEGER" javaType="int"/>
+          </column>
+          <column id="Profile" usedForQuery="true">
+            <referenceObject reference="jobmatch.data.Profile"/>
+            <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
+          </column>
+          <column id="Mandatory">
+            <type dbType="BIT" javaType="boolean"/>
+            <initialValue>false</initialValue>
+          </column>
+        </table>
+        <table id="jobmatch.data.LanguageProfile" extensionOf="jobmatch.data.TreeLeaf">
+          <column id="Language" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Language"/>
+            <type dbType="none" javaType="jobmatch.data.LanguageDO"/>
+          </column>
+          <column id="Diploma" usedForQuery="true">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String"/>
+          </column>
+          <column id="MinWritten" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
+          </column>
+          <column id="MinSpoken" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Languagecapability"/>
+            <type dbType="none" javaType="jobmatch.data.LanguagecapabilityDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.ComputerRequest" dbTableName="NewDBTable" extensionOf="jobmatch.data.TreeLeaf" isAbstract="true">
+          <column id="MinCapability" usedForQuery="true">
+            <referenceObject reference="jobmatch.data.Compcapability"/>
+            <type dbType="none" javaType="jobmatch.data.CompcapabilityDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.CandidateProfile">
+          <column id="Candidate" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Candidate"/>
+            <type dbType="none" javaType="jobmatch.data.CandidateDO"/>
+          </column>
+          <column id="MatchingTime" usedForQuery="true">
+            <type dbType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+          </column>
+          <column id="Deleted" usedForQuery="true">
+            <type dbType="BIT" javaType="boolean"/>
+            <initialValue>false</initialValue>
+          </column>
+          <column id="Profile" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Profile"/>
+            <type dbType="none" javaType="jobmatch.data.ProfileDO"/>
           </column>
         </table>
       </package>
