@@ -2,5 +2,7 @@ jobmatch.presentation
 jobmatch.presentation.test
 jobmatch.business.provider.account
 jobmatch.business.candidate
+jobmatch.business.company.profile.tree
+jobmatch.business.company.profile.tree.test
 jobmatch.data
 jobmatch.test

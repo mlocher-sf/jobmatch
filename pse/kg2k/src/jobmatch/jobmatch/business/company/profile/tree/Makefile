@@ -4,7 +4,6 @@
 #
 #
 
-
 POST_SUBDIRS =\
 	test
 
@@ -18,7 +17,7 @@ ROOT =	../../../../..
 #
 PACKAGEDIR = jobmatch/business/company/profile/tree
 
-CLASSES =
+CLASSES = MatchTree TreeNode
 
 USEICONTRACT=1
 
