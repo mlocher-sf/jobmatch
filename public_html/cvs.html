@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>CVS Tutorial</title>
+  </head>
+  <link rel=stylesheet type="text/css" href="style.css">
+
+  <body>
+    <a href="./index.html">Homepage</a>
+    <hr>
+
+    <h1>CVS Tutorial</h1>
+
+    <h2>Prepare your envirmonment</h2>
+    
+    <p>
+      Decide where your repositry should store its files. In this tutorial we use <tt>/home/pse4/cvsroot</tt>. Create this directory. Make sure that every member of the team has access to the directory.
+    </p>
+    <p>
+      Make sure that every team member's .login file contatins the following instructions:
+    </p>
+    <blockquote>
+      <code>
+	set CVSROOT=/home/pse4/cvsroot<br>
+	set EDITOR=nedit<br>
+	export CVSROOT EDITOR
+      </code>
+    </blockquote>
+    <p>
+      replace <tt>/home/pse4/cvsroot</tt> with the location that you have choosen.
+    </p>
+    <p>
+      Depending on your system configuration you need to logout and re-login to activate the changes.<br>
+      Verify the changes with the commands: <code>echo $CVSROOT $EDITOR</code>
+    </p>
+
+    <h2>Initialize the repositry</h2>
+    <p>issue the following command: <code>cvs init</code></p>
+
+    <h2>Import content</h2>
+    <p>
+      Change your working directory to the location where your have store your source files (or directory stubs).<br>
+      issue the following command: <code>cvs import -m "initial import" pse4 team4 start</code><br>
+      replace <code>pse4</code> according to your needs (it's the title of the import)
+    </p>
+
+    <h2>Let's work</h2>
+    <p>
+      change to your favourite working directory (eg. /scratch/subdir or /vat/tmp/subdir).<br>
+      Get the files with: <code>cvs checkout pse4</code><br>
+      Modify the files. Add new files with <code>cvs add filename</code>.<br>
+      From time to time, check if your team mates have made some changes. In the <tt>pse4</tt> directory type: <code>cvs update</code>.<br>
+      When you have finished your modifications share them with your team members. Type <code>cvs commit -m "comment of the change"</code>. This will save your modifications of all files in the current directory and its subdirectories. When cvs was successful you can delete your working copy.
+    </p>
+
+    <h2>Good to know</h2>
+    <ul>
+      <li>you can specify options in a .cvsrc file</li>
+      <li>the <tt>cvs tag</tt> command can be used create releases</li>
+    </ul>
+      
+    <h2>Links</h2>
+    <p>
+      <a href="http://www.loria.fr/~molli/cvs/doc/cvs_toc.html">CVS User's Guide</a><br>
+      <a href="http://www.arc.unm.edu/~rsahu/cvs.html">CVS Tutorial</a><br>
+      <a href="http://cellworks.washington.edu/pub/docs/cvs/tutorial/cvs_tutorial_1.html">Another CVS tutorial</a><br>
+      <a href="http://www.csc.calpoly.edu/~dbutler/tutorials/winter96/cvs/">Yet another CVS tutorial (a little old, but nice)</a><br>
+      <a href="http://www.cs.utah.edu/dept/old/texinfo/cvs/FAQ.txt">An old but very useful FAQ about CVS</a>
+    </p>
+
+
+
+
+    <hr>
+    <address><a href="./index.html">PSE 4</a></address>
+<!-- Created: Fri Mar 31 13:38:33 MET DST 2000 -->
+<!-- hhmts start -->
+Last modified: Sat Apr  1 15:49:20 CEST 2000
+<!-- hhmts end -->
+    <small>| $Id: cvs.html,v 1.1 2000/04/02 19:39:20 locher Exp $</small>
+  </body>
+</html>
