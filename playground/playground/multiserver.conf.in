@@ -14,8 +14,8 @@ Server.ConfDir = @OUTPUT@
 # For more information, try adding DEBUG or CLASSLOAD.
 #
 Server.LogFile = @OUTPUT@/playground.log
-Server.LogToFile[] = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, INFO
-Server.LogToStderr[] = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, INFO
+Server.LogToFile[] = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, INFO, XMLC
+Server.LogToStderr[] = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, INFO, XMLC
 
 
 

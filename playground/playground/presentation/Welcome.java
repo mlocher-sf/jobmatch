@@ -10,7 +10,7 @@ public class Welcome implements HttpPresentation {
         throws HttpPresentationException {
 
         String now = new Date().toString();
-        WelcomeHTML welcome = new WelcomeHTML();
+        WelcomeHTML welcome = (WelcomeHTML)comms.xmlcFactory.create(WelcomeHTML.class);
         comms.response.writeHTML(welcome.toDocument());
     }
 

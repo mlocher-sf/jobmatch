@@ -12,7 +12,7 @@ public class Picture implements HttpPresentation {
         throws HttpPresentationException {
 
 	String now = new java.util.Date().toString();
-	PictureHTML page = new PictureHTML();
+	PictureHTML page = (PictureHTML)comms.xmlcFactory.create(PictureHTML.class);
 	
         comms.response.writeHTML(page.toDocument());
     }

@@ -14,7 +14,7 @@ public class Student implements HttpPresentation {
         throws HttpPresentationException {
 
 	String now = new java.util.Date().toString();
-	StudentHTML page = new StudentHTML();
+	StudentHTML page = (StudentHTML)comms.xmlcFactory.create(StudentHTML.class);
 	
 	page.getElementName().setValue(now);
 //	showData(page);

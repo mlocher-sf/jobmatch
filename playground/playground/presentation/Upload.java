@@ -14,7 +14,7 @@ public class Upload implements HttpPresentation {
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
 
-	PictureHTML page = new PictureHTML();
+	PictureHTML page = (PictureHTML)comms.xmlcFactory.create(PictureHTML.class);
 
  	String event = comms.request.getParameter("event");
  	System.out.println(comms.request.getHttpServletRequest().getMethod().toUpperCase());
