@@ -1,0 +1,3 @@
+#!/usr/local/bin/tcsh
+
+mysql -h leeta -u pse4 -pbllns2k Kontaktboerse4
