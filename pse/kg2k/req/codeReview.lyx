@@ -1,0 +1,637 @@
+#This file was created by <locher> Tue Jun  6 13:20:49 2000
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language german
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage widemarginsa4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+
+\layout Title
+
+Code Review fuer Gruppe 6
+\layout Author
+
+PSE Gruppe 4
+\layout Standard
+
+Datum: 6.
+ Juni 2000
+\layout Standard
+
+Dauer: 90 Minuten
+\layout Standard
+
+Reviewer: Michel Bruhin, Michael Locher
+\layout Standard
+
+Vorbereitungszeit: 50 Minuten
+\layout Paragraph
+
+Pruefling
+\layout Standard
+
+Code der Gruppe 6
+\layout Paragraph
+
+Referenzunterlagen
+\layout Enumerate
+
+Source Code
+\layout Enumerate
+
+Maintainability Code Inspection Checklist
+\layout Section
+
+Zusammenfassung
+\layout Standard
+
+Der abgegebene Code entspricht weitgehend den ueblichen CodingStandards.
+ Ein paar schwere Fehler sind zu beheben: Fehlende Konstanten, Referenzvergleich
+e und ungenuegende Dokumentation sind noch zu beheben!
+\layout Section
+
+Liste der Befunde
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
+multicol5
+42 4 0 0 -1 -1 -1 -1
+1 1 0 0
+1 0 0 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+0 0 1 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+0 0 1 0
+1 0 0 0
+0 0 1 0
+1 1 0 0
+8 1 0 "" ""
+2 1 0 "4cm" ""
+2 1 0 "8cm" ""
+8 1 1 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 2 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 1 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+0 8 1 0 0 0 0 "" ""
+
+Nr
+\newline 
+File
+\newline 
+Beschreibung
+\newline 
+Gewicht
+\newline 
+1
+\newline 
+DataswampCondition
+\newline 
+<27> _nice = (mode=="nice");
+\newline 
+S
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+<28> _aMust = (mode=="must");
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Referenzvergleich !
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Hard Coded Strings
+\newline 
+
+\newline 
+2
+\newline 
+DataswampCondition
+\newline 
+
+\newline 
+N
+\newline 
+
+\newline 
+
+\newline 
+<02> * bse.busyLogic.DataswampCondition
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+<03> * subpackage.MatchingProcess
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+<05> * codepoet kobold
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+<06> * 9.
+ maibummel 2K
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+<09> package businessLogic;
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Subpackage definieren !
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Serioesere Kommentare.
+\newline 
+
+\newline 
+3
+\newline 
+DataswampMatch
+\newline 
+<27> _timeStamp = "halligalli";
+\newline 
+D
+\newline 
+
+\newline 
+
+\newline 
+Typ auf java.sql.Timestamp wechseln
+\newline 
+
+\newline 
+4
+\newline 
+Match
+\newline 
+<70> public Object timeStamp()
+\newline 
+N
+\newline 
+
+\newline 
+
+\newline 
+Inkonsistentes Interface: getTimeStamp 
+\newline 
+
+\newline 
+5
+\newline 
+MatchList
+\newline 
+<025> /** Don't touch it's private.
+ */
+\newline 
+K
+\newline 
+
+\newline 
+
+\newline 
+<026> private Vector _matches;
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Ueberflussiger Kommentar
+\newline 
+
+\newline 
+6
+\newline 
+allgemein
+\newline 
+debugEnter("collectRemainingEntries");
+\newline 
+N
+\newline 
+
+\newline 
+
+\newline 
+debugCall(entry,"timeStamp");
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Methodennamen sind nicht dokumentierend.
+\newline 
+
+\newline 
+7
+\newline 
+TestMatching,
+\newline 
+
+\newline 
+S
+\newline 
+
+\newline 
+MatchableCondition
+\newline 
+Each condition is weighted as 'must', 
+\emph on 
+'would
+\emph default 
+ be nice', or 'ignore'.
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Die Bedingungen muessen als Konstanten definiert werden.
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Die Testklasse muss alle Bedingungstypen testen.
+\newline 
+
+\newline 
+8
+\newline 
+MatchableCondition
+\newline 
+
+\newline 
+D
+\newline 
+
+\newline 
+
+\newline 
+<14> /** A MatchingCondition is used to get all matches that fulfil its
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+<25> public interface MatchableCondition {
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Inkonsistente Dokumentation
+\newline 
+
+\newline 
+9
+\newline 
+MatchingProcessor
+\newline 
+<39> System.err.println("..and matching it ("+profile+").
+ Pray to continue.");
+\newline 
+S
+\newline 
+
+\newline 
+
+\newline 
+<43> debug("This Exception is sponsored by INDER Schockolade!!! - ...and Dataswamp."
+);
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Verschiedene Loesungen fuer das Debuging/Fehlerbehandlung.
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Unpassende Kommentare.
+\newline 
+
+\newline 
+10
+\newline 
+MatchingProcessor
+\newline 
+<68> System.out.println("I matched these matches: "+matches);
+\newline 
+D
+\newline 
+
+\newline 
+
+\newline 
+<82> //Mit dem bestehenden Notizbuch verknüpfen
+\newline 
+
+\newline 
+
+\newline 
+
+\newline 
+Verschiedene Sprachen
+\newline 
+
+\newline 
+11
+\newline 
+TestMatching
+\newline 
+Dies ist kein Test.
+ Die Resultate werden nicht untersucht.
+\newline 
+S
+\newline 
+
+\newline 
+
+\newline 
+Richtige Testklassen implementieren.
+\newline 
+
+\newline 
+12
+\newline 
+allgemein
+\newline 
+Fehlende/Ungenaue Dokumentation zu vielen Variabeln und Methoden.
+\newline 
+D
+\layout Standard
+
+Gewichtung: S - Schwer ; D - Gefaehrlich ; N - Nebensaechlich ; K - Kosmetisch
+\the_end
