@@ -16,7 +16,6 @@ PACKAGEDIR = jobmatch/business/provider/account
 
 CLASSES = \
 	Account \
-	AbstractAccount \
 	CandidateAccount \
 	AccountManager
 

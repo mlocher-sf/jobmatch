@@ -14,7 +14,7 @@ public class CheckLogin implements HttpPresentation {
 	final String grantURL = comms.request.getParameter("grantURL");
 	final String denyURL = comms.request.getParameter("denyURL");
 
-	if (AccountManager.getUniqueInstance().isValidLogin(username, passphrase)) {
+	if (AccountManager.getUniqueInstance().isValidCandidateLogin(username, passphrase)) {
 	    throw new ClientPageRedirectException(
 			  comms.request.getAppFileURIPath(grantURL));
 	} else {
