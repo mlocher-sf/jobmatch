@@ -17,7 +17,8 @@ PACKAGEDIR = playground/business
 CLASSES =  \
 	Mailer \
 	StudentBO \
-	Clipboard
+	Clipboard \
+	InsertData
 
 include $(ROOT)/config.mk
 

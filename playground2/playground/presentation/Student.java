@@ -17,9 +17,15 @@ public class Student implements HttpPresentation {
 	StudentHTML page = (StudentHTML)comms.xmlcFactory.create(StudentHTML.class);
 	
 	page.getElementName().setValue(now);
+	insertData();
 //	showData(page);
 //	foo(page);
         comms.response.writeHTML(page.toDocument());
+    }
+
+    private void insertData(){
+	InsertData data = new InsertData();
+	data.insert();
     }
 /*
     private void showData(StudentHTML page){
