@@ -1,4 +1,4 @@
-#This file was created by <locher> Thu Apr  6 11:00:00 2000
+#This file was created by <studer> Mon Apr 17 11:15:56 2000
 #LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
@@ -48,16 +48,120 @@ PSE 2000, Gruppe 4
 
 \layout Section
 
-Description of the system
+Uebersicht
 \layout Standard
 
-Short description of the system
+Die Online Kontaktboerse ist eine Web-Applikation, die den Service von AIESEC,
+ den Kontakt zwischen Firmen und Absolventen herzustellen, automatisieren
+ soll.
+ Absolventen koennen online ihre Bewerbungen eingeben.
+ Firmen koennen online ihre Ansprueche an zukuenftige Mitarbeiter eingeben.
+ Das System sucht in der Datenbank nach passenden Bewerbern und benachrichtigt
+ die Firmen per Email.
 \layout Section
 
-Functional requirements
+Funktionale Anforderungen
 \layout Subsection
 
-Use Cases
+Authentifizierung
+\layout Itemize
+
+Jeder Bewerber kann sich auf der Einstiegsseite neu anmelden.
+ Er kann sein Passwort selbst bestimmen.
+ Sein Username ist seine Email-Adresse.
+ 
+\layout Itemize
+
+Jeder Interessent kann sich als Gast (username: gast) einloggen.
+ Ein Gast kann die Kennzahlen (siehe ...) der Firmen anschauen, aber keinen
+ Lebenslauf (im Weiteren CV genannt) eingeben.
+\layout Itemize
+
+Die Firma kann sich mit einem Login einloggen, das sie von AIESEC erhaelt.
+\layout Subsection
+
+Funktionen der Bewerber
+\layout Itemize
+
+Er kann seinen CV eingeben und editieren.
+\layout Itemize
+
+Er kann sein Konto deaktivieren, d.h.
+ sein CV wird bei der Profilsuche nicht mehr beruecksichtigt.
+\layout Itemize
+
+Er kann nach Firmen suchen und deren Kennzahlen abfragen.
+\layout Itemize
+
+Der Bewerber kann im CV angeben, welche Firmen er bevorzugt.
+ Diese Firmen werden per Email benachrichtigt.
+ Dies beeinflusst den Matchingprozess nicht.
+\layout Itemize
+
+Wenn der Bewerber sein Passwort vergisst, kann er das System veranlassen,
+ sein Passwort an seine Email-Adresse zu schicken.
+\layout Itemize
+
+Ein Bewerber kann zu seinem CV ein Bild hinzufuegen.
+\layout Itemize
+
+Wenn sich der Bewerber 6 Monate lang nicht eingeloggt hat, wird sein Konto
+ automatisch deaktiviert.
+ Loggt er sich ein Jahr nicht mehr ein, bekommt er eine Warnung via Email,
+ dass sein Konto in 10 Tagen gelöscht wird.
+ 
+\layout Subsection
+
+Funktionen der Firmen
+\layout Itemize
+
+Sie koennen Anforderungsprofile fuer neue Mitarbeiter eingeben und editieren.
+\layout Itemize
+
+Beim ersten Einloggen koennen sie ihre Kennzahlen eingeben.
+ Spaeter koennen sie diese editieren.
+\layout Itemize
+
+Sie koennen die Studentendaten nach beliebigen Kriterien abfragen.
+ Name und Adresse der Bewerber wird nicht angezeigt.
+\layout Itemize
+
+Sie koennen fuer jedes Anforderungsprofil waehlen, wie und wie oft sie informier
+t werden wollen.
+ Dabei koennen sie waehlen, ob sie per Email benachrichtigt werden wollen
+ oder ob sie die Resultate nur online betrachten wollen.
+ Bei der Email-Benachrichtigung koennen sie zusaetzlich noch waehlen, in
+ welchen Abstaenden ihnen ein Mail ueber die aktuellen Matchings zugesandt
+ wird.
+\layout Subsection
+
+Funktionen für AIESEC
+\layout Itemize
+
+Kann die Datenbank nach beliebigen Kriterien durchsuchen.
+\layout Itemize
+
+Kann Studenten aus der Datenbank loeschen.
+ 
+\layout Itemize
+
+Kann Firmen inaktiv setzen oder loeschen.
+ Die Daten sind nach der Deaktivierung nur noch fuer AIESEC sichtbar.
+ 
+\layout Itemize
+
+Kann keine Daten editieren.
+\layout Subsection
+
+Analysetool
+\layout Itemize
+
+Das Analysetool liefert die Matchings pro Profil sowie den Matchingerfolg
+ aller Profile einer Firma auf.
+ 
+\layout Itemize
+
+Das Analysetool ist nur fuer AIESEC verfuegbar.
 \layout Section
 
 Non-functional requirements
