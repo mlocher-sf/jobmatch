@@ -1,16 +1,18 @@
-// $Id: AccountManager.java,v 1.12 2000/06/06 16:10:10 locher Exp $
+// $Id: AccountManager.java,v 1.13 2000/06/13 07:31:46 locher Exp $
 
 package jobmatch.business.provider.account;
 
 import jobmatch.data.*;
 import com.lutris.dods.builder.generator.query.*;
+import com.lutris.appserver.server.*;
+import com.lutris.util.*;
 
 /**
  *  Controls access to accounts
  *
  *  @since May 8 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.12 $
+ *  @version $Revision: 1.13 $
  **/
 final public class AccountManager {
 
@@ -18,6 +20,8 @@ final public class AccountManager {
     
     static {
 	uniqueInstance = new AccountManager();
+	// make sure that the root accont exists.
+	uniqueInstance.getRootAccount();
     }
 
     private AccountManager() {
@@ -242,10 +246,37 @@ final public class AccountManager {
 	return false;
     }
 
+    public ProviderAccount getRootAccount() {
+	AccountManager manager = AccountManager.getUniqueInstance();
+	ProviderAccount root = null;
+	if (!providerUsernameExists(ProviderAccount.ROOT_USERNAME)) {
+	    manager.createProviderAccount(ProviderAccount.ROOT_USERNAME, 
+					  ProviderAccount.DEFAULT_ROOT_PASSPHRASE, 
+					  null);
+	    root = manager.getProviderAccount(ProviderAccount.ROOT_USERNAME);
+	} else {
+	    try {
+		root = manager.getProviderAccount(ProviderAccount.ROOT_USERNAME);
+		Config config = Enhydra.getApplication().getConfig();
+		final String passphrase =
+		    config.getString("Jobmatch.JobScript.RootPassphrase",
+				     ProviderAccount.DEFAULT_ROOT_PASSPHRASE);
+		root.setPassphrase(passphrase);
+		root.commit();
+	    } catch (Exception e) {
+		throw new RuntimeException(e.toString());
+	    }
+	}
+	return root;
+    }
+
 } //class
 
 /*
  * $Log: AccountManager.java,v $
+ * Revision 1.13  2000/06/13 07:31:46  locher
+ * assure the root account exists
+ *
  * Revision 1.12  2000/06/06 16:10:10  locher
  * enhanced login
  *

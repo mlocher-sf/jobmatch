@@ -1,19 +1,23 @@
-// $Id: ProviderAccount.java,v 1.2 2000/06/03 09:15:42 locher Exp $
+// $Id: ProviderAccount.java,v 1.3 2000/06/13 07:31:47 locher Exp $
 
 package jobmatch.business.provider.account;
 
 import jobmatch.data.*;
 import java.sql.Timestamp;
 
+
 /**
  *  An Account for Administrators
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class ProviderAccount extends ProviderAccountBDO implements Account {
         
+    public static final String ROOT_USERNAME = "root";
+    public static final String DEFAULT_ROOT_PASSPHRASE = "root";
+
     ProviderAccount() throws Exception {
 	super();
     }
@@ -71,6 +75,9 @@ public class ProviderAccount extends ProviderAccountBDO implements Account {
 
 /*
  * $Log: ProviderAccount.java,v $
+ * Revision 1.3  2000/06/13 07:31:47  locher
+ * assure the root account exists
+ *
  * Revision 1.2  2000/06/03 09:15:42  locher
  * IP logging enabled
  *
