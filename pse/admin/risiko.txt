@@ -1,0 +1,45 @@
+Risiko		Ausfall eines Teammitgliedes
+Beschreibung	Teammitglied wird versetzt
+Einfluss	Auf Spezialgebiet des Mitgliedes
+Vorbeugung	Regelmaessig Sitzungen durchfuehren zur allg. Information des Teams
+W'keit		Unsicherheit
+
+Risiko		Probleme mit dem Zeitplan
+Beschreibung	klar
+Einfluss	Auf ganzes Projekt, Feature-Umfang
+Vorbeugung	Projekt regelmaessig mit GANTT vergleichen
+W'keit		7
+
+Risiko		Grosesse des Projekts
+Beschreibung	Grosesse des Projekts wird unterschaetzt
+Einfluss	Umfang der Features
+Vorbeugung	Genaue Spezifikation
+W'keit		8
+
+Risiko		Zu komplexe Komponenten
+Beschreibung	Es werden allzu komplexe Komponenten eingeplant, die zuviel Lernzeit beanspruchen
+Einfluss	Auf ganzes Projekt
+Vorbeugung	Toolsmith prueft Komponenten zuerst
+W'keit		2
+
+Risiko		Uebersehen von Fehlern
+Beschreibung	Ungenuegende Tests 
+Einfluss	Auf Zeitplan
+Vorbeugung	Regression Tests
+W'keit		5
+
+Risiko		Falsch verstandene Requirements
+Beschreibung	Missverstaendnis zwischen AIESEC und Team
+Einfluss	Auf Funktionalitaet/ Einsetzbarkeit des Programms
+Vorbeugung	Diskussion des Pflichtenhefts mit Kunde, Prototyping
+W'keit		2
+
+Risiko		Belastung durch Nebenjob
+Beschreibung	Falsche Einschaetzung der Zeit
+Einfluss	Auf Zeitplan
+Vorbeugung	Priorisierung der Requirements
+W'keit		8
+
+
+
+
