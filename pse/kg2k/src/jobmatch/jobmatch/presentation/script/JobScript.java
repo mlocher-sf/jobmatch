@@ -42,7 +42,7 @@ public class JobScript implements HttpPresentation {
 
     protected void initInterpreter(PythonInterpreter interpreter) {
 	try {
-	    interpreter.exec("import java, javax, org, com, jobmatch");
+	    interpreter.exec("import java, javax, org, com; from jobmatch import *");
 	} catch (Exception e) { System.err.println(e.toString()); }
     }
 
@@ -113,7 +113,7 @@ public class JobScript implements HttpPresentation {
     }
 
     private String commandHref(String command) {
-	return "./script/JobScript.po?action=execute&command=" + this.encodeCommand(command);
+	return "./JobScript.po?action=execute&command=" + this.encodeCommand(command);
     }
 
     private void writeDictionary(PythonInterpreter interpreter, ScriptInterpreterHTML page) {
@@ -129,4 +129,4 @@ public class JobScript implements HttpPresentation {
 	}
     }
     
-}
+} //class
