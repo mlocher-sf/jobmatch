@@ -448,6 +448,35 @@
             <type dbType="none" javaType="jobmatch.data.CandidateDO"/>
           </column>
         </table>
+        <table id="jobmatch.data.CVComputer" dbTableName="SoftwareCandidate" isAbstract="true">
+          <column id="Capability" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Compcapability"/>
+            <type dbType="none" javaType="jobmatch.data.CompcapabilityDO"/>
+          </column>
+          <column id="Candidate" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Candidate"/>
+            <type dbType="none" javaType="jobmatch.data.CandidateDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.SoftwareCandidate" extensionOf="jobmatch.data.CVComputer">
+          <column id="Software" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Software"/>
+            <type dbType="none" javaType="jobmatch.data.SoftwareDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.ProgrammingCandidate" extensionOf="jobmatch.data.CVComputer">
+          <column id="Language" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Programming"/>
+            <type dbType="none" javaType="jobmatch.data.ProgrammingDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.OperatingsystemCandidate" dbTableName="OperatingSystemCandidate">
+          <column id="System" usedForQuery="true">
+            <referenceObject constraint="true" reference="jobmatch.data.Operationgsystem"/>
+            <type dbType="none" javaType="jobmatch.data.OperationgsystemDO"/>
+          </column>
+        </table>
+        <table id="jobmatch.data.ProviderAccount" extensionOf="jobmatch.data.Account"/>
       </package>
     </package>
   </database>
