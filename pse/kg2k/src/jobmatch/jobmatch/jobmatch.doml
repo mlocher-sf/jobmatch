@@ -20,6 +20,12 @@
           <column id="Passphrase">
             <type dbType="VARCHAR" javaType="String" size="20"/>
           </column>
+          <column id="LastIP">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="25"/>
+          </column>
+          <column id="LastHost">
+            <type canBeNull="true" dbType="VARCHAR" javaType="String" size="30"/>
+          </column>
         </table>
         <table id="jobmatch.data.CandidateAccount" extensionOf="jobmatch.data.Account">
           <column id="Candidate" usedForQuery="true">
