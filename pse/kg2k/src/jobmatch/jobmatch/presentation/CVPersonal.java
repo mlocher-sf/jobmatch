@@ -30,7 +30,7 @@ public class CVPersonal extends CVSection implements HttpPresentation {
     }
 
     /**
-     * Fills the text fields with CV-data 
+     * Insert the data into the db  
      **/
     private void processData(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms) {
 	try{
@@ -61,6 +61,9 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	}
     }
     
+    /**
+     * Fills the fields with CV-data from the db
+     **/
     private void fillPage(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms) {
 	try {
 
@@ -100,21 +103,26 @@ public class CVPersonal extends CVSection implements HttpPresentation {
     }
 
     private String splitDate(Date d, int selector){
-	String result;
-	switch (selector) {
-	case 3:
-	    result = String.valueOf(TimeUtil.getYear(d));
-	    break;
-	case 2:
-	    result = String.valueOf(TimeUtil.getMonth(d));
-	    break;
-	case 1:
-	    result = String.valueOf(TimeUtil.getDay(d));
-	    break;
-	default:
-	    result = d.toString();
+	if (d != null){
+	    String result;
+	    switch (selector) {
+	    case 3:
+		result = String.valueOf(TimeUtil.getYear(d));
+		break;
+	    case 2:
+		result = String.valueOf(TimeUtil.getMonth(d));
+		break;
+	    case 1:
+		result = String.valueOf(TimeUtil.getDay(d));
+		break;
+	    default:
+		result = d.toString();
+	    }
+	    return result;
 	}
-	return result;
+	else {
+	    return "";
+	}
     }
 
     /**
@@ -144,6 +152,9 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 // Document history
 /*
  * $Log: CVPersonal.java,v $
+ * Revision 1.11  2000/06/05 14:05:03  studer
+ * nullpointer exception in splitdata() korrigiert
+ *
  * Revision 1.10  2000/06/05 11:39:37  loeffel
  * CVPersonal should be finished: data can be inserted into the database
  * and is read back
