@@ -6,8 +6,11 @@ PSE Gruppe 4, Michel Bruhin
 Deadline   Description
 ______________________________________________________________________________
 04/04/00   JUnit repetieren, Risiken 
+10/04/00   Features sammeln und in req eintragen
+10/04/00   Enhydra gettingstarted Tutorial anschauen
+11/04/00   Servlets anschauen und einarbeiten
 
 		
 
 ==============================================================================
-$Id: todo.txt,v 1.1 2000/04/04 07:26:48 bruhin Exp $
+$Id: todo.txt,v 1.2 2000/04/11 06:22:38 bruhin Exp $
