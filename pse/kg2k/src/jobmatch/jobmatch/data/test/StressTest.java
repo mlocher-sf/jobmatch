@@ -1,4 +1,4 @@
-// $Id: StressTest.java,v 1.1 2000/06/12 21:52:29 locher Exp $
+// $Id: StressTest.java,v 1.2 2000/06/13 11:12:37 locher Exp $
 
 package jobmatch.data.test;
 
@@ -7,16 +7,16 @@ import jobmatch.data.*;
 
 /**
  *  Database/Memory Stress Test.
- *  approx. 8MB are inserted, queried and removed from the db.
+ *  approx. 4MB are inserted, queried and removed from the db.
  *
  *  @since June 12 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
 public class StressTest extends TestCase {
 
     private static final String testType = "stress/test";
-    private static final int NUMBER_OF_WRITES = 16;
+    private static final int NUMBER_OF_WRITES = 8;
     private static final int SIZE_OF_WRITE = 512*1024;
 
     public StressTest(String name) {
@@ -79,6 +79,9 @@ public class StressTest extends TestCase {
 // Document history
 /*
  * $Log: StressTest.java,v $
+ * Revision 1.2  2000/06/13 11:12:37  locher
+ * skip stress test
+ *
  * Revision 1.1  2000/06/12 21:52:29  locher
  * added DB Stress test
  *
