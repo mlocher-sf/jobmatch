@@ -8,7 +8,9 @@ public class CVHobbies implements HttpPresentation {
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
 
-        CVHobbiesHTML page = (CVHobbiesHTML)comms.xmlcFactory.create(CVHobbiesHTML.class);
+        CVHobbiesHTML page =
+        (CVHobbiesHTML)comms.xmlcFactory.create(CVHobbiesHTML.class);
+	page.getElementTemplate().getParentNode().removeChild(page.getElementTemplate());
         comms.response.writeHTML(page);
     }
 
