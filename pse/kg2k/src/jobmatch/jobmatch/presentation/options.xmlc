@@ -26,7 +26,7 @@
 -urlmapping './Profile.html' './Profile.po'
 -urlmapping './ProfileResults.html' './ProfileResults.po'
 -urlmapping './LoginCompanies.html' './LoginCompanies.po'
--urlmapping './HELPLoginCompanies.html' './CompanyHome.po'
+-urlmapping './HELPLoginCompanies.html' './CheckLogin.po'
 -urlmapping './ChangePassphrase.html' './ChangePassephrase.po'
 -urlmapping './Password.html' './Password.po'
 -urlmapping './ProfileLanguageDetailExperience.html' './ProfileLanguageDetailExperience.po'
