@@ -1,50 +1,57 @@
 <html>
   <head>
-    <title> Computerkenntnisse </title>
+    <title> Anforderungen an Computerkenntnisse </title>
     <link rel=stylesheet type="text/css" href="style.css">
   </head>
 
   <body> 
   <hr>
-  <h1> Computerkenntnisse </h1>
-  <form action="./Section.html" method=get>
-  <table border=1><tr><td>
+  <h1> Anforderungen an Computerkenntnisse </h1>
+  
+  <form action="./ProfileSoftwareExperience.html" method=get>
+  <table width=100% border=1> <tr><th>
+  Softwarepaket </th><th>
+  Mindestkenntnisse  </th></tr>
+  <tr><td> Access </td><td> Anfaenger </td>
+  
+  <td><a href="./CV.html"> Loeschen </a></td>
+  <td><a href="./CV.html"> Bearbeiten </a></td></tr>
+  <tr><td> <input type="submit" name="submit" value="Softwarepaket hinzufuegen"> </td></tr>  
+  </table> </form>
+<p>
+  <form action="./ProfileProgrammingExperience.html" method=get>
+  <table width=100% border=1> <tr><th>
+  Programmiersprache </th><th>
+  Mindestkenntnisse  </th></tr>
+  <tr><td> Java </td><td> Fortgeschrittener </td>
+ 
+  <td><a href="./CV.html"> Loeschen </a></td>
+  <td><a href="./CV.html"> Bearbeiten </a></td></tr>
+  <tr><td> C++ </td><td> Profi </td>
+ 
+  <td><a href="./CV.html"> Loeschen </a></td>
+  <td><a href="./CV.html"> Bearbeiten </a></td></tr>
+  <tr><td> <input type="submit" name="submit" value="Programmiersprache hinzufuegen"> </td></tr>  
+  </table> </form>
+<p> 
+  <form action="./ProfileOperatingSystemExperience.html" method=get>
+  <table width=100% border=1> <tr><th>
+  Betriebssystem </th><th>
+  Mindestkenntnisse </th></tr>
+  <tr><td> Windows NT </td><td> Anfaenger </td>
+ 
+  <td><a href="./CV.html"> Loeschen </a></td>
+  <td><a href="./CV.html"> Bearbeiten </a></td></tr> 
+  <tr><td> <input type="submit" name="submit" value="Betriebssystem hinzufuegen"> </td></tr>  
+  </table> </form>
 
-   Software: </td><td> <select name="software">
-             <option value="Excel"> Excel
-             <option value="Office"> Office
-             <option value="Access"> Access
-             </select> </td><td>
-   Mindestkenntnisse: </td><td> <select name="software">
-                      <option value="a"> Anfaenger
-                      <option value="f"> Fortgeschrittener
-                      <option value="p"> Profi
-                      </select> </td></tr><tr><td>
-   Programmiersprachen: </td><td> <select name="lang">
-                        <option value="Excel"> Java
-                        <option value="Office"> C++
-                        <option value="Access"> Pascal
-                        </select> </td><td>
-   Mindestkenntnisse: </td><td> <select name="lang">
-                      <option value="a"> Anfaenger
-                      <option value="f"> Fortgeschrittener
-                      <option value="p"> Profi
-                      </select> </td></tr><tr><td>
-   Betriebssysteme: </td><td> <select name="os">
-                    <option value="Excel"> Unix
-                    <option value="Office"> Windows
-                    <option value="Access"> Linux
-                    </select> </td><td>
-   Mindestkenntnisse: </td><td> <select name="os">
-                      <option value="a"> Anfaenger
-                      <option value="f"> Fortgeschrittener
-                      <option value="p"> Profi
-                      </select> </td></tr><tr><td>
+
   <input type="submit" name="submit" value="Submit">
   </td></tr>
-  </table>
-  </form>
+  </table> </form>
 
+  <a href="./Section.html"> Zurueck zur Unterteilung </a>
   <hr>
+
   </BODY>
 </HTML>
