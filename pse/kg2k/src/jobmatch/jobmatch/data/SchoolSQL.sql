@@ -2,10 +2,11 @@
 
 create table School
 (
+/* class ConstantTable */
+    Description VARCHAR(40) DEFAULT "" NOT NULL   ,
 /* class School */
-    Name VARCHAR(50) DEFAULT "" NOT NULL   ,
-    Location VARCHAR(40) DEFAULT "" NOT NULL   ,
-    Type DECIMAL(19,0)  NOT NULL   ,
+    Location VARCHAR(40) DEFAULT ""    ,
+    Type DECIMAL(19,0)  NOT NULL  REFERENCES Schooltype ( oid ) ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

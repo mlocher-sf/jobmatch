@@ -2,15 +2,17 @@
 
 create table EmployerCandidate
 (
-/* class EmployerCandidate */
+/* class CVSection */
     Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
+/* class CVTimespan */
+    BeginDate DATE     ,
+    EndDate DATE     ,
+/* class EmployerCandidate */
     Employer DECIMAL(19,0)  NOT NULL  REFERENCES Employer ( oid ) ,
-    Begin DATE  NOT NULL   ,
-    End DATE  NOT NULL   ,
-    Remarks VARCHAR(32) DEFAULT ""    ,
+    Remarks TEXT(32) DEFAULT ""    ,
     Reference VARCHAR(30) DEFAULT ""    ,
-    Function VARCHAR(20) DEFAULT "" NOT NULL   ,
-    Pensum INTEGER  NOT NULL   ,
+    Function VARCHAR(20) DEFAULT ""    ,
+    Pensum INTEGER     ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

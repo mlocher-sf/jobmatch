@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class SchoolBDO implements java.io.Serializable {
 
@@ -242,29 +242,29 @@ public class SchoolBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Name of the SchoolDO
+    * Get Description of the SchoolDO
     *
-    * @return Name of the SchoolDO
+    * @return Description of the SchoolDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public String getName () 
+   public String getDescription () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getName ();
+      return DO.getDescription ();
    }
 
    
    /**
-    * Set Name of the SchoolDO
+    * Set Description of the SchoolDO
     *
-    * @param Name of the SchoolDO
+    * @param Description of the SchoolDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setName ( String Name ) 
+   public void setDescription ( String Description ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,7 +272,7 @@ public class SchoolBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setName ( Name );
+      DO.setDescription ( Description );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -571,6 +571,185 @@ public class SchoolBDO implements java.io.Serializable {
  
 
 
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * get array of GraduationDO objects that indirectly refer
+     * to the DO held by this BDO.
+     *
+     * @return array of GraduationDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.GraduationDO[] getGraduationDOArray_via_SchoolCandidate () 
+    throws DataObjectException {
+	jobmatch.data.GraduationDO[] ret = null;
+	try {
+	    jobmatch.data.SchoolCandidateDO[] arr = getSchoolCandidateDOArray();
+	    ret = new jobmatch.data.GraduationDO[ arr.length ];
+	    for ( int i = 0; i < arr.length; i++ ) {
+		ret[ i ] = arr[ i ].getDiploma();
+	    }
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: ", e );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.GraduationDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a GraduationDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param d The GraduationDO to add to the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapGraduation_via_SchoolCandidateDO( jobmatch.data.GraduationDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapGraduation_via_SchoolCandidateDO( d, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a GraduationDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param d The GraduationDO to add to the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapGraduation_via_SchoolCandidateDO( jobmatch.data.GraduationDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.GraduationBDO b = jobmatch.data.GraduationBDO.createExisting( d );
+	mapGraduation_via_SchoolCandidateBDO( b, tran );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a GraduationDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param b The GraduationBDO to add to the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapGraduation_via_SchoolCandidateBDO( jobmatch.data.GraduationBDO b )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapGraduation_via_SchoolCandidateBDO( b, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a GraduationDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param b The GraduationBDO to add to the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapGraduation_via_SchoolCandidateBDO( jobmatch.data.GraduationBDO b, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolCandidateBDO m = null;
+	try {
+	    m = jobmatch.data.SchoolCandidateBDO.createVirgin();
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"jobmatch.data.SchoolCandidateBDO.createVirgin failed", e );
+	}
+	m.setDiploma( b );
+	m.setSchool( this );
+	m.commit( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the GraduationDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param d The GraduationDO to remove from the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void unmapGraduation_via_SchoolCandidateDO( jobmatch.data.GraduationDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapGraduation_via_SchoolCandidateDO( d, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the GraduationDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param d The GraduationDO to remove from the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void unmapGraduation_via_SchoolCandidateDO( jobmatch.data.GraduationDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.GraduationBDO b = jobmatch.data.GraduationBDO.createExisting( d );
+	unmapGraduation_via_SchoolCandidateBDO( b, tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the GraduationDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param b The GraduationBDO to remove from the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void unmapGraduation_via_SchoolCandidateBDO( jobmatch.data.GraduationBDO b )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapGraduation_via_SchoolCandidateBDO( b, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the GraduationDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param b The GraduationBDO to remove from the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void unmapGraduation_via_SchoolCandidateBDO( jobmatch.data.GraduationBDO b, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	q.setQuerySchool( DO );
+	q.setQueryDiploma( b.getDO() );
+	q.requireUniqueInstance();
+	jobmatch.data.SchoolCandidateBDO m = null;
+	try {
+	    m = q.getNextBDO();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( "Multiple mappings for " +
+		DO + " and " + b.getDO() + " in jobmatch.data.SchoolCandidate table." );
+	}
+	m.delete( tran );
+    }
 
 
   /**

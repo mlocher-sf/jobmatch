@@ -2,10 +2,11 @@
 
 create table Hobby
 (
-/* class Hobby */
+/* class CVSection */
     Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
+/* class Hobby */
     Title VARCHAR(20) DEFAULT "" NOT NULL   ,
-    Description VARCHAR(32) DEFAULT ""    ,
+    Description TEXT(32) DEFAULT ""    ,
     Priority INTEGER DEFAULT 0    ,
 
     /* NOTICE: */

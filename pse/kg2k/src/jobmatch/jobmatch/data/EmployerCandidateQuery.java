@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 final public class EmployerCandidateQuery implements Query {
 
@@ -482,6 +482,144 @@ System.err.println("x ="+x );
 
 
     /**
+     * Set the BeginDate to query.
+     *
+     * @param x The BeginDate of the EmployerCandidate to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryBeginDate(
+				java.sql.Date x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    EmployerCandidateDO DO = ( EmployerCandidateDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		Date d = (Date) DO.getBeginDate();
+		if ( null == d && null == x ) {
+		    equals = true;
+		} else if ( null != d && null != x ) {
+		    equals = d.equals( x );
+		} else {  // one is null, the other isn't
+		    equals = false;
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "BeginDate", x, "DATE",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the BeginDate to query
+     * @param x The BeginDate of the EmployerCandidate to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryBeginDate( 
+				java.sql.Date x )
+    throws DataObjectException, QueryException {
+	setQueryBeginDate( x, true );
+    }
+
+    /**
+     * Add BeginDate to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByBeginDate(boolean direction_flag) {
+        builder.addOrderByColumn("BeginDate",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add BeginDate to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByBeginDate() {
+        builder.addOrderByColumn("BeginDate","ASC");
+    }
+
+
+    /**
+     * Set the EndDate to query.
+     *
+     * @param x The EndDate of the EmployerCandidate to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryEndDate(
+				java.sql.Date x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    EmployerCandidateDO DO = ( EmployerCandidateDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		Date d = (Date) DO.getEndDate();
+		if ( null == d && null == x ) {
+		    equals = true;
+		} else if ( null != d && null != x ) {
+		    equals = d.equals( x );
+		} else {  // one is null, the other isn't
+		    equals = false;
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "EndDate", x, "DATE",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the EndDate to query
+     * @param x The EndDate of the EmployerCandidate to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryEndDate( 
+				java.sql.Date x )
+    throws DataObjectException, QueryException {
+	setQueryEndDate( x, true );
+    }
+
+    /**
+     * Add EndDate to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByEndDate(boolean direction_flag) {
+        builder.addOrderByColumn("EndDate",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add EndDate to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByEndDate() {
+        builder.addOrderByColumn("EndDate","ASC");
+    }
+
+
+    /**
      * Set the Employer to query.
      *
      * @param x The Employer of the EmployerCandidate to query.
@@ -670,7 +808,7 @@ System.err.println("x ="+x );
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "Function", x, "VARCHAR",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -733,7 +871,7 @@ System.err.println("x ="+x );
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "Pensum", x, "INTEGER",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -843,7 +981,7 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOr();
+	builder.addWhereOpenParen(); // patched by PSE 2000, 5/22/2000
     }
 
     /**
@@ -853,6 +991,6 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereOr();
+	builder.addWhereCloseParen(); // patched by PSE 2000, 5/22/2000
     }
 }

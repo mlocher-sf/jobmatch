@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
@@ -70,11 +70,6 @@ public class MatchQueueDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public java.sql.Timestamp Time = null;
-
-/**
- * 
- */
    public jobmatch.data.CandidateDO Candidate = null;
     /**
      * Create a copy of the guts of a DO.
@@ -90,9 +85,6 @@ public class MatchQueueDataStruct implements Cloneable, Serializable {
  
 
 		
-	ret.Time = new java.sql.Timestamp(Time.getTime() );
-	
-	
 	ret.Candidate = jobmatch.data.CandidateDO.createCopy( Candidate );
 	
 

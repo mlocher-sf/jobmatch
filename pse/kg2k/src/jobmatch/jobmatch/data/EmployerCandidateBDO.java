@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class EmployerCandidateBDO implements java.io.Serializable {
 
@@ -326,6 +326,82 @@ public class EmployerCandidateBDO implements java.io.Serializable {
    
 
    /**
+    * Get BeginDate of the EmployerCandidateDO
+    *
+    * @return BeginDate of the EmployerCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Date getBeginDate () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getBeginDate ();
+   }
+
+   
+   /**
+    * Set BeginDate of the EmployerCandidateDO
+    *
+    * @param BeginDate of the EmployerCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setBeginDate ( java.sql.Date BeginDate ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setBeginDate ( BeginDate );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
+    * Get EndDate of the EmployerCandidateDO
+    *
+    * @return EndDate of the EmployerCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Date getEndDate () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getEndDate ();
+   }
+
+   
+   /**
+    * Set EndDate of the EmployerCandidateDO
+    *
+    * @param EndDate of the EmployerCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setEndDate ( java.sql.Date EndDate ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setEndDate ( EndDate );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
     * Get Employer of the EmployerCandidateDO
     *
     * @return Employer of the EmployerCandidateDO
@@ -406,82 +482,6 @@ public class EmployerCandidateBDO implements java.io.Serializable {
       afterAnySet();	// business actions/assertions after data assignment
    }
    
-
-   
-
-   /**
-    * Get Begin of the EmployerCandidateDO
-    *
-    * @return Begin of the EmployerCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Date getBegin () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getBegin ();
-   }
-
-   
-   /**
-    * Set Begin of the EmployerCandidateDO
-    *
-    * @param Begin of the EmployerCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setBegin ( java.sql.Date Begin ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setBegin ( Begin );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get End of the EmployerCandidateDO
-    *
-    * @return End of the EmployerCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Date getEnd () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getEnd ();
-   }
-
-   
-   /**
-    * Set End of the EmployerCandidateDO
-    *
-    * @param End of the EmployerCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setEnd ( java.sql.Date End ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setEnd ( End );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
 
    
 

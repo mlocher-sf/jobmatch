@@ -2,10 +2,11 @@
 
 create table MailQueue
 (
-/* class MailQueue */
-    Mail BINARY  NOT NULL   ,
-    Priority INTEGER  NOT NULL   ,
+/* class Queue */
     Time TIMESTAMP  NOT NULL   ,
+/* class MailQueue */
+    Mail MEDIUMBLOB  NOT NULL   ,
+    Priority INTEGER  NOT NULL   ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

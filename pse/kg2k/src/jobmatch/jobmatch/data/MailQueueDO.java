@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the MailQueueDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
- public class MailQueueDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class MailQueueDO extends jobmatch.data.QueueDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ import com.lutris.dods.builder.generator.query.*;
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new MailQueueDataStruct ();
 	}
 
@@ -735,54 +735,6 @@ import com.lutris.dods.builder.generator.query.*;
    }
    
 
-
-////////////////////////// data member Time
-
-   /* static final RDBColumn Time for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Time = 
-			    new RDBColumn( table, "Time" );
-
-   /**
-    * Get Time of the MailQueue
-    *
-    * @return Time of the MailQueue
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Timestamp getTime () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Time;
-   }
-
-   /**
-    * Set Time of the MailQueue
-    *
-    * @param Time of the MailQueue
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setTime ( java.sql.Timestamp Time )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Time =  markNewValue(
-	data.Time, Time  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
     /**
      * Protected constructor.
      *
@@ -839,14 +791,6 @@ import com.lutris.dods.builder.generator.query.*;
 	    
 	);
 	
-	
-	setTime( 
-	    
-		rs.getTimestamp( 
-			"Time"  )
-	    
-	);
-	
 
  
         markClean();
@@ -880,7 +824,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into MailQueue ( Mail, Priority, Time, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
+	    "insert into MailQueue ( Time, Mail, Priority, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -888,12 +832,12 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_bytes( stmt, param,
+	    	setPrepStmtParam_java_sql_Timestamp( stmt, param,
+		getTime() );
+	setPrepStmtParam_bytes( stmt, param,
 		getMail() );
 	setPrepStmtParam_int( stmt, param,
 		getPriority() );
-	setPrepStmtParam_java_sql_Timestamp( stmt, param,
-		getTime() );
 
 
 	    /* The order of the values being inserted must match
@@ -926,7 +870,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update MailQueue set " + getVersionColumnName() + " = ?, Mail = ?, Priority = ?, Time = ? " +
+	    "update MailQueue set " + getVersionColumnName() + " = ?, Time = ?, Mail = ?, Priority = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -936,12 +880,12 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_bytes( stmt, param,
+	    	setPrepStmtParam_java_sql_Timestamp( stmt, param,
+		getTime() );
+	setPrepStmtParam_bytes( stmt, param,
 		getMail() );
 	setPrepStmtParam_int( stmt, param,
 		getPriority() );
-	setPrepStmtParam_java_sql_Timestamp( stmt, param,
-		getTime() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -993,7 +937,6 @@ import com.lutris.dods.builder.generator.query.*;
 	if ( null != data ) 
 	    str = str + "\n" + indent + "Mail=" + data.Mail
 + "\n" + indent + "Priority=" + data.Priority
-+ "\n" + indent + "Time=" + data.Time
 ;
         return str + "; " + super.toString();
     }
@@ -1019,7 +962,6 @@ import com.lutris.dods.builder.generator.query.*;
         if ( null != data )
             str = str + "\n" + indent + "Mail=" + data.Mail
 + "\n" + indent + "Priority=" + data.Priority
-+ "\n" + indent + "Time=" + data.Time
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;

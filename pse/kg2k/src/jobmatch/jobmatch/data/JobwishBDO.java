@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class JobwishBDO implements java.io.Serializable {
 
@@ -242,29 +242,29 @@ public class JobwishBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Pensum of the JobwishDO
+    * Get Candidate of the JobwishDO
     *
-    * @return Pensum of the JobwishDO
+    * @return Candidate of the JobwishDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public int getPensum () 
+   public jobmatch.data.CandidateDO getCandidate () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getPensum ();
+      return DO.getCandidate ();
    }
 
    
    /**
-    * Set Pensum of the JobwishDO
+    * Set Candidate of the JobwishDO
     *
-    * @param Pensum of the JobwishDO
+    * @param Candidate of the JobwishDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setPensum ( int Pensum ) 
+   public void setCandidate ( jobmatch.data.CandidateDO Candidate ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -272,10 +272,56 @@ public class JobwishBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setPensum ( Pensum );
+      DO.setCandidate ( Candidate );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
+   
+
+   /**
+    * Get BDO-wrapped Candidate of the JobwishDO
+    *
+    * @return BDO-wrapped Candidate of the JobwishDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CandidateBDO getCandidateBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.CandidateBDO b = jobmatch.data.CandidateBDO.createExisting(
+					  DO.getCandidate () );
+      return b;
+   }
+
+   /**
+    * Set Candidate of the JobwishDO
+    *
+    * @param BDO-wrapped Candidate of the JobwishDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setCandidate ( jobmatch.data.CandidateBDO Candidate ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Candidate ) {
+	  if ( false )
+	      DO.setCandidate ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "JobwishBDO.setCandidate does not allow NULL." );
+      } else {
+          DO.setCandidate ( Candidate.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
 
    
 
@@ -471,7 +517,7 @@ public class JobwishBDO implements java.io.Serializable {
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       if ( null == Area ) {
-	  if ( false )
+	  if ( true )
 	      DO.setArea ( null );
 	  else 
 	      throw new DataObjectException( 
@@ -524,29 +570,29 @@ public class JobwishBDO implements java.io.Serializable {
    
 
    /**
-    * Get Candidate of the JobwishDO
+    * Get Pensum of the JobwishDO
     *
-    * @return Candidate of the JobwishDO
+    * @return Pensum of the JobwishDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.CandidateDO getCandidate () 
+   public int getPensum () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getCandidate ();
+      return DO.getPensum ();
    }
 
    
    /**
-    * Set Candidate of the JobwishDO
+    * Set Pensum of the JobwishDO
     *
-    * @param Candidate of the JobwishDO
+    * @param Pensum of the JobwishDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setCandidate ( jobmatch.data.CandidateDO Candidate ) 
+   public void setPensum ( int Pensum ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -554,56 +600,10 @@ public class JobwishBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setCandidate ( Candidate );
+      DO.setPensum ( Pensum );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
-   
-
-   /**
-    * Get BDO-wrapped Candidate of the JobwishDO
-    *
-    * @return BDO-wrapped Candidate of the JobwishDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CandidateBDO getCandidateBDO () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      jobmatch.data.CandidateBDO b = jobmatch.data.CandidateBDO.createExisting(
-					  DO.getCandidate () );
-      return b;
-   }
-
-   /**
-    * Set Candidate of the JobwishDO
-    *
-    * @param BDO-wrapped Candidate of the JobwishDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setCandidate ( jobmatch.data.CandidateBDO Candidate ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      if ( null == Candidate ) {
-	  if ( false )
-	      DO.setCandidate ( null );
-	  else 
-	      throw new DataObjectException( 
-		  "JobwishBDO.setCandidate does not allow NULL." );
-      } else {
-          DO.setCandidate ( Candidate.getDO() );
-      }
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
 
    
 
@@ -665,6 +665,24 @@ public class JobwishBDO implements java.io.Serializable {
 
       /**
      * A stub method for implementing pre-commit assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for writing to the database.
+     */
+    protected void okToCommitCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for deletion from the database.
+     */
+    protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
      * for the Industry data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Industry is not valid for writing to the database.
@@ -697,24 +715,6 @@ public class JobwishBDO implements java.io.Serializable {
      * where Area is not valid for deletion from the database.
      */
     protected void okToDeleteArea( jobmatch.data.AreaDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
-     * for the Candidate data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Candidate is not valid for writing to the database.
-     */
-    protected void okToCommitCandidate( jobmatch.data.CandidateDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Candidate data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Candidate is not valid for deletion from the database.
-     */
-    protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
     throws RefAssertionException { }
 
 
@@ -754,7 +754,25 @@ public class JobwishBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.IndustryDO Industry_DO = DO.getIndustry();
+	  	jobmatch.data.CandidateDO Candidate_DO = DO.getCandidate();
+	if ( null != Candidate_DO ) {
+	    if ( Candidate_DO.isLoaded() ) {
+		okToCommitCandidate( Candidate_DO );
+		jobmatch.data.CandidateBDO b = 
+		    jobmatch.data.CandidateBDO.createExisting(
+						    Candidate_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit JobwishBDO ( " + toString() +
+		    " ) because Candidate is not allowed to be null." );
+	}
+	jobmatch.data.IndustryDO Industry_DO = DO.getIndustry();
 	if ( null != Industry_DO ) {
 	    if ( Industry_DO.isLoaded() ) {
 		okToCommitIndustry( Industry_DO );
@@ -785,28 +803,10 @@ public class JobwishBDO implements java.io.Serializable {
 		// it cannot be dirty, so there is no need to commit it.
 	    }
 	} else {
-	    if ( ! false )
+	    if ( ! true )
 		throw new RefAssertionException(
 		    "Cannot commit JobwishBDO ( " + toString() +
 		    " ) because Area is not allowed to be null." );
-	}
-	jobmatch.data.CandidateDO Candidate_DO = DO.getCandidate();
-	if ( null != Candidate_DO ) {
-	    if ( Candidate_DO.isLoaded() ) {
-		okToCommitCandidate( Candidate_DO );
-		jobmatch.data.CandidateBDO b = 
-		    jobmatch.data.CandidateBDO.createExisting(
-						    Candidate_DO );
-		b.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit JobwishBDO ( " + toString() +
-		    " ) because Candidate is not allowed to be null." );
 	}
 
       }

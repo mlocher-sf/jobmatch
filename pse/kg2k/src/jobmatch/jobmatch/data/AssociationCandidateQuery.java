@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 final public class AssociationCandidateQuery implements Query {
 
@@ -706,7 +706,7 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOr();
+	builder.addWhereOpenParen(); // patched by PSE 2000, 5/22/2000
     }
 
     /**
@@ -716,6 +716,6 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereOr();
+	builder.addWhereCloseParen(); // patched by PSE 2000, 5/22/2000
     }
 }

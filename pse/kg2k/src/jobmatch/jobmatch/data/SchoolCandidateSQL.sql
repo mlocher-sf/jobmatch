@@ -2,13 +2,15 @@
 
 create table SchoolCandidate
 (
+/* class CVSection */
+    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
+/* class CVTimespan */
+    BeginDate DATE     ,
+    EndDate DATE     ,
 /* class SchoolCandidate */
     School DECIMAL(19,0)  NOT NULL  REFERENCES School ( oid ) ,
-    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
-    Begin DATE  NOT NULL   ,
-    End DATE  NOT NULL   ,
     Diploma DECIMAL(19,0)     ,
-    Remarks VARCHAR(32) DEFAULT ""    ,
+    Remarks TEXT(32) DEFAULT ""    ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

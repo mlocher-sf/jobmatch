@@ -2,9 +2,10 @@
 
 create table SoftwareCandidate
 (
+/* class CVSection */
+    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
 /* class CVComputer */
     Capability DECIMAL(19,0)  NOT NULL   ,
-    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
 /* class SoftwareCandidate */
     Software DECIMAL(19,0)  NOT NULL  REFERENCES Software ( oid ) ,
 

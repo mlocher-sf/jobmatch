@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the ProfileDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
@@ -688,102 +688,6 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member MinSchoolType
-
-   /* static final RDBColumn MinSchoolType for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn MinSchoolType = 
-			    new RDBColumn( table, "MinSchoolType" );
-
-   /**
-    * Get MinSchoolType of the Profile
-    *
-    * @return MinSchoolType of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.SchooltypeDO getMinSchoolType () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.MinSchoolType;
-   }
-
-   /**
-    * Set MinSchoolType of the Profile
-    *
-    * @param MinSchoolType of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setMinSchoolType ( jobmatch.data.SchooltypeDO MinSchoolType )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.MinSchoolType = (jobmatch.data.SchooltypeDO) markNewValue(
-	data.MinSchoolType, MinSchoolType  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member MaxSchoolType
-
-   /* static final RDBColumn MaxSchoolType for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn MaxSchoolType = 
-			    new RDBColumn( table, "MaxSchoolType" );
-
-   /**
-    * Get MaxSchoolType of the Profile
-    *
-    * @return MaxSchoolType of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.SchooltypeDO getMaxSchoolType () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.MaxSchoolType;
-   }
-
-   /**
-    * Set MaxSchoolType of the Profile
-    *
-    * @param MaxSchoolType of the Profile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setMaxSchoolType ( jobmatch.data.SchooltypeDO MaxSchoolType )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.MaxSchoolType = (jobmatch.data.SchooltypeDO) markNewValue(
-	data.MaxSchoolType, MaxSchoolType  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Company
 
    /* static final RDBColumn Company for use with QueryBuilder.
@@ -1120,22 +1024,6 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setMinSchoolType( 
-	    jobmatch.data.SchooltypeDO.createExisting( 
-		rs.getBigDecimal( 
-			"MinSchoolType" , 0 )
-	     )
-	);
-	
-	
-	setMaxSchoolType( 
-	    jobmatch.data.SchooltypeDO.createExisting( 
-		rs.getBigDecimal( 
-			"MaxSchoolType" , 0 )
-	     )
-	);
-	
-	
 	setCompany( 
 	    jobmatch.data.CompanyDO.createExisting( 
 		rs.getBigDecimal( 
@@ -1216,7 +1104,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Profile ( Name, MinSchoolType, MaxSchoolType, Company, NeedsRematching, Notify, Period, MatchTree, LastNotification, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into Profile ( Name, Company, NeedsRematching, Notify, Period, MatchTree, LastNotification, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1226,10 +1114,6 @@ import com.lutris.dods.builder.generator.query.*;
 	try {
 	    	setPrepStmtParam_String( stmt, param,
 		getName() );
-	setPrepStmtParam_DO( stmt, param,
-		getMinSchoolType() );
-	setPrepStmtParam_DO( stmt, param,
-		getMaxSchoolType() );
 	setPrepStmtParam_DO( stmt, param,
 		getCompany() );
 	setPrepStmtParam_boolean( stmt, param,
@@ -1274,7 +1158,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Profile set " + getVersionColumnName() + " = ?, Name = ?, MinSchoolType = ?, MaxSchoolType = ?, Company = ?, NeedsRematching = ?, Notify = ?, Period = ?, MatchTree = ?, LastNotification = ? " +
+	    "update Profile set " + getVersionColumnName() + " = ?, Name = ?, Company = ?, NeedsRematching = ?, Notify = ?, Period = ?, MatchTree = ?, LastNotification = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1286,10 +1170,6 @@ import com.lutris.dods.builder.generator.query.*;
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
 	    	setPrepStmtParam_String( stmt, param,
 		getName() );
-	setPrepStmtParam_DO( stmt, param,
-		getMinSchoolType() );
-	setPrepStmtParam_DO( stmt, param,
-		getMaxSchoolType() );
 	setPrepStmtParam_DO( stmt, param,
 		getCompany() );
 	setPrepStmtParam_boolean( stmt, param,
@@ -1352,8 +1232,6 @@ import com.lutris.dods.builder.generator.query.*;
 	str += " OID=" + id;
 	if ( null != data ) 
 	    str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "MinSchoolType=" + ( null == data.MinSchoolType ? null  : data.MinSchoolType.toString( indentCount + 1 ) )
-+ "\n" + indent + "MaxSchoolType=" + ( null == data.MaxSchoolType ? null  : data.MaxSchoolType.toString( indentCount + 1 ) )
 + "\n" + indent + "Company=" + ( null == data.Company ? null  : data.Company.toString( indentCount + 1 ) )
 + "\n" + indent + "NeedsRematching=" + data.NeedsRematching
 + "\n" + indent + "Notify=" + data.Notify
@@ -1384,8 +1262,6 @@ import com.lutris.dods.builder.generator.query.*;
         str += " OID=" + id;
         if ( null != data )
             str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "MinSchoolType=" + ( null == data.MinSchoolType ? null  : data.MinSchoolType.toString( indentCount + 1 ) )
-+ "\n" + indent + "MaxSchoolType=" + ( null == data.MaxSchoolType ? null  : data.MaxSchoolType.toString( indentCount + 1 ) )
 + "\n" + indent + "Company=" + ( null == data.Company ? null  : data.Company.toString( indentCount + 1 ) )
 + "\n" + indent + "NeedsRematching=" + data.NeedsRematching
 + "\n" + indent + "Notify=" + data.Notify
@@ -1716,42 +1592,6 @@ import com.lutris.dods.builder.generator.query.*;
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the MinSchoolType data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where MinSchoolType is not valid for writing to the database.
-     */
-    protected void okToCommitMinSchoolType( jobmatch.data.SchooltypeDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the MinSchoolType data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where MinSchoolType is not valid for deletion from the database.
-     */
-    protected void okToDeleteMinSchoolType( jobmatch.data.SchooltypeDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
-     * for the MaxSchoolType data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where MaxSchoolType is not valid for writing to the database.
-     */
-    protected void okToCommitMaxSchoolType( jobmatch.data.SchooltypeDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the MaxSchoolType data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where MaxSchoolType is not valid for deletion from the database.
-     */
-    protected void okToDeleteMaxSchoolType( jobmatch.data.SchooltypeDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
      * for the Company data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Company is not valid for writing to the database.
@@ -1819,37 +1659,7 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.SchooltypeDO MinSchoolType_DO = getMinSchoolType();
-	if ( null != MinSchoolType_DO ) {
-	    if ( MinSchoolType_DO.isLoaded() ) {
-		okToCommitMinSchoolType( MinSchoolType_DO );
-		MinSchoolType_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit ProfileDO ( " + toString() +
-		    " ) because MinSchoolType is not allowed to be null." );
-	}
-	jobmatch.data.SchooltypeDO MaxSchoolType_DO = getMaxSchoolType();
-	if ( null != MaxSchoolType_DO ) {
-	    if ( MaxSchoolType_DO.isLoaded() ) {
-		okToCommitMaxSchoolType( MaxSchoolType_DO );
-		MaxSchoolType_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit ProfileDO ( " + toString() +
-		    " ) because MaxSchoolType is not allowed to be null." );
-	}
-	jobmatch.data.CompanyDO Company_DO = getCompany();
+	  	jobmatch.data.CompanyDO Company_DO = getCompany();
 	if ( null != Company_DO ) {
 	    if ( Company_DO.isLoaded() ) {
 		okToCommitCompany( Company_DO );

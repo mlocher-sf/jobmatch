@@ -2,8 +2,9 @@
 
 create table MatchQueue
 (
-/* class MatchQueue */
+/* class Queue */
     Time TIMESTAMP  NOT NULL   ,
+/* class MatchQueue */
     Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
 
     /* NOTICE: */

@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 final public class ProgrammingCandidateQuery implements Query {
 
@@ -407,81 +407,6 @@ final public class ProgrammingCandidateQuery implements Query {
 
 
     /**
-     * Set the Capability to query.
-     *
-     * @param x The Capability of the ProgrammingCandidate to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryCapability(
-				jobmatch.data.CompcapabilityDO x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    ProgrammingCandidateDO DO = ( ProgrammingCandidateDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		// DOs are compared by their handles..
-		jobmatch.data.CompcapabilityDO m = DO.getCapability();
-		if ( null == m && null == x ) {
-		    equals = true;
-		} else if ( null == m || null == x ) {
-		    equals = false;
-		} else {
-		    equals = ( DO.getCapability().getOId().toString().equals( x.getOId().toString() ) );
-if ( equals && m != x ) {
-System.err.println("\n----------------------------------------------------------");
-System.err.println("m ="+m );
-System.err.println("x ="+x );
-}
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Capability", x, "DECIMAL(19,0)",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Capability to query
-     * @param x The Capability of the ProgrammingCandidate to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryCapability( 
-				jobmatch.data.CompcapabilityDO x )
-    throws DataObjectException, QueryException {
-	setQueryCapability( x, true );
-    }
-
-    /**
-     * Add Capability to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByCapability(boolean direction_flag) {
-        builder.addOrderByColumn("Capability",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Capability to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByCapability() {
-        builder.addOrderByColumn("Capability","ASC");
-    }
-
-
-    /**
      * Set the Candidate to query.
      *
      * @param x The Candidate of the ProgrammingCandidate to query.
@@ -553,6 +478,81 @@ System.err.println("x ="+x );
      */
     public void addOrderByCandidate() {
         builder.addOrderByColumn("Candidate","ASC");
+    }
+
+
+    /**
+     * Set the Capability to query.
+     *
+     * @param x The Capability of the ProgrammingCandidate to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryCapability(
+				jobmatch.data.CompcapabilityDO x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    ProgrammingCandidateDO DO = ( ProgrammingCandidateDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// DOs are compared by their handles..
+		jobmatch.data.CompcapabilityDO m = DO.getCapability();
+		if ( null == m && null == x ) {
+		    equals = true;
+		} else if ( null == m || null == x ) {
+		    equals = false;
+		} else {
+		    equals = ( DO.getCapability().getOId().toString().equals( x.getOId().toString() ) );
+if ( equals && m != x ) {
+System.err.println("\n----------------------------------------------------------");
+System.err.println("m ="+m );
+System.err.println("x ="+x );
+}
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "Capability", x, "DECIMAL(19,0)",
+                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the Capability to query
+     * @param x The Capability of the ProgrammingCandidate to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryCapability( 
+				jobmatch.data.CompcapabilityDO x )
+    throws DataObjectException, QueryException {
+	setQueryCapability( x, true );
+    }
+
+    /**
+     * Add Capability to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByCapability(boolean direction_flag) {
+        builder.addOrderByColumn("Capability",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add Capability to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByCapability() {
+        builder.addOrderByColumn("Capability","ASC");
     }
 
 
@@ -707,7 +707,7 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOr();
+	builder.addWhereOpenParen(); // patched by PSE 2000, 5/22/2000
     }
 
     /**
@@ -717,6 +717,6 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereOr();
+	builder.addWhereCloseParen(); // patched by PSE 2000, 5/22/2000
     }
 }

@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CVComputerDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
-abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+abstract public class CVComputerDO extends jobmatch.data.CVSectionDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dat
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new CVComputerDataStruct ();
 	}
     }
@@ -338,54 +338,6 @@ abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dat
    }
    
 
-
-////////////////////////// data member Candidate
-
-   /* static final RDBColumn Candidate for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Candidate = 
-			    new RDBColumn( table, "Candidate" );
-
-   /**
-    * Get Candidate of the SoftwareCandidate
-    *
-    * @return Candidate of the SoftwareCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CandidateDO getCandidate () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Candidate;
-   }
-
-   /**
-    * Set Candidate of the SoftwareCandidate
-    *
-    * @param Candidate of the SoftwareCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setCandidate ( jobmatch.data.CandidateDO Candidate )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Candidate = (jobmatch.data.CandidateDO) markNewValue(
-	data.Candidate, Candidate  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
     /**
      * Protected constructor.
      *
@@ -434,14 +386,6 @@ abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dat
 	     )
 	);
 	
-	
-	setCandidate( 
-	    jobmatch.data.CandidateDO.createExisting( 
-		rs.getBigDecimal( 
-			"Candidate" , 0 )
-	     )
-	);
-	
 
  
         markClean();
@@ -464,7 +408,6 @@ abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dat
 	str += " OID=" + id;
 	if ( null != data ) 
 	    str = str + "\n" + indent + "Capability=" + ( null == data.Capability ? null  : data.Capability.toString( indentCount + 1 ) )
-+ "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
 ;
         return str + "; " + super.toString();
     }
@@ -489,7 +432,6 @@ abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dat
         str += " OID=" + id;
         if ( null != data )
             str = str + "\n" + indent + "Capability=" + ( null == data.Capability ? null  : data.Capability.toString( indentCount + 1 ) )
-+ "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -575,24 +517,6 @@ abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dat
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the Capability data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Capability is not valid for writing to the database.
-     */
-    protected void okToCommitCapability( jobmatch.data.CompcapabilityDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Capability data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Capability is not valid for deletion from the database.
-     */
-    protected void okToDeleteCapability( jobmatch.data.CompcapabilityDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
      * for the Candidate data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Candidate is not valid for writing to the database.
@@ -607,6 +531,24 @@ abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dat
      * where Candidate is not valid for deletion from the database.
      */
     protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Capability data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Capability is not valid for writing to the database.
+     */
+    protected void okToCommitCapability( jobmatch.data.CompcapabilityDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Capability data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Capability is not valid for deletion from the database.
+     */
+    protected void okToDeleteCapability( jobmatch.data.CompcapabilityDO member ) 
     throws RefAssertionException { }
 
 
@@ -651,22 +593,7 @@ abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dat
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.CompcapabilityDO Capability_DO = getCapability();
-	if ( null != Capability_DO ) {
-	    if ( Capability_DO.isLoaded() ) {
-		okToCommitCapability( Capability_DO );
-		Capability_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit CVComputerDO ( " + toString() +
-		    " ) because Capability is not allowed to be null." );
-	}
-	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
+	  	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
 	if ( null != Candidate_DO ) {
 	    if ( Candidate_DO.isLoaded() ) {
 		okToCommitCandidate( Candidate_DO );
@@ -680,6 +607,21 @@ abstract public class CVComputerDO extends com.lutris.dods.builder.generator.dat
 		throw new RefAssertionException(
 		    "Cannot commit CVComputerDO ( " + toString() +
 		    " ) because Candidate is not allowed to be null." );
+	}
+	jobmatch.data.CompcapabilityDO Capability_DO = getCapability();
+	if ( null != Capability_DO ) {
+	    if ( Capability_DO.isLoaded() ) {
+		okToCommitCapability( Capability_DO );
+		Capability_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit CVComputerDO ( " + toString() +
+		    " ) because Capability is not allowed to be null." );
 	}
 
       }

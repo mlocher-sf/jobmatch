@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the SchoolDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
- public class SchoolDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class SchoolDO extends jobmatch.data.ConstantTableDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ import com.lutris.dods.builder.generator.query.*;
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new SchoolDataStruct ();
 	}
 
@@ -640,54 +640,6 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member Name
-
-   /* static final RDBColumn Name for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Name = 
-			    new RDBColumn( table, "Name" );
-
-   /**
-    * Get Name of the School
-    *
-    * @return Name of the School
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public String getName () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Name;
-   }
-
-   /**
-    * Set Name of the School
-    *
-    * @param Name of the School
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setName ( String Name )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Name =  markNewValue(
-	data.Name, Name , 0, 50, false );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Location
 
    /* static final RDBColumn Location for use with QueryBuilder.
@@ -730,7 +682,7 @@ import com.lutris.dods.builder.generator.query.*;
       }
       checkLoad();
       data.Location =  markNewValue(
-	data.Location, Location , 0, 40, false );
+	data.Location, Location , 0, 40, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -824,14 +776,6 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setName( 
-	    
-		rs.getString( 
-			"Name"  )
-	    
-	);
-	
-	
 	setLocation( 
 	    
 		rs.getString( 
@@ -880,7 +824,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into School ( Name, Location, Type, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
+	    "insert into School ( Description, Location, Type, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -889,7 +833,7 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined in GenericDO.
 	try {
 	    	setPrepStmtParam_String( stmt, param,
-		getName() );
+		getDescription() );
 	setPrepStmtParam_String( stmt, param,
 		getLocation() );
 	setPrepStmtParam_DO( stmt, param,
@@ -926,7 +870,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update School set " + getVersionColumnName() + " = ?, Name = ?, Location = ?, Type = ? " +
+	    "update School set " + getVersionColumnName() + " = ?, Description = ?, Location = ?, Type = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -937,7 +881,7 @@ import com.lutris.dods.builder.generator.query.*;
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
 	    	setPrepStmtParam_String( stmt, param,
-		getName() );
+		getDescription() );
 	setPrepStmtParam_String( stmt, param,
 		getLocation() );
 	setPrepStmtParam_DO( stmt, param,
@@ -991,8 +935,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "Location=" + data.Location
+	    str = str + "\n" + indent + "Location=" + data.Location
 + "\n" + indent + "Type=" + ( null == data.Type ? null  : data.Type.toString( indentCount + 1 ) )
 ;
         return str + "; " + super.toString();
@@ -1017,8 +960,7 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Name=" + data.Name
-+ "\n" + indent + "Location=" + data.Location
+            str = str + "\n" + indent + "Location=" + data.Location
 + "\n" + indent + "Type=" + ( null == data.Type ? null  : data.Type.toString( indentCount + 1 ) )
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
@@ -1151,6 +1093,121 @@ import com.lutris.dods.builder.generator.query.*;
  
 
 
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * get array of GraduationDO objects that indirectly refer
+     * to this DO.
+     *
+     * @return array of GraduationDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.GraduationDO[] getGraduationDOArray_via_SchoolCandidate () 
+    throws DataObjectException {
+	jobmatch.data.GraduationDO[] ret = null;
+	try {
+	    jobmatch.data.SchoolCandidateDO[] arr = getSchoolCandidateDOArray();
+	    ret = new jobmatch.data.GraduationDO[ arr.length ];
+	    for ( int i = 0; i < arr.length; i++ ) {
+		ret[ i ] = arr[ i ].getDiploma();
+	    }
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: ", e );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.GraduationDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a GraduationDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The GraduationDO to add to the SchoolCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapGraduation_via_SchoolCandidateDO( jobmatch.data.GraduationDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapGraduation_via_SchoolCandidateDO( d, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a GraduationDO object that indirectly refers to this DO.
+     *
+     * @param b The GraduationDO to add to the SchoolCandidateDO mapping for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapGraduation_via_SchoolCandidateDO( jobmatch.data.GraduationDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolCandidateDO m = null;
+	try {
+	    m = jobmatch.data.SchoolCandidateDO.createVirgin();
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"jobmatch.data.SchoolCandidateDO.createVirgin failed", e );
+	}
+	m.setDiploma( d );
+	m.setSchool( this );
+	m.commit( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the GraduationDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The GraduationDO to remove from the SchoolCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapGraduation_via_SchoolCandidateDO( jobmatch.data.GraduationDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapGraduation_via_SchoolCandidateDO( d, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the GraduationDO object that indirectly refers
+     * to this DO.
+     *
+     * @param b The GraduationDO to remove from the SchoolCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapGraduation_via_SchoolCandidateDO( jobmatch.data.GraduationDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	q.setQuerySchool( this );
+	q.setQueryDiploma( d );
+	q.requireUniqueInstance();
+	jobmatch.data.SchoolCandidateDO m = null;
+	try {
+	    m = q.getNextDO();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( "Multiple mappings for " +
+		this + " and " + d + " in jobmatch.data.SchoolCandidate table." );
+	}
+	m.delete( tran );
+    }
 
 
     /**

@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 final public class CandidateQuery implements Query {
 
@@ -435,7 +435,7 @@ final public class CandidateQuery implements Query {
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "AIESECMember", x, "BIT",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -509,7 +509,7 @@ final public class CandidateQuery implements Query {
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "City", x, "VARCHAR",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -657,7 +657,7 @@ final public class CandidateQuery implements Query {
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "Fname", x, "VARCHAR",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -731,7 +731,7 @@ final public class CandidateQuery implements Query {
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "Lname", x, "VARCHAR",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -879,7 +879,7 @@ final public class CandidateQuery implements Query {
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "Nationality", x, "VARCHAR",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -942,7 +942,7 @@ final public class CandidateQuery implements Query {
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "PLZ", x, "MEDIUMINT UNSIGNED",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -1089,7 +1089,7 @@ final public class CandidateQuery implements Query {
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Picture", x, "VARBINARY",
+	    builder.addWhereClause( "Picture", x, "MEDIUMBLOB",
                 QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
@@ -1227,7 +1227,7 @@ final public class CandidateQuery implements Query {
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "Status", x, "BIT",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -1301,7 +1301,7 @@ final public class CandidateQuery implements Query {
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "Street", x, "VARCHAR",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -1374,8 +1374,8 @@ final public class CandidateQuery implements Query {
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Sex", x, "VARCHAR",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+	    builder.addWhereClause( "Sex", x, "ENUM('w','m')",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -1444,7 +1444,7 @@ final public class CandidateQuery implements Query {
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
 	    builder.addWhereClause( "Birthdate", x, "DATE",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
@@ -1554,7 +1554,7 @@ final public class CandidateQuery implements Query {
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOr();
+	builder.addWhereOpenParen(); // patched by PSE 2000, 5/22/2000
     }
 
     /**
@@ -1564,6 +1564,6 @@ final public class CandidateQuery implements Query {
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereOr();
+	builder.addWhereCloseParen(); // patched by PSE 2000, 5/22/2000
     }
 }

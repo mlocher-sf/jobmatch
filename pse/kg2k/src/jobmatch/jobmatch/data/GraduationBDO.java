@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class GraduationBDO implements java.io.Serializable {
 
@@ -449,6 +449,185 @@ public class GraduationBDO implements java.io.Serializable {
  
 
 
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * get array of SchoolDO objects that indirectly refer
+     * to the DO held by this BDO.
+     *
+     * @return array of SchoolDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.SchoolDO[] getSchoolDOArray_via_SchoolCandidate () 
+    throws DataObjectException {
+	jobmatch.data.SchoolDO[] ret = null;
+	try {
+	    jobmatch.data.SchoolCandidateDO[] arr = getSchoolCandidateDOArray();
+	    ret = new jobmatch.data.SchoolDO[ arr.length ];
+	    for ( int i = 0; i < arr.length; i++ ) {
+		ret[ i ] = arr[ i ].getSchool();
+	    }
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: ", e );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.SchoolDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a SchoolDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param d The SchoolDO to add to the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapSchool_via_SchoolCandidateDO( jobmatch.data.SchoolDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapSchool_via_SchoolCandidateDO( d, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a SchoolDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param d The SchoolDO to add to the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapSchool_via_SchoolCandidateDO( jobmatch.data.SchoolDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolBDO b = jobmatch.data.SchoolBDO.createExisting( d );
+	mapSchool_via_SchoolCandidateBDO( b, tran );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a SchoolDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param b The SchoolBDO to add to the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapSchool_via_SchoolCandidateBDO( jobmatch.data.SchoolBDO b )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapSchool_via_SchoolCandidateBDO( b, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a SchoolDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param b The SchoolBDO to add to the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapSchool_via_SchoolCandidateBDO( jobmatch.data.SchoolBDO b, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolCandidateBDO m = null;
+	try {
+	    m = jobmatch.data.SchoolCandidateBDO.createVirgin();
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"jobmatch.data.SchoolCandidateBDO.createVirgin failed", e );
+	}
+	m.setSchool( b );
+	m.setDiploma( this );
+	m.commit( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the SchoolDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param d The SchoolDO to remove from the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void unmapSchool_via_SchoolCandidateDO( jobmatch.data.SchoolDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapSchool_via_SchoolCandidateDO( d, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the SchoolDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param d The SchoolDO to remove from the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void unmapSchool_via_SchoolCandidateDO( jobmatch.data.SchoolDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolBDO b = jobmatch.data.SchoolBDO.createExisting( d );
+	unmapSchool_via_SchoolCandidateBDO( b, tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the SchoolDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param b The SchoolBDO to remove from the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void unmapSchool_via_SchoolCandidateBDO( jobmatch.data.SchoolBDO b )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapSchool_via_SchoolCandidateBDO( b, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the SchoolDO object that indirectly refers
+     * to the DO held by this BDO.
+     *
+     * @param b The SchoolBDO to remove from the SchoolCandidateDO mapping
+     * for this BDO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void unmapSchool_via_SchoolCandidateBDO( jobmatch.data.SchoolBDO b, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	q.setQueryDiploma( DO );
+	q.setQuerySchool( b.getDO() );
+	q.requireUniqueInstance();
+	jobmatch.data.SchoolCandidateBDO m = null;
+	try {
+	    m = q.getNextBDO();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( "Multiple mappings for " +
+		DO + " and " + b.getDO() + " in jobmatch.data.SchoolCandidate table." );
+	}
+	m.delete( tran );
+    }
 
 
   /**

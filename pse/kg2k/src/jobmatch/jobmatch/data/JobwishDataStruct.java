@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  studer
  * @since   jobmatch
  */
@@ -66,11 +66,6 @@ public class JobwishDataStruct implements Cloneable, Serializable {
 	System.arraycopy( source, 0, dest, 0, source.length );
 	return dest;
     }
-
-/**
- * 
- */
-   public int Pensum = 0;
 
 /**
  * 
@@ -95,7 +90,7 @@ public class JobwishDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public jobmatch.data.CandidateDO Candidate = null;
+   public int Pensum = 0;
     /**
      * Create a copy of the guts of a DO.
      *
@@ -110,9 +105,6 @@ public class JobwishDataStruct implements Cloneable, Serializable {
  
 
 		
-	ret.Pensum = Pensum;
-	
-	
 	ret.Remarks = Remarks + "";
 	
 	
@@ -125,7 +117,7 @@ public class JobwishDataStruct implements Cloneable, Serializable {
 	ret.Function = Function + "";
 	
 	
-	ret.Candidate = jobmatch.data.CandidateDO.createCopy( Candidate );
+	ret.Pensum = Pensum;
 	
 
 

@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class CompanyBDO implements java.io.Serializable {
 
@@ -515,7 +515,7 @@ public class CompanyBDO implements java.io.Serializable {
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.ContactpersonDO getContact () 
+   public jobmatch.data.PersonDO getContact () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       return DO.getContact ();
@@ -530,7 +530,7 @@ public class CompanyBDO implements java.io.Serializable {
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setContact ( jobmatch.data.ContactpersonDO Contact ) 
+   public void setContact ( jobmatch.data.PersonDO Contact ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -552,10 +552,10 @@ public class CompanyBDO implements java.io.Serializable {
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.ContactpersonBDO getContactBDO () 
+   public jobmatch.data.PersonBDO getContactBDO () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      jobmatch.data.ContactpersonBDO b = jobmatch.data.ContactpersonBDO.createExisting(
+      jobmatch.data.PersonBDO b = jobmatch.data.PersonBDO.createExisting(
 					  DO.getContact () );
       return b;
    }
@@ -568,7 +568,7 @@ public class CompanyBDO implements java.io.Serializable {
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setContact ( jobmatch.data.ContactpersonBDO Contact ) 
+   public void setContact ( jobmatch.data.PersonBDO Contact ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -577,7 +577,7 @@ public class CompanyBDO implements java.io.Serializable {
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       if ( null == Contact ) {
-	  if ( false )
+	  if ( true )
 	      DO.setContact ( null );
 	  else 
 	      throw new DataObjectException( 
@@ -1153,7 +1153,7 @@ public class CompanyBDO implements java.io.Serializable {
      * Implement this stub to throw an RefAssertionException for cases
      * where Contact is not valid for writing to the database.
      */
-    protected void okToCommitContact( jobmatch.data.ContactpersonDO member ) 
+    protected void okToCommitContact( jobmatch.data.PersonDO member ) 
     throws RefAssertionException { }
 
     /**
@@ -1162,7 +1162,7 @@ public class CompanyBDO implements java.io.Serializable {
      * Implement this stub to throw an RefAssertionException for cases
      * where Contact is not valid for deletion from the database.
      */
-    protected void okToDeleteContact( jobmatch.data.ContactpersonDO member ) 
+    protected void okToDeleteContact( jobmatch.data.PersonDO member ) 
     throws RefAssertionException { }
 
     /**
@@ -1238,12 +1238,12 @@ public class CompanyBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.ContactpersonDO Contact_DO = DO.getContact();
+	  	jobmatch.data.PersonDO Contact_DO = DO.getContact();
 	if ( null != Contact_DO ) {
 	    if ( Contact_DO.isLoaded() ) {
 		okToCommitContact( Contact_DO );
-		jobmatch.data.ContactpersonBDO b = 
-		    jobmatch.data.ContactpersonBDO.createExisting(
+		jobmatch.data.PersonBDO b = 
+		    jobmatch.data.PersonBDO.createExisting(
 						    Contact_DO );
 		b.commit( dbt );
 	    } else {
@@ -1251,7 +1251,7 @@ public class CompanyBDO implements java.io.Serializable {
 		// it cannot be dirty, so there is no need to commit it.
 	    }
 	} else {
-	    if ( ! false )
+	    if ( ! true )
 		throw new RefAssertionException(
 		    "Cannot commit CompanyBDO ( " + toString() +
 		    " ) because Contact is not allowed to be null." );

@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the CandidateProfileDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
@@ -736,54 +736,6 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Deleted
-
-   /* static final RDBColumn Deleted for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Deleted = 
-			    new RDBColumn( table, "Deleted" );
-
-   /**
-    * Get Deleted of the CandidateProfile
-    *
-    * @return Deleted of the CandidateProfile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public boolean getDeleted () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Deleted;
-   }
-
-   /**
-    * Set Deleted of the CandidateProfile
-    *
-    * @param Deleted of the CandidateProfile
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setDeleted ( boolean Deleted )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Deleted =  markNewValue(
-	data.Deleted, Deleted  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Profile
 
    /* static final RDBColumn Profile for use with QueryBuilder.
@@ -888,14 +840,6 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setDeleted( 
-	    
-		rs.getBoolean( 
-			"Deleted"  )
-	    
-	);
-	
-	
 	setProfile( 
 	    jobmatch.data.ProfileDO.createExisting( 
 		rs.getBigDecimal( 
@@ -936,7 +880,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into CandidateProfile ( Candidate, MatchingTime, Deleted, Profile, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ? )" );
+	    "insert into CandidateProfile ( Candidate, MatchingTime, Profile, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -948,8 +892,6 @@ import com.lutris.dods.builder.generator.query.*;
 		getCandidate() );
 	setPrepStmtParam_java_sql_Timestamp( stmt, param,
 		getMatchingTime() );
-	setPrepStmtParam_boolean( stmt, param,
-		getDeleted() );
 	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
 
@@ -984,7 +926,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update CandidateProfile set " + getVersionColumnName() + " = ?, Candidate = ?, MatchingTime = ?, Deleted = ?, Profile = ? " +
+	    "update CandidateProfile set " + getVersionColumnName() + " = ?, Candidate = ?, MatchingTime = ?, Profile = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -998,8 +940,6 @@ import com.lutris.dods.builder.generator.query.*;
 		getCandidate() );
 	setPrepStmtParam_java_sql_Timestamp( stmt, param,
 		getMatchingTime() );
-	setPrepStmtParam_boolean( stmt, param,
-		getDeleted() );
 	setPrepStmtParam_DO( stmt, param,
 		getProfile() );
 
@@ -1053,7 +993,6 @@ import com.lutris.dods.builder.generator.query.*;
 	if ( null != data ) 
 	    str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
 + "\n" + indent + "MatchingTime=" + data.MatchingTime
-+ "\n" + indent + "Deleted=" + data.Deleted
 + "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
 ;
         return str + "; " + super.toString();
@@ -1080,7 +1019,6 @@ import com.lutris.dods.builder.generator.query.*;
         if ( null != data )
             str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
 + "\n" + indent + "MatchingTime=" + data.MatchingTime
-+ "\n" + indent + "Deleted=" + data.Deleted
 + "\n" + indent + "Profile=" + ( null == data.Profile ? null  : data.Profile.toString( indentCount + 1 ) )
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );

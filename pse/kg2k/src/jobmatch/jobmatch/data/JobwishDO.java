@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the JobwishDO information.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  studer
  * @since   jobmatch
  */
- public class JobwishDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class JobwishDO extends jobmatch.data.CVSectionDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ import com.lutris.dods.builder.generator.query.*;
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new JobwishDataStruct ();
 	}
 
@@ -640,54 +640,6 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member Pensum
-
-   /* static final RDBColumn Pensum for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Pensum = 
-			    new RDBColumn( table, "Pensum" );
-
-   /**
-    * Get Pensum of the Jobwish
-    *
-    * @return Pensum of the Jobwish
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public int getPensum () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Pensum;
-   }
-
-   /**
-    * Set Pensum of the Jobwish
-    *
-    * @param Pensum of the Jobwish
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setPensum ( int Pensum )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Pensum =  markNewValue(
-	data.Pensum, Pensum  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Remarks
 
    /* static final RDBColumn Remarks for use with QueryBuilder.
@@ -880,39 +832,39 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Candidate
+////////////////////////// data member Pensum
 
-   /* static final RDBColumn Candidate for use with QueryBuilder.
+   /* static final RDBColumn Pensum for use with QueryBuilder.
     * See RDBColumn PrimaryKey at the top of this file for usage example.
     */
-   static public final RDBColumn Candidate = 
-			    new RDBColumn( table, "Candidate" );
+   static public final RDBColumn Pensum = 
+			    new RDBColumn( table, "Pensum" );
 
    /**
-    * Get Candidate of the Jobwish
+    * Get Pensum of the Jobwish
     *
-    * @return Candidate of the Jobwish
+    * @return Pensum of the Jobwish
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public jobmatch.data.CandidateDO getCandidate () 
+   public int getPensum () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
       checkLoad();
-      return data.Candidate;
+      return data.Pensum;
    }
 
    /**
-    * Set Candidate of the Jobwish
+    * Set Pensum of the Jobwish
     *
-    * @param Candidate of the Jobwish
+    * @param Pensum of the Jobwish
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
    
-   public void setCandidate ( jobmatch.data.CandidateDO Candidate )
+   public void setPensum ( int Pensum )
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -921,8 +873,8 @@ import com.lutris.dods.builder.generator.query.*;
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       checkLoad();
-      data.Candidate = (jobmatch.data.CandidateDO) markNewValue(
-	data.Candidate, Candidate  );
+      data.Pensum =  markNewValue(
+	data.Pensum, Pensum  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -968,14 +920,6 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setPensum( 
-	    
-		rs.getInt( 
-			"Pensum"  )
-	    
-	);
-	
-	
 	setRemarks( 
 	    
 		rs.getString( 
@@ -1008,11 +952,11 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setCandidate( 
-	    jobmatch.data.CandidateDO.createExisting( 
-		rs.getBigDecimal( 
-			"Candidate" , 0 )
-	     )
+	setPensum( 
+	    
+		rs.getInt( 
+			"Pensum"  )
+	    
 	);
 	
 
@@ -1048,7 +992,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into Jobwish ( Pensum, Remarks, Industry, Area, Function, Candidate, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into Jobwish ( Candidate, Remarks, Industry, Area, Function, Pensum, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1056,8 +1000,8 @@ import com.lutris.dods.builder.generator.query.*;
 	// the value is a series of calls to setPrepStmtParam_TYPE methods.
 	// Those methods are defined in GenericDO.
 	try {
-	    	setPrepStmtParam_int( stmt, param,
-		getPensum() );
+	    	setPrepStmtParam_DO( stmt, param,
+		getCandidate() );
 	setPrepStmtParam_String( stmt, param,
 		getRemarks() );
 	setPrepStmtParam_DO( stmt, param,
@@ -1066,8 +1010,8 @@ import com.lutris.dods.builder.generator.query.*;
 		getArea() );
 	setPrepStmtParam_String( stmt, param,
 		getFunction() );
-	setPrepStmtParam_DO( stmt, param,
-		getCandidate() );
+	setPrepStmtParam_int( stmt, param,
+		getPensum() );
 
 
 	    /* The order of the values being inserted must match
@@ -1100,7 +1044,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update Jobwish set " + getVersionColumnName() + " = ?, Pensum = ?, Remarks = ?, Industry = ?, Area = ?, Function = ?, Candidate = ? " +
+	    "update Jobwish set " + getVersionColumnName() + " = ?, Candidate = ?, Remarks = ?, Industry = ?, Area = ?, Function = ?, Pensum = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1110,8 +1054,8 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined below.
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
-	    	setPrepStmtParam_int( stmt, param,
-		getPensum() );
+	    	setPrepStmtParam_DO( stmt, param,
+		getCandidate() );
 	setPrepStmtParam_String( stmt, param,
 		getRemarks() );
 	setPrepStmtParam_DO( stmt, param,
@@ -1120,8 +1064,8 @@ import com.lutris.dods.builder.generator.query.*;
 		getArea() );
 	setPrepStmtParam_String( stmt, param,
 		getFunction() );
-	setPrepStmtParam_DO( stmt, param,
-		getCandidate() );
+	setPrepStmtParam_int( stmt, param,
+		getPensum() );
 
 
 	    /* When updating a persistent object, the UPDATE_WHERE_CLAUSE tag
@@ -1171,12 +1115,11 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Pensum=" + data.Pensum
-+ "\n" + indent + "Remarks=" + data.Remarks
+	    str = str + "\n" + indent + "Remarks=" + data.Remarks
 + "\n" + indent + "Industry=" + ( null == data.Industry ? null  : data.Industry.toString( indentCount + 1 ) )
 + "\n" + indent + "Area=" + ( null == data.Area ? null  : data.Area.toString( indentCount + 1 ) )
 + "\n" + indent + "Function=" + data.Function
-+ "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
++ "\n" + indent + "Pensum=" + data.Pensum
 ;
         return str + "; " + super.toString();
     }
@@ -1200,12 +1143,11 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Pensum=" + data.Pensum
-+ "\n" + indent + "Remarks=" + data.Remarks
+            str = str + "\n" + indent + "Remarks=" + data.Remarks
 + "\n" + indent + "Industry=" + ( null == data.Industry ? null  : data.Industry.toString( indentCount + 1 ) )
 + "\n" + indent + "Area=" + ( null == data.Area ? null  : data.Area.toString( indentCount + 1 ) )
 + "\n" + indent + "Function=" + data.Function
-+ "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
++ "\n" + indent + "Pensum=" + data.Pensum
 ;
         return str + "\n" + indent + "SUPER=" + super.toString( indentCount );
         //return str;
@@ -1291,6 +1233,24 @@ import com.lutris.dods.builder.generator.query.*;
 
       /**
      * A stub method for implementing pre-commit assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for writing to the database.
+     */
+    protected void okToCommitCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Candidate data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Candidate is not valid for deletion from the database.
+     */
+    protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
      * for the Industry data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Industry is not valid for writing to the database.
@@ -1323,24 +1283,6 @@ import com.lutris.dods.builder.generator.query.*;
      * where Area is not valid for deletion from the database.
      */
     protected void okToDeleteArea( jobmatch.data.AreaDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
-     * for the Candidate data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Candidate is not valid for writing to the database.
-     */
-    protected void okToCommitCandidate( jobmatch.data.CandidateDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Candidate data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Candidate is not valid for deletion from the database.
-     */
-    protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
     throws RefAssertionException { }
 
 
@@ -1385,7 +1327,22 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.IndustryDO Industry_DO = getIndustry();
+	  	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
+	if ( null != Candidate_DO ) {
+	    if ( Candidate_DO.isLoaded() ) {
+		okToCommitCandidate( Candidate_DO );
+		Candidate_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit JobwishDO ( " + toString() +
+		    " ) because Candidate is not allowed to be null." );
+	}
+	jobmatch.data.IndustryDO Industry_DO = getIndustry();
 	if ( null != Industry_DO ) {
 	    if ( Industry_DO.isLoaded() ) {
 		okToCommitIndustry( Industry_DO );
@@ -1410,25 +1367,10 @@ import com.lutris.dods.builder.generator.query.*;
 		// it cannot be dirty, so there is no need to commit it.
 	    }
 	} else {
-	    if ( ! false )
+	    if ( ! true )
 		throw new RefAssertionException(
 		    "Cannot commit JobwishDO ( " + toString() +
 		    " ) because Area is not allowed to be null." );
-	}
-	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
-	if ( null != Candidate_DO ) {
-	    if ( Candidate_DO.isLoaded() ) {
-		okToCommitCandidate( Candidate_DO );
-		Candidate_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit JobwishDO ( " + toString() +
-		    " ) because Candidate is not allowed to be null." );
 	}
 
       }

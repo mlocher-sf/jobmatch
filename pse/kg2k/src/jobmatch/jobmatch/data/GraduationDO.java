@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the GraduationDO information.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  studer
  * @since   jobmatch
  */
@@ -969,6 +969,121 @@ import com.lutris.dods.builder.generator.query.*;
  
 
 
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * get array of SchoolDO objects that indirectly refer
+     * to this DO.
+     *
+     * @return array of SchoolDO objects.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public jobmatch.data.SchoolDO[] getSchoolDOArray_via_SchoolCandidate () 
+    throws DataObjectException {
+	jobmatch.data.SchoolDO[] ret = null;
+	try {
+	    jobmatch.data.SchoolCandidateDO[] arr = getSchoolCandidateDOArray();
+	    ret = new jobmatch.data.SchoolDO[ arr.length ];
+	    for ( int i = 0; i < arr.length; i++ ) {
+		ret[ i ] = arr[ i ].getSchool();
+	    }
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"INTERNAL ERROR: ", e );
+	} finally {
+	    if ( null == ret )
+		ret = new jobmatch.data.SchoolDO[ 0 ];
+	}
+	return ret;
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a SchoolDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The SchoolDO to add to the SchoolCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapSchool_via_SchoolCandidateDO( jobmatch.data.SchoolDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	mapSchool_via_SchoolCandidateDO( d, null );
+    }
+
+    /**
+     * To the many-to-many relationship expressed by SchoolCandidateDO,
+     * add a SchoolDO object that indirectly refers to this DO.
+     *
+     * @param b The SchoolDO to add to the SchoolCandidateDO mapping for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     */
+    public void mapSchool_via_SchoolCandidateDO( jobmatch.data.SchoolDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolCandidateDO m = null;
+	try {
+	    m = jobmatch.data.SchoolCandidateDO.createVirgin();
+	} catch ( Exception e ) { 
+	    throw new DataObjectException( 
+		"jobmatch.data.SchoolCandidateDO.createVirgin failed", e );
+	}
+	m.setSchool( d );
+	m.setDiploma( this );
+	m.commit( tran );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the SchoolDO object that indirectly refers
+     * to this DO.
+     *
+     * @param d The SchoolDO to remove from the SchoolCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapSchool_via_SchoolCandidateDO( jobmatch.data.SchoolDO d )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	unmapSchool_via_SchoolCandidateDO( d, null );
+    }
+
+    /**
+     * From the many-to-many relationship expressed by SchoolCandidateDO,
+     * remove (delete) the SchoolDO object that indirectly refers
+     * to this DO.
+     *
+     * @param b The SchoolDO to remove from the SchoolCandidateDO mapping
+     * for this DO.
+     *
+     * @exception DataObjectException
+     *   If the object is not found in the database.
+     * @exception QueryException
+     *   If an error occured while building the query before execution.
+     */
+    public void unmapSchool_via_SchoolCandidateDO( jobmatch.data.SchoolDO d, DBTransaction tran )
+    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
+	jobmatch.data.SchoolCandidateQuery q = new jobmatch.data.SchoolCandidateQuery();
+	q.setQueryDiploma( this );
+	q.setQuerySchool( d );
+	q.requireUniqueInstance();
+	jobmatch.data.SchoolCandidateDO m = null;
+	try {
+	    m = q.getNextDO();
+	} catch ( NonUniqueQueryException e ) { 
+	    throw new DataObjectException( "Multiple mappings for " +
+		this + " and " + d + " in jobmatch.data.SchoolCandidate table." );
+	}
+	m.delete( tran );
+    }
 
 
     /**

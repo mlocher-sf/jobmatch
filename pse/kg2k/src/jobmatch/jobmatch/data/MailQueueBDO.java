@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class MailQueueBDO implements java.io.Serializable {
 
@@ -242,6 +242,44 @@ public class MailQueueBDO implements java.io.Serializable {
     }
 
    /**
+    * Get Time of the MailQueueDO
+    *
+    * @return Time of the MailQueueDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public java.sql.Timestamp getTime () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getTime ();
+   }
+
+   
+   /**
+    * Set Time of the MailQueueDO
+    *
+    * @param Time of the MailQueueDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setTime ( java.sql.Timestamp Time ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setTime ( Time );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+
+   
+
+   /**
     * Get Mail of the MailQueueDO
     *
     * @return Mail of the MailQueueDO
@@ -311,44 +349,6 @@ public class MailQueueBDO implements java.io.Serializable {
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       DO.setPriority ( Priority );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get Time of the MailQueueDO
-    *
-    * @return Time of the MailQueueDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Timestamp getTime () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getTime ();
-   }
-
-   
-   /**
-    * Set Time of the MailQueueDO
-    *
-    * @param Time of the MailQueueDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setTime ( java.sql.Timestamp Time ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setTime ( Time );
       afterAnySet();	// business actions/assertions after data assignment
    }
 

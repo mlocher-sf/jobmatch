@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class SchoolCandidateBDO implements java.io.Serializable {
 
@@ -242,90 +242,6 @@ public class SchoolCandidateBDO implements java.io.Serializable {
     }
 
    /**
-    * Get School of the SchoolCandidateDO
-    *
-    * @return School of the SchoolCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.SchoolDO getSchool () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getSchool ();
-   }
-
-   
-   /**
-    * Set School of the SchoolCandidateDO
-    *
-    * @param School of the SchoolCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setSchool ( jobmatch.data.SchoolDO School ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setSchool ( School );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-   
-
-   /**
-    * Get BDO-wrapped School of the SchoolCandidateDO
-    *
-    * @return BDO-wrapped School of the SchoolCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.SchoolBDO getSchoolBDO () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      jobmatch.data.SchoolBDO b = jobmatch.data.SchoolBDO.createExisting(
-					  DO.getSchool () );
-      return b;
-   }
-
-   /**
-    * Set School of the SchoolCandidateDO
-    *
-    * @param BDO-wrapped School of the SchoolCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setSchool ( jobmatch.data.SchoolBDO School ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      if ( null == School ) {
-	  if ( false )
-	      DO.setSchool ( null );
-	  else 
-	      throw new DataObjectException( 
-		  "SchoolCandidateBDO.setSchool does not allow NULL." );
-      } else {
-          DO.setSchool ( School.getDO() );
-      }
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-   
-
-   /**
     * Get Candidate of the SchoolCandidateDO
     *
     * @return Candidate of the SchoolCandidateDO
@@ -410,29 +326,29 @@ public class SchoolCandidateBDO implements java.io.Serializable {
    
 
    /**
-    * Get Begin of the SchoolCandidateDO
+    * Get BeginDate of the SchoolCandidateDO
     *
-    * @return Begin of the SchoolCandidateDO
+    * @return BeginDate of the SchoolCandidateDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public java.sql.Date getBegin () 
+   public java.sql.Date getBeginDate () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getBegin ();
+      return DO.getBeginDate ();
    }
 
    
    /**
-    * Set Begin of the SchoolCandidateDO
+    * Set BeginDate of the SchoolCandidateDO
     *
-    * @param Begin of the SchoolCandidateDO
+    * @param BeginDate of the SchoolCandidateDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setBegin ( java.sql.Date Begin ) 
+   public void setBeginDate ( java.sql.Date BeginDate ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -440,7 +356,7 @@ public class SchoolCandidateBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setBegin ( Begin );
+      DO.setBeginDate ( BeginDate );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
@@ -448,29 +364,29 @@ public class SchoolCandidateBDO implements java.io.Serializable {
    
 
    /**
-    * Get End of the SchoolCandidateDO
+    * Get EndDate of the SchoolCandidateDO
     *
-    * @return End of the SchoolCandidateDO
+    * @return EndDate of the SchoolCandidateDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public java.sql.Date getEnd () 
+   public java.sql.Date getEndDate () 
    throws DataObjectException {
       beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getEnd ();
+      return DO.getEndDate ();
    }
 
    
    /**
-    * Set End of the SchoolCandidateDO
+    * Set EndDate of the SchoolCandidateDO
     *
-    * @param End of the SchoolCandidateDO
+    * @param EndDate of the SchoolCandidateDO
     *
     * @exception DataObjectException
     *   If the object is not found in the database.
     */
-   public void setEnd ( java.sql.Date End ) 
+   public void setEndDate ( java.sql.Date EndDate ) 
    throws DataObjectException {
       try {
 	  // business actions/assertions prior to data assignment
@@ -478,10 +394,94 @@ public class SchoolCandidateBDO implements java.io.Serializable {
       } catch ( Exception e ) { 
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
-      DO.setEnd ( End );
+      DO.setEndDate ( EndDate );
       afterAnySet();	// business actions/assertions after data assignment
    }
 
+
+   
+
+   /**
+    * Get School of the SchoolCandidateDO
+    *
+    * @return School of the SchoolCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.SchoolDO getSchool () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getSchool ();
+   }
+
+   
+   /**
+    * Set School of the SchoolCandidateDO
+    *
+    * @param School of the SchoolCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setSchool ( jobmatch.data.SchoolDO School ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setSchool ( School );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped School of the SchoolCandidateDO
+    *
+    * @return BDO-wrapped School of the SchoolCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.SchoolBDO getSchoolBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.SchoolBDO b = jobmatch.data.SchoolBDO.createExisting(
+					  DO.getSchool () );
+      return b;
+   }
+
+   /**
+    * Set School of the SchoolCandidateDO
+    *
+    * @param BDO-wrapped School of the SchoolCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setSchool ( jobmatch.data.SchoolBDO School ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == School ) {
+	  if ( false )
+	      DO.setSchool ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "SchoolCandidateBDO.setSchool does not allow NULL." );
+      } else {
+          DO.setSchool ( School.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
 
    
 
@@ -665,24 +665,6 @@ public class SchoolCandidateBDO implements java.io.Serializable {
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the School data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where School is not valid for writing to the database.
-     */
-    protected void okToCommitSchool( jobmatch.data.SchoolDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the School data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where School is not valid for deletion from the database.
-     */
-    protected void okToDeleteSchool( jobmatch.data.SchoolDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
      * for the Candidate data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Candidate is not valid for writing to the database.
@@ -697,6 +679,24 @@ public class SchoolCandidateBDO implements java.io.Serializable {
      * where Candidate is not valid for deletion from the database.
      */
     protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the School data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where School is not valid for writing to the database.
+     */
+    protected void okToCommitSchool( jobmatch.data.SchoolDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the School data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where School is not valid for deletion from the database.
+     */
+    protected void okToDeleteSchool( jobmatch.data.SchoolDO member ) 
     throws RefAssertionException { }
 
     /**
@@ -754,25 +754,7 @@ public class SchoolCandidateBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.SchoolDO School_DO = DO.getSchool();
-	if ( null != School_DO ) {
-	    if ( School_DO.isLoaded() ) {
-		okToCommitSchool( School_DO );
-		jobmatch.data.SchoolBDO b = 
-		    jobmatch.data.SchoolBDO.createExisting(
-						    School_DO );
-		b.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit SchoolCandidateBDO ( " + toString() +
-		    " ) because School is not allowed to be null." );
-	}
-	jobmatch.data.CandidateDO Candidate_DO = DO.getCandidate();
+	  	jobmatch.data.CandidateDO Candidate_DO = DO.getCandidate();
 	if ( null != Candidate_DO ) {
 	    if ( Candidate_DO.isLoaded() ) {
 		okToCommitCandidate( Candidate_DO );
@@ -789,6 +771,24 @@ public class SchoolCandidateBDO implements java.io.Serializable {
 		throw new RefAssertionException(
 		    "Cannot commit SchoolCandidateBDO ( " + toString() +
 		    " ) because Candidate is not allowed to be null." );
+	}
+	jobmatch.data.SchoolDO School_DO = DO.getSchool();
+	if ( null != School_DO ) {
+	    if ( School_DO.isLoaded() ) {
+		okToCommitSchool( School_DO );
+		jobmatch.data.SchoolBDO b = 
+		    jobmatch.data.SchoolBDO.createExisting(
+						    School_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit SchoolCandidateBDO ( " + toString() +
+		    " ) because School is not allowed to be null." );
 	}
 	jobmatch.data.GraduationDO Diploma_DO = DO.getDiploma();
 	if ( null != Diploma_DO ) {

@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
@@ -75,21 +75,6 @@ public class SchoolCandidateDataStruct implements Cloneable, Serializable {
 /**
  * 
  */
-   public jobmatch.data.CandidateDO Candidate = null;
-
-/**
- * 
- */
-   public java.sql.Date Begin = null;
-
-/**
- * 
- */
-   public java.sql.Date End = null;
-
-/**
- * 
- */
    public jobmatch.data.GraduationDO Diploma = null;
 
 /**
@@ -111,15 +96,6 @@ public class SchoolCandidateDataStruct implements Cloneable, Serializable {
 
 		
 	ret.School = jobmatch.data.SchoolDO.createCopy( School );
-	
-	
-	ret.Candidate = jobmatch.data.CandidateDO.createCopy( Candidate );
-	
-	
-	ret.Begin = new java.sql.Date(Begin.getTime() );
-	
-	
-	ret.End = new java.sql.Date(End.getTime() );
 	
 	
 	ret.Diploma = jobmatch.data.GraduationDO.createCopy( Diploma );

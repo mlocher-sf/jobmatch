@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 final public class CandidateProfileQuery implements Query {
 
@@ -551,69 +551,6 @@ System.err.println("x ="+x );
 
 
     /**
-     * Set the Deleted to query.
-     *
-     * @param x The Deleted of the CandidateProfile to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryDeleted(
-				boolean x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    CandidateProfileDO DO = ( CandidateProfileDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		// primitive types are compared using the == operator.
-		equals = ( DO.getDeleted() == x );
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Deleted", x, "BIT",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Deleted to query
-     * @param x The Deleted of the CandidateProfile to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryDeleted( 
-				boolean x )
-    throws DataObjectException, QueryException {
-	setQueryDeleted( x, true );
-    }
-
-    /**
-     * Add Deleted to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByDeleted(boolean direction_flag) {
-        builder.addOrderByColumn("Deleted",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Deleted to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByDeleted() {
-        builder.addOrderByColumn("Deleted","ASC");
-    }
-
-
-    /**
      * Set the Profile to query.
      *
      * @param x The Profile of the CandidateProfile to query.
@@ -764,7 +701,7 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOr();
+	builder.addWhereOpenParen(); // patched by PSE 2000, 5/22/2000
     }
 
     /**
@@ -774,6 +711,6 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereOr();
+	builder.addWhereCloseParen(); // patched by PSE 2000, 5/22/2000
     }
 }

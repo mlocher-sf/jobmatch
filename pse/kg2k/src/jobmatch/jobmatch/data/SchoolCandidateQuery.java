@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 final public class SchoolCandidateQuery implements Query {
 
@@ -407,81 +407,6 @@ final public class SchoolCandidateQuery implements Query {
 
 
     /**
-     * Set the School to query.
-     *
-     * @param x The School of the SchoolCandidate to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQuerySchool(
-				jobmatch.data.SchoolDO x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    SchoolCandidateDO DO = ( SchoolCandidateDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		// DOs are compared by their handles..
-		jobmatch.data.SchoolDO m = DO.getSchool();
-		if ( null == m && null == x ) {
-		    equals = true;
-		} else if ( null == m || null == x ) {
-		    equals = false;
-		} else {
-		    equals = ( DO.getSchool().getOId().toString().equals( x.getOId().toString() ) );
-if ( equals && m != x ) {
-System.err.println("\n----------------------------------------------------------");
-System.err.println("m ="+m );
-System.err.println("x ="+x );
-}
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "School", x, "DECIMAL(19,0)",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the School to query
-     * @param x The School of the SchoolCandidate to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQuerySchool( 
-				jobmatch.data.SchoolDO x )
-    throws DataObjectException, QueryException {
-	setQuerySchool( x, true );
-    }
-
-    /**
-     * Add School to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderBySchool(boolean direction_flag) {
-        builder.addOrderByColumn("School",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add School to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderBySchool() {
-        builder.addOrderByColumn("School","ASC");
-    }
-
-
-    /**
      * Set the Candidate to query.
      *
      * @param x The Candidate of the SchoolCandidate to query.
@@ -557,13 +482,13 @@ System.err.println("x ="+x );
 
 
     /**
-     * Set the Begin to query.
+     * Set the BeginDate to query.
      *
-     * @param x The Begin of the SchoolCandidate to query.
+     * @param x The BeginDate of the SchoolCandidate to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryBegin(
+    public void setQueryBeginDate(
 				java.sql.Date x, boolean exact)
     throws DataObjectException, QueryException
     {
@@ -574,7 +499,7 @@ System.err.println("x ="+x );
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
-		Date d = (Date) DO.getBegin();
+		Date d = (Date) DO.getBeginDate();
 		if ( null == d && null == x ) {
 		    equals = true;
 		} else if ( null != d && null != x ) {
@@ -590,49 +515,49 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Begin", x, "DATE",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+	    builder.addWhereClause( "BeginDate", x, "DATE",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
-     * Set the Begin to query
-     * @param x The Begin of the SchoolCandidate to query.
+     * Set the BeginDate to query
+     * @param x The BeginDate of the SchoolCandidate to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryBegin( 
+    public void setQueryBeginDate( 
 				java.sql.Date x )
     throws DataObjectException, QueryException {
-	setQueryBegin( x, true );
+	setQueryBeginDate( x, true );
     }
 
     /**
-     * Add Begin to the ORDER BY clause.
+     * Add BeginDate to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByBegin(boolean direction_flag) {
-        builder.addOrderByColumn("Begin",
+    public void addOrderByBeginDate(boolean direction_flag) {
+        builder.addOrderByColumn("BeginDate",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add Begin to the ORDER BY clause.  This convenience
+     * Add BeginDate to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByBegin() {
-        builder.addOrderByColumn("Begin","ASC");
+    public void addOrderByBeginDate() {
+        builder.addOrderByColumn("BeginDate","ASC");
     }
 
 
     /**
-     * Set the End to query.
+     * Set the EndDate to query.
      *
-     * @param x The End of the SchoolCandidate to query.
+     * @param x The EndDate of the SchoolCandidate to query.
      * @param exact to use matches or not
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryEnd(
+    public void setQueryEndDate(
 				java.sql.Date x, boolean exact)
     throws DataObjectException, QueryException
     {
@@ -643,7 +568,7 @@ System.err.println("x ="+x );
 	    if ( null == DO ) continue;
 	    boolean equals = true;
 	    
-		Date d = (Date) DO.getEnd();
+		Date d = (Date) DO.getEndDate();
 		if ( null == d && null == x ) {
 		    equals = true;
 		} else if ( null != d && null != x ) {
@@ -659,38 +584,113 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "End", x, "DATE",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+	    builder.addWhereClause( "EndDate", x, "DATE",
+                QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
     /**
-     * Set the End to query
-     * @param x The End of the SchoolCandidate to query.
+     * Set the EndDate to query
+     * @param x The EndDate of the SchoolCandidate to query.
      * @exception DataObjectException If a database access error occurs.
      */
-    public void setQueryEnd( 
+    public void setQueryEndDate( 
 				java.sql.Date x )
     throws DataObjectException, QueryException {
-	setQueryEnd( x, true );
+	setQueryEndDate( x, true );
     }
 
     /**
-     * Add End to the ORDER BY clause.
+     * Add EndDate to the ORDER BY clause.
      *
      * @param direction_flag  True for ascending order, false for descending
      */
-    public void addOrderByEnd(boolean direction_flag) {
-        builder.addOrderByColumn("End",
+    public void addOrderByEndDate(boolean direction_flag) {
+        builder.addOrderByColumn("EndDate",
 					(direction_flag) ? "ASC" : "DESC");
     }
 
 
     /**
-     * Add End to the ORDER BY clause.  This convenience
+     * Add EndDate to the ORDER BY clause.  This convenience
      * method assumes ascending order.
      */
-    public void addOrderByEnd() {
-        builder.addOrderByColumn("End","ASC");
+    public void addOrderByEndDate() {
+        builder.addOrderByColumn("EndDate","ASC");
+    }
+
+
+    /**
+     * Set the School to query.
+     *
+     * @param x The School of the SchoolCandidate to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQuerySchool(
+				jobmatch.data.SchoolDO x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    SchoolCandidateDO DO = ( SchoolCandidateDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		// DOs are compared by their handles..
+		jobmatch.data.SchoolDO m = DO.getSchool();
+		if ( null == m && null == x ) {
+		    equals = true;
+		} else if ( null == m || null == x ) {
+		    equals = false;
+		} else {
+		    equals = ( DO.getSchool().getOId().toString().equals( x.getOId().toString() ) );
+if ( equals && m != x ) {
+System.err.println("\n----------------------------------------------------------");
+System.err.println("m ="+m );
+System.err.println("x ="+x );
+}
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "School", x, "DECIMAL(19,0)",
+                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the School to query
+     * @param x The School of the SchoolCandidate to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQuerySchool( 
+				jobmatch.data.SchoolDO x )
+    throws DataObjectException, QueryException {
+	setQuerySchool( x, true );
+    }
+
+    /**
+     * Add School to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderBySchool(boolean direction_flag) {
+        builder.addOrderByColumn("School",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add School to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderBySchool() {
+        builder.addOrderByColumn("School","ASC");
     }
 
 
@@ -808,7 +808,7 @@ System.err.println("x ="+x );
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Remarks", x, "VARCHAR",
+	    builder.addWhereClause( "Remarks", x, "TEXT",
                 QueryBuilder.NULL_OK, exactFlag( exact ) );
     }
 
@@ -919,7 +919,7 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOr();
+	builder.addWhereOpenParen(); // patched by PSE 2000, 5/22/2000
     }
 
     /**
@@ -929,6 +929,6 @@ System.err.println("x ="+x );
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereOr();
+	builder.addWhereCloseParen(); // patched by PSE 2000, 5/22/2000
     }
 }

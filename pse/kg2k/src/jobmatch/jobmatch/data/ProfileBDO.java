@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class ProfileBDO implements java.io.Serializable {
 
@@ -276,174 +276,6 @@ public class ProfileBDO implements java.io.Serializable {
       afterAnySet();	// business actions/assertions after data assignment
    }
 
-
-   
-
-   /**
-    * Get MinSchoolType of the ProfileDO
-    *
-    * @return MinSchoolType of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.SchooltypeDO getMinSchoolType () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getMinSchoolType ();
-   }
-
-   
-   /**
-    * Set MinSchoolType of the ProfileDO
-    *
-    * @param MinSchoolType of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setMinSchoolType ( jobmatch.data.SchooltypeDO MinSchoolType ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setMinSchoolType ( MinSchoolType );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-   
-
-   /**
-    * Get BDO-wrapped MinSchoolType of the ProfileDO
-    *
-    * @return BDO-wrapped MinSchoolType of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.SchooltypeBDO getMinSchoolTypeBDO () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      jobmatch.data.SchooltypeBDO b = jobmatch.data.SchooltypeBDO.createExisting(
-					  DO.getMinSchoolType () );
-      return b;
-   }
-
-   /**
-    * Set MinSchoolType of the ProfileDO
-    *
-    * @param BDO-wrapped MinSchoolType of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setMinSchoolType ( jobmatch.data.SchooltypeBDO MinSchoolType ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      if ( null == MinSchoolType ) {
-	  if ( false )
-	      DO.setMinSchoolType ( null );
-	  else 
-	      throw new DataObjectException( 
-		  "ProfileBDO.setMinSchoolType does not allow NULL." );
-      } else {
-          DO.setMinSchoolType ( MinSchoolType.getDO() );
-      }
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-   
-
-   /**
-    * Get MaxSchoolType of the ProfileDO
-    *
-    * @return MaxSchoolType of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.SchooltypeDO getMaxSchoolType () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getMaxSchoolType ();
-   }
-
-   
-   /**
-    * Set MaxSchoolType of the ProfileDO
-    *
-    * @param MaxSchoolType of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setMaxSchoolType ( jobmatch.data.SchooltypeDO MaxSchoolType ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setMaxSchoolType ( MaxSchoolType );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-   
-
-   /**
-    * Get BDO-wrapped MaxSchoolType of the ProfileDO
-    *
-    * @return BDO-wrapped MaxSchoolType of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.SchooltypeBDO getMaxSchoolTypeBDO () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      jobmatch.data.SchooltypeBDO b = jobmatch.data.SchooltypeBDO.createExisting(
-					  DO.getMaxSchoolType () );
-      return b;
-   }
-
-   /**
-    * Set MaxSchoolType of the ProfileDO
-    *
-    * @param BDO-wrapped MaxSchoolType of the ProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setMaxSchoolType ( jobmatch.data.SchooltypeBDO MaxSchoolType ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      if ( null == MaxSchoolType ) {
-	  if ( false )
-	      DO.setMaxSchoolType ( null );
-	  else 
-	      throw new DataObjectException( 
-		  "ProfileBDO.setMaxSchoolType does not allow NULL." );
-      } else {
-          DO.setMaxSchoolType ( MaxSchoolType.getDO() );
-      }
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
 
    
 
@@ -1128,42 +960,6 @@ public class ProfileBDO implements java.io.Serializable {
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the MinSchoolType data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where MinSchoolType is not valid for writing to the database.
-     */
-    protected void okToCommitMinSchoolType( jobmatch.data.SchooltypeDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the MinSchoolType data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where MinSchoolType is not valid for deletion from the database.
-     */
-    protected void okToDeleteMinSchoolType( jobmatch.data.SchooltypeDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
-     * for the MaxSchoolType data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where MaxSchoolType is not valid for writing to the database.
-     */
-    protected void okToCommitMaxSchoolType( jobmatch.data.SchooltypeDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the MaxSchoolType data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where MaxSchoolType is not valid for deletion from the database.
-     */
-    protected void okToDeleteMaxSchoolType( jobmatch.data.SchooltypeDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
      * for the Company data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Company is not valid for writing to the database.
@@ -1226,43 +1022,7 @@ public class ProfileBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.SchooltypeDO MinSchoolType_DO = DO.getMinSchoolType();
-	if ( null != MinSchoolType_DO ) {
-	    if ( MinSchoolType_DO.isLoaded() ) {
-		okToCommitMinSchoolType( MinSchoolType_DO );
-		jobmatch.data.SchooltypeBDO b = 
-		    jobmatch.data.SchooltypeBDO.createExisting(
-						    MinSchoolType_DO );
-		b.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit ProfileBDO ( " + toString() +
-		    " ) because MinSchoolType is not allowed to be null." );
-	}
-	jobmatch.data.SchooltypeDO MaxSchoolType_DO = DO.getMaxSchoolType();
-	if ( null != MaxSchoolType_DO ) {
-	    if ( MaxSchoolType_DO.isLoaded() ) {
-		okToCommitMaxSchoolType( MaxSchoolType_DO );
-		jobmatch.data.SchooltypeBDO b = 
-		    jobmatch.data.SchooltypeBDO.createExisting(
-						    MaxSchoolType_DO );
-		b.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit ProfileBDO ( " + toString() +
-		    " ) because MaxSchoolType is not allowed to be null." );
-	}
-	jobmatch.data.CompanyDO Company_DO = DO.getCompany();
+	  	jobmatch.data.CompanyDO Company_DO = DO.getCompany();
 	if ( null != Company_DO ) {
 	    if ( Company_DO.isLoaded() ) {
 		okToCommitCompany( Company_DO );

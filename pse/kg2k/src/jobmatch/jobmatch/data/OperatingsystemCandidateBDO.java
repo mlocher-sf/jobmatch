@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class OperatingsystemCandidateBDO implements java.io.Serializable {
 
@@ -242,90 +242,6 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
     }
 
    /**
-    * Get Capability of the OperatingsystemCandidateDO
-    *
-    * @return Capability of the OperatingsystemCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CompcapabilityDO getCapability () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getCapability ();
-   }
-
-   
-   /**
-    * Set Capability of the OperatingsystemCandidateDO
-    *
-    * @param Capability of the OperatingsystemCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setCapability ( jobmatch.data.CompcapabilityDO Capability ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setCapability ( Capability );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-   
-
-   /**
-    * Get BDO-wrapped Capability of the OperatingsystemCandidateDO
-    *
-    * @return BDO-wrapped Capability of the OperatingsystemCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CompcapabilityBDO getCapabilityBDO () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      jobmatch.data.CompcapabilityBDO b = jobmatch.data.CompcapabilityBDO.createExisting(
-					  DO.getCapability () );
-      return b;
-   }
-
-   /**
-    * Set Capability of the OperatingsystemCandidateDO
-    *
-    * @param BDO-wrapped Capability of the OperatingsystemCandidateDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setCapability ( jobmatch.data.CompcapabilityBDO Capability ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      if ( null == Capability ) {
-	  if ( false )
-	      DO.setCapability ( null );
-	  else 
-	      throw new DataObjectException( 
-		  "OperatingsystemCandidateBDO.setCapability does not allow NULL." );
-      } else {
-          DO.setCapability ( Capability.getDO() );
-      }
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-   
-
-   /**
     * Get Candidate of the OperatingsystemCandidateDO
     *
     * @return Candidate of the OperatingsystemCandidateDO
@@ -402,6 +318,90 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
 		  "OperatingsystemCandidateBDO.setCandidate does not allow NULL." );
       } else {
           DO.setCandidate ( Candidate.getDO() );
+      }
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+   
+
+   
+
+   /**
+    * Get Capability of the OperatingsystemCandidateDO
+    *
+    * @return Capability of the OperatingsystemCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CompcapabilityDO getCapability () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      return DO.getCapability ();
+   }
+
+   
+   /**
+    * Set Capability of the OperatingsystemCandidateDO
+    *
+    * @param Capability of the OperatingsystemCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setCapability ( jobmatch.data.CompcapabilityDO Capability ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      DO.setCapability ( Capability );
+      afterAnySet();	// business actions/assertions after data assignment
+   }
+
+   
+
+   /**
+    * Get BDO-wrapped Capability of the OperatingsystemCandidateDO
+    *
+    * @return BDO-wrapped Capability of the OperatingsystemCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public jobmatch.data.CompcapabilityBDO getCapabilityBDO () 
+   throws DataObjectException {
+      beforeAnyGet();	// business actions/assertions prior to data return
+      jobmatch.data.CompcapabilityBDO b = jobmatch.data.CompcapabilityBDO.createExisting(
+					  DO.getCapability () );
+      return b;
+   }
+
+   /**
+    * Set Capability of the OperatingsystemCandidateDO
+    *
+    * @param BDO-wrapped Capability of the OperatingsystemCandidateDO
+    *
+    * @exception DataObjectException
+    *   If the object is not found in the database.
+    */
+   public void setCapability ( jobmatch.data.CompcapabilityBDO Capability ) 
+   throws DataObjectException {
+      try {
+	  // business actions/assertions prior to data assignment
+	  beforeAnySet();
+      } catch ( Exception e ) { 
+	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
+      }
+      if ( null == Capability ) {
+	  if ( false )
+	      DO.setCapability ( null );
+	  else 
+	      throw new DataObjectException( 
+		  "OperatingsystemCandidateBDO.setCapability does not allow NULL." );
+      } else {
+          DO.setCapability ( Capability.getDO() );
       }
       afterAnySet();	// business actions/assertions after data assignment
    }
@@ -551,24 +551,6 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the Capability data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Capability is not valid for writing to the database.
-     */
-    protected void okToCommitCapability( jobmatch.data.CompcapabilityDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Capability data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Capability is not valid for deletion from the database.
-     */
-    protected void okToDeleteCapability( jobmatch.data.CompcapabilityDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
      * for the Candidate data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Candidate is not valid for writing to the database.
@@ -583,6 +565,24 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
      * where Candidate is not valid for deletion from the database.
      */
     protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Capability data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Capability is not valid for writing to the database.
+     */
+    protected void okToCommitCapability( jobmatch.data.CompcapabilityDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Capability data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Capability is not valid for deletion from the database.
+     */
+    protected void okToDeleteCapability( jobmatch.data.CompcapabilityDO member ) 
     throws RefAssertionException { }
 
     /**
@@ -640,25 +640,7 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
               throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.CompcapabilityDO Capability_DO = DO.getCapability();
-	if ( null != Capability_DO ) {
-	    if ( Capability_DO.isLoaded() ) {
-		okToCommitCapability( Capability_DO );
-		jobmatch.data.CompcapabilityBDO b = 
-		    jobmatch.data.CompcapabilityBDO.createExisting(
-						    Capability_DO );
-		b.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit OperatingsystemCandidateBDO ( " + toString() +
-		    " ) because Capability is not allowed to be null." );
-	}
-	jobmatch.data.CandidateDO Candidate_DO = DO.getCandidate();
+	  	jobmatch.data.CandidateDO Candidate_DO = DO.getCandidate();
 	if ( null != Candidate_DO ) {
 	    if ( Candidate_DO.isLoaded() ) {
 		okToCommitCandidate( Candidate_DO );
@@ -675,6 +657,24 @@ public class OperatingsystemCandidateBDO implements java.io.Serializable {
 		throw new RefAssertionException(
 		    "Cannot commit OperatingsystemCandidateBDO ( " + toString() +
 		    " ) because Candidate is not allowed to be null." );
+	}
+	jobmatch.data.CompcapabilityDO Capability_DO = DO.getCapability();
+	if ( null != Capability_DO ) {
+	    if ( Capability_DO.isLoaded() ) {
+		okToCommitCapability( Capability_DO );
+		jobmatch.data.CompcapabilityBDO b = 
+		    jobmatch.data.CompcapabilityBDO.createExisting(
+						    Capability_DO );
+		b.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit OperatingsystemCandidateBDO ( " + toString() +
+		    " ) because Capability is not allowed to be null." );
 	}
 	jobmatch.data.OperatingsystemDO Operatingsystem_DO = DO.getOperatingsystem();
 	if ( null != Operatingsystem_DO ) {

@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the SoftwareCandidateDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
@@ -768,7 +768,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into SoftwareCandidate ( Capability, Candidate, Software, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
+	    "insert into SoftwareCandidate ( Candidate, Capability, Software, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -777,9 +777,9 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined in GenericDO.
 	try {
 	    	setPrepStmtParam_DO( stmt, param,
-		getCapability() );
-	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
+	setPrepStmtParam_DO( stmt, param,
+		getCapability() );
 	setPrepStmtParam_DO( stmt, param,
 		getSoftware() );
 
@@ -814,7 +814,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update SoftwareCandidate set " + getVersionColumnName() + " = ?, Capability = ?, Candidate = ?, Software = ? " +
+	    "update SoftwareCandidate set " + getVersionColumnName() + " = ?, Candidate = ?, Capability = ?, Software = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -825,9 +825,9 @@ import com.lutris.dods.builder.generator.query.*;
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
 	    	setPrepStmtParam_DO( stmt, param,
-		getCapability() );
-	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
+	setPrepStmtParam_DO( stmt, param,
+		getCapability() );
 	setPrepStmtParam_DO( stmt, param,
 		getSoftware() );
 
@@ -989,24 +989,6 @@ import com.lutris.dods.builder.generator.query.*;
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the Capability data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Capability is not valid for writing to the database.
-     */
-    protected void okToCommitCapability( jobmatch.data.CompcapabilityDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the Capability data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where Capability is not valid for deletion from the database.
-     */
-    protected void okToDeleteCapability( jobmatch.data.CompcapabilityDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
      * for the Candidate data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Candidate is not valid for writing to the database.
@@ -1021,6 +1003,24 @@ import com.lutris.dods.builder.generator.query.*;
      * where Candidate is not valid for deletion from the database.
      */
     protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the Capability data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Capability is not valid for writing to the database.
+     */
+    protected void okToCommitCapability( jobmatch.data.CompcapabilityDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the Capability data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where Capability is not valid for deletion from the database.
+     */
+    protected void okToDeleteCapability( jobmatch.data.CompcapabilityDO member ) 
     throws RefAssertionException { }
 
     /**
@@ -1083,22 +1083,7 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.CompcapabilityDO Capability_DO = getCapability();
-	if ( null != Capability_DO ) {
-	    if ( Capability_DO.isLoaded() ) {
-		okToCommitCapability( Capability_DO );
-		Capability_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit SoftwareCandidateDO ( " + toString() +
-		    " ) because Capability is not allowed to be null." );
-	}
-	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
+	  	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
 	if ( null != Candidate_DO ) {
 	    if ( Candidate_DO.isLoaded() ) {
 		okToCommitCandidate( Candidate_DO );
@@ -1112,6 +1097,21 @@ import com.lutris.dods.builder.generator.query.*;
 		throw new RefAssertionException(
 		    "Cannot commit SoftwareCandidateDO ( " + toString() +
 		    " ) because Candidate is not allowed to be null." );
+	}
+	jobmatch.data.CompcapabilityDO Capability_DO = getCapability();
+	if ( null != Capability_DO ) {
+	    if ( Capability_DO.isLoaded() ) {
+		okToCommitCapability( Capability_DO );
+		Capability_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit SoftwareCandidateDO ( " + toString() +
+		    " ) because Capability is not allowed to be null." );
 	}
 	jobmatch.data.SoftwareDO Software_DO = getSoftware();
 	if ( null != Software_DO ) {

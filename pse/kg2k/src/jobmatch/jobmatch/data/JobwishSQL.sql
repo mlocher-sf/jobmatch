@@ -2,13 +2,14 @@
 
 create table Jobwish
 (
+/* class CVSection */
+    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
 /* class Jobwish */
-    Pensum TINYINT UNSIGNED     ,
     Remarks TEXT(70) DEFAULT ""    ,
     Industry DECIMAL(19,0)  NOT NULL   ,
-    Area DECIMAL(19,0)  NOT NULL   ,
+    Area DECIMAL(19,0)     ,
     Function VARCHAR(50) DEFAULT ""    ,
-    Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
+    Pensum INTEGER     ,
 
     /* NOTICE: */
     /* This table represents a Data Object class  */

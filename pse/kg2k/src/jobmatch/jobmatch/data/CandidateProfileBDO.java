@@ -51,7 +51,7 @@ import com.lutris.dods.builder.generator.query.*;
  * contains a BDO, the developer of the BO is spared some work.
  *
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class CandidateProfileBDO implements java.io.Serializable {
 
@@ -357,44 +357,6 @@ public class CandidateProfileBDO implements java.io.Serializable {
 	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
       }
       DO.setMatchingTime ( MatchingTime );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-
-
-   
-
-   /**
-    * Get Deleted of the CandidateProfileDO
-    *
-    * @return Deleted of the CandidateProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public boolean getDeleted () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      return DO.getDeleted ();
-   }
-
-   
-   /**
-    * Set Deleted of the CandidateProfileDO
-    *
-    * @param Deleted of the CandidateProfileDO
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public void setDeleted ( boolean Deleted ) 
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      DO.setDeleted ( Deleted );
       afterAnySet();	// business actions/assertions after data assignment
    }
 

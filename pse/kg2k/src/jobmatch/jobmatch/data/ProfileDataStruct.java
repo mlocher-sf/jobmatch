@@ -49,7 +49,7 @@ import java.io.Serializable;
  * can be null (a DO whose data has not yet been retrieved from the database),
  * allowing a DO object to be a lightweight placeholder until its data is needed.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
@@ -71,16 +71,6 @@ public class ProfileDataStruct implements Cloneable, Serializable {
  * 
  */
    public String Name = null;
-
-/**
- * 
- */
-   public jobmatch.data.SchooltypeDO MinSchoolType = null;
-
-/**
- * 
- */
-   public jobmatch.data.SchooltypeDO MaxSchoolType = null;
 
 /**
  * 
@@ -126,12 +116,6 @@ public class ProfileDataStruct implements Cloneable, Serializable {
 
 		
 	ret.Name = Name + "";
-	
-	
-	ret.MinSchoolType = jobmatch.data.SchooltypeDO.createCopy( MinSchoolType );
-	
-	
-	ret.MaxSchoolType = jobmatch.data.SchooltypeDO.createCopy( MaxSchoolType );
 	
 	
 	ret.Company = jobmatch.data.CompanyDO.createCopy( Company );

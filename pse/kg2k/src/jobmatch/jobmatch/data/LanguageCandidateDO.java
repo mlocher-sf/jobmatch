@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the LanguageCandidateDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
- public class LanguageCandidateDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class LanguageCandidateDO extends jobmatch.data.CVSectionDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ import com.lutris.dods.builder.generator.query.*;
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new LanguageCandidateDataStruct ();
 	}
 
@@ -640,54 +640,6 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member Candidate
-
-   /* static final RDBColumn Candidate for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Candidate = 
-			    new RDBColumn( table, "Candidate" );
-
-   /**
-    * Get Candidate of the LanguageCandidate
-    *
-    * @return Candidate of the LanguageCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CandidateDO getCandidate () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Candidate;
-   }
-
-   /**
-    * Set Candidate of the LanguageCandidate
-    *
-    * @param Candidate of the LanguageCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setCandidate ( jobmatch.data.CandidateDO Candidate )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Candidate = (jobmatch.data.CandidateDO) markNewValue(
-	data.Candidate, Candidate  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Language
 
    /* static final RDBColumn Language for use with QueryBuilder.
@@ -920,14 +872,6 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setCandidate( 
-	    jobmatch.data.CandidateDO.createExisting( 
-		rs.getBigDecimal( 
-			"Candidate" , 0 )
-	     )
-	);
-	
-	
 	setLanguage( 
 	    jobmatch.data.LanguageDO.createExisting( 
 		rs.getBigDecimal( 
@@ -1111,8 +1055,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
-+ "\n" + indent + "Language=" + ( null == data.Language ? null  : data.Language.toString( indentCount + 1 ) )
+	    str = str + "\n" + indent + "Language=" + ( null == data.Language ? null  : data.Language.toString( indentCount + 1 ) )
 + "\n" + indent + "Diploma=" + data.Diploma
 + "\n" + indent + "Written=" + ( null == data.Written ? null  : data.Written.toString( indentCount + 1 ) )
 + "\n" + indent + "Spoken=" + ( null == data.Spoken ? null  : data.Spoken.toString( indentCount + 1 ) )
@@ -1139,8 +1082,7 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
-+ "\n" + indent + "Language=" + ( null == data.Language ? null  : data.Language.toString( indentCount + 1 ) )
+            str = str + "\n" + indent + "Language=" + ( null == data.Language ? null  : data.Language.toString( indentCount + 1 ) )
 + "\n" + indent + "Diploma=" + data.Diploma
 + "\n" + indent + "Written=" + ( null == data.Written ? null  : data.Written.toString( indentCount + 1 ) )
 + "\n" + indent + "Spoken=" + ( null == data.Spoken ? null  : data.Spoken.toString( indentCount + 1 ) )

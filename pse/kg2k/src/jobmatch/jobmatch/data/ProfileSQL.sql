@@ -4,13 +4,11 @@ create table Profile
 (
 /* class Profile */
     Name VARCHAR(40) DEFAULT "" NOT NULL   ,
-    MinSchoolType DECIMAL(19,0)  NOT NULL   ,
-    MaxSchoolType DECIMAL(19,0)  NOT NULL   ,
     Company DECIMAL(19,0)  NOT NULL  REFERENCES Company ( oid ) ,
     NeedsRematching BIT DEFAULT 1 NOT NULL   ,
     Notify BIT DEFAULT 1 NOT NULL   ,
     Period INTEGER DEFAULT 0 NOT NULL   ,
-    MatchTree BINARY  NOT NULL   ,
+    MatchTree MEDIUMBLOB  NOT NULL   ,
     LastNotification TIMESTAMP  NOT NULL   ,
 
     /* NOTICE: */

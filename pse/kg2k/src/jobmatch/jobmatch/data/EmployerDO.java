@@ -53,7 +53,7 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the EmployerDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
@@ -1151,121 +1151,6 @@ import com.lutris.dods.builder.generator.query.*;
  
 
 
-
-    /**
-     * From the many-to-many relationship expressed by EmployerCandidateDO,
-     * get array of CandidateDO objects that indirectly refer
-     * to this DO.
-     *
-     * @return array of CandidateDO objects.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public jobmatch.data.CandidateDO[] getCandidateDOArray_via_EmployerCandidate () 
-    throws DataObjectException {
-	jobmatch.data.CandidateDO[] ret = null;
-	try {
-	    jobmatch.data.EmployerCandidateDO[] arr = getEmployerCandidateDOArray();
-	    ret = new jobmatch.data.CandidateDO[ arr.length ];
-	    for ( int i = 0; i < arr.length; i++ ) {
-		ret[ i ] = arr[ i ].getCandidate();
-	    }
-	} catch ( Exception e ) { 
-	    throw new DataObjectException( 
-		"INTERNAL ERROR: ", e );
-	} finally {
-	    if ( null == ret )
-		ret = new jobmatch.data.CandidateDO[ 0 ];
-	}
-	return ret;
-    }
-
-    /**
-     * To the many-to-many relationship expressed by EmployerCandidateDO,
-     * add a CandidateDO object that indirectly refers
-     * to this DO.
-     *
-     * @param d The CandidateDO to add to the EmployerCandidateDO mapping
-     * for this DO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapCandidate_via_EmployerCandidateDO( jobmatch.data.CandidateDO d )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	mapCandidate_via_EmployerCandidateDO( d, null );
-    }
-
-    /**
-     * To the many-to-many relationship expressed by EmployerCandidateDO,
-     * add a CandidateDO object that indirectly refers to this DO.
-     *
-     * @param b The CandidateDO to add to the EmployerCandidateDO mapping for this DO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     */
-    public void mapCandidate_via_EmployerCandidateDO( jobmatch.data.CandidateDO d, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.EmployerCandidateDO m = null;
-	try {
-	    m = jobmatch.data.EmployerCandidateDO.createVirgin();
-	} catch ( Exception e ) { 
-	    throw new DataObjectException( 
-		"jobmatch.data.EmployerCandidateDO.createVirgin failed", e );
-	}
-	m.setCandidate( d );
-	m.setEmployer( this );
-	m.commit( tran );
-    }
-
-    /**
-     * From the many-to-many relationship expressed by EmployerCandidateDO,
-     * remove (delete) the CandidateDO object that indirectly refers
-     * to this DO.
-     *
-     * @param d The CandidateDO to remove from the EmployerCandidateDO mapping
-     * for this DO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public void unmapCandidate_via_EmployerCandidateDO( jobmatch.data.CandidateDO d )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	unmapCandidate_via_EmployerCandidateDO( d, null );
-    }
-
-    /**
-     * From the many-to-many relationship expressed by EmployerCandidateDO,
-     * remove (delete) the CandidateDO object that indirectly refers
-     * to this DO.
-     *
-     * @param b The CandidateDO to remove from the EmployerCandidateDO mapping
-     * for this DO.
-     *
-     * @exception DataObjectException
-     *   If the object is not found in the database.
-     * @exception QueryException
-     *   If an error occured while building the query before execution.
-     */
-    public void unmapCandidate_via_EmployerCandidateDO( jobmatch.data.CandidateDO d, DBTransaction tran )
-    throws DataObjectException, DatabaseManagerException, RefAssertionException, SQLException, DBRowUpdateException, QueryException {
-	jobmatch.data.EmployerCandidateQuery q = new jobmatch.data.EmployerCandidateQuery();
-	q.setQueryEmployer( this );
-	q.setQueryCandidate( d );
-	q.requireUniqueInstance();
-	jobmatch.data.EmployerCandidateDO m = null;
-	try {
-	    m = q.getNextDO();
-	} catch ( NonUniqueQueryException e ) { 
-	    throw new DataObjectException( "Multiple mappings for " +
-		this + " and " + d + " in jobmatch.data.EmployerCandidate table." );
-	}
-	m.delete( tran );
-    }
 
 
     /**

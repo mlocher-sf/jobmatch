@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the EmployerCandidateDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
- public class EmployerCandidateDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class EmployerCandidateDO extends jobmatch.data.CVTimespanDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ import com.lutris.dods.builder.generator.query.*;
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new EmployerCandidateDataStruct ();
 	}
 
@@ -640,54 +640,6 @@ import com.lutris.dods.builder.generator.query.*;
 	data = orig.data;
     }
 
-////////////////////////// data member Candidate
-
-   /* static final RDBColumn Candidate for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Candidate = 
-			    new RDBColumn( table, "Candidate" );
-
-   /**
-    * Get Candidate of the EmployerCandidate
-    *
-    * @return Candidate of the EmployerCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CandidateDO getCandidate () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Candidate;
-   }
-
-   /**
-    * Set Candidate of the EmployerCandidate
-    *
-    * @param Candidate of the EmployerCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setCandidate ( jobmatch.data.CandidateDO Candidate )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Candidate = (jobmatch.data.CandidateDO) markNewValue(
-	data.Candidate, Candidate  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Employer
 
    /* static final RDBColumn Employer for use with QueryBuilder.
@@ -731,102 +683,6 @@ import com.lutris.dods.builder.generator.query.*;
       checkLoad();
       data.Employer = (jobmatch.data.EmployerDO) markNewValue(
 	data.Employer, Employer  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Begin
-
-   /* static final RDBColumn Begin for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Begin = 
-			    new RDBColumn( table, "Begin" );
-
-   /**
-    * Get Begin of the EmployerCandidate
-    *
-    * @return Begin of the EmployerCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Date getBegin () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Begin;
-   }
-
-   /**
-    * Set Begin of the EmployerCandidate
-    *
-    * @param Begin of the EmployerCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setBegin ( java.sql.Date Begin )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Begin =  markNewValue(
-	data.Begin, Begin  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member End
-
-   /* static final RDBColumn End for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn End = 
-			    new RDBColumn( table, "End" );
-
-   /**
-    * Get End of the EmployerCandidate
-    *
-    * @return End of the EmployerCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Date getEnd () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.End;
-   }
-
-   /**
-    * Set End of the EmployerCandidate
-    *
-    * @param End of the EmployerCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setEnd ( java.sql.Date End )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.End =  markNewValue(
-	data.End, End  );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -970,7 +826,7 @@ import com.lutris.dods.builder.generator.query.*;
       }
       checkLoad();
       data.Function =  markNewValue(
-	data.Function, Function , 0, 20, false );
+	data.Function, Function , 0, 20, true );
       afterAnySet();	// business actions/assertions after data assignment
    }
    
@@ -1064,35 +920,11 @@ import com.lutris.dods.builder.generator.query.*;
 	// to build up the value for this tag:
 	// the value is a series of calls to the DO set methods.
 		
-	setCandidate( 
-	    jobmatch.data.CandidateDO.createExisting( 
-		rs.getBigDecimal( 
-			"Candidate" , 0 )
-	     )
-	);
-	
-	
 	setEmployer( 
 	    jobmatch.data.EmployerDO.createExisting( 
 		rs.getBigDecimal( 
 			"Employer" , 0 )
 	     )
-	);
-	
-	
-	setBegin( 
-	    
-		rs.getDate( 
-			"Begin"  )
-	    
-	);
-	
-	
-	setEnd( 
-	    
-		rs.getDate( 
-			"End"  )
-	    
 	);
 	
 	
@@ -1160,7 +992,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into EmployerCandidate ( Candidate, Employer, Begin, End, Remarks, Reference, Function, Pensum, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into EmployerCandidate ( Candidate, BeginDate, EndDate, Employer, Remarks, Reference, Function, Pensum, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1170,12 +1002,12 @@ import com.lutris.dods.builder.generator.query.*;
 	try {
 	    	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
+	setPrepStmtParam_java_sql_Date( stmt, param,
+		getBeginDate() );
+	setPrepStmtParam_java_sql_Date( stmt, param,
+		getEndDate() );
 	setPrepStmtParam_DO( stmt, param,
 		getEmployer() );
-	setPrepStmtParam_java_sql_Date( stmt, param,
-		getBegin() );
-	setPrepStmtParam_java_sql_Date( stmt, param,
-		getEnd() );
 	setPrepStmtParam_String( stmt, param,
 		getRemarks() );
 	setPrepStmtParam_String( stmt, param,
@@ -1216,7 +1048,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update EmployerCandidate set " + getVersionColumnName() + " = ?, Candidate = ?, Employer = ?, Begin = ?, End = ?, Remarks = ?, Reference = ?, Function = ?, Pensum = ? " +
+	    "update EmployerCandidate set " + getVersionColumnName() + " = ?, Candidate = ?, BeginDate = ?, EndDate = ?, Employer = ?, Remarks = ?, Reference = ?, Function = ?, Pensum = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1228,12 +1060,12 @@ import com.lutris.dods.builder.generator.query.*;
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
 	    	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
+	setPrepStmtParam_java_sql_Date( stmt, param,
+		getBeginDate() );
+	setPrepStmtParam_java_sql_Date( stmt, param,
+		getEndDate() );
 	setPrepStmtParam_DO( stmt, param,
 		getEmployer() );
-	setPrepStmtParam_java_sql_Date( stmt, param,
-		getBegin() );
-	setPrepStmtParam_java_sql_Date( stmt, param,
-		getEnd() );
 	setPrepStmtParam_String( stmt, param,
 		getRemarks() );
 	setPrepStmtParam_String( stmt, param,
@@ -1291,10 +1123,7 @@ import com.lutris.dods.builder.generator.query.*;
 	    id = oid.toString();
 	str += " OID=" + id;
 	if ( null != data ) 
-	    str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
-+ "\n" + indent + "Employer=" + ( null == data.Employer ? null  : data.Employer.toString( indentCount + 1 ) )
-+ "\n" + indent + "Begin=" + data.Begin
-+ "\n" + indent + "End=" + data.End
+	    str = str + "\n" + indent + "Employer=" + ( null == data.Employer ? null  : data.Employer.toString( indentCount + 1 ) )
 + "\n" + indent + "Remarks=" + data.Remarks
 + "\n" + indent + "Reference=" + data.Reference
 + "\n" + indent + "Function=" + data.Function
@@ -1322,10 +1151,7 @@ import com.lutris.dods.builder.generator.query.*;
             id = oid.toString();
         str += " OID=" + id;
         if ( null != data )
-            str = str + "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
-+ "\n" + indent + "Employer=" + ( null == data.Employer ? null  : data.Employer.toString( indentCount + 1 ) )
-+ "\n" + indent + "Begin=" + data.Begin
-+ "\n" + indent + "End=" + data.End
+            str = str + "\n" + indent + "Employer=" + ( null == data.Employer ? null  : data.Employer.toString( indentCount + 1 ) )
 + "\n" + indent + "Remarks=" + data.Remarks
 + "\n" + indent + "Reference=" + data.Reference
 + "\n" + indent + "Function=" + data.Function

@@ -2,8 +2,9 @@
 
 create table AssociationCandidate
 (
-/* class AssociationCandidate */
+/* class CVSection */
     Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
+/* class AssociationCandidate */
     Association DECIMAL(19,0)  NOT NULL  REFERENCES Association ( oid ) ,
     Function VARCHAR(40) DEFAULT ""    ,
 

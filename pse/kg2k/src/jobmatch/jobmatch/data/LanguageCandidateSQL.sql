@@ -2,8 +2,9 @@
 
 create table LanguageCandidate
 (
-/* class LanguageCandidate */
+/* class CVSection */
     Candidate DECIMAL(19,0)  NOT NULL  REFERENCES Candidate ( oid ) ,
+/* class LanguageCandidate */
     Language DECIMAL(19,0)  NOT NULL  REFERENCES Language ( oid ) ,
     Diploma VARCHAR(32) DEFAULT ""    ,
     Written DECIMAL(19,0)  NOT NULL   ,

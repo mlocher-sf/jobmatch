@@ -53,11 +53,11 @@ import com.lutris.dods.builder.generator.query.*;
 /**
  * Data core class, used to set, retrieve the SchoolCandidateDO information.
  *
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  studer
  * @since   jobmatch
  */
- public class SchoolCandidateDO extends com.lutris.dods.builder.generator.dataobject.GenericDO implements java.io.Serializable {
+ public class SchoolCandidateDO extends jobmatch.data.CVTimespanDO implements java.io.Serializable {
 
     /**
      * static final data members name the table and columns for this DO.
@@ -207,7 +207,7 @@ import com.lutris.dods.builder.generator.query.*;
     throws SQLException, ObjectIdException, DataObjectException
     {
 	if ( null == data ) {
-	    
+	    super.loadData();
 	    data = new SchoolCandidateDataStruct ();
 	}
 
@@ -688,150 +688,6 @@ import com.lutris.dods.builder.generator.query.*;
    
 
 
-////////////////////////// data member Candidate
-
-   /* static final RDBColumn Candidate for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Candidate = 
-			    new RDBColumn( table, "Candidate" );
-
-   /**
-    * Get Candidate of the SchoolCandidate
-    *
-    * @return Candidate of the SchoolCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public jobmatch.data.CandidateDO getCandidate () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Candidate;
-   }
-
-   /**
-    * Set Candidate of the SchoolCandidate
-    *
-    * @param Candidate of the SchoolCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setCandidate ( jobmatch.data.CandidateDO Candidate )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Candidate = (jobmatch.data.CandidateDO) markNewValue(
-	data.Candidate, Candidate  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member Begin
-
-   /* static final RDBColumn Begin for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn Begin = 
-			    new RDBColumn( table, "Begin" );
-
-   /**
-    * Get Begin of the SchoolCandidate
-    *
-    * @return Begin of the SchoolCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Date getBegin () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.Begin;
-   }
-
-   /**
-    * Set Begin of the SchoolCandidate
-    *
-    * @param Begin of the SchoolCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setBegin ( java.sql.Date Begin )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.Begin =  markNewValue(
-	data.Begin, Begin  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
-////////////////////////// data member End
-
-   /* static final RDBColumn End for use with QueryBuilder.
-    * See RDBColumn PrimaryKey at the top of this file for usage example.
-    */
-   static public final RDBColumn End = 
-			    new RDBColumn( table, "End" );
-
-   /**
-    * Get End of the SchoolCandidate
-    *
-    * @return End of the SchoolCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   public java.sql.Date getEnd () 
-   throws DataObjectException {
-      beforeAnyGet();	// business actions/assertions prior to data return
-      checkLoad();
-      return data.End;
-   }
-
-   /**
-    * Set End of the SchoolCandidate
-    *
-    * @param End of the SchoolCandidate
-    *
-    * @exception DataObjectException
-    *   If the object is not found in the database.
-    */
-   
-   public void setEnd ( java.sql.Date End )
-   throws DataObjectException {
-      try {
-	  // business actions/assertions prior to data assignment
-	  beforeAnySet();
-      } catch ( Exception e ) { 
-	  throw new DataObjectException( "beforeAnySet: " + e.getMessage() );
-      }
-      checkLoad();
-      data.End =  markNewValue(
-	data.End, End  );
-      afterAnySet();	// business actions/assertions after data assignment
-   }
-   
-
-
 ////////////////////////// data member Diploma
 
    /* static final RDBColumn Diploma for use with QueryBuilder.
@@ -976,30 +832,6 @@ import com.lutris.dods.builder.generator.query.*;
 	);
 	
 	
-	setCandidate( 
-	    jobmatch.data.CandidateDO.createExisting( 
-		rs.getBigDecimal( 
-			"Candidate" , 0 )
-	     )
-	);
-	
-	
-	setBegin( 
-	    
-		rs.getDate( 
-			"Begin"  )
-	    
-	);
-	
-	
-	setEnd( 
-	    
-		rs.getDate( 
-			"End"  )
-	    
-	);
-	
-	
 	setDiploma( 
 	    jobmatch.data.GraduationDO.createExisting( 
 		rs.getBigDecimal( 
@@ -1048,7 +880,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement( 
-	    "insert into SchoolCandidate ( School, Candidate, Begin, End, Diploma, Remarks, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ? )" );
+	    "insert into SchoolCandidate ( Candidate, BeginDate, EndDate, School, Diploma, Remarks, " + getOIdColumnName() + ", " + getVersionColumnName() + " ) values ( ?, ?, ?, ?, ?, ?, ?, ? )" );
 
 	param = new int[1]; param[0] = 1;
 	// writeMemberStuff uses the JDBCsetCalls.template
@@ -1057,13 +889,13 @@ import com.lutris.dods.builder.generator.query.*;
 	// Those methods are defined in GenericDO.
 	try {
 	    	setPrepStmtParam_DO( stmt, param,
-		getSchool() );
-	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
 	setPrepStmtParam_java_sql_Date( stmt, param,
-		getBegin() );
+		getBeginDate() );
 	setPrepStmtParam_java_sql_Date( stmt, param,
-		getEnd() );
+		getEndDate() );
+	setPrepStmtParam_DO( stmt, param,
+		getSchool() );
 	setPrepStmtParam_DO( stmt, param,
 		getDiploma() );
 	setPrepStmtParam_String( stmt, param,
@@ -1100,7 +932,7 @@ import com.lutris.dods.builder.generator.query.*;
         ObjectId oid;
 
         PreparedStatement stmt = conn.prepareStatement(
-	    "update SchoolCandidate set " + getVersionColumnName() + " = ?, School = ?, Candidate = ?, Begin = ?, End = ?, Diploma = ?, Remarks = ? " +
+	    "update SchoolCandidate set " + getVersionColumnName() + " = ?, Candidate = ?, BeginDate = ?, EndDate = ?, School = ?, Diploma = ?, Remarks = ? " +
 	    "where " + getOIdColumnName() + " = ? and " + getVersionColumnName() + " = ?" );
 
 	param = new int[1]; param[0] = 1;
@@ -1111,13 +943,13 @@ import com.lutris.dods.builder.generator.query.*;
 	try {
 	    setPrepStmtParam_int( stmt, param, getNewVersion() );
 	    	setPrepStmtParam_DO( stmt, param,
-		getSchool() );
-	setPrepStmtParam_DO( stmt, param,
 		getCandidate() );
 	setPrepStmtParam_java_sql_Date( stmt, param,
-		getBegin() );
+		getBeginDate() );
 	setPrepStmtParam_java_sql_Date( stmt, param,
-		getEnd() );
+		getEndDate() );
+	setPrepStmtParam_DO( stmt, param,
+		getSchool() );
 	setPrepStmtParam_DO( stmt, param,
 		getDiploma() );
 	setPrepStmtParam_String( stmt, param,
@@ -1172,9 +1004,6 @@ import com.lutris.dods.builder.generator.query.*;
 	str += " OID=" + id;
 	if ( null != data ) 
 	    str = str + "\n" + indent + "School=" + ( null == data.School ? null  : data.School.toString( indentCount + 1 ) )
-+ "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
-+ "\n" + indent + "Begin=" + data.Begin
-+ "\n" + indent + "End=" + data.End
 + "\n" + indent + "Diploma=" + ( null == data.Diploma ? null  : data.Diploma.toString( indentCount + 1 ) )
 + "\n" + indent + "Remarks=" + data.Remarks
 ;
@@ -1201,9 +1030,6 @@ import com.lutris.dods.builder.generator.query.*;
         str += " OID=" + id;
         if ( null != data )
             str = str + "\n" + indent + "School=" + ( null == data.School ? null  : data.School.toString( indentCount + 1 ) )
-+ "\n" + indent + "Candidate=" + ( null == data.Candidate ? null  : data.Candidate.toString( indentCount + 1 ) )
-+ "\n" + indent + "Begin=" + data.Begin
-+ "\n" + indent + "End=" + data.End
 + "\n" + indent + "Diploma=" + ( null == data.Diploma ? null  : data.Diploma.toString( indentCount + 1 ) )
 + "\n" + indent + "Remarks=" + data.Remarks
 ;
@@ -1291,24 +1117,6 @@ import com.lutris.dods.builder.generator.query.*;
 
       /**
      * A stub method for implementing pre-commit assertions 
-     * for the School data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where School is not valid for writing to the database.
-     */
-    protected void okToCommitSchool( jobmatch.data.SchoolDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-delete assertions 
-     * for the School data member.
-     * Implement this stub to throw an RefAssertionException for cases
-     * where School is not valid for deletion from the database.
-     */
-    protected void okToDeleteSchool( jobmatch.data.SchoolDO member ) 
-    throws RefAssertionException { }
-
-    /**
-     * A stub method for implementing pre-commit assertions 
      * for the Candidate data member.
      * Implement this stub to throw an RefAssertionException for cases
      * where Candidate is not valid for writing to the database.
@@ -1323,6 +1131,24 @@ import com.lutris.dods.builder.generator.query.*;
      * where Candidate is not valid for deletion from the database.
      */
     protected void okToDeleteCandidate( jobmatch.data.CandidateDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-commit assertions 
+     * for the School data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where School is not valid for writing to the database.
+     */
+    protected void okToCommitSchool( jobmatch.data.SchoolDO member ) 
+    throws RefAssertionException { }
+
+    /**
+     * A stub method for implementing pre-delete assertions 
+     * for the School data member.
+     * Implement this stub to throw an RefAssertionException for cases
+     * where School is not valid for deletion from the database.
+     */
+    protected void okToDeleteSchool( jobmatch.data.SchoolDO member ) 
     throws RefAssertionException { }
 
     /**
@@ -1385,22 +1211,7 @@ import com.lutris.dods.builder.generator.query.*;
 	      throw new QueryException("XXX");
       } else {
 	  // commit referenced DOs.
-	  	jobmatch.data.SchoolDO School_DO = getSchool();
-	if ( null != School_DO ) {
-	    if ( School_DO.isLoaded() ) {
-		okToCommitSchool( School_DO );
-		School_DO.commit( dbt );
-	    } else {
-		// since the referenced DO is not loaded,
-		// it cannot be dirty, so there is no need to commit it.
-	    }
-	} else {
-	    if ( ! false )
-		throw new RefAssertionException(
-		    "Cannot commit SchoolCandidateDO ( " + toString() +
-		    " ) because School is not allowed to be null." );
-	}
-	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
+	  	jobmatch.data.CandidateDO Candidate_DO = getCandidate();
 	if ( null != Candidate_DO ) {
 	    if ( Candidate_DO.isLoaded() ) {
 		okToCommitCandidate( Candidate_DO );
@@ -1414,6 +1225,21 @@ import com.lutris.dods.builder.generator.query.*;
 		throw new RefAssertionException(
 		    "Cannot commit SchoolCandidateDO ( " + toString() +
 		    " ) because Candidate is not allowed to be null." );
+	}
+	jobmatch.data.SchoolDO School_DO = getSchool();
+	if ( null != School_DO ) {
+	    if ( School_DO.isLoaded() ) {
+		okToCommitSchool( School_DO );
+		School_DO.commit( dbt );
+	    } else {
+		// since the referenced DO is not loaded,
+		// it cannot be dirty, so there is no need to commit it.
+	    }
+	} else {
+	    if ( ! false )
+		throw new RefAssertionException(
+		    "Cannot commit SchoolCandidateDO ( " + toString() +
+		    " ) because School is not allowed to be null." );
 	}
 	jobmatch.data.GraduationDO Diploma_DO = getDiploma();
 	if ( null != Diploma_DO ) {

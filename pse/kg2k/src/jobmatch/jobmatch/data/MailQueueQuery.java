@@ -111,7 +111,7 @@ import java.util.Date;  // when I say Date, I don't mean java.sql.Date
  *             dq.reset();
  * </PRE>
  * @author studer
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 final public class MailQueueQuery implements Query {
 
@@ -407,6 +407,75 @@ final public class MailQueueQuery implements Query {
 
 
     /**
+     * Set the Time to query.
+     *
+     * @param x The Time of the MailQueue to query.
+     * @param exact to use matches or not
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryTime(
+				java.sql.Timestamp x, boolean exact)
+    throws DataObjectException, QueryException
+    {
+	// Remove from cacheHits any DOs that do not meet this
+	// setQuery requirement.
+	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
+	    MailQueueDO DO = ( MailQueueDO ) cacheHits.elementAt( i );
+	    if ( null == DO ) continue;
+	    boolean equals = true;
+	    
+		Date d = (Date) DO.getTime();
+		if ( null == d && null == x ) {
+		    equals = true;
+		} else if ( null != d && null != x ) {
+		    equals = d.equals( x );
+		} else {  // one is null, the other isn't
+		    equals = false;
+		}
+	    
+	    if ( ! equals )
+		cacheHits.removeElementAt( i-- );
+	}
+
+	// Also prepare the SQL needed to query the database 
+	// in case there is no cache, or the query involves other tables.
+	if ( partialCache || hitDb )
+	    builder.addWhereClause( "Time", x, "TIMESTAMP",
+                QueryBuilder.NOT_NULL, exactFlag( exact ) );
+    }
+
+    /**
+     * Set the Time to query
+     * @param x The Time of the MailQueue to query.
+     * @exception DataObjectException If a database access error occurs.
+     */
+    public void setQueryTime( 
+				java.sql.Timestamp x )
+    throws DataObjectException, QueryException {
+	setQueryTime( x, true );
+    }
+
+    /**
+     * Add Time to the ORDER BY clause.
+     *
+     * @param direction_flag  True for ascending order, false for descending
+     */
+    public void addOrderByTime(boolean direction_flag) {
+        builder.addOrderByColumn("Time",
+					(direction_flag) ? "ASC" : "DESC");
+    }
+
+
+    /**
+     * Add Time to the ORDER BY clause.  This convenience
+     * method assumes ascending order.
+     */
+    public void addOrderByTime() {
+        builder.addOrderByColumn("Time","ASC");
+    }
+
+
+    /**
      * Set the Mail to query.
      *
      * @param x The Mail of the MailQueue to query.
@@ -445,7 +514,7 @@ final public class MailQueueQuery implements Query {
 	// Also prepare the SQL needed to query the database 
 	// in case there is no cache, or the query involves other tables.
 	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Mail", x, "BINARY",
+	    builder.addWhereClause( "Mail", x, "MEDIUMBLOB",
                 QueryBuilder.NOT_NULL, exactFlag( exact ) );
     }
 
@@ -542,75 +611,6 @@ final public class MailQueueQuery implements Query {
         builder.addOrderByColumn("Priority","ASC");
     }
 
-
-    /**
-     * Set the Time to query.
-     *
-     * @param x The Time of the MailQueue to query.
-     * @param exact to use matches or not
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryTime(
-				java.sql.Timestamp x, boolean exact)
-    throws DataObjectException, QueryException
-    {
-	// Remove from cacheHits any DOs that do not meet this
-	// setQuery requirement.
-	for ( int i = 0; i < cacheHits.size() && ! hitDb; i++ ) {
-	    MailQueueDO DO = ( MailQueueDO ) cacheHits.elementAt( i );
-	    if ( null == DO ) continue;
-	    boolean equals = true;
-	    
-		Date d = (Date) DO.getTime();
-		if ( null == d && null == x ) {
-		    equals = true;
-		} else if ( null != d && null != x ) {
-		    equals = d.equals( x );
-		} else {  // one is null, the other isn't
-		    equals = false;
-		}
-	    
-	    if ( ! equals )
-		cacheHits.removeElementAt( i-- );
-	}
-
-	// Also prepare the SQL needed to query the database 
-	// in case there is no cache, or the query involves other tables.
-	if ( partialCache || hitDb )
-	    builder.addWhereClause( "Time", x, "TIMESTAMP",
-                QueryBuilder.NOT_NULL, exactFlag( exact ) );
-    }
-
-    /**
-     * Set the Time to query
-     * @param x The Time of the MailQueue to query.
-     * @exception DataObjectException If a database access error occurs.
-     */
-    public void setQueryTime( 
-				java.sql.Timestamp x )
-    throws DataObjectException, QueryException {
-	setQueryTime( x, true );
-    }
-
-    /**
-     * Add Time to the ORDER BY clause.
-     *
-     * @param direction_flag  True for ascending order, false for descending
-     */
-    public void addOrderByTime(boolean direction_flag) {
-        builder.addOrderByColumn("Time",
-					(direction_flag) ? "ASC" : "DESC");
-    }
-
-
-    /**
-     * Add Time to the ORDER BY clause.  This convenience
-     * method assumes ascending order.
-     */
-    public void addOrderByTime() {
-        builder.addOrderByColumn("Time","ASC");
-    }
-
     /**
     * Returns the <code>QueryBuilder</code> that this <code>MailQueueQuery</code>
     * uses to construct and execute database queries.
@@ -688,7 +688,7 @@ final public class MailQueueQuery implements Query {
      * @author Jay Gunter
      */
     public void openParen() {
-	builder.addWhereOr();
+	builder.addWhereOpenParen(); // patched by PSE 2000, 5/22/2000
     }
 
     /**
@@ -698,6 +698,6 @@ final public class MailQueueQuery implements Query {
      * @author Jay Gunter
      */
     public void closeParen() {
-	builder.addWhereOr();
+	builder.addWhereCloseParen(); // patched by PSE 2000, 5/22/2000
     }
 }
