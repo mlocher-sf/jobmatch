@@ -1,0 +1,9 @@
+tidy-mark: no
+indent: auto
+indent-spaces: 2
+wrap: 78
+output-html: yes
+show-warnings: yes
+logical-emphasis: yes
+doctype: strict
+

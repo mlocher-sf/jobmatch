@@ -1,4 +1,5 @@
 #!/usr/local/bin/tcsh
+# $Id: tidy,v 1.2 2000/04/27 07:32:02 locher Exp $
 
-java -cp ./Tidy.jar org.w3c.tidy.Tidy $*
+java -cp /home/pse4/scr/pse/tool/Tidy.jar org.w3c.tidy.Tidy -config /home/pse4/scr/pse/tool/tidystyle $*
 
