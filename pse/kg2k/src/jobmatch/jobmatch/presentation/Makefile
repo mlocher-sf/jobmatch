@@ -30,20 +30,22 @@ SUBDIRS = \
 CLASSES = \
 	Redirect \
 	CandidateHome \
-	CVPersonal
+	CVPersonal \
+	Welcome \
+	Login
 
 
-XMLC_HTML_OPTS_FILE = ../options.xmlc
+XMLC_HTML_OPTS_FILE = options.xmlc
 
 HTML_DIR = ./html
 HTML_CLASSES = \
 	CandidateHomeHTML \
-	CVPersonalHTML
+	CVPersonalHTML \
+	WelcomeHTML \
+	LoginHTML
 
 
 JAR_INSTALL = \
-	./html/Welcome.html \
-	./html/Login.html \
 	./html/style.css
 
 include $(ROOT)/config.mk

@@ -1,3 +1,5 @@
+-urlmapping './Welcome.html' './Welcome.po' 
+-urlmapping './Login.html' './Login.po' 
 -urlmapping './CandidateHome.html' './CandidateHome.po' 
 -urlmapping './CVPersonal.html' './CVPersonal.po'
 -urlmapping './CVEducation.html' './CVEducation.po'
