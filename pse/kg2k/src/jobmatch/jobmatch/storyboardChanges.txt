@@ -1,6 +1,17 @@
 New Files;
 ----------------------------------------------------------------------
 CandidateHomeFirstLogin.html
+CVSoftwareExperience.html
+CVProgrammingExperience.html
+CVOperatingSystemExperience.html
+CVWorkingDetailExperience.html
+CVLanguageDetailExperience.html
+CVEducationDetail.html
+CVHobbiesDetail.html
+CVMembershipDetail.html
+
+
+
 
 Changed Filenames:
 
