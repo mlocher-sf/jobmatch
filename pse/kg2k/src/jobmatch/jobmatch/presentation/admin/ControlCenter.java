@@ -1,6 +1,7 @@
-package jobmatch.presentation;
+package jobmatch.presentation.admin;
 
 import com.lutris.xml.xmlc.*;
+import jobmatch.presentation.*;
 import com.lutris.appserver.server.httpPresentation.*;
 
 public class ControlCenter extends AuthentificationPage {

@@ -25,7 +25,8 @@ PACKAGEDIR = jobmatch/presentation/admin
 # To add more Java classes, create the .java files and add their names to
 # this list (without the .java extension).
 #
-CLASSES = 
+CLASSES = \
+	ControlCenter
 
 HTML_DIR = ../html
 HTML_CLASSES = \
