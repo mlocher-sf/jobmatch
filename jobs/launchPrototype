@@ -1,6 +1,6 @@
 #!/usr/local/bin/tcsh
 
-# $Id: launchPrototype,v 1.2 2000/04/13 12:33:48 locher Exp $
+# $Id: launchPrototype,v 1.3 2000/04/13 12:36:02 locher Exp $
 # make sure the prototype is running on vasarely.unibe.ch:9500
 # with the following crontab entry on vasarely.unibe.ch
 # 22,52 * * * * csh -c "nice /home/pse4/jobs/launchPrototype >& /home/pse4/jobs/protolaunch.txt"
@@ -24,8 +24,9 @@ if (-s /home/pse4/jobs/protoPID) then
 endif
 
 if (-s /tmp/protoALIVE) then
-    echo Killing old process $OP ...
     kill -KILL $OP
+    echo Killing old process $OP ...
+    sleep 1
 endif
 
 nohup start &
