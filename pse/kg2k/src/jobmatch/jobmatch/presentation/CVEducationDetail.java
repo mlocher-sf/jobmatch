@@ -80,7 +80,10 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
     private void fillSchooltype(CVEducationDetailHTML page, Formation formation){
 	final EntityManager man = EntityManager.getUniqueInstance();
 	Collection data =  man.getSchooltypes();
-        Schooltype selection = formation.getSchoolBO().getSchoolTypeBO();
+	Schooltype selection = null;
+	if (formation.getSchoolBO() != null) {
+	    selection = formation.getSchoolBO().getSchoolTypeBO();
+	}
 	HTMLOptionElement template = page.getElementTemplateSchooltype();
 	this.fillListBox(template, data, selection);
     }
