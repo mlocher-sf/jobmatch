@@ -14,6 +14,9 @@ ROOT =	../../..
 #
 PACKAGEDIR = jobmatch/business/entity
 
+POST_SUBDIRS = \
+	test
+
 CLASSES = \
 	Description \
 	School \
