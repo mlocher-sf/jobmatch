@@ -1,34 +1,29 @@
-
-<HTML>
-  <HEAD>
-    <TITLE> Einstiegs Seite </TITLE>
+<html>
+  <head>
+    <title> Einstiegs Seite </title>
     <link rel=stylesheet type="text/css" href="style.css">
-  </HEAD>
-  <BODY>
- <hr>
-    <h1>Einstiegsseite</h1>
-<FORM ACTION="./CVOverview.html" METHOD=GET>
-  
-   Login fuer Studenten: <BR>
-   Username:<INPUT TYPE="text" SIZE=10 MAXLENGTH=20> <BR>
-   Passwort:<INPUT TYPE="password" SIZE=10 MAXLENGTH=20><br>
-  <INPUT TYPE="Submit" NAME="Submit" VALUE="Submit" >
-  </FORM>
-  <P>
-  <A HREF="./login.html"> Neu anmelden </A> <BR>
-  <A HREF="./password.html"> Passwort vergessen </A> <BR>
-  <A HREF="./loginCompanies.html"> Einloggen fuer Firmen </A> <BR>
-  <A HREF="./infoCompanies.html"> Informationen fuer Firmen </A> <BR>
-  <A HREF="./infoCandidates.html"> Informationen fuer Kandidaten </A> <BR>
+  </head>
 
-  </FONT>
- <hr>
+  <body>
+    <hr>
+    <h1> Einstiegsseite </h1>
+    <form action="CVOverview.html" method=get>
+    <table border=1> <tr><td>
+    Login: </td></tr><tr><td>
+    Username: </td><td> <input type="text" size=10 maxlength=20> </td></tr><tr><td>
+    Passwort: </td><td> <input type="password" size=10 maxlength=20> </td><td>
+    <input type="submit" name="submit" value="Submit"> </td></tr>
+    </table>
+    </form>
 
-    <address></address>
-<!-- Created: Fri Mar 31 13:38:33 MET DST 2000 -->
-<!-- hhmts start -->
-Last modified: Mon May  1 17:26:55 MET DST 2000
-<!-- hhmts end -->
-    <small>| $Id: index.html,v 1.4 2000/05/01 16:03:39 dniederm Exp $</small>
-  </BODY>
-</HTML>
+    <p>
+    <a href="login.html"> Neu anmelden </a> <br>
+    <a href="password.html"> Passwort vergessen </a> <br>
+    <a href="loginCompanies.html"> Einloggen fuer Firmen </a> <br>
+    <a href="infoCompanies.html"> Informationen fuer Firmen </a> <br>
+    <a href="infoCandidates.html"> Informationen fuer Kandidaten </a> <br>
+    <a href="infoAiesec.html"> Informationen zu AIESEC </a> <br>
+    <a href="logout.html"> Logout </a>
+    <hr>
+  </body>
+</html>

@@ -1,51 +1,45 @@
 <html>
   <head>
-    <title>CVJobWishes.html </title>
+  <title> Job-Wuensche </title>
   </head>
   <link rel=stylesheet type="text/css" href="style.css">
 
   <body>
+  <hr>
+  <h1> Job-Wuensche </h1>
+  <form action="CVConfirmation.html" method=get>
+  <table border=1> <tr><td>
+  Branche: </td><td> <select name ="Branche"> 
+                     <option value = "Industrie"> Industrie
+                     <option value = "Banken"> Banken
+                     </select> </td></tr><tr><td>
+  Region: </td><td> <select name ="Region"> 
+                    <option value = "Bern"> Bern
+                    <option value = "Zuerich"> Zuerich
+                    </select> </td></tr><tr><td>
+  Funktion: </td><td> <input type = "text"> </td></tr><tr><td>
+  Arbeitspensum: </td><td> <input type = "text" size=3 maxlength=3>% </td></tr><tr><td>
+  Erwartungen/Bemerkungen: </td><td> <textarea name= "Bemerkungen", rows=4, cols= 40></textarea>
+  </td></tr><tr><td>
+  Sperrliste: </td><td> 
+  <input type="checkbox" name="Firma 1" value="Firma 1">  Firma 1
+  <input type="checkbox" name="Firma 2" value="Firma 2">  Firma 2 </td></tr><tr><td>
+
+  Diesen Firmen moechte ich meinen <br>
+  Lebenslauf zukommen lassen: </td><td>
+  <input type="checkbox" name="Firma 1" value="Firma 1">  Firma 1
+  <input type="checkbox" name="Firma 2" value="Firma 2">  Firma 2 </td></tr><tr><td>
   
-    <hr>
+  <input type="submit" name="submit" value="Weitere Wuensche">
+  </td></tr>
+  </table>
+  </form>
 
-    <h1>Job-Wuensche</h1>
-<form>
-Branche:<select Name ="Branche"> 
-<option value = "Industrie">Industrie
-<option value = "Banken">Banken
-</select><br>
-Region::<select Name ="Region"> 
-<option value = "Bern">Bern
-<option value = "Zuerich">Zuerich
-</select><br>
-Funktion:<input type = "text"><br>
-Arbeitspensum:<input type = "text", size="2">%<br>
-Erwartungen/Bemerkungen: <Textarea Name= "Bemerkungen", Rows="10", Cols= "40"></Textarea><br>
-Sperrliste::<select Name ="Sperrliste"> 
-<option value = "UBS">UBS
-<option value = "McDonalds">McDonalds
-</select><br>
-
-Diesen Firmen moechte ich meinen Lebenslauf zukommen lassen:<br>
-  <INPUT TYPE="radio" NAME="Firma 1" VALUE="Firma 1">  Firma 1<br>
-              <INPUT TYPE="radio" NAME="Firma 2" VALUE="Firma 2">  Firma 2<BR>
-</form>
-<form ACTION="./CVConfirmation.html" METHOD=GE>
- <INPUT TYPE="Submit" NAME="Submit" VALUE="Submit" ><br>
-</form>
-
-<p>
-<A HREF="./CVHobbies.html">zurueck </A>
-<p>
-<A HREF="./CVOverview.html">zurueck zur Uebersicht</A>
-<p>
-<A HREF="./index.html">Einstiegsseite</A> <p>
-    <hr>
-    <address></address>
-<!-- Created: Fri Mar 31 13:38:33 MET DST 2000 -->
-<!-- hhmts start -->
-Last modified: Mon May  1 17:24:02 MET DST 2000
-<!-- hhmts end -->
-    <small>| $Id: CVJobWishes.html,v 1.4 2000/05/01 16:03:36 dniederm Exp $</small>
+  <p>
+  <a href="CVHobbies.html"> Zurueck </a> <p>
+  <a href="CVOverview.html"> Zurueck zur Uebersicht </a> <p>
+  
+  <hr>
   </body>
 </html>
+
