@@ -9,7 +9,10 @@ ______________________________________________________________________________
 
 010400	      180		Setting up homepage,
 	      			Define templates (java,html)
+
+030400        180		Working on the homepage
+				Review www.humanline.ch
 		
 
 ==============================================================================
-$Id: worklog.txt,v 1.1 2000/04/01 15:14:36 locher Exp $
+$Id: worklog.txt,v 1.2 2000/04/03 13:50:33 locher Exp $
