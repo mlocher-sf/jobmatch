@@ -7,29 +7,30 @@
   <body>
     <hr>
     <h1>Ausbildung</h1>  
-    <table border=1> <tr><td><form action="./CVEducation.html" method="get" >
-	    Schultyp: </td><td> <select name =" Schultypen"> 
-	      %                        <option value = "Primarschule"> Primarschule
-	    <option value = "Sekundarschule"> Sekundarschule
-	  </select> </td></tr><tr><td>
-	  Name der Schule: </td><td> <input type = "text"> </td></tr><tr><td>
-	  Beginn: </td><td> Tag   <input type = "text", size = 2, maxlength=2>
-                      Monat <input type = "text", size = 2, maxlength=2>
-                      Jahr  <input type = "text", size = 4, maxlength=4> </td></tr><tr><td>
-    Ende: </td><td> Tag   <input type = "text", size = 2, maxlength=2>
-                    Monat <input type = "text", size = 2, maxlength=2>
-                    Jahr  <input type = "text", size = 4, maxlength=4> </td></tr><tr><td>
-    Abschluss: </td><td> <select name ="Abschluss"> 
-                         <option value = "Matur">Matur
-                         <option value = "Diplom">Diplom
+    <form action='./CVEducationDetail.html' method='get'>
+    <input type="hidden" name="action" value="write">
+    <table border=1> <tr><td>
+    
+    Schultyp: </td><td> <select id="Schooltype" name ="Schooltype"> 
+	    <option id="templateSchooltype"> Sekundarschule
+	    </select> </td></tr><tr><td>
+ 
+    Name der Schule: </td><td> <input type = "text" name="Schoolname" id="Schoolname"> </td></tr><tr><td>
+    Beginn: </td><td> Tag   <input type = "text" name="BeginnDay" id="BeginnDay" size = 2, maxlength=2>
+                      Monat <input type = "text" name="BeginnMonth" id="BeginnMonth" size = 2, maxlength=2>
+                      Jahr  <input type = "text" name="BeginnYear" id="BeginnYear" size = 4, maxlength=4> </td></tr><tr><td>
+    Ende: </td><td> Tag   <input type = "text" name="EndDay" id="EndDay" size = 2, maxlength=2>
+                    Monat <input type = "text" name="EndMonth" id="EndMonth" size = 2, maxlength=2>
+                    Jahr  <input type = "text" name="EndYear" id="EndYear" size = 4, maxlength=4> </td></tr><tr><td>
+    
+    Abschluss: </td><td> <select id="Graduation" name ="Graduation"> 
+                         <option id="templateGraduation"> Diplom
                          </select> </td></tr><tr><td>
-    Bemerkungen: </td><td> <textarea name= "remarks", rows="3", Cols= "30"></textarea> </td></tr><tr><td>
+    Bemerkungen: </td><td> <textarea name= "Remarks" id="Remarks"  rows="3"  Cols= "30"></textarea> </td></tr><tr><td>
     <input type="submit" name="submit" value="Diese Schule hinzufuegen">
     </td></tr>
     </table>
     </form>
-
-    <p>
 
     <a href="./CVEducation.html"> Zurueck </a> <p>
     <a href="./CandidateHome.html"> Zurueck zur Uebersicht </a> <p>
