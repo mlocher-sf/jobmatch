@@ -1,0 +1,18 @@
+PSE Gruppe 4, Michael Locher
+==============================================================================
+
+				 TODO
+
+Deadline   Description
+______________________________________________________________________________
+
+030400     Bring JDBC Book to Mario
+
+040400     Present CVS, EMACS, LyX to the group
+	   Collect requirements
+
+110400	   Present Enhydra to the group
+		
+
+==============================================================================
+$Id: todo.txt,v 1.1 2000/04/01 15:14:36 locher Exp $
