@@ -29,10 +29,13 @@ SUBDIRS = \
 #
 CLASSES = \
 	Redirect \
-	Welcome
+	Welcome \
+	Student
 
 HTML_DIR = .
-HTML_CLASSES = WelcomeHTML
+HTML_CLASSES = \
+	WelcomeHTML \
+	StudentHTML	
 
 include $(ROOT)/config.mk
 
