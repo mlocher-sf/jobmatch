@@ -11,7 +11,8 @@ public class CVEducation extends CVMultiSection implements HttpPresentation {
 
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
-	assertLegitimation(comms,  Account.TYPE_CANDIDATE, "Welcome.po");
+	assertLegitimation(comms,  Account.TYPE_CANDIDATE);
+
         CVEducationHTML page = (CVEducationHTML)comms.xmlcFactory.create(CVEducationHTML.class);
 	Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
 	this.fillTable(page.getElementFormationTable(),

@@ -21,16 +21,26 @@ public abstract class AuthentificationPage implements HttpPresentation {
 	}
 	return false;
     }
-
-    protected void assertLegitimation(HttpPresentationComms comms,  
-				      int accountType, String failURL) {
+    
+    protected void assertLegitimation(HttpPresentationComms comms, int accountType) {
 	if (!this.isLegitimated(comms, accountType)) {
 	    try {
-		throw new ClientPageRedirectException(comms.request.getAppFileURIPath(failURL));
+		final String login = Login.getURL(accountType,
+						  this.getURL(comms));
+		throw new ClientPageRedirectException(login);
 	    } catch (Exception e) {
 		throw new RuntimeException(e.toString());
 	    }
 	}
+    }
+
+    protected String getURL(HttpPresentationComms comms) throws Exception {
+	final String params = comms.request.getQueryString();
+	String url = comms.request.getPresentationObjectRelativePath();
+	if (params != null) {
+	    url = url + "?" + params;
+	}
+	return java.net.URLEncoder.encode(url);
     }
 
     /**

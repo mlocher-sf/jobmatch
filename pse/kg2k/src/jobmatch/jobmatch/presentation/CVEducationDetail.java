@@ -17,9 +17,10 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
 
+	this.assertLegitimation(comms, Account.TYPE_CANDIDATE);
+
         CVEducationDetailHTML page = (CVEducationDetailHTML)comms.xmlcFactory.create(CVEducationDetailHTML.class);
-	
-	this.assertLegitimation(comms, Account.TYPE_CANDIDATE, "Welcome.po");
+
 	Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
 	
 	final String action = comms.request.getParameter("action");

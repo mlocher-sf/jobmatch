@@ -15,7 +15,7 @@ public class CVPersonal extends CVSection implements HttpPresentation {
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
 	
-	this.assertLegitimation(comms, Account.TYPE_CANDIDATE, "Welcome.po");
+	this.assertLegitimation(comms, Account.TYPE_CANDIDATE);
 
 	Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
         CVPersonalHTML page = (CVPersonalHTML) comms.xmlcFactory.create(CVPersonalHTML.class);
@@ -147,6 +147,9 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 // Document history
 /*
  * $Log: CVPersonal.java,v $
+ * Revision 1.13  2000/06/06 16:10:13  locher
+ * enhanced login
+ *
  * Revision 1.12  2000/06/06 08:20:21  loeffel
  * Populated drop down menus
  *

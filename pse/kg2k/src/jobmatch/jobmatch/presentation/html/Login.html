@@ -26,14 +26,15 @@
 	  <td> Typ </td>
 	  <td> 
 	    <select name="type">
-	      <option value="candidate">Kandidat</option>
-	      <option value="company">Firma</option>
-	      <option value="provider">Administrator</option>
+	      <option id="candidate" value="candidate">Kandidat</option>
+	      <option id="company"  value="company">Firma</option>
+	      <option id="provider" value="provider">Administrator</option>
 	    </select>
 	  </td>
 	</tr>
       </table>
  
+      <input id="grant" type="hidden" name="grantURL">
       <input type="submit" name="submit" value="Login">
       
     </form>

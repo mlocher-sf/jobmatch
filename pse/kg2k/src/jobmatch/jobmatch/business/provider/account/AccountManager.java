@@ -1,4 +1,4 @@
-// $Id: AccountManager.java,v 1.11 2000/06/02 14:56:14 locher Exp $
+// $Id: AccountManager.java,v 1.12 2000/06/06 16:10:10 locher Exp $
 
 package jobmatch.business.provider.account;
 
@@ -10,7 +10,7 @@ import com.lutris.dods.builder.generator.query.*;
  *
  *  @since May 8 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.11 $
+ *  @version $Revision: 1.12 $
  **/
 final public class AccountManager {
 
@@ -166,6 +166,7 @@ final public class AccountManager {
 	    if (company != null) { return true; }
 	} catch (Exception qe) {
 	    System.err.println(qe);
+	    throw new RuntimeException(qe.toString());
 	}
 	return false;
     }
@@ -184,6 +185,7 @@ final public class AccountManager {
 		provider.getPassphrase().equals(passphrase)) {	return true; }
 	} catch (Exception qe) {
 	    System.err.println(qe);
+	    throw new RuntimeException(qe.toString());
 	}
 	return false;
     }
@@ -199,6 +201,7 @@ final public class AccountManager {
 	    result = new ProviderAccount(query.getNextDO());
 	} catch (Exception qe) {
 	    System.err.println(qe);
+	    throw new RuntimeException(qe.toString());
 	}
 	return result;	
     }
@@ -234,6 +237,7 @@ final public class AccountManager {
 	    if (provider != null) { return true; }
 	} catch (Exception qe) {
 	    System.err.println(qe);
+	    throw new RuntimeException(qe.toString());
 	}
 	return false;
     }
@@ -242,6 +246,9 @@ final public class AccountManager {
 
 /*
  * $Log: AccountManager.java,v $
+ * Revision 1.12  2000/06/06 16:10:10  locher
+ * enhanced login
+ *
  * Revision 1.11  2000/06/02 14:56:14  locher
  * extended login behaviour
  *
