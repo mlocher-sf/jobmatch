@@ -17,8 +17,8 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 
         CVEducationDetailHTML page = (CVEducationDetailHTML)comms.xmlcFactory.create(CVEducationDetailHTML.class);
 	
-	/*Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
-
+	this.assertLegitimation(comms, Account.TYPE_CANDIDATE, "Welcome.po");
+	Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
 
 	final String action = comms.request.getParameter("action");
 	if (action != null && action.equals("write")){ 
@@ -27,29 +27,28 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 
 	this.fillSchooltype(page, candidate);
 	this.fillGraduation(page, candidate);
-	this.fillPage(page, candidate, comms);*/
+	this.fillPage(page, candidate, comms);
 	comms.response.writeHTML(page);
     }
 
-   /* private void fillGraduation(CVEducationDetail page, Candidate candidate){
+    private void fillGraduation(CVEducationDetailHTML page, Candidate candidate){
 	final EntityManager man = EntityManager.getUniqueInstance();
-	Collection data =  man.getSchooltypes();
-	Country selection = candidate.getSchoolBO();
-	HTMLOptionElement template = page.getElementTemplateNationality();
-	this.fillListBox(template, data, selection);
+	Collection data =  man.getGraduations();
+	HTMLOptionElement template = page.getElementTemplateGraduation();
+	this.fillListBox(template, data, null);
     }
 
-    private void fillSchooltype(CVEducationDetail page, Candidate candidate){
+    private void fillSchooltype(CVEducationDetailHTML page, Candidate candidate){
 	final EntityManager man = EntityManager.getUniqueInstance();
 	Collection data =  man.getSchooltypes();
-	Country selection = candidate.getSchoolBO();
-	HTMLOptionElement template = page.getElementTemplateNationality();
-	this.fillListBox(template, data, selection);
+	HTMLOptionElement template = page.getElementTemplateSchooltype();
+	this.fillListBox(template, data, null);
     }
 
-    
-    private void processData(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms) {
+    private void processData(CVEducationDetailHTML page, Candidate candidate, HttpPresentationComms comms) {
 	try{
+
+	    
 
 	}
 	catch(Exception e) {
@@ -58,9 +57,7 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 	}
     }
 
-
-
-    private void fillPage(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms) {
+    private void fillPage(CVEducationDetailHTML page, Candidate candidate, HttpPresentationComms comms) {
 	try {
     
 	}
@@ -68,7 +65,7 @@ public class CVEducationDetail extends CVSection implements HttpPresentation {
 	    System.out.println(e.toString());
 	    throw new RuntimeException();
 	}
-    }*/
+    }
 
 
 }

@@ -14,6 +14,9 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
+	
+	this.assertLegitimation(comms, Account.TYPE_CANDIDATE, "Welcome.po");
+
 	Candidate candidate = this.getCandidateAccount(comms).getCandidateBO();
         CVPersonalHTML page = (CVPersonalHTML) comms.xmlcFactory.create(CVPersonalHTML.class);
 
@@ -30,7 +33,7 @@ public class CVPersonal extends CVSection implements HttpPresentation {
     }
 
     /**
-     * Insert the data into the db  
+     * Fills the text fields with CV-data 
      **/
     private void processData(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms) {
 	try{
@@ -61,9 +64,6 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 	}
     }
     
-    /**
-     * Fills the fields with CV-data from the db
-     **/
     private void fillPage(CVPersonalHTML page, Candidate candidate, HttpPresentationComms comms) {
 	try {
 
@@ -103,26 +103,21 @@ public class CVPersonal extends CVSection implements HttpPresentation {
     }
 
     private String splitDate(Date d, int selector){
-	if (d != null){
-	    String result;
-	    switch (selector) {
-	    case 3:
-		result = String.valueOf(TimeUtil.getYear(d));
-		break;
-	    case 2:
-		result = String.valueOf(TimeUtil.getMonth(d));
-		break;
-	    case 1:
-		result = String.valueOf(TimeUtil.getDay(d));
-		break;
-	    default:
-		result = d.toString();
-	    }
-	    return result;
+	String result;
+	switch (selector) {
+	case 3:
+	    result = String.valueOf(TimeUtil.getYear(d));
+	    break;
+	case 2:
+	    result = String.valueOf(TimeUtil.getMonth(d));
+	    break;
+	case 1:
+	    result = String.valueOf(TimeUtil.getDay(d));
+	    break;
+	default:
+	    result = d.toString();
 	}
-	else {
-	    return "";
-	}
+	return result;
     }
 
     /**
@@ -152,8 +147,8 @@ public class CVPersonal extends CVSection implements HttpPresentation {
 // Document history
 /*
  * $Log: CVPersonal.java,v $
- * Revision 1.11  2000/06/05 14:05:03  studer
- * nullpointer exception in splitdata() korrigiert
+ * Revision 1.12  2000/06/06 08:20:21  loeffel
+ * Populated drop down menus
  *
  * Revision 1.10  2000/06/05 11:39:37  loeffel
  * CVPersonal should be finished: data can be inserted into the database
