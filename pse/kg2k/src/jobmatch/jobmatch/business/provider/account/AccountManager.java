@@ -1,4 +1,4 @@
-// $Id: AccountManager.java,v 1.6 2000/05/19 10:59:30 locher Exp $
+// $Id: AccountManager.java,v 1.7 2000/05/19 15:28:32 locher Exp $
 
 package jobmatch.business.provider.account;
 
@@ -10,7 +10,7 @@ import com.lutris.dods.builder.generator.query.*;
  *
  *  @since May 8 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.6 $
+ *  @version $Revision: 1.7 $
  **/
 final public class AccountManager {
 
@@ -37,6 +37,7 @@ final public class AccountManager {
 	    query.setQueryUsername(username);
 	    CandidateAccountBDO candidate;
 	    while ((candidate = query.getNextBDO()) != null){
+		System.err.println(candidate.getUsername());
 		if (candidate.getPassphrase().equals(passphrase)) return true;
 	    }
 	} catch (Exception qe) {
@@ -45,24 +46,25 @@ final public class AccountManager {
 	return false;
     }
 
-    public CandidateAccount createCandidateAccount(String username, String passphrase, String eMail) {
-	CandidateAccount account = null;
+    public void createCandidateAccount(String username, String passphrase, String eMail) {
 	if (!candidateUsernameExists(username)) {
 	    try {
-		account = (CandidateAccount) CandidateAccount.createVirgin(); 
-		//verify that cast ! (is it legal??)
+		CandidateBDO candidate = CandidateBDO.createVirgin();
+		candidate.setAIESECMember(false);
+		candidate.commit();
+		CandidateAccountBDO account = CandidateAccountBDO.createVirgin(); 
 		account.setUsername(username);
 		account.setPassphrase(passphrase);
 		account.setEmail(eMail);
+		account.setCandidate(candidate);
 		account.commit();
 	    } catch (Exception e) {
 		System.err.println(e);
-		// should thrown a jobmatchException
+		throw new RuntimeException("db error");
 	    }
 	} else {
-	    // throw
+	    throw new RuntimeException("username exists");
 	}
-	return account;
     }
 
     public boolean candidateUsernameExists(String username) {
@@ -73,6 +75,9 @@ final public class AccountManager {
 
 /*
  * $Log: AccountManager.java,v $
+ * Revision 1.7  2000/05/19 15:28:32  locher
+ * create login
+ *
  * Revision 1.6  2000/05/19 10:59:30  locher
  * matcher and mailer service including test skeletons
  *

@@ -7,8 +7,9 @@
   <body>
   <hr>
   <h1> Erstes Login </h1>
-  <form action='./CandidateHome.html' method='get'> 
-  <table border=1> <tr>
+    <form action='./HELPCreateLogin.html' method='get'>
+      <input type="hidden" name="action" value="create">
+      <table border=1> <tr>
 	  <td>
 	    Username: </td>
 	  <td> <input type='text' name='username' size='20' maxlength='20'></td>
@@ -42,6 +43,10 @@
       </table>
   </form>
   
+    <div id='MessageDiv'>
+      <strong id='messageContainer'><span id='message'>The message</span></strong>
+    </div>
+
   <hr>
   <a href='./Welcome.html'> Zurueck zur Einstiegsseite </a> <br>
   </body>
