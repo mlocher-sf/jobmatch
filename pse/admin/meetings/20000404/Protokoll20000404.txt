@@ -1,0 +1,19 @@
+Sitzungsprotokoll vom 4. April 2000
+
+Ort: Exwi A94
+Zeit: 10.00 Uhr - 11.15 Uhr
+anwesend: alle 
+
+Beschluesse:
+
+- Naechstes Meeting am Freitag, 7. April 2000. 16 - 18 Uhr, 3. Stock Exwi
+- locher mailt Fragen an Kunden an Assi
+- loeffel macht review von Workingday
+- dniederm Manager fuer deliverables, Termine
+- loeffel, dniederm zustaendig fuer schedule,Planung
+- locher toolsmith
+- Teaching-Themen:
+	Enhydra		locher
+	servlets	studer, bruhin
+	Makefile	locher, dniederm
+	JDBC		loeffel
