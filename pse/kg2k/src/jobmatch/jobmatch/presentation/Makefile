@@ -21,7 +21,8 @@ PACKAGEDIR = jobmatch/presentation
 # the PACKAGEDIR variable.
 #
 SUBDIRS = \
-	media
+	media \
+	script
 
 POST_SUBDIRS = \
 	test

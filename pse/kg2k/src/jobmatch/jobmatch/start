@@ -4,6 +4,7 @@ echo "***"
 echo "***  Connect to http://`hostname`:9004/"
 echo "***"
 
+setenv CLASSPATH ./lib/jobmatch.jar:$CLASSPATH
 /home/scg/Software/enhydra/enhydra3.0/bin/multiserver ./multiserver.conf &
 
 /usr/bin/clear
