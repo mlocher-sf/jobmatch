@@ -1,0 +1,14 @@
+PSE 2000 / Team 4
+==============================================================================
+
+		 Features of the Throwaway-Prototype
+
+
+Filling data from the DB in HTML Forms
+Adding new data to the DB
+Adding binary (pictures) to the DB
+
+
+
+==============================================================================
+$Id: protogoal.txt,v 1.1 2000/04/10 06:30:00 locher Exp $

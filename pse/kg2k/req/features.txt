@@ -1,0 +1,42 @@
+PSE 2000 / Team 4
+==============================================================================
+
+			 List of all features
+
+
+Name			        Description
+______________________________________________________________________________
+Studi hinzufuegen               Student in DB aufnehmen
+CV bearbeiten			Aenderungen am CV
+Firma hinzufuegen
+Suchprofil hinzufuegen
+Suchprofil bearbeiten
+Suchprofil ausfuehren           Das Matching wird ausgefuehrt
+Suchresultate ansehen
+Suchresultate bearbeiten
+MatchStatistik abfragen
+DB an/abkoppeln manuell         DB abschalten fuer Backup
+DB an/abkoppen automatisch	DB abschalten fuer Backup zeitgesteuert
+eMail versenden
+HTTPS Verbindung
+Download der Suchresultate      Suchresultate als txt oder XML downloaden
+DB Query fuer Studi             Firmenpraesentationen durchsuchen
+DB Query fuer Firma             Studi CVs durchsuchen
+DB Query fuer Provider          Alle DB abfragen
+Vergessenes Passwort mailen
+Periodisches Matching
+eMail Benachrichtung nach Matching
+Foto im CV
+Alte CV mahnen                  eMail an Studi
+Alte CV warnung loeschen	letzte warnung vor dem loeschen
+Alte CV loeschen
+Konfigurationsmoeglichkeiten
+Auswahllisten bearbeiten
+Studi kann CV zustellen         Firma wird benachrichtigt
+Suchresultate zuruecksetzen
+
+
+
+
+==============================================================================
+$Id: features.txt,v 1.1 2000/04/10 06:27:43 locher Exp $
