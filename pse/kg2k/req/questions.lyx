@@ -1,0 +1,163 @@
+#This file was created by <locher> Tue Apr  4 11:09:48 2000
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
+\lyxformat 2.15
+\textclass article
+\language default
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Fragen an den Kunden
+\layout Section
+
+Firmen
+\layout Itemize
+
+ist online Anmeldung moeglich ?
+\layout Itemize
+
+Wie wird das Matching abgerechnet?
+\layout Section
+
+Matching
+\layout Itemize
+
+Wie wird ein Match genau definiert ?
+\layout Itemize
+
+Welche Statistiken sind erwuenscht ?
+\layout Itemize
+
+Beschreibung der Analysetools
+\layout Subsection
+
+Suchprofile
+\layout Itemize
+
+Ist Gewichtung der Unterkritieren (partielle Matches) erwuenscht ?
+\layout Section
+
+Studenten
+\layout Itemize
+
+Match Counter fuer Studenten ?
+\layout Itemize
+
+Werden Studenten informiert (via Mail), wenn sie erfolgreich gematcht wurden
+ ?
+\layout Itemize
+
+Koennen Studenten passende Firmen suchen ?
+\layout Itemize
+
+Wie werden alte Daten entfernt ?
+\layout Itemize
+
+Reminder an Student, sein Konto zu aktualisieren (via eMail)
+\layout Subsection
+
+Lebenslauf
+\layout Itemize
+
+Selbsteinschaetzung ist so nicht sinnvoll (Welcher Student gibt an, dass
+ er nicht fleissig ist, welche Firma sucht faule Mitarbeiter?)
+\layout Itemize
+
+Militaerischer Grad
+\layout Itemize
+
+Ist Heimatort notwendig
+\layout Subsubsection
+
+Ausbildung
+\layout Itemize
+
+Semesterinformation
+\layout Section
+
+Listen ?
+\layout Itemize
+
+Welche Eintraege enthalten die Listen fuer Schulen, Computeranwendungen,
+ Hobbies,....
+\layout Section
+
+Homepage
+\layout Itemize
+
+Welche Qualitaet des Webdesigns wird erwartet? Corporate Identity ?
+\layout Section
+
+System
+\layout Subsection
+
+Authentifizierung
+\layout Itemize
+
+Wie erfolgt die Authentifizierung ? Passwoerter ?
+\layout Itemize
+
+Vergessene Passwoerter ?
+\layout Subsection
+
+Erweiterung
+\layout Itemize
+
+Welche Erweiterungen solllen eingeplant werden ?
+\layout Subsection
+
+Sicherheit
+\layout Itemize
+
+Existieren Auflagen durch das Datenschutzgesetz ?
+\layout Itemize
+
+Datensicherung (Backup) ?
+\layout Itemize
+
+Sichere Ubertragung der Daten im Internet (HTTPS) ?
+\layout Section
+
+Allgemeines
+\layout Itemize
+
+Spezifizierung der Domains (mogliche Inhalttypen) der Datenfelder ? 
+\layout Itemize
+
+fuer alle Datenfelder, wo unklar ist, ob mehrere Werte gespeichert werden:
+ diskrete oder kontinuierliche Wertemenge ?
+\layout Itemize
+
+Performance Requirements: Wielange darf eine Query / Matching hoechstens
+ dauern ?
+\layout Itemize
+
+Kontroll/Analyse Tools als Standalone Anwendung
+\layout Subsection
+
+System Umfeld
+\layout Itemize
+
+Welches sind die vorhandenen Infrastrukturen ?
+\layout Itemize
+
+Wie ist der Ausbildungsgrad des AIESEC Personals, das die Anwendung betreut.
+\the_end
