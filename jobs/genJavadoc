@@ -1,18 +1,28 @@
 #!/usr/local/bin/tcsh
 
-# $Id: genJavadoc,v 1.6 2000/05/10 18:31:36 locher Exp $
+# $Id: genJavadoc,v 1.7 2000/05/14 12:01:50 locher Exp $
 
 set SOURCE = pse/kg2k/src/jobmatch/
 set INDIR = /tmp/$SOURCE
 set OUTDIR = /home/pse4/public_html/doc
 set CONTENTFILE = $INDIR/javadocFiles
 
-set PARAMS = "-package -splitindex -use"
+set PARAMS = "-package -splitindex -use -version"
 set HEADER = "<b>PSE 2000 Group 4</b>"
 
+set LINKJAVA="-linkoffline http://www.iam.unibe.ch/~scg/Resources/Java/Mirror/java2doc/api $INDIR/packagelists/java2/"
+set LINKENHYDRA="-linkoffline http://www.iamexwi.unibe.ch/studenten/pse4/enhydra/enhydra3.0/doc/user-doc $INDIR/packagelists/enhydra/"
+set LINKJUNIT="-linkoffline http://www.iamexwi.unibe.ch/studenten/pse4/junit $INDIR/packagelists/junit/"
+set LINK="$LINKJAVA" #$LINKJUNIT $LINKENHYDRA
+
 cd /tmp
-/usr/local/bin/cvs -d /home/pse4/cvsroot co $SOURCE
+/usr/local/bin/cvs -d /home/pse4/cvsroot co pse
 mkdir -p $OUTDIR
 cd $INDIR
-/usr/local/jdk1.2.2/bin/javadoc $PARAMS -header "$HEADER" -sourcepath $INDIR -d $OUTDIR @$CONTENTFILE
-chmod -R 775 $OUTDIR/* $OUTDIR
+set CLASSPATH=/tmp/pse/tool/idoclet.jar:/opt/local/jdk1.2.2/lib/tools.jar:$CLASSPATH
+/opt/local/jdk1.2.2/bin/java -cp $CLASSPATH com.sun.tools.javadoc.Main $PARAMS -header "$HEADER" $LINK  -doclet iContract.doclet.Standard -sourcepath $INDIR -d $OUTDIR @$CONTENTFILE 
+chmod -R 775 $OUTDIR
+
+
+
+
