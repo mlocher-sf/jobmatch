@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doml>
+  <database database="Standard">
+    <package id="playground">
+      <package id="playground.data">
+        <table id="playground.data.Students">
+          <column id="Name" isIndex="true" usedForQuery="true">
+            <javadoc>/**
+ * Name des Studenten
+ */</javadoc>
+            <type dbType="VARCHAR" javaType="String" size="32"/>
+          </column>
+          <column id="Lname" usedForQuery="true">
+            <javadoc>/**
+ * Last name of student
+ */</javadoc>
+            <type dbType="VARCHAR" javaType="String" size="32"/>
+          </column>
+        </table>
+      </package>
+    </package>
+  </database>
+</doml>

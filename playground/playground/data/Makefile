@@ -14,7 +14,7 @@ ROOT =	../..
 #
 PACKAGEDIR = playground/data
 
-CLASSES =
+CLASSES = StudentsBDO StudentsDO StudentsDataStruct StudentsQuery
 
 include $(ROOT)/config.mk
 
