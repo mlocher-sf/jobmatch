@@ -1,6 +1,7 @@
-// $Id: CurriculumVitae.java,v 1.2 2000/06/06 11:09:59 locher Exp $
+// $Id: CurriculumVitae.java,v 1.3 2000/06/13 15:29:00 locher Exp $
 package jobmatch.presentation;
 
+import jobmatch.business.provider.account.*;
 import com.lutris.appserver.server.httpPresentation.*;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
@@ -12,13 +13,15 @@ import java.io.*;
  *
  * @since May 31 2000
  * @author $Author: locher $
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  **/
 public class CurriculumVitae extends PDFPresentation {
     
     protected void formatDocument(HttpPresentationComms comms, Document document) 
 	throws DocumentException, HttpPresentationException
     {
+
+	this.assertLegitimation(comms, Account.TYPE_CANDIDATE);
 
 	final Font titleFont = new Font(Font.HELVETICA, 24, Font.BOLD);
 	final Font heading1Font = new Font(Font.HELVETICA, 16, Font.BOLD);
@@ -53,6 +56,9 @@ public class CurriculumVitae extends PDFPresentation {
 // Document history
 /**
  * $Log: CurriculumVitae.java,v $
+ * Revision 1.3  2000/06/13 15:29:00  locher
+ * added CV Preview to CandidateHome
+ *
  * Revision 1.2  2000/06/06 11:09:59  locher
  * *** empty log message ***
  *

@@ -1,4 +1,4 @@
-// $Id: DocumentPresentation.java,v 1.1 2000/06/02 10:22:00 locher Exp $
+// $Id: DocumentPresentation.java,v 1.2 2000/06/13 15:29:01 locher Exp $
 package jobmatch.presentation;
 
 import com.lutris.appserver.server.httpPresentation.*;
@@ -10,9 +10,9 @@ import java.io.*;
  *
  *  @since May 31 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.1 $
+ *  @version $Revision: 1.2 $
  **/
-abstract class DocumentPresentation implements HttpPresentation {
+abstract class DocumentPresentation extends AuthentificationPage implements HttpPresentation {
     
     final private static int INITIAL_BUFFERSIZE = 2048;
     final private static String AUTHOR = "JobMatch by PSE 2000/4 http://www.iam.unibe.ch";
@@ -77,6 +77,9 @@ abstract class DocumentPresentation implements HttpPresentation {
 // Document history
 /**
  * $Log: DocumentPresentation.java,v $
+ * Revision 1.2  2000/06/13 15:29:01  locher
+ * added CV Preview to CandidateHome
+ *
  * Revision 1.1  2000/06/02 10:22:00  locher
  * generic presentation
  *
