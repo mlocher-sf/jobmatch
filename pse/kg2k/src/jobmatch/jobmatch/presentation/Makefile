@@ -66,7 +66,8 @@ CLASSES = \
 	CVSectionFormatter \
 	Logout \
 	DocumentPresentation \
-	PDFPresentation
+	PDFPresentation \
+	CurriculumVitae
 
 XMLC_HTML_OPTS_FILE = options.xmlc
 

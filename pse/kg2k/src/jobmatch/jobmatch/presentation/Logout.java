@@ -27,7 +27,7 @@ public class Logout implements HttpPresentation {
      **/
     private void invalidateAccount(SessionData sessionData) {
 	try {
-	    sessionData.set("account", null);
+	    sessionData.remove("account");
 	} catch (Exception e) {
 	    throw new RuntimeException(e.toString());
 	}
