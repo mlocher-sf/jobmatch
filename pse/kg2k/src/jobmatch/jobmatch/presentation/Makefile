@@ -37,7 +37,8 @@ CLASSES = \
 	CompanyHome \
 	CreateLogin \
 	LoginCompanies \
-	Profile
+	Profile \
+	ProfileResults
 
 
 XMLC_HTML_OPTS_FILE = options.xmlc
