@@ -1,4 +1,4 @@
-// $Id: School.java,v 1.4 2000/05/30 08:26:10 locher Exp $
+// $Id: School.java,v 1.5 2000/05/30 14:24:29 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,7 +10,7 @@ import java.util.*;
  *
  *  @since May 26 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.4 $
+ *  @version $Revision: 1.5 $
  **/
 public class School extends SchoolBDO implements Description {
     
@@ -20,7 +20,7 @@ public class School extends SchoolBDO implements Description {
 	this.commit();
     }
 
-    private School(SchoolDO dataObject) {
+    public School(SchoolDO dataObject) {
 	super(dataObject);
     }
 
@@ -66,7 +66,7 @@ public class School extends SchoolBDO implements Description {
     }
 
     /** @return true if a is considered the same as b **/
-    private static boolean semanticEquality(School a, School b) {
+    private boolean semanticEquality(School a, School b) {
 	//XXX define the equality and remove the exception !!!
 	throw new RuntimeException("semanticEqualitiy not defined");
 	//return (a == b);
@@ -74,7 +74,11 @@ public class School extends SchoolBDO implements Description {
 
     /** @see Object.toString **/
     public String toString() {
-	return super.toString();
+	try {
+	    return this.getDescription();
+	} catch (Exception e) { 
+	    throw new RuntimeException(e.toString()); 
+	}
     }
        
 } //class
@@ -82,6 +86,9 @@ public class School extends SchoolBDO implements Description {
 
 /*
  * $Log: School.java,v $
+ * Revision 1.5  2000/05/30 14:24:29  locher
+ * toString defined
+ *
  * Revision 1.4  2000/05/30 08:26:10  locher
  * get methods for entities
  *

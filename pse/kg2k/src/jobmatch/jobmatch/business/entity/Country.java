@@ -1,4 +1,4 @@
-// $Id: Country.java,v 1.4 2000/05/30 12:47:54 studer Exp $
+// $Id: Country.java,v 1.5 2000/05/30 14:24:28 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,8 +10,8 @@ import java.util.*;
  *  Country Business Object
  *
  *  @since May 26 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.4 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.5 $
  **/
 public class Country extends CountryBDO implements Description {
     
@@ -78,14 +78,23 @@ public class Country extends CountryBDO implements Description {
 
     /** @see Object.toString **/
     public String toString() {
-	return super.toString();
+	try {
+	    return this.getDescription();
+	} catch (Exception e) { 
+	    throw new RuntimeException(e.toString()); 
+	}
     }
+    
+
        
 } //class
 
 
 /*
  * $Log: Country.java,v $
+ * Revision 1.5  2000/05/30 14:24:28  locher
+ * toString defined
+ *
  * Revision 1.4  2000/05/30 12:47:54  studer
  * DropDown wird jetzt via DB abefuellt
  *
