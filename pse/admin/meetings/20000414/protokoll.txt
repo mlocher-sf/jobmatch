@@ -1,0 +1,22 @@
+Sitzungsprotokoll PSE 2000, Gruppe 4
+==============================================================================
+Datum: 14. April 2000
+Zeit: 1630 - 1645
+Ort: Pool, A94
+anwesend: alle - Denise
+-------------------------------------------------------------------------------
+
+Kurze Standortbestimmung:
+      Fazit: gut
+
+ 
+Beschluesse:
+
+Montag, Dienstag -> Requirements ausarbeiten
+   * (Mario, Denise) Non-Functionals
+   * (rest) Functional
+
+
+
+==============================================================================
+$Id: protokoll.txt,v 1.1 2000/04/14 15:04:00 locher Exp $
