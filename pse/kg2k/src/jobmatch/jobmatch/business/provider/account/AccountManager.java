@@ -1,4 +1,4 @@
-// $Id: AccountManager.java,v 1.7 2000/05/19 15:28:32 locher Exp $
+// $Id: AccountManager.java,v 1.8 2000/05/23 14:10:55 locher Exp $
 
 package jobmatch.business.provider.account;
 
@@ -10,7 +10,7 @@ import com.lutris.dods.builder.generator.query.*;
  *
  *  @since May 8 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.7 $
+ *  @version $Revision: 1.8 $
  **/
 final public class AccountManager {
 
@@ -35,22 +35,31 @@ final public class AccountManager {
 	try {
 	    CandidateAccountQuery query = new CandidateAccountQuery();
 	    query.setQueryUsername(username);
-	    CandidateAccountBDO candidate;
-	    while ((candidate = query.getNextBDO()) != null){
-		System.err.println(candidate.getUsername());
-		if (candidate.getPassphrase().equals(passphrase)) return true;
-	    }
+	    final CandidateAccountBDO candidate = query.getNextBDO();
+	    if (candidate != null && 
+		candidate.getPassphrase().equals(passphrase)) {	return true; }
 	} catch (Exception qe) {
 	    System.err.println(qe);
 	}
 	return false;
     }
 
+    public CandidateAccount getCandidateAccount(String username) {
+	CandidateAccount result = null;
+	try {
+	    CandidateAccountQuery query = new CandidateAccountQuery();
+	    query.setQueryUsername(username);
+	    result = new CandidateAccount(query.getNextDO());
+	} catch (Exception qe) {
+	    System.err.println(qe);
+	}
+	return result;	
+    }
+
     public void createCandidateAccount(String username, String passphrase, String eMail) {
 	if (!candidateUsernameExists(username)) {
 	    try {
 		CandidateBDO candidate = CandidateBDO.createVirgin();
-		candidate.setAIESECMember(false);
 		candidate.commit();
 		CandidateAccountBDO account = CandidateAccountBDO.createVirgin(); 
 		account.setUsername(username);
@@ -68,6 +77,14 @@ final public class AccountManager {
     }
 
     public boolean candidateUsernameExists(String username) {
+	try {
+	    CandidateAccountQuery query = new CandidateAccountQuery();
+	    query.setQueryUsername(username);
+	    final CandidateAccountBDO candidate = query.getNextBDO();
+	    if (candidate != null) { return true; }
+	} catch (Exception qe) {
+	    System.err.println(qe);
+	}
 	return false;
     }
     
@@ -75,6 +92,9 @@ final public class AccountManager {
 
 /*
  * $Log: AccountManager.java,v $
+ * Revision 1.8  2000/05/23 14:10:55  locher
+ * authentification mechanisms
+ *
  * Revision 1.7  2000/05/19 15:28:32  locher
  * create login
  *

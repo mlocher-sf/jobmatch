@@ -1,4 +1,4 @@
-// $Id: Candidate.java,v 1.2 2000/05/19 10:59:29 locher Exp $
+// $Id: Candidate.java,v 1.3 2000/05/23 14:10:53 locher Exp $
 
 package jobmatch.business.candidate;
 
@@ -10,12 +10,16 @@ import java.io.Serializable;
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class Candidate extends CandidateBDO {
     
     public Candidate() throws Exception {
 	super();
+    }
+
+    public Candidate(CandidateDO dataObject) {
+	super(dataObject);
     }
     
     /** @see Object.equals **/
@@ -43,34 +47,15 @@ public class Candidate extends CandidateBDO {
     public String toString() {
 	return super.toString();
     }
-
-    /** @see Object.clone **/
-    public Object clone() {
-	return this.cloneCandidate();
-    }
-    
-    /** creates a clone of this object **/
-    private Candidate cloneCandidate() {
-	// Do the basic clone
-	Candidate theClone = null;
-	try {
-	    theClone = (Candidate) super.clone();
-	}
-	catch (CloneNotSupportedException e) {
-	    // Should never happen
-	    throw new InternalError(e.toString());
-	}
-
-	// Clone mutable members
-	// XXX
-	return theClone;
-    }
        
 } //class
 
 
 /*
  * $Log: Candidate.java,v $
+ * Revision 1.3  2000/05/23 14:10:53  locher
+ * authentification mechanisms
+ *
  * Revision 1.2  2000/05/19 10:59:29  locher
  * matcher and mailer service including test skeletons
  *

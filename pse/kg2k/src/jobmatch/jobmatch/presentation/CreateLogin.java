@@ -1,4 +1,4 @@
-// $Id: CreateLogin.java,v 1.2 2000/05/19 15:28:34 locher Exp $
+// $Id: CreateLogin.java,v 1.3 2000/05/23 14:11:00 locher Exp $
 package jobmatch.presentation;
 
 import com.lutris.xml.xmlc.*;
@@ -9,7 +9,7 @@ import jobmatch.business.provider.account.*;
 /**
  *  @since May 16 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class CreateLogin implements HttpPresentation {
 
@@ -27,8 +27,10 @@ public class CreateLogin implements HttpPresentation {
 	    if (passphrase != null && passphrase.equals(confirm)) {
 		try {
 		    this.createAccount(username, passphrase, email);
+		    final String loginURL = CheckLogin.getLoginURL(username, passphrase, 
+								   "CandidateHome.po", "Welcome.po");
 		    throw new ClientPageRedirectException(
-					   comms.request.getAppFileURIPath("CandidateHome.po"));
+					   comms.request.getAppFileURIPath(loginURL));
 		} catch  (Exception e) {
 		    CreateLoginHTML page = (CreateLoginHTML)comms.xmlcFactory.create(CreateLoginHTML.class);
 		    page.setTextMessage(e.toString());
@@ -48,10 +50,16 @@ public class CreateLogin implements HttpPresentation {
     }
 
     private void createAccount(String username, String passphrase, String email) {
-	try {
-	    AccountManager.getUniqueInstance().createCandidateAccount(username, passphrase, email);
-	} catch (Exception e) {
-	    throw new RuntimeException("creation failed");
+	if (!AccountManager.getUniqueInstance().candidateUsernameExists(username)) {
+	    try {
+		AccountManager.getUniqueInstance().createCandidateAccount(username, 
+									  passphrase, 
+									  email);
+	    } catch (Exception e) {
+		throw new RuntimeException("creation failed");
+	    }
+	} else {
+	    throw new  RuntimeException("username already exists");
 	}
     }
 
@@ -60,6 +68,9 @@ public class CreateLogin implements HttpPresentation {
 // Document history
 /**
  * $Log: CreateLogin.java,v $
+ * Revision 1.3  2000/05/23 14:11:00  locher
+ * authentification mechanisms
+ *
  * Revision 1.2  2000/05/19 15:28:34  locher
  * create login
  *

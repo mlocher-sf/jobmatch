@@ -32,6 +32,7 @@ POST_SUBDIRS = \
 #
 CLASSES = \
 	Redirect \
+	AuthentificationPage \
 	CandidateHome \
 	CVPersonal \
 	Welcome \

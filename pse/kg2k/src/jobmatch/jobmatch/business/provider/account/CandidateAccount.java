@@ -1,25 +1,37 @@
-// $Id: CandidateAccount.java,v 1.4 2000/05/19 10:59:30 locher Exp $
+// $Id: CandidateAccount.java,v 1.5 2000/05/23 14:10:55 locher Exp $
 
 package jobmatch.business.provider.account;
 
 import jobmatch.data.*;
+import jobmatch.business.candidate.Candidate;
 
 /**
  *  An Account for Candidates
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.4 $
+ *  @version $Revision: 1.5 $
  **/
 public class CandidateAccount extends CandidateAccountBDO implements Account {
         
     public CandidateAccount() throws Exception {
 	super();
-	System.out.println("new Candidate Account created");
+    }
+
+    public CandidateAccount(CandidateAccountDO dataObject) throws Exception {
+	super(dataObject);
     }
 
     public int getType() {
 	return TYPE_CANDIDATE;
+    }
+
+    public Candidate getCandidateBO() {
+	try {
+	    return new Candidate(this.getCandidate());
+	} catch (Exception e) {
+	    throw new RuntimeException(e.toString());
+	}
     }
     
     /** @see Object.equals **/
@@ -52,6 +64,9 @@ public class CandidateAccount extends CandidateAccountBDO implements Account {
 
 /*
  * $Log: CandidateAccount.java,v $
+ * Revision 1.5  2000/05/23 14:10:55  locher
+ * authentification mechanisms
+ *
  * Revision 1.4  2000/05/19 10:59:30  locher
  * matcher and mailer service including test skeletons
  *
