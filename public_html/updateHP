@@ -1,14 +1,14 @@
-#!/usr/local/bin/tcsh
-# $Id: updateHP,v 1.5 2000/05/08 06:23:10 locher Exp $
+#!/bin/tcsh
+# $Id: updateHP,v 1.6 2000/07/17 10:54:57 mlocher Exp $
 
 echo Update PSE Homepage...
-cd /home/pse4/public_html
-/usr/local/bin/cvs update
+cd /home/groups/jobmatch/public_html
+/usr/bin/cvs update
 
 cd /tmp
-/usr/local/bin/cvs co pse/kg2k/src/jobmatch/jobmatch/presentation/html
-cp -R pse/kg2k/src/jobmatch/jobmatch/presentation/html /home/pse4/public_html/
-cd /home/pse4/public_html
+/usr/bin/cvs co pse/kg2k/src/jobmatch/jobmatch/presentation/html
+cp -R pse/kg2k/src/jobmatch/jobmatch/presentation/html /home/groups/jobmatch/public_html/
+cd /home/groups/jobmatch/public_html
 chmod -R 775 *
 rm -rf storyboard/
 mv html storyboard
