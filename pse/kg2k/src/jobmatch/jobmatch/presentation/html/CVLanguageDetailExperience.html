@@ -9,25 +9,16 @@
     <h1> Sprachkenntnisse </h1>
     
     <table border=1><tr><td> <form action="./CVLanguageExperience.html" method="get"> 
-	    Sprache: </td><td> <select name="language"> 
-	    <option value="de"> Deutsch
-	    <option value="f"> Franzoesisch
-	    <option value="it"> Italienisch
-	    <option value="gb"> Englisch
+	    Sprache: </td><td> <select name="language" id="language"> 
+	    <option id="templateLanguage"> Deutsch
 	  </select> </td></tr><tr><td>
-	  schriftliche Kenntnis: </td><td> <select name="write">
-	    <option value="m"> Muttersprache
-	    <option value="a"> Anfaenger
-	    <option value="f"> Fortgeschrittener
-	    <option value="p"> Profi
+	  schriftliche Kenntnis: </td><td> <select name="writingSkill" id="writingSkill">
+	    <option id="templateWritingSkill"> Muttersprache
 	  </select> </td></tr><tr><td>
-	  muendliche Kenntnis: </td><td> <select name="speak">
-	    <option value="m"> Muttersprache
-	    <option value="a"> Anfaenger
-	    <option value="f"> Fortgeschrittener
-	    <option value="p"> Profi
+	  muendliche Kenntnis: </td><td> <select name="oralSkill" id="oralSkill">
+	    <option id="templateOralSkill"> Muttersprache
 	  </select> </td></tr><tr><td>
-	  Diplome: </td><td> <textarea name="diplomas" rows=3 cols=30></textarea> </td></tr><tr><td>
+	  Diplome: </td><td> <textarea name="diploma"id="diploma" rows=3 cols=30></textarea> </td></tr><tr><td>
 	  <input type="submit" name="submit" value="Diese Sprache hinzufuegen">
 	</td></tr>
     </table>
