@@ -1,3 +1,7 @@
+New Files;
+----------------------------------------------------------------------
+CandidateHomeFirstLogin.html
+
 Changed Filenames:
 
 old				new
@@ -14,7 +18,7 @@ profileEducation.html		ProfileEducation.html
 profileComputerExperience.html	ProfileComputerExperience.html
 section.html			Section.html
 CompanyOverview.html		CompanyHome.html
-
+Login.html			CreateLogin.html
 
 Added stuff:
 file				what
