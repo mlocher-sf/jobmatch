@@ -6,12 +6,17 @@ import java.util.*;
 import org.w3c.dom.*;
 import org.w3c.dom.html.*;
 import java.io.*;
+import jobmatch.presentation.*;
 import com.lutris.appserver.server.Application;
+import jobmatch.business.provider.account.Account;
 
-public class JobScriptRunner implements HttpPresentation {
+
+public class JobScriptRunner extends AuthentificationPage implements HttpPresentation {
 
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
+
+	this.assertLegitimation(comms, Account.TYPE_PROVIDER);
 
 	JobScriptsHTML page = (JobScriptsHTML)comms.xmlcFactory.create(JobScriptsHTML.class);
 	this.preparePage(this.getScripts(comms.application), page);

@@ -4,11 +4,15 @@ import com.lutris.appserver.server.httpPresentation.*;
 import org.python.util.PythonInterpreter;
 import java.util.*;
 import org.w3c.dom.html.*;
+import jobmatch.presentation.*;
+import jobmatch.business.provider.account.Account;
 
-public class JobScript implements HttpPresentation {
+public class JobScript extends AuthentificationPage implements HttpPresentation {
 
     public void run(HttpPresentationComms comms) 
         throws HttpPresentationException {
+
+	this.assertLegitimation(comms, Account.TYPE_PROVIDER);
 
 	final String action = comms.request.getParameter("action");
 
