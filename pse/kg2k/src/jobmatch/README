@@ -10,7 +10,7 @@
    in the output directory, along with a start script.
 3) Type "cd output".
 4) Type "./start".
-5) Use your web browser to access jobmatch at:  http://localhost:9000
+5) Use your web browser to access jobmatch at:  http://localhost:9004
 
 
 NOTES:
