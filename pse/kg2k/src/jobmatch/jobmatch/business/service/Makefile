@@ -4,7 +4,7 @@
 #
 #
 
-#SUBDIRS = 
+POST_SUBDIRS = test
 
 #
 #  Where is the root of the source tree?
@@ -16,7 +16,10 @@ ROOT =	../../..
 #
 PACKAGEDIR = jobmatch/business/service
 
-CLASSES =
+CLASSES = \
+	MailMessage \
+	Matcher \
+	Mailer
 
 USEICONTRACT=1
 

@@ -1,4 +1,4 @@
-// $Id: AllTests.java,v 1.2 2000/05/14 16:18:33 locher Exp $
+// $Id: AllTests.java,v 1.3 2000/05/19 10:59:43 locher Exp $
 
 package jobmatch.test;
 
@@ -10,7 +10,7 @@ import java.util.*;
  *
  *  @since May 12 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.3 $
  **/
 public class AllTests extends TestSuite {
 
@@ -23,8 +23,7 @@ public class AllTests extends TestSuite {
     }
 
     private void addAllTests() {
-	this.addTest(jobmatch.business.company.tree.test.TestTree.suite());
-//	this.addTest(new jobmatch.business.company.tree.test.TestTree().suite());
+	this.addTest(jobmatch.business.test.AllTests.suite());
     }
 
     public void addTest(Test test) {
@@ -46,6 +45,9 @@ public class AllTests extends TestSuite {
 // Document history
 /*
  * $Log: AllTests.java,v $
+ * Revision 1.3  2000/05/19 10:59:43  locher
+ * matcher and mailer service including test skeletons
+ *
  * Revision 1.2  2000/05/14 16:18:33  locher
  * display test results
  *

@@ -1,20 +1,19 @@
-// $Id: Candidate.java,v 1.2 2000/05/19 10:59:29 locher Exp $
+// $Id: MailMessage.java,v 1.1 2000/05/19 10:59:32 locher Exp $
 
-package jobmatch.business.candidate;
+package jobmatch.business.service;
 
-import jobmatch.data.*;
 import java.io.Serializable;
 
 /**
- *  Candidate Business Object
+ *  Represents a Mail Message
  *
- *  @since May 4 2000
+ *  @since May 19 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.2 $
+ *  @version $Revision: 1.1 $
  **/
-public class Candidate extends CandidateBDO {
+public class MailMessage implements Cloneable, Serializable {
     
-    public Candidate() throws Exception {
+    public MailMessage() {
 	super();
     }
     
@@ -25,7 +24,7 @@ public class Candidate extends CandidateBDO {
 	}
 	
 	try {
-	    return semanticEquality(this, (Candidate) other);
+	    return semanticEquality(this, (MailMessage) other);
 	}
 	catch (ClassCastException e) {
 	    return false;
@@ -33,7 +32,7 @@ public class Candidate extends CandidateBDO {
     }
 
     /** @return true if a is considered the same as b **/
-    private static boolean semanticEquality(Candidate a, Candidate b) {
+    private static boolean semanticEquality(MailMessage a, MailMessage b) {
 	//XXX define the equality and remove the exception !!!
 	throw new RuntimeException("semanticEqualitiy not defined");
 	//return (a == b);
@@ -46,15 +45,15 @@ public class Candidate extends CandidateBDO {
 
     /** @see Object.clone **/
     public Object clone() {
-	return this.cloneCandidate();
+	return this.cloneMailMessage();
     }
     
     /** creates a clone of this object **/
-    private Candidate cloneCandidate() {
+    private MailMessage cloneMailMessage() {
 	// Do the basic clone
-	Candidate theClone = null;
+	MailMessage theClone = null;
 	try {
-	    theClone = (Candidate) super.clone();
+	    theClone = (MailMessage) super.clone();
 	}
 	catch (CloneNotSupportedException e) {
 	    // Should never happen
@@ -68,15 +67,13 @@ public class Candidate extends CandidateBDO {
        
 } //class
 
-
+// Document history
 /*
- * $Log: Candidate.java,v $
- * Revision 1.2  2000/05/19 10:59:29  locher
+ * $Log: MailMessage.java,v $
+ * Revision 1.1  2000/05/19 10:59:32  locher
  * matcher and mailer service including test skeletons
  *
- * Revision 1.1  2000/05/04 14:21:24  locher
- * makefiles
- *
- * Revision 1.1.1.1  2000/04/01 14:04:42  locher
+ * Revision 1.2  2000/05/12 08:46:10  locher
+ * log history moved to the end of the file
  *
  */

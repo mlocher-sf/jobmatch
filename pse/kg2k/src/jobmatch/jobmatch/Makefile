@@ -22,7 +22,9 @@ PACKAGEDIR = jobmatch
 #
 SUBDIRS = \
 	data \
-	business \
+	business
+
+POST_SUBDIRS = \
 	test \
 	presentation
 

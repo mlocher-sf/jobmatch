@@ -1,33 +1,15 @@
-// $Id: CandidateAccount.java,v 1.3 2000/05/17 09:59:48 locher Exp $
-
-/*
- * $Log: CandidateAccount.java,v $
- * Revision 1.3  2000/05/17 09:59:48  locher
- * changed password to passphrase
- *
- * Revision 1.2  2000/05/10 17:50:23  locher
- * login procedure
- *
- * Revision 1.1  2000/05/04 14:50:29  locher
- * created little hierarchy
- *
- * Revision 1.1.1.1  2000/04/01 14:04:42  locher
- *
- */
+// $Id: CandidateAccount.java,v 1.4 2000/05/19 10:59:30 locher Exp $
 
 package jobmatch.business.provider.account;
 
 import jobmatch.data.*;
-
-// RENAME the DB Field Password to Passphrase and kill this import !!
-import com.lutris.dods.builder.generator.query.DataObjectException;
 
 /**
  *  An Account for Candidates
  *
  *  @since May 4 2000
  *  @author $Author: locher $
- *  @version $Revision: 1.3 $
+ *  @version $Revision: 1.4 $
  **/
 public class CandidateAccount extends CandidateAccountBDO implements Account {
         
@@ -67,3 +49,21 @@ public class CandidateAccount extends CandidateAccountBDO implements Account {
     }
            
 } //class
+
+/*
+ * $Log: CandidateAccount.java,v $
+ * Revision 1.4  2000/05/19 10:59:30  locher
+ * matcher and mailer service including test skeletons
+ *
+ * Revision 1.3  2000/05/17 09:59:48  locher
+ * changed password to passphrase
+ *
+ * Revision 1.2  2000/05/10 17:50:23  locher
+ * login procedure
+ *
+ * Revision 1.1  2000/05/04 14:50:29  locher
+ * created little hierarchy
+ *
+ * Revision 1.1.1.1  2000/04/01 14:04:42  locher
+ *
+ */

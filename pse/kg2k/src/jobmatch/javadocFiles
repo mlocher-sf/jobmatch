@@ -4,5 +4,8 @@ jobmatch.business.provider.account
 jobmatch.business.candidate
 jobmatch.business.company.profile.tree
 jobmatch.business.company.profile.tree.test
+jobmatch.business.service
+jobmatch.business.service.test
+jobmatch.business.test
 jobmatch.data
 jobmatch.test

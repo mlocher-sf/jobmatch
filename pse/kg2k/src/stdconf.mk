@@ -31,7 +31,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #-----------------------------------------------------------------------------
-# $Id: stdconf.mk,v 1.2 2000/05/16 13:40:26 locher Exp $
+# $Id: stdconf.mk,v 1.3 2000/05/19 10:59:23 locher Exp $
 #-----------------------------------------------------------------------------
 
 #  This file defines variables that contain the locations of various devsys
@@ -118,7 +118,7 @@ endif
 # Compile-time flags for the Java compiler.
 #
 ifeq ($(JCFLAGS),)
-JCFLAGS = ${JCDEBUG} -J-Xmx256m -J-Xms56m
+JCFLAGS = ${JCDEBUG} -J-Xmx256m -J-Xms32m
 endif
 
 #
