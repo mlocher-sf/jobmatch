@@ -40,5 +40,7 @@ HTML_CLASSES = \
 	StudentHTML \
 	PictureHTML
 
+JAR_INSTALL = style.css
+
 include $(ROOT)/config.mk
 

@@ -15,6 +15,7 @@ ROOT =	../..
 PACKAGEDIR = playground/business
 
 CLASSES = \
+	Mailer \
 	StudentBO \
 	Clipboard
 
