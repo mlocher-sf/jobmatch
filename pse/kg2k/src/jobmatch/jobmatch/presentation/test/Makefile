@@ -19,12 +19,14 @@ PACKAGEDIR = jobmatch/presentation/test
 # To add more Java classes, create the .java files and add their names to
 # this list (without the .java extension).
 #
-CLASSES = UnitTests
+CLASSES = UnitTests\
+	TestData
 
 
 HTML_DIR = .
 HTML_CLASSES = \
-	TestResultHTML
+	TestResultHTML \
+	TestDataHTML
 
 include $(ROOT)/config.mk
 
