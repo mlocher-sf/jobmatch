@@ -1,4 +1,4 @@
-// $Id: Area.java,v 1.1 2000/06/10 11:06:21 studer Exp $
+// $Id: Area.java,v 1.2 2000/06/13 13:13:49 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,8 +10,8 @@ import java.util.*;
  *  Area Business Object
  *
  *  @since June 10 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.1 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.2 $
  **/
 public class Area extends AreaBDO implements Description {
     
@@ -63,7 +63,6 @@ public class Area extends AreaBDO implements Description {
 	if (other == null) {
 	    return false;
 	}
-	
 	try {
 	    return (this.getHandle().equals(((AreaBDO) other).getHandle()));
 	}
@@ -88,6 +87,9 @@ public class Area extends AreaBDO implements Description {
 
 /*
  * $Log: Area.java,v $
+ * Revision 1.2  2000/06/13 13:13:49  locher
+ * fixed equals
+ *
  * Revision 1.1  2000/06/10 11:06:21  studer
  * business object for cvsections
  *

@@ -1,4 +1,4 @@
-// $Id: Graduation.java,v 1.7 2000/05/31 13:34:15 loeffel Exp $
+// $Id: Graduation.java,v 1.8 2000/06/13 13:13:51 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -9,8 +9,8 @@ import java.util.*;
  *  Graduation Business Object
  *
  *  @since May 26 2000
- *  @author $Author: loeffel $
- *  @version $Revision: 1.7 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.8 $
  **/
 public class Graduation extends GraduationBDO implements Description {
     
@@ -67,18 +67,10 @@ public class Graduation extends GraduationBDO implements Description {
 	}
 	
 	try {
-	    return semanticEquality(this, (Graduation) other);
-	}
-	catch (ClassCastException e) {
+	    return (this.getHandle().equals(((Graduation) other).getHandle()));
+	} catch (Exception e) {
 	    return false;
 	}
-    }
-
-    /** @return true if a is considered the same as b **/
-    private boolean semanticEquality(Graduation a, Graduation b) {
-	//XXX define the equality and remove the exception !!!
-	throw new RuntimeException("semanticEqualitiy not defined");
-	//return (a == b);
     }
 
     /** @see Object.toString **/
@@ -95,6 +87,9 @@ public class Graduation extends GraduationBDO implements Description {
 
 /*
  * $Log: Graduation.java,v $
+ * Revision 1.8  2000/06/13 13:13:51  locher
+ * fixed equals
+ *
  * Revision 1.7  2000/05/31 13:34:15  loeffel
  * Javadoc - Bug fixed
  *

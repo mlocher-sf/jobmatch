@@ -1,4 +1,4 @@
-// $Id: Association.java,v 1.2 2000/06/10 11:06:22 studer Exp $
+// $Id: Association.java,v 1.3 2000/06/13 13:13:50 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -10,8 +10,8 @@ import java.util.*;
  *  Association Business Object
  *
  *  @since June 9 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.2 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.3 $
  **/
 public class Association extends AssociationBDO implements Description {
     
@@ -63,7 +63,6 @@ public class Association extends AssociationBDO implements Description {
 	if (other == null) {
 	    return false;
 	}
-	
 	try {
 	    return (this.getHandle().equals(((AssociationBDO) other).getHandle()));
 	}
@@ -88,6 +87,9 @@ public class Association extends AssociationBDO implements Description {
 
 /*
  * $Log: Association.java,v $
+ * Revision 1.3  2000/06/13 13:13:50  locher
+ * fixed equals
+ *
  * Revision 1.2  2000/06/10 11:06:22  studer
  * business object for cvsections
  *

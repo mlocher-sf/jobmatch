@@ -1,4 +1,4 @@
-// $Id: Schooltype.java,v 1.6 2000/06/06 11:39:55 studer Exp $
+// $Id: Schooltype.java,v 1.7 2000/06/13 13:13:51 locher Exp $
 
 package jobmatch.business.entity;
 
@@ -9,8 +9,8 @@ import java.util.*;
  *  Schooltype Business Object
  *
  *  @since May 26 2000
- *  @author $Author: studer $
- *  @version $Revision: 1.6 $
+ *  @author $Author: locher $
+ *  @version $Revision: 1.7 $
  **/
 public class Schooltype extends SchooltypeBDO implements Description {
     
@@ -62,9 +62,8 @@ public class Schooltype extends SchooltypeBDO implements Description {
 	}
 	
 	try {
-	    return semanticEquality(this, (Schooltype) other);
-	}
-	catch (ClassCastException e) {
+	    return (this.getHandle().equals(((Schooltype) other).getHandle()));
+	} catch (Exception e) {
 	    return false;
 	}
     }
@@ -90,6 +89,9 @@ public class Schooltype extends SchooltypeBDO implements Description {
 
 /*
  * $Log: Schooltype.java,v $
+ * Revision 1.7  2000/06/13 13:13:51  locher
+ * fixed equals
+ *
  * Revision 1.6  2000/06/06 11:39:55  studer
  * getSchooltype methode hinzugefuegt
  *
